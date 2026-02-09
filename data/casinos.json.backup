@@ -13,31 +13,14 @@
     "token_name": "Stake Token",
     "market_cap": "$45M",
     "coingecko_id": "stake-casino",
-    "accepted_coins": [
-      "BTC",
-      "ETH",
-      "LTC",
-      "DOGE",
-      "TRX",
-      "XRP",
-      "BNB",
-      "USDT",
-      "USDC",
-      "20+ more"
-    ],
+    "accepted_coins": ["BTC", "ETH", "LTC", "DOGE", "TRX", "XRP", "BNB", "USDT", "USDC", "20+ more"],
     "provably_fair": true,
     "kyc_required": "Optional",
     "withdrawal_speed": "Instant",
     "vpn_allowed": true,
     "min_deposit": "$10",
     "license": "Curacao",
-    "games": [
-      "Slots",
-      "Live Casino",
-      "Table Games",
-      "Sports Betting",
-      "Original Games"
-    ],
+    "games": ["Slots", "Live Casino", "Table Games", "Sports Betting", "Original Games"],
     "live_dealer": true,
     "mobile_app": true,
     "established": 2017,
@@ -70,28 +53,14 @@
     "token_name": "BC Token",
     "market_cap": "$28M",
     "coingecko_id": "bc-game",
-    "accepted_coins": [
-      "BTC",
-      "ETH",
-      "BNB",
-      "SOL",
-      "DOGE",
-      "TRX",
-      "50+ more"
-    ],
+    "accepted_coins": ["BTC", "ETH", "BNB", "SOL", "DOGE", "TRX", "50+ more"],
     "provably_fair": true,
     "kyc_required": "Optional",
     "withdrawal_speed": "Instant",
     "vpn_allowed": true,
     "min_deposit": "$1",
     "license": "Curacao",
-    "games": [
-      "Slots",
-      "Live Casino",
-      "Sports",
-      "Lottery",
-      "Original Games"
-    ],
+    "games": ["Slots", "Live Casino", "Sports", "Lottery", "Original Games"],
     "live_dealer": true,
     "mobile_app": true,
     "established": 2017,
@@ -124,26 +93,14 @@
     "token_name": "Rollbit Coin",
     "market_cap": "$380M",
     "coingecko_id": "rollbit-coin",
-    "accepted_coins": [
-      "BTC",
-      "ETH",
-      "USDT",
-      "LTC",
-      "BNB",
-      "15+ more"
-    ],
+    "accepted_coins": ["BTC", "ETH", "USDT", "LTC", "BNB", "15+ more"],
     "provably_fair": true,
     "kyc_required": "Required",
     "withdrawal_speed": "<1 hour",
     "vpn_allowed": false,
     "min_deposit": "$10",
     "license": "Curacao",
-    "games": [
-      "Slots",
-      "Sports Betting",
-      "Live Casino",
-      "Original Games"
-    ],
+    "games": ["Slots", "Sports Betting", "Live Casino", "Original Games"],
     "live_dealer": true,
     "mobile_app": false,
     "established": 2019,
@@ -173,25 +130,14 @@
     "bonus": "100% up to $200",
     "bonus_code": "WELCOME",
     "has_token": false,
-    "accepted_coins": [
-      "BTC",
-      "ETH",
-      "LTC",
-      "USDT",
-      "10+ more"
-    ],
+    "accepted_coins": ["BTC", "ETH", "LTC", "USDT", "10+ more"],
     "provably_fair": true,
     "kyc_required": "Required",
     "withdrawal_speed": "<1 hour",
     "vpn_allowed": false,
     "min_deposit": "$10",
     "license": "Curacao",
-    "games": [
-      "Slots",
-      "Live Casino",
-      "Table Games",
-      "Roobet Originals"
-    ],
+    "games": ["Slots", "Live Casino", "Table Games", "Roobet Originals"],
     "live_dealer": true,
     "mobile_app": false,
     "established": 2019,
@@ -220,27 +166,14 @@
     "description": "Established hybrid casino accepting both crypto and fiat. Award-winning platform with 3,000+ games.",
     "bonus": "100% up to $500 + 180 free spins",
     "bonus_code": "BITSTARZ",
-    "accepted_coins": [
-      "BTC",
-      "ETH",
-      "LTC",
-      "DOGE",
-      "BCH",
-      "USDT",
-      "Fiat (EUR, USD)"
-    ],
+    "accepted_coins": ["BTC", "ETH", "LTC", "DOGE", "BCH", "USDT", "Fiat (EUR, USD)"],
     "provably_fair": true,
     "kyc_required": "Required",
     "withdrawal_speed": "<10 minutes (crypto)",
     "vpn_allowed": false,
     "min_deposit": "$20",
     "license": "Curacao",
-    "games": [
-      "Slots",
-      "Live Casino",
-      "Table Games",
-      "Jackpots"
-    ],
+    "games": ["Slots", "Live Casino", "Table Games", "Jackpots"],
     "live_dealer": true,
     "mobile_app": false,
     "established": 2014,
@@ -258,8 +191,7 @@
       "Geo-restrictions apply"
     ],
     "featured": false,
-    "tier": "established",
-    "has_token": false
+    "tier": "established"
   },
   {
     "id": 6,
@@ -270,26 +202,14 @@
     "description": "Pioneer crypto casino and sportsbook operating since 2013. Trusted, licensed, and reliable with competitive odds.",
     "bonus": "100% up to 5 BTC",
     "bonus_code": "CLOUD100",
-    "accepted_coins": [
-      "BTC",
-      "ETH",
-      "BCH",
-      "LTC",
-      "USDT",
-      "10+ more"
-    ],
+    "accepted_coins": ["BTC", "ETH", "BCH", "LTC", "USDT", "10+ more"],
     "provably_fair": false,
     "kyc_required": "Optional",
     "withdrawal_speed": "<24 hours",
     "vpn_allowed": true,
     "min_deposit": "$20",
     "license": "Curacao",
-    "games": [
-      "Sports Betting",
-      "Slots",
-      "Live Casino",
-      "Table Games"
-    ],
+    "games": ["Sports Betting", "Slots", "Live Casino", "Table Games"],
     "live_dealer": true,
     "mobile_app": false,
     "established": 2013,
@@ -307,8 +227,7 @@
       "Limited promotions"
     ],
     "featured": false,
-    "tier": "established",
-    "has_token": false
+    "tier": "established"
   },
   {
     "id": 7,
@@ -319,25 +238,14 @@
     "description": "New crypto casino backed by influencers. Clean design, instant withdrawals, and strong focus on user experience.",
     "bonus": "200% up to $500",
     "bonus_code": "SHUFFLE200",
-    "accepted_coins": [
-      "BTC",
-      "ETH",
-      "SOL",
-      "USDT",
-      "15+ more"
-    ],
+    "accepted_coins": ["BTC", "ETH", "SOL", "USDT", "15+ more"],
     "provably_fair": true,
     "kyc_required": "Optional",
     "withdrawal_speed": "Instant",
     "vpn_allowed": true,
     "min_deposit": "$10",
     "license": "Curacao",
-    "games": [
-      "Slots",
-      "Live Casino",
-      "Sports",
-      "Original Games"
-    ],
+    "games": ["Slots", "Live Casino", "Sports", "Original Games"],
     "live_dealer": true,
     "mobile_app": false,
     "established": 2023,
@@ -355,12 +263,7 @@
       "Limited customer support hours"
     ],
     "featured": false,
-    "tier": "rising",
-    "has_token": true,
-    "token_symbol": "SHFL",
-    "token_name": "Shuffle Token",
-    "market_cap": "$15M",
-    "coingecko_id": "shuffle"
+    "tier": "rising"
   },
   {
     "id": 8,
@@ -371,26 +274,14 @@
     "description": "Crypto casino and sportsbook with competitive bonuses. Strong eSports betting and original casino games.",
     "bonus": "100% up to $500 + 100 free spins",
     "bonus_code": "DUEL100",
-    "accepted_coins": [
-      "BTC",
-      "ETH",
-      "LTC",
-      "USDT",
-      "DOGE",
-      "10+ more"
-    ],
+    "accepted_coins": ["BTC", "ETH", "LTC", "USDT", "DOGE", "10+ more"],
     "provably_fair": true,
     "kyc_required": "Optional",
     "withdrawal_speed": "<1 hour",
     "vpn_allowed": true,
     "min_deposit": "$10",
     "license": "Curacao",
-    "games": [
-      "Slots",
-      "Sports Betting",
-      "eSports",
-      "Live Casino"
-    ],
+    "games": ["Slots", "Sports Betting", "eSports", "Live Casino"],
     "live_dealer": true,
     "mobile_app": false,
     "established": 2020,
@@ -408,12 +299,7 @@
       "Customer support delays"
     ],
     "featured": false,
-    "tier": "rising",
-    "has_token": true,
-    "token_symbol": "DUEL",
-    "token_name": "Duelbits Token",
-    "market_cap": "$8M",
-    "coingecko_id": "duelbits"
+    "tier": "rising"
   },
   {
     "id": 9,
@@ -424,26 +310,14 @@
     "description": "Old-school crypto casino (since 2014). Trusted, provably fair, and supports 10+ cryptocurrencies.",
     "bonus": "110% up to 1.5 BTC",
     "bonus_code": "FORTUNE",
-    "accepted_coins": [
-      "BTC",
-      "ETH",
-      "LTC",
-      "DOGE",
-      "BCH",
-      "10+ more"
-    ],
+    "accepted_coins": ["BTC", "ETH", "LTC", "DOGE", "BCH", "10+ more"],
     "provably_fair": true,
     "kyc_required": "Optional",
     "withdrawal_speed": "<1 hour",
     "vpn_allowed": true,
     "min_deposit": "$10",
     "license": "Curacao",
-    "games": [
-      "Slots",
-      "Live Casino",
-      "Table Games",
-      "Sports"
-    ],
+    "games": ["Slots", "Live Casino", "Table Games", "Sports"],
     "live_dealer": true,
     "mobile_app": false,
     "established": 2014,
@@ -461,8 +335,7 @@
       "Lower bonuses"
     ],
     "featured": false,
-    "tier": "established",
-    "has_token": false
+    "tier": "established"
   },
   {
     "id": 10,
@@ -473,27 +346,14 @@
     "description": "Provably fair crypto casino with focus on transparency. Simple interface, fast payouts, and low house edge games.",
     "bonus": "150% up to $1,000",
     "bonus_code": "WOLF150",
-    "accepted_coins": [
-      "BTC",
-      "ETH",
-      "LTC",
-      "DOGE",
-      "TRX",
-      "BCH"
-    ],
+    "accepted_coins": ["BTC", "ETH", "LTC", "DOGE", "TRX", "BCH"],
     "provably_fair": true,
     "kyc_required": "No",
     "withdrawal_speed": "Instant",
     "vpn_allowed": true,
     "min_deposit": "$1",
     "license": "Curacao",
-    "games": [
-      "Dice",
-      "Slots",
-      "Crash",
-      "Plinko",
-      "Live Casino"
-    ],
+    "games": ["Dice", "Slots", "Crash", "Plinko", "Live Casino"],
     "live_dealer": true,
     "mobile_app": false,
     "established": 2019,
@@ -511,7 +371,6 @@
       "Basic interface"
     ],
     "featured": false,
-    "tier": "value",
-    "has_token": false
+    "tier": "value"
   }
 ]

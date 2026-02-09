@@ -17,7 +17,8 @@ const filters = {
   instant: document.getElementById('filter-instant'),
   nokyc: document.getElementById('filter-nokyc'),
   provably: document.getElementById('filter-provably'),
-  vpn: document.getElementById('filter-vpn')
+  vpn: document.getElementById('filter-vpn'),
+  token: document.getElementById('filter-token')
 };
 
 // Add event listeners to filters
@@ -45,6 +46,11 @@ function applyFilters() {
     
     // VPN allowed filter
     if (filters.vpn.checked && !casino.vpn_allowed) {
+      return false;
+    }
+    
+    // Has token filter
+    if (filters.token.checked && !casino.has_token) {
       return false;
     }
     
@@ -92,6 +98,14 @@ function createCasinoCard(casino) {
     ? `<span class="coin-badge">+${casino.accepted_coins.length - 8} more</span>`
     : '';
   
+  const tokenBadge = casino.has_token 
+    ? `<a href="https://www.coingecko.com/en/coins/${casino.coingecko_id}" target="_blank" rel="noopener noreferrer" class="token-badge">
+         <span class="token-symbol">$${casino.token_symbol}</span>
+         <span class="token-mcap">MC: ${casino.market_cap}</span>
+         <span class="token-arrow">→</span>
+       </a>`
+    : '';
+  
   return `
     <div class="casino-card ${casino.featured ? 'featured' : ''}">
       ${featuredBadge}
@@ -103,6 +117,8 @@ function createCasinoCard(casino) {
           <span>${casino.rating}/5</span>
         </div>
       </div>
+      
+      ${tokenBadge}
       
       <p class="casino-description">${casino.description}</p>
       
