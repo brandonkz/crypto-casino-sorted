@@ -5,28 +5,32 @@
 }
 
 :root {
-  --primary: #8b5cf6;
-  --primary-dark: #7c3aed;
-  --primary-light: #a78bfa;
-  --secondary: #10b981;
-  --danger: #ef4444;
-  --warning: #f59e0b;
-  --dark: #1f2937;
-  --gray: #6b7280;
-  --light-gray: #f3f4f6;
-  --border: #e5e7eb;
+  --primary: #dc2626;
+  --primary-dark: #991b1b;
+  --primary-light: #ef4444;
+  --secondary: #fbbf24;
+  --danger: #dc2626;
+  --warning: #fbbf24;
+  --dark: #0a0a0a;
+  --dark-card: #1a1a1a;
+  --gray: #9ca3af;
+  --light-gray: #1f1f1f;
+  --border: #2a2a2a;
   --white: #ffffff;
-  --text: #111827;
+  --text: #ffffff;
+  --text-secondary: #d1d5db;
+  --gold: #fbbf24;
   --radius: 12px;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow: 0 8px 16px rgba(220, 38, 38, 0.2);
+  --shadow-lg: 0 20px 40px rgba(220, 38, 38, 0.3);
+  --glow: 0 0 20px rgba(220, 38, 38, 0.5);
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
   color: var(--text);
-  background: var(--white);
+  background: var(--dark);
 }
 
 .container {
@@ -37,14 +41,14 @@ body {
 
 /* Header */
 .header {
-  background: var(--white);
+  background: var(--dark);
   border-bottom: 1px solid var(--border);
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(10, 10, 10, 0.95);
 }
 
 .header-content {
@@ -56,7 +60,10 @@ body {
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0;
 }
 
@@ -66,22 +73,35 @@ body {
 }
 
 .nav a {
-  color: var(--gray);
+  color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
 }
 
 .nav a:hover {
-  color: var(--primary);
+  color: var(--gold);
 }
 
 /* Hero */
 .hero {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 50%, #0a0a0a 100%);
   color: var(--white);
   padding: 4rem 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(220, 38, 38, 0.3) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .hero-title {
@@ -107,11 +127,18 @@ body {
 }
 
 .stat-card {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   border-radius: var(--radius);
   padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.stat-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
 }
 
 .stat-number {
@@ -127,8 +154,10 @@ body {
 
 /* Filters */
 .filters {
-  background: var(--light-gray);
+  background: var(--dark);
   padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .section-title {
@@ -151,22 +180,29 @@ body {
   align-items: center;
   gap: 0.75rem;
   padding: 1rem;
-  background: var(--white);
+  background: var(--dark-card);
   border: 2px solid var(--border);
   border-radius: var(--radius);
   cursor: pointer;
   transition: all 0.2s;
   font-weight: 500;
+  color: var(--text-secondary);
 }
 
 .filter-label:hover {
-  border-color: var(--primary-light);
+  border-color: var(--primary);
   box-shadow: var(--shadow);
+  background: rgba(220, 38, 38, 0.1);
 }
 
 .filter-checkbox:checked + span {
-  color: var(--primary);
+  color: var(--gold);
   font-weight: 600;
+}
+
+.filter-label:has(.filter-checkbox:checked) {
+  border-color: var(--gold);
+  background: rgba(251, 191, 36, 0.1);
 }
 
 .filter-checkbox {
@@ -188,7 +224,7 @@ body {
 }
 
 .casino-card {
-  background: var(--white);
+  background: var(--dark-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 2rem;
@@ -197,28 +233,46 @@ body {
   overflow: hidden;
 }
 
+.casino-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--gold) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
 .casino-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
-  border-color: var(--primary-light);
+  border-color: var(--primary);
+}
+
+.casino-card:hover::before {
+  opacity: 1;
 }
 
 .casino-card.featured {
-  border: 2px solid var(--primary);
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(124, 58, 237, 0.05) 100%);
+  border: 2px solid var(--gold);
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(251, 191, 36, 0.05) 100%);
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.2);
 }
 
 .featured-badge {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: var(--primary);
-  color: var(--white);
+  background: linear-gradient(135deg, var(--gold) 0%, #f59e0b 100%);
+  color: var(--dark);
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
 }
 
 .casino-header {
@@ -231,7 +285,7 @@ body {
 .casino-name {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--text);
+  color: var(--white);
   margin: 0;
 }
 
@@ -239,30 +293,35 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--light-gray);
+  background: rgba(251, 191, 36, 0.15);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-weight: 600;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: var(--gold);
 }
 
 .star {
-  color: var(--warning);
+  color: var(--gold);
 }
 
 .casino-description {
-  color: var(--gray);
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
 
 .casino-bonus {
-  background: var(--secondary);
-  color: var(--white);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--gold) 100%);
+  color: var(--dark);
   padding: 1rem;
   border-radius: var(--radius);
   margin-bottom: 1.5rem;
   text-align: center;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+  border: 1px solid rgba(251, 191, 36, 0.5);
 }
 
 .casino-features {
@@ -277,11 +336,11 @@ body {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  color: var(--gray);
+  color: var(--text-secondary);
 }
 
 .feature-icon {
-  color: var(--primary);
+  color: var(--gold);
 }
 
 .casino-coins {
@@ -292,33 +351,54 @@ body {
 }
 
 .coin-badge {
-  background: var(--light-gray);
-  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 500;
+  border: 1px solid var(--border);
 }
 
 .casino-cta {
   display: block;
   width: 100%;
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: var(--white);
   text-align: center;
   padding: 1rem;
   border-radius: var(--radius);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.1rem;
   transition: all 0.2s;
-  border: none;
+  border: 2px solid var(--primary);
   cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.casino-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.casino-cta:hover::before {
+  left: 100%;
 }
 
 .casino-cta:hover {
-  background: var(--primary-dark);
+  box-shadow: var(--glow);
   transform: scale(1.02);
+  border-color: var(--gold);
 }
 
 /* Pros/Cons */
@@ -333,6 +413,7 @@ body {
 
 .pros, .cons {
   font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
 .pros h4, .cons h4 {
@@ -342,11 +423,11 @@ body {
 }
 
 .pros h4 {
-  color: var(--secondary);
+  color: var(--gold);
 }
 
 .cons h4 {
-  color: var(--danger);
+  color: var(--primary);
 }
 
 .pros ul, .cons ul {
@@ -356,28 +437,34 @@ body {
 
 .pros li:before {
   content: "✓ ";
-  color: var(--secondary);
+  color: var(--gold);
   font-weight: 600;
 }
 
 .cons li:before {
   content: "✗ ";
-  color: var(--danger);
+  color: var(--primary);
   font-weight: 600;
+}
+
+/* Casino Grid Section */
+.casinos {
+  background: var(--dark);
 }
 
 /* No Results */
 .no-results {
   text-align: center;
   padding: 4rem 2rem;
-  color: var(--gray);
+  color: var(--text-secondary);
   font-size: 1.2rem;
 }
 
 /* About */
 .about {
-  background: var(--light-gray);
+  background: var(--dark);
   padding: 4rem 0;
+  border-top: 1px solid var(--border);
 }
 
 .about-content {
@@ -385,6 +472,7 @@ body {
   margin: 0 auto;
   font-size: 1.1rem;
   line-height: 1.8;
+  color: var(--text-secondary);
 }
 
 .about-content ul {
@@ -399,6 +487,8 @@ body {
 /* FAQ */
 .faq {
   padding: 4rem 0;
+  background: var(--dark);
+  border-top: 1px solid var(--border);
 }
 
 .faq-grid {
@@ -408,20 +498,26 @@ body {
 }
 
 .faq-item {
-  background: var(--white);
+  background: var(--dark-card);
   border: 1px solid var(--border);
   padding: 1.5rem;
   border-radius: var(--radius);
+  transition: all 0.2s;
+}
+
+.faq-item:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow);
 }
 
 .faq-item h4 {
-  color: var(--primary);
+  color: var(--gold);
   margin-bottom: 0.75rem;
   font-size: 1.1rem;
 }
 
 .faq-item p {
-  color: var(--gray);
+  color: var(--text-secondary);
   line-height: 1.7;
 }
 
