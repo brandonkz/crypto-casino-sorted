@@ -20,14 +20,15 @@
   --text: #ffffff;
   --text-secondary: #d1d5db;
   --gold: #fbbf24;
-  --radius: 12px;
+  --radius: 24px;
+  --radius-lg: 32px;
   --shadow: 0 8px 16px rgba(220, 38, 38, 0.2);
   --shadow-lg: 0 20px 40px rgba(220, 38, 38, 0.3);
   --glow: 0 0 20px rgba(220, 38, 38, 0.5);
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
   color: var(--text);
   background: var(--dark);
@@ -105,10 +106,11 @@ body {
 }
 
 .hero-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+  font-size: 4.5rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .hero-subtitle {
@@ -129,22 +131,24 @@ body {
 .stat-card {
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 2px solid rgba(251, 191, 36, 0.3);
   position: relative;
   z-index: 1;
 }
 
 .stat-card:hover {
   border-color: var(--gold);
-  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.4);
+  transform: translateY(-4px);
 }
 
 .stat-number {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 900;
   margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
 }
 
 .stat-label {
@@ -161,10 +165,11 @@ body {
 }
 
 .section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 3rem;
   text-align: center;
+  letter-spacing: -0.02em;
 }
 
 .filter-grid {
@@ -179,13 +184,14 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem;
+  padding: 1.25rem 1.5rem;
   background: var(--dark-card);
-  border: 2px solid var(--border);
-  border-radius: var(--radius);
+  border: 3px solid var(--border);
+  border-radius: var(--radius-lg);
   cursor: pointer;
   transition: all 0.2s;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 1.05rem;
   color: var(--text-secondary);
 }
 
@@ -225,9 +231,9 @@ body {
 
 .casino-card {
   background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 2rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
@@ -263,16 +269,17 @@ body {
 
 .featured-badge {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.5rem;
+  right: 1.5rem;
   background: linear-gradient(135deg, var(--gold) 0%, #f59e0b 100%);
   color: var(--dark);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  border-radius: 24px;
+  font-size: 0.8rem;
+  font-weight: 900;
   text-transform: uppercase;
-  box-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+  letter-spacing: 0.5px;
 }
 
 .casino-header {
@@ -283,10 +290,11 @@ body {
 }
 
 .casino-name {
-  font-size: 1.75rem;
-  font-weight: 700;
+  font-size: 2.25rem;
+  font-weight: 900;
   color: var(--white);
   margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .casino-rating {
@@ -294,10 +302,11 @@ body {
   align-items: center;
   gap: 0.5rem;
   background: rgba(251, 191, 36, 0.15);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: 600;
-  border: 1px solid rgba(251, 191, 36, 0.3);
+  padding: 0.75rem 1.25rem;
+  border-radius: 24px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  border: 2px solid rgba(251, 191, 36, 0.3);
   color: var(--gold);
 }
 
@@ -314,14 +323,14 @@ body {
 .casino-bonus {
   background: linear-gradient(135deg, var(--primary) 0%, var(--gold) 100%);
   color: var(--dark);
-  padding: 1rem;
-  border-radius: var(--radius);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
   margin-bottom: 1.5rem;
   text-align: center;
-  font-weight: 700;
-  font-size: 1.1rem;
-  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
-  border: 1px solid rgba(251, 191, 36, 0.5);
+  font-weight: 900;
+  font-size: 1.25rem;
+  box-shadow: 0 0 25px rgba(251, 191, 36, 0.4);
+  border: 2px solid rgba(251, 191, 36, 0.5);
 }
 
 .casino-features {
@@ -353,11 +362,11 @@ body {
 .coin-badge {
   background: rgba(255, 255, 255, 0.05);
   color: var(--text-secondary);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 24px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 2px solid var(--border);
 }
 
 .casino-cta {
@@ -366,13 +375,13 @@ body {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: var(--white);
   text-align: center;
-  padding: 1rem;
-  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
   text-decoration: none;
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-weight: 900;
+  font-size: 1.15rem;
   transition: all 0.2s;
-  border: 2px solid var(--primary);
+  border: 3px solid var(--primary);
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -499,21 +508,23 @@ body {
 
 .faq-item {
   background: var(--dark-card);
-  border: 1px solid var(--border);
-  padding: 1.5rem;
-  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
   transition: all 0.2s;
 }
 
 .faq-item:hover {
   border-color: var(--primary);
   box-shadow: var(--shadow);
+  transform: translateY(-2px);
 }
 
 .faq-item h4 {
   color: var(--gold);
   margin-bottom: 0.75rem;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
+  font-weight: 800;
 }
 
 .faq-item p {
@@ -546,11 +557,24 @@ body {
 /* Mobile */
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: 900;
   }
   
   .hero-subtitle {
     font-size: 1.1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .casino-name {
+    font-size: 1.75rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
   }
   
   .stats {
@@ -567,5 +591,9 @@ body {
   
   .nav {
     gap: 1rem;
+  }
+  
+  .casino-card {
+    padding: 1.5rem;
   }
 }
