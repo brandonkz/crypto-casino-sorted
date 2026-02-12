@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free crypto betting calculator. Convert stake and winnings between BTC, ETH, USDT, and USD. Real-time conversion rates for crypto casino betting.">
+  <meta name="keywords" content="crypto betting calculator, bitcoin betting, ethereum betting, crypto odds calculator, cryptocurrency betting">
+  <meta name="author" content="CryptoCasinoSorted">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#8b5cf6">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0L3N9F43ED');
+  </script>
+  
+  <title>Crypto Betting Calculator - BTC, ETH, USDT Odds Calculator | CryptoCasinoSorted</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .calculator-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .calculator-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+    }
+    
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .form-group {
+      margin-bottom: 24px;
+    }
+    
+    .form-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1f2937;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: #8b5cf6;
+    }
+    
+    .btn-calculate {
+      width: 100%;
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      color: white;
+      padding: 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    .btn-calculate:hover {
+      transform: translateY(-2px);
+    }
+    
+    .result-card {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+      display: none;
+    }
+    
+    .result-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      opacity: 0.9;
+    }
+    
+    .result-amount {
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    
+    .result-subtitle {
+      font-size: 16px;
+      opacity: 0.8;
+      margin-bottom: 24px;
+    }
+    
+    .conversion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    
+    .conversion-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .conversion-label {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 8px;
+    }
+    
+    .conversion-value {
+      font-size: 24px;
+      font-weight: 700;
+    }
+    
+    .info-section {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+    
+    .info-section h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1f2937;
+    }
+    
+    .info-section p {
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    
+    .crypto-prices {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      border: 2px solid #e5e7eb;
+    }
+    
+    .crypto-prices h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #6b7280;
+    }
+    
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    
+    .price-row:last-child {
+      border-bottom: none;
+    }
+    
+    .loading-text {
+      color: #8b5cf6;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" style="text-decoration: none; color: inherit;">
+          <h1 class="logo">🎰 CryptoCasinoSorted</h1>
+        </a>
+        <nav class="nav">
+          <a href="/#casinos">Casinos</a>
+          <a href="/wagering-calculator.html">Calculators</a>
+          <a href="/#faq">FAQ</a>
+          <a href="https://betsorted.co.za" target="_blank">Sports Betting 🎯</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Calculator -->
+  <section class="calculator-container">
+    <h2 style="font-size: 36px; font-weight: 900; margin-bottom: 16px; text-align: center;">Crypto Betting Calculator</h2>
+    <p style="text-align: center; color: #6b7280; margin-bottom: 40px; font-size: 18px;">Calculate your stake and potential winnings in BTC, ETH, USDT, or USD</p>
+    
+    <!-- Live Prices -->
+    <div class="crypto-prices">
+      <h4>Current Prices (Live)</h4>
+      <div class="price-row">
+        <span>Bitcoin (BTC)</span>
+        <span id="price-btc" class="loading-text">Loading...</span>
+      </div>
+      <div class="price-row">
+        <span>Ethereum (ETH)</span>
+        <span id="price-eth" class="loading-text">Loading...</span>
+      </div>
+      <div class="price-row">
+        <span>Tether (USDT)</span>
+        <span id="price-usdt" class="loading-text">Loading...</span>
+      </div>
+    </div>
+    
+    <div class="calculator-card">
+      <form id="betting-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="stake-amount">Stake Amount</label>
+            <input type="number" id="stake-amount" class="form-input" placeholder="0.01" value="0.01" min="0" step="any" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="stake-currency">Stake Currency</label>
+            <select id="stake-currency" class="form-input">
+              <option value="BTC">Bitcoin (BTC)</option>
+              <option value="ETH">Ethereum (ETH)</option>
+              <option value="USDT">Tether (USDT)</option>
+              <option value="USD" selected>US Dollar (USD)</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="odds">Odds (Decimal, e.g., 2.00 = even money)</label>
+          <input type="number" id="odds" class="form-input" placeholder="2.00" value="2.00" min="1.01" step="0.01" required>
+        </div>
+        
+        <button type="submit" class="btn-calculate">Calculate Winnings</button>
+      </form>
+    </div>
+    
+    <div id="result" class="result-card">
+      <div class="result-title">Your Potential Win:</div>
+      <div class="result-amount" id="total-win">$0</div>
+      <div class="result-subtitle">If your bet wins at <span id="display-odds">2.00</span> odds</div>
+      
+      <div class="conversion-grid">
+        <div class="conversion-card">
+          <div class="conversion-label">In Bitcoin (BTC)</div>
+          <div class="conversion-value" id="win-btc">0</div>
+        </div>
+        
+        <div class="conversion-card">
+          <div class="conversion-label">In Ethereum (ETH)</div>
+          <div class="conversion-value" id="win-eth">0</div>
+        </div>
+        
+        <div class="conversion-card">
+          <div class="conversion-label">In USDT</div>
+          <div class="conversion-value" id="win-usdt">0</div>
+        </div>
+        
+        <div class="conversion-card">
+          <div class="conversion-label">In USD</div>
+          <div class="conversion-value" id="win-usd">$0</div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 24px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 12px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span>Your Stake:</span>
+          <span id="display-stake">$0</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span>Profit (if win):</span>
+          <span id="display-profit">$0</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 18px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.2);">
+          <span>Total Return:</span>
+          <span id="display-total">$0</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Info Section -->
+    <div class="info-section">
+      <h3>How to Use This Calculator</h3>
+      <p><strong>1. Enter your stake amount</strong> - How much you want to bet (e.g., 0.01 BTC, 100 USDT, or $50)</p>
+      <p><strong>2. Choose your stake currency</strong> - Select BTC, ETH, USDT, or USD</p>
+      <p><strong>3. Enter the odds</strong> - Use decimal odds (e.g., 2.00 = even money, 3.50 = 3.5x payout)</p>
+      <p><strong>4. See conversions</strong> - We'll show your potential winnings in all currencies</p>
+      
+      <h3 style="margin-top: 24px;">Understanding Decimal Odds</h3>
+      <p><strong>2.00</strong> = Even money (win $100 on a $100 bet)</p>
+      <p><strong>1.50</strong> = Heavy favorite (win $50 on a $100 bet)</p>
+      <p><strong>3.00</strong> = Underdog (win $200 on a $100 bet)</p>
+      <p><strong>10.00</strong> = Long shot (win $900 on a $100 bet)</p>
+      
+      <h3 style="margin-top: 24px;">Why Bet in Crypto?</h3>
+      <p>✓ <strong>Instant deposits & withdrawals</strong> - No 3-7 day bank delays</p>
+      <p>✓ <strong>Lower fees</strong> - Blockchain transactions cost pennies</p>
+      <p>✓ <strong>Privacy</strong> - Many crypto casinos don't require KYC</p>
+      <p>✓ <strong>Global access</strong> - Works anywhere Bitcoin works</p>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="/" style="display: inline-block; padding: 14px 28px; background: #8b5cf6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Back to Casinos</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-disclaimer">
+        <strong>Disclaimer:</strong> Gambling can be addictive. Please play responsibly. Cryptocurrency prices are volatile.
+      </p>
+      <p class="footer-copyright">
+        © 2026 CryptoCasinoSorted. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Crypto prices (will be fetched from API in production)
+    let prices = {
+      BTC: 0,
+      ETH: 0,
+      USDT: 1.00,
+      USD: 1.00
+    };
+    
+    // Fetch live prices
+    async function fetchPrices() {
+      try {
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd');
+        const data = await response.json();
+        
+        prices.BTC = data.bitcoin.usd;
+        prices.ETH = data.ethereum.usd;
+        prices.USDT = data.tether.usd;
+        
+        document.getElementById('price-btc').textContent = '$' + prices.BTC.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('price-eth').textContent = '$' + prices.ETH.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('price-usdt').textContent = '$' + prices.USDT.toFixed(2);
+        
+        document.getElementById('price-btc').classList.remove('loading-text');
+        document.getElementById('price-eth').classList.remove('loading-text');
+        document.getElementById('price-usdt').classList.remove('loading-text');
+      } catch (error) {
+        console.error('Failed to fetch prices:', error);
+        // Fallback prices
+        prices.BTC = 100000;
+        prices.ETH = 3500;
+        document.getElementById('price-btc').textContent = '$' + prices.BTC.toLocaleString();
+        document.getElementById('price-eth').textContent = '$' + prices.ETH.toLocaleString();
+        document.getElementById('price-usdt').textContent = '$1.00';
+      }
+    }
+    
+    fetchPrices();
+    
+    document.getElementById('betting-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const stakeAmount = parseFloat(document.getElementById('stake-amount').value) || 0;
+      const stakeCurrency = document.getElementById('stake-currency').value;
+      const odds = parseFloat(document.getElementById('odds').value) || 1;
+      
+      // Convert stake to USD
+      const stakeInUSD = stakeAmount * prices[stakeCurrency];
+      
+      // Calculate total return and profit
+      const totalReturn = stakeInUSD * odds;
+      const profit = totalReturn - stakeInUSD;
+      
+      // Convert to all currencies
+      const winBTC = totalReturn / prices.BTC;
+      const winETH = totalReturn / prices.ETH;
+      const winUSDT = totalReturn / prices.USDT;
+      const winUSD = totalReturn;
+      
+      // Update display
+      document.getElementById('total-win').textContent = '$' + totalReturn.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('display-odds').textContent = odds.toFixed(2);
+      
+      document.getElementById('win-btc').textContent = winBTC.toFixed(8);
+      document.getElementById('win-eth').textContent = winETH.toFixed(6);
+      document.getElementById('win-usdt').textContent = winUSDT.toFixed(2);
+      document.getElementById('win-usd').textContent = '$' + winUSD.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      
+      document.getElementById('display-stake').textContent = '$' + stakeInUSD.toFixed(2);
+      document.getElementById('display-profit').textContent = '$' + profit.toFixed(2);
+      document.getElementById('display-total').textContent = '$' + totalReturn.toFixed(2);
+      
+      // Show result
+      document.getElementById('result').style.display = 'block';
+      
+      // Smooth scroll to result
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+</body>
+</html>

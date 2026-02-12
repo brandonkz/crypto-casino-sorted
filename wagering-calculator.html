@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free crypto casino wagering requirement calculator. Calculate how much you need to bet to withdraw your bonus. Supports 1x-100x requirements with detailed breakdown.">
+  <meta name="keywords" content="wagering calculator, bonus calculator, crypto casino bonus, rollover calculator, playthrough calculator">
+  <meta name="author" content="CryptoCasinoSorted">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#8b5cf6">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0L3N9F43ED');
+  </script>
+  
+  <title>Crypto Casino Wagering Calculator - How Much Do You Need to Bet? | CryptoCasinoSorted</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .calculator-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .calculator-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+    }
+    
+    .form-group {
+      margin-bottom: 24px;
+    }
+    
+    .form-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1f2937;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: #8b5cf6;
+    }
+    
+    .btn-calculate {
+      width: 100%;
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      color: white;
+      padding: 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    .btn-calculate:hover {
+      transform: translateY(-2px);
+    }
+    
+    .result-card {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+      display: none;
+    }
+    
+    .result-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      opacity: 0.9;
+    }
+    
+    .result-amount {
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 24px;
+    }
+    
+    .breakdown {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .breakdown-row:last-child {
+      border-bottom: none;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    
+    .info-section {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+    
+    .info-section h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1f2937;
+    }
+    
+    .info-section p {
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    
+    .info-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .info-section li {
+      padding: 8px 0 8px 24px;
+      position: relative;
+      color: #6b7280;
+    }
+    
+    .info-section li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #8b5cf6;
+      font-weight: bold;
+    }
+    
+    .warning-box {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 24px 0;
+    }
+    
+    .warning-box p {
+      margin: 0;
+      color: #78350f;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" style="text-decoration: none; color: inherit;">
+          <h1 class="logo">🎰 CryptoCasinoSorted</h1>
+        </a>
+        <nav class="nav">
+          <a href="/#casinos">Casinos</a>
+          <a href="/wagering-calculator.html">Calculators</a>
+          <a href="/#faq">FAQ</a>
+          <a href="https://betsorted.co.za" target="_blank">Sports Betting 🎯</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Calculator -->
+  <section class="calculator-container">
+    <h2 style="font-size: 36px; font-weight: 900; margin-bottom: 16px; text-align: center;">Wagering Requirement Calculator</h2>
+    <p style="text-align: center; color: #6b7280; margin-bottom: 40px; font-size: 18px;">Calculate how much you need to bet to withdraw your crypto casino bonus</p>
+    
+    <div class="calculator-card">
+      <form id="wagering-form">
+        <div class="form-group">
+          <label class="form-label" for="deposit">Your Deposit Amount ($)</label>
+          <input type="number" id="deposit" class="form-input" placeholder="100" value="100" min="0" step="0.01" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="bonus">Bonus Amount ($)</label>
+          <input type="number" id="bonus" class="form-input" placeholder="100" value="100" min="0" step="0.01" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="requirement">Wagering Requirement (e.g., 40x)</label>
+          <input type="number" id="requirement" class="form-input" placeholder="40" value="40" min="1" max="100" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="requirement-type">Requirement Applied To</label>
+          <select id="requirement-type" class="form-input">
+            <option value="bonus">Bonus Only (most common)</option>
+            <option value="both">Deposit + Bonus</option>
+            <option value="deposit">Deposit Only (rare)</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn-calculate">Calculate Wagering</button>
+      </form>
+    </div>
+    
+    <div id="result" class="result-card">
+      <div class="result-title">Total Amount You Must Wager:</div>
+      <div class="result-amount" id="total-wager">$0</div>
+      
+      <div class="breakdown">
+        <div class="breakdown-row">
+          <span>Your Deposit:</span>
+          <span id="breakdown-deposit">$0</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Bonus Amount:</span>
+          <span id="breakdown-bonus">$0</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Wagering Requirement:</span>
+          <span id="breakdown-requirement">0x</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Applied To:</span>
+          <span id="breakdown-type">-</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Total Wagering Required:</span>
+          <span id="breakdown-total">$0</span>
+        </div>
+      </div>
+      
+      <div class="warning-box" style="margin-top: 24px; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);">
+        <p style="color: white;">⚠️ <span id="tip-text">Tip will appear here</span></p>
+      </div>
+    </div>
+    
+    <!-- Info Section -->
+    <div class="info-section">
+      <h3>How Wagering Requirements Work</h3>
+      <p>Wagering requirements (also called rollover or playthrough) determine how much you must bet before you can withdraw bonus funds. For example:</p>
+      <ul>
+        <li>$100 bonus with 40x wagering = you must bet $4,000 total</li>
+        <li>$200 deposit + $200 bonus with 30x on both = ($200 + $200) × 30 = $12,000 total</li>
+        <li>Lower wagering requirements (20x or less) are better for players</li>
+        <li>Higher requirements (50x+) make it very difficult to withdraw</li>
+      </ul>
+      
+      <h3 style="margin-top: 24px;">Common Wagering Requirements by Casino</h3>
+      <p><strong>Stake.com:</strong> 40x bonus (bonus only)</p>
+      <p><strong>BC.Game:</strong> 40x bonus (bonus only)</p>
+      <p><strong>Roobet:</strong> 35x bonus (bonus only)</p>
+      <p><strong>BitStarz:</strong> 40x deposit + bonus</p>
+      <p><strong>Rollbit:</strong> 50x bonus (bonus only)</p>
+      
+      <h3 style="margin-top: 24px;">Pro Tips</h3>
+      <ul>
+        <li>Read the terms carefully - some games contribute less (slots usually 100%, table games 10-20%)</li>
+        <li>Check max bet limits - betting too much can void your bonus</li>
+        <li>Lower volatility games help you meet requirements faster</li>
+        <li>Some casinos let you cancel the bonus and withdraw your deposit anytime</li>
+      </ul>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="/" style="display: inline-block; padding: 14px 28px; background: #8b5cf6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Back to Casinos</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-disclaimer">
+        <strong>Disclaimer:</strong> Gambling can be addictive. Please play responsibly. Always read bonus terms and conditions before claiming.
+      </p>
+      <p class="footer-copyright">
+        © 2026 CryptoCasinoSorted. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('wagering-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const deposit = parseFloat(document.getElementById('deposit').value) || 0;
+      const bonus = parseFloat(document.getElementById('bonus').value) || 0;
+      const requirement = parseFloat(document.getElementById('requirement').value) || 0;
+      const type = document.getElementById('requirement-type').value;
+      
+      let baseAmount = 0;
+      let typeText = '';
+      
+      if (type === 'bonus') {
+        baseAmount = bonus;
+        typeText = 'Bonus Only';
+      } else if (type === 'both') {
+        baseAmount = deposit + bonus;
+        typeText = 'Deposit + Bonus';
+      } else if (type === 'deposit') {
+        baseAmount = deposit;
+        typeText = 'Deposit Only';
+      }
+      
+      const totalWager = baseAmount * requirement;
+      
+      // Update results
+      document.getElementById('total-wager').textContent = '$' + totalWager.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('breakdown-deposit').textContent = '$' + deposit.toFixed(2);
+      document.getElementById('breakdown-bonus').textContent = '$' + bonus.toFixed(2);
+      document.getElementById('breakdown-requirement').textContent = requirement + 'x';
+      document.getElementById('breakdown-type').textContent = typeText;
+      document.getElementById('breakdown-total').textContent = '$' + totalWager.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      
+      // Generate tip based on requirement
+      let tip = '';
+      if (requirement <= 20) {
+        tip = 'Excellent! This is a low wagering requirement and relatively easy to clear.';
+      } else if (requirement <= 35) {
+        tip = 'Reasonable wagering requirement. Most players can clear this with patience.';
+      } else if (requirement <= 50) {
+        tip = 'High wagering requirement. Only take this bonus if you plan to play a lot.';
+      } else {
+        tip = 'Very high wagering requirement. This bonus is designed to be nearly impossible to clear.';
+      }
+      
+      document.getElementById('tip-text').textContent = tip;
+      
+      // Show result
+      document.getElementById('result').style.display = 'block';
+      
+      // Smooth scroll to result
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+</body>
+</html>

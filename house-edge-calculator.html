@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free house edge calculator for crypto casinos. Compare RTP rates and house edge across slots, blackjack, roulette, and more. Find the fairest crypto casino games.">
+  <meta name="keywords" content="house edge calculator, RTP calculator, casino game odds, provably fair, best casino odds, lowest house edge">
+  <meta name="author" content="CryptoCasinoSorted">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#8b5cf6">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0L3N9F43ED');
+  </script>
+  
+  <title>House Edge & RTP Calculator - Find Fairest Crypto Casino Games | CryptoCasinoSorted</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .calculator-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .calculator-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+    }
+    
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    
+    .game-card {
+      background: white;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .game-card:hover {
+      border-color: #8b5cf6;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+    }
+    
+    .game-card.selected {
+      border-color: #8b5cf6;
+      background: #f5f3ff;
+    }
+    
+    .game-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1f2937;
+    }
+    
+    .game-stats {
+      font-size: 14px;
+      color: #6b7280;
+    }
+    
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+    }
+    
+    .house-edge-good {
+      color: #10b981;
+      font-weight: 700;
+    }
+    
+    .house-edge-medium {
+      color: #f59e0b;
+      font-weight: 700;
+    }
+    
+    .house-edge-bad {
+      color: #ef4444;
+      font-weight: 700;
+    }
+    
+    .comparison-section {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+      display: none;
+    }
+    
+    .comparison-title {
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    
+    .comparison-grid {
+      display: grid;
+      gap: 16px;
+    }
+    
+    .comparison-card {
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    @media (max-width: 768px) {
+      .comparison-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+    
+    .info-section {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+    
+    .info-section h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1f2937;
+    }
+    
+    .info-section p {
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    
+    .info-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .info-section li {
+      padding: 8px 0 8px 24px;
+      position: relative;
+      color: #6b7280;
+    }
+    
+    .info-section li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #8b5cf6;
+      font-weight: bold;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      justify-content: center;
+    }
+    
+    .filter-btn {
+      padding: 10px 20px;
+      border: 2px solid #e5e7eb;
+      background: white;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .filter-btn:hover {
+      border-color: #8b5cf6;
+    }
+    
+    .filter-btn.active {
+      background: #8b5cf6;
+      color: white;
+      border-color: #8b5cf6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" style="text-decoration: none; color: inherit;">
+          <h1 class="logo">🎰 CryptoCasinoSorted</h1>
+        </a>
+        <nav class="nav">
+          <a href="/#casinos">Casinos</a>
+          <a href="/wagering-calculator.html">Calculators</a>
+          <a href="/#faq">FAQ</a>
+          <a href="https://betsorted.co.za" target="_blank">Sports Betting 🎯</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Calculator -->
+  <section class="calculator-container">
+    <h2 style="font-size: 36px; font-weight: 900; margin-bottom: 16px; text-align: center;">House Edge & RTP Comparison</h2>
+    <p style="text-align: center; color: #6b7280; margin-bottom: 40px; font-size: 18px;">Compare casino games to find the fairest odds and lowest house edge</p>
+    
+    <!-- Filters -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All Games</button>
+      <button class="filter-btn" data-filter="slots">Slots</button>
+      <button class="filter-btn" data-filter="table">Table Games</button>
+      <button class="filter-btn" data-filter="dice">Dice & Crash</button>
+    </div>
+    
+    <!-- Game Grid -->
+    <div class="game-grid" id="game-grid">
+      <!-- Games will be loaded via JavaScript -->
+    </div>
+    
+    <!-- Comparison Section -->
+    <div class="comparison-section" id="comparison">
+      <div class="comparison-title">Selected Games Comparison</div>
+      <div class="comparison-grid" id="comparison-grid">
+        <!-- Comparison cards will be loaded here -->
+      </div>
+      <div style="text-align: center; margin-top: 24px;">
+        <button onclick="clearSelection()" style="padding: 12px 24px; background: #ef4444; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Clear Selection</button>
+      </div>
+    </div>
+    
+    <!-- Info Section -->
+    <div class="info-section">
+      <h3>Understanding House Edge & RTP</h3>
+      <p><strong>House Edge:</strong> The mathematical advantage the casino has over players. Lower is better for players.</p>
+      <p><strong>RTP (Return to Player):</strong> The percentage of all wagered money that's paid back to players over time. Higher is better.</p>
+      <p><strong>Formula:</strong> RTP + House Edge = 100%</p>
+      
+      <h3 style="margin-top: 24px;">House Edge Rating System</h3>
+      <p style="color: #10b981; font-weight: 700;">🟢 Excellent (0-2%): Best games for players - blackjack, baccarat, craps</p>
+      <p style="color: #f59e0b; font-weight: 700;">🟡 Fair (2-5%): Decent odds - European roulette, most crypto games</p>
+      <p style="color: #ef4444; font-weight: 700;">🔴 Poor (5%+): Casino-favored - American roulette, some slots, keno</p>
+      
+      <h3 style="margin-top: 24px;">Best Games by House Edge</h3>
+      <p><strong>Blackjack (0.5%)</strong> - With basic strategy, one of the fairest games</p>
+      <p><strong>Baccarat (1.06%)</strong> - Simple, elegant, low house edge on Banker bet</p>
+      <p><strong>Craps (1.4%)</strong> - Pass/Don't Pass bets offer great odds</p>
+      <p><strong>European Roulette (2.7%)</strong> - Much better than American (5.26%)</p>
+      <p><strong>Dice (1-2%)</strong> - Most crypto casinos offer provably fair dice with low edge</p>
+      
+      <h3 style="margin-top: 24px;">Why This Matters</h3>
+      <p>Over 1,000 bets of $10 each:</p>
+      <ul>
+        <li><strong>1% house edge:</strong> You'd lose $100 on average</li>
+        <li><strong>5% house edge:</strong> You'd lose $500 on average</li>
+        <li><strong>10% house edge:</strong> You'd lose $1,000 on average</li>
+      </ul>
+      <p>Playing games with lower house edge means your bankroll lasts longer and you have better chances of winning sessions.</p>
+      
+      <h3 style="margin-top: 24px;">Crypto Casino Advantage</h3>
+      <p><strong>Provably Fair:</strong> Most crypto casinos use blockchain-based provably fair systems that let you verify each bet was truly random. Traditional casinos can't offer this transparency.</p>
+      <p><strong>No Hidden Manipulation:</strong> You can mathematically prove the game wasn't rigged against you.</p>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="/" style="display: inline-block; padding: 14px 28px; background: #8b5cf6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Back to Casinos</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-disclaimer">
+        <strong>Disclaimer:</strong> Gambling can be addictive. Please play responsibly. House edge is a long-term average.
+      </p>
+      <p class="footer-copyright">
+        © 2026 CryptoCasinoSorted. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const games = [
+      // Table Games
+      { name: 'Blackjack (Basic Strategy)', category: 'table', houseEdge: 0.5, rtp: 99.5 },
+      { name: 'Baccarat (Banker)', category: 'table', houseEdge: 1.06, rtp: 98.94 },
+      { name: 'Baccarat (Player)', category: 'table', houseEdge: 1.24, rtp: 98.76 },
+      { name: 'Craps (Pass/Don\'t Pass)', category: 'table', houseEdge: 1.41, rtp: 98.59 },
+      { name: 'European Roulette', category: 'table', houseEdge: 2.7, rtp: 97.3 },
+      { name: 'American Roulette', category: 'table', houseEdge: 5.26, rtp: 94.74 },
+      { name: 'Three Card Poker', category: 'table', houseEdge: 3.37, rtp: 96.63 },
+      { name: 'Caribbean Stud Poker', category: 'table', houseEdge: 5.22, rtp: 94.78 },
+      
+      // Dice & Crypto Games
+      { name: 'Dice (Provably Fair)', category: 'dice', houseEdge: 1.0, rtp: 99.0 },
+      { name: 'Crash', category: 'dice', houseEdge: 1.0, rtp: 99.0 },
+      { name: 'Limbo', category: 'dice', houseEdge: 1.0, rtp: 99.0 },
+      { name: 'Plinko', category: 'dice', houseEdge: 1.0, rtp: 99.0 },
+      { name: 'Mines', category: 'dice', houseEdge: 1.0, rtp: 99.0 },
+      { name: 'Keno', category: 'dice', houseEdge: 25.0, rtp: 75.0 },
+      
+      // Slots
+      { name: 'High RTP Slots (Gates of Olympus)', category: 'slots', houseEdge: 4.0, rtp: 96.0 },
+      { name: 'Medium RTP Slots', category: 'slots', houseEdge: 5.0, rtp: 95.0 },
+      { name: 'Low RTP Slots', category: 'slots', houseEdge: 8.0, rtp: 92.0 },
+      { name: 'Book of Dead', category: 'slots', houseEdge: 3.93, rtp: 96.07 },
+      { name: 'Starburst', category: 'slots', houseEdge: 3.82, rtp: 96.18 },
+      { name: 'Bonanza Megaways', category: 'slots', houseEdge: 4.0, rtp: 96.0 }
+    ];
+    
+    let selectedGames = [];
+    let currentFilter = 'all';
+    
+    function renderGames() {
+      const grid = document.getElementById('game-grid');
+      grid.innerHTML = '';
+      
+      const filteredGames = currentFilter === 'all' 
+        ? games 
+        : games.filter(g => g.category === currentFilter);
+      
+      filteredGames.forEach((game, index) => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        if (selectedGames.includes(index)) {
+          card.classList.add('selected');
+        }
+        
+        let edgeClass = 'house-edge-good';
+        if (game.houseEdge > 5) edgeClass = 'house-edge-bad';
+        else if (game.houseEdge > 2) edgeClass = 'house-edge-medium';
+        
+        card.innerHTML = `
+          <div class="game-name">${game.name}</div>
+          <div class="game-stats">
+            <div class="stat-row">
+              <span>House Edge:</span>
+              <span class="${edgeClass}">${game.houseEdge.toFixed(2)}%</span>
+            </div>
+            <div class="stat-row">
+              <span>RTP:</span>
+              <span>${game.rtp.toFixed(2)}%</span>
+            </div>
+          </div>
+        `;
+        
+        card.addEventListener('click', () => toggleGame(index));
+        grid.appendChild(card);
+      });
+    }
+    
+    function toggleGame(index) {
+      const gameIndex = selectedGames.indexOf(index);
+      if (gameIndex > -1) {
+        selectedGames.splice(gameIndex, 1);
+      } else {
+        selectedGames.push(index);
+      }
+      
+      renderGames();
+      renderComparison();
+    }
+    
+    function renderComparison() {
+      const comparison = document.getElementById('comparison');
+      const grid = document.getElementById('comparison-grid');
+      
+      if (selectedGames.length === 0) {
+        comparison.style.display = 'none';
+        return;
+      }
+      
+      comparison.style.display = 'block';
+      grid.innerHTML = '';
+      
+      // Sort by house edge
+      const sorted = selectedGames
+        .map(i => ({ ...games[i], index: i }))
+        .sort((a, b) => a.houseEdge - b.houseEdge);
+      
+      sorted.forEach(game => {
+        let edgeClass = 'house-edge-good';
+        if (game.houseEdge > 5) edgeClass = 'house-edge-bad';
+        else if (game.houseEdge > 2) edgeClass = 'house-edge-medium';
+        
+        const card = document.createElement('div');
+        card.className = 'comparison-card';
+        card.innerHTML = `
+          <div>
+            <div style="font-weight: 700; font-size: 18px; margin-bottom: 4px;">${game.name}</div>
+            <div style="font-size: 14px; color: #6b7280; text-transform: capitalize;">${game.category} game</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">House Edge</div>
+            <div class="${edgeClass}" style="font-size: 24px; font-weight: 900;">${game.houseEdge.toFixed(2)}%</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">RTP</div>
+            <div style="font-size: 24px; font-weight: 900; color: #10b981;">${game.rtp.toFixed(2)}%</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      
+      comparison.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    
+    function clearSelection() {
+      selectedGames = [];
+      renderGames();
+      renderComparison();
+    }
+    
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentFilter = this.dataset.filter;
+        renderGames();
+      });
+    });
+    
+    // Initial render
+    renderGames();
+  </script>
+</body>
+</html>
