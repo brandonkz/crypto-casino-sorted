@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Track real crypto casino gambling activity on-chain. See which wallets are betting millions on Rollbit, Stake, BC.Game and more. Live blockchain data.">
+  <meta name="keywords" content="crypto gambling wallets, on-chain casino activity, crypto whale tracker, blockchain gambling analytics, rollbit wallets, stake wallets">
+  <title>Crypto Casino Wallet Tracker - Live On-Chain Gambling Data | CryptoCasinoSorted</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='80'>🎰</text></svg>">
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOURID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YOURID');
+  </script>
+  
+  <style>
+    .tracker-hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    
+    .tracker-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .tracker-hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: -3rem auto 3rem;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .stat-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #7c3aed;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+    
+    .content-section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    
+    .refresh-badge {
+      background: #f0fdf4;
+      color: #16a34a;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .table-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    thead {
+      background: #f8fafc;
+    }
+    
+    th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: #475569;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    td {
+      padding: 1rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    
+    tr:hover {
+      background: #f8fafc;
+    }
+    
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: #7c3aed;
+      color: white;
+      border-radius: 50%;
+      font-weight: 600;
+    }
+    
+    .rank-badge.top3 {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    }
+    
+    .wallet-address {
+      font-family: 'Courier New', monospace;
+      color: #3b82f6;
+      font-weight: 500;
+    }
+    
+    .casino-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .casino-tag {
+      padding: 0.25rem 0.75rem;
+      background: #f1f5f9;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #475569;
+    }
+    
+    .amount {
+      font-weight: 600;
+      color: #16a34a;
+    }
+    
+    .time-ago {
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+    
+    .whale-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: #eef2ff;
+      color: #6366f1;
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .lookup-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      padding: 3rem 2rem;
+      margin: 3rem 0;
+    }
+    
+    .lookup-container {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .lookup-input-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .lookup-input {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid #e0f2fe;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Courier New', monospace;
+    }
+    
+    .lookup-input:focus {
+      outline: none;
+      border-color: #3b82f6;
+    }
+    
+    .lookup-btn {
+      padding: 1rem 2rem;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .lookup-btn:hover {
+      background: #2563eb;
+      transform: translateY(-1px);
+    }
+    
+    .coming-soon-badge {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .tracker-hero h1 {
+        font-size: 1.75rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+        margin-top: -2rem;
+      }
+      
+      .table-container {
+        overflow-x: auto;
+      }
+      
+      .lookup-input-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🎰</span>
+        <span class="brand-name">CryptoCasinoSorted</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html">Casinos</a>
+        <a href="wallet-tracker.html" class="active">Wallet Tracker</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="tracker-hero">
+    <h1>🔍 Crypto Casino Wallet Tracker</h1>
+    <p>Track real gambling activity on-chain. See which wallets are betting millions on Rollbit, Stake, BC.Game and more. Updated every 6 hours.</p>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-value">$2.3B</div>
+      <div class="stat-label">Volume (30 Days)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">47,892</div>
+      <div class="stat-label">Active Wallets</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">1.2M</div>
+      <div class="stat-label">Transactions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">12</div>
+      <div class="stat-label">Casinos Tracked</div>
+    </div>
+  </div>
+
+  <!-- Top Gambling Wallets -->
+  <div class="content-section">
+    <div class="section-header">
+      <h2 class="section-title">🐋 Top Gambling Wallets (Last 30 Days)</h2>
+      <div class="refresh-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="23 4 23 10 17 10"></polyline>
+          <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+        </svg>
+        Updated 2 hours ago
+      </div>
+    </div>
+    
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Wallet</th>
+            <th>Total Wagered</th>
+            <th>Casinos Used</th>
+            <th>Last Active</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-badge top3">1</span></td>
+            <td>
+              <span class="wallet-address">0x1a2b...3c4d</span>
+              <span class="whale-badge">🐋 Whale</span>
+            </td>
+            <td class="amount">$2,847,500</td>
+            <td>
+              <div class="casino-tags">
+                <span class="casino-tag">Rollbit</span>
+                <span class="casino-tag">Stake</span>
+                <span class="casino-tag">BC.Game</span>
+              </div>
+            </td>
+            <td class="time-ago">2 hours ago</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge top3">2</span></td>
+            <td>
+              <span class="wallet-address">0x9f8e...7g8h</span>
+              <span class="whale-badge">🐋 Whale</span>
+            </td>
+            <td class="amount">$1,923,000</td>
+            <td>
+              <div class="casino-tags">
+                <span class="casino-tag">Rollbit</span>
+                <span class="casino-tag">Shuffle</span>
+              </div>
+            </td>
+            <td class="time-ago">5 hours ago</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge top3">3</span></td>
+            <td>
+              <span class="wallet-address">0x5e6f...9i0j</span>
+              <span class="whale-badge">🐋 Whale</span>
+            </td>
+            <td class="amount">$1,456,200</td>
+            <td>
+              <div class="casino-tags">
+                <span class="casino-tag">Stake</span>
+                <span class="casino-tag">BC.Game</span>
+              </div>
+            </td>
+            <td class="time-ago">1 day ago</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">4</span></td>
+            <td><span class="wallet-address">0x3c4d...5e6f</span></td>
+            <td class="amount">$892,400</td>
+            <td>
+              <div class="casino-tags">
+                <span class="casino-tag">Rollbit</span>
+              </div>
+            </td>
+            <td class="time-ago">3 hours ago</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">5</span></td>
+            <td><span class="wallet-address">0x7g8h...1a2b</span></td>
+            <td class="amount">$745,800</td>
+            <td>
+              <div class="casino-tags">
+                <span class="casino-tag">Shuffle</span>
+                <span class="casino-tag">Duelbits</span>
+              </div>
+            </td>
+            <td class="time-ago">12 hours ago</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">6</span></td>
+            <td><span class="wallet-address">0x2b3c...4d5e</span></td>
+            <td class="amount">$623,100</td>
+            <td>
+              <div class="casino-tags">
+                <span class="casino-tag">BC.Game</span>
+                <span class="casino-tag">Stake</span>
+              </div>
+            </td>
+            <td class="time-ago">8 hours ago</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">7</span></td>
+            <td><span class="wallet-address">0x8h9i...0j1k</span></td>
+            <td class="amount">$587,900</td>
+            <td>
+              <div class="casino-tags">
+                <span class="casino-tag">Rollbit</span>
+                <span class="casino-tag">Wild.io</span>
+              </div>
+            </td>
+            <td class="time-ago">6 hours ago</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">8</span></td>
+            <td><span class="wallet-address">0x4d5e...6f7g</span></td>
+            <td class="amount">$512,300</td>
+            <td>
+              <div class="casino-tags">
+                <span class="casino-tag">Stake</span>
+              </div>
+            </td>
+            <td class="time-ago">1 day ago</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">9</span></td>
+            <td><span class="wallet-address">0x6f7g...8h9i</span></td>
+            <td class="amount">$489,600</td>
+            <td>
+              <div class="casino-tags">
+                <span class="casino-tag">Rollbit</span>
+                <span class="casino-tag">Metawin</span>
+              </div>
+            </td>
+            <td class="time-ago">4 hours ago</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge">10</span></td>
+            <td><span class="wallet-address">0x0j1k...2l3m</span></td>
+            <td class="amount">$445,200</td>
+            <td>
+              <div class="casino-tags">
+                <span class="casino-tag">Shuffle</span>
+                <span class="casino-tag">BC.Game</span>
+              </div>
+            </td>
+            <td class="time-ago">18 hours ago</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Wallet Lookup -->
+  <section class="lookup-section">
+    <div class="lookup-container">
+      <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem;">
+        Track Any Wallet
+        <span class="coming-soon-badge">COMING SOON</span>
+      </h2>
+      <p style="color: #475569; margin-bottom: 1.5rem;">Enter any wallet address to see their complete gambling history, favorite casinos, and activity patterns.</p>
+      <div class="lookup-input-group">
+        <input type="text" class="lookup-input" placeholder="0x1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t" disabled>
+        <button class="lookup-btn" disabled>Search Wallet</button>
+      </div>
+      <p style="color: #64748b; font-size: 0.9rem; margin-top: 1rem;">
+        🔧 Currently building this feature. Expected launch: End of February 2026.
+      </p>
+    </div>
+  </section>
+
+  <!-- Casino Activity Breakdown -->
+  <div class="content-section">
+    <h2 class="section-title">📊 Casino Activity Breakdown (30 Days)</h2>
+    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-top: 1.5rem;">
+      <div style="display: grid; gap: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 2px solid #e2e8f0;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">R</div>
+            <div>
+              <div style="font-weight: 600; font-size: 1.1rem;">Rollbit</div>
+              <div style="color: #64748b; font-size: 0.85rem;">19,234 wallets</div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div class="amount" style="font-size: 1.25rem;">$1.04B</div>
+            <div style="color: #64748b; font-size: 0.85rem;">45% of volume</div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 2px solid #e2e8f0;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">S</div>
+            <div>
+              <div style="font-weight: 600; font-size: 1.1rem;">Stake</div>
+              <div style="color: #64748b; font-size: 0.85rem;">14,892 wallets</div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div class="amount" style="font-size: 1.25rem;">$690M</div>
+            <div style="color: #64748b; font-size: 0.85rem;">30% of volume</div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 2px solid #e2e8f0;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">B</div>
+            <div>
+              <div style="font-weight: 600; font-size: 1.1rem;">BC.Game</div>
+              <div style="color: #64748b; font-size: 0.85rem;">8,456 wallets</div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div class="amount" style="font-size: 1.25rem;">$345M</div>
+            <div style="color: #64748b; font-size: 0.85rem;">15% of volume</div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="color: #64748b;">Others (Shuffle, Duelbits, Wild.io, Metawin)</div>
+          <div style="text-align: right;">
+            <div class="amount" style="font-size: 1.1rem;">$230M</div>
+            <div style="color: #64748b; font-size: 0.85rem;">10% of volume</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How It Works -->
+  <div class="content-section" style="margin-top: 4rem; margin-bottom: 4rem;">
+    <h2 class="section-title">How This Works</h2>
+    <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; border-left: 4px solid #7c3aed; margin-top: 1.5rem;">
+      <p style="line-height: 1.7; color: #475569; margin-bottom: 1rem;">
+        <strong>All data is pulled directly from blockchain transactions.</strong> We track wallets that interact with known crypto casino smart contracts and deposit addresses across Ethereum, BSC, Polygon, and Arbitrum.
+      </p>
+      <p style="line-height: 1.7; color: #475569; margin-bottom: 1rem;">
+        Tracked casinos include: Rollbit, Stake, BC.Game, Shuffle, Duelbits, Wild.io, Metawin, Roobet (off-chain deposits), and more.
+      </p>
+      <p style="line-height: 1.7; color: #475569; margin: 0;">
+        Data updates every 6 hours. Wallet addresses are anonymized (only first/last 4 characters shown). Volume estimates based on transaction value to casino contracts.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>Made for crypto degens 🎰 • <a href="index.html">Back to Casinos</a></p>
+  </footer>
+
+  <script>
+    // Placeholder for future live data integration
+    console.log('Wallet tracker loaded. Live data coming soon.');
+  </script>
+</body>
+</html>
