@@ -19,6 +19,9 @@
     gtag('config', 'G-YOURID');
   </script>
   
+  <!-- Chart.js for trends -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  
   <style>
     .tracker-hero {
       background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
@@ -252,6 +255,58 @@
       margin-left: 0.5rem;
     }
     
+    .trends-section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    
+    .trend-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    
+    .trend-up {
+      background: #dcfce7;
+      color: #16a34a;
+    }
+    
+    .trend-down {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+    
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .chart-card {
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+    
+    .chart-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #1e293b;
+    }
+    
+    .chart-wrapper {
+      position: relative;
+      height: 250px;
+    }
+    
     @media (max-width: 768px) {
       .tracker-hero h1 {
         font-size: 1.75rem;
@@ -310,6 +365,75 @@
     <div class="stat-card">
       <div class="stat-value">12</div>
       <div class="stat-label">Casinos Tracked</div>
+    </div>
+  </div>
+
+  <!-- Trends Section -->
+  <div class="content-section">
+    <h2 class="section-title">📈 Gambling Activity Trends</h2>
+    <div class="trends-section" style="margin-top: 1.5rem;">
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;">
+        <div>
+          <div style="color: #64748b; font-size: 0.85rem; margin-bottom: 0.5rem;">Week-over-Week</div>
+          <span class="trend-stat trend-up">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+            +12.4%
+          </span>
+        </div>
+        <div>
+          <div style="color: #64748b; font-size: 0.85rem; margin-bottom: 0.5rem;">Month-over-Month</div>
+          <span class="trend-stat trend-up">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+            +23.7%
+          </span>
+        </div>
+        <div>
+          <div style="color: #64748b; font-size: 0.85rem; margin-bottom: 0.5rem;">vs Last Month</div>
+          <span class="trend-stat trend-up">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+            $520M more volume
+          </span>
+        </div>
+      </div>
+      
+      <div class="chart-grid">
+        <div class="chart-card">
+          <h3>Weekly Volume (Last 8 Weeks)</h3>
+          <div class="chart-wrapper">
+            <canvas id="volumeChart"></canvas>
+          </div>
+        </div>
+        
+        <div class="chart-card">
+          <h3>Active Wallets (Last 8 Weeks)</h3>
+          <div class="chart-wrapper">
+            <canvas id="walletsChart"></canvas>
+          </div>
+        </div>
+        
+        <div class="chart-card">
+          <h3>Transactions (Last 8 Weeks)</h3>
+          <div class="chart-wrapper">
+            <canvas id="transactionsChart"></canvas>
+          </div>
+        </div>
+        
+        <div class="chart-card">
+          <h3>Average Bet Size (Last 8 Weeks)</h3>
+          <div class="chart-wrapper">
+            <canvas id="avgBetChart"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -569,7 +693,213 @@
   </footer>
 
   <script>
-    // Placeholder for future live data integration
+    // Chart.js configuration
+    const chartDefaults = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: '#e2e8f0'
+          },
+          ticks: {
+            color: '#64748b'
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            color: '#64748b'
+          }
+        }
+      }
+    };
+    
+    // Last 8 weeks labels
+    const weekLabels = ['6 weeks ago', '5 weeks ago', '4 weeks ago', '3 weeks ago', '2 weeks ago', 'Last week', 'This week'];
+    
+    // Volume Chart
+    const volumeCtx = document.getElementById('volumeChart').getContext('2d');
+    new Chart(volumeCtx, {
+      type: 'line',
+      data: {
+        labels: weekLabels,
+        datasets: [{
+          label: 'Volume',
+          data: [420, 455, 490, 510, 545, 570, 640],
+          borderColor: '#7c3aed',
+          backgroundColor: 'rgba(124, 58, 237, 0.1)',
+          borderWidth: 3,
+          tension: 0.4,
+          fill: true,
+          pointRadius: 4,
+          pointBackgroundColor: '#7c3aed',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2
+        }]
+      },
+      options: {
+        ...chartDefaults,
+        plugins: {
+          ...chartDefaults.plugins,
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return '$' + context.parsed.y + 'M';
+              }
+            }
+          }
+        },
+        scales: {
+          ...chartDefaults.scales,
+          y: {
+            ...chartDefaults.scales.y,
+            ticks: {
+              ...chartDefaults.scales.y.ticks,
+              callback: function(value) {
+                return '$' + value + 'M';
+              }
+            }
+          }
+        }
+      }
+    });
+    
+    // Active Wallets Chart
+    const walletsCtx = document.getElementById('walletsChart').getContext('2d');
+    new Chart(walletsCtx, {
+      type: 'bar',
+      data: {
+        labels: weekLabels,
+        datasets: [{
+          label: 'Active Wallets',
+          data: [38500, 41200, 43800, 44900, 46200, 47100, 50800],
+          backgroundColor: '#10b981',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        ...chartDefaults,
+        plugins: {
+          ...chartDefaults.plugins,
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.parsed.y.toLocaleString() + ' wallets';
+              }
+            }
+          }
+        },
+        scales: {
+          ...chartDefaults.scales,
+          y: {
+            ...chartDefaults.scales.y,
+            ticks: {
+              ...chartDefaults.scales.y.ticks,
+              callback: function(value) {
+                return (value/1000).toFixed(0) + 'k';
+              }
+            }
+          }
+        }
+      }
+    });
+    
+    // Transactions Chart
+    const transactionsCtx = document.getElementById('transactionsChart').getContext('2d');
+    new Chart(transactionsCtx, {
+      type: 'line',
+      data: {
+        labels: weekLabels,
+        datasets: [{
+          label: 'Transactions',
+          data: [950000, 1050000, 1120000, 1180000, 1250000, 1310000, 1420000],
+          borderColor: '#f59e0b',
+          backgroundColor: 'rgba(245, 158, 11, 0.1)',
+          borderWidth: 3,
+          tension: 0.4,
+          fill: true,
+          pointRadius: 4,
+          pointBackgroundColor: '#f59e0b',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2
+        }]
+      },
+      options: {
+        ...chartDefaults,
+        plugins: {
+          ...chartDefaults.plugins,
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return (context.parsed.y/1000).toFixed(0) + 'k transactions';
+              }
+            }
+          }
+        },
+        scales: {
+          ...chartDefaults.scales,
+          y: {
+            ...chartDefaults.scales.y,
+            ticks: {
+              ...chartDefaults.scales.y.ticks,
+              callback: function(value) {
+                return (value/1000000).toFixed(1) + 'M';
+              }
+            }
+          }
+        }
+      }
+    });
+    
+    // Average Bet Size Chart
+    const avgBetCtx = document.getElementById('avgBetChart').getContext('2d');
+    new Chart(avgBetCtx, {
+      type: 'bar',
+      data: {
+        labels: weekLabels,
+        datasets: [{
+          label: 'Avg Bet',
+          data: [442, 440, 437, 432, 428, 429, 451],
+          backgroundColor: '#3b82f6',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        ...chartDefaults,
+        plugins: {
+          ...chartDefaults.plugins,
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return '$' + context.parsed.y.toFixed(0);
+              }
+            }
+          }
+        },
+        scales: {
+          ...chartDefaults.scales,
+          y: {
+            ...chartDefaults.scales.y,
+            ticks: {
+              ...chartDefaults.scales.y.ticks,
+              callback: function(value) {
+                return '$' + value;
+              }
+            }
+          }
+        }
+      }
+    });
+    
     console.log('Wallet tracker loaded. Live data coming soon.');
   </script>
 </body>
