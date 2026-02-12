@@ -1,0 +1,150 @@
+{
+  "lastUpdated": "2026-02-12T07:26:26.991Z",
+  "protocols": [
+    {
+      "name": "Binance staked ETH",
+      "slug": "binance-staked-eth",
+      "tvl": 7240455179.301797,
+      "category": "Liquid Staking",
+      "chains": [
+        "Ethereum",
+        "Binance"
+      ],
+      "trends": {
+        "wow": -4.230875817128227,
+        "mom": -40.747777636101404
+      },
+      "url": "https://www.binance.com/en/wbeth"
+    },
+    {
+      "name": "ether.fi Stake",
+      "slug": "ether.fi-stake",
+      "tvl": 5612313419.480517,
+      "category": "Liquid Restaking",
+      "chains": [
+        "Ethereum",
+        "Base",
+        "Arbitrum"
+      ],
+      "trends": {
+        "wow": -7.23601767724455,
+        "mom": -40.263147676265355
+      },
+      "url": "https://www.ether.fi/refer/04bb2542"
+    },
+    {
+      "name": "DoubleZero Staked SOL",
+      "slug": "doublezero-staked-sol",
+      "tvl": 1073686786.2833111,
+      "category": "Liquid Staking",
+      "chains": [
+        "Solana"
+      ],
+      "trends": {
+        "wow": -7.688327820556921,
+        "mom": -44.4212453418392
+      },
+      "url": "https://doublezero.xyz/"
+    },
+    {
+      "name": "Jupiter Staked SOL",
+      "slug": "jupiter-staked-sol",
+      "tvl": 832504396.005046,
+      "category": "Liquid Staking",
+      "chains": [
+        "Solana"
+      ],
+      "trends": {
+        "wow": -7.572641108880863,
+        "mom": -40.968412496923776
+      },
+      "url": "https://jup.ag/?ref=f6y1ryr2snn3"
+    },
+    {
+      "name": "StakeWise V2",
+      "slug": "stakewise-v2",
+      "tvl": 807927474.1497914,
+      "category": "Liquid Staking",
+      "chains": [
+        "xDai",
+        "Ethereum"
+      ],
+      "trends": {
+        "wow": -4.953764060878038,
+        "mom": -36.614086482803216
+      },
+      "url": "https://stakewise.io/"
+    },
+    {
+      "name": "Binance Staked SOL",
+      "slug": "binance-staked-sol",
+      "tvl": 708991176.44885,
+      "category": "Liquid Staking",
+      "chains": [
+        "Solana"
+      ],
+      "trends": {
+        "wow": -12.807992597505669,
+        "mom": -56.473105346804566
+      },
+      "url": "https://www.binance.com/en/solana-staking"
+    },
+    {
+      "name": "Polymarket",
+      "slug": "polymarket",
+      "tvl": 361103196.1327156,
+      "category": "Prediction Market",
+      "chains": [
+        "Polygon"
+      ],
+      "trends": {
+        "wow": 4.115036438138202,
+        "mom": 15.743997723578355
+      },
+      "url": "https://polymarket.com?via=defi-llama"
+    },
+    {
+      "name": "xDAI Stake Bridge",
+      "slug": "xdai-stake-bridge",
+      "tvl": 291420218.71186346,
+      "category": "Canonical Bridge",
+      "chains": [
+        "Ethereum"
+      ],
+      "trends": {
+        "wow": 4.211395995034103,
+        "mom": -21.31430309846017
+      },
+      "url": "https://www.gnosis.io/"
+    },
+    {
+      "name": "Coinbase Wrapped Staked ETH",
+      "slug": "coinbase-wrapped-staked-eth",
+      "tvl": 283995275.79129004,
+      "category": "Liquid Staking",
+      "chains": [
+        "Ethereum"
+      ],
+      "trends": {
+        "wow": -3.6978217003797664,
+        "mom": -39.79103278007099
+      },
+      "url": "https://www.coinbase.com/price/coinbase-wrapped-staked-eth"
+    },
+    {
+      "name": "Benqi Staked Avax",
+      "slug": "benqi-staked-avax",
+      "tvl": 208509009.3482413,
+      "category": "Liquid Staking",
+      "chains": [
+        "Avalanche"
+      ],
+      "trends": {
+        "wow": -2.593372796433201,
+        "mom": -42.87351805548016
+      },
+      "url": "https://app.benqi.fi/savax"
+    }
+  ],
+  "totalTVL": 17420906131.653423
+}

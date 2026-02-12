@@ -1,0 +1,1056 @@
+{
+  "lastUpdated": "2026-02-12T07:28:24.323Z",
+  "totalProtocols": 162,
+  "protocols": [
+    {
+      "name": "Polymarket",
+      "slug": "polymarket",
+      "tvl": 361103196.1327156,
+      "category": "Prediction Market",
+      "chains": [
+        "Polygon"
+      ],
+      "url": "https://polymarket.com?via=defi-llama",
+      "description": "Polymarket is an information markets platform that lets you trade on the world’s most highly-debated topics (e.g. coronavirus, politics, current events, etc). On Polymarket, you build a portfolio based on your forecasts and earn a return if you are right."
+    },
+    {
+      "name": "OPINION",
+      "slug": "opinion",
+      "tvl": 126854245.8329587,
+      "category": "Prediction Market",
+      "chains": [
+        "Binance"
+      ],
+      "url": "https://app.opinion.trade?code=hV0KVj",
+      "description": "Opinion is building a prediction exchange that enables direct trading of macroeconomic data, predictions, and news as standardized assets, leveraging proprietary on-chain infrastructure, AI Oracle, and trading tools to create new opportunities for retail users, institutions, and global decision makers in democratizing economic insights and risk management."
+    },
+    {
+      "name": "Predict Fun",
+      "slug": "predict-fun",
+      "tvl": 25608210.35150992,
+      "category": "Prediction Market",
+      "chains": [
+        "Binance",
+        "Blast"
+      ],
+      "url": "https://predict.fun?ref=04249",
+      "description": "The yield-bearing prediction market built on Blast"
+    },
+    {
+      "name": "Football.Fun",
+      "slug": "football.fun",
+      "tvl": 4513367.057717828,
+      "category": "Prediction Market",
+      "chains": [
+        "Base"
+      ],
+      "url": "https://pro.sport.fun/login/?referral_code=UBJWCCSWOVU",
+      "description": "Football.Fun is a Base chain fantasy soccer protocol where users trade fractional player shares backed by actual football performance, using Gold pegged to USDC, with limited-use contracts and active market-driven gameplay"
+    },
+    {
+      "name": "Rain",
+      "slug": "rain",
+      "tvl": 3597220.611304392,
+      "category": "Prediction Market",
+      "chains": [
+        "Arbitrum"
+      ],
+      "url": "https://www.rain.one/",
+      "description": "Rain | Decentralized Prediction markets Protocol. Predict anything. Create markets. Trade options. Own the future!."
+    },
+    {
+      "name": "Trueo",
+      "slug": "trueo",
+      "tvl": 2406004.976286391,
+      "category": "Prediction Market",
+      "chains": [
+        "Base"
+      ],
+      "url": "https://trueo.com/",
+      "description": "News through markets. Bounties on truth."
+    },
+    {
+      "name": "Gnosis Protocol v1",
+      "slug": "gnosis-protocol-v1",
+      "tvl": 2150251.0537303383,
+      "category": "Prediction Market",
+      "chains": [
+        "Ethereum"
+      ],
+      "url": "https://gnosis.io/",
+      "description": "Gnosis builds new market mechanisms for decentralized finance."
+    },
+    {
+      "name": "Overtime",
+      "slug": "overtime",
+      "tvl": 1580205.9919520118,
+      "category": "Prediction Market",
+      "chains": [
+        "Optimism",
+        "Arbitrum",
+        "Polygon",
+        "Base",
+        "Ethereum",
+        "Binance"
+      ],
+      "url": "https://www.overtimemarkets.xyz/markets?referrerId=defillama",
+      "description": "Overtime is a decentralized onchain sportsbook ecosystem enabling sports betting and digital options trading. Built on smart contracts with Chainlink data feeds, it operates without centralized control. Features pioneering AMM architecture and trustless liquidity pools for seamless, transparent betting experiences across popular sporting events."
+    },
+    {
+      "name": "Augur",
+      "slug": "augur",
+      "tvl": 1578951.0861580477,
+      "category": "Prediction Market",
+      "chains": [
+        "Ethereum"
+      ],
+      "url": "https://www.augur.net/",
+      "description": "A transparent exchange with no limit on what you can bet on, no max limits on the amount you can bet and no rollover requirements."
+    },
+    {
+      "name": "Probable",
+      "slug": "probable",
+      "tvl": 1576451.4406185753,
+      "category": "Prediction Market",
+      "chains": [
+        "Binance"
+      ],
+      "url": "https://probable.markets/?ref=JIBS2EK9",
+      "description": "Probable is a crypto-native prediction platform on BNB Chain that lets you trade on the outcome of real-world events across politics, economics, sports, crypto, and more."
+    },
+    {
+      "name": "Seer",
+      "slug": "seer",
+      "tvl": 1258510.0066465854,
+      "category": "Prediction Market",
+      "chains": [
+        "Ethereum",
+        "xDai"
+      ],
+      "url": "https://seer.pm/",
+      "description": "A decentralized protocol allowing users to create markets, trade yield bearing tokens, use outcome tokens compatible with other exchanges, and offering new types of prediction markets"
+    },
+    {
+      "name": "Azuro",
+      "slug": "azuro",
+      "tvl": 933953.5863469391,
+      "category": "Prediction Market",
+      "chains": [
+        "Base",
+        "xDai",
+        "Polygon",
+        "Chiliz"
+      ],
+      "url": "https://azuro.org",
+      "description": "Azuro is an infrastructure & liquidity layer for on-chain betting. It utilizes a new Liquidity Pool design called the “Liquidity Tree,” which creates and maintains market liquidity."
+    },
+    {
+      "name": "Kamigotchi",
+      "slug": "kamigotchi",
+      "tvl": 844768.928279154,
+      "category": "Gaming",
+      "chains": [
+        "Yominet"
+      ],
+      "url": "https://app.kamigotchi.io/",
+      "description": "Kamigotchi is a fully on-chain MMORPG where players mint, raise, and interact with NFT virtual pets called Kamis on the Yominet blockchain"
+    },
+    {
+      "name": "Myriad Markets",
+      "slug": "myriad-markets",
+      "tvl": 744253.4264243577,
+      "category": "Prediction Market",
+      "chains": [
+        "Linea",
+        "Binance",
+        "Abstract"
+      ],
+      "url": "https://myriad.markets/markets",
+      "description": "Prediction Markets for everything! From crypto, politics and sports to gaming, culture and technology"
+    },
+    {
+      "name": "Zethr",
+      "slug": "zethr",
+      "tvl": 554507.3076625624,
+      "category": "Prediction Market",
+      "chains": [
+        "Ethereum"
+      ],
+      "url": "",
+      "description": "Zethr is a decentralized prediction market where you can be the house"
+    },
+    {
+      "name": "Aavegotchi",
+      "slug": "aavegotchi",
+      "tvl": 519570.92764014244,
+      "category": "Gaming",
+      "chains": [
+        "Ethereum",
+        "Polygon"
+      ],
+      "url": "https://aavegotchi.com",
+      "description": "Provably-rare DeFi-staked Crypto Collectibles, powered by Aave"
+    },
+    {
+      "name": "Liquidity House",
+      "slug": "liquidity-house",
+      "tvl": 465291.72580514284,
+      "category": "Prediction Market",
+      "chains": [
+        "Etherlink"
+      ],
+      "url": "https://liquidity.house",
+      "description": "GambleFi Liquidity Infrastructure Protocol"
+    },
+    {
+      "name": "PRDT",
+      "slug": "prdt",
+      "tvl": 432682.8069907433,
+      "category": "Prediction Market",
+      "chains": [
+        "Ethereum",
+        "Polygon",
+        "Solana",
+        "Binance",
+        "Nibiru",
+        "Arbitrum"
+      ],
+      "url": "https://prdt.finance",
+      "description": "Know where the Market is going? The First Fully Decentralized Cross-Chain Prediction Platform On The Binance Smart Chain and Polygon Network."
+    },
+    {
+      "name": "Limitless Exchange",
+      "slug": "limitless-exchange",
+      "tvl": 376974.91632608086,
+      "category": "Prediction Market",
+      "chains": [
+        "Base"
+      ],
+      "url": "https://limitless.exchange/?r=0UWWSGL92U",
+      "description": "Prediction market on Base"
+    },
+    {
+      "name": "Jiko",
+      "slug": "jiko",
+      "tvl": 278551.8873787752,
+      "category": "Gaming",
+      "chains": [
+        "Berachain"
+      ],
+      "url": "https://app.jiko.finance/",
+      "description": "JIKO is a yield optimizer powering a PvP idle card game. With single-staked pools, we maximize yields via Proof of Liquidity (PoL) on Berachain, making finance both fun and profitable"
+    }
+  ],
+  "allNames": [
+    {
+      "name": "Polymarket",
+      "tvl": 361103196.1327156,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "OPINION",
+      "tvl": 126854245.8329587,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Predict Fun",
+      "tvl": 25608210.35150992,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Football.Fun",
+      "tvl": 4513367.057717828,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Rain",
+      "tvl": 3597220.611304392,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Trueo",
+      "tvl": 2406004.976286391,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Gnosis Protocol v1",
+      "tvl": 2150251.0537303383,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Overtime",
+      "tvl": 1580205.9919520118,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Augur",
+      "tvl": 1578951.0861580477,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Probable",
+      "tvl": 1576451.4406185753,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Seer",
+      "tvl": 1258510.0066465854,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Azuro",
+      "tvl": 933953.5863469391,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Kamigotchi",
+      "tvl": 844768.928279154,
+      "category": "Gaming"
+    },
+    {
+      "name": "Myriad Markets",
+      "tvl": 744253.4264243577,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Zethr",
+      "tvl": 554507.3076625624,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Aavegotchi",
+      "tvl": 519570.92764014244,
+      "category": "Gaming"
+    },
+    {
+      "name": "Liquidity House",
+      "tvl": 465291.72580514284,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "PRDT",
+      "tvl": 432682.8069907433,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Limitless Exchange",
+      "tvl": 376974.91632608086,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Jiko",
+      "tvl": 278551.8873787752,
+      "category": "Gaming"
+    },
+    {
+      "name": "Alpha Arcade",
+      "tvl": 218095.7443094245,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "SX Bet",
+      "tvl": 145473.82101256077,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Divvy.Bet",
+      "tvl": 99482.0861375988,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Alien Worlds",
+      "tvl": 64611.31895211017,
+      "category": "Gaming"
+    },
+    {
+      "name": "Hedgehog Markets",
+      "tvl": 51570.3661818433,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Bitmap Game",
+      "tvl": 50447.627854876635,
+      "category": "Gaming"
+    },
+    {
+      "name": "Bodega Market",
+      "tvl": 48471.64954490037,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "eesee",
+      "tvl": 44336.395565667764,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Civitia Game",
+      "tvl": 44329.38699760711,
+      "category": "Gaming"
+    },
+    {
+      "name": "Fren Pets",
+      "tvl": 39898.654291348874,
+      "category": "Gaming"
+    },
+    {
+      "name": "O.LAB",
+      "tvl": 37593.40575459727,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Witty",
+      "tvl": 24484.864694071723,
+      "category": "Gaming"
+    },
+    {
+      "name": "Gacha",
+      "tvl": 19851.49480871445,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Clutch Markets",
+      "tvl": 19004.185938075956,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "EnterDAO",
+      "tvl": 14684.816097156256,
+      "category": "Gaming"
+    },
+    {
+      "name": "Polkamarkets",
+      "tvl": 11470.712590650977,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Precog Market",
+      "tvl": 10637.58507100602,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "MiningTycoon",
+      "tvl": 9615.989590400955,
+      "category": "Gaming"
+    },
+    {
+      "name": "Whale Game",
+      "tvl": 8563.818757078687,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "SynStation",
+      "tvl": 7522.502370655657,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Entropyfi",
+      "tvl": 5237.580481043422,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "dripit",
+      "tvl": 4694.954165007646,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "PepeDex",
+      "tvl": 4122.212188488527,
+      "category": "Gaming"
+    },
+    {
+      "name": "Jackson Protocol",
+      "tvl": 4066.022045736702,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "PredX Ai",
+      "tvl": 3991.102909412617,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "DeeppDAO",
+      "tvl": 3952.9530523758754,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "CatsLuck",
+      "tvl": 2962.048362760805,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Punk.Coffee",
+      "tvl": 2484.658385641434,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "R-Planet",
+      "tvl": 2174.378186912587,
+      "category": "Gaming"
+    },
+    {
+      "name": "Prophet",
+      "tvl": 2089.3856971827618,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "X3X",
+      "tvl": 1920.9612435368379,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Farm Hero",
+      "tvl": 1608.380923571322,
+      "category": "Gaming"
+    },
+    {
+      "name": "casinocronos",
+      "tvl": 1398.2787469212428,
+      "category": "Dexs"
+    },
+    {
+      "name": "Z3Z",
+      "tvl": 1229.1471586000669,
+      "category": "Gaming"
+    },
+    {
+      "name": "R3R",
+      "tvl": 1131.6337060691528,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Robots.Farm",
+      "tvl": 934.3169031007163,
+      "category": "Gaming"
+    },
+    {
+      "name": "ZKasino",
+      "tvl": 916.1720636261967,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "SageBet",
+      "tvl": 749.8313161963838,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Risq Protocol",
+      "tvl": 722.5184328251348,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Spacebar",
+      "tvl": 635.4280205531832,
+      "category": "Gaming"
+    },
+    {
+      "name": "Sacra",
+      "tvl": 384.33911521652107,
+      "category": "Gaming"
+    },
+    {
+      "name": "Perfect Pool",
+      "tvl": 203.09813362183883,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "BCraft",
+      "tvl": 152.07020069221966,
+      "category": "Gaming"
+    },
+    {
+      "name": "BetFolio",
+      "tvl": 105.99061793021785,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "CockFights Game",
+      "tvl": 97.19156277467135,
+      "category": "Gaming"
+    },
+    {
+      "name": "Thrive On Mars",
+      "tvl": 73.73361746339157,
+      "category": "Gaming"
+    },
+    {
+      "name": "TopCut Finance",
+      "tvl": 68.53408281459556,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Nexter",
+      "tvl": 46.97289893862636,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Belief Market",
+      "tvl": 33.45549525658598,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "ScorePlay.xyz",
+      "tvl": 30.776739493465893,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Unihedge",
+      "tvl": 29.064583263339998,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Random Reward",
+      "tvl": 26.806902412705384,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "LazyFi",
+      "tvl": 15.307613281982606,
+      "category": "Gaming"
+    },
+    {
+      "name": "SportBet",
+      "tvl": 15.109041913656974,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Crypto Lottery",
+      "tvl": 10.569773320622629,
+      "category": "Luck Games"
+    },
+    {
+      "name": "DogeClaw",
+      "tvl": 10.008720208063576,
+      "category": "Gaming"
+    },
+    {
+      "name": "Musical Chairs",
+      "tvl": 7.851225396424822,
+      "category": "Gaming"
+    },
+    {
+      "name": "LunaFi",
+      "tvl": 7.28406715930159,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "DropCopy",
+      "tvl": 6.547064459121209,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Debets",
+      "tvl": 6.454738930771259,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Crack And Stack",
+      "tvl": 1.208220211597806,
+      "category": "Gaming"
+    },
+    {
+      "name": "NODO",
+      "tvl": 0.8450475750553197,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "VaultWin",
+      "tvl": 0.5460002697311165,
+      "category": "Gaming"
+    },
+    {
+      "name": "Forge Game",
+      "tvl": 0.17016148800424305,
+      "category": "Gaming"
+    },
+    {
+      "name": "WDJC",
+      "tvl": 0.0391662850582388,
+      "category": "Gaming"
+    },
+    {
+      "name": "Rising Undead",
+      "tvl": 0.00002661271925439554,
+      "category": "Gaming"
+    },
+    {
+      "name": "LoTerra",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Illuvium",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "TotemFi",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "AtmosSoft",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "MOBOX",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "The Sandbox",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Predictcoin",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Crabada",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Treasure",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Velhalla",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Gensokishi",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Manarium",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "StarCrazy",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "The Parallel",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Diamond Coin",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Luchadores",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Monster",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "IoTeX Monster Go",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Joystick Club",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "PandaLand",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "VersaGames",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "AstarFarm",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "BetSwirl",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "CryptoBlades",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "PULI",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Lympo",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "FootballManager",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Vidya",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "BusinessBuildersNFTs",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Perion",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "TrueFeedBack",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Kava Football Club",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Dexioprotocol",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "CatsApes",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "WINR Protocol",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Yield Guild Games",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "CoChilli",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Racoon.Bet",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "One guy Finance",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "NewThrone",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Bear Vs Bull",
+      "tvl": null,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Creo Engine",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Ispolink",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Metastrike",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Crypto Valleys",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Hero Blaze",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Neo Tokyo",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "YOLO Games",
+      "tvl": null,
+      "category": "Gaming"
+    },
+    {
+      "name": "TG Casino",
+      "tvl": 0,
+      "category": "Luck Games"
+    },
+    {
+      "name": "Big Time",
+      "tvl": null,
+      "category": "Gaming"
+    },
+    {
+      "name": "Oasys",
+      "tvl": null,
+      "category": "Gaming"
+    },
+    {
+      "name": "Cellula",
+      "tvl": null,
+      "category": "Gaming"
+    },
+    {
+      "name": "Danzo App",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Echelon Prime",
+      "tvl": null,
+      "category": "Gaming"
+    },
+    {
+      "name": "Arrland",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Demented Games",
+      "tvl": null,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "MEMECAST.AI",
+      "tvl": null,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "SuiMarket",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "MON Protocol",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Ninja Blaze",
+      "tvl": null,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "HackenAI",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Bloom Trading Bot",
+      "tvl": null,
+      "category": "Gaming"
+    },
+    {
+      "name": "Heroes of Mavia",
+      "tvl": 0,
+      "category": "Gaming"
+    },
+    {
+      "name": "Spindash",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Axie Infinity",
+      "tvl": null,
+      "category": "Gaming"
+    },
+    {
+      "name": "Worldle",
+      "tvl": null,
+      "category": "Gaming"
+    },
+    {
+      "name": "Metal X",
+      "tvl": null,
+      "category": "Gaming"
+    },
+    {
+      "name": "Realms World",
+      "tvl": null,
+      "category": "Gaming"
+    },
+    {
+      "name": "Prophet.fun",
+      "tvl": 0,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Cattos",
+      "tvl": null,
+      "category": "Gaming"
+    },
+    {
+      "name": "PancakeSwap Prediction",
+      "tvl": null,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "Kalshi",
+      "tvl": null,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "PancakeSwap Lottery",
+      "tvl": null,
+      "category": "Luck Games"
+    },
+    {
+      "name": "HyperTek",
+      "tvl": null,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "HYPERSTITIONS",
+      "tvl": null,
+      "category": "Prediction Market"
+    },
+    {
+      "name": "On-Chain Check-in",
+      "tvl": null,
+      "category": "Gaming"
+    }
+  ]
+}
