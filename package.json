@@ -1,0 +1,13 @@
+{
+  "name": "crypto-casino-wallet-tracker",
+  "version": "1.0.0",
+  "description": "On-chain gambling wallet analytics",
+  "main": "fetch-wallet-data.js",
+  "scripts": {
+    "fetch": "node fetch-wallet-data.js",
+    "update": "node fetch-wallet-data.js && git add gambling-data.json && git commit -m 'Update wallet data' && git push"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1"
+  }
+}
