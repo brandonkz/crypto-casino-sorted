@@ -92,9 +92,9 @@
         <h1 class="logo">🎰 CryptoCasinoSorted</h1>
         <nav class="nav">
           <a href="#casinos">Casinos</a>
+          <a href="/reviews/index.html">Reviews</a>
           <a href="/wagering-calculator.html">Calculators</a>
-          <a href="#about">About</a>
-          <a href="#faq">FAQ</a>
+          <a href="/blog/index.html">Blog</a>
           <a href="https://betsorted.co.za" target="_blank">Sports Betting 🎯</a>
         </nav>
       </div>
@@ -263,5 +263,49 @@
   </footer>
 
   <script src="app.js"></script>
+  
+  <!-- Affiliate Link Tracking -->
+  <script>
+    (function() {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTracking);
+      } else {
+        initTracking();
+      }
+
+      function initTracking() {
+        const externalLinks = document.querySelectorAll('a[href^="http"]');
+        
+        externalLinks.forEach(link => {
+          const href = link.href;
+          const hostname = new URL(href).hostname;
+          const currentHostname = window.location.hostname;
+          
+          if (hostname === currentHostname || hostname.includes('sorted')) {
+            return;
+          }
+          
+          link.addEventListener('click', function(e) {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'affiliate_click', {
+                'link_url': href,
+                'link_text': this.textContent.trim().substring(0, 50),
+                'link_domain': hostname,
+                'page_location': window.location.pathname,
+                'page_title': document.title
+              });
+            }
+            
+            if (!e.ctrlKey && !e.metaKey && !e.shiftKey) {
+              e.preventDefault();
+              setTimeout(() => {
+                window.open(href, link.target || '_self');
+              }, 100);
+            }
+          });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
