@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How provably fair gambling works: client seed, server seed, and cryptographic verification. Learn to verify casino results yourself and spot fake provably fair claims.">
+  <title>Provably Fair Explained: How Crypto Casinos Prove They're Not Rigging Games | CryptoCasinoSorted</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%238b5cf6' width='100' height='100' rx='20'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>🎲</text></svg>">
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0L3N9F43ED');
+  </script>
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Provably Fair Explained: How Crypto Casinos Prove They're Not Rigging Games",
+    "author": {
+      "@type": "Person",
+      "name": "Brandon Katz",
+      "url": "https://twitter.com/brandonkz"
+    },
+    "datePublished": "2026-02-13",
+    "dateModified": "2026-02-13",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CryptoCasinoSorted"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo">🎲 CryptoCasinoSorted</a>
+      <nav>
+        <a href="../index.html">Casinos</a>
+        <a href="../calculators.html">Calculators</a>
+        <a href="index.html" class="active">Blog</a>
+        <a href="https://betsorted.co.za" target="_blank">Sports Betting 🎯</a>
+      </nav>
+    </div>
+  </header>
+
+  <article class="blog-post">
+    <div class="container" style="max-width: 800px;">
+      <header class="post-header">
+        <h1>Provably Fair Explained: How Crypto Casinos Prove They're Not Rigging Games</h1>
+        <div class="post-meta">
+          <span>By <a href="https://twitter.com/brandonkz" target="_blank">@brandonkz</a></span>
+          <span>•</span>
+          <span>February 13, 2026</span>
+          <span>•</span>
+          <span>8 min read</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+        <p class="lead">Traditional online casinos ask you to trust them. Crypto casinos let you verify them. That's the difference provably fair gambling makes.</p>
+
+        <p>I've been researching crypto casinos for months now, and provably fair is the one feature that actually matters. Not the flashy interface, not the bonuses - the ability to mathematically prove the casino didn't rig your bet.</p>
+
+        <p>Here's how it works, why it matters, and how to spot casinos faking it.</p>
+
+        <h2>The Problem With Traditional Casinos</h2>
+
+        <p>When you play blackjack at an online casino, you're trusting:</p>
+        <ul>
+          <li>The shuffle was random</li>
+          <li>The cards weren't pre-arranged</li>
+          <li>The RNG (random number generator) wasn't programmed to favor the house extra</li>
+          <li>Your big bets don't trigger "bad luck"</li>
+        </ul>
+
+        <p>You have zero way to verify any of this. The casino shows you a license from Malta or Curaçao and says "trust us, we're audited." Cool, but you never see the audit. You never see the code. You never see the shuffle.</p>
+
+        <p>That's not how it should work when money's involved.</p>
+
+        <h2>How Provably Fair Actually Works</h2>
+
+        <p>Provably fair uses cryptography to let you verify every single bet. It's elegant because it's simple:</p>
+
+        <h3>The Three Seeds</h3>
+
+        <p><strong>1. Server Seed (Casino's secret)</strong><br>
+        The casino generates a random string before you bet. Example: <code>7f3a9b2c...</code></p>
+
+        <p>They don't show you this seed - that would let you predict results. Instead, they show you a <strong>hash</strong> of it (SHA-256). The hash looks like: <code>8d4e1f92a3...</code></p>
+
+        <p>This hash proves the server seed exists, but doesn't reveal what it is. It's like a locked box - you know something's inside, but you can't open it yet.</p>
+
+        <p><strong>2. Client Seed (Your input)</strong><br>
+        You provide your own random string. Most casinos generate one for you, but you can change it.</p>
+
+        <p>Example: <code>mysecretstring123</code></p>
+
+        <p>This seed is public from the start. The casino can see it.</p>
+
+        <p><strong>3. Nonce (Bet counter)</strong><br>
+        A number that increases with each bet. First bet = nonce 1, second bet = nonce 2, etc.</p>
+
+        <p>This prevents the casino from using the same server seed for every bet (which would let them manipulate results if they knew your client seed).</p>
+
+        <h3>Generating The Result</h3>
+
+        <p>The casino combines all three:</p>
+        <code>result = hash(server_seed + client_seed + nonce)</code>
+
+        <p>This hash determines your outcome. Dice roll, card dealt, roulette number - whatever the game needs.</p>
+
+        <p>The brilliant part: The casino <strong>can't change the server seed</strong> after you bet, because you already saw its hash. If they change it, the hash won't match.</p>
+
+        <h3>Verification</h3>
+
+        <p>After you bet (or change your client seed), the casino reveals the server seed. Now you can:</p>
+
+        <ol>
+          <li>Hash the revealed server seed yourself</li>
+          <li>Compare it to the hash shown before betting</li>
+          <li>If they match → the casino didn't cheat</li>
+          <li>Run the hash formula yourself with all three seeds</li>
+          <li>Confirm the result matches what you got</li>
+        </ol>
+
+        <p>If the math checks out, the bet was fair. Period. No audit needed, no trust required.</p>
+
+        <h2>Real Example: Dice Roll</h2>
+
+        <p>Let's say you're playing dice on Stake. You bet on "under 50.00" for 2x payout.</p>
+
+        <p><strong>Before your bet:</strong></p>
+        <ul>
+          <li>Server seed hash: <code>8d4e1f92a3b7c6e5...</code> (shown)</li>
+          <li>Your client seed: <code>player123</code> (you chose this)</li>
+          <li>Nonce: 847 (your 847th bet with this seed pair)</li>
+        </ul>
+
+        <p><strong>You bet. Result: 73.42 (loss)</strong></p>
+
+        <p><strong>After:</strong> Casino reveals server seed: <code>7f3a9b2c5d8e1...</code></p>
+
+        <p>Now you verify:</p>
+        <ol>
+          <li>Hash <code>7f3a9b2c5d8e1...</code> → Does it equal <code>8d4e1f92a3b7c6e5...</code>? ✓</li>
+          <li>Combine: <code>hash("7f3a9b2c5d8e1..." + "player123" + "847")</code></li>
+          <li>Convert hash to number (0-100): Result = 73.42 ✓</li>
+        </ol>
+
+        <p>Math checks out. The casino didn't rig your loss. You genuinely rolled 73.42.</p>
+
+        <h2>Why This Matters</h2>
+
+        <p>Most people won't manually verify every bet (honestly, I don't). But knowing you <em>could</em> changes everything:</p>
+
+        <ul>
+          <li><strong>The casino can't cheat even if they wanted to.</strong> If they tried, players would catch them.</li>
+          <li><strong>No "feeling lucky" manipulation.</strong> Your bet size can't trigger worse odds.</li>
+          <li><strong>True randomness.</strong> Results come from cryptographic hashes, not a programmer's RNG algorithm that might have bias.</li>
+        </ul>
+
+        <p>It's the difference between "trust me bro" and mathematical proof.</p>
+
+        <h2>Red Flags: Fake Provably Fair</h2>
+
+        <p>Some casinos claim to be provably fair but aren't. Watch for:</p>
+
+        <h3>1. No Client Seed Control</h3>
+        <p>If you can't set your own client seed, it's not provably fair. The casino could know your "random" seed in advance.</p>
+
+        <p><strong>Good:</strong> Stake lets you change client seed anytime<br>
+        <strong>Bad:</strong> Casino generates your seed and won't let you modify it</p>
+
+        <h3>2. Verification Hidden or Missing</h3>
+        <p>Real provably fair casinos make verification easy - usually a "verify" button right on the bet.</p>
+
+        <p>If you have to dig through menus or email support to verify, they're hiding something.</p>
+
+        <h3>3. Server Seed Revealed Too Soon</h3>
+        <p>If the casino shows the server seed <em>before</em> you bet, they can manipulate results. You should only see the hash beforehand.</p>
+
+        <h3>4. "Provably Fair" RNG (Not Game-Specific)</h3>
+        <p>Some casinos say their RNG is provably fair, but they don't let you verify individual bets. That's marketing, not proof.</p>
+
+        <p>True provably fair = every single bet is verifiable.</p>
+
+        <h2>Which Casinos Actually Do It Right?</h2>
+
+        <p>From my testing:</p>
+
+        <p><strong>✅ Excellent:</strong></p>
+        <ul>
+          <li><strong>Stake:</strong> Clean verification on every bet, easy to change client seed</li>
+          <li><strong>BC.Game:</strong> BC Originals games all provably fair, detailed verification panel</li>
+          <li><strong>Roobet:</strong> In-house games fully verifiable</li>
+        </ul>
+
+        <p><strong>⚠️ Partial:</strong></p>
+        <ul>
+          <li><strong>BitStarz:</strong> Some games provably fair, others use traditional RNG (they're honest about which is which)</li>
+          <li><strong>CloudBet:</strong> Only their original games, not third-party slots</li>
+        </ul>
+
+        <p><strong>❌ Not Provably Fair (despite marketing):</strong></p>
+        <ul>
+          <li>Most traditional slots (Pragmatic, Hacksaw, etc.) - These run on provider servers, casino can't make them provably fair</li>
+          <li>Live dealer games - Physical cards can't be cryptographically proven (though they're probably fair due to live video)</li>
+        </ul>
+
+        <h2>Should You Verify Every Bet?</h2>
+
+        <p>Nah. I verify maybe 1 in 50 bets, usually after a surprising loss. If the math checks out a few times, the system's working.</p>
+
+        <p>The point isn't constant verification - it's that you <em>could</em> if you wanted to. That keeps casinos honest.</p>
+
+        <p>Think of it like restaurant health inspections. You don't inspect your meal every time, but knowing someone <em>can</em> show up keeps kitchens clean.</p>
+
+        <h2>Quick Verification Guide</h2>
+
+        <p>Most casinos have a built-in verifier. But if you want to check manually:</p>
+
+        <ol>
+          <li>Copy the server seed (revealed after bet)</li>
+          <li>Copy your client seed</li>
+          <li>Note the nonce number</li>
+          <li>Go to a SHA-256 hash calculator (dozens online)</li>
+          <li>Input: <code>serverSeed-clientSeed-nonce</code></li>
+          <li>Compare result to your game outcome</li>
+        </ol>
+
+        <p>Takes 30 seconds. If it matches, they played fair.</p>
+
+        <h2>The Bottom Line</h2>
+
+        <p>Provably fair is the one truly revolutionary thing about crypto casinos. Everything else - fast withdrawals, no KYC, crypto payments - other sites could copy. But proving fairness cryptographically? That's only possible with blockchain transparency.</p>
+
+        <p>If a crypto casino doesn't offer provably fair games, why use it over a regular online casino? You're giving up the main advantage.</p>
+
+        <p>Play provably fair when you can. Verify occasionally. And remember: The house still has an edge (that's the RTP %), but at least you know they're not cheating on top of it.</p>
+
+        <div class="post-cta" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); color: white; padding: 32px; border-radius: 12px; margin: 48px 0; text-align: center;">
+          <h3 style="margin-bottom: 16px;">Calculate Your Real Casino Odds</h3>
+          <p style="margin-bottom: 24px; opacity: 0.95;">Use our house edge calculator to see how much you're really risking at 20+ crypto casinos.</p>
+          <a href="../house-edge-calculator.html" style="display: inline-block; background: white; color: #8b5cf6; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none;">Try Calculator →</a>
+        </div>
+
+        <div class="post-footer">
+          <p><strong>Author:</strong> <a href="https://twitter.com/brandonkz" target="_blank">Brandon Katz (@brandonkz)</a> • Last updated February 13, 2026</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <footer class="footer" style="margin-top: 80px; padding: 40px 0; background: #1a1a2e; color: #fff;">
+    <div class="container" style="text-align: center;">
+      <p>&copy; 2026 CryptoCasinoSorted.com</p>
+    </div>
+  </footer>
+</body>
+</html>
