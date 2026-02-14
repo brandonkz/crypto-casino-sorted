@@ -7,6 +7,40 @@
 
 ## TONIGHT'S BUILD (Priority Order)
 
+### 0. Research & Add 2-3 New Casinos ⭐⭐⭐⭐⭐ (NIGHTLY TASK)
+**Why**: Keep site fresh, competitive, comprehensive
+
+**Research sources:**
+- Reddit: r/gambling, r/Stake, r/crypto_gambling
+- Search: "best crypto casino 2026", "[casino name] review reddit"
+- Look for: casinos mentioned 3+ times, positive sentiment, withdrawal confirmations
+
+**What to find:**
+- Casino name + URL
+- 2-3 real Reddit quotes (with subreddit source)
+- Withdrawal speed (test if possible, or community reports)
+- Accepted coins
+- KYC policy
+- VPN policy
+- Provably fair status
+- Bonus details
+
+**Quality bar:**
+- Must have 3+ Reddit mentions or 1 detailed positive review
+- Must have withdrawal confirmations (not just marketing)
+- No scam allegations
+- Active in 2025-2026
+
+**Output:**
+- Add to data/casinos.json with proper reddit_quotes array (2-3 quotes minimum)
+- Commit: "Add [Casino1], [Casino2] based on community research"
+- Include sources in commit message
+
+**Build Time:** 30-45 min
+**Target:** Add 2-3 casinos per night = 60-90 new casinos per month
+
+---
+
 ### 1. Blog Section + 3 Educational Articles ⭐⭐⭐⭐⭐
 **Why**: Shows industry expertise, SEO value, educational approach
 
