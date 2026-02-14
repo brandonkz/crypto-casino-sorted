@@ -122,10 +122,6 @@ function createCasinoCard(casino) {
       
       <p class="casino-description">${casino.description}</p>
       
-      <div class="reddit-quote" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 3px solid #8b5cf6; padding: 12px 16px; margin: 16px 0; border-radius: 8px; font-style: italic; font-size: 0.9rem; color: #333;">
-        💬 ${casino.reddit_quote || 'Trusted by the crypto gambling community'}
-      </div>
-      
       <div class="casino-bonus">
         🎁 ${casino.bonus}
       </div>
@@ -152,6 +148,11 @@ function createCasinoCard(casino) {
       <div class="casino-coins">
         ${coins}
         ${moreCoins}
+      </div>
+      
+      <div class="community-quote" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 3px solid #8b5cf6; padding: 14px 18px; margin: 20px 0; border-radius: 8px; font-size: 0.9rem;">
+        <div style="font-weight: 600; color: #8b5cf6; margin-bottom: 8px;">💬 What the Community Says:</div>
+        <div style="font-style: italic; color: #333; line-height: 1.5;">${casino.reddit_quote || 'Trusted by the crypto gambling community'}</div>
       </div>
       
       <div class="pros-cons">
