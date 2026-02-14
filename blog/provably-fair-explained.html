@@ -36,6 +36,43 @@
     }
   }
   </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "What is provably fair gambling?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Provably fair is a cryptographic system that lets players verify each bet wasn't rigged. The casino commits to a random seed before you bet (shown as a hash), you add your own seed, then after the bet both seeds are revealed so you can verify the result was generated fairly using math, not manipulation."
+      }
+    },{
+      "@type": "Question",
+      "name": "How do I verify a provably fair bet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After betting, the casino reveals its server seed. Hash that seed yourself and compare it to the hash shown before your bet. If they match, the casino didn't change it. Then combine server seed + your client seed + bet number (nonce) and run the game's algorithm to verify the outcome matches what you got."
+      }
+    },{
+      "@type": "Question",
+      "name": "Which crypto casinos are actually provably fair?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stake, BC.Game, Rollbit, Shuffle, and most major crypto casinos offer provably fair games - but usually only on their in-house 'Originals' games (dice, crash, plinko). Third-party slots from providers like Pragmatic Play can't be provably fair since they run on external servers."
+      }
+    },{
+      "@type": "Question",
+      "name": "Can slots be provably fair?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Traditional slots from game providers (Pragmatic, Hacksaw, etc.) cannot be provably fair because they run on provider servers you can't audit. Only in-house casino games can be provably fair. If a casino claims their third-party slots are provably fair, they're lying."
+      }
+    }]
+  }
+  </script>
 </head>
 <body>
   <header class="header">
