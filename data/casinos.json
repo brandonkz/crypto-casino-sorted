@@ -513,5 +513,257 @@
     "featured": false,
     "tier": "value",
     "has_token": false
+  },
+  {
+    "id": 11,
+    "name": "Jackbit",
+    "slug": "jackbit",
+    "url": "https://jackbit.com",
+    "ref_url": "https://jackbit.com",
+    "description": "Rising star casino with 8,400+ games and wager-free spins (SPIN100). Fast 10-15 min withdrawals, Reddit community favorite for 2026.",
+    "bonus": "100% up to $500 + wager-free spins",
+    "bonus_code": "SPIN100",
+    "accepted_coins": [
+      "BTC",
+      "ETH",
+      "LTC",
+      "USDT",
+      "USDC",
+      "15+ more"
+    ],
+    "provably_fair": true,
+    "kyc_required": "Optional",
+    "withdrawal_speed": "10-15 minutes",
+    "vpn_allowed": true,
+    "min_deposit": "$10",
+    "license": "Curacao",
+    "games": [
+      "Slots",
+      "Live Casino",
+      "Table Games",
+      "Sports Betting"
+    ],
+    "live_dealer": true,
+    "mobile_app": false,
+    "established": 2022,
+    "rating": 4.6,
+    "pros": [
+      "Massive game library (8,400+)",
+      "Wager-free bonuses",
+      "Fast withdrawals",
+      "Fair terms",
+      "Rising popularity"
+    ],
+    "cons": [
+      "New platform (less track record)",
+      "Limited VIP rewards",
+      "Customer support hours"
+    ],
+    "featured": true,
+    "tier": "rising",
+    "has_token": false
+  },
+  {
+    "id": 12,
+    "name": "7bit",
+    "slug": "7bit",
+    "url": "https://7bitcasino.com",
+    "ref_url": "https://7bitcasino.com",
+    "description": "Veteran crypto casino (since 2014) with 7,100+ games. Trusted, stable, and consistent. The old reliable of crypto gambling.",
+    "bonus": "100% up to 1.5 BTC + 100 free spins",
+    "bonus_code": "7BIT",
+    "accepted_coins": [
+      "BTC",
+      "ETH",
+      "LTC",
+      "DOGE",
+      "BCH",
+      "USDT",
+      "10+ more"
+    ],
+    "provably_fair": true,
+    "kyc_required": "Optional",
+    "withdrawal_speed": "<1 hour",
+    "vpn_allowed": true,
+    "min_deposit": "$10",
+    "license": "Curacao",
+    "games": [
+      "Slots",
+      "Live Casino",
+      "Table Games",
+      "Jackpots"
+    ],
+    "live_dealer": true,
+    "mobile_app": false,
+    "established": 2014,
+    "rating": 4.5,
+    "pros": [
+      "10+ years operating",
+      "7,100+ games",
+      "Reliable platform",
+      "VPN friendly",
+      "Good game providers"
+    ],
+    "cons": [
+      "Dated interface",
+      "Slower innovation",
+      "Basic promotions"
+    ],
+    "featured": false,
+    "tier": "established",
+    "has_token": false
+  },
+  {
+    "id": 13,
+    "name": "BetFury",
+    "slug": "betfury",
+    "url": "https://betfury.com",
+    "ref_url": "https://betfury.com",
+    "description": "Crypto casino with cashback focus and fun faucet system. Best for Hacksaw Gaming slots. Growing community and fair rewards.",
+    "bonus": "First deposit bonus + cashback",
+    "bonus_code": "FURY",
+    "accepted_coins": [
+      "BTC",
+      "ETH",
+      "TRX",
+      "USDT",
+      "BNB",
+      "20+ more"
+    ],
+    "provably_fair": true,
+    "kyc_required": "Optional",
+    "withdrawal_speed": "<30 minutes",
+    "vpn_allowed": true,
+    "min_deposit": "$1",
+    "license": "Curacao",
+    "games": [
+      "Slots",
+      "Live Casino",
+      "Sports Betting",
+      "Original Games"
+    ],
+    "live_dealer": true,
+    "mobile_app": false,
+    "established": 2019,
+    "rating": 4.4,
+    "pros": [
+      "Cashback system",
+      "Free crypto faucet",
+      "Hacksaw Gaming focus",
+      "Low minimum deposit",
+      "BFG token rewards"
+    ],
+    "cons": [
+      "Less polished than Stake",
+      "Smaller game library",
+      "UI could be cleaner"
+    ],
+    "featured": false,
+    "tier": "rising",
+    "has_token": true,
+    "token_symbol": "BFG",
+    "token_name": "BetFury Token",
+    "market_cap": "$12M",
+    "coingecko_id": "betfury"
+  },
+  {
+    "id": 14,
+    "name": "Gamdom",
+    "slug": "gamdom",
+    "url": "https://gamdom.com",
+    "ref_url": "https://gamdom.com",
+    "description": "VPN-friendly crypto casino with low fees (LTC, BCH recommended). Clean interface, fast withdrawals, esports betting.",
+    "bonus": "100% up to $500 + rakeback",
+    "bonus_code": "GAMDOM",
+    "accepted_coins": [
+      "BTC",
+      "ETH",
+      "LTC",
+      "BCH",
+      "DOGE",
+      "USDT",
+      "15+ more"
+    ],
+    "provably_fair": true,
+    "kyc_required": "Optional",
+    "withdrawal_speed": "<1 hour",
+    "vpn_allowed": true,
+    "min_deposit": "$10",
+    "license": "Curacao",
+    "games": [
+      "Slots",
+      "Crash",
+      "Roulette",
+      "Sports",
+      "Esports"
+    ],
+    "live_dealer": true,
+    "mobile_app": false,
+    "established": 2016,
+    "rating": 4.4,
+    "pros": [
+      "VPN friendly",
+      "Low-fee coins (LTC, BCH)",
+      "Strong esports betting",
+      "Rakeback system",
+      "Active community"
+    ],
+    "cons": [
+      "KYC for large withdrawals",
+      "Limited live casino",
+      "Customer support delays"
+    ],
+    "featured": false,
+    "tier": "rising",
+    "has_token": false
+  },
+  {
+    "id": 15,
+    "name": "CoinDepo",
+    "slug": "coindepo",
+    "url": "https://coindepo.com",
+    "ref_url": "https://coindepo.com",
+    "description": "Stake alternative for users tired of VPN restrictions. Predictable, fast withdrawals, no drama. Community says it just works.",
+    "bonus": "100% up to $300",
+    "bonus_code": "DEPO",
+    "accepted_coins": [
+      "BTC",
+      "ETH",
+      "LTC",
+      "USDT",
+      "USDC",
+      "10+ more"
+    ],
+    "provably_fair": true,
+    "kyc_required": "Optional",
+    "withdrawal_speed": "<30 minutes",
+    "vpn_allowed": true,
+    "min_deposit": "$10",
+    "license": "Curacao",
+    "games": [
+      "Slots",
+      "Live Casino",
+      "Table Games",
+      "Sports"
+    ],
+    "live_dealer": true,
+    "mobile_app": false,
+    "established": 2020,
+    "rating": 4.3,
+    "pros": [
+      "Reliable withdrawals",
+      "No VPN drama",
+      "Clean interface",
+      "Consistent service",
+      "Fair bonuses"
+    ],
+    "cons": [
+      "Less known brand",
+      "Smaller game library",
+      "Basic rewards program"
+    ],
+    "featured": false,
+    "tier": "value",
+    "has_token": false
   }
 ]
