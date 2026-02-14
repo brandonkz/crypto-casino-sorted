@@ -834,5 +834,116 @@
       "\"Fast and automatic withdrawals, no drama\"",
       "\"It just works - that's all I need\""
     ]
+  },
+  {
+    "id": 16,
+    "name": "Bitsler",
+    "slug": "bitsler",
+    "url": "https://bitsler.com",
+    "ref_url": "https://bitsler.com/?ref=cryptosorted",
+    "description": "Veteran crypto casino (10+ years) with active chat community. Fast withdrawals, diverse games, and consistent reliability. Known for never having issues.",
+    "bonus": "100% up to 1 BTC",
+    "bonus_code": "BITS100",
+    "accepted_coins": [
+      "BTC",
+      "ETH",
+      "LTC",
+      "DOGE",
+      "TRX",
+      "USDT",
+      "15+ more"
+    ],
+    "provably_fair": true,
+    "kyc_required": "Optional",
+    "withdrawal_speed": "11 minutes",
+    "vpn_allowed": true,
+    "min_deposit": "$10",
+    "license": "Curacao",
+    "games": [
+      "Slots",
+      "Dice",
+      "Crash",
+      "Live Casino",
+      "Sports Betting"
+    ],
+    "live_dealer": true,
+    "mobile_app": false,
+    "established": 2015,
+    "rating": 4.5,
+    "pros": [
+      "10+ years operating history",
+      "Fast withdrawals (11 min tested)",
+      "Active chat community",
+      "VPN friendly",
+      "Hacksaw Gaming slots"
+    ],
+    "cons": [
+      "UI could be more modern",
+      "Smaller bonus compared to newer sites",
+      "Limited live casino"
+    ],
+    "featured": false,
+    "tier": "established",
+    "has_token": false,
+    "reddit_quotes": [
+      "\"[LIVE TEST] Jan 8, 2026: slots, but only hacksaw games. Withdrawal Speed: 11 minutes (USDT).\"",
+      "\"For people who get bored easily. There is always something happening in the chat.\"",
+      "\"I've played here for a year without a single issue.\""
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Ignition",
+    "slug": "ignition",
+    "url": "https://ignitioncasino.eu",
+    "ref_url": "https://ignitioncasino.eu",
+    "description": "Premier US-focused crypto casino and poker room. Massive 300% welcome bonus ($3,000). Best for poker players who want casino games too.",
+    "bonus": "300% up to $3,000 (150% poker + 150% casino)",
+    "bonus_code": "IGNITION",
+    "accepted_coins": [
+      "BTC",
+      "BCH",
+      "LTC",
+      "ETH",
+      "USDT"
+    ],
+    "provably_fair": false,
+    "kyc_required": "Required",
+    "withdrawal_speed": "<1 hour (LTC, BCH, ETH), 24h (BTC)",
+    "vpn_allowed": false,
+    "min_deposit": "$20",
+    "license": "Kahnawake Gaming Commission",
+    "games": [
+      "Poker",
+      "Slots",
+      "Live Casino",
+      "Table Games",
+      "Tournaments"
+    ],
+    "live_dealer": true,
+    "mobile_app": false,
+    "established": 2016,
+    "rating": 4.6,
+    "pros": [
+      "Best US poker room",
+      "Massive welcome bonus (300%)",
+      "Fast crypto withdrawals (LTC in 1h)",
+      "Strong poker community",
+      "Excellent UX"
+    ],
+    "cons": [
+      "KYC required",
+      "Not VPN friendly",
+      "Not provably fair",
+      "Geo-restricted (US focus)"
+    ],
+    "featured": false,
+    "tier": "premium",
+    "has_token": false,
+    "reddit_quotes": [
+      "\"Ignition is a well-known name among poker players in the US, and we've seen reviews to set it as the best Bitcoin casino on Reddit.\"",
+      "\"You can bag a 300% welcome package up to $3,000 when you deposit crypto at Ignition, spread equally between poker and casino.\"",
+      "\"It's a well-rounded site with great UX, fast processing, and a large welcome bonus.\""
+    ]
   }
 ]
