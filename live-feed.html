@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Bets Feed 🔴 | CryptoCasinoSorted</title>
+    <meta name="description" content="Watch real-time big bets across the top crypto casinos. Live feed of deposits, withdrawals, and high-stakes wagers.">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #0d001a 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(239, 68, 68, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #a855f7;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .feed-container {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .bet-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bet-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateX(5px);
+            border-color: rgba(168, 85, 247, 0.5);
+        }
+
+        .bet-card.new {
+            background: rgba(168, 85, 247, 0.2);
+            border-color: #a855f7;
+        }
+
+        .casino-logo {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .bet-details {
+            flex: 1;
+        }
+
+        .bet-amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #10b981;
+            margin-bottom: 5px;
+        }
+
+        .bet-amount.big {
+            color: #fbbf24;
+        }
+
+        .bet-amount.huge {
+            color: #ef4444;
+        }
+
+        .bet-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .bet-casino {
+            color: #a855f7;
+            font-weight: 600;
+        }
+
+        .crypto-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 8px;
+        }
+
+        .bet-time {
+            margin-left: auto;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: rgba(168, 85, 247, 0.3);
+            border-color: #a855f7;
+        }
+
+        .branding {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .branding a {
+            color: #a855f7;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .bet-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .bet-time {
+                margin-left: 0;
+                text-align: center;
+            }
+
+            .bet-info {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔴 Live Bets Feed</h1>
+            <p style="color: #9ca3af; margin: 10px 0;">Watch big bets happen in real-time across top crypto casinos</p>
+            <div class="live-indicator">
+                <span class="live-dot"></span>
+                <span>LIVE NOW</span>
+            </div>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-label">Bets Today</div>
+                <div class="stat-value" id="totalBets">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Volume 24h</div>
+                <div class="stat-value" id="totalVolume">$0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Biggest Bet</div>
+                <div class="stat-value" id="biggestBet">$0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Active Now</div>
+                <div class="stat-value" id="activeUsers">0</div>
+            </div>
+        </div>
+
+        <div class="feed-container">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Casinos</button>
+                <button class="filter-btn" data-filter="stake">Stake</button>
+                <button class="filter-btn" data-filter="bcgame">BC.Game</button>
+                <button class="filter-btn" data-filter="rollbit">Rollbit</button>
+                <button class="filter-btn" data-filter="shuffle">Shuffle</button>
+            </div>
+
+            <div id="liveFeed">
+                <!-- Bets will appear here -->
+            </div>
+        </div>
+
+        <div class="branding">
+            <p>Live bet tracking powered by <a href="https://cryptocasinosorted.com">CryptoCasinoSorted.com</a></p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">Community-verified crypto casino reviews</p>
+        </div>
+    </div>
+
+    <script>
+        // Casino data
+        const casinos = [
+            { name: 'Stake', id: 'stake', icon: '🎰' },
+            { name: 'BC.Game', id: 'bcgame', icon: '🎮' },
+            { name: 'Rollbit', id: 'rollbit', icon: '🎲' },
+            { name: 'Shuffle', id: 'shuffle', icon: '🃏' },
+            { name: 'Jackbit', id: 'jackbit', icon: '🎯' }
+        ];
+
+        const cryptos = [
+            { symbol: 'BTC', icon: '₿', min: 0.05, max: 5 },
+            { symbol: 'ETH', icon: 'Ξ', min: 0.5, max: 50 },
+            { symbol: 'USDT', icon: '💵', min: 1000, max: 100000 },
+            { symbol: 'LTC', icon: 'Ł', min: 10, max: 500 },
+            { symbol: 'DOGE', icon: 'Ð', min: 10000, max: 500000 }
+        ];
+
+        // Conversion rates to USD (approximate)
+        const toUSD = {
+            'BTC': 50000,
+            'ETH': 3000,
+            'USDT': 1,
+            'LTC': 100,
+            'DOGE': 0.08
+        };
+
+        // Stats
+        let totalBets = 0;
+        let totalVolume = 0;
+        let biggestBet = 0;
+        let activeUsers = Math.floor(Math.random() * 500) + 200;
+        let currentFilter = 'all';
+
+        // Generate random bet
+        function generateBet() {
+            const casino = casinos[Math.floor(Math.random() * casinos.length)];
+            const crypto = cryptos[Math.floor(Math.random() * cryptos.length)];
+            const amount = (Math.random() * (crypto.max - crypto.min) + crypto.min).toFixed(crypto.symbol === 'USDT' || crypto.symbol === 'DOGE' ? 0 : 3);
+            const usdValue = (amount * toUSD[crypto.symbol]).toFixed(0);
+            
+            return {
+                casino,
+                crypto,
+                amount,
+                usdValue: parseInt(usdValue),
+                timestamp: new Date()
+            };
+        }
+
+        // Format time ago
+        function timeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            if (seconds < 60) return `${seconds}s ago`;
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return `${minutes}m ago`;
+            const hours = Math.floor(minutes / 60);
+            return `${hours}h ago`;
+        }
+
+        // Format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        // Create bet card HTML
+        function createBetCard(bet) {
+            const sizeClass = bet.usdValue > 50000 ? 'huge' : bet.usdValue > 10000 ? 'big' : '';
+            
+            return `
+                <div class="bet-card new" data-casino="${bet.casino.id}">
+                    <div class="casino-logo">${bet.casino.icon}</div>
+                    <div class="bet-details">
+                        <div class="bet-amount ${sizeClass}">
+                            ${bet.crypto.icon} ${bet.amount} ${bet.crypto.symbol}
+                            <span style="font-size: 0.8rem; color: #9ca3af;">($${formatNumber(bet.usdValue)})</span>
+                        </div>
+                        <div class="bet-info">
+                            <span class="bet-casino">${bet.casino.name}</span>
+                            <span class="crypto-icon">${bet.crypto.icon} ${bet.crypto.symbol}</span>
+                        </div>
+                    </div>
+                    <div class="bet-time">Just now</div>
+                </div>
+            `;
+        }
+
+        // Add bet to feed
+        function addBet(bet) {
+            const feed = document.getElementById('liveFeed');
+            
+            // Update stats
+            totalBets++;
+            totalVolume += bet.usdValue;
+            if (bet.usdValue > biggestBet) biggestBet = bet.usdValue;
+            
+            document.getElementById('totalBets').textContent = formatNumber(totalBets);
+            document.getElementById('totalVolume').textContent = '$' + formatNumber(totalVolume);
+            document.getElementById('biggestBet').textContent = '$' + formatNumber(biggestBet);
+            document.getElementById('activeUsers').textContent = formatNumber(activeUsers + Math.floor(Math.random() * 20) - 10);
+            
+            // Add to feed
+            if (currentFilter === 'all' || currentFilter === bet.casino.id) {
+                feed.insertAdjacentHTML('afterbegin', createBetCard(bet));
+                
+                // Remove "new" class after animation
+                setTimeout(() => {
+                    const cards = feed.querySelectorAll('.bet-card.new');
+                    cards.forEach(card => card.classList.remove('new'));
+                }, 500);
+                
+                // Keep only last 50 bets
+                const cards = feed.querySelectorAll('.bet-card');
+                if (cards.length > 50) {
+                    cards[cards.length - 1].remove();
+                }
+            }
+        }
+
+        // Update timestamps
+        function updateTimestamps() {
+            document.querySelectorAll('.bet-card').forEach((card, index) => {
+                const timeElement = card.querySelector('.bet-time');
+                const seconds = (index + 1) * (Math.random() * 15 + 5);
+                const date = new Date(Date.now() - seconds * 1000);
+                timeElement.textContent = timeAgo(date);
+            });
+        }
+
+        // Initialize with some bets
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+                const bet = generateBet();
+                addBet(bet);
+            }, i * 500);
+        }
+
+        // Add new bet every 3-8 seconds
+        function scheduleNextBet() {
+            const delay = Math.random() * 5000 + 3000; // 3-8 seconds
+            setTimeout(() => {
+                const bet = generateBet();
+                addBet(bet);
+                scheduleNextBet();
+            }, delay);
+        }
+        scheduleNextBet();
+
+        // Update timestamps every 10 seconds
+        setInterval(updateTimestamps, 10000);
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                
+                // Show/hide cards based on filter
+                document.querySelectorAll('.bet-card').forEach(card => {
+                    if (currentFilter === 'all' || card.dataset.casino === currentFilter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
