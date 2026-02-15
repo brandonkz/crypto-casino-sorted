@@ -17,36 +17,6 @@
     gtag('js', new Date());
     gtag('config', 'G-0L3N9F43ED');
 
-    // Mobile menu toggle
-    (function() {
-      const menuToggle = document.getElementById('mobile-menu-toggle');
-      const nav = document.getElementById('mobile-nav');
-      const menuIcon = document.getElementById('menu-icon');
-
-      if (menuToggle && nav) {
-        menuToggle.addEventListener('click', function() {
-          nav.classList.toggle('active');
-          menuIcon.textContent = nav.classList.contains('active') ? '✕' : '☰';
-        });
-
-        // Close menu when clicking nav links
-        const navLinks = nav.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-          link.addEventListener('click', function() {
-            nav.classList.remove('active');
-            menuIcon.textContent = '☰';
-          });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-          if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
-            nav.classList.remove('active');
-            menuIcon.textContent = '☰';
-          }
-        });
-      }
-    })();
   </script>
   
   <title>Crypto Casino Calculators - Free Tools for Smart Gambling | CryptoCasinoSorted</title>
@@ -145,6 +115,8 @@
 </head>
 <body>
   <!-- Header -->
+  <div class="mobile-menu-backdrop" id="mobile-menu-backdrop"></div>
+
   <header class="header">
     <div class="container">
       <div class="header-content">
