@@ -16,6 +16,37 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0L3N9F43ED');
+
+    // Mobile menu toggle
+    (function() {
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const nav = document.getElementById('mobile-nav');
+      const menuIcon = document.getElementById('menu-icon');
+
+      if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function() {
+          nav.classList.toggle('active');
+          menuIcon.textContent = nav.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close menu when clicking nav links
+        const navLinks = nav.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            nav.classList.remove('active');
+            menuIcon.textContent = '☰';
+          });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+            nav.classList.remove('active');
+            menuIcon.textContent = '☰';
+          }
+        });
+      }
+    })();
   </script>
   
   <title>House Edge & RTP Calculator - Find Fairest Crypto Casino Games | CryptoCasinoSorted</title>
@@ -216,11 +247,26 @@
           <span class="brand-icon">🎰</span>
           <span class="brand-name">CryptoCasinoSorted</span>
         </a>
-        <nav class="nav">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
+        <nav class="nav" id="mobile-nav">
           <a href="/#casinos" class="nav-link">Casinos</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
           <a href="/wagering-calculator.html" class="nav-link">Calculators</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
           <a href="/#faq" class="nav-link">FAQ</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
           <a href="https://betsorted.co.za" class="nav-link" target="_blank">Sports Betting 🎯</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
         </nav>
       </div>
     </div>
@@ -233,6 +279,9 @@
         <span>←</span>
         <span>Back to Home</span>
       </a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
     </div>
     <h2 style="font-size: 36px; font-weight: 900; margin-bottom: 16px; text-align: center;">House Edge & RTP Comparison</h2>
     <p style="text-align: center; color: #6b7280; margin-bottom: 40px; font-size: 18px;">Compare casino games to find the fairest odds and lowest house edge</p>
@@ -296,6 +345,9 @@
     
     <div style="text-align: center; margin-top: 40px;">
       <a href="/" style="display: inline-block; padding: 14px 28px; background: #8b5cf6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Back to Casinos</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
     </div>
   </section>
 

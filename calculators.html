@@ -16,6 +16,37 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0L3N9F43ED');
+
+    // Mobile menu toggle
+    (function() {
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const nav = document.getElementById('mobile-nav');
+      const menuIcon = document.getElementById('menu-icon');
+
+      if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function() {
+          nav.classList.toggle('active');
+          menuIcon.textContent = nav.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close menu when clicking nav links
+        const navLinks = nav.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            nav.classList.remove('active');
+            menuIcon.textContent = '☰';
+          });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+            nav.classList.remove('active');
+            menuIcon.textContent = '☰';
+          }
+        });
+      }
+    })();
   </script>
   
   <title>Crypto Casino Calculators - Free Tools for Smart Gambling | CryptoCasinoSorted</title>
@@ -121,12 +152,30 @@
           <span class="brand-icon">🎰</span>
           <span class="brand-name">CryptoCasinoSorted</span>
         </a>
-        <nav class="nav">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
+        <nav class="nav" id="mobile-nav">
           <a href="/#casinos" class="nav-link">Casinos</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
           <a href="/calculators.html" class="nav-link">Calculators</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
           <a href="/#about" class="nav-link">About</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
           <a href="/#faq" class="nav-link">FAQ</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
           <a href="https://betsorted.co.za" class="nav-link" target="_blank">Sports Betting 🎯</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
         </nav>
       </div>
     </div>
@@ -150,6 +199,9 @@
           <li>Pro tips for each requirement level</li>
         </ul>
         <a href="/wagering-calculator.html" class="calculator-btn">Open Calculator →</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
       </div>
       
       <!-- Betting Calculator -->
@@ -164,6 +216,9 @@
           <li>See profit in BTC, ETH, USDT, and USD</li>
         </ul>
         <a href="/betting-calculator.html" class="calculator-btn">Open Calculator →</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
       </div>
       
       <!-- House Edge Calculator -->
@@ -178,11 +233,17 @@
           <li>Understand provably fair advantages</li>
         </ul>
         <a href="/house-edge-calculator.html" class="calculator-btn">Open Calculator →</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
       </div>
     </div>
     
     <div style="text-align: center; margin-top: 60px;">
       <a href="/" style="display: inline-block; padding: 14px 28px; background: white; color: #8b5cf6; text-decoration: none; border-radius: 8px; font-weight: 600; border: 2px solid #8b5cf6;">Back to Casinos</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
     </div>
   </section>
 

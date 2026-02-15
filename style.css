@@ -97,6 +97,21 @@ body {
   text-decoration: none;
 }
 
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 101;
+}
+
+.mobile-menu-toggle:hover {
+  opacity: 0.8;
+}
+
 /* Hero */
 .hero {
   background: var(--dark);
@@ -585,6 +600,44 @@ body {
     padding: 0 1.25rem;
   }
 
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 5rem 2rem 2rem;
+    flex-direction: column;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    border-left: 1px solid var(--border);
+    z-index: 100;
+  }
+
+  .nav.active {
+    right: 0;
+  }
+
+  .nav-link {
+    font-size: 1.125rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .brand-icon {
+    font-size: 1.5rem;
+  }
+
   .hero-title {
     font-size: 2.5rem;
     font-weight: 900;
@@ -616,10 +669,6 @@ body {
   
   .pros-cons {
     grid-template-columns: 1fr;
-  }
-  
-  .nav {
-    gap: 1rem;
   }
   
   .casino-card {

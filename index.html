@@ -93,7 +93,10 @@
           <span class="brand-icon">🎰</span>
           <span class="brand-name">CryptoCasinoSorted</span>
         </a>
-        <nav class="nav">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
+        <nav class="nav" id="mobile-nav">
           <a href="#casinos" class="nav-link">Casinos</a>
           <a href="/live-feed.html" class="nav-link">🔴 Live Feed</a>
           <a href="/reviews/index.html" class="nav-link">Reviews</a>
@@ -307,6 +310,37 @@
               }, 100);
             }
           });
+        });
+      }
+    })();
+
+    // Mobile menu toggle
+    (function() {
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const nav = document.getElementById('mobile-nav');
+      const menuIcon = document.getElementById('menu-icon');
+
+      if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function() {
+          nav.classList.toggle('active');
+          menuIcon.textContent = nav.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close menu when clicking nav links
+        const navLinks = nav.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            nav.classList.remove('active');
+            menuIcon.textContent = '☰';
+          });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+            nav.classList.remove('active');
+            menuIcon.textContent = '☰';
+          }
         });
       }
     })();
