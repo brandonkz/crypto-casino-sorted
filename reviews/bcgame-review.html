@@ -70,14 +70,22 @@
   </script>
 </head>
 <body>
-  <header class="header">
+    <div class="mobile-menu-backdrop" id="mobile-menu-backdrop"></div>
+
+<header class="header">
     <div class="container">
-      <a href="../index.html" class="logo">🎲 CryptoCasinoSorted</a>
-      <nav>
-        <a href="../index.html">Casinos</a>
-        <a href="../calculators.html">Calculators</a>
-        <a href="../blog/index.html">Blog</a>
-        <a href="https://betsorted.co.za" target="_blank">Sports Betting 🎯</a>
+      <a href="../index.html" class="brand">
+          <span class="brand-icon">🎰</span>
+          <span class="brand-name">CryptoCasinoSorted</span>
+        </a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span id="menu-icon">☰</span>
+        </button>
+      <nav class="nav" id="mobile-nav">
+        <a class="nav-link" href="../index.html">Casinos</a>
+        <a class="nav-link" href="../calculators.html">Calculators</a>
+        <a class="nav-link" href="../blog/index.html">Blog</a>
+        <a class="nav-link" href="https://betsorted.co.za" target="_blank">Sports Betting 🎯</a>
       </nav>
     </div>
   </header>
@@ -415,5 +423,46 @@
       <p>&copy; 2026 CryptoCasinoSorted.com</p>
     </div>
   </footer>
+    // Mobile menu toggle
+    (function() {
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const nav = document.getElementById('mobile-nav');
+      const menuIcon = document.getElementById('menu-icon');
+      const backdrop = document.getElementById('mobile-menu-backdrop');
+
+      function openMenu() {
+        nav.classList.add('active');
+        backdrop.classList.add('active');
+        menuIcon.textContent = '✕';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        nav.classList.remove('active');
+        backdrop.classList.remove('active');
+        menuIcon.textContent = '☰';
+        document.body.style.overflow = '';
+      }
+
+      if (menuToggle && nav && backdrop) {
+        menuToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (nav.classList.contains('active')) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        });
+
+        backdrop.addEventListener('click', closeMenu);
+
+        const navLinks = nav.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+      }
+    })();
+
+  </script>
 </body>
 </html>

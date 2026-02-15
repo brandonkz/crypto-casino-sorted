@@ -22,6 +22,137 @@
             padding: 20px;
         }
 
+
+        .site-header {
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid #262626;
+            padding: 1rem 0;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .brand:hover {
+            opacity: 0.9;
+        }
+
+        .brand-icon {
+            font-size: 1.75rem;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            z-index: 101;
+            transition: all 0.2s;
+        }
+
+        .mobile-menu-toggle:hover {
+            background: rgba(139, 92, 246, 0.2);
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #9ca3af;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        .mobile-menu-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 99;
+        }
+
+        .mobile-menu-backdrop.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 320px;
+                height: 100vh;
+                background: rgba(15, 15, 15, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 6rem 2rem 2rem;
+                flex-direction: column;
+                gap: 0;
+                transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                border-left: 2px solid rgba(139, 92, 246, 0.3);
+                box-shadow: -4px 0 24px rgba(0, 0, 0, 0.4);
+                z-index: 100;
+            }
+
+            .nav.active {
+                right: 0;
+            }
+
+            .nav-link {
+                font-size: 1.125rem;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+            }
+
+            .nav-link:hover {
+                color: #8b5cf6;
+                padding-left: 0.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -347,7 +478,30 @@
 </head>
 <body>
     <div class="container">
-        <header>
+          <div class="mobile-menu-backdrop" id="mobile-menu-backdrop"></div>
+
+<header class="site-header">
+        <div class="header-content">
+            <a href="/" class="brand">
+                <span class="brand-icon">🎰</span>
+                <span class="brand-name">CryptoCasinoSorted</span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <span id="menu-icon">☰</span>
+            </button>
+            <nav class="nav" id="mobile-nav">
+                <a href="/#casinos" class="nav-link">Casinos</a>
+                <a href="/live-feed.html" class="nav-link" style="color: #a855f7;">🔴 Live Feed</a>
+                <a href="/reviews/index.html" class="nav-link">Reviews</a>
+                <a href="/wagering-calculator.html" class="nav-link">Calculators</a>
+                <a href="/blog/index.html" class="nav-link">Blog</a>
+                <a href="https://betsorted.co.za" class="nav-link" target="_blank">Sports Betting 🎯</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <header style="margin-top: 0;">
             <h1>🔴 Live Bets Feed</h1>
             <p style="color: #9ca3af; margin: 10px 0;">Watch big bets happen in real-time across top crypto casinos</p>
             <div class="live-indicator">
@@ -356,6 +510,9 @@
             </div>
         </header>
 
+    </div>
+
+    <div class="container">
         <div class="stats-bar">
             <div class="stat-card">
                 <div class="stat-label">Bets Today</div>
@@ -618,5 +775,46 @@
             });
         });
     </script>
+    // Mobile menu toggle
+    (function() {
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const nav = document.getElementById('mobile-nav');
+      const menuIcon = document.getElementById('menu-icon');
+      const backdrop = document.getElementById('mobile-menu-backdrop');
+
+      function openMenu() {
+        nav.classList.add('active');
+        backdrop.classList.add('active');
+        menuIcon.textContent = '✕';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        nav.classList.remove('active');
+        backdrop.classList.remove('active');
+        menuIcon.textContent = '☰';
+        document.body.style.overflow = '';
+      }
+
+      if (menuToggle && nav && backdrop) {
+        menuToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (nav.classList.contains('active')) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        });
+
+        backdrop.addEventListener('click', closeMenu);
+
+        const navLinks = nav.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+      }
+    })();
+
+  </script>
 </body>
 </html>
