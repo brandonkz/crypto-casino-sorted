@@ -151,7 +151,6 @@
   </style>
 </head>
 <body>
-    <div class="mobile-menu-backdrop" id="mobile-menu-backdrop"></div>
 
 <header class="header">
     <div class="container">
@@ -159,10 +158,7 @@
           <span class="brand-icon">🎰</span>
           <span class="brand-name">CryptoCasinoSorted</span>
         </a>
-        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
-          <span id="menu-icon">☰</span>
-        </button>
-      <nav class="nav" id="mobile-nav">
+      <nav class="nav">
           <a href="../index.html#casinos" class="nav-link">Casinos</a>
           <a href="../live-feed.html" class="nav-link">🔴 Live Feed</a>
           <a href="../reviews/index.html" class="nav-link">Reviews</a>
@@ -202,47 +198,7 @@
   <footer style="text-align: center; padding: 40px 20px; color: #6b7280; border-top: 1px solid #262626; margin-top: 60px;">
     <p>Live bet tracking powered by <a href="../index.html" style="color: #8b5cf6;">CryptoCasinoSorted.com</a></p>
     <p style="margin-top: 10px; font-size: 0.8rem;">Community-verified crypto casino reviews</p>
-  </footer>  <script>
-    // Mobile menu toggle
-    (function() {
-      const menuToggle = document.getElementById('mobile-menu-toggle');
-      const nav = document.getElementById('mobile-nav');
-      const menuIcon = document.getElementById('menu-icon');
-      const backdrop = document.getElementById('mobile-menu-backdrop');
-
-      function openMenu() {
-        nav.classList.add('active');
-        backdrop.classList.add('active');
-        menuIcon.textContent = '✕';
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeMenu() {
-        nav.classList.remove('active');
-        backdrop.classList.remove('active');
-        menuIcon.textContent = '☰';
-        document.body.style.overflow = '';
-      }
-
-      if (menuToggle && nav && backdrop) {
-        menuToggle.addEventListener('click', function(e) {
-          e.stopPropagation();
-          if (nav.classList.contains('active')) {
-            closeMenu();
-          } else {
-            openMenu();
-          }
-        });
-
-        backdrop.addEventListener('click', closeMenu);
-
-        const navLinks = nav.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-          link.addEventListener('click', closeMenu);
-        });
-      }
-    })();
-  </script>
+  </footer>
 
 </body>
 </html>
