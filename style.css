@@ -55,11 +55,29 @@ body {
   align-items: center;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 900;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
   color: var(--white);
-  margin: 0;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.brand:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.brand-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.brand-name {
+  font-weight: 900;
+  letter-spacing: -0.02em;
 }
 
 .nav {
@@ -67,15 +85,16 @@ body {
   gap: 2rem;
 }
 
-.nav a {
+.nav-link {
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
 }
 
-.nav a:hover {
+.nav-link:hover {
   color: var(--white);
+  text-decoration: none;
 }
 
 /* Hero */
