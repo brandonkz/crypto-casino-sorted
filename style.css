@@ -92,15 +92,15 @@ body {
 }
 
 .nav-link {
-  color: var(--text-secondary);
+  color: #ffffff;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.2s;
   white-space: nowrap;
 }
 
 .nav-link:hover {
-  color: var(--white);
+  color: #8b5cf6;
   text-decoration: none;
 }
 
