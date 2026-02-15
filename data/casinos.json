@@ -945,5 +945,175 @@
       "\"You can bag a 300% welcome package up to $3,000 when you deposit crypto at Ignition, spread equally between poker and casino.\"",
       "\"It's a well-rounded site with great UX, fast processing, and a large welcome bonus.\""
     ]
+  },
+  {
+    "id": 18,
+    "name": "Yeet",
+    "slug": "yeet",
+    "url": "https://yeet.com",
+    "ref_url": "https://yeet.com/register?aff=YeetCasino",
+    "description": "Rising crypto casino founded by crypto influencers (Keyboard Monkey, Mando, Ben Lamb). $7.75M funding from Dragonfly. No KYC up to $10k withdrawals. Future $YEET token airdrop.",
+    "bonus": "Welcome bonus + VIP tier matching",
+    "bonus_code": "YeetCasino",
+    "accepted_coins": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "USDT",
+      "USDC",
+      "20+ more"
+    ],
+    "provably_fair": true,
+    "kyc_required": "After $10,000 withdrawals",
+    "withdrawal_speed": "<30 minutes",
+    "vpn_allowed": true,
+    "min_deposit": "$10",
+    "license": "Anjouan & Curacao",
+    "games": [
+      "Slots",
+      "Live Casino",
+      "Sports Betting",
+      "Original Games"
+    ],
+    "live_dealer": true,
+    "mobile_app": false,
+    "established": 2024,
+    "rating": 4.5,
+    "pros": [
+      "High KYC threshold ($10k)",
+      "Transparent founders (known influencers)",
+      "Major VC backing ($7.75M from Dragonfly)",
+      "VIP tier matching from other casinos",
+      "Future token airdrop"
+    ],
+    "cons": [
+      "Very new platform (less track record)",
+      "Still building community",
+      "Limited game providers vs established sites"
+    ],
+    "featured": true,
+    "tier": "rising",
+    "has_token": true,
+    "token_symbol": "YEET",
+    "token_name": "Yeet Token",
+    "market_cap": "TBA (airdrop pending)",
+    "coingecko_id": null,
+    "reddit_quotes": [
+      "\"I use YEET as Crypto casino now and just use a VPN. I used to play on sweepstakes but with the regulations rolling out, is just easier for me to go crypto.\"",
+      "\"No KYC required to deposit or withdraw up to $10,000 USD worth of crypto\"",
+      "\"Yeet was founded by well-known crypto influencers Keyboard Monkey, Mando, and professional poker player Ben Lamb\""
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Wild.io",
+    "slug": "wild-io",
+    "url": "https://wild.io",
+    "ref_url": "https://wild.io",
+    "description": "Clean interface crypto casino with sports betting. Fast crypto withdrawals, diverse game selection. Mixed reviews - some withdrawal delays reported, but many positive experiences.",
+    "bonus": "Welcome bonus up to $1,000",
+    "bonus_code": "WILD",
+    "accepted_coins": [
+      "BTC",
+      "ETH",
+      "LTC",
+      "USDT",
+      "USDC",
+      "DOGE",
+      "15+ more"
+    ],
+    "provably_fair": true,
+    "kyc_required": "Optional (may be required for large withdrawals)",
+    "withdrawal_speed": "<1 hour (crypto)",
+    "vpn_allowed": true,
+    "min_deposit": "$10",
+    "license": "Curacao",
+    "games": [
+      "Slots",
+      "Live Casino",
+      "Sports Betting",
+      "Table Games"
+    ],
+    "live_dealer": true,
+    "mobile_app": false,
+    "established": 2019,
+    "rating": 4.2,
+    "pros": [
+      "Clean, modern interface",
+      "Fast crypto withdrawals",
+      "Good sportsbook",
+      "Decent game selection",
+      "VPN friendly"
+    ],
+    "cons": [
+      "Mixed community reviews",
+      "Some withdrawal delay reports",
+      "KYC can be requested unexpectedly",
+      "Customer support inconsistent"
+    ],
+    "featured": false,
+    "tier": "value",
+    "has_token": false,
+    "reddit_quotes": [
+      "\"Withdraws fairly fast via crypto, pretty decent casino\"",
+      "\"The platforms layout is cleaner than Stake, and while Stakes daily free dollar is nice, Wild.ios deposit bonus is one of the best Ive seen\"",
+      "\"Some users report KYC delays, but most withdrawals process normally\""
+    ]
+  },
+  {
+    "id": 20,
+    "name": "mBit",
+    "slug": "mbit",
+    "url": "https://mbitcasino.com",
+    "ref_url": "https://mbitcasino.com",
+    "description": "Veteran Bitcoin casino operating since 2014. Over 2,500 games, accepts both crypto and fiat. Reliable, consistent, and trusted by the community for 10+ years.",
+    "bonus": "110% up to 1 BTC + 300 free spins",
+    "bonus_code": "MBIT",
+    "accepted_coins": [
+      "BTC",
+      "ETH",
+      "LTC",
+      "DOGE",
+      "BCH",
+      "USDT",
+      "10+ more",
+      "Fiat (EUR, USD)"
+    ],
+    "provably_fair": true,
+    "kyc_required": "Optional",
+    "withdrawal_speed": "<1 hour (crypto)",
+    "vpn_allowed": true,
+    "min_deposit": "$20",
+    "license": "Curacao",
+    "games": [
+      "Slots",
+      "Live Casino",
+      "Table Games",
+      "Jackpots"
+    ],
+    "live_dealer": true,
+    "mobile_app": false,
+    "established": 2014,
+    "rating": 4.4,
+    "pros": [
+      "10+ years operating history",
+      "Accepts crypto AND fiat",
+      "Large game selection (2,500+)",
+      "Reliable platform",
+      "VPN friendly"
+    ],
+    "cons": [
+      "Interface could be more modern",
+      "Higher minimum deposit ($20)",
+      "Basic rewards program"
+    ],
+    "featured": false,
+    "tier": "established",
+    "has_token": false,
+    "reddit_quotes": [
+      "\"There are numerous casinos that you can legally play at, and a majority of them are legit... mbitcasino and bitstarz casino for crypto\"",
+      "\"10+ years in the game, consistent and reliable\"",
+      "\"Old-school but trustworthy\""
+    ]
   }
 ]
