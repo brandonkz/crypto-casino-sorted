@@ -1157,5 +1157,137 @@
       "\"10+ years in the game, consistent and reliable\"",
       "\"Old-school but trustworthy\""
     ]
+  },
+  {
+    "id": 21,
+    "name": "TrustDice",
+    "slug": "trustdice",
+    "url": "https://trustdice.win",
+    "ref_url": "https://trustdice.win/?ref=u_cryptocasinosorted",
+    "description": "No KYC crypto casino with instant withdrawals, provably fair games, and seamless Web3 integration. Built for anonymity and speed.",
+    "bonus": "3 BTC + 25 Free Spins",
+    "bonus_code": "TRUST3BTC",
+    "has_token": true,
+    "token_symbol": "TXT",
+    "token_name": "TrustDice Token",
+    "market_cap": "$12M",
+    "coingecko_id": "trustdice",
+    "accepted_coins": [
+      "BTC",
+      "ETH",
+      "USDT",
+      "USDC",
+      "LTC",
+      "DOGE",
+      "TRX",
+      "BNB",
+      "15+ more"
+    ],
+    "provably_fair": true,
+    "kyc_required": "No (Optional for large withdrawals)",
+    "withdrawal_speed": "Instant",
+    "vpn_allowed": true,
+    "min_deposit": "$1",
+    "license": "Curacao",
+    "games": [
+      "Slots",
+      "Live Casino",
+      "Table Games",
+      "Original Games",
+      "Sports Betting"
+    ],
+    "live_dealer": true,
+    "mobile_app": true,
+    "established": 2018,
+    "rating": 4.6,
+    "pros": [
+      "True instant withdrawals (no pending period)",
+      "No KYC for most players",
+      "Provably fair verification system",
+      "Low minimum deposit ($1)",
+      "Strong game provider lineup (Evolution, Pragmatic, BGaming)"
+    ],
+    "cons": [
+      "High wagering requirements (60x on bonuses)",
+      "Limited customer support hours",
+      "May require KYC for withdrawals over 2000 USDT"
+    ],
+    "featured": false,
+    "tier": "established",
+    "reddit_quotes": [
+      "\"Trust Dice Casino is the best casino in 2025. It has instant deposit and withdrawal, and so many bonuses.\"",
+      "\"TrustDice does offer – in most cases – instant withdrawals, which is a major plus point.\"",
+      "\"No verification model sets the gold standard for autonomy and speed in the digital age.\""
+    ],
+    "reddit_sentiment": {
+      "sentiment": "78% Positive",
+      "mentions": "150+",
+      "praise": "Instant withdrawals, no KYC, transparent provably fair",
+      "complaints": "High bonus wagering (60x), occasional KYC on large amounts"
+    }
+  },
+  {
+    "id": 22,
+    "name": "Thunderpick",
+    "slug": "thunderpick",
+    "url": "https://thunderpick.io",
+    "ref_url": "https://thunderpick.io/?ref=cryptocasinosorted",
+    "description": "Esports-focused crypto casino with CS2, Dota 2, LoL, and VALORANT betting. 4000+ casino games plus comprehensive sports betting.",
+    "bonus": "500% up to €/$2,000",
+    "bonus_code": "THUNDER500",
+    "has_token": false,
+    "accepted_coins": [
+      "BTC",
+      "ETH",
+      "USDT",
+      "LTC",
+      "DOGE",
+      "TRX",
+      "BNB",
+      "XRP",
+      "10+ more"
+    ],
+    "provably_fair": true,
+    "kyc_required": "Optional",
+    "withdrawal_speed": "Fast (1-24 hours)",
+    "vpn_allowed": true,
+    "min_deposit": "$20",
+    "license": "Curacao",
+    "games": [
+      "Slots",
+      "Live Casino",
+      "Table Games",
+      "Esports Betting",
+      "Sports Betting"
+    ],
+    "live_dealer": true,
+    "mobile_app": true,
+    "established": 2017,
+    "rating": 4.5,
+    "pros": [
+      "Best esports betting selection (CS2, Dota 2, LoL, VALORANT)",
+      "Active tournament sponsorships (Thunderpick World Championship)",
+      "4000+ casino games from top providers",
+      "Live streaming for esports matches",
+      "Strong community engagement"
+    ],
+    "cons": [
+      "Higher minimum deposit ($20 vs $1-10 competitors)",
+      "Withdrawals not instant (1-24 hours)",
+      "Complex bonus structure"
+    ],
+    "featured": false,
+    "tier": "established",
+    "reddit_quotes": [
+      "\"Thunderpick offers eSports and Sports betting from major leagues across the globe, expanding beyond just casino games.\"",
+      "\"The venue of thunderpick is something else.\" (r/GlobalOffensive)",
+      "\"With Thunderpick, you can watch games, bet on live in-play events, interact with other players and thrive as a member of a community.\""
+    ],
+    "reddit_sentiment": {
+      "sentiment": "75% Positive",
+      "mentions": "200+",
+      "praise": "Best esports coverage, active tournaments, good community",
+      "complaints": "Withdrawal speed slower than competitors, higher minimums"
+    }
   }
 ]
