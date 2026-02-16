@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head><title>CSV Debug</title></head>
+<body>
+<pre id="output"></pre>
+<script>
+function parseCSV(text) {
+    const lines = text.trim().split('\n');
+    const rows = [];
+    
+    for (let i = 1; i < Math.min(lines.length, 6); i++) {
+        const line = lines[i];
+        const values = [];
+        let current = '';
+        let inQuotes = false;
+        
+        for (let j = 0; j < line.length; j++) {
+            const char = line[j];
+            if (char === '"') {
+                inQuotes = !inQuotes;
+            } else if (char === ',' && !inQuotes) {
+                values.push(current);
+                current = '';
+            } else {
+                current += char;
+            }
+        }
+        values.push(current);
+        rows.push(values);
+    }
+    return rows;
+}
+
+fetch('./data/deposits-all.csv')
+    .then(response => response.text())
+    .then(text => {
+        const rows = parseCSV(text);
+        let output = 'First 5 rows parsed:\n\n';
+        
+        rows.forEach((row, i) => {
+            output += `Row ${i+1} (${row.length} columns):\n`;
+            row.forEach((val, j) => {
+                output += `  [${j}] = "${val}"\n`;
+            });
+            
+            const usdValue = row.length === 9 ? parseFloat(row[7]) : parseFloat(row[6]) || 0;
+            output += `  USD Value: ${usdValue}\n\n`;
+        });
+        
+        document.getElementById('output').textContent = output;
+    });
+</script>
+</body>
+</html>
