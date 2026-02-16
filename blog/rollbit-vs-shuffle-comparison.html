@@ -278,5 +278,50 @@
     <p style="margin-top: 10px; font-size: 0.8rem;">Community-verified crypto casino reviews</p>
   </footer>
 
+
+  <!-- Affiliate Link Tracking -->
+  <script>
+    (function() {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTracking);
+      } else {
+        initTracking();
+      }
+
+      function initTracking() {
+        const externalLinks = document.querySelectorAll('a[href^="http"]');
+        
+        externalLinks.forEach(link => {
+          const href = link.href;
+          const hostname = new URL(href).hostname;
+          const currentHostname = window.location.hostname;
+          
+          if (hostname === currentHostname || hostname.includes('sorted')) {
+            return;
+          }
+          
+          link.addEventListener('click', function(e) {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'affiliate_click', {
+                'link_url': href,
+                'link_text': this.textContent.trim().substring(0, 50),
+                'link_domain': hostname,
+                'page_location': window.location.pathname,
+                'page_title': document.title
+              });
+            }
+            
+            if (!e.ctrlKey && !e.metaKey && !e.shiftKey) {
+              e.preventDefault();
+              setTimeout(() => {
+                window.open(href, link.target || '_self');
+              }, 100);
+            }
+          });
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>
