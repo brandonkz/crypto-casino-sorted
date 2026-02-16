@@ -599,8 +599,8 @@
             'jackbit': Math.floor(Math.random() * 1500000) + 2500000    // $2.5-4M
         };
 
-        // Generate random bet
-        function generateBet() {
+        // Generate random bet (with optional past timestamp)
+        function generateBet(secondsAgo = 0) {
             const casino = casinos[Math.floor(Math.random() * casinos.length)];
             const crypto = cryptos[Math.floor(Math.random() * cryptos.length)];
             const amount = (Math.random() * (crypto.max - crypto.min) + crypto.min).toFixed(crypto.symbol === 'USDT' || crypto.symbol === 'DOGE' ? 0 : 3);
@@ -611,7 +611,7 @@
                 crypto,
                 amount,
                 usdValue: parseInt(usdValue),
-                timestamp: new Date()
+                timestamp: new Date(Date.now() - (secondsAgo * 1000))
             };
         }
 
@@ -631,11 +631,12 @@
         }
 
         // Create bet card HTML
-        function createBetCard(bet) {
+        function createBetCard(bet, isNew = true) {
             const sizeClass = bet.usdValue > 50000 ? 'huge' : bet.usdValue > 10000 ? 'big' : '';
+            const newClass = isNew ? 'new' : '';
             
             return `
-                <div class="bet-card new" data-casino="${bet.casino.id}">
+                <div class="bet-card ${newClass}" data-casino="${bet.casino.id}" data-timestamp="${bet.timestamp.getTime()}">
                     <div class="casino-logo">${bet.casino.icon}</div>
                     <div class="bet-details">
                         <div class="bet-amount ${sizeClass}">
@@ -647,7 +648,7 @@
                             <span class="crypto-icon">${bet.crypto.icon} ${bet.crypto.symbol}</span>
                         </div>
                     </div>
-                    <div class="bet-time">Just now</div>
+                    <div class="bet-time">${timeAgo(bet.timestamp)}</div>
                 </div>
             `;
         }
@@ -682,7 +683,7 @@
         }
 
         // Add bet to feed
-        function addBet(bet) {
+        function addBet(bet, isNew = true) {
             const feed = document.getElementById('liveFeed');
             
             // Update stats
@@ -700,13 +701,15 @@
             
             // Add to feed
             if (currentFilter === 'all' || currentFilter === bet.casino.id) {
-                feed.insertAdjacentHTML('afterbegin', createBetCard(bet));
+                feed.insertAdjacentHTML('afterbegin', createBetCard(bet, isNew));
                 
-                // Remove "new" class after animation
-                setTimeout(() => {
-                    const cards = feed.querySelectorAll('.bet-card.new');
-                    cards.forEach(card => card.classList.remove('new'));
-                }, 500);
+                // Remove "new" class after animation (only for new bets)
+                if (isNew) {
+                    setTimeout(() => {
+                        const cards = feed.querySelectorAll('.bet-card.new');
+                        cards.forEach(card => card.classList.remove('new'));
+                    }, 500);
+                }
                 
                 // Keep only last 50 bets
                 const cards = feed.querySelectorAll('.bet-card');
@@ -718,24 +721,34 @@
 
         // Update timestamps
         function updateTimestamps() {
-            document.querySelectorAll('.bet-card').forEach((card, index) => {
+            document.querySelectorAll('.bet-card').forEach((card) => {
                 const timeElement = card.querySelector('.bet-time');
-                const seconds = (index + 1) * (Math.random() * 15 + 5);
-                const date = new Date(Date.now() - seconds * 1000);
-                timeElement.textContent = timeAgo(date);
+                const timestamp = parseInt(card.dataset.timestamp);
+                if (timestamp) {
+                    const date = new Date(timestamp);
+                    timeElement.textContent = timeAgo(date);
+                }
             });
         }
 
         // Initialize casino breakdown
         renderCasinoBreakdown();
 
-        // Initialize with some bets
-        for (let i = 0; i < 10; i++) {
-            setTimeout(() => {
-                const bet = generateBet();
-                addBet(bet);
-            }, i * 500);
+        // Initialize with historical bets (make it look like feed has been running)
+        // Generate bets with timestamps spread over the last 5 minutes
+        const historicalBets = [];
+        let timeAgo = 0;
+        for (let i = 0; i < 25; i++) {
+            // Random time gap between bets (3-12 seconds)
+            timeAgo += Math.floor(Math.random() * 9) + 3;
+            const bet = generateBet(timeAgo);
+            historicalBets.push(bet);
         }
+        
+        // Add all historical bets at once (oldest first, so newest appears on top)
+        historicalBets.reverse().forEach(bet => {
+            addBet(bet, false); // false = don't show "new" animation
+        });
 
         // Add new bet every 3-8 seconds
         function scheduleNextBet() {
