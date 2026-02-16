@@ -73,6 +73,7 @@ async function getWalletTransactions(address, label, startBlock) {
                   time: date.toISOString().split('T')[1].substring(0, 8),
                   datetime: date.toISOString(),
                   casino: label,
+                  walletAddress: address,
                   amount: amount.toFixed(6),
                   token: 'ETH',
                   usdValue: (amount * ETH_USD_PRICE).toFixed(2),
@@ -144,12 +145,13 @@ async function exportToCSV() {
   console.log(`💰 Total: ${totalETH.toFixed(2)} ETH (~$${totalUSD.toLocaleString()})`);
   
   // Generate CSV
-  const headers = ['Date', 'Time', 'DateTime', 'Casino', 'Amount', 'Token', 'USD Value', 'Block'];
+  const headers = ['Date', 'Time', 'DateTime', 'Casino', 'Wallet Address', 'Amount', 'Token', 'USD Value', 'Block'];
   const rows = allDeposits.map(d => [
     d.date,
     d.time,
     d.datetime,
     d.casino,
+    d.walletAddress,
     d.amount,
     d.token,
     d.usdValue,

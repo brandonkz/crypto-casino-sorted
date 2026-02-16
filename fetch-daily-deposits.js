@@ -73,6 +73,7 @@ async function getWalletTransactions(address, label, startBlock) {
               .filter(tx => tx.to.toLowerCase() === address.toLowerCase() && tx.value !== '0')
               .map(tx => ({
                 casino: label,
+                walletAddress: address,
                 amount: (parseInt(tx.value) / 1e18).toFixed(4),
                 token: 'ETH',
                 timestamp: parseInt(tx.timeStamp) * 1000,
