@@ -98,7 +98,16 @@
 
         <div class="charts-grid">
             <div class="chart-card" style="grid-column:1/-1;">
-                <h2>💵 Average Deposit by Casino</h2>
+                <h2>💵 Total Volume by Casino</h2>
+                <div class="chart-container">
+                    <canvas id="volumeBarChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card" style="grid-column:1/-1;">
+                <h2>📊 Average Deposit by Casino</h2>
                 <div class="chart-container">
                     <canvas id="avgCasinoChart"></canvas>
                 </div>
@@ -185,6 +194,48 @@
                         grid: { color: 'rgba(139, 92, 246, 0.1)' }
                     },
                     x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // Total Volume by Casino (Horizontal Bar)
+        new Chart(document.getElementById('volumeBarChart'), {
+            type: 'bar',
+            data: {
+                labels: casinos,
+                datasets: [{
+                    label: 'Total Volume (USD)',
+                    data: casinos.map(c => data.stats[c].v),
+                    backgroundColor: colors,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => {
+                                const value = context.parsed.x;
+                                return '$' + (value / 1e6).toFixed(2) + 'M';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(139, 92, 246, 0.1)' },
+                        ticks: {
+                            callback: (value) => '$' + (value / 1e6).toFixed(1) + 'M'
+                        }
+                    },
+                    y: {
                         grid: { display: false }
                     }
                 }
