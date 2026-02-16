@@ -145,7 +145,7 @@ async function exportToCSV() {
   console.log(`💰 Total: ${totalETH.toFixed(2)} ETH (~$${totalUSD.toLocaleString()})`);
   
   // Generate CSV
-  const headers = ['Date', 'Time', 'DateTime', 'Casino', 'Wallet Address', 'Amount', 'Token', 'USD Value', 'Block'];
+  const headers = ['Date', 'Time', 'DateTime', 'Casino', 'Wallet Address', 'Amount', 'Token', 'USD Value'];
   const rows = allDeposits.map(d => [
     d.date,
     d.time,
@@ -154,8 +154,7 @@ async function exportToCSV() {
     d.walletAddress,
     d.amount,
     d.token,
-    d.usdValue,
-    d.block
+    d.usdValue
   ]);
   
   const csv = [
