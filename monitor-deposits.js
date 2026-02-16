@@ -7,16 +7,21 @@
 
 const https = require('https');
 const fs = require('fs');
-require('dotenv').config({ path: '../.env.local' });
+const path = require('path');
+
+// Load environment variables from .env.local (try both current dir and parent)
+require('dotenv').config({ path: path.join(__dirname, '.env.local') });
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 
 // Major crypto casino hot wallets (Ethereum mainnet)
-// All addresses are publicly labeled on Etherscan/BscScan
+// Addresses loaded from .env.local (not committed to git)
+// These are publicly labeled on Etherscan, but we keep them in .env for easy management
 const CASINO_WALLETS = {
-  'Stake': '0x974CaA59e49682CdA0AD2bbe82983419A2ECC400', // Stake.com (Etherscan labeled)
-  'Stake 6': '0xfa500178de024bf43cfa69b7e636a28ab68f2741', // Stake.com 6 (~$22.5M balance, 34M+ txs)
-  'Rollbit': '0xcbd6832ebc203e49e2b771897067fce3c58575ac' // Rollbit: Hot Wallet (Etherscan labeled)
+  'Stake': process.env.STAKE_WALLET_1,
+  'Stake 6': process.env.STAKE_WALLET_2,
+  'Rollbit': process.env.ROLLBIT_WALLET
 };
 
 // Track last checked block to avoid duplicates
