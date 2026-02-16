@@ -683,12 +683,10 @@
         function createBetCard(bet) {
             const sizeClass = bet.usdValue > 50000 ? 'huge' : bet.usdValue > 10000 ? 'big' : '';
             const verifiedBadge = bet.isReal ? `
-                <a href="https://etherscan.io/tx/${bet.txHash}" 
-                   target="_blank" 
-                   title="View on Etherscan"
-                   style="display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 4px; font-size: 0.7rem; color: #22c55e; text-decoration: none; margin-left: 8px;">
+                <span title="Real blockchain deposit" 
+                      style="display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 4px; font-size: 0.7rem; color: #22c55e; margin-left: 8px;">
                     ⛓️ Verified
-                </a>
+                </span>
             ` : '';
             
             return `

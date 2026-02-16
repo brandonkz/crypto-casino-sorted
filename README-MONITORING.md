@@ -12,18 +12,33 @@ This protects:
 ## How It Works
 
 ### Local Demo (Interview/Testing)
-```bash
-# 1. Fetch real blockchain deposits (stored locally only)
-node monitor-deposits.js
 
-# 2. View live feed on localhost
+**Efficient approach (recommended):**
+```bash
+# Fetch latest deposits (2 API calls only)
+node monitor-deposits-efficient.js
+
+# View live feed
 open live-feed.html
-# OR run local server:
-python3 -m http.server 8000
-# Then visit: http://localhost:8000/live-feed.html
 ```
 
-Real deposits will show with ⛓️ "Verified" badges linking to Etherscan.
+**Continuous monitoring (for live demos):**
+```bash
+# Runs every 30 seconds (720 calls/hour)
+./start-monitoring.sh
+```
+
+Real deposits show with ⛓️ "Verified" badges (no transaction links for privacy).
+
+### API Usage
+
+**Efficient script:** 2 calls/run (ETH only, 2 wallets)
+- Before interview: ~10 calls total
+- Etherscan free tier: 100,000/day ✅
+
+**Continuous monitoring:** 720 calls/hour
+- Only for live demos
+- Still within free tier if < 5 hours
 
 ### Public Deployment (cryptocasinosorted.com)
 - `data/live-deposits.json` is **gitignored** (never pushed)
