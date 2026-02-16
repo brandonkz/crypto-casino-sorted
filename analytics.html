@@ -332,197 +332,86 @@
         }
 
         // Load and analyze data
-        fetch('./data/deposits-all.csv')
-            .then(response => response.text())
-            .then(text => {
-                const rows = parseCSV(text);
-                
-                // Find date range
-                let minDate = null;
-                let maxDate = null;
-                
-                rows.forEach(row => {
-                    const date = new Date(row[0]);
-                    if (!minDate || date < minDate) minDate = date;
-                    if (!maxDate || date > maxDate) maxDate = date;
-                });
-                
-                const daysDiff = Math.ceil((maxDate - minDate) / (1000 * 60 * 60 * 24)) + 1;
-                const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                
-                document.getElementById('headerSubtext').textContent = `${formatDate(minDate)} – ${formatDate(maxDate)} (${daysDiff} day${daysDiff > 1 ? 's' : ''})`;
-                document.getElementById('timePeriod').textContent = daysDiff + ' day' + (daysDiff > 1 ? 's' : '');
-                document.getElementById('dateRange').textContent = `${formatDate(minDate)} – ${formatDate(maxDate)}`;
-                
-                // Aggregate
-                const casinoData = {};
-                let totalVolume = 0;
-                let biggestDeposit = { value: 0, casino: '' };
-                
-                rows.forEach(row => {
-                    const casino = normalizeCasino(row[3]);
-                    const usdValue = parseFloat(row[7]) || 0;
-                    
-                    if (!casinoData[casino]) {
-                        casinoData[casino] = { volume: 0, count: 0 };
-                    }
-                    
-                    casinoData[casino].volume += usdValue;
-                    casinoData[casino].count += 1;
-                    totalVolume += usdValue;
-                    
-                    if (usdValue > biggestDeposit.value) {
-                        biggestDeposit = { value: usdValue, casino };
-                    }
-                });
-                
-                const totalDeposits = rows.length;
-                const avgDeposit = totalVolume / totalDeposits;
-                
-                document.getElementById('totalVolume').textContent = '$' + (totalVolume / 1000000).toFixed(2) + 'M';
-                document.getElementById('totalDeposits').textContent = totalDeposits.toLocaleString() + ' deposits';
-                document.getElementById('avgDeposit').textContent = '$' + avgDeposit.toFixed(0);
-                document.getElementById('biggestDeposit').textContent = '$' + biggestDeposit.value.toLocaleString(undefined, { maximumFractionDigits: 0 });
-                document.getElementById('biggestCasino').textContent = biggestDeposit.casino;
-                
-                const periodText = daysDiff === 1 ? '24h' : `${daysDiff} days`;
-                document.getElementById('volumeTitle').textContent = `Volume by Casino (${periodText})`;
-                document.getElementById('depositsTitle').textContent = `Number of Deposits (${periodText})`;
-                document.getElementById('comparisonTitle').textContent = `Casino Comparison (${periodText})`;
-                
-                const casinos = Object.keys(casinoData).sort((a, b) => casinoData[b].volume - casinoData[a].volume);
-                const volumes = casinos.map(c => casinoData[c].volume);
-                const counts = casinos.map(c => casinoData[c].count);
-                
-                const colors = ['#8b5cf6', '#ec4899', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#6366f1'];
-                
-                // Charts
-                new Chart(document.getElementById('volumeChart'), {
-                    type: 'bar',
-                    data: {
-                        labels: casinos,
-                        datasets: [{
-                            label: 'Volume (USD)',
-                            data: volumes,
-                            backgroundColor: colors,
-                            borderRadius: 8
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: (context) => '$' + context.parsed.y.toLocaleString(undefined, { maximumFractionDigits: 0 })
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    callback: (value) => '$' + (value / 1000000).toFixed(1) + 'M',
-                                    color: '#9ca3af'
-                                },
-                                grid: { color: 'rgba(139, 92, 246, 0.1)' }
-                            },
-                            x: {
-                                ticks: { color: '#9ca3af' },
-                                grid: { display: false }
-                            }
-                        }
-                    }
-                });
-                
-                new Chart(document.getElementById('depositsChart'), {
-                    type: 'bar',
-                    data: {
-                        labels: casinos,
-                        datasets: [{
-                            label: 'Deposits',
-                            data: counts,
-                            backgroundColor: colors,
-                            borderRadius: 8
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: { color: '#9ca3af' },
-                                grid: { color: 'rgba(139, 92, 246, 0.1)' }
-                            },
-                            x: {
-                                ticks: { color: '#9ca3af' },
-                                grid: { display: false }
-                            }
-                        }
-                    }
-                });
-                
-                new Chart(document.getElementById('comparisonChart'), {
-                    type: 'bar',
-                    data: {
-                        labels: casinos,
-                        datasets: [
-                            {
-                                label: 'Volume ($M)',
-                                data: volumes.map(v => v / 1000000),
-                                backgroundColor: '#8b5cf6',
-                                borderRadius: 8,
-                                yAxisID: 'y'
-                            },
-                            {
-                                label: 'Deposits (hundreds)',
-                                data: counts.map(c => c / 100),
-                                backgroundColor: '#ec4899',
-                                borderRadius: 8,
-                                yAxisID: 'y1'
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                labels: { color: '#9ca3af' }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                type: 'linear',
-                                display: true,
-                                position: 'left',
-                                title: { display: true, text: 'Volume ($M)', color: '#9ca3af' },
-                                ticks: { color: '#9ca3af' },
-                                grid: { color: 'rgba(139, 92, 246, 0.1)' }
-                            },
-                            y1: {
-                                type: 'linear',
-                                display: true,
-                                position: 'right',
-                                title: { display: true, text: 'Deposits (hundreds)', color: '#9ca3af' },
-                                ticks: { color: '#9ca3af' },
-                                grid: { drawOnChartArea: false }
-                            },
-                            x: {
-                                ticks: { color: '#9ca3af' },
-                                grid: { display: false }
-                            }
-                        }
-                    }
-                });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('totalVolume').textContent = 'Error loading data';
-            });
+        
+    // EMBEDDED DATA - Generated 2026-02-16T11:27:45.296Z
+    window.CASINO_STATS = {
+  "casinos": {
+    "Rollbit": {
+      "volume": 268623.46000000037,
+      "count": 839
+    },
+    "Rainbet": {
+      "volume": 133062.01000000062,
+      "count": 795
+    },
+    "Stake": {
+      "volume": 323381.6099999994,
+      "count": 1362
+    },
+    "Roobet": {
+      "volume": 2037327.7000000002,
+      "count": 25
+    },
+    "Bitcasino": {
+      "volume": 28764.73000000003,
+      "count": 116
+    },
+    "Duelbits": {
+      "volume": 2594993.120000001,
+      "count": 280
+    }
+  },
+  "totalVolume": 5386152.630000004,
+  "totalDeposits": 3417,
+  "biggestDeposit": {
+    "value": 1421281.22,
+    "casino": "Duelbits"
+  },
+  "minDate": "2026-02-15",
+  "maxDate": "2026-02-16"
+};
+    
+    // Use embedded data instead of fetching CSV
+    const stats = window.CASINO_STATS;
+    
+    const minDate = new Date(stats.minDate);
+    const maxDate = new Date(stats.maxDate);
+    const daysDiff = Math.ceil((maxDate - minDate) / (1000 * 60 * 60 * 24)) + 1;
+    const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    
+    document.getElementById('headerSubtext').textContent = formatDate(minDate) + ' – ' + formatDate(maxDate) + ' (' + daysDiff + ' day' + (daysDiff > 1 ? 's' : '') + ')';
+    document.getElementById('timePeriod').textContent = daysDiff + ' day' + (daysDiff > 1 ? 's' : '');
+    document.getElementById('dateRange').textContent = formatDate(minDate) + ' – ' + formatDate(maxDate);
+    
+    const avgDeposit = stats.totalVolume / stats.totalDeposits;
+    
+    document.getElementById('totalVolume').textContent = '
+    </script>
+</body>
+</html>
+ + (stats.totalVolume / 1000000).toFixed(2) + 'M';
+    document.getElementById('totalDeposits').textContent = stats.totalDeposits.toLocaleString() + ' deposits';
+    document.getElementById('avgDeposit').textContent = '
+    </script>
+</body>
+</html>
+ + avgDeposit.toFixed(0);
+    document.getElementById('biggestDeposit').textContent = '
+    </script>
+</body>
+</html>
+ + stats.biggestDeposit.value.toLocaleString(undefined, { maximumFractionDigits: 0 });
+    document.getElementById('biggestCasino').textContent = stats.biggestDeposit.casino;
+    
+    const periodText = daysDiff === 1 ? '24h' : daysDiff + ' days';
+    document.getElementById('volumeTitle').textContent = 'Volume by Casino (' + periodText + ')';
+    document.getElementById('depositsTitle').textContent = 'Number of Deposits (' + periodText + ')';
+    document.getElementById('comparisonTitle').textContent = 'Casino Comparison (' + periodText + ')';
+    
+    const casinos = Object.keys(stats.casinos).sort((a, b) => stats.casinos[b].volume - stats.casinos[a].volume);
+    const volumes = casinos.map(c => stats.casinos[c].volume);
+    const counts = casinos.map(c => stats.casinos[c].count);
+
     </script>
 </body>
 </html>

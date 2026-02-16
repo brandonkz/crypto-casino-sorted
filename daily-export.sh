@@ -11,10 +11,10 @@ echo ""
 # Run export
 node export-deposits-csv.js
 
-# Generate dashboard (optimized version)
+# Generate analytics with embedded data for live site
 echo ""
-echo "📊 Generating dashboard..."
-node generate-dashboard-summary.js
+echo "📊 Generating live analytics..."
+node generate-live-analytics.js
 
 # Check if successful
 if [ $? -eq 0 ]; then
