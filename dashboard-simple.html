@@ -247,10 +247,8 @@
                 rows.forEach(row => {
                     const casino = normalizeCasino(row[3]); // Casino column
                     
-                    // Handle mixed CSV formats:
-                    // Old format (8 cols): Date,Time,DateTime,Casino,Amount,Token,USD Value,Block
-                    // New format (9 cols): Date,Time,DateTime,Casino,Wallet Address,Amount,Token,USD Value
-                    const usdValue = row.length === 9 ? parseFloat(row[7]) : parseFloat(row[6]) || 0;
+                    // Current format (8 cols): Date,Time,DateTime,Casino,Wallet Address,Amount,Token,USD Value
+                    const usdValue = parseFloat(row[7]) || 0;
                     
                     if (!casinoData[casino]) {
                         casinoData[casino] = { volume: 0, count: 0 };
