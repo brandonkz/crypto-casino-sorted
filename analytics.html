@@ -106,10 +106,58 @@
         </div>
 
         <div class="charts-grid">
-            <div class="chart-card" style="grid-column:1/-1;">
+            <div class="chart-card">
                 <h2>📊 Average Deposit by Casino</h2>
                 <div class="chart-container">
                     <canvas id="avgCasinoChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h2>📈 Deposit Size Distribution</h2>
+                <div class="chart-container">
+                    <canvas id="sizeDistChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card" style="grid-column:1/-1;">
+                <h2>🐋 Top 10 Biggest Deposits</h2>
+                <div style="overflow-x:auto;">
+                    <table id="top10Table" style="width:100%;border-collapse:collapse;color:#fff;font-size:0.875rem;">
+                        <thead>
+                            <tr style="border-bottom:2px solid rgba(139,92,246,0.3);">
+                                <th style="text-align:left;padding:12px 8px;color:#9ca3af;font-weight:600;">Rank</th>
+                                <th style="text-align:left;padding:12px 8px;color:#9ca3af;font-weight:600;">Amount</th>
+                                <th style="text-align:left;padding:12px 8px;color:#9ca3af;font-weight:600;">Casino</th>
+                                <th style="text-align:left;padding:12px 8px;color:#9ca3af;font-weight:600;">Date</th>
+                                <th style="text-align:left;padding:12px 8px;color:#9ca3af;font-weight:600;">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top10Body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card" style="grid-column:1/-1;">
+                <h2>🏆 Casino Rankings</h2>
+                <div style="overflow-x:auto;">
+                    <table id="rankingsTable" style="width:100%;border-collapse:collapse;color:#fff;font-size:0.875rem;">
+                        <thead>
+                            <tr style="border-bottom:2px solid rgba(139,92,246,0.3);">
+                                <th style="text-align:left;padding:12px 8px;color:#9ca3af;font-weight:600;">Casino</th>
+                                <th style="text-align:right;padding:12px 8px;color:#9ca3af;font-weight:600;">Total Volume</th>
+                                <th style="text-align:right;padding:12px 8px;color:#9ca3af;font-weight:600;">Deposits</th>
+                                <th style="text-align:right;padding:12px 8px;color:#9ca3af;font-weight:600;">Avg Deposit</th>
+                                <th style="text-align:right;padding:12px 8px;color:#9ca3af;font-weight:600;">Biggest</th>
+                                <th style="text-align:right;padding:12px 8px;color:#9ca3af;font-weight:600;">Market Share</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rankingsBody"></tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -118,7 +166,7 @@
 
     <script>
         // Embedded data (generated from deposits-all.csv)
-        const data = {"stats":{"Rollbit":{"v":268623.46000000037,"n":839},"Rainbet":{"v":133062.01000000062,"n":795},"Stake":{"v":323381.6099999994,"n":1362},"Roobet":{"v":2037327.7000000002,"n":25},"Bitcasino":{"v":28764.73000000003,"n":116},"Duelbits":{"v":2594993.120000001,"n":280}},"total":5386152.630000004,"count":3417,"biggest":{"v":1421281.22,"c":"Duelbits"},"min":"2026-02-15","max":"2026-02-16"};
+        const data = {"stats":{"Rollbit":{"v":268623.46000000037,"n":839,"biggest":14000},"Rainbet":{"v":133062.01000000062,"n":795,"biggest":8458.04},"Stake":{"v":323381.6099999994,"n":1362,"biggest":31171.92},"Roobet":{"v":2037327.7000000002,"n":25,"biggest":429888.22},"Bitcasino":{"v":28764.73000000003,"n":116,"biggest":2800},"Duelbits":{"v":2594993.120000001,"n":280,"biggest":1421281.22}},"total":5386152.630000004,"count":3417,"biggest":{"v":1421281.22,"c":"Duelbits"},"min":"2026-02-15","max":"2026-02-16","sizeRanges":[{"label":"<$100","count":2233},{"label":"$100-500","count":784},{"label":"$500-1K","count":180},{"label":"$1K-5K","count":177},{"label":"$5K-10K","count":12},{"label":"$10K-50K","count":8},{"label":">$50K","count":23}],"top10":[{"date":"2026-02-15","time":"23:20:23","casino":"Duelbits","usd":1421281.22},{"date":"2026-02-15","time":"20:09:35","casino":"Duelbits","usd":775574.39},{"date":"2026-02-15","time":"14:34:23","casino":"Roobet","usd":429888.22},{"date":"2026-02-15","time":"17:07:11","casino":"Roobet","usd":406407.64},{"date":"2026-02-16","time":"00:38:35","casino":"Duelbits","usd":126000.02},{"date":"2026-02-15","time":"17:57:35","casino":"Roobet","usd":100695.12},{"date":"2026-02-15","time":"14:24:23","casino":"Roobet","usd":99150.72},{"date":"2026-02-15","time":"12:03:23","casino":"Roobet","usd":94528.03},{"date":"2026-02-15","time":"15:04:23","casino":"Roobet","usd":82717.55},{"date":"2026-02-15","time":"16:06:11","casino":"Roobet","usd":73983.71}]};
 
         // Update stats
         const f = (x) => new Date(x).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -273,6 +321,69 @@
                     }
                 }
             }
+        });
+
+        // Deposit Size Distribution (Bar)
+        new Chart(document.getElementById('sizeDistChart'), {
+            type: 'bar',
+            data: {
+                labels: data.sizeRanges.map(r => r.label),
+                datasets: [{
+                    label: 'Deposits',
+                    data: data.sizeRanges.map(r => r.count),
+                    backgroundColor: '#8b5cf6',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: true,
+                        grid: { color: 'rgba(139, 92, 246, 0.1)' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // Populate Top 10 Table
+        const top10Body = document.getElementById('top10Body');
+        data.top10.forEach((d, i) => {
+            const row = document.createElement('tr');
+            row.style.borderBottom = '1px solid rgba(139,92,246,0.1)';
+            row.innerHTML = `
+                <td style="padding:12px 8px;font-weight:600;color:#8b5cf6;">${i + 1}</td>
+                <td style="padding:12px 8px;font-weight:700;">$${d.usd.toLocaleString(undefined, {maximumFractionDigits: 0})}</td>
+                <td style="padding:12px 8px;">${d.casino}</td>
+                <td style="padding:12px 8px;color:#9ca3af;">${d.date}</td>
+                <td style="padding:12px 8px;color:#9ca3af;">${d.time}</td>
+            `;
+            top10Body.appendChild(row);
+        });
+
+        // Populate Casino Rankings Table
+        const rankingsBody = document.getElementById('rankingsBody');
+        casinos.forEach((c, i) => {
+            const s = data.stats[c];
+            const share = ((s.v / data.total) * 100).toFixed(1);
+            const row = document.createElement('tr');
+            row.style.borderBottom = '1px solid rgba(139,92,246,0.1)';
+            row.innerHTML = `
+                <td style="padding:12px 8px;font-weight:600;">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : ''} ${c}</td>
+                <td style="padding:12px 8px;text-align:right;font-weight:700;">$${(s.v / 1e6).toFixed(2)}M</td>
+                <td style="padding:12px 8px;text-align:right;">${s.n.toLocaleString()}</td>
+                <td style="padding:12px 8px;text-align:right;">$${(s.v / s.n).toLocaleString(undefined, {maximumFractionDigits: 0})}</td>
+                <td style="padding:12px 8px;text-align:right;color:#8b5cf6;font-weight:600;">$${s.biggest.toLocaleString(undefined, {maximumFractionDigits: 0})}</td>
+                <td style="padding:12px 8px;text-align:right;font-weight:600;">${share}%</td>
+            `;
+            rankingsBody.appendChild(row);
         });
     </script>
 </body>
