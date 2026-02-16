@@ -11,34 +11,42 @@ This protects:
 
 ## How It Works
 
-### Local Demo (Interview/Testing)
+### Before Interview (Recommended)
 
-**Efficient approach (recommended):**
+**Fetch entire day's activity in one go:**
 ```bash
-# Fetch latest deposits (2 API calls only)
-node monitor-deposits-efficient.js
+node fetch-daily-deposits.js
+```
 
-# View live feed
+**What you get:**
+- Last 24 hours of deposits (~1,000+ transactions)
+- Total volume stats ($700K+ typical)
+- 3 API calls total (0.003% of daily limit)
+- Perfect for demos/interviews
+
+**Then view:**
+```bash
 open live-feed.html
 ```
 
-**Continuous monitoring (for live demos):**
-```bash
-# Runs every 30 seconds (720 calls/hour)
-./start-monitoring.sh
-```
+### API Usage Comparison
 
-Real deposits show with ⛓️ "Verified" badges (no transaction links for privacy).
+| Approach | API Calls | Use Case |
+|----------|-----------|----------|
+| **Daily fetch** | 3 total | ✅ Before interview (recommended) |
+| Efficient | 2 per run | Manual refresh |
+| Continuous | 720/hour | Live monitoring (not needed) |
 
-### API Usage
+**Etherscan free tier:** 100,000/day
 
-**Efficient script:** 2 calls/run (ETH only, 2 wallets)
-- Before interview: ~10 calls total
-- Etherscan free tier: 100,000/day ✅
+### What the Data Shows
 
-**Continuous monitoring:** 720 calls/hour
-- Only for live demos
-- Still within free tier if < 5 hours
+Real 24h example:
+- **Stake**: 434 deposits, 162 ETH, biggest: 30 ETH
+- **Rollbit**: 841 deposits, 113 ETH, biggest: 5 ETH
+- **Total**: 1,275 deposits, $773K volume
+
+All transaction hashes removed for user privacy.
 
 ### Public Deployment (cryptocasinosorted.com)
 - `data/live-deposits.json` is **gitignored** (never pushed)
