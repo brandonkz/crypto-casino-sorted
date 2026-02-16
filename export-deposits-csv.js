@@ -14,10 +14,41 @@ require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 
+// Build wallet list dynamically from .env.local
 const CASINO_WALLETS = {
+  // Stake (multiple wallets)
   'Stake': process.env.STAKE_WALLET_1,
-  'Rollbit': process.env.ROLLBIT_WALLET
+  'Stake 4': process.env.STAKE_WALLET_4,
+  'Stake 11': process.env.STAKE_WALLET_11,
+  
+  // Rollbit
+  'Rollbit': process.env.ROLLBIT_HOT_WALLET,
+  'Rollbit ENS': process.env.ROLLBIT_ENS,
+  
+  // Roobet
+  'Roobet': process.env.ROOBET_HOT_WALLET,
+  
+  // BC.Game
+  'BC.Game': process.env.BCGAME_HOT_WALLET_1,
+  'BC.Game 2': process.env.BCGAME_HOT_WALLET_2,
+  
+  // Duelbits
+  'Duelbits': process.env.DUELBITS_HOT_WALLET,
+  
+  // Rainbet
+  'Rainbet': process.env.RAINBET_WALLET,
+  
+  // Gamdom
+  'Gamdom': process.env.GAMDOM_HOT_WALLET,
+  
+  // Bitcasino
+  'Bitcasino': process.env.BITCASINO_HOT_WALLET
 };
+
+// Filter out undefined wallets
+Object.keys(CASINO_WALLETS).forEach(key => {
+  if (!CASINO_WALLETS[key]) delete CASINO_WALLETS[key];
+});
 
 const BLOCKS_PER_DAY = 7200;
 const ETH_USD_PRICE = 2800; // Update manually or fetch from API
