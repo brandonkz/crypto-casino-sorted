@@ -370,14 +370,14 @@ body {
 }
 
 .casino-bonus {
-  background: var(--white);
-  color: var(--dark);
-  padding: 1.5rem;
-  border-radius: var(--radius-lg);
-  margin-bottom: 1.5rem;
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--border);
+  margin-top: 1rem;
   text-align: center;
-  font-weight: 900;
-  font-size: 1.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .casino-features {
