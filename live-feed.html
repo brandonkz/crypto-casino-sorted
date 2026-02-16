@@ -583,10 +583,9 @@
             'DOGE': 0.08
         };
 
-        // Stats
-        let totalBets = 0;
-        let totalVolume = 0;
-        let biggestBet = 0;
+        // Stats (initialize with realistic "running feed" values)
+        let totalBets = 22356;
+        let biggestBet = 187500; // $187,500 biggest bet today
         let activeUsers = Math.floor(Math.random() * 500) + 200;
         let currentFilter = 'all';
         
@@ -598,6 +597,9 @@
             'shuffle': Math.floor(Math.random() * 2000000) + 4000000,   // $4-6M
             'jackbit': Math.floor(Math.random() * 1500000) + 2500000    // $2.5-4M
         };
+        
+        // Calculate total volume from casino volumes
+        let totalVolume = Object.values(casinoVolumes).reduce((a, b) => a + b, 0);
 
         // Generate random bet
         function generateBet() {
