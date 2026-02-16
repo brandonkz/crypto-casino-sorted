@@ -11,6 +11,11 @@ echo ""
 # Run export
 node export-deposits-csv.js
 
+# Generate dashboard
+echo ""
+echo "📊 Generating dashboard..."
+node generate-dashboard.js
+
 # Check if successful
 if [ $? -eq 0 ]; then
   echo ""
