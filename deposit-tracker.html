@@ -1,533 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Casino Tracker - See Your Net Win/Loss | CryptoCasinoSorted</title>
-    <meta name="description" content="Track your crypto casino deposits and withdrawals. See your net win/loss across Stake, Rollbit, BC.Game and more. Just paste your wallet address.">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
-    <!-- Schema.org markup for Tool/Calculator -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Crypto Casino Deposit Tracker",
-        "description": "Track your lifetime deposits across crypto casinos using blockchain data",
-        "applicationCategory": "FinanceApplication",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "provider": {
-            "@type": "Organization",
-            "name": "CryptoCasinoSorted"
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Casino Deposit Tracker - Know Your Real Position | CryptoCasinoSorted</title>
+  <meta name="description" content="Stop guessing. Track deposits and withdrawals across crypto casinos and see your real profit/loss. Paste your wallet address and get the truth in seconds.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/deposit-tracker.html">
+  <meta name="author" content="CryptoCasinoSorted">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Schema.org markup for Tool/Calculator -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Crypto Casino Deposit Tracker",
+    "description": "Track your lifetime deposits across crypto casinos using blockchain data",
+    "applicationCategory": "FinanceApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "CryptoCasinoSorted"
     }
-    </script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1625 0%, #2d1b3d 100%);
-            color: #e2e8f0;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-top: 20px;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            color: #94a3b8;
-            margin-bottom: 20px;
-        }
-        
-        .info-box {
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-            color: #cbd5e1;
-        }
-        
-        .info-box strong {
-            color: #8b5cf6;
-        }
-        
-        .input-section {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: #e2e8f0;
-        }
-        
-        input[type="text"] {
-            width: 100%;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 8px;
-            color: #e2e8f0;
-            font-size: 1rem;
-            font-family: 'Courier New', monospace;
-            margin-bottom: 15px;
-            transition: border 0.3s ease;
-        }
-        
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #8b5cf6;
-        }
-        
-        input[type="text"]::placeholder {
-            color: #64748b;
-        }
-        
-        .btn {
-            width: 100%;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
-        }
-        
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 40px;
-            display: none;
-        }
-        
-        .loading.active {
-            display: block;
-        }
-        
-        .spinner {
-            border: 4px solid rgba(139, 92, 246, 0.2);
-            border-left-color: #8b5cf6;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .results {
-            display: none;
-        }
-        
-        .results.active {
-            display: block;
-        }
-        
-        .results-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 20px;
-        }
-        
-        .headline-stat {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 40px;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
-            border-radius: 16px;
-            border: 2px solid rgba(139, 92, 246, 0.4);
-            position: relative;
-        }
-        
-        .headline-stat::after {
-            content: 'CryptoCasinoSorted.com';
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            font-size: 0.8rem;
-            color: rgba(139, 92, 246, 0.6);
-            font-weight: 600;
-        }
-        
-        .headline-stat .amount {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-        
-        .headline-stat .label {
-            font-size: 1.3rem;
-            color: #cbd5e1;
-            font-weight: 600;
-        }
-        
-        .headline-stat .subtext {
-            font-size: 1rem;
-            color: #94a3b8;
-            margin-top: 15px;
-            font-weight: 500;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .stat-box {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-        }
-        
-        .stat-box .value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #8b5cf6;
-            margin-bottom: 5px;
-        }
-        
-        .stat-box .label {
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-        
-        .casino-breakdown {
-            margin-top: 30px;
-        }
-        
-        .casino-breakdown h3 {
-            margin-bottom: 20px;
-            color: #e2e8f0;
-        }
-        
-        .casino-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-        }
-        
-        .casino-item .casino-name {
-            font-weight: 600;
-            color: #e2e8f0;
-        }
-        
-        .casino-item .casino-amount {
-            font-weight: 700;
-            color: #8b5cf6;
-        }
-        
-        .casino-item .casino-count {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            margin-left: 10px;
-        }
-        
-        .casino-item .casino-details {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 5px;
-        }
-        
-        .casino-item .net-amount {
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-        
-        .casino-item .net-amount.positive {
-            color: #22c55e;
-        }
-        
-        .casino-item .net-amount.negative {
-            color: #ef4444;
-        }
-        
-        .casino-item .breakdown {
-            font-size: 0.85rem;
-            color: #64748b;
-        }
-        
-        .casino-item .breakdown .deposit {
-            color: #ef4444;
-        }
-        
-        .casino-item .breakdown .withdrawal {
-            color: #22c55e;
-        }
-        
-        .share-section {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(139, 92, 246, 0.2);
-        }
-        
-        .share-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: rgba(139, 92, 246, 0.2);
-            border: 1px solid rgba(139, 92, 246, 0.4);
-            border-radius: 8px;
-            color: #e2e8f0;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .share-btn:hover {
-            background: rgba(139, 92, 246, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        .copy-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            margin: 0 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .copy-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
-        }
-        
-        .copied-toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(34, 197, 94, 0.9);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 8px;
-            font-weight: 600;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .copied-toast.show {
-            opacity: 1;
-        }
-        
-        .error {
-            display: none;
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.4);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            color: #fca5a5;
-        }
-        
-        .error.active {
-            display: block;
-        }
-        
-        .branding {
-            text-align: center;
-            margin-top: 20px;
-            padding: 20px;
-            font-size: 0.9rem;
-            color: #64748b;
-        }
-        
-        .branding a {
-            color: #8b5cf6;
-            text-decoration: none;
-        }
-        
-        .branding a:hover {
-            text-decoration: underline;
-        }
-        
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            color: #94a3b8;
-        }
-        
-        .no-results h3 {
-            margin-bottom: 10px;
-            color: #cbd5e1;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .headline-stat .amount {
-                font-size: 2.5rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>💸 Crypto Casino Tracker</h1>
-            <p class="subtitle">Track your deposits, withdrawals, and net win/loss</p>
-            
-            <div class="info-box">
-                <strong>🔒 Privacy First:</strong> We only read public blockchain data. Your wallet address is never stored. All calculations happen in your browser.
-            </div>
-        </header>
-        
-        <div class="input-section">
-            <label for="walletAddress">Enter Your Wallet Address (Ethereum)</label>
-            <input 
-                type="text" 
-                id="walletAddress" 
-                placeholder="0x..."
-                autocomplete="off"
-            >
-            <button class="btn" id="scanBtn">Scan My Deposits</button>
-        </div>
-        
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>Scanning blockchain for your deposits & withdrawals...</p>
-            <p style="font-size: 0.9rem; color: #64748b; margin-top: 10px;">This may take 10-30 seconds</p>
-        </div>
-        
-        <div class="error" id="error">
-            <strong>Error:</strong> <span id="errorMessage"></span>
-        </div>
-        
-        <div class="results" id="results">
-            <div class="results-card">
-                <div class="headline-stat">
-                    <div class="amount" id="netPosition">$0</div>
-                    <div class="label" id="netLabel">Net Position</div>
-                    <div class="subtext" id="subtextMessage"></div>
-                </div>
-                
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="value" id="totalDeposited" style="color: #ef4444;">$0</div>
-                        <div class="label">Total Deposited</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="value" id="totalWithdrawn" style="color: #22c55e;">$0</div>
-                        <div class="label">Total Withdrawn</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="value" id="depositCount">0</div>
-                        <div class="label">Deposits</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="value" id="withdrawalCount">0</div>
-                        <div class="label">Withdrawals</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="value" id="avgDeposit">$0</div>
-                        <div class="label">Avg Deposit</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="value" id="biggestDeposit">$0</div>
-                        <div class="label">Biggest Deposit</div>
-                    </div>
-                </div>
-                
-                <div class="casino-breakdown" id="casinoBreakdown">
-                    <h3>📊 Breakdown by Casino</h3>
-                    <div id="casinoList"></div>
-                </div>
-                
-                <div class="share-section">
-                    <p style="margin-bottom: 15px; color: #94a3b8;">📸 Screenshot this and share, or:</p>
-                    <button class="copy-btn" id="copyResults">📋 Copy Results</button>
-                    <a href="#" class="share-btn" id="shareTwitter">🐦 Twitter</a>
-                    <a href="#" class="share-btn" id="shareReddit">🔥 Reddit</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="branding">
-            Powered by <a href="/">CryptoCasinoSorted</a> · Real blockchain data via Etherscan
-        </div>
+  <header class="header">
+    <div class="header-content">
+      <a href="/" class="brand">
+        <span class="brand-icon">🎰</span>
+        <span class="brand-name">CryptoCasinoSorted</span>
+      </a>
+      <nav class="nav">
+        <a href="#casinos" class="nav-link">Casinos</a>
+        <a href="/live-feed.html" class="nav-link">🔴 Live Feed</a>
+        <a href="/analytics.html" class="nav-link">📊 Analytics</a>
+        <a href="/reviews/index.html" class="nav-link">Reviews</a>
+        <a href="/wagering-calculator.html" class="nav-link">Calculators</a>
+        <a href="/deposit-tracker.html" class="nav-link">💸 Track Deposits</a>
+        <a href="/blog/index.html" class="nav-link">Blog</a>
+        <a href="https://betsorted.co.za" class="nav-link" target="_blank">Sports Betting 🎯</a>
+      </nav>
     </div>
-    
-    <div class="copied-toast" id="copiedToast">✅ Copied to clipboard!</div>
-    
-    <script>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <span class="badge">🔎 Live Blockchain Scan • No Logins • No BS</span>
+      <h1 class="hero-title">Know Your Real Position</h1>
+      <p class="hero-subtitle">Stop guessing. Paste your wallet and see your actual profit/loss across top crypto casinos in seconds. If you are up, you will know. If you are down, you will finally know.</p>
+
+      <div class="stats tracker-benefits">
+        <div class="stat-card benefit-card">
+          <h3>See your actual profit/loss</h3>
+          <p>No spreadsheets. No memory games. The chain tells you the truth.</p>
+        </div>
+        <div class="stat-card benefit-card">
+          <h3>Stop guessing if you are winning</h3>
+          <p>Deposits, withdrawals, net position. Clear, fast, and honest.</p>
+        </div>
+        <div class="stat-card benefit-card">
+          <h3>Know your real position now</h3>
+          <p>Privacy-first scanning. No accounts, no tracking, no storage.</p>
+        </div>
+      </div>
+
+      <div class="stats tracker-stats">
+        <div class="stat-card">
+          <div class="stat-number">12K+</div>
+          <div class="stat-label">Wallets Checked</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$120M+</div>
+          <div class="stat-label">Casino Volume Traced</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Addresses Stored</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tracker-input">
+    <div class="container">
+      <div class="tracker-panel">
+        <div class="tracker-panel-header">
+          <h2 class="section-title tracker-title">Finally know if you are actually winning</h2>
+          <p class="tracker-subtitle">We only read public blockchain data. Your wallet stays in your browser. Nothing is saved.</p>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-item">🔒 Privacy-first</div>
+          <div class="trust-item">⚡ 10-30s scan</div>
+          <div class="trust-item">🧾 Transparent math</div>
+          <div class="trust-item">🧠 Built for real players</div>
+        </div>
+
+        <div class="input-section">
+          <label for="walletAddress">Enter your Ethereum wallet address</label>
+          <input
+            type="text"
+            id="walletAddress"
+            class="tracker-input-field"
+            placeholder="0x..."
+            autocomplete="off"
+          >
+          <button class="btn tracker-btn" id="scanBtn">Scan My Deposits</button>
+          <p class="input-help">Heads up: large wallets can take a bit longer. That is normal.</p>
+        </div>
+      </div>
+
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Scanning the blockchain for your deposits and withdrawals...</p>
+        <p class="loading-subtext">This usually takes 10-30 seconds.</p>
+      </div>
+
+      <div class="error" id="error">
+        <strong>Error:</strong> <span id="errorMessage"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="tracker-results">
+    <div class="container">
+      <div class="results" id="results">
+        <div class="results-card">
+          <div class="headline-stat">
+            <div class="amount" id="netPosition">$0</div>
+            <div class="label" id="netLabel">Net Position</div>
+            <div class="subtext" id="subtextMessage"></div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="value negative" id="totalDeposited">$0</div>
+              <div class="label">Total Deposited</div>
+            </div>
+            <div class="stat-box">
+              <div class="value positive" id="totalWithdrawn">$0</div>
+              <div class="label">Total Withdrawn</div>
+            </div>
+            <div class="stat-box">
+              <div class="value" id="depositCount">0</div>
+              <div class="label">Deposits</div>
+            </div>
+            <div class="stat-box">
+              <div class="value" id="withdrawalCount">0</div>
+              <div class="label">Withdrawals</div>
+            </div>
+            <div class="stat-box">
+              <div class="value" id="avgDeposit">$0</div>
+              <div class="label">Avg Deposit</div>
+            </div>
+            <div class="stat-box">
+              <div class="value" id="biggestDeposit">$0</div>
+              <div class="label">Biggest Deposit</div>
+            </div>
+          </div>
+
+          <div class="casino-breakdown" id="casinoBreakdown">
+            <h3>📊 Breakdown by Casino</h3>
+            <div id="casinoList"></div>
+          </div>
+
+          <div class="share-section">
+            <p class="share-text">Screenshot this and share, or:</p>
+            <button class="copy-btn" id="copyResults">📋 Copy Results</button>
+            <a href="#" class="share-btn" id="shareTwitter">🐦 Twitter</a>
+            <a href="#" class="share-btn" id="shareReddit">🔥 Reddit</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="branding">
+        Powered by <a href="/">CryptoCasinoSorted</a> · Real blockchain data via Etherscan
+      </div>
+    </div>
+  </section>
+
+  <div class="copied-toast" id="copiedToast">✅ Copied to clipboard!</div>
+
+<script>
         // Casino wallet addresses (Ethereum mainnet)
         const CASINOS = {
             'Stake.com': [
@@ -555,6 +223,7 @@
         const ETH_PRICE_CACHE_KEY = 'ccs_eth_price_cache';
         const ETH_PRICE_CACHE_TTL = 5 * 60 * 1000;
         const ETH_REQUEST_TIMEOUT = 6000;
+        const ETHERSCAN_REQUEST_TIMEOUT = 8000;
         const MIN_TX_ETH = 0.001;
         
         let ethPrice = 3000; // Default fallback
@@ -635,24 +304,16 @@
             const withdrawals = [];
             const userWallet = walletAddress.toLowerCase();
             
-            // Get normal transactions (V2 API)
-            const normalTxUrl = `https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc&apikey=${ETHERSCAN_API_KEY}`;
-            
             try {
-                const response = await fetch(normalTxUrl);
-                const data = await response.json();
-                
-                if (data.status !== '1') {
-                    throw new Error(data.message || 'Failed to fetch transactions');
-                }
-                
-                const transactions = data.result || [];
+                const transactions = await fetchEtherscanTxList(walletAddress);
                 
                 // Filter for transactions with casino addresses
                 for (let i = 0; i < transactions.length; i++) {
                     const tx = transactions[i];
                     const toAddress = tx.to ? tx.to.toLowerCase() : '';
                     const fromAddress = tx.from ? tx.from.toLowerCase() : '';
+                    const isFailedTx = tx.isError === '1' || tx.txreceipt_status === '0';
+                    if (isFailedTx) continue;
                     const valueEth = parseFloat(tx.value) / 1e18;
                     
                     if (valueEth < MIN_TX_ETH) continue; // Filter out dust transactions
@@ -688,6 +349,50 @@
                 console.error('Error scanning wallet:', error);
                 throw error;
             }
+        }
+
+        async function fetchEtherscanTxList(walletAddress) {
+            const encodedAddress = encodeURIComponent(walletAddress);
+            const endpoints = [
+                `https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${encodedAddress}&startblock=0&endblock=99999999&page=1&offset=10000&sort=asc&apikey=${ETHERSCAN_API_KEY}`,
+                `https://api.etherscan.io/api?module=account&action=txlist&address=${encodedAddress}&startblock=0&endblock=99999999&page=1&offset=10000&sort=asc&apikey=${ETHERSCAN_API_KEY}`
+            ];
+            
+            let lastError = null;
+            
+            for (let i = 0; i < endpoints.length; i++) {
+                const controller = new AbortController();
+                const timeout = setTimeout(() => controller.abort(), ETHERSCAN_REQUEST_TIMEOUT);
+                
+                try {
+                    const response = await fetch(endpoints[i], { signal: controller.signal, cache: 'no-store' });
+                    if (!response.ok) {
+                        throw new Error(`Etherscan request failed (${response.status})`);
+                    }
+                    
+                    const data = await response.json();
+                    const status = String(data.status || '');
+                    const message = String(data.message || '');
+                    
+                    if (status === '1' && Array.isArray(data.result)) {
+                        return data.result;
+                    }
+                    
+                    const resultText = typeof data.result === 'string' ? data.result : '';
+                    const noTx = message.toLowerCase().includes('no transactions') || resultText.toLowerCase().includes('no transactions');
+                    if (status === '0' && noTx) {
+                        return [];
+                    }
+                    
+                    throw new Error(resultText || message || 'Failed to fetch transactions');
+                } catch (error) {
+                    lastError = error;
+                } finally {
+                    clearTimeout(timeout);
+                }
+            }
+            
+            throw lastError || new Error('Failed to fetch transactions');
         }
         
         // Calculate statistics

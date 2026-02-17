@@ -129,6 +129,17 @@ body {
   margin: 0 auto 3rem;
 }
 
+.badge {
+  display: inline-block;
+  background: rgba(139, 92, 246, 0.1);
+  color: #a78bfa;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -434,6 +445,7 @@ body {
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
+  margin-top: 1rem;
 }
 
 .casino-cta:hover {
@@ -710,4 +722,432 @@ body {
 
 .sentiment-complaints {
   padding-left: 1.5rem;
+}
+
+/* Deposit Tracker */
+.tracker-benefits {
+  margin: 2.5rem auto 3rem;
+  max-width: 900px;
+}
+
+.benefit-card {
+  text-align: left;
+}
+
+.benefit-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.benefit-card p {
+  color: var(--text-secondary);
+}
+
+.tracker-stats {
+  margin-top: 1rem;
+}
+
+.tracker-input {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--dark);
+}
+
+.tracker-panel {
+  background: var(--dark-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.tracker-panel-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tracker-title {
+  margin-bottom: 1rem;
+}
+
+.tracker-subtitle {
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0 2rem;
+}
+
+.trust-item {
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  background: var(--light-gray);
+  border: 1px solid var(--border);
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.input-section {
+  margin-top: 1rem;
+}
+
+.input-section label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.tracker-input-field {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: #0a0a0a;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: border 0.2s, box-shadow 0.2s;
+  margin-bottom: 1rem;
+}
+
+.tracker-input-field:focus {
+  outline: none;
+  border-color: var(--white);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+}
+
+.tracker-btn {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: var(--white);
+  color: #000000;
+  border: none;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tracker-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.tracker-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input-help {
+  margin-top: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  display: none;
+}
+
+.loading.active {
+  display: block;
+}
+
+.loading-subtext {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: var(--white);
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1.25rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  display: none;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  color: #fecaca;
+}
+
+.error.active {
+  display: block;
+}
+
+.tracker-results {
+  padding: 4rem 0 5rem;
+  border-top: 1px solid var(--border);
+  background: var(--dark);
+}
+
+.results {
+  display: none;
+}
+
+.results.active {
+  display: block;
+}
+
+.results-card {
+  background: var(--dark-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.headline-stat {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.headline-stat::after {
+  content: 'CryptoCasinoSorted.com';
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.headline-stat .amount {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.headline-stat .label {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.headline-stat .subtext {
+  margin-top: 1rem;
+  color: var(--text-secondary);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-box {
+  background: var(--light-gray);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+.stat-box .value {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+
+.stat-box .value.positive {
+  color: #22c55e;
+}
+
+.stat-box .value.negative {
+  color: #ef4444;
+}
+
+.stat-box .label {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.casino-breakdown h3 {
+  margin-bottom: 1rem;
+}
+
+.casino-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: var(--light-gray);
+  border-radius: 16px;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.casino-item .casino-name {
+  font-weight: 700;
+}
+
+.casino-item .casino-amount {
+  font-weight: 800;
+}
+
+.casino-item .casino-count {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-left: 0.5rem;
+}
+
+.casino-item .casino-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.casino-item .net-amount {
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.casino-item .net-amount.positive {
+  color: #22c55e;
+}
+
+.casino-item .net-amount.negative {
+  color: #ef4444;
+}
+
+.casino-item .breakdown {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.casino-item .breakdown .deposit {
+  color: #ef4444;
+}
+
+.casino-item .breakdown .withdrawal {
+  color: #22c55e;
+}
+
+.share-section {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.share-text {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.share-btn,
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  margin: 0.25rem;
+  transition: transform 0.2s, box-shadow 0.2s, border 0.2s;
+}
+
+.share-btn {
+  background: transparent;
+  border: 2px solid var(--border);
+  color: var(--text);
+}
+
+.share-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--white);
+}
+
+.copy-btn {
+  background: var(--white);
+  color: #000000;
+  border: none;
+}
+
+.copy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.copied-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #16a34a;
+  color: #ffffff;
+  padding: 0.9rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.copied-toast.show {
+  opacity: 1;
+}
+
+.branding {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.branding a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.branding a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .tracker-title {
+    font-size: 2rem;
+  }
+
+  .headline-stat .amount {
+    font-size: 2.6rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }
