@@ -36,6 +36,501 @@
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
   <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --share-bg: radial-gradient(circle at top, rgba(34, 197, 94, 0.2), transparent 55%),
+        linear-gradient(160deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
+    }
+
+    .results-layout {
+      display: grid;
+      gap: 20px;
+    }
+
+    .share-card-wrap {
+      display: grid;
+      gap: 12px;
+      justify-items: center;
+    }
+
+    .share-card {
+      width: 100%;
+      max-width: 600px;
+      min-height: 740px;
+      padding: 28px 26px;
+      border-radius: 28px;
+      background: var(--share-bg);
+      color: #f8fafc;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .share-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      color: #cbd5f5;
+      font-weight: 700;
+    }
+
+    .share-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #a5b4fc;
+    }
+
+    .share-net {
+      text-align: center;
+      padding: 10px 0 4px;
+    }
+
+    .share-net-value {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .share-net-label {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #94a3b8;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .share-stats {
+      display: grid;
+      gap: 12px;
+    }
+
+    .share-stat {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .share-stat span {
+      color: #94a3b8;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+    }
+
+    .share-top {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(30, 41, 59, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      text-align: center;
+    }
+
+    .share-top-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #cbd5f5;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .share-top-name {
+      font-size: 24px;
+      font-weight: 800;
+      color: #f8fafc;
+    }
+
+    .share-top-sub {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    .share-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .share-branding {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    .share-branding span {
+      font-size: 12px;
+      font-weight: 500;
+      color: #94a3b8;
+    }
+
+    .share-qr {
+      width: 120px;
+      height: 120px;
+      border-radius: 16px;
+      background: #f8fafc;
+      padding: 8px;
+    }
+
+    .share-card-button {
+      width: 100%;
+      max-width: 360px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      color: #0f172a;
+      background: linear-gradient(135deg, #facc15, #f97316);
+      box-shadow: 0 14px 30px rgba(249, 115, 22, 0.25);
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .share-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 9999;
+    }
+
+    .share-modal.is-visible {
+      display: flex;
+    }
+
+    .share-modal-card {
+      width: 100%;
+      max-width: 640px;
+      background: linear-gradient(160deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.98));
+      border-radius: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      display: grid;
+      gap: 16px;
+      color: #f8fafc;
+    }
+
+    .share-modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    .share-modal-preview {
+      width: 100%;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      padding: 12px;
+    }
+
+    .share-modal-preview img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .share-modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .share-modal-actions button {
+      flex: 1 1 160px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .share-modal-primary {
+      background: linear-gradient(135deg, #facc15, #f97316);
+      color: #0f172a;
+    }
+
+    .share-modal-secondary {
+      background: rgba(30, 41, 59, 0.9);
+      color: #e2e8f0;
+    }
+
+    .results-capture {
+      position: relative;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px;
+      background: radial-gradient(circle at top, rgba(139, 92, 246, 0.18), transparent 55%),
+        linear-gradient(150deg, rgba(15, 23, 42, 0.9), rgba(10, 10, 10, 0.95));
+      border-radius: 22px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .results-card {
+      position: relative;
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .results-brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .results-brand-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .results-brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      box-shadow: 0 10px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .results-brand-text {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.4px;
+      color: #f8fafc;
+    }
+
+    .results-brand-tag {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #a5b4fc;
+      letter-spacing: 1px;
+    }
+
+    .headline-stat {
+      margin-bottom: 16px;
+    }
+
+    .stats-grid {
+      gap: 10px;
+    }
+
+    .stat-box {
+      padding: 10px 12px;
+    }
+
+    .casino-breakdown {
+      margin-top: 18px;
+    }
+
+    .capture-cta {
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .capture-url {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-weight: 600;
+      color: #e2e8f0;
+      font-size: 14px;
+    }
+
+    .capture-url span {
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .capture-qr {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      background: repeating-linear-gradient(45deg, rgba(148, 163, 184, 0.4), rgba(148, 163, 184, 0.4) 6px, rgba(30, 41, 59, 0.8) 6px, rgba(30, 41, 59, 0.8) 12px);
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .capture-watermark {
+      position: absolute;
+      right: 18px;
+      bottom: 14px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: rgba(148, 163, 184, 0.35);
+      pointer-events: none;
+    }
+
+    .capture-footer {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .share-cta {
+      margin-top: 12px;
+      font-weight: 600;
+      color: #e2e8f0;
+      text-align: center;
+    }
+
+    .is-hidden {
+      display: none;
+    }
+
+    .no-results {
+      padding: 10px 0;
+    }
+
+    .no-results h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .affiliate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .affiliate-card {
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 14px;
+      padding: 12px;
+      background: rgba(15, 23, 42, 0.65);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .affiliate-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .affiliate-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #0f172a;
+      background: linear-gradient(135deg, #facc15, #f97316);
+    }
+
+    .affiliate-rating {
+      font-weight: 700;
+      color: #facc15;
+      font-size: 14px;
+    }
+
+    .affiliate-bonus {
+      align-self: flex-start;
+      background: rgba(34, 197, 94, 0.2);
+      color: #22c55e;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .affiliate-btn {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .capture-mode .results-capture {
+      width: 1200px;
+      min-height: 630px;
+      max-width: none;
+    }
+
+    .capture-mode .results-card {
+      min-height: 520px;
+    }
+
+    .capture-mode .share-card {
+      width: 600px;
+      height: 800px;
+      max-width: none;
+    }
+
+    @media (min-width: 960px) {
+      .results-layout {
+        grid-template-columns: minmax(320px, 600px) minmax(360px, 1fr);
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .share-card {
+        min-height: 640px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -139,52 +634,154 @@
   <section class="tracker-results">
     <div class="container">
       <div class="results" id="results">
-        <div class="results-capture" id="resultsCapture">
-          <div class="results-card">
-          <div class="headline-stat">
-            <div class="amount" id="netPosition">$0</div>
-            <div class="label" id="netLabel">Net Position</div>
-            <div class="subtext" id="subtextMessage"></div>
+        <div class="results-layout">
+          <div class="share-card-wrap">
+            <div class="share-card" id="shareCard">
+              <div class="share-card-header">
+                <div class="share-card-title">Shareable Snapshot</div>
+                <div>Crypto Casino Tracker</div>
+              </div>
+              <div class="share-net">
+                <div class="share-net-value" id="shareNetValue">$0</div>
+                <div class="share-net-label" id="shareNetLabel">Net Position</div>
+              </div>
+              <div class="share-stats">
+                <div class="share-stat">
+                  <div id="shareDeposited">$0</div>
+                  <span>Total Deposited</span>
+                </div>
+                <div class="share-stat">
+                  <div id="shareWithdrawn">$0</div>
+                  <span>Total Withdrawn</span>
+                </div>
+              </div>
+              <div class="share-top">
+                <div class="share-top-label">Top Casino</div>
+                <div class="share-top-name" id="shareTopCasino">-</div>
+                <div class="share-top-sub" id="shareTopCasinoSub">Biggest activity</div>
+              </div>
+              <div class="share-footer">
+                <div class="share-branding">
+                  Track Yours: CryptoCasinoSorted.com
+                  <span>Blockchain-Verified Results</span>
+                </div>
+                <img class="share-qr" id="shareQr" alt="QR code for CryptoCasinoSorted.com" />
+              </div>
+            </div>
+            <button class="share-card-button" id="downloadShareCard" disabled>📱 Generate Share Card</button>
+          </div>
+          <div class="results-capture" id="resultsCapture">
+            <div class="results-card">
+          <div class="results-brand">
+            <div class="results-brand-left">
+              <div class="results-brand-logo">🎰</div>
+              <div>
+                <div class="results-brand-text">CryptoCasinoSorted.com</div>
+                <div class="results-brand-tag">Blockchain-Verified Results</div>
+              </div>
+            </div>
+            <div class="results-brand-tag">Shareable Snapshot</div>
+          </div>
+          <div id="resultsMain">
+            <div class="headline-stat">
+              <div class="amount" id="netPosition">$0</div>
+              <div class="label" id="netLabel">Net Position</div>
+              <div class="subtext" id="subtextMessage"></div>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-box">
+                <div class="value negative" id="totalDeposited">$0</div>
+                <div class="label">Total Deposited</div>
+              </div>
+              <div class="stat-box">
+                <div class="value positive" id="totalWithdrawn">$0</div>
+                <div class="label">Total Withdrawn</div>
+              </div>
+              <div class="stat-box">
+                <div class="value" id="depositCount">0</div>
+                <div class="label">Deposits</div>
+              </div>
+              <div class="stat-box">
+                <div class="value" id="withdrawalCount">0</div>
+                <div class="label">Withdrawals</div>
+              </div>
+              <div class="stat-box">
+                <div class="value" id="avgDeposit">$0</div>
+                <div class="label">Avg Deposit</div>
+              </div>
+              <div class="stat-box">
+                <div class="value" id="biggestDeposit">$0</div>
+                <div class="label">Biggest Deposit</div>
+              </div>
+            </div>
+
+            <div class="casino-breakdown" id="casinoBreakdown">
+              <h3>📊 Breakdown by Casino</h3>
+              <div id="casinoList"></div>
+            </div>
           </div>
 
-          <div class="stats-grid">
-            <div class="stat-box">
-              <div class="value negative" id="totalDeposited">$0</div>
-              <div class="label">Total Deposited</div>
-            </div>
-            <div class="stat-box">
-              <div class="value positive" id="totalWithdrawn">$0</div>
-              <div class="label">Total Withdrawn</div>
-            </div>
-            <div class="stat-box">
-              <div class="value" id="depositCount">0</div>
-              <div class="label">Deposits</div>
-            </div>
-            <div class="stat-box">
-              <div class="value" id="withdrawalCount">0</div>
-              <div class="label">Withdrawals</div>
-            </div>
-            <div class="stat-box">
-              <div class="value" id="avgDeposit">$0</div>
-              <div class="label">Avg Deposit</div>
-            </div>
-            <div class="stat-box">
-              <div class="value" id="biggestDeposit">$0</div>
-              <div class="label">Biggest Deposit</div>
+          <div class="no-results is-hidden" id="noResultsSection">
+            <h3>No Casino Activity Found - Ready to Start?</h3>
+            <p>We didn't find any deposits or withdrawals from this wallet to tracked crypto casinos.</p>
+            <p style="margin-top: 6px;">Start with these verified casinos. When you deposit, track your results here.</p>
+            <h4 style="margin-top: 12px;">Try These Top Crypto Casinos</h4>
+
+            <div class="affiliate-grid">
+              <div class="affiliate-card">
+                <div class="affiliate-header">
+                  <div class="affiliate-logo">S</div>
+                  <div class="affiliate-rating">★ 4.8</div>
+                </div>
+                <div><strong>Stake.com</strong></div>
+                <div class="affiliate-bonus">🎁 Bonus</div>
+                <a class="affiliate-btn" href="https://stake.com/?c=yooWfJdE" target="_blank" rel="noopener">Start Playing →</a>
+              </div>
+              <div class="affiliate-card">
+                <div class="affiliate-header">
+                  <div class="affiliate-logo">BC</div>
+                  <div class="affiliate-rating">★ 4.6</div>
+                </div>
+                <div><strong>BC.Game</strong></div>
+                <div class="affiliate-bonus">🎁 Bonus</div>
+                <a class="affiliate-btn" href="https://bc.game/i-4bau8curc-n/" target="_blank" rel="noopener">Start Playing →</a>
+              </div>
+              <div class="affiliate-card">
+                <div class="affiliate-header">
+                  <div class="affiliate-logo">SH</div>
+                  <div class="affiliate-rating">★ 4.5</div>
+                </div>
+                <div><strong>Shuffle</strong></div>
+                <div class="affiliate-bonus">🎁 Bonus</div>
+                <a class="affiliate-btn" href="#" target="_blank" rel="noopener">Start Playing →</a>
+              </div>
+              <div class="affiliate-card">
+                <div class="affiliate-header">
+                  <div class="affiliate-logo">RB</div>
+                  <div class="affiliate-rating">★ 4.4</div>
+                </div>
+                <div><strong>Rollbit</strong></div>
+                <div class="affiliate-bonus">🎁 Bonus</div>
+                <a class="affiliate-btn" href="#" target="_blank" rel="noopener">Start Playing →</a>
+              </div>
             </div>
           </div>
 
-          <div class="casino-breakdown" id="casinoBreakdown">
-            <h3>📊 Breakdown by Casino</h3>
-            <div id="casinoList"></div>
+          <div class="capture-cta">
+            <div class="capture-url">
+              cryptocasinosorted.com/deposit-tracker.html
+              <span>Scan, track, share. See your real results.</span>
+            </div>
+            <div class="capture-qr">SCAN</div>
           </div>
 
-          <div class="capture-branding">CryptoCasinoSorted.com</div>
+          <div class="capture-watermark">Track yours at CryptoCasinoSorted.com</div>
 
+          <div class="share-cta">Share your results and challenge your friends to check theirs! 📸</div>
           <div class="share-section">
             <p class="share-text">Screenshot this and share, or:</p>
             <button class="copy-btn" id="copyResults">📋 Copy Results</button>
-            <button class="share-btn download-btn" id="downloadResults" hidden>📸 Download Image</button>
             <a href="#" class="share-btn" id="shareTwitter">🐦 Twitter</a>
             <a href="#" class="share-btn" id="shareReddit">🔥 Reddit</a>
           </div>
@@ -193,6 +790,8 @@
           <div class="branding capture-only">
             Powered by <a href="/">CryptoCasinoSorted</a> · Real blockchain data via Etherscan
           </div>
+          <div class="capture-footer">CryptoCasinoSorted.com • Blockchain-Verified Tracking</div>
+          </div>
         </div>
       </div>
     </div>
@@ -200,6 +799,20 @@
 
   <div class="copied-toast" id="copiedToast">✅ Copied to clipboard!</div>
   <div class="copied-toast" id="downloadToast">✅ Image downloaded!</div>
+
+  <div class="share-modal" id="shareModal" aria-hidden="true">
+    <div class="share-modal-card" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
+      <div class="share-modal-title" id="shareModalTitle">Your Share Card</div>
+      <div class="share-modal-preview">
+        <img id="sharePreviewImage" alt="Generated share card preview" />
+      </div>
+      <div class="share-modal-actions">
+        <button class="share-modal-primary" id="shareModalShare">Share</button>
+        <button class="share-modal-primary" id="shareModalDownload">Download</button>
+        <button class="share-modal-secondary" id="shareModalClose">Close</button>
+      </div>
+    </div>
+  </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
@@ -258,10 +871,27 @@
             shareTwitter: document.getElementById('shareTwitter'),
             shareReddit: document.getElementById('shareReddit'),
             copyResults: document.getElementById('copyResults'),
-            downloadResults: document.getElementById('downloadResults'),
+            downloadShareCard: document.getElementById('downloadShareCard'),
             copiedToast: document.getElementById('copiedToast'),
             downloadToast: document.getElementById('downloadToast'),
-            resultsCapture: document.getElementById('resultsCapture')
+            resultsCapture: document.getElementById('resultsCapture'),
+            resultsMain: document.getElementById('resultsMain'),
+            noResultsSection: document.getElementById('noResultsSection'),
+            shareSection: document.querySelector('.share-section'),
+            shareCta: document.querySelector('.share-cta'),
+            shareCard: document.getElementById('shareCard'),
+            shareNetValue: document.getElementById('shareNetValue'),
+            shareNetLabel: document.getElementById('shareNetLabel'),
+            shareDeposited: document.getElementById('shareDeposited'),
+            shareWithdrawn: document.getElementById('shareWithdrawn'),
+            shareTopCasino: document.getElementById('shareTopCasino'),
+            shareTopCasinoSub: document.getElementById('shareTopCasinoSub'),
+            shareQr: document.getElementById('shareQr'),
+            shareModal: document.getElementById('shareModal'),
+            sharePreviewImage: document.getElementById('sharePreviewImage'),
+            shareModalShare: document.getElementById('shareModalShare'),
+            shareModalDownload: document.getElementById('shareModalDownload'),
+            shareModalClose: document.getElementById('shareModalClose')
         };
         
         const CASINO_ADDRESS_MAP = (() => {
@@ -485,18 +1115,22 @@
         // Display results
         function displayResults(stats) {
             if (!stats) {
-                elements.results.innerHTML = `
-                    <div class="results-card">
-                        <div class="no-results">
-                            <h3>No Activity Found</h3>
-                            <p>We didn't find any deposits or withdrawals from this wallet to tracked crypto casinos.</p>
-                            <p style="margin-top: 10px;">Make sure you're using the correct Ethereum wallet address.</p>
-                        </div>
-                    </div>
-                `;
+                elements.resultsMain.classList.add('is-hidden');
+                elements.noResultsSection.classList.remove('is-hidden');
+                if (elements.shareSection) elements.shareSection.classList.add('is-hidden');
+                if (elements.shareCta) elements.shareCta.classList.add('is-hidden');
+                if (elements.downloadShareCard) elements.downloadShareCard.disabled = true;
+                if (elements.shareCard) elements.shareCard.classList.add('is-hidden');
                 elements.results.classList.add('active');
                 return;
             }
+
+            elements.resultsMain.classList.remove('is-hidden');
+            elements.noResultsSection.classList.add('is-hidden');
+            if (elements.shareSection) elements.shareSection.classList.remove('is-hidden');
+            if (elements.shareCta) elements.shareCta.classList.remove('is-hidden');
+            if (elements.downloadShareCard) elements.downloadShareCard.disabled = false;
+            if (elements.shareCard) elements.shareCard.classList.remove('is-hidden');
             
             // Update net position (headline)
             const absNet = Math.abs(stats.netPosition);
@@ -505,14 +1139,17 @@
                 elements.netPosition.textContent = `+$${formatUSD0.format(absNet)}`;
                 elements.netPosition.style.color = '#22c55e';
                 elements.netLabel.textContent = 'Net Profit 🎉';
+                elements.shareNetValue.style.color = '#22c55e';
             } else if (stats.netPosition < 0) {
                 elements.netPosition.textContent = `-$${formatUSD0.format(absNet)}`;
                 elements.netPosition.style.color = '#ef4444';
                 elements.netLabel.textContent = 'Net Loss';
+                elements.shareNetValue.style.color = '#ef4444';
             } else {
                 elements.netPosition.textContent = '$0';
                 elements.netPosition.style.color = '#8b5cf6';
                 elements.netLabel.textContent = 'Break Even';
+                elements.shareNetValue.style.color = '#8b5cf6';
             }
             
             // Update stats boxes
@@ -522,6 +1159,20 @@
             elements.withdrawalCount.textContent = formatInt.format(stats.withdrawalCount);
             elements.avgDeposit.textContent = `$${formatUSD0.format(stats.avgDeposit)}`;
             elements.biggestDeposit.textContent = `$${formatUSD0.format(stats.biggestDeposit)}`;
+
+            // Share card essentials
+            const netEmoji = stats.netPosition > 0 ? '🟢' : stats.netPosition < 0 ? '🔴' : '⚪';
+            const netSign = stats.netPosition >= 0 ? '+' : '-';
+            elements.shareNetValue.textContent = `${netEmoji} ${netSign}$${formatUSD0.format(absNet)}`;
+            elements.shareNetLabel.textContent = stats.netPosition > 0 ? 'Net Profit' : stats.netPosition < 0 ? 'Net Loss' : 'Break Even';
+            elements.shareDeposited.textContent = `-$${formatUSD0.format(stats.totalDeposited)}`;
+            elements.shareWithdrawn.textContent = `+$${formatUSD0.format(stats.totalWithdrawn)}`;
+            const topCasino = stats.casinoBreakdown[0]?.casino || '-';
+            const topCasinoNet = stats.casinoBreakdown[0]
+                ? `${stats.casinoBreakdown[0].net >= 0 ? '+' : '-'}$${formatUSD0.format(Math.abs(stats.casinoBreakdown[0].net))}`
+                : '$0';
+            elements.shareTopCasino.textContent = topCasino;
+            elements.shareTopCasinoSub.textContent = `Net: ${topCasinoNet}`;
             
             // Casino breakdown
             const casinoItems = new Array(stats.casinoBreakdown.length);
@@ -607,8 +1258,6 @@
                 });
             };
 
-            elements.downloadResults.hidden = false;
-            
             elements.results.classList.add('active');
         }
         
@@ -625,7 +1274,7 @@
             // Hide previous results/errors
             elements.results.classList.remove('active');
             elements.error.classList.remove('active');
-            elements.downloadResults.hidden = true;
+            if (elements.downloadShareCard) elements.downloadShareCard.disabled = true;
             
             // Show loading
             elements.loading.classList.add('active');
@@ -667,29 +1316,86 @@
             setTimeout(() => element.classList.remove('show'), 2000);
         }
 
-        async function downloadResultsCard() {
-            if (!elements.resultsCapture || !window.html2canvas) return;
-            const button = elements.downloadResults;
-            const originalText = button.textContent;
-            button.disabled = true;
-            button.textContent = 'Generating image...';
-
+        function canShareFile(file) {
+            if (!navigator.share) return false;
+            if (!navigator.canShare) return true;
             try {
-                const captureBackground = getComputedStyle(elements.resultsCapture).backgroundColor;
-                const canvas = await window.html2canvas(elements.resultsCapture, {
+                return navigator.canShare({ files: [file] });
+            } catch (error) {
+                return false;
+            }
+        }
+
+        let shareCardBlob = null;
+        let shareCardUrl = null;
+
+        function setSharePreview(url) {
+            if (shareCardUrl) {
+                URL.revokeObjectURL(shareCardUrl);
+            }
+            shareCardUrl = url;
+            if (elements.sharePreviewImage) {
+                elements.sharePreviewImage.src = url;
+            }
+        }
+
+        function openShareModal() {
+            if (!elements.shareModal) return;
+            elements.shareModal.classList.add('is-visible');
+            elements.shareModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeShareModal() {
+            if (!elements.shareModal) return;
+            elements.shareModal.classList.remove('is-visible');
+            elements.shareModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+            if (shareCardUrl) {
+                URL.revokeObjectURL(shareCardUrl);
+                shareCardUrl = null;
+            }
+        }
+
+        async function generateShareCardImage() {
+            if (!elements.shareCard || !window.html2canvas) return null;
+            document.body.classList.add('capture-mode');
+            try {
+                const captureBackground = getComputedStyle(elements.shareCard).backgroundColor;
+                const canvas = await window.html2canvas(elements.shareCard, {
                     scale: 2,
                     useCORS: true,
                     backgroundColor: captureBackground,
                     ignoreElements: (element) => element.classList?.contains('share-section')
                 });
+                const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+                if (!blob) throw new Error('Failed to build share image');
+                return blob;
+            } finally {
+                document.body.classList.remove('capture-mode');
+            }
+        }
 
-                const link = document.createElement('a');
-                link.download = 'my-crypto-casino-results.png';
-                link.href = canvas.toDataURL('image/png');
-                document.body.appendChild(link);
-                link.click();
-                link.remove();
-                showToast(elements.downloadToast, '✅ Image downloaded!');
+        async function handleGenerateShareCard() {
+            if (!elements.shareCard || !window.html2canvas) return;
+            const button = elements.downloadShareCard;
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = 'Generating image...';
+
+            try {
+                shareCardBlob = await generateShareCardImage();
+                const file = new File([shareCardBlob], 'crypto-casino-share-card.png', { type: 'image/png' });
+                const canShare = canShareFile(file);
+
+                setSharePreview(URL.createObjectURL(shareCardBlob));
+                if (elements.shareModalShare) {
+                    elements.shareModalShare.style.display = canShare ? 'inline-flex' : 'none';
+                }
+                if (elements.shareModalDownload) {
+                    elements.shareModalDownload.style.display = canShare ? 'none' : 'inline-flex';
+                }
+                openShareModal();
             } catch (error) {
                 console.error('Failed to generate image:', error);
                 showToast(elements.downloadToast, '⚠️ Could not generate image');
@@ -697,6 +1403,40 @@
                 button.disabled = false;
                 button.textContent = originalText;
             }
+        }
+
+        async function handleShareCard() {
+            if (!shareCardBlob) return;
+            try {
+                const file = new File([shareCardBlob], 'crypto-casino-share-card.png', { type: 'image/png' });
+                if (!canShareFile(file)) {
+                    throw new Error('Share not supported');
+                }
+                await navigator.share({
+                    files: [file],
+                    title: 'Crypto Casino Share Card',
+                    text: 'Track yours at cryptocasinosorted.com/deposit-tracker.html'
+                });
+                showToast(elements.downloadToast, '✅ Share sheet opened!');
+            } catch (error) {
+                if (error?.name !== 'AbortError') {
+                    console.error('Failed to share image:', error);
+                    showToast(elements.downloadToast, '⚠️ Could not share image');
+                }
+            }
+        }
+
+        function handleDownloadCard() {
+            if (!shareCardBlob) return;
+            const url = URL.createObjectURL(shareCardBlob);
+            const link = document.createElement('a');
+            link.download = 'crypto-casino-share-card.png';
+            link.href = url;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+            showToast(elements.downloadToast, '✅ Image downloaded!');
         }
         
         // Event listeners
@@ -706,10 +1446,37 @@
                 performScan();
             }
         });
-        elements.downloadResults.addEventListener('click', downloadResultsCard);
+        elements.downloadShareCard.addEventListener('click', handleGenerateShareCard);
+        if (elements.shareModalShare) {
+            elements.shareModalShare.addEventListener('click', handleShareCard);
+        }
+        if (elements.shareModalDownload) {
+            elements.shareModalDownload.addEventListener('click', handleDownloadCard);
+        }
+        if (elements.shareModalClose) {
+            elements.shareModalClose.addEventListener('click', closeShareModal);
+        }
+        if (elements.shareModal) {
+            elements.shareModal.addEventListener('click', (event) => {
+                if (event.target === elements.shareModal) {
+                    closeShareModal();
+                }
+            });
+        }
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && elements.shareModal?.classList.contains('is-visible')) {
+                closeShareModal();
+            }
+        });
         
         // Initialize ETH price on page load
         getEthPrice();
+
+        const shareUrl = 'https://cryptocasinosorted.com/deposit-tracker.html';
+        if (elements.shareQr) {
+            elements.shareQr.crossOrigin = 'anonymous';
+            elements.shareQr.src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(shareUrl)}`;
+        }
     </script>
 </body>
 </html>

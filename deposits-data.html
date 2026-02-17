@@ -24,8 +24,8 @@
     .payment-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(4, 4, 8, 0.88);
-      backdrop-filter: blur(6px);
+      background: rgba(4, 4, 8, 0.62);
+      backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -42,7 +42,7 @@
       background: linear-gradient(180deg, rgba(15, 15, 20, 0.98), rgba(10, 10, 14, 0.98));
       border: 1px solid rgba(139, 92, 246, 0.25);
       border-radius: 22px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
       padding: 2rem 2.2rem;
       display: flex;
       flex-direction: column;
@@ -392,6 +392,17 @@
       color: var(--text-secondary);
     }
 
+    .preview-content {
+      transition: filter 0.25s ease, opacity 0.25s ease;
+    }
+
+    .preview-locked .preview-content {
+      filter: blur(6px);
+      opacity: 0.8;
+      pointer-events: none;
+      user-select: none;
+    }
+
     @media (max-width: 900px) {
       .dashboard-hero h1 {
         font-size: 2.6rem;
@@ -452,6 +463,7 @@
       </p>
     </div>
   </div>
+  <div class="preview-content" id="previewContent">
   <header class="header">
     <div class="header-content">
       <a href="/" class="brand">
@@ -563,13 +575,14 @@
           </thead>
           <tbody id="tableBody">
             <tr>
-              <td colspan="7" class="loading-state">Loading 3,418 deposits…</td>
+              <td colspan="7" class="loading-state">Loading deposits…</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
+  </div>
 
   <script>
     const PAYMENT_CONFIG = {
@@ -580,7 +593,10 @@
       etherscanApiKey: '4B1J3D8BDUYVWTGYX3NNUFQCPJD6KG38CF'
     };
     const ACCESS_KEY = 'ccs_deposits_access';
+    const ADMIN_BYPASS_PARAM = 'admin';
+    const ADMIN_BYPASS_VALUE = 'ccs_preview_2026';
 
+    const PREVIEW_ROWS = 50;
     const state = {
       data: [],
       filtered: [],
@@ -591,7 +607,8 @@
       casino: '',
       fromDate: '',
       toDate: '',
-      minUsd: ''
+      minUsd: '',
+      previewMode: false
     };
 
     const elements = {
@@ -636,11 +653,13 @@
       elements.paymentWalletDisplay.textContent = PAYMENT_CONFIG.wallet;
       elements.paymentOverlay.classList.remove('hidden');
       document.body.classList.add('payment-locked');
+      document.body.classList.add('preview-locked');
     }
 
     function hidePaymentOverlay() {
       elements.paymentOverlay.classList.add('hidden');
       document.body.classList.remove('payment-locked');
+      document.body.classList.remove('preview-locked');
     }
 
     function setPaymentError(message) {
@@ -687,6 +706,15 @@
         timestamp: Date.now()
       };
       localStorage.setItem(ACCESS_KEY, JSON.stringify(payload));
+    }
+
+    function applyAdminBypass() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get(ADMIN_BYPASS_PARAM) !== ADMIN_BYPASS_VALUE) {
+        return false;
+      }
+      storeAccess('admin_bypass');
+      return true;
     }
 
     async function fetchEtherscan(params) {
@@ -919,7 +947,8 @@
         `).join('');
       }
 
-      elements.resultSummary.textContent = `Showing ${formatNumber(pageRows.length)} of ${formatNumber(total)} deposits`;
+      const previewTag = state.previewMode ? ' • Preview' : '';
+      elements.resultSummary.textContent = `Showing ${formatNumber(pageRows.length)} of ${formatNumber(total)} deposits${previewTag}`;
       elements.sortSummary.textContent = `Sorted by ${state.sortKey === 'DateTime' ? 'Date' : state.sortKey} (${state.sortDir.toUpperCase()})`;
       updateSortIndicators();
     }
@@ -960,7 +989,9 @@
       state.minUsd = params.get('minUsd') || '';
       state.sortKey = params.get('sort') || 'DateTime';
       state.sortDir = params.get('dir') || 'desc';
+    }
 
+    function syncInputs() {
       elements.searchInput.value = state.search;
       elements.casinoFilter.value = state.casino;
       elements.fromDate.value = state.fromDate;
@@ -1018,12 +1049,7 @@
       state.minUsd = '';
       state.sortKey = 'DateTime';
       state.sortDir = 'desc';
-
-      elements.searchInput.value = '';
-      elements.casinoFilter.value = '';
-      elements.fromDate.value = '';
-      elements.toDate.value = '';
-      elements.minUsd.value = '';
+      syncInputs();
 
       applyFilters(false);
     }
@@ -1098,6 +1124,7 @@
           const result = await verifyPayment(txHash);
           storeAccess(result.txHash);
           setPaymentSuccess('Payment verified! Access unlocked.');
+          await unlockData();
           setTimeout(() => {
             hidePaymentOverlay();
           }, 900);
@@ -1115,23 +1142,25 @@
         setPaymentError('');
         elements.paymentSuccess.classList.remove('show');
         showPaymentOverlay();
+        loadData({ preview: true });
       });
     }
 
-    async function init() {
-      const storedAccess = loadStoredAccess();
-      if (storedAccess && storedAccess.unlocked) {
-        hidePaymentOverlay();
-      } else {
-        showPaymentOverlay();
-      }
+    function populateCasinoFilter(data) {
+      const selected = state.casino;
+      elements.casinoFilter.innerHTML = '<option value="">All Casinos</option>';
+      const casinos = Array.from(new Set(data.map((row) => row.Casino))).sort();
+      casinos.forEach((casino) => {
+        const option = document.createElement('option');
+        option.value = casino;
+        option.textContent = casino;
+        elements.casinoFilter.appendChild(option);
+      });
+      elements.casinoFilter.value = selected;
+    }
 
-      const response = await fetch('data/deposits-all.csv');
-      const text = await response.text();
-      const rows = parseCSV(text);
-      const headers = rows.shift();
-
-      const data = rows.map((row) => {
+    function buildEntries(rows, headers) {
+      return rows.map((row) => {
         const entry = {};
         headers.forEach((header, index) => {
           entry[header] = row[index] || '';
@@ -1143,20 +1172,51 @@
         entry.usdValue = parseFloat(entry['USD Value'] || 0);
         return entry;
       });
+    }
 
+    let cachedHeaders = null;
+    let cachedRows = null;
+    let fullDataLoaded = false;
+
+    async function loadCsvData() {
+      if (cachedRows && cachedHeaders) return;
+      const response = await fetch('data/deposits-all.csv');
+      const text = await response.text();
+      const rows = parseCSV(text);
+      cachedHeaders = rows.shift();
+      cachedRows = rows;
+    }
+
+    async function loadData({ preview }) {
+      await loadCsvData();
+      const rows = preview ? cachedRows.slice(0, PREVIEW_ROWS) : cachedRows;
+      const data = buildEntries(rows, cachedHeaders);
       state.data = data;
       state.filtered = [...data];
+      state.previewMode = preview;
+      fullDataLoaded = !preview;
+      populateCasinoFilter(data);
+      syncInputs();
+      applyFilters();
+    }
 
-      const casinos = Array.from(new Set(data.map((row) => row.Casino))).sort();
-      casinos.forEach((casino) => {
-        const option = document.createElement('option');
-        option.value = casino;
-        option.textContent = casino;
-        elements.casinoFilter.appendChild(option);
-      });
+    async function unlockData() {
+      if (fullDataLoaded) return;
+      await loadData({ preview: false });
+    }
+
+    async function init() {
+      const adminBypass = applyAdminBypass();
+      const storedAccess = loadStoredAccess();
+      const isUnlocked = adminBypass || (storedAccess && storedAccess.unlocked);
+      if (isUnlocked) {
+        hidePaymentOverlay();
+      } else {
+        showPaymentOverlay();
+      }
 
       applyParams();
-      applyFilters();
+      await loadData({ preview: !isUnlocked });
       attachEvents();
     }
 
