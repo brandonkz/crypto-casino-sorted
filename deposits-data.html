@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Deposit Tracking Data | CryptoCasinoSorted</title>
+  <meta name="description" content="Live blockchain deposit data across top crypto casinos. Filter, sort, and export real-time casino deposit activity.">
+  <meta name="author" content="CryptoCasinoSorted">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#000000">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .dashboard-hero {
+      padding: 3.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(circle at top, rgba(139, 92, 246, 0.12), transparent 55%);
+    }
+
+    .dashboard-hero h1 {
+      font-size: 3.75rem;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+
+    .dashboard-hero p {
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+
+    .stats-dashboard {
+      padding: 2.5rem 0 1.5rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .stat-card .stat-number {
+      font-size: 2.5rem;
+    }
+
+    .controls-section {
+      padding: 2rem 0 1.5rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(10, 10, 10, 0.6);
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .control-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .control-input,
+    .control-select {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.7rem 0.9rem;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .control-input:focus,
+    .control-select:focus {
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+    }
+
+    .actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      color: #ffffff;
+      border: none;
+      padding: 0.7rem 1.1rem;
+      border-radius: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .summary-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1.5rem 0 0.75rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .table-wrapper {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    thead {
+      background: rgba(15, 15, 15, 0.9);
+    }
+
+    th, td {
+      padding: 0.9rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    th {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text-secondary);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    th.sort-active {
+      color: #ffffff;
+    }
+
+    th .sort-indicator {
+      margin-left: 0.4rem;
+      font-size: 0.75rem;
+      opacity: 0.7;
+    }
+
+    tbody tr:hover {
+      background: rgba(139, 92, 246, 0.08);
+    }
+
+    .token-pill {
+      background: rgba(139, 92, 246, 0.15);
+      color: #c4b5fd;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .usd-value {
+      font-weight: 700;
+      color: #a78bfa;
+    }
+
+    .wallet {
+      font-family: 'SF Mono', 'Roboto Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .pagination {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      padding: 1rem;
+      background: rgba(10, 10, 10, 0.6);
+    }
+
+    .page-btn {
+      background: var(--dark-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.8rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .page-btn.active {
+      background: #8b5cf6;
+      border-color: #8b5cf6;
+    }
+
+    .loading-state {
+      padding: 3rem;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 900px) {
+      .dashboard-hero h1 {
+        font-size: 2.6rem;
+      }
+
+      th, td {
+        padding: 0.75rem 0.7rem;
+      }
+
+      .table-wrapper {
+        overflow-x: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .dashboard-hero {
+        padding: 2.5rem 0 1.5rem;
+      }
+
+      .summary-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .actions-row {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="/" class="brand">
+        <span class="brand-icon">🎰</span>
+        <span class="brand-name">CryptoCasinoSorted</span>
+      </a>
+      <nav class="nav">
+        <a href="/#casinos" class="nav-link">Casinos</a>
+        <a href="/live-feed.html" class="nav-link">🔴 Live Feed</a>
+        <a href="/analytics.html" class="nav-link">📊 Analytics</a>
+        <a href="/reviews/index.html" class="nav-link">Reviews</a>
+        <a href="/wagering-calculator.html" class="nav-link">Calculators</a>
+        <a href="/deposit-tracker.html" class="nav-link">💸 Track Deposits</a>
+        <a href="/blog/index.html" class="nav-link">Blog</a>
+        <a href="https://betsorted.co.za" class="nav-link" target="_blank">Sports Betting 🎯</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="dashboard-hero">
+    <div class="container">
+      <span class="badge">📡 Live Blockchain Feed • Updated Daily</span>
+      <h1>Blockchain Deposit Tracking Dashboard</h1>
+      <p>Real-time casino deposit monitoring via Ethereum blockchain</p>
+    </div>
+  </section>
+
+  <section class="stats-dashboard">
+    <div class="container">
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card">
+          <div class="stat-number" id="statDeposits">0</div>
+          <div class="stat-label">Total Deposits Tracked</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statVolume">$0</div>
+          <div class="stat-label">Total USD Volume</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statCasinos">0</div>
+          <div class="stat-label">Casinos Tracked</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statRange">—</div>
+          <div class="stat-label">Date Range</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statActive">—</div>
+          <div class="stat-label">Most Active Casino</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="controls-section">
+    <div class="container">
+      <div class="controls-grid">
+        <div class="control-group">
+          <label class="control-label" for="searchInput">Search</label>
+          <input class="control-input" id="searchInput" type="text" placeholder="Search casino, wallet, token, amount...">
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="casinoFilter">Casino</label>
+          <select class="control-select" id="casinoFilter">
+            <option value="">All Casinos</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="fromDate">From Date</label>
+          <input class="control-input" id="fromDate" type="date">
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="toDate">To Date</label>
+          <input class="control-input" id="toDate" type="date">
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="minUsd">Min USD</label>
+          <input class="control-input" id="minUsd" type="number" min="0" step="0.01" placeholder="0">
+        </div>
+      </div>
+
+      <div class="actions-row">
+        <button class="btn" id="exportCsv">Export Filtered CSV</button>
+        <button class="btn secondary" id="copyLink">Copy Shareable Link</button>
+        <button class="btn secondary" id="resetFilters">Reset Filters</button>
+      </div>
+
+      <div class="summary-row">
+        <div id="resultSummary">Loading data…</div>
+        <div id="sortSummary"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="data-table" style="padding: 2rem 0 3rem;">
+    <div class="container">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th data-key="Date">Date <span class="sort-indicator"></span></th>
+              <th data-key="Time">Time <span class="sort-indicator"></span></th>
+              <th data-key="Casino">Casino <span class="sort-indicator"></span></th>
+              <th data-key="Amount">Amount <span class="sort-indicator"></span></th>
+              <th data-key="Token">Token <span class="sort-indicator"></span></th>
+              <th data-key="USD Value">USD Value <span class="sort-indicator"></span></th>
+              <th data-key="Wallet Address">Wallet <span class="sort-indicator"></span></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr>
+              <td colspan="7" class="loading-state">Loading 3,418 deposits…</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const state = {
+      data: [],
+      filtered: [],
+      sortKey: 'DateTime',
+      sortDir: 'desc',
+      page: 1,
+      pageSize: 50,
+      search: '',
+      casino: '',
+      fromDate: '',
+      toDate: '',
+      minUsd: ''
+    };
+
+    const elements = {
+      tableBody: document.getElementById('tableBody'),
+      pagination: document.getElementById('pagination'),
+      resultSummary: document.getElementById('resultSummary'),
+      sortSummary: document.getElementById('sortSummary'),
+      searchInput: document.getElementById('searchInput'),
+      casinoFilter: document.getElementById('casinoFilter'),
+      fromDate: document.getElementById('fromDate'),
+      toDate: document.getElementById('toDate'),
+      minUsd: document.getElementById('minUsd'),
+      exportCsv: document.getElementById('exportCsv'),
+      copyLink: document.getElementById('copyLink'),
+      resetFilters: document.getElementById('resetFilters')
+    };
+
+    const stats = {
+      deposits: document.getElementById('statDeposits'),
+      volume: document.getElementById('statVolume'),
+      casinos: document.getElementById('statCasinos'),
+      range: document.getElementById('statRange'),
+      active: document.getElementById('statActive')
+    };
+
+    const headerCells = Array.from(document.querySelectorAll('th[data-key]'));
+
+    function parseCSV(text) {
+      const rows = [];
+      let current = '';
+      let inQuotes = false;
+      const line = [];
+
+      for (let i = 0; i < text.length; i += 1) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"') {
+          if (inQuotes && next === '"') {
+            current += '"';
+            i += 1;
+          } else {
+            inQuotes = !inQuotes;
+          }
+          continue;
+        }
+
+        if (char === ',' && !inQuotes) {
+          line.push(current);
+          current = '';
+          continue;
+        }
+
+        if ((char === '\n' || char === '\r') && !inQuotes) {
+          if (char === '\r' && next === '\n') {
+            i += 1;
+          }
+          line.push(current);
+          if (line.length > 1 || line[0] !== '') {
+            rows.push([...line]);
+          }
+          line.length = 0;
+          current = '';
+          continue;
+        }
+
+        current += char;
+      }
+
+      if (current.length || line.length) {
+        line.push(current);
+        rows.push([...line]);
+      }
+
+      return rows;
+    }
+
+    function formatNumber(value) {
+      return value.toLocaleString('en-US');
+    }
+
+    function formatUsd(value) {
+      return value.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+    }
+
+    function truncateWallet(wallet) {
+      if (!wallet) return '';
+      if (wallet.length <= 12) return wallet;
+      return `${wallet.slice(0, 6)}...${wallet.slice(-4)}`;
+    }
+
+    function normalize(value) {
+      return String(value || '').toLowerCase();
+    }
+
+    function applyFilters(resetPage = true) {
+      const searchTerm = normalize(state.search);
+      const minUsd = state.minUsd ? parseFloat(state.minUsd) : null;
+      const fromDate = state.fromDate ? new Date(`${state.fromDate}T00:00:00Z`) : null;
+      const toDate = state.toDate ? new Date(`${state.toDate}T23:59:59Z`) : null;
+
+      state.filtered = state.data.filter((row) => {
+        if (state.casino && row.Casino !== state.casino) return false;
+        if (minUsd !== null && row.usdValue < minUsd) return false;
+        if (fromDate && row.dateObj < fromDate) return false;
+        if (toDate && row.dateObj > toDate) return false;
+        if (searchTerm) {
+          const blob = normalize(`${row.Date} ${row.Time} ${row.Casino} ${row.Amount} ${row.Token} ${row['USD Value']} ${row['Wallet Address']}`);
+          if (!blob.includes(searchTerm)) return false;
+        }
+        return true;
+      });
+
+      if (resetPage) {
+        state.page = 1;
+      }
+      applySort();
+      updateStats();
+      render();
+    }
+
+    function applySort() {
+      const key = state.sortKey;
+      const dir = state.sortDir === 'asc' ? 1 : -1;
+      const sorters = {
+        Date: (a, b) => a.dateObj - b.dateObj,
+        Time: (a, b) => a.Time.localeCompare(b.Time),
+        Casino: (a, b) => a.Casino.localeCompare(b.Casino),
+        Amount: (a, b) => a.amountValue - b.amountValue,
+        Token: (a, b) => a.Token.localeCompare(b.Token),
+        'USD Value': (a, b) => a.usdValue - b.usdValue,
+        'Wallet Address': (a, b) => a['Wallet Address'].localeCompare(b['Wallet Address']),
+        DateTime: (a, b) => a.dateObj - b.dateObj
+      };
+
+      const sorter = sorters[key] || sorters.DateTime;
+      state.filtered.sort((a, b) => dir * sorter(a, b));
+    }
+
+    function updateStats() {
+      const data = state.filtered;
+      const totalDeposits = data.length;
+      const totalVolume = data.reduce((sum, row) => sum + row.usdValue, 0);
+      const casinos = new Set(data.map((row) => row.Casino));
+      const dates = data.map((row) => row.dateObj).filter(Boolean).sort((a, b) => a - b);
+      const dateRange = dates.length ? `${dates[0].toISOString().slice(0, 10)} → ${dates[dates.length - 1].toISOString().slice(0, 10)}` : '—';
+      const casinoCounts = data.reduce((acc, row) => {
+        acc[row.Casino] = (acc[row.Casino] || 0) + 1;
+        return acc;
+      }, {});
+      const mostActive = Object.entries(casinoCounts).sort((a, b) => b[1] - a[1])[0];
+
+      stats.deposits.textContent = formatNumber(totalDeposits);
+      stats.volume.textContent = formatUsd(totalVolume);
+      stats.casinos.textContent = formatNumber(casinos.size);
+      stats.range.textContent = dateRange;
+      stats.active.textContent = mostActive ? mostActive[0] : '—';
+    }
+
+    function render() {
+      const total = state.filtered.length;
+      const totalPages = Math.max(1, Math.ceil(total / state.pageSize));
+      state.page = Math.min(state.page, totalPages);
+
+      const start = (state.page - 1) * state.pageSize;
+      const pageRows = state.filtered.slice(start, start + state.pageSize);
+
+      if (!pageRows.length) {
+        elements.tableBody.innerHTML = `<tr><td colspan="7" class="loading-state">No results found.</td></tr>`;
+      } else {
+        elements.tableBody.innerHTML = pageRows.map((row) => `
+          <tr>
+            <td>${row.Date}</td>
+            <td>${row.Time}</td>
+            <td>${row.Casino}</td>
+            <td>${row.Amount}</td>
+            <td><span class="token-pill">${row.Token}</span></td>
+            <td class="usd-value">${formatUsd(row.usdValue)}</td>
+            <td class="wallet">${truncateWallet(row['Wallet Address'])}</td>
+          </tr>
+        `).join('');
+      }
+
+      elements.resultSummary.textContent = `Showing ${formatNumber(pageRows.length)} of ${formatNumber(total)} deposits`;
+      elements.sortSummary.textContent = `Sorted by ${state.sortKey === 'DateTime' ? 'Date' : state.sortKey} (${state.sortDir.toUpperCase()})`;
+
+      renderPagination(totalPages);
+      updateSortIndicators();
+    }
+
+    function renderPagination(totalPages) {
+      const buttons = [];
+
+      const createBtn = (label, page, disabled = false, active = false) => {
+        buttons.push({ label, page, disabled, active });
+      };
+
+      createBtn('Prev', Math.max(1, state.page - 1), state.page === 1);
+
+      const maxButtons = 7;
+      let start = Math.max(1, state.page - 2);
+      let end = Math.min(totalPages, start + maxButtons - 1);
+
+      if (end - start < maxButtons - 1) {
+        start = Math.max(1, end - maxButtons + 1);
+      }
+
+      for (let i = start; i <= end; i += 1) {
+        createBtn(String(i), i, false, i === state.page);
+      }
+
+      createBtn('Next', Math.min(totalPages, state.page + 1), state.page === totalPages);
+
+      elements.pagination.innerHTML = buttons.map((btn) => {
+        const disabledAttr = btn.disabled ? 'disabled' : '';
+        const activeClass = btn.active ? 'active' : '';
+        return `<button class="page-btn ${activeClass}" data-page="${btn.page}" ${disabledAttr}>${btn.label}</button>`;
+      }).join('');
+    }
+
+    function updateSortIndicators() {
+      headerCells.forEach((cell) => {
+        const indicator = cell.querySelector('.sort-indicator');
+        const key = cell.dataset.key;
+        cell.classList.toggle('sort-active', key === state.sortKey || (key === 'Date' && state.sortKey === 'DateTime'));
+        if (key === state.sortKey || (key === 'Date' && state.sortKey === 'DateTime')) {
+          indicator.textContent = state.sortDir === 'asc' ? '▲' : '▼';
+        } else {
+          indicator.textContent = '';
+        }
+      });
+    }
+
+    function updateShareableLink() {
+      const params = new URLSearchParams();
+      if (state.search) params.set('search', state.search);
+      if (state.casino) params.set('casino', state.casino);
+      if (state.fromDate) params.set('from', state.fromDate);
+      if (state.toDate) params.set('to', state.toDate);
+      if (state.minUsd) params.set('minUsd', state.minUsd);
+      if (state.sortKey) params.set('sort', state.sortKey);
+      if (state.sortDir) params.set('dir', state.sortDir);
+      if (state.page) params.set('page', String(state.page));
+
+      const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+      return url;
+    }
+
+    function applyParams() {
+      const params = new URLSearchParams(window.location.search);
+      state.search = params.get('search') || '';
+      state.casino = params.get('casino') || '';
+      state.fromDate = params.get('from') || '';
+      state.toDate = params.get('to') || '';
+      state.minUsd = params.get('minUsd') || '';
+      state.sortKey = params.get('sort') || 'DateTime';
+      state.sortDir = params.get('dir') || 'desc';
+      state.page = parseInt(params.get('page') || '1', 10);
+
+      elements.searchInput.value = state.search;
+      elements.casinoFilter.value = state.casino;
+      elements.fromDate.value = state.fromDate;
+      elements.toDate.value = state.toDate;
+      elements.minUsd.value = state.minUsd;
+    }
+
+    function exportCsv() {
+      const headers = ['Date', 'Time', 'DateTime', 'Casino', 'Wallet Address', 'Amount', 'Token', 'USD Value'];
+      const rows = state.filtered.map((row) => headers.map((header) => row[header]));
+      const csv = [headers, ...rows].map((row) => row.map((cell) => {
+        const text = String(cell ?? '');
+        if (text.includes(',') || text.includes('"') || text.includes('\n')) {
+          return `"${text.replace(/"/g, '""')}"`;
+        }
+        return text;
+      }).join(',')).join('\n');
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'filtered-deposits.csv';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function copyShareableLink() {
+      const url = updateShareableLink();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          elements.copyLink.textContent = 'Link Copied';
+          setTimeout(() => { elements.copyLink.textContent = 'Copy Shareable Link'; }, 2000);
+        });
+        return;
+      }
+
+      const temp = document.createElement('input');
+      temp.value = url;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      temp.remove();
+      elements.copyLink.textContent = 'Link Copied';
+      setTimeout(() => { elements.copyLink.textContent = 'Copy Shareable Link'; }, 2000);
+    }
+
+    function resetFilters() {
+      state.search = '';
+      state.casino = '';
+      state.fromDate = '';
+      state.toDate = '';
+      state.minUsd = '';
+      state.sortKey = 'DateTime';
+      state.sortDir = 'desc';
+      state.page = 1;
+
+      elements.searchInput.value = '';
+      elements.casinoFilter.value = '';
+      elements.fromDate.value = '';
+      elements.toDate.value = '';
+      elements.minUsd.value = '';
+
+      applyFilters(false);
+    }
+
+    function handleSort(key) {
+      if (key === 'Date') {
+        key = 'DateTime';
+      }
+      if (state.sortKey === key) {
+        state.sortDir = state.sortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        state.sortKey = key;
+        state.sortDir = 'desc';
+      }
+      applySort();
+      render();
+    }
+
+    function attachEvents() {
+      let searchTimeout;
+      elements.searchInput.addEventListener('input', (event) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          state.search = event.target.value.trim();
+          applyFilters();
+        }, 150);
+      });
+
+      elements.casinoFilter.addEventListener('change', (event) => {
+        state.casino = event.target.value;
+        applyFilters();
+      });
+
+      elements.fromDate.addEventListener('change', (event) => {
+        state.fromDate = event.target.value;
+        applyFilters();
+      });
+
+      elements.toDate.addEventListener('change', (event) => {
+        state.toDate = event.target.value;
+        applyFilters();
+      });
+
+      elements.minUsd.addEventListener('input', (event) => {
+        state.minUsd = event.target.value;
+        applyFilters();
+      });
+
+      elements.exportCsv.addEventListener('click', exportCsv);
+      elements.copyLink.addEventListener('click', copyShareableLink);
+      elements.resetFilters.addEventListener('click', resetFilters);
+
+      elements.pagination.addEventListener('click', (event) => {
+        const btn = event.target.closest('[data-page]');
+        if (!btn || btn.disabled) return;
+        state.page = parseInt(btn.dataset.page, 10);
+        render();
+      });
+
+      headerCells.forEach((cell) => {
+        cell.addEventListener('click', () => handleSort(cell.dataset.key));
+      });
+    }
+
+    async function init() {
+      const response = await fetch('data/deposits-all.csv');
+      const text = await response.text();
+      const rows = parseCSV(text);
+      const headers = rows.shift();
+
+      const data = rows.map((row) => {
+        const entry = {};
+        headers.forEach((header, index) => {
+          entry[header] = row[index] || '';
+        });
+        const dateValue = entry.DateTime || `${entry.Date}T${entry.Time}Z`;
+        const dateObj = new Date(dateValue);
+        entry.dateObj = isNaN(dateObj.getTime()) ? new Date(`${entry.Date}T00:00:00Z`) : dateObj;
+        entry.amountValue = parseFloat(entry.Amount || 0);
+        entry.usdValue = parseFloat(entry['USD Value'] || 0);
+        return entry;
+      });
+
+      state.data = data;
+      state.filtered = [...data];
+
+      const casinos = Array.from(new Set(data.map((row) => row.Casino))).sort();
+      casinos.forEach((casino) => {
+        const option = document.createElement('option');
+        option.value = casino;
+        option.textContent = casino;
+        elements.casinoFilter.appendChild(option);
+      });
+
+      applyParams();
+      applyFilters();
+      attachEvents();
+    }
+
+    init().catch(() => {
+      elements.tableBody.innerHTML = `<tr><td colspan="7" class="loading-state">Unable to load deposit data.</td></tr>`;
+    });
+  </script>
+</body>
+</html>
