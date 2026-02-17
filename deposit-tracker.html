@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Casino Deposit Tracker - See Your Lifetime Deposits | CryptoCasinoSorted</title>
-    <meta name="description" content="Track your lifetime crypto casino deposits. Paste your wallet address and see exactly how much you've deposited across Stake, Rollbit, BC.Game and more.">
+    <title>Crypto Casino Tracker - See Your Net Win/Loss | CryptoCasinoSorted</title>
+    <meta name="description" content="Track your crypto casino deposits and withdrawals. See your net win/loss across Stake, Rollbit, BC.Game and more. Just paste your wallet address.">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
     <!-- Schema.org markup for Tool/Calculator -->
@@ -289,6 +289,39 @@
             margin-left: 10px;
         }
         
+        .casino-item .casino-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+        
+        .casino-item .net-amount {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .casino-item .net-amount.positive {
+            color: #22c55e;
+        }
+        
+        .casino-item .net-amount.negative {
+            color: #ef4444;
+        }
+        
+        .casino-item .breakdown {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        
+        .casino-item .breakdown .deposit {
+            color: #ef4444;
+        }
+        
+        .casino-item .breakdown .withdrawal {
+            color: #22c55e;
+        }
+        
         .share-section {
             text-align: center;
             margin-top: 30px;
@@ -409,8 +442,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>💸 Lifetime Deposit Tracker</h1>
-            <p class="subtitle">See exactly how much you've deposited at crypto casinos</p>
+            <h1>💸 Crypto Casino Tracker</h1>
+            <p class="subtitle">Track your deposits, withdrawals, and net win/loss</p>
             
             <div class="info-box">
                 <strong>🔒 Privacy First:</strong> We only read public blockchain data. Your wallet address is never stored. All calculations happen in your browser.
@@ -430,7 +463,7 @@
         
         <div class="loading" id="loading">
             <div class="spinner"></div>
-            <p>Scanning blockchain for your deposits...</p>
+            <p>Scanning blockchain for your deposits & withdrawals...</p>
             <p style="font-size: 0.9rem; color: #64748b; margin-top: 10px;">This may take 10-30 seconds</p>
         </div>
         
@@ -441,27 +474,35 @@
         <div class="results" id="results">
             <div class="results-card">
                 <div class="headline-stat">
-                    <div class="amount" id="totalAmount">$0</div>
-                    <div class="label">Total Deposited (Lifetime)</div>
+                    <div class="amount" id="netPosition">$0</div>
+                    <div class="label" id="netLabel">Net Position</div>
                     <div class="subtext" id="subtextMessage"></div>
                 </div>
                 
                 <div class="stats-grid">
                     <div class="stat-box">
+                        <div class="value" id="totalDeposited" style="color: #ef4444;">$0</div>
+                        <div class="label">Total Deposited</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value" id="totalWithdrawn" style="color: #22c55e;">$0</div>
+                        <div class="label">Total Withdrawn</div>
+                    </div>
+                    <div class="stat-box">
                         <div class="value" id="depositCount">0</div>
-                        <div class="label">Total Deposits</div>
+                        <div class="label">Deposits</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value" id="withdrawalCount">0</div>
+                        <div class="label">Withdrawals</div>
                     </div>
                     <div class="stat-box">
                         <div class="value" id="avgDeposit">$0</div>
-                        <div class="label">Average Deposit</div>
+                        <div class="label">Avg Deposit</div>
                     </div>
                     <div class="stat-box">
                         <div class="value" id="biggestDeposit">$0</div>
                         <div class="label">Biggest Deposit</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="value" id="casinoCount">0</div>
-                        <div class="label">Casinos Used</div>
                     </div>
                 </div>
                 
@@ -536,10 +577,11 @@
             return addresses;
         }
         
-        // Scan wallet for deposits to casinos
+        // Scan wallet for deposits and withdrawals
         async function scanWallet(walletAddress) {
             const casinoAddresses = getAllCasinoAddresses();
             const deposits = [];
+            const withdrawals = [];
             
             // Get normal transactions
             const normalTxUrl = `https://api.etherscan.io/api?module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc&apikey=${ETHERSCAN_API_KEY}`;
@@ -554,27 +596,41 @@
                 
                 const transactions = data.result;
                 
-                // Filter for outgoing transactions to casino addresses
+                // Filter for transactions with casino addresses
                 transactions.forEach(tx => {
                     const toAddress = tx.to ? tx.to.toLowerCase() : '';
                     const fromAddress = tx.from ? tx.from.toLowerCase() : '';
+                    const userWallet = walletAddress.toLowerCase();
+                    const valueEth = parseFloat(tx.value) / 1e18;
                     
-                    // Only count outgoing transactions (from user to casino)
-                    if (fromAddress === walletAddress.toLowerCase() && casinoAddresses[toAddress]) {
-                        const valueEth = parseFloat(tx.value) / 1e18;
-                        if (valueEth > 0.001) { // Filter out dust transactions
-                            deposits.push({
-                                casino: casinoAddresses[toAddress],
-                                valueEth: valueEth,
-                                valueUsd: valueEth * ethPrice,
-                                timestamp: parseInt(tx.timeStamp),
-                                hash: tx.hash
-                            });
-                        }
+                    if (valueEth < 0.001) return; // Filter out dust transactions
+                    
+                    // Deposits: from user to casino
+                    if (fromAddress === userWallet && casinoAddresses[toAddress]) {
+                        deposits.push({
+                            casino: casinoAddresses[toAddress],
+                            valueEth: valueEth,
+                            valueUsd: valueEth * ethPrice,
+                            timestamp: parseInt(tx.timeStamp),
+                            hash: tx.hash,
+                            type: 'deposit'
+                        });
+                    }
+                    
+                    // Withdrawals: from casino to user
+                    if (toAddress === userWallet && casinoAddresses[fromAddress]) {
+                        withdrawals.push({
+                            casino: casinoAddresses[fromAddress],
+                            valueEth: valueEth,
+                            valueUsd: valueEth * ethPrice,
+                            timestamp: parseInt(tx.timeStamp),
+                            hash: tx.hash,
+                            type: 'withdrawal'
+                        });
                     }
                 });
                 
-                return deposits;
+                return { deposits, withdrawals };
                 
             } catch (error) {
                 console.error('Error scanning wallet:', error);
@@ -583,40 +639,63 @@
         }
         
         // Calculate statistics
-        function calculateStats(deposits) {
-            if (deposits.length === 0) {
+        function calculateStats(deposits, withdrawals) {
+            if (deposits.length === 0 && withdrawals.length === 0) {
                 return null;
             }
             
-            const totalUsd = deposits.reduce((sum, d) => sum + d.valueUsd, 0);
-            const depositCount = deposits.length;
-            const avgDeposit = totalUsd / depositCount;
-            const biggestDeposit = Math.max(...deposits.map(d => d.valueUsd));
+            const totalDeposited = deposits.reduce((sum, d) => sum + d.valueUsd, 0);
+            const totalWithdrawn = withdrawals.reduce((sum, w) => sum + w.valueUsd, 0);
+            const netPosition = totalWithdrawn - totalDeposited; // Positive = profit, Negative = loss
             
-            // Breakdown by casino
+            const depositCount = deposits.length;
+            const withdrawalCount = withdrawals.length;
+            const avgDeposit = depositCount > 0 ? totalDeposited / depositCount : 0;
+            const avgWithdrawal = withdrawalCount > 0 ? totalWithdrawn / withdrawalCount : 0;
+            const biggestDeposit = depositCount > 0 ? Math.max(...deposits.map(d => d.valueUsd)) : 0;
+            const biggestWithdrawal = withdrawalCount > 0 ? Math.max(...withdrawals.map(w => w.valueUsd)) : 0;
+            
+            // Breakdown by casino (deposits and withdrawals)
             const byCasino = {};
+            
             deposits.forEach(d => {
                 if (!byCasino[d.casino]) {
-                    byCasino[d.casino] = { total: 0, count: 0 };
+                    byCasino[d.casino] = { deposited: 0, withdrawn: 0, depositCount: 0, withdrawalCount: 0 };
                 }
-                byCasino[d.casino].total += d.valueUsd;
-                byCasino[d.casino].count++;
+                byCasino[d.casino].deposited += d.valueUsd;
+                byCasino[d.casino].depositCount++;
             });
             
-            // Sort casinos by total
+            withdrawals.forEach(w => {
+                if (!byCasino[w.casino]) {
+                    byCasino[w.casino] = { deposited: 0, withdrawn: 0, depositCount: 0, withdrawalCount: 0 };
+                }
+                byCasino[w.casino].withdrawn += w.valueUsd;
+                byCasino[w.casino].withdrawalCount++;
+            });
+            
+            // Sort casinos by total activity (deposits + withdrawals)
             const casinoBreakdown = Object.entries(byCasino)
                 .map(([casino, data]) => ({
                     casino,
-                    total: data.total,
-                    count: data.count
+                    deposited: data.deposited,
+                    withdrawn: data.withdrawn,
+                    net: data.withdrawn - data.deposited,
+                    depositCount: data.depositCount,
+                    withdrawalCount: data.withdrawalCount
                 }))
-                .sort((a, b) => b.total - a.total);
+                .sort((a, b) => (b.deposited + b.withdrawn) - (a.deposited + a.withdrawn));
             
             return {
-                totalUsd,
+                totalDeposited,
+                totalWithdrawn,
+                netPosition,
                 depositCount,
+                withdrawalCount,
                 avgDeposit,
+                avgWithdrawal,
                 biggestDeposit,
+                biggestWithdrawal,
                 casinoCount: Object.keys(byCasino).length,
                 casinoBreakdown
             };
@@ -628,8 +707,8 @@
                 document.getElementById('results').innerHTML = `
                     <div class="results-card">
                         <div class="no-results">
-                            <h3>No Deposits Found</h3>
-                            <p>We didn't find any deposits from this wallet to tracked crypto casinos.</p>
+                            <h3>No Activity Found</h3>
+                            <p>We didn't find any deposits or withdrawals from this wallet to tracked crypto casinos.</p>
                             <p style="margin-top: 10px;">Make sure you're using the correct Ethereum wallet address.</p>
                         </div>
                     </div>
@@ -638,66 +717,110 @@
                 return;
             }
             
-            // Update main stats
-            document.getElementById('totalAmount').textContent = `$${stats.totalUsd.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            // Update net position (headline)
+            const netElement = document.getElementById('netPosition');
+            const netLabelElement = document.getElementById('netLabel');
+            const absNet = Math.abs(stats.netPosition);
+            
+            if (stats.netPosition > 0) {
+                netElement.textContent = `+$${absNet.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+                netElement.style.color = '#22c55e';
+                netLabelElement.textContent = 'Net Profit 🎉';
+            } else if (stats.netPosition < 0) {
+                netElement.textContent = `-$${absNet.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+                netElement.style.color = '#ef4444';
+                netLabelElement.textContent = 'Net Loss';
+            } else {
+                netElement.textContent = '$0';
+                netElement.style.color = '#8b5cf6';
+                netLabelElement.textContent = 'Break Even';
+            }
+            
+            // Update stats boxes
+            document.getElementById('totalDeposited').textContent = `$${stats.totalDeposited.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            document.getElementById('totalWithdrawn').textContent = `$${stats.totalWithdrawn.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
             document.getElementById('depositCount').textContent = stats.depositCount.toLocaleString();
+            document.getElementById('withdrawalCount').textContent = stats.withdrawalCount.toLocaleString();
             document.getElementById('avgDeposit').textContent = `$${stats.avgDeposit.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
             document.getElementById('biggestDeposit').textContent = `$${stats.biggestDeposit.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
-            document.getElementById('casinoCount').textContent = stats.casinoCount;
             
             // Casino breakdown
             const casinoList = document.getElementById('casinoList');
-            casinoList.innerHTML = stats.casinoBreakdown.map(item => `
-                <div class="casino-item">
-                    <span class="casino-name">${item.casino}</span>
-                    <span>
-                        <span class="casino-amount">$${item.total.toLocaleString('en-US', {maximumFractionDigits: 0})}</span>
-                        <span class="casino-count">(${item.count} deposits)</span>
-                    </span>
-                </div>
-            `).join('');
+            casinoList.innerHTML = stats.casinoBreakdown.map(item => {
+                const netClass = item.net >= 0 ? 'positive' : 'negative';
+                const netSign = item.net >= 0 ? '+' : '';
+                return `
+                    <div class="casino-item">
+                        <span class="casino-name">${item.casino}</span>
+                        <div class="casino-details">
+                            <span class="net-amount ${netClass}">${netSign}$${Math.abs(item.net).toLocaleString('en-US', {maximumFractionDigits: 0})}</span>
+                            <span class="breakdown">
+                                <span class="deposit">-$${item.deposited.toLocaleString('en-US', {maximumFractionDigits: 0})}</span> / 
+                                <span class="withdrawal">+$${item.withdrawn.toLocaleString('en-US', {maximumFractionDigits: 0})}</span>
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
             
-            // Generate engaging subtext based on amount
+            // Generate engaging subtext based on net position
             let subtextMessage = '';
-            if (stats.totalUsd > 100000) {
-                subtextMessage = '🐋 Whale status unlocked';
-            } else if (stats.totalUsd > 50000) {
-                subtextMessage = '💎 High roller detected';
-            } else if (stats.totalUsd > 20000) {
-                subtextMessage = '🎰 Serious gambler';
-            } else if (stats.totalUsd > 5000) {
-                subtextMessage = '🎲 Regular player';
+            const absNet = Math.abs(stats.netPosition);
+            
+            if (stats.netPosition > 10000) {
+                subtextMessage = '🤑 You\'re crushing it!';
+            } else if (stats.netPosition > 1000) {
+                subtextMessage = '💰 In the green';
+            } else if (stats.netPosition > -1000) {
+                subtextMessage = '📊 Almost even';
+            } else if (stats.netPosition > -10000) {
+                subtextMessage = '😬 House has the edge';
+            } else if (stats.netPosition > -50000) {
+                subtextMessage = '💸 That\'s... a lot';
             } else {
-                subtextMessage = '🎯 Getting started';
+                subtextMessage = '🐋 Whale-sized losses';
             }
             
             document.getElementById('subtextMessage').textContent = subtextMessage;
             
             // Setup share buttons with viral copy
-            const totalFormatted = stats.totalUsd.toLocaleString('en-US', {maximumFractionDigits: 0});
+            const netFormatted = absNet.toLocaleString('en-US', {maximumFractionDigits: 0});
+            const depositedFormatted = stats.totalDeposited.toLocaleString('en-US', {maximumFractionDigits: 0});
+            const withdrawnFormatted = stats.totalWithdrawn.toLocaleString('en-US', {maximumFractionDigits: 0});
             const topCasino = stats.casinoBreakdown[0].casino;
-            const topCasinoAmount = stats.casinoBreakdown[0].total.toLocaleString('en-US', {maximumFractionDigits: 0});
+            const topCasinoNet = Math.abs(stats.casinoBreakdown[0].net).toLocaleString('en-US', {maximumFractionDigits: 0});
             
             // Twitter - shocking revelation style
             let twitterText;
-            if (stats.totalUsd > 10000) {
-                twitterText = `Just found out I've deposited $${totalFormatted} at crypto casinos 😳\n\n$${topCasinoAmount} at ${topCasino} alone.\n\nCheck yours: cryptocasinosorted.com/deposit-tracker.html`;
+            if (stats.netPosition > 1000) {
+                twitterText = `I'm up $${netFormatted} at crypto casinos 🤑\n\nDeposited: $${depositedFormatted}\nWithdrawn: $${withdrawnFormatted}\n\nCheck yours: cryptocasinosorted.com/deposit-tracker.html`;
+            } else if (stats.netPosition < -1000) {
+                twitterText = `Just realized I'm down $${netFormatted} at crypto casinos 😳\n\nDeposited $${depositedFormatted}, withdrawn $${withdrawnFormatted}.\n\nCheck yours: cryptocasinosorted.com/deposit-tracker.html`;
             } else {
-                twitterText = `Tracked my crypto casino deposits: $${totalFormatted} lifetime 💸\n\nMost at ${topCasino}: $${topCasinoAmount}\n\nCheck yours: cryptocasinosorted.com/deposit-tracker.html`;
+                twitterText = `Tracked my crypto casino activity:\n\nDeposited: $${depositedFormatted}\nWithdrawn: $${withdrawnFormatted}\n\nNearly break even!\n\nCheck yours: cryptocasinosorted.com/deposit-tracker.html`;
             }
             
             // Reddit - discussion starter
-            const redditTitle = stats.totalUsd > 20000 
-                ? `I've deposited $${totalFormatted} at crypto casinos - how much have you deposited?`
-                : `Tracked my crypto casino deposits - $${totalFormatted} total`;
-            const redditText = `Used CryptoCasinoSorted's deposit tracker and was surprised to see $${totalFormatted} total across ${stats.casinoCount} casinos.\n\n${topCasino} was my biggest: $${topCasinoAmount} (${stats.casinoBreakdown[0].count} deposits)\n\nYou can check yours at cryptocasinosorted.com/deposit-tracker.html - just paste your ETH wallet address.`;
+            const redditTitle = stats.netPosition > 1000
+                ? `I'm actually up $${netFormatted} at crypto casinos - tracked my deposits vs withdrawals`
+                : stats.netPosition < -5000
+                ? `Tracked my crypto casino deposits - I'm down $${netFormatted} 😬`
+                : `Tracked my crypto casino deposits vs withdrawals`;
+                
+            const netDescription = stats.netPosition >= 0 
+                ? `up $${netFormatted}` 
+                : `down $${netFormatted}`;
+                
+            const redditText = `Used CryptoCasinoSorted's deposit tracker and I'm ${netDescription}.\n\nTotal deposited: $${depositedFormatted}\nTotal withdrawn: $${withdrawnFormatted}\n\nBiggest casino: ${topCasino} (${stats.casinoBreakdown[0].net >= 0 ? '+' : '-'}$${topCasinoNet})\n\nYou can check yours at cryptocasinosorted.com/deposit-tracker.html - tracks deposits and withdrawals from your ETH wallet.`;
             
             document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterText)}`;
             document.getElementById('shareReddit').href = `https://reddit.com/submit?title=${encodeURIComponent(redditTitle)}&text=${encodeURIComponent(redditText)}`;
             
             // Setup copy button
             document.getElementById('copyResults').onclick = () => {
-                const copyText = `💸 My Crypto Casino Deposits\n\nTotal: $${totalFormatted}\nDeposits: ${stats.depositCount}\nCasinos: ${stats.casinoCount}\n\nBiggest casino: ${topCasino} ($${topCasinoAmount})\nAverage deposit: $${stats.avgDeposit.toLocaleString('en-US', {maximumFractionDigits: 0})}\n\nTrack yours: cryptocasinosorted.com/deposit-tracker.html`;
+                const netSign = stats.netPosition >= 0 ? '+' : '-';
+                const netEmoji = stats.netPosition >= 0 ? '🤑' : '😬';
+                const copyText = `${netEmoji} My Crypto Casino Results\n\nNet Position: ${netSign}$${netFormatted}\n\nDeposited: $${depositedFormatted} (${stats.depositCount} transactions)\nWithdrawn: $${withdrawnFormatted} (${stats.withdrawalCount} transactions)\n\nBiggest casino: ${topCasino} (${stats.casinoBreakdown[0].net >= 0 ? '+' : '-'}$${topCasinoNet})\n\nTrack yours: cryptocasinosorted.com/deposit-tracker.html`;
                 
                 navigator.clipboard.writeText(copyText).then(() => {
                     const toast = document.getElementById('copiedToast');
@@ -732,10 +855,10 @@
                 await getEthPrice();
                 
                 // Scan wallet
-                const deposits = await scanWallet(walletAddress);
+                const { deposits, withdrawals } = await scanWallet(walletAddress);
                 
                 // Calculate stats
-                const stats = calculateStats(deposits);
+                const stats = calculateStats(deposits, withdrawals);
                 
                 // Display results
                 displayResults(stats);
