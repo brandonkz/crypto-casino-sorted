@@ -914,6 +914,12 @@ body {
   display: block;
 }
 
+.results-capture {
+  background: var(--dark);
+  padding: 1.5rem;
+  border-radius: calc(var(--radius-lg) + 6px);
+}
+
 .results-card {
   background: var(--dark-card);
   border: 2px solid var(--border);
@@ -1055,6 +1061,22 @@ body {
   color: #22c55e;
 }
 
+.capture-branding {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.branding.capture-only {
+  margin-top: 1.25rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
 .share-section {
   text-align: center;
   margin-top: 2.5rem;
@@ -1089,6 +1111,22 @@ body {
 .share-btn:hover {
   transform: translateY(-2px);
   border-color: var(--white);
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #22c55e 0%, #38bdf8 100%);
+  color: #050505;
+  border: none;
+}
+
+.download-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.download-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .copy-btn {

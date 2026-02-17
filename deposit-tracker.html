@@ -139,7 +139,8 @@
   <section class="tracker-results">
     <div class="container">
       <div class="results" id="results">
-        <div class="results-card">
+        <div class="results-capture" id="resultsCapture">
+          <div class="results-card">
           <div class="headline-stat">
             <div class="amount" id="netPosition">$0</div>
             <div class="label" id="netLabel">Net Position</div>
@@ -178,23 +179,29 @@
             <div id="casinoList"></div>
           </div>
 
+          <div class="capture-branding">CryptoCasinoSorted.com</div>
+
           <div class="share-section">
             <p class="share-text">Screenshot this and share, or:</p>
             <button class="copy-btn" id="copyResults">📋 Copy Results</button>
+            <button class="share-btn download-btn" id="downloadResults" hidden>📸 Download Image</button>
             <a href="#" class="share-btn" id="shareTwitter">🐦 Twitter</a>
             <a href="#" class="share-btn" id="shareReddit">🔥 Reddit</a>
           </div>
-        </div>
-      </div>
+          </div>
 
-      <div class="branding">
-        Powered by <a href="/">CryptoCasinoSorted</a> · Real blockchain data via Etherscan
+          <div class="branding capture-only">
+            Powered by <a href="/">CryptoCasinoSorted</a> · Real blockchain data via Etherscan
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <div class="copied-toast" id="copiedToast">✅ Copied to clipboard!</div>
+  <div class="copied-toast" id="downloadToast">✅ Image downloaded!</div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
         // Casino wallet addresses (Ethereum mainnet)
         const CASINOS = {
@@ -251,7 +258,10 @@
             shareTwitter: document.getElementById('shareTwitter'),
             shareReddit: document.getElementById('shareReddit'),
             copyResults: document.getElementById('copyResults'),
-            copiedToast: document.getElementById('copiedToast')
+            downloadResults: document.getElementById('downloadResults'),
+            copiedToast: document.getElementById('copiedToast'),
+            downloadToast: document.getElementById('downloadToast'),
+            resultsCapture: document.getElementById('resultsCapture')
         };
         
         const CASINO_ADDRESS_MAP = (() => {
@@ -593,10 +603,11 @@
                 const copyText = `${netEmoji} My Crypto Casino Results\n\nNet Position: ${netSign}$${netFormatted}\n\nDeposited: $${depositedFormatted} (${stats.depositCount} transactions)\nWithdrawn: $${withdrawnFormatted} (${stats.withdrawalCount} transactions)\n\nBiggest casino: ${topCasino} (${stats.casinoBreakdown[0].net >= 0 ? '+' : '-'}$${topCasinoNet})\n\nTrack yours: cryptocasinosorted.com/deposit-tracker.html`;
                 
                 navigator.clipboard.writeText(copyText).then(() => {
-                    elements.copiedToast.classList.add('show');
-                    setTimeout(() => elements.copiedToast.classList.remove('show'), 2000);
+                    showToast(elements.copiedToast, '✅ Copied to clipboard!');
                 });
             };
+
+            elements.downloadResults.hidden = false;
             
             elements.results.classList.add('active');
         }
@@ -614,6 +625,7 @@
             // Hide previous results/errors
             elements.results.classList.remove('active');
             elements.error.classList.remove('active');
+            elements.downloadResults.hidden = true;
             
             // Show loading
             elements.loading.classList.add('active');
@@ -645,6 +657,47 @@
             elements.errorMessage.textContent = message;
             elements.error.classList.add('active');
         }
+
+        function showToast(element, message) {
+            if (!element) return;
+            if (message) {
+                element.textContent = message;
+            }
+            element.classList.add('show');
+            setTimeout(() => element.classList.remove('show'), 2000);
+        }
+
+        async function downloadResultsCard() {
+            if (!elements.resultsCapture || !window.html2canvas) return;
+            const button = elements.downloadResults;
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = 'Generating image...';
+
+            try {
+                const captureBackground = getComputedStyle(elements.resultsCapture).backgroundColor;
+                const canvas = await window.html2canvas(elements.resultsCapture, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: captureBackground,
+                    ignoreElements: (element) => element.classList?.contains('share-section')
+                });
+
+                const link = document.createElement('a');
+                link.download = 'my-crypto-casino-results.png';
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                showToast(elements.downloadToast, '✅ Image downloaded!');
+            } catch (error) {
+                console.error('Failed to generate image:', error);
+                showToast(elements.downloadToast, '⚠️ Could not generate image');
+            } finally {
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        }
         
         // Event listeners
         elements.scanBtn.addEventListener('click', performScan);
@@ -653,6 +706,7 @@
                 performScan();
             }
         });
+        elements.downloadResults.addEventListener('click', downloadResultsCard);
         
         // Initialize ETH price on page load
         getEthPrice();
