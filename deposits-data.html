@@ -141,7 +141,7 @@
       background: var(--dark-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      overflow: hidden;
+      overflow-x: auto;
       box-shadow: var(--shadow);
     }
 
@@ -198,6 +198,11 @@
     .usd-value {
       font-weight: 700;
       color: #a78bfa;
+    }
+
+    .wallet,
+    .wallet-col {
+      min-width: 320px;
     }
 
     .wallet {
@@ -377,7 +382,7 @@
               <th data-key="Amount">Amount <span class="sort-indicator"></span></th>
               <th data-key="Token">Token <span class="sort-indicator"></span></th>
               <th data-key="USD Value">USD Value <span class="sort-indicator"></span></th>
-              <th data-key="Wallet Address">Wallet <span class="sort-indicator"></span></th>
+              <th data-key="Wallet Address" class="wallet-col">Wallet <span class="sort-indicator"></span></th>
             </tr>
           </thead>
           <tbody id="tableBody">
@@ -386,7 +391,6 @@
             </tr>
           </tbody>
         </table>
-        <div class="pagination" id="pagination"></div>
       </div>
     </div>
   </section>
@@ -397,8 +401,7 @@
       filtered: [],
       sortKey: 'DateTime',
       sortDir: 'desc',
-      page: 1,
-      pageSize: 50,
+      pageSize: 10000,
       search: '',
       casino: '',
       fromDate: '',
@@ -408,7 +411,6 @@
 
     const elements = {
       tableBody: document.getElementById('tableBody'),
-      pagination: document.getElementById('pagination'),
       resultSummary: document.getElementById('resultSummary'),
       sortSummary: document.getElementById('sortSummary'),
       searchInput: document.getElementById('searchInput'),
@@ -489,12 +491,6 @@
       return value.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
     }
 
-    function truncateWallet(wallet) {
-      if (!wallet) return '';
-      if (wallet.length <= 12) return wallet;
-      return `${wallet.slice(0, 6)}...${wallet.slice(-4)}`;
-    }
-
     function normalize(value) {
       return String(value || '').toLowerCase();
     }
@@ -517,9 +513,6 @@
         return true;
       });
 
-      if (resetPage) {
-        state.page = 1;
-      }
       applySort();
       updateStats();
       render();
@@ -565,11 +558,7 @@
 
     function render() {
       const total = state.filtered.length;
-      const totalPages = Math.max(1, Math.ceil(total / state.pageSize));
-      state.page = Math.min(state.page, totalPages);
-
-      const start = (state.page - 1) * state.pageSize;
-      const pageRows = state.filtered.slice(start, start + state.pageSize);
+      const pageRows = state.filtered;
 
       if (!pageRows.length) {
         elements.tableBody.innerHTML = `<tr><td colspan="7" class="loading-state">No results found.</td></tr>`;
@@ -582,46 +571,14 @@
             <td>${row.Amount}</td>
             <td><span class="token-pill">${row.Token}</span></td>
             <td class="usd-value">${formatUsd(row.usdValue)}</td>
-            <td class="wallet">${truncateWallet(row['Wallet Address'])}</td>
+            <td class="wallet">${row['Wallet Address'] || ''}</td>
           </tr>
         `).join('');
       }
 
       elements.resultSummary.textContent = `Showing ${formatNumber(pageRows.length)} of ${formatNumber(total)} deposits`;
       elements.sortSummary.textContent = `Sorted by ${state.sortKey === 'DateTime' ? 'Date' : state.sortKey} (${state.sortDir.toUpperCase()})`;
-
-      renderPagination(totalPages);
       updateSortIndicators();
-    }
-
-    function renderPagination(totalPages) {
-      const buttons = [];
-
-      const createBtn = (label, page, disabled = false, active = false) => {
-        buttons.push({ label, page, disabled, active });
-      };
-
-      createBtn('Prev', Math.max(1, state.page - 1), state.page === 1);
-
-      const maxButtons = 7;
-      let start = Math.max(1, state.page - 2);
-      let end = Math.min(totalPages, start + maxButtons - 1);
-
-      if (end - start < maxButtons - 1) {
-        start = Math.max(1, end - maxButtons + 1);
-      }
-
-      for (let i = start; i <= end; i += 1) {
-        createBtn(String(i), i, false, i === state.page);
-      }
-
-      createBtn('Next', Math.min(totalPages, state.page + 1), state.page === totalPages);
-
-      elements.pagination.innerHTML = buttons.map((btn) => {
-        const disabledAttr = btn.disabled ? 'disabled' : '';
-        const activeClass = btn.active ? 'active' : '';
-        return `<button class="page-btn ${activeClass}" data-page="${btn.page}" ${disabledAttr}>${btn.label}</button>`;
-      }).join('');
     }
 
     function updateSortIndicators() {
@@ -646,7 +603,6 @@
       if (state.minUsd) params.set('minUsd', state.minUsd);
       if (state.sortKey) params.set('sort', state.sortKey);
       if (state.sortDir) params.set('dir', state.sortDir);
-      if (state.page) params.set('page', String(state.page));
 
       const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
       return url;
@@ -661,7 +617,6 @@
       state.minUsd = params.get('minUsd') || '';
       state.sortKey = params.get('sort') || 'DateTime';
       state.sortDir = params.get('dir') || 'desc';
-      state.page = parseInt(params.get('page') || '1', 10);
 
       elements.searchInput.value = state.search;
       elements.casinoFilter.value = state.casino;
@@ -720,7 +675,6 @@
       state.minUsd = '';
       state.sortKey = 'DateTime';
       state.sortDir = 'desc';
-      state.page = 1;
 
       elements.searchInput.value = '';
       elements.casinoFilter.value = '';
@@ -778,13 +732,6 @@
       elements.exportCsv.addEventListener('click', exportCsv);
       elements.copyLink.addEventListener('click', copyShareableLink);
       elements.resetFilters.addEventListener('click', resetFilters);
-
-      elements.pagination.addEventListener('click', (event) => {
-        const btn = event.target.closest('[data-page]');
-        if (!btn || btn.disabled) return;
-        state.page = parseInt(btn.dataset.page, 10);
-        render();
-      });
 
       headerCells.forEach((cell) => {
         cell.addEventListener('click', () => handleSort(cell.dataset.key));
