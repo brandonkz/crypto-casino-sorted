@@ -583,8 +583,8 @@
             const deposits = [];
             const withdrawals = [];
             
-            // Get normal transactions
-            const normalTxUrl = `https://api.etherscan.io/api?module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc&apikey=${ETHERSCAN_API_KEY}`;
+            // Get normal transactions (V2 API)
+            const normalTxUrl = `https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc&apikey=${ETHERSCAN_API_KEY}`;
             
             try {
                 const response = await fetch(normalTxUrl);
