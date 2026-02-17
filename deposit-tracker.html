@@ -191,6 +191,17 @@
             background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
             border-radius: 16px;
             border: 2px solid rgba(139, 92, 246, 0.4);
+            position: relative;
+        }
+        
+        .headline-stat::after {
+            content: 'CryptoCasinoSorted.com';
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 0.8rem;
+            color: rgba(139, 92, 246, 0.6);
+            font-weight: 600;
         }
         
         .headline-stat .amount {
@@ -207,6 +218,13 @@
             font-size: 1.3rem;
             color: #cbd5e1;
             font-weight: 600;
+        }
+        
+        .headline-stat .subtext {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-top: 15px;
+            font-weight: 500;
         }
         
         .stats-grid {
@@ -293,6 +311,42 @@
         .share-btn:hover {
             background: rgba(139, 92, 246, 0.3);
             transform: translateY(-2px);
+        }
+        
+        .copy-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+        }
+        
+        .copied-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(34, 197, 94, 0.9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .copied-toast.show {
+            opacity: 1;
         }
         
         .error {
@@ -389,6 +443,7 @@
                 <div class="headline-stat">
                     <div class="amount" id="totalAmount">$0</div>
                     <div class="label">Total Deposited (Lifetime)</div>
+                    <div class="subtext" id="subtextMessage"></div>
                 </div>
                 
                 <div class="stats-grid">
@@ -416,9 +471,10 @@
                 </div>
                 
                 <div class="share-section">
-                    <p style="margin-bottom: 15px; color: #94a3b8;">Share your results:</p>
-                    <a href="#" class="share-btn" id="shareTwitter">Share on Twitter</a>
-                    <a href="#" class="share-btn" id="shareReddit">Share on Reddit</a>
+                    <p style="margin-bottom: 15px; color: #94a3b8;">📸 Screenshot this and share, or:</p>
+                    <button class="copy-btn" id="copyResults">📋 Copy Results</button>
+                    <a href="#" class="share-btn" id="shareTwitter">🐦 Twitter</a>
+                    <a href="#" class="share-btn" id="shareReddit">🔥 Reddit</a>
                 </div>
             </div>
         </div>
@@ -427,6 +483,8 @@
             Powered by <a href="/">CryptoCasinoSorted</a> · Real blockchain data via Etherscan
         </div>
     </div>
+    
+    <div class="copied-toast" id="copiedToast">✅ Copied to clipboard!</div>
     
     <script>
         // Casino wallet addresses (Ethereum mainnet)
@@ -599,13 +657,54 @@
                 </div>
             `).join('');
             
-            // Setup share buttons
+            // Generate engaging subtext based on amount
+            let subtextMessage = '';
+            if (stats.totalUsd > 100000) {
+                subtextMessage = '🐋 Whale status unlocked';
+            } else if (stats.totalUsd > 50000) {
+                subtextMessage = '💎 High roller detected';
+            } else if (stats.totalUsd > 20000) {
+                subtextMessage = '🎰 Serious gambler';
+            } else if (stats.totalUsd > 5000) {
+                subtextMessage = '🎲 Regular player';
+            } else {
+                subtextMessage = '🎯 Getting started';
+            }
+            
+            document.getElementById('subtextMessage').textContent = subtextMessage;
+            
+            // Setup share buttons with viral copy
             const totalFormatted = stats.totalUsd.toLocaleString('en-US', {maximumFractionDigits: 0});
-            const twitterText = `I've deposited $${totalFormatted} at crypto casinos 💸\n\nCheck your lifetime deposits at cryptocasinosorted.com/deposit-tracker.html`;
-            const redditText = `I tracked my crypto casino deposits - $${totalFormatted} total across ${stats.casinoCount} casinos. You can check yours at cryptocasinosorted.com/deposit-tracker.html`;
+            const topCasino = stats.casinoBreakdown[0].casino;
+            const topCasinoAmount = stats.casinoBreakdown[0].total.toLocaleString('en-US', {maximumFractionDigits: 0});
+            
+            // Twitter - shocking revelation style
+            let twitterText;
+            if (stats.totalUsd > 10000) {
+                twitterText = `Just found out I've deposited $${totalFormatted} at crypto casinos 😳\n\n$${topCasinoAmount} at ${topCasino} alone.\n\nCheck yours: cryptocasinosorted.com/deposit-tracker.html`;
+            } else {
+                twitterText = `Tracked my crypto casino deposits: $${totalFormatted} lifetime 💸\n\nMost at ${topCasino}: $${topCasinoAmount}\n\nCheck yours: cryptocasinosorted.com/deposit-tracker.html`;
+            }
+            
+            // Reddit - discussion starter
+            const redditTitle = stats.totalUsd > 20000 
+                ? `I've deposited $${totalFormatted} at crypto casinos - how much have you deposited?`
+                : `Tracked my crypto casino deposits - $${totalFormatted} total`;
+            const redditText = `Used CryptoCasinoSorted's deposit tracker and was surprised to see $${totalFormatted} total across ${stats.casinoCount} casinos.\n\n${topCasino} was my biggest: $${topCasinoAmount} (${stats.casinoBreakdown[0].count} deposits)\n\nYou can check yours at cryptocasinosorted.com/deposit-tracker.html - just paste your ETH wallet address.`;
             
             document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterText)}`;
-            document.getElementById('shareReddit').href = `https://reddit.com/submit?title=${encodeURIComponent('Tracked my crypto casino deposits')}&text=${encodeURIComponent(redditText)}`;
+            document.getElementById('shareReddit').href = `https://reddit.com/submit?title=${encodeURIComponent(redditTitle)}&text=${encodeURIComponent(redditText)}`;
+            
+            // Setup copy button
+            document.getElementById('copyResults').onclick = () => {
+                const copyText = `💸 My Crypto Casino Deposits\n\nTotal: $${totalFormatted}\nDeposits: ${stats.depositCount}\nCasinos: ${stats.casinoCount}\n\nBiggest casino: ${topCasino} ($${topCasinoAmount})\nAverage deposit: $${stats.avgDeposit.toLocaleString('en-US', {maximumFractionDigits: 0})}\n\nTrack yours: cryptocasinosorted.com/deposit-tracker.html`;
+                
+                navigator.clipboard.writeText(copyText).then(() => {
+                    const toast = document.getElementById('copiedToast');
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 2000);
+                });
+            };
             
             document.getElementById('results').classList.add('active');
         }
