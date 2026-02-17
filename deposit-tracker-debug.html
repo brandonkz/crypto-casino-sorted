@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Debug Deposit Tracker</title>
+</head>
+<body>
+  <h1>Debug Test</h1>
+  <input type="text" id="addr" value="0x52619a8a198753458197d44e9229f3616228c56f" style="width: 400px">
+  <button onclick="test()">Test</button>
+  <div id="output" style="white-space: pre; font-family: monospace; margin-top: 20px;"></div>
+
+  <script>
+    const CASINOS = {
+      'Stake.com': [
+        '0x974CaA59e49682CdA0AD2bbe82983419A2ECC400',
+        '0xb04c0eb29c72cebc467b9d4944d29116fa02c44a',
+        '0x787b8840100d9baadd7463f4a73b5ba73b00c6ca'
+      ],
+      'Rollbit': [
+        '0xcbd6832ebc203e49e2b771897067fce3c58575ac',
+        '0x46dca395d20e63cb0fe1edc9f0e6f012e77c0913'
+      ]
+    };
+
+    const CASINO_ADDRESS_MAP = (() => {
+      const addresses = new Map();
+      for (const [casino, wallets] of Object.entries(CASINOS)) {
+        for (const wallet of wallets) {
+          addresses.set(wallet.toLowerCase(), casino);
+        }
+      }
+      return addresses;
+    })();
+
+    const API_KEY = '4B1J3D8BDUYVWTGYX3NNUFQCPJD6KG38CF';
+    
+    function log(msg) {
+      document.getElementById('output').textContent += msg + '\n';
+      console.log(msg);
+    }
+
+    async function test() {
+      const addr = document.getElementById('addr').value.trim();
+      document.getElementById('output').textContent = '';
+      
+      log('Testing address: ' + addr);
+      log('User wallet (lowercased): ' + addr.toLowerCase());
+      log('\nCasino wallets being tracked:');
+      for (const [wallet, casino] of CASINO_ADDRESS_MAP) {
+        log(`  ${wallet} → ${casino}`);
+      }
+      
+      const url = `https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${addr}&startblock=0&endblock=99999999&page=1&offset=100&sort=desc&apikey=${API_KEY}`;
+      
+      log('\nFetching transactions...');
+      const response = await fetch(url);
+      const data = await response.json();
+      
+      log(`Status: ${data.status}`);
+      log(`Message: ${data.message}`);
+      log(`Transactions returned: ${data.result?.length || 0}`);
+      
+      if (data.status !== '1') {
+        log('ERROR: ' + (data.result || data.message));
+        return;
+      }
+      
+      const deposits = [];
+      const withdrawals = [];
+      const userWallet = addr.toLowerCase();
+      
+      log('\nProcessing transactions...');
+      
+      for (let i = 0; i < data.result.length; i++) {
+        const tx = data.result[i];
+        const toAddress = tx.to ? tx.to.toLowerCase() : '';
+        const fromAddress = tx.from ? tx.from.toLowerCase() : '';
+        const isFailedTx = tx.isError === '1' || tx.txreceipt_status === '0';
+        const valueEth = parseFloat(tx.value) / 1e18;
+        
+        if (isFailedTx) continue;
+        if (valueEth < 0.001) continue;
+        
+        // Deposits: from user to casino
+        if (fromAddress === userWallet && CASINO_ADDRESS_MAP.has(toAddress)) {
+          const casino = CASINO_ADDRESS_MAP.get(toAddress);
+          deposits.push({ casino, valueEth, hash: tx.hash });
+          log(`DEPOSIT: ${valueEth.toFixed(4)} ETH → ${casino} (${tx.hash.substring(0, 10)}...)`);
+        }
+        
+        // Withdrawals: from casino to user
+        if (toAddress === userWallet && CASINO_ADDRESS_MAP.has(fromAddress)) {
+          const casino = CASINO_ADDRESS_MAP.get(fromAddress);
+          withdrawals.push({ casino, valueEth, hash: tx.hash });
+          log(`WITHDRAWAL: ${valueEth.toFixed(4)} ETH ← ${casino} (${tx.hash.substring(0, 10)}...)`);
+        }
+      }
+      
+      log(`\n=== RESULTS ===`);
+      log(`Deposits found: ${deposits.length}`);
+      log(`Withdrawals found: ${withdrawals.length}`);
+      
+      if (deposits.length === 0 && withdrawals.length === 0) {
+        log('\nNO ACTIVITY FOUND (This is what the main page would show)');
+      }
+    }
+  </script>
+</body>
+</html>
