@@ -584,6 +584,19 @@
             'LTC': 100,
             'DOGE': 0.08
         };
+        
+        const casinoById = Object.fromEntries(casinos.map(c => [c.id, c]));
+        const casinoByName = Object.fromEntries(casinos.map(c => [c.name, c]));
+        const cryptoBySymbol = Object.fromEntries(cryptos.map(c => [c.symbol, c]));
+        
+        const elements = {
+            liveFeed: document.getElementById('liveFeed'),
+            totalBets: document.getElementById('totalBets'),
+            totalVolume: document.getElementById('totalVolume'),
+            biggestBet: document.getElementById('biggestBet'),
+            activeUsers: document.getElementById('activeUsers'),
+            casinoBreakdown: document.getElementById('casinoBreakdown')
+        };
 
         // Stats (initialize with realistic "running feed" values)
         let totalBets = 22356;
@@ -606,23 +619,32 @@
         // Real blockchain deposits cache
         let blockchainDeposits = [];
         let lastDepositIndex = 0;
+        let depositsFetchInFlight = false;
+        let lastDepositsFetch = 0;
 
         // Fetch real blockchain deposits
         async function fetchBlockchainDeposits() {
+            if (depositsFetchInFlight) return;
+            if (Date.now() - lastDepositsFetch < 10000) return;
+            depositsFetchInFlight = true;
             try {
-                const response = await fetch('./data/live-deposits.json');
+                const response = await fetch('./data/live-deposits.json', { cache: 'no-store' });
+                if (!response.ok) throw new Error('Bad response');
                 const data = await response.json();
                 blockchainDeposits = data.deposits || [];
+                lastDepositsFetch = Date.now();
                 console.log(`✅ Loaded ${blockchainDeposits.length} real blockchain deposits`);
             } catch (error) {
                 console.warn('Could not load blockchain deposits, using mock data only');
+            } finally {
+                depositsFetchInFlight = false;
             }
         }
 
         // Convert blockchain deposit to bet format
         function blockchainDepositToBet(deposit) {
-            const casino = casinos.find(c => c.name === deposit.casino) || casinos[0];
-            const crypto = cryptos.find(c => c.symbol === deposit.token) || cryptos[0];
+            const casino = casinoByName[deposit.casino] || casinos[0];
+            const crypto = cryptoBySymbol[deposit.token] || cryptos[0];
             const usdValue = (parseFloat(deposit.amount) * toUSD[crypto.symbol]).toFixed(0);
             
             return {
@@ -667,8 +689,8 @@
         }
 
         // Format time ago
-        function timeAgo(date) {
-            const seconds = Math.floor((new Date() - date) / 1000);
+        function timeAgoFromMs(diffMs) {
+            const seconds = Math.max(0, Math.floor(diffMs / 1000));
             if (seconds < 60) return `${seconds}s ago`;
             const minutes = Math.floor(seconds / 60);
             if (minutes < 60) return `${minutes}m ago`;
@@ -684,6 +706,11 @@
         // Create bet card HTML
         function createBetCard(bet) {
             const sizeClass = bet.usdValue > 50000 ? 'huge' : bet.usdValue > 10000 ? 'big' : '';
+            const card = document.createElement('div');
+            card.className = 'bet-card new';
+            card.dataset.casino = bet.casino.id;
+            card.dataset.ts = String(bet.timestamp.getTime());
+            
             const verifiedBadge = bet.isReal ? `
                 <span title="Real blockchain deposit" 
                       style="display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 4px; font-size: 0.7rem; color: #22c55e; margin-left: 8px;">
@@ -691,39 +718,38 @@
                 </span>
             ` : '';
             
-            return `
-                <div class="bet-card new" data-casino="${bet.casino.id}">
-                    <div class="casino-logo">${bet.casino.icon}</div>
-                    <div class="bet-details">
-                        <div class="bet-amount ${sizeClass}">
-                            ${bet.crypto.icon} ${bet.amount} ${bet.crypto.symbol}
-                            <span style="font-size: 0.8rem; color: #9ca3af;">($${formatNumber(bet.usdValue)})</span>
-                            ${verifiedBadge}
-                        </div>
-                        <div class="bet-info">
-                            <span class="bet-casino">${bet.casino.name}</span>
-                            <span class="crypto-icon">${bet.crypto.icon} ${bet.crypto.symbol}</span>
-                        </div>
+            card.innerHTML = `
+                <div class="casino-logo">${bet.casino.icon}</div>
+                <div class="bet-details">
+                    <div class="bet-amount ${sizeClass}">
+                        ${bet.crypto.icon} ${bet.amount} ${bet.crypto.symbol}
+                        <span style="font-size: 0.8rem; color: #9ca3af;">($${formatNumber(bet.usdValue)})</span>
+                        ${verifiedBadge}
                     </div>
-                    <div class="bet-time">Just now</div>
+                    <div class="bet-info">
+                        <span class="bet-casino">${bet.casino.name}</span>
+                        <span class="crypto-icon">${bet.crypto.icon} ${bet.crypto.symbol}</span>
+                    </div>
                 </div>
+                <div class="bet-time">Just now</div>
             `;
+            
+            return card;
         }
 
         // Render casino breakdown
         function renderCasinoBreakdown() {
-            const breakdown = document.getElementById('casinoBreakdown');
             const totalDeposits = Object.values(casinoVolumes).reduce((a, b) => a + b, 0);
             
             // Sort casinos by volume
             const sorted = Object.entries(casinoVolumes)
                 .sort((a, b) => b[1] - a[1])
                 .map(([id, volume]) => {
-                    const casino = casinos.find(c => c.id === id);
+                    const casino = casinoById[id];
                     return { ...casino, volume, percentage: (volume / totalDeposits * 100).toFixed(1) };
                 });
             
-            breakdown.innerHTML = sorted.map(casino => `
+            elements.casinoBreakdown.innerHTML = sorted.map(casino => `
                 <div class="casino-bar">
                     <div class="casino-bar-icon">${casino.icon}</div>
                     <div class="casino-bar-content">
@@ -741,8 +767,6 @@
 
         // Add bet to feed
         function addBet(bet) {
-            const feed = document.getElementById('liveFeed');
-            
             // Update stats
             totalBets++;
             totalVolume += bet.usdValue;
@@ -751,37 +775,38 @@
             // Update casino volume
             casinoVolumes[bet.casino.id] += bet.usdValue;
             
-            document.getElementById('totalBets').textContent = formatNumber(totalBets);
-            document.getElementById('totalVolume').textContent = '$' + formatNumber(totalVolume);
-            document.getElementById('biggestBet').textContent = '$' + formatNumber(biggestBet);
-            document.getElementById('activeUsers').textContent = formatNumber(activeUsers + Math.floor(Math.random() * 20) - 10);
+            elements.totalBets.textContent = formatNumber(totalBets);
+            elements.totalVolume.textContent = '$' + formatNumber(totalVolume);
+            elements.biggestBet.textContent = '$' + formatNumber(biggestBet);
+            elements.activeUsers.textContent = formatNumber(activeUsers + Math.floor(Math.random() * 20) - 10);
             
             // Add to feed
             if (currentFilter === 'all' || currentFilter === bet.casino.id) {
-                feed.insertAdjacentHTML('afterbegin', createBetCard(bet));
+                const card = createBetCard(bet);
+                elements.liveFeed.prepend(card);
                 
                 // Remove "new" class after animation
                 setTimeout(() => {
-                    const cards = feed.querySelectorAll('.bet-card.new');
-                    cards.forEach(card => card.classList.remove('new'));
+                    card.classList.remove('new');
                 }, 500);
                 
                 // Keep only last 50 bets
-                const cards = feed.querySelectorAll('.bet-card');
-                if (cards.length > 50) {
-                    cards[cards.length - 1].remove();
+                while (elements.liveFeed.childElementCount > 50) {
+                    elements.liveFeed.lastElementChild.remove();
                 }
             }
         }
 
         // Update timestamps
         function updateTimestamps() {
-            document.querySelectorAll('.bet-card').forEach((card, index) => {
+            const now = Date.now();
+            const cards = elements.liveFeed.children;
+            for (let i = 0; i < cards.length; i++) {
+                const card = cards[i];
                 const timeElement = card.querySelector('.bet-time');
-                const seconds = (index + 1) * (Math.random() * 15 + 5);
-                const date = new Date(Date.now() - seconds * 1000);
-                timeElement.textContent = timeAgo(date);
-            });
+                const ts = Number(card.dataset.ts || now);
+                timeElement.textContent = timeAgoFromMs(now - ts);
+            }
         }
 
         // Initialize casino breakdown

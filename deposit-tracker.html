@@ -552,36 +552,88 @@
         
         const ETHERSCAN_API_KEY = '4B1J3D8BDUYVWTGYX3NNUFQCPJD6KG38CF';
         const ETH_PRICE_API = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd';
+        const ETH_PRICE_CACHE_KEY = 'ccs_eth_price_cache';
+        const ETH_PRICE_CACHE_TTL = 5 * 60 * 1000;
+        const ETH_REQUEST_TIMEOUT = 6000;
+        const MIN_TX_ETH = 0.001;
         
         let ethPrice = 3000; // Default fallback
         
-        // Fetch current ETH price
-        async function getEthPrice() {
-            try {
-                const response = await fetch(ETH_PRICE_API);
-                const data = await response.json();
-                ethPrice = data.ethereum.usd;
-            } catch (error) {
-                console.warn('Failed to fetch ETH price, using default:', error);
-            }
-        }
+        const formatUSD0 = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+        const formatInt = new Intl.NumberFormat('en-US');
         
-        // Get all casino addresses as lowercase for comparison
-        function getAllCasinoAddresses() {
-            const addresses = {};
+        const elements = {
+            walletAddress: document.getElementById('walletAddress'),
+            scanBtn: document.getElementById('scanBtn'),
+            loading: document.getElementById('loading'),
+            error: document.getElementById('error'),
+            errorMessage: document.getElementById('errorMessage'),
+            results: document.getElementById('results'),
+            netPosition: document.getElementById('netPosition'),
+            netLabel: document.getElementById('netLabel'),
+            subtextMessage: document.getElementById('subtextMessage'),
+            totalDeposited: document.getElementById('totalDeposited'),
+            totalWithdrawn: document.getElementById('totalWithdrawn'),
+            depositCount: document.getElementById('depositCount'),
+            withdrawalCount: document.getElementById('withdrawalCount'),
+            avgDeposit: document.getElementById('avgDeposit'),
+            biggestDeposit: document.getElementById('biggestDeposit'),
+            casinoList: document.getElementById('casinoList'),
+            shareTwitter: document.getElementById('shareTwitter'),
+            shareReddit: document.getElementById('shareReddit'),
+            copyResults: document.getElementById('copyResults'),
+            copiedToast: document.getElementById('copiedToast')
+        };
+        
+        const CASINO_ADDRESS_MAP = (() => {
+            const addresses = new Map();
             for (const [casino, wallets] of Object.entries(CASINOS)) {
-                wallets.forEach(wallet => {
-                    addresses[wallet.toLowerCase()] = casino;
-                });
+                for (const wallet of wallets) {
+                    addresses.set(wallet.toLowerCase(), casino);
+                }
             }
             return addresses;
+        })();
+        
+        // Fetch current ETH price (cached)
+        async function getEthPrice() {
+            const cached = sessionStorage.getItem(ETH_PRICE_CACHE_KEY);
+            if (cached) {
+                try {
+                    const parsed = JSON.parse(cached);
+                    if (Date.now() - parsed.ts < ETH_PRICE_CACHE_TTL && parsed.usd) {
+                        ethPrice = parsed.usd;
+                        return ethPrice;
+                    }
+                } catch (error) {
+                    console.warn('Failed to read ETH cache:', error);
+                }
+            }
+            
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), ETH_REQUEST_TIMEOUT);
+            
+            try {
+                const response = await fetch(ETH_PRICE_API, { signal: controller.signal, cache: 'no-store' });
+                const data = await response.json();
+                if (data?.ethereum?.usd) {
+                    ethPrice = data.ethereum.usd;
+                    sessionStorage.setItem(ETH_PRICE_CACHE_KEY, JSON.stringify({ usd: ethPrice, ts: Date.now() }));
+                }
+            } catch (error) {
+                console.warn('Failed to fetch ETH price, using default:', error);
+            } finally {
+                clearTimeout(timeout);
+            }
+            
+            return ethPrice;
         }
         
         // Scan wallet for deposits and withdrawals
         async function scanWallet(walletAddress) {
-            const casinoAddresses = getAllCasinoAddresses();
             const deposits = [];
             const withdrawals = [];
+            const userWallet = walletAddress.toLowerCase();
             
             // Get normal transactions (V2 API)
             const normalTxUrl = `https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc&apikey=${ETHERSCAN_API_KEY}`;
@@ -594,41 +646,41 @@
                     throw new Error(data.message || 'Failed to fetch transactions');
                 }
                 
-                const transactions = data.result;
+                const transactions = data.result || [];
                 
                 // Filter for transactions with casino addresses
-                transactions.forEach(tx => {
+                for (let i = 0; i < transactions.length; i++) {
+                    const tx = transactions[i];
                     const toAddress = tx.to ? tx.to.toLowerCase() : '';
                     const fromAddress = tx.from ? tx.from.toLowerCase() : '';
-                    const userWallet = walletAddress.toLowerCase();
                     const valueEth = parseFloat(tx.value) / 1e18;
                     
-                    if (valueEth < 0.001) return; // Filter out dust transactions
+                    if (valueEth < MIN_TX_ETH) continue; // Filter out dust transactions
                     
                     // Deposits: from user to casino
-                    if (fromAddress === userWallet && casinoAddresses[toAddress]) {
+                    if (fromAddress === userWallet && CASINO_ADDRESS_MAP.has(toAddress)) {
                         deposits.push({
-                            casino: casinoAddresses[toAddress],
-                            valueEth: valueEth,
+                            casino: CASINO_ADDRESS_MAP.get(toAddress),
+                            valueEth,
                             valueUsd: valueEth * ethPrice,
-                            timestamp: parseInt(tx.timeStamp),
+                            timestamp: parseInt(tx.timeStamp, 10),
                             hash: tx.hash,
                             type: 'deposit'
                         });
                     }
                     
                     // Withdrawals: from casino to user
-                    if (toAddress === userWallet && casinoAddresses[fromAddress]) {
+                    if (toAddress === userWallet && CASINO_ADDRESS_MAP.has(fromAddress)) {
                         withdrawals.push({
-                            casino: casinoAddresses[fromAddress],
-                            valueEth: valueEth,
+                            casino: CASINO_ADDRESS_MAP.get(fromAddress),
+                            valueEth,
                             valueUsd: valueEth * ethPrice,
-                            timestamp: parseInt(tx.timeStamp),
+                            timestamp: parseInt(tx.timeStamp, 10),
                             hash: tx.hash,
                             type: 'withdrawal'
                         });
                     }
-                });
+                }
                 
                 return { deposits, withdrawals };
                 
@@ -644,35 +696,49 @@
                 return null;
             }
             
-            const totalDeposited = deposits.reduce((sum, d) => sum + d.valueUsd, 0);
-            const totalWithdrawn = withdrawals.reduce((sum, w) => sum + w.valueUsd, 0);
+            let totalDeposited = 0;
+            let totalWithdrawn = 0;
+            let biggestDeposit = 0;
+            let biggestWithdrawal = 0;
+            
+            for (let i = 0; i < deposits.length; i++) {
+                const value = deposits[i].valueUsd;
+                totalDeposited += value;
+                if (value > biggestDeposit) biggestDeposit = value;
+            }
+            
+            for (let i = 0; i < withdrawals.length; i++) {
+                const value = withdrawals[i].valueUsd;
+                totalWithdrawn += value;
+                if (value > biggestWithdrawal) biggestWithdrawal = value;
+            }
             const netPosition = totalWithdrawn - totalDeposited; // Positive = profit, Negative = loss
             
             const depositCount = deposits.length;
             const withdrawalCount = withdrawals.length;
             const avgDeposit = depositCount > 0 ? totalDeposited / depositCount : 0;
             const avgWithdrawal = withdrawalCount > 0 ? totalWithdrawn / withdrawalCount : 0;
-            const biggestDeposit = depositCount > 0 ? Math.max(...deposits.map(d => d.valueUsd)) : 0;
-            const biggestWithdrawal = withdrawalCount > 0 ? Math.max(...withdrawals.map(w => w.valueUsd)) : 0;
             
             // Breakdown by casino (deposits and withdrawals)
             const byCasino = {};
             
-            deposits.forEach(d => {
+            for (let i = 0; i < deposits.length; i++) {
+                const d = deposits[i];
                 if (!byCasino[d.casino]) {
                     byCasino[d.casino] = { deposited: 0, withdrawn: 0, depositCount: 0, withdrawalCount: 0 };
                 }
                 byCasino[d.casino].deposited += d.valueUsd;
                 byCasino[d.casino].depositCount++;
-            });
+            }
             
-            withdrawals.forEach(w => {
+            for (let i = 0; i < withdrawals.length; i++) {
+                const w = withdrawals[i];
                 if (!byCasino[w.casino]) {
                     byCasino[w.casino] = { deposited: 0, withdrawn: 0, depositCount: 0, withdrawalCount: 0 };
                 }
                 byCasino[w.casino].withdrawn += w.valueUsd;
                 byCasino[w.casino].withdrawalCount++;
-            });
+            }
             
             // Sort casinos by total activity (deposits + withdrawals)
             const casinoBreakdown = Object.entries(byCasino)
@@ -704,7 +770,7 @@
         // Display results
         function displayResults(stats) {
             if (!stats) {
-                document.getElementById('results').innerHTML = `
+                elements.results.innerHTML = `
                     <div class="results-card">
                         <div class="no-results">
                             <h3>No Activity Found</h3>
@@ -713,59 +779,58 @@
                         </div>
                     </div>
                 `;
-                document.getElementById('results').classList.add('active');
+                elements.results.classList.add('active');
                 return;
             }
             
             // Update net position (headline)
-            const netElement = document.getElementById('netPosition');
-            const netLabelElement = document.getElementById('netLabel');
             const absNet = Math.abs(stats.netPosition);
             
             if (stats.netPosition > 0) {
-                netElement.textContent = `+$${absNet.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
-                netElement.style.color = '#22c55e';
-                netLabelElement.textContent = 'Net Profit 🎉';
+                elements.netPosition.textContent = `+$${formatUSD0.format(absNet)}`;
+                elements.netPosition.style.color = '#22c55e';
+                elements.netLabel.textContent = 'Net Profit 🎉';
             } else if (stats.netPosition < 0) {
-                netElement.textContent = `-$${absNet.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
-                netElement.style.color = '#ef4444';
-                netLabelElement.textContent = 'Net Loss';
+                elements.netPosition.textContent = `-$${formatUSD0.format(absNet)}`;
+                elements.netPosition.style.color = '#ef4444';
+                elements.netLabel.textContent = 'Net Loss';
             } else {
-                netElement.textContent = '$0';
-                netElement.style.color = '#8b5cf6';
-                netLabelElement.textContent = 'Break Even';
+                elements.netPosition.textContent = '$0';
+                elements.netPosition.style.color = '#8b5cf6';
+                elements.netLabel.textContent = 'Break Even';
             }
             
             // Update stats boxes
-            document.getElementById('totalDeposited').textContent = `$${stats.totalDeposited.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
-            document.getElementById('totalWithdrawn').textContent = `$${stats.totalWithdrawn.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
-            document.getElementById('depositCount').textContent = stats.depositCount.toLocaleString();
-            document.getElementById('withdrawalCount').textContent = stats.withdrawalCount.toLocaleString();
-            document.getElementById('avgDeposit').textContent = `$${stats.avgDeposit.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
-            document.getElementById('biggestDeposit').textContent = `$${stats.biggestDeposit.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            elements.totalDeposited.textContent = `$${formatUSD0.format(stats.totalDeposited)}`;
+            elements.totalWithdrawn.textContent = `$${formatUSD0.format(stats.totalWithdrawn)}`;
+            elements.depositCount.textContent = formatInt.format(stats.depositCount);
+            elements.withdrawalCount.textContent = formatInt.format(stats.withdrawalCount);
+            elements.avgDeposit.textContent = `$${formatUSD0.format(stats.avgDeposit)}`;
+            elements.biggestDeposit.textContent = `$${formatUSD0.format(stats.biggestDeposit)}`;
             
             // Casino breakdown
-            const casinoList = document.getElementById('casinoList');
-            casinoList.innerHTML = stats.casinoBreakdown.map(item => {
+            const casinoItems = new Array(stats.casinoBreakdown.length);
+            for (let i = 0; i < stats.casinoBreakdown.length; i++) {
+                const item = stats.casinoBreakdown[i];
                 const netClass = item.net >= 0 ? 'positive' : 'negative';
                 const netSign = item.net >= 0 ? '+' : '';
-                return `
+                casinoItems[i] = `
                     <div class="casino-item">
                         <span class="casino-name">${item.casino}</span>
                         <div class="casino-details">
-                            <span class="net-amount ${netClass}">${netSign}$${Math.abs(item.net).toLocaleString('en-US', {maximumFractionDigits: 0})}</span>
+                            <span class="net-amount ${netClass}">${netSign}$${formatUSD0.format(Math.abs(item.net))}</span>
                             <span class="breakdown">
-                                <span class="deposit">-$${item.deposited.toLocaleString('en-US', {maximumFractionDigits: 0})}</span> / 
-                                <span class="withdrawal">+$${item.withdrawn.toLocaleString('en-US', {maximumFractionDigits: 0})}</span>
+                                <span class="deposit">-$${formatUSD0.format(item.deposited)}</span> / 
+                                <span class="withdrawal">+$${formatUSD0.format(item.withdrawn)}</span>
                             </span>
                         </div>
                     </div>
                 `;
-            }).join('');
+            }
+            elements.casinoList.innerHTML = casinoItems.join('');
             
             // Generate engaging subtext based on net position
             let subtextMessage = '';
-            const absNet = Math.abs(stats.netPosition);
             
             if (stats.netPosition > 10000) {
                 subtextMessage = '🤑 You\'re crushing it!';
@@ -781,14 +846,14 @@
                 subtextMessage = '🐋 Whale-sized losses';
             }
             
-            document.getElementById('subtextMessage').textContent = subtextMessage;
+            elements.subtextMessage.textContent = subtextMessage;
             
             // Setup share buttons with viral copy
-            const netFormatted = absNet.toLocaleString('en-US', {maximumFractionDigits: 0});
-            const depositedFormatted = stats.totalDeposited.toLocaleString('en-US', {maximumFractionDigits: 0});
-            const withdrawnFormatted = stats.totalWithdrawn.toLocaleString('en-US', {maximumFractionDigits: 0});
+            const netFormatted = formatUSD0.format(absNet);
+            const depositedFormatted = formatUSD0.format(stats.totalDeposited);
+            const withdrawnFormatted = formatUSD0.format(stats.totalWithdrawn);
             const topCasino = stats.casinoBreakdown[0].casino;
-            const topCasinoNet = Math.abs(stats.casinoBreakdown[0].net).toLocaleString('en-US', {maximumFractionDigits: 0});
+            const topCasinoNet = formatUSD0.format(Math.abs(stats.casinoBreakdown[0].net));
             
             // Twitter - shocking revelation style
             let twitterText;
@@ -813,28 +878,27 @@
                 
             const redditText = `Used CryptoCasinoSorted's deposit tracker and I'm ${netDescription}.\n\nTotal deposited: $${depositedFormatted}\nTotal withdrawn: $${withdrawnFormatted}\n\nBiggest casino: ${topCasino} (${stats.casinoBreakdown[0].net >= 0 ? '+' : '-'}$${topCasinoNet})\n\nYou can check yours at cryptocasinosorted.com/deposit-tracker.html - tracks deposits and withdrawals from your ETH wallet.`;
             
-            document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterText)}`;
-            document.getElementById('shareReddit').href = `https://reddit.com/submit?title=${encodeURIComponent(redditTitle)}&text=${encodeURIComponent(redditText)}`;
+            elements.shareTwitter.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterText)}`;
+            elements.shareReddit.href = `https://reddit.com/submit?title=${encodeURIComponent(redditTitle)}&text=${encodeURIComponent(redditText)}`;
             
             // Setup copy button
-            document.getElementById('copyResults').onclick = () => {
+            elements.copyResults.onclick = () => {
                 const netSign = stats.netPosition >= 0 ? '+' : '-';
                 const netEmoji = stats.netPosition >= 0 ? '🤑' : '😬';
                 const copyText = `${netEmoji} My Crypto Casino Results\n\nNet Position: ${netSign}$${netFormatted}\n\nDeposited: $${depositedFormatted} (${stats.depositCount} transactions)\nWithdrawn: $${withdrawnFormatted} (${stats.withdrawalCount} transactions)\n\nBiggest casino: ${topCasino} (${stats.casinoBreakdown[0].net >= 0 ? '+' : '-'}$${topCasinoNet})\n\nTrack yours: cryptocasinosorted.com/deposit-tracker.html`;
                 
                 navigator.clipboard.writeText(copyText).then(() => {
-                    const toast = document.getElementById('copiedToast');
-                    toast.classList.add('show');
-                    setTimeout(() => toast.classList.remove('show'), 2000);
+                    elements.copiedToast.classList.add('show');
+                    setTimeout(() => elements.copiedToast.classList.remove('show'), 2000);
                 });
             };
             
-            document.getElementById('results').classList.add('active');
+            elements.results.classList.add('active');
         }
         
         // Main scan function
         async function performScan() {
-            const walletAddress = document.getElementById('walletAddress').value.trim();
+            const walletAddress = elements.walletAddress.value.trim();
             
             // Validate address
             if (!walletAddress || !walletAddress.match(/^0x[a-fA-F0-9]{40}$/)) {
@@ -843,12 +907,12 @@
             }
             
             // Hide previous results/errors
-            document.getElementById('results').classList.remove('active');
-            document.getElementById('error').classList.remove('active');
+            elements.results.classList.remove('active');
+            elements.error.classList.remove('active');
             
             // Show loading
-            document.getElementById('loading').classList.add('active');
-            document.getElementById('scanBtn').disabled = true;
+            elements.loading.classList.add('active');
+            elements.scanBtn.disabled = true;
             
             try {
                 // Get current ETH price
@@ -866,20 +930,20 @@
             } catch (error) {
                 showError(error.message || 'Failed to scan wallet. Please try again.');
             } finally {
-                document.getElementById('loading').classList.remove('active');
-                document.getElementById('scanBtn').disabled = false;
+                elements.loading.classList.remove('active');
+                elements.scanBtn.disabled = false;
             }
         }
         
         // Show error
         function showError(message) {
-            document.getElementById('errorMessage').textContent = message;
-            document.getElementById('error').classList.add('active');
+            elements.errorMessage.textContent = message;
+            elements.error.classList.add('active');
         }
         
         // Event listeners
-        document.getElementById('scanBtn').addEventListener('click', performScan);
-        document.getElementById('walletAddress').addEventListener('keypress', (e) => {
+        elements.scanBtn.addEventListener('click', performScan);
+        elements.walletAddress.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 performScan();
             }

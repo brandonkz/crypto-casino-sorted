@@ -171,22 +171,34 @@
 
         // Update stats
         const f = (x) => new Date(x).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-        const dy = Math.ceil((new Date(data.max) - new Date(data.min)) / 86400000) + 1;
+        const formatUSD0 = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+        const formatInt = new Intl.NumberFormat('en-US');
         
         document.getElementById('totalVolume').textContent = '$' + (data.total / 1e6).toFixed(2) + 'M';
         document.getElementById('volumePeriod').textContent = f(data.min) + ' – ' + f(data.max);
-        document.getElementById('totalDeposits').textContent = data.count.toLocaleString();
-        document.getElementById('avgDeposit').textContent = '$' + (data.total / data.count).toLocaleString(undefined, { maximumFractionDigits: 0 });
-        document.getElementById('biggestDeposit').textContent = '$' + data.biggest.v.toLocaleString(undefined, { maximumFractionDigits: 0 });
+        document.getElementById('totalDeposits').textContent = formatInt.format(data.count);
+        document.getElementById('avgDeposit').textContent = '$' + formatUSD0.format(data.total / data.count);
+        document.getElementById('biggestDeposit').textContent = '$' + formatUSD0.format(data.biggest.v);
         document.getElementById('biggestCasino').textContent = data.biggest.c;
 
         // Prepare chart data
         const casinos = Object.keys(data.stats).sort((a, b) => data.stats[b].v - data.stats[a].v);
+        const casinoStats = casinos.map(c => ({
+            name: c,
+            v: data.stats[c].v,
+            n: data.stats[c].n,
+            biggest: data.stats[c].biggest
+        }));
+        const volumeData = casinoStats.map(s => s.v);
+        const depositData = casinoStats.map(s => s.n);
+        const avgData = casinoStats.map(s => s.v / s.n);
         const colors = ['#8b5cf6', '#ec4899', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#06b6d4'];
 
         // Chart.js dark theme defaults
         Chart.defaults.color = '#9ca3af';
         Chart.defaults.borderColor = 'rgba(139, 92, 246, 0.2)';
+        Chart.defaults.animation = false;
+        Chart.defaults.responsive = true;
 
         // Volume by Casino (Doughnut)
         new Chart(document.getElementById('casinoChart'), {
@@ -194,7 +206,7 @@
             data: {
                 labels: casinos,
                 datasets: [{
-                    data: casinos.map(c => data.stats[c].v),
+                    data: volumeData,
                     backgroundColor: colors,
                     borderWidth: 0
                 }]
@@ -202,6 +214,7 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: false,
                 plugins: {
                     legend: { 
                         position: 'bottom',
@@ -226,7 +239,7 @@
                 labels: casinos,
                 datasets: [{
                     label: 'Deposits',
-                    data: casinos.map(c => data.stats[c].n),
+                    data: depositData,
                     backgroundColor: colors,
                     borderRadius: 8
                 }]
@@ -234,6 +247,7 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: false,
                 plugins: {
                     legend: { display: false }
                 },
@@ -256,7 +270,7 @@
                 labels: casinos,
                 datasets: [{
                     label: 'Total Volume (USD)',
-                    data: casinos.map(c => data.stats[c].v),
+                    data: volumeData,
                     backgroundColor: colors,
                     borderRadius: 8
                 }]
@@ -265,6 +279,7 @@
                 indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: false,
                 plugins: {
                     legend: { display: false },
                     tooltip: {
@@ -298,7 +313,7 @@
                 labels: casinos,
                 datasets: [{
                     label: 'Avg Deposit ($)',
-                    data: casinos.map(c => data.stats[c].v / data.stats[c].n),
+                    data: avgData,
                     backgroundColor: colors,
                     borderRadius: 8
                 }]
@@ -306,6 +321,7 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: false,
                 plugins: {
                     legend: { display: false }
                 },
@@ -339,6 +355,7 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: false,
                 plugins: {
                     legend: { display: false }
                 },
@@ -356,36 +373,32 @@
 
         // Populate Top 10 Table
         const top10Body = document.getElementById('top10Body');
-        data.top10.forEach((d, i) => {
-            const row = document.createElement('tr');
-            row.style.borderBottom = '1px solid rgba(139,92,246,0.1)';
-            row.innerHTML = `
+        top10Body.innerHTML = data.top10.map((d, i) => `
+            <tr style="border-bottom:1px solid rgba(139,92,246,0.1);">
                 <td style="padding:12px 8px;font-weight:600;color:#8b5cf6;">${i + 1}</td>
-                <td style="padding:12px 8px;font-weight:700;">$${d.usd.toLocaleString(undefined, {maximumFractionDigits: 0})}</td>
+                <td style="padding:12px 8px;font-weight:700;">$${formatUSD0.format(d.usd)}</td>
                 <td style="padding:12px 8px;">${d.casino}</td>
                 <td style="padding:12px 8px;color:#9ca3af;">${d.date}</td>
                 <td style="padding:12px 8px;color:#9ca3af;">${d.time}</td>
-            `;
-            top10Body.appendChild(row);
-        });
+            </tr>
+        `).join('');
 
         // Populate Casino Rankings Table
         const rankingsBody = document.getElementById('rankingsBody');
-        casinos.forEach((c, i) => {
-            const s = data.stats[c];
+        rankingsBody.innerHTML = casinoStats.map((s, i) => {
             const share = ((s.v / data.total) * 100).toFixed(1);
-            const row = document.createElement('tr');
-            row.style.borderBottom = '1px solid rgba(139,92,246,0.1)';
-            row.innerHTML = `
-                <td style="padding:12px 8px;font-weight:600;">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : ''} ${c}</td>
-                <td style="padding:12px 8px;text-align:right;font-weight:700;">$${(s.v / 1e6).toFixed(2)}M</td>
-                <td style="padding:12px 8px;text-align:right;">${s.n.toLocaleString()}</td>
-                <td style="padding:12px 8px;text-align:right;">$${(s.v / s.n).toLocaleString(undefined, {maximumFractionDigits: 0})}</td>
-                <td style="padding:12px 8px;text-align:right;color:#8b5cf6;font-weight:600;">$${s.biggest.toLocaleString(undefined, {maximumFractionDigits: 0})}</td>
-                <td style="padding:12px 8px;text-align:right;font-weight:600;">${share}%</td>
+            const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '';
+            return `
+                <tr style="border-bottom:1px solid rgba(139,92,246,0.1);">
+                    <td style="padding:12px 8px;font-weight:600;">${medal} ${s.name}</td>
+                    <td style="padding:12px 8px;text-align:right;font-weight:700;">$${(s.v / 1e6).toFixed(2)}M</td>
+                    <td style="padding:12px 8px;text-align:right;">${formatInt.format(s.n)}</td>
+                    <td style="padding:12px 8px;text-align:right;">$${formatUSD0.format(s.v / s.n)}</td>
+                    <td style="padding:12px 8px;text-align:right;color:#8b5cf6;font-weight:600;">$${formatUSD0.format(s.biggest)}</td>
+                    <td style="padding:12px 8px;text-align:right;font-weight:600;">${share}%</td>
+                </tr>
             `;
-            rankingsBody.appendChild(row);
-        });
+        }).join('');
     </script>
 </body>
 </html>
