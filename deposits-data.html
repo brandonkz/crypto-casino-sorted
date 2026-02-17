@@ -17,6 +17,157 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+    .payment-locked {
+      overflow: hidden;
+    }
+
+    .payment-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 4, 8, 0.88);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 1.5rem;
+    }
+
+    .payment-overlay.hidden {
+      display: none;
+    }
+
+    .payment-card {
+      width: min(560px, 100%);
+      background: linear-gradient(180deg, rgba(15, 15, 20, 0.98), rgba(10, 10, 14, 0.98));
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 22px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      padding: 2rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      color: var(--text);
+    }
+
+    .payment-card h2 {
+      font-size: 1.7rem;
+      margin: 0;
+    }
+
+    .payment-subtitle {
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .payment-wallet {
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px dashed rgba(139, 92, 246, 0.5);
+      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      font-family: 'SF Mono', 'Roboto Mono', monospace;
+      font-size: 0.9rem;
+      color: #c4b5fd;
+      word-break: break-all;
+    }
+
+    .payment-input {
+      width: 100%;
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.85rem 0.95rem;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .payment-input:focus {
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+    }
+
+    .payment-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .payment-actions .btn {
+      min-width: 180px;
+    }
+
+    .payment-message {
+      font-size: 0.95rem;
+      padding: 0.65rem 0.85rem;
+      border-radius: 12px;
+      display: none;
+    }
+
+    .payment-message.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fecaca;
+    }
+
+    .payment-message.success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #bbf7d0;
+    }
+
+    .payment-message.show {
+      display: block;
+    }
+
+    .why-link {
+      color: #c4b5fd;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .why-link:hover {
+      text-decoration: underline;
+    }
+
+    .why-details {
+      display: none;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .why-details.show {
+      display: block;
+    }
+
+    .loading-spinner {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-top-color: #ffffff;
+      display: inline-block;
+      animation: spin 0.8s linear infinite;
+      margin-right: 0.5rem;
+    }
+
+    .reset-button.hidden {
+      display: none;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
     .dashboard-hero {
       padding: 3.5rem 0 2rem;
       border-bottom: 1px solid var(--border);
@@ -276,6 +427,31 @@
   </style>
 </head>
 <body>
+  <div class="payment-overlay hidden" id="paymentOverlay">
+    <div class="payment-card">
+      <h2>Unlock Deposits Data Dashboard</h2>
+      <p class="payment-subtitle">Pay 0.02 ETH or USDT to access</p>
+      <div>
+        <div class="control-label">Payment wallet</div>
+        <div class="payment-wallet" id="paymentWalletDisplay">0x08a474203d14053eabc30a5bf877bd22a6554f0c</div>
+      </div>
+      <div>
+        <label class="control-label" for="txHashInput">Paste your transaction hash</label>
+        <input class="payment-input" id="txHashInput" type="text" placeholder="0x..." autocomplete="off" spellcheck="false">
+      </div>
+      <div class="payment-actions">
+        <button class="btn" id="verifyPaymentBtn">Verify Payment</button>
+        <button class="btn secondary reset-button hidden" id="resetPaymentBtn">Reset</button>
+      </div>
+      <div class="payment-message error" id="paymentError"></div>
+      <div class="payment-message success" id="paymentSuccess">Payment verified! Access unlocked.</div>
+      <a href="#" class="why-link" id="whyPaymentLink">Why crypto payment?</a>
+      <p class="why-details" id="whyPaymentDetails">
+        We verify payments directly on-chain for transparency and instant access. This avoids manual approvals,
+        reduces chargeback risk, and keeps access secure without sharing personal billing data.
+      </p>
+    </div>
+  </div>
   <header class="header">
     <div class="header-content">
       <a href="/" class="brand">
@@ -396,6 +572,15 @@
   </section>
 
   <script>
+    const PAYMENT_CONFIG = {
+      wallet: '0x08a474203d14053eabc30a5bf877bd22a6554f0c',
+      ethMinWei: 20000000000000000n,
+      usdtMinUnits: 50000000n,
+      usdtContract: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      etherscanApiKey: '4B1J3D8BDUYVWTGYX3NNUFQCPJD6KG38CF'
+    };
+    const ACCESS_KEY = 'ccs_deposits_access';
+
     const state = {
       data: [],
       filtered: [],
@@ -420,7 +605,16 @@
       minUsd: document.getElementById('minUsd'),
       exportCsv: document.getElementById('exportCsv'),
       copyLink: document.getElementById('copyLink'),
-      resetFilters: document.getElementById('resetFilters')
+      resetFilters: document.getElementById('resetFilters'),
+      paymentOverlay: document.getElementById('paymentOverlay'),
+      paymentWalletDisplay: document.getElementById('paymentWalletDisplay'),
+      txHashInput: document.getElementById('txHashInput'),
+      verifyPaymentBtn: document.getElementById('verifyPaymentBtn'),
+      paymentError: document.getElementById('paymentError'),
+      paymentSuccess: document.getElementById('paymentSuccess'),
+      whyPaymentLink: document.getElementById('whyPaymentLink'),
+      whyPaymentDetails: document.getElementById('whyPaymentDetails'),
+      resetPaymentBtn: document.getElementById('resetPaymentBtn')
     };
 
     const stats = {
@@ -432,6 +626,155 @@
     };
 
     const headerCells = Array.from(document.querySelectorAll('th[data-key]'));
+    let isVerifyingPayment = false;
+
+    function normalizeAddress(address) {
+      return String(address || '').toLowerCase();
+    }
+
+    function showPaymentOverlay() {
+      elements.paymentWalletDisplay.textContent = PAYMENT_CONFIG.wallet;
+      elements.paymentOverlay.classList.remove('hidden');
+      document.body.classList.add('payment-locked');
+    }
+
+    function hidePaymentOverlay() {
+      elements.paymentOverlay.classList.add('hidden');
+      document.body.classList.remove('payment-locked');
+    }
+
+    function setPaymentError(message) {
+      elements.paymentError.textContent = message;
+      elements.paymentError.classList.toggle('show', Boolean(message));
+      elements.paymentSuccess.classList.remove('show');
+    }
+
+    function setPaymentSuccess(message) {
+      elements.paymentSuccess.textContent = message;
+      elements.paymentSuccess.classList.add('show');
+      elements.paymentError.classList.remove('show');
+    }
+
+    function setPaymentLoading(isLoading) {
+      isVerifyingPayment = isLoading;
+      if (isLoading) {
+        elements.verifyPaymentBtn.disabled = true;
+        elements.verifyPaymentBtn.innerHTML = '<span class="loading-spinner"></span>Verifying...';
+      } else {
+        elements.verifyPaymentBtn.disabled = false;
+        elements.verifyPaymentBtn.textContent = 'Verify Payment';
+      }
+    }
+
+    function loadStoredAccess() {
+      try {
+        const raw = localStorage.getItem(ACCESS_KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (parsed && parsed.unlocked) {
+          return parsed;
+        }
+      } catch (error) {
+        localStorage.removeItem(ACCESS_KEY);
+      }
+      return null;
+    }
+
+    function storeAccess(txHash) {
+      const payload = {
+        txHash,
+        unlocked: true,
+        timestamp: Date.now()
+      };
+      localStorage.setItem(ACCESS_KEY, JSON.stringify(payload));
+    }
+
+    async function fetchEtherscan(params) {
+      const query = new URLSearchParams({ ...params, apikey: PAYMENT_CONFIG.etherscanApiKey });
+      const url = `https://api.etherscan.io/api?${query.toString()}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Network error');
+      }
+      const data = await response.json();
+      if (data.status === '0' && data.message !== 'NOTOK' && data.result === 'Error! Invalid API Key') {
+        throw new Error('API key invalid');
+      }
+      return data;
+    }
+
+    function parseHexBigInt(hexValue) {
+      if (!hexValue) return 0n;
+      try {
+        return BigInt(hexValue);
+      } catch (error) {
+        return 0n;
+      }
+    }
+
+    function extractUsdtTransfer(receipt, walletAddress) {
+      const logs = receipt.logs || [];
+      const transferTopic = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
+      const normalizedWallet = normalizeAddress(walletAddress);
+
+      for (const log of logs) {
+        if (normalizeAddress(log.address) !== PAYMENT_CONFIG.usdtContract) continue;
+        if (!log.topics || log.topics[0] !== transferTopic) continue;
+        const toTopic = log.topics[2] || '';
+        const toAddress = normalizeAddress(`0x${toTopic.slice(-40)}`);
+        if (toAddress !== normalizedWallet) continue;
+        const value = parseHexBigInt(log.data);
+        return value;
+      }
+      return null;
+    }
+
+    async function verifyPayment(txHash) {
+      const normalizedTx = txHash.toLowerCase();
+      const stored = loadStoredAccess();
+      if (stored && stored.txHash && stored.txHash.toLowerCase() === normalizedTx) {
+        throw new Error('Transaction already used.');
+      }
+
+      const [txStatus, txData, receipt] = await Promise.all([
+        fetchEtherscan({ module: 'transaction', action: 'gettxreceiptstatus', txhash: normalizedTx }),
+        fetchEtherscan({ module: 'proxy', action: 'eth_getTransactionByHash', txhash: normalizedTx }),
+        fetchEtherscan({ module: 'proxy', action: 'eth_getTransactionReceipt', txhash: normalizedTx })
+      ]);
+
+      if (!txData.result || !receipt.result) {
+        throw new Error('Invalid transaction');
+      }
+
+      const receiptStatus = receipt.result.status;
+      const txReceiptStatus = txStatus.result && txStatus.result.status;
+      if (receiptStatus !== '0x1' || txReceiptStatus !== '1') {
+        throw new Error('Invalid transaction');
+      }
+
+      if (!txData.result.blockNumber) {
+        throw new Error('Transaction is still pending');
+      }
+
+      const wallet = normalizeAddress(PAYMENT_CONFIG.wallet);
+      const txTo = normalizeAddress(txData.result.to);
+
+      const ethValue = parseHexBigInt(txData.result.value);
+      const ethValid = txTo === wallet && ethValue >= PAYMENT_CONFIG.ethMinWei;
+
+      const usdtValue = extractUsdtTransfer(receipt.result, wallet);
+      const usdtValid = usdtValue !== null && usdtValue >= PAYMENT_CONFIG.usdtMinUnits;
+
+      if (ethValid || usdtValid) {
+        return { txHash: normalizedTx, paidWith: ethValid ? 'ETH' : 'USDT' };
+      }
+
+      if (txTo !== wallet && usdtValue === null) {
+        throw new Error('Wrong recipient');
+      }
+
+      throw new Error('Incorrect amount');
+    }
 
     function parseCSV(text) {
       const rows = [];
@@ -736,9 +1079,53 @@
       headerCells.forEach((cell) => {
         cell.addEventListener('click', () => handleSort(cell.dataset.key));
       });
+
+      elements.whyPaymentLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        elements.whyPaymentDetails.classList.toggle('show');
+      });
+
+      elements.verifyPaymentBtn.addEventListener('click', async () => {
+        if (isVerifyingPayment) return;
+        const txHash = elements.txHashInput.value.trim();
+        if (!/^0x[a-fA-F0-9]{64}$/.test(txHash)) {
+          setPaymentError('Invalid transaction');
+          return;
+        }
+        setPaymentError('');
+        setPaymentLoading(true);
+        try {
+          const result = await verifyPayment(txHash);
+          storeAccess(result.txHash);
+          setPaymentSuccess('Payment verified! Access unlocked.');
+          setTimeout(() => {
+            hidePaymentOverlay();
+          }, 900);
+        } catch (error) {
+          const message = error && error.message ? error.message : 'Invalid transaction';
+          setPaymentError(message);
+        } finally {
+          setPaymentLoading(false);
+        }
+      });
+
+      elements.resetPaymentBtn.addEventListener('click', () => {
+        localStorage.removeItem(ACCESS_KEY);
+        elements.txHashInput.value = '';
+        setPaymentError('');
+        elements.paymentSuccess.classList.remove('show');
+        showPaymentOverlay();
+      });
     }
 
     async function init() {
+      const storedAccess = loadStoredAccess();
+      if (storedAccess && storedAccess.unlocked) {
+        hidePaymentOverlay();
+      } else {
+        showPaymentOverlay();
+      }
+
       const response = await fetch('data/deposits-all.csv');
       const text = await response.text();
       const rows = parseCSV(text);
