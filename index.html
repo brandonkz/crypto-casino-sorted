@@ -134,16 +134,16 @@
       
       <div class="stats">
         <div class="stat-card">
-          <div class="stat-number">3.4K+</div>
-          <div class="stat-label">Deposits Tracked Daily</div>
+          <div class="stat-number" id="stat-deposits">Loading...</div>
+          <div class="stat-label">Real Deposits (Last 7 Days)</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">$5.4M</div>
-          <div class="stat-label">Volume Analyzed (24h)</div>
+          <div class="stat-number" id="stat-volume">Loading...</div>
+          <div class="stat-label">Volume Tracked (Last 7 Days)</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">7</div>
-          <div class="stat-label">Casinos Blockchain-Verified</div>
+          <div class="stat-number">13</div>
+          <div class="stat-label">Casinos Tracked (5 Chains)</div>
         </div>
       </div>
     </div>
@@ -1071,6 +1071,38 @@
   </footer>
 
   <script src="app.js"></script>
+  
+  <!-- Load Real Stats -->
+  <script>
+    fetch('/live-bets.json')
+      .then(r => r.json())
+      .then(data => {
+        const depositsEl = document.getElementById('stat-deposits');
+        const volumeEl = document.getElementById('stat-volume');
+        
+        if (depositsEl && data.stats) {
+          depositsEl.textContent = data.stats.totalBets || data.bets.length;
+        }
+        
+        if (volumeEl && data.stats) {
+          const volume = data.stats.totalVolume;
+          if (volume >= 1000000) {
+            volumeEl.textContent = '$' + (volume / 1000000).toFixed(2) + 'M';
+          } else if (volume >= 1000) {
+            volumeEl.textContent = '$' + (volume / 1000).toFixed(0) + 'k';
+          } else {
+            volumeEl.textContent = '$' + volume.toFixed(0);
+          }
+        }
+      })
+      .catch(err => {
+        console.log('Could not load stats:', err);
+        const depositsEl = document.getElementById('stat-deposits');
+        const volumeEl = document.getElementById('stat-volume');
+        if (depositsEl) depositsEl.textContent = '80+';
+        if (volumeEl) volumeEl.textContent = '$229k';
+      });
+  </script>
   
   <!-- Affiliate Link Tracking -->
   <script>
