@@ -527,13 +527,13 @@
                 .slice(0, 5);
             
             const whaleHtml = whales.map(bet => {
-                const timeAgo = Math.floor((Date.now() - new Date(bet.timestamp)) / 60000);
+                const timeAgo = formatTimeAgo(bet.timestamp);
                 return `
                     <div class="whale-item">
                         <div class="whale-info">
                             <div class="whale-amount">$${bet.usdValue.toLocaleString()}</div>
                             <div class="whale-meta">
-                                ${bet.crypto.amount} ${bet.crypto.symbol} • ${timeAgo}m ago
+                                ${bet.crypto.amount} ${bet.crypto.symbol} • ${timeAgo}
                             </div>
                             <div class="whale-casino">${bet.casino.icon} ${bet.casino.name}</div>
                         </div>
@@ -695,6 +695,26 @@
 
         let currentBets = [];
         let currentPeriod = 'daily';
+
+        function formatTimeAgo(timestamp) {
+            const now = Date.now();
+            const then = new Date(timestamp).getTime();
+            const diffMs = now - then;
+            
+            const minutes = Math.floor(diffMs / 60000);
+            const hours = Math.floor(diffMs / 3600000);
+            const days = Math.floor(diffMs / 86400000);
+            
+            if (days > 0) {
+                return days === 1 ? '1 day ago' : `${days} days ago`;
+            } else if (hours > 0) {
+                return hours === 1 ? '1 hour ago' : `${hours} hours ago`;
+            } else if (minutes > 0) {
+                return minutes === 1 ? '1 min ago' : `${minutes} mins ago`;
+            } else {
+                return 'just now';
+            }
+        }
 
         window.switchPeriod = function(period) {
             currentPeriod = period;
