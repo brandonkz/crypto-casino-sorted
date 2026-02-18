@@ -972,7 +972,7 @@
         entry.amountValue = parseFloat(entry.Amount || 0);
         entry.usdValue = parseFloat(entry['USD Value'] || 0);
         return entry;
-      }).filter(entry => entry.usdValue >= 1); // Filter out dust transactions under $1
+      }).filter(entry => entry.usdValue > 0); // Filter out $0 dust transactions
     }
 
     let cachedHeaders = null;
