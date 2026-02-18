@@ -380,6 +380,7 @@
                     <div class="card-title">💰 Total Volume</div>
                     <div class="stat-large" id="totalVolume">$0</div>
                     <div class="stat-small" id="totalBets">0 deposits</div>
+                    <div class="stat-small" id="volumePeriod" style="color: #8b5cf6; margin-top: 0.25rem;"></div>
                 </div>
 
                 <div class="dashboard-card">
@@ -391,13 +392,14 @@
                 <div class="dashboard-card">
                     <div class="card-title">🔗 Chains</div>
                     <div class="stat-large" id="activeChains">0</div>
-                    <div class="stat-small">Active blockchains</div>
+                    <div class="stat-small" id="chainsPeriod"></div>
                 </div>
 
                 <div class="dashboard-card">
                     <div class="card-title">📈 Avg Deposit</div>
                     <div class="stat-large" id="avgDeposit">$0</div>
                     <div class="stat-small" id="biggestDeposit">Biggest: $0</div>
+                    <div class="stat-small" id="avgPeriod" style="color: #8b5cf6; margin-top: 0.25rem;"></div>
                 </div>
             </div>
 
@@ -405,11 +407,13 @@
             <div class="dashboard-grid">
                 <div class="dashboard-card">
                     <div class="card-title">🔗 Chain Breakdown</div>
+                    <div class="stat-small" id="chainBreakdownPeriod" style="margin-bottom: 1rem; color: #9ca3af;"></div>
                     <div id="chainBreakdown"></div>
                 </div>
 
                 <div class="dashboard-card">
                     <div class="card-title">🐋 Whale Watch</div>
+                    <div class="stat-small" id="whalePeriod" style="margin-bottom: 1rem; color: #9ca3af;"></div>
                     <div id="whaleList"></div>
                 </div>
             </div>
@@ -426,6 +430,7 @@
             <div class="dashboard-grid">
                 <div class="dashboard-card wide-card">
                     <div class="card-title">📊 Casino Market Share</div>
+                    <div class="stat-small" id="marketSharePeriod" style="margin-bottom: 1rem; color: #9ca3af;"></div>
                     <div class="market-share" id="marketShare"></div>
                 </div>
             </div>
@@ -434,6 +439,7 @@
             <div class="dashboard-grid">
                 <div class="dashboard-card wide-card">
                     <div class="card-title">🏆 Casino Rankings</div>
+                    <div class="stat-small" id="rankingsPeriod" style="margin-bottom: 1rem; color: #9ca3af;"></div>
                     <div id="casinoRankings"></div>
                 </div>
             </div>
@@ -477,28 +483,70 @@
             const { bets, stats } = data;
             currentBets = bets; // Store for period switching
             
+            // Calculate time period from actual data
+            if (bets.length === 0) {
+                document.getElementById('headerMeta').textContent = 'No data available';
+                return;
+            }
+
+            const timestamps = bets.map(b => new Date(b.timestamp).getTime());
+            const oldestBet = Math.min(...timestamps);
+            const newestBet = Math.max(...timestamps);
+            const now = Date.now();
+            
+            const periodMs = now - oldestBet;
+            const hours = Math.floor(periodMs / 3600000);
+            const days = Math.floor(periodMs / 86400000);
+            
+            let periodText;
+            if (hours < 24) {
+                periodText = `Past ${hours} hours`;
+            } else if (days === 1) {
+                periodText = 'Past 24 hours';
+            } else if (days < 7) {
+                periodText = `Past ${days} days`;
+            } else if (days < 14) {
+                periodText = `Past week`;
+            } else if (days < 31) {
+                const weeks = Math.floor(days / 7);
+                periodText = `Past ${weeks} weeks`;
+            } else {
+                periodText = `Past ${Math.floor(days / 30)} months`;
+            }
+            
             // Header meta
             const lastUpdate = new Date(data.lastUpdated);
             document.getElementById('headerMeta').textContent = 
-                `Last updated: ${lastUpdate.toLocaleString()} • ${bets.length} deposits tracked`;
+                `${periodText} • Last updated: ${lastUpdate.toLocaleTimeString()} • ${bets.length} deposits tracked`;
 
             // Top stats
             document.getElementById('totalVolume').textContent = 
                 '$' + (stats.totalVolume / 1000).toFixed(1) + 'k';
             document.getElementById('totalBets').textContent = 
                 `${bets.length} deposits`;
+            document.getElementById('volumePeriod').textContent = periodText;
+            
             document.getElementById('totalCasinos').textContent = 
                 stats.casinos.length;
-            document.getElementById('activeChains').textContent = 
-                Object.keys(stats.chains).filter(c => stats.chains[c].deposits > 0).length;
+            
+            const activeChainCount = Object.keys(stats.chains).filter(c => stats.chains[c].deposits > 0).length;
+            document.getElementById('activeChains').textContent = activeChainCount;
+            document.getElementById('chainsPeriod').textContent = `Active in ${periodText.toLowerCase()}`;
             
             const avgDep = stats.totalVolume / bets.length;
             document.getElementById('avgDeposit').textContent = 
                 '$' + avgDep.toFixed(0);
+            document.getElementById('avgPeriod').textContent = periodText;
             
             const biggest = Math.max(...bets.map(b => b.usdValue));
             document.getElementById('biggestDeposit').textContent = 
                 `Biggest: $${biggest.toLocaleString()}`;
+
+            // Set period labels for other sections
+            document.getElementById('chainBreakdownPeriod').textContent = periodText;
+            document.getElementById('whalePeriod').textContent = `Top 5 deposits • ${periodText}`;
+            document.getElementById('marketSharePeriod').textContent = `By volume • ${periodText}`;
+            document.getElementById('rankingsPeriod').textContent = `Sorted by total volume • ${periodText}`;
 
             // Chain breakdown
             const chainHtml = Object.entries(stats.chains)
