@@ -55,59 +55,57 @@ const maxDate = data[data.length - 1]?.date || '';
 
 console.log(`   Total: $${(totalVolume / 1000000).toFixed(2)}M, ${Object.keys(casinoStats).length} casinos\n`);
 
-// Create embedded script
-const embedScript = `
-    // EMBEDDED DATA - ${new Date().toISOString()}
-    const stats = {
-        casinos: ${JSON.stringify(casinoStats)},
-        totalVolume: ${totalVolume},
-        totalDeposits: ${data.length},
-        biggest: ${JSON.stringify(biggest)},
-        minDate: "${minDate}",
-        maxDate: "${maxDate}"
-    };
-    
-    const minD = new Date(stats.minDate);
-    const maxD = new Date(stats.maxDate);
-    const daysDiff = Math.ceil((maxD - minD) / 86400000) + 1;
-    const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    
-    document.getElementById('headerSubtext').textContent = formatDate(minD) + ' – ' + formatDate(maxD) + ' (' + daysDiff + ' day' + (daysDiff > 1 ? 's' : '') + ')';
-    document.getElementById('totalVolume').textContent = '$' + (stats.totalVolume / 1000000).toFixed(2) + 'M';
-    document.getElementById('totalDeposits').textContent = stats.totalDeposits.toLocaleString() + ' deposits';
-    document.getElementById('avgDeposit').textContent = '$' + (stats.totalVolume / stats.totalDeposits).toFixed(0);
-    document.getElementById('biggestDeposit').textContent = '$' + stats.biggest.value.toLocaleString(undefined, { maximumFractionDigits: 0 });
-    document.getElementById('biggestCasino').textContent = stats.biggest.casino;
-    document.getElementById('timePeriod').textContent = daysDiff + 'd';
-    document.getElementById('dateRange').textContent = formatDate(minD) + ' – ' + formatDate(maxD);
-    
-    const casinos = Object.keys(stats.casinos).sort((a, b) => stats.casinos[b].volume - stats.casinos[a].volume);
-    const casinoListHTML = casinos.map(casino => \`
-        <div class="casino-item">
-            <div class="casino-name">\${casino}</div>
-            <div class="casino-stats">
-                <div class="casino-volume">$\${(stats.casinos[casino].volume / 1000000).toFixed(2)}M</div>
-                <div class="casino-count">\${stats.casinos[casino].count.toLocaleString()} deposits</div>
-            </div>
-        </div>
-    \`).join('');
-    
-    document.getElementById('casinoList').innerHTML = casinoListHTML;
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-`;
-
-// Read template
+// Build complete HTML file
 const template = fs.readFileSync('analytics-mobile-optimized.html', 'utf8');
 
-// Replace fetch block with embedded data
-const updated = template.replace(
-    /\/\/ Placeholder[\s\S]*?\.catch\(error => \{[\s\S]*?\}\);/,
-    embedScript
-);
+// Find where to insert (just before the placeholder comment)
+const splitPoint = template.indexOf('// Placeholder');
 
-// Write to analytics.html for production
-fs.writeFileSync('analytics.html', updated);
+if (splitPoint === -1) {
+    console.error('❌ Could not find placeholder comment in template');
+    process.exit(1);
+}
+
+// Take everything before the placeholder
+const beforeScript = template.substring(0, splitPoint);
+
+// Build the embedded data script
+const embedScript = `// EMBEDDED DATA - ${new Date().toISOString()}
+const stats = ${JSON.stringify({
+    casinos: casinoStats,
+    totalVolume: totalVolume,
+    totalDeposits: data.length,
+    biggest: biggest,
+    minDate: minDate,
+    maxDate: maxDate
+})};
+
+const minD = new Date(stats.minDate);
+const maxD = new Date(stats.maxDate);
+const daysDiff = Math.ceil((maxD - minD) / 86400000) + 1;
+const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+document.getElementById('headerSubtext').textContent = formatDate(minD) + ' – ' + formatDate(maxD) + ' (' + daysDiff + ' day' + (daysDiff > 1 ? 's' : '') + ')';
+document.getElementById('totalVolume').textContent = '$' + (stats.totalVolume / 1000000).toFixed(2) + 'M';
+document.getElementById('totalDeposits').textContent = stats.totalDeposits.toLocaleString() + ' deposits';
+document.getElementById('avgDeposit').textContent = '$' + (stats.totalVolume / stats.totalDeposits).toFixed(0);
+document.getElementById('biggestDeposit').textContent = '$' + stats.biggest.value.toLocaleString(undefined, { maximumFractionDigits: 0 });
+document.getElementById('biggestCasino').textContent = stats.biggest.casino;
+document.getElementById('timePeriod').textContent = daysDiff + 'd';
+document.getElementById('dateRange').textContent = formatDate(minD) + ' – ' + formatDate(maxD);
+
+const casinos = Object.keys(stats.casinos).sort((a, b) => stats.casinos[b].volume - stats.casinos[a].volume);
+const casinoListHTML = casinos.map(casino => '<div class="casino-item"><div class="casino-name">' + casino + '</div><div class="casino-stats"><div class="casino-volume">$' + (stats.casinos[casino].volume / 1000000).toFixed(2) + 'M</div><div class="casino-count">' + stats.casinos[casino].count.toLocaleString() + ' deposits</div></div></div>').join('');
+
+document.getElementById('casinoList').innerHTML = casinoListHTML;
+document.getElementById('loading').style.display = 'none';
+document.getElementById('content').style.display = 'block';
+    </script>
+</body>
+</html>`;
+
+// Write complete file
+fs.writeFileSync('analytics.html', beforeScript + embedScript);
 
 console.log('✅ Generated analytics.html (mobile-optimized)');
 console.log(`📱 Fast loading: No Chart.js, embedded data`);
