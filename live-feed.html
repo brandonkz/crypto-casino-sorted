@@ -529,13 +529,6 @@
             </div>
         </div>
 
-        <div class="casino-breakdown">
-            <div class="breakdown-header">💰 Deposits by Casino (24h)</div>
-            <div id="casinoBreakdown">
-                <!-- Casino bars will appear here -->
-            </div>
-        </div>
-
         <div class="feed-container">
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">All Casinos</button>
@@ -596,23 +589,12 @@
             casinoBreakdown: document.getElementById('casinoBreakdown')
         };
 
-        // Stats (initialize with realistic "running feed" values)
-        let totalBets = 22356;
-        let biggestBet = 187500; // $187,500 biggest bet today
-        let activeUsers = Math.floor(Math.random() * 500) + 200;
+        // Stats - load from real blockchain data
+        let totalBets = 0;
+        let biggestBet = 0;
+        let totalVolume = 0;
+        let activeUsers = 0;
         let currentFilter = 'all';
-        
-        // Casino volume tracking (initialize with realistic 24h volumes)
-        const casinoVolumes = {
-            'stake': Math.floor(Math.random() * 5000000) + 10000000,    // $10-15M
-            'bcgame': Math.floor(Math.random() * 3000000) + 7000000,    // $7-10M
-            'rollbit': Math.floor(Math.random() * 4000000) + 8000000,   // $8-12M
-            'shuffle': Math.floor(Math.random() * 2000000) + 4000000,   // $4-6M
-            'jackbit': Math.floor(Math.random() * 1500000) + 2500000    // $2.5-4M
-        };
-        
-        // Calculate total volume from casino volumes
-        let totalVolume = Object.values(casinoVolumes).reduce((a, b) => a + b, 0);
 
         // Real blockchain deposits cache
         let blockchainDeposits = [];
@@ -756,43 +738,12 @@
             return card;
         }
 
-        // Render casino breakdown
-        function renderCasinoBreakdown() {
-            const totalDeposits = Object.values(casinoVolumes).reduce((a, b) => a + b, 0);
-            
-            // Sort casinos by volume
-            const sorted = Object.entries(casinoVolumes)
-                .sort((a, b) => b[1] - a[1])
-                .map(([id, volume]) => {
-                    const casino = casinoById[id];
-                    return { ...casino, volume, percentage: (volume / totalDeposits * 100).toFixed(1) };
-                });
-            
-            elements.casinoBreakdown.innerHTML = sorted.map(casino => `
-                <div class="casino-bar">
-                    <div class="casino-bar-icon">${casino.icon}</div>
-                    <div class="casino-bar-content">
-                        <div class="casino-bar-top">
-                            <span class="casino-bar-name">${casino.name}</span>
-                            <span class="casino-bar-amount">$${formatNumber(casino.volume)}</span>
-                        </div>
-                        <div class="casino-bar-progress">
-                            <div class="casino-bar-fill" style="width: ${casino.percentage}%"></div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
         // Add bet to feed
         function addBet(bet) {
             // Update stats
             totalBets++;
             totalVolume += bet.usdValue;
             if (bet.usdValue > biggestBet) biggestBet = bet.usdValue;
-            
-            // Update casino volume
-            casinoVolumes[bet.casino.id] += bet.usdValue;
             
             elements.totalBets.textContent = formatNumber(totalBets);
             elements.totalVolume.textContent = '$' + formatNumber(totalVolume);
@@ -827,9 +778,6 @@
                 timeElement.textContent = timeAgoFromMs(now - ts);
             }
         }
-
-        // Initialize casino breakdown
-        renderCasinoBreakdown();
 
         // Initialize the feed
         async function initializeFeed() {
