@@ -724,6 +724,17 @@
                 </span>
             `;
 
+            // Transaction link
+            const txLink = bet.explorerUrl ? `
+                <a href="${bet.explorerUrl}" 
+                   target="_blank" 
+                   rel="noopener"
+                   title="View on ${bet.chain.name} explorer"
+                   style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 6px; font-size: 0.75rem; color: #a78bfa; text-decoration: none; font-weight: 600; margin-left: 8px; transition: all 0.2s;">
+                    🔍 Verify Tx
+                </a>
+            ` : '';
+
             card.innerHTML = `
                 <div class="casino-logo">${bet.casino.icon}</div>
                 <div class="bet-details">
@@ -732,10 +743,11 @@
                         <span style="font-size: 0.8rem; color: #9ca3af;">($${formatNumber(bet.usdValue)})</span>
                         ${depositBadge}
                         ${verifiedBadge}
+                        ${txLink}
                     </div>
                     <div class="bet-info">
                         <span class="bet-casino">→ ${bet.casino.name}</span>
-                        <span class="crypto-icon">${bet.crypto.icon} ${bet.crypto.symbol}</span>
+                        <span class="crypto-icon">${bet.crypto.icon} ${bet.crypto.symbol} • ${bet.chain.icon} ${bet.chain.name}</span>
                     </div>
                 </div>
                 <div class="bet-time">Just now</div>
