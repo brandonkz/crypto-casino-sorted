@@ -289,7 +289,7 @@ body {
 .featured-badge {
   position: absolute;
   top: 1.5rem;
-  right: 1.5rem;
+  left: 1.5rem;
   background: var(--white);
   color: var(--dark);
   padding: 0.5rem 1.25rem;
@@ -298,6 +298,7 @@ body {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  z-index: 1;
 }
 
 .casino-header {
