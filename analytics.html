@@ -274,58 +274,30 @@
     </div>
 
     <script>
-        
-    // EMBEDDED DATA - 2026-02-18T06:07:30.366Z
-    const stats = {
-        casinos: {"Rollbit":{"volume":523486.28000000026,"count":1675},"Rainbet":{"volume":539016.2099999997,"count":1594},"Stake":{"volume":886386.8700000067,"count":1998},"Roobet":{"volume":3467918.27,"count":57},"Bitcasino":{"volume":49769.99000000002,"count":186},"Duelbits":{"volume":2802319.400000002,"count":504}},
-        totalVolume: 8268897.020000005,
-        totalDeposits: 6014,
-        biggest: {"value":1421281.22,"casino":"Duelbits"},
-        minDate: "2026-02-15",
-        maxDate: "2026-02-18"
-    };
     
-    const minD = new Date(stats.minDate);
-    const maxD = new Date(stats.maxDate);
-    const daysDiff = Math.ceil((maxD - minD) / 86400000) + 1;
-    const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    
-    document.getElementById('headerSubtext').textContent = formatDate(minD) + ' – ' + formatDate(maxD) + ' (' + daysDiff + ' day' + (daysDiff > 1 ? 's' : '') + ')';
-    document.getElementById('totalVolume').textContent = '
-    </script>
-</body>
-</html>
- + (stats.totalVolume / 1000000).toFixed(2) + 'M';
-    document.getElementById('totalDeposits').textContent = stats.totalDeposits.toLocaleString() + ' deposits';
-    document.getElementById('avgDeposit').textContent = '
-    </script>
-</body>
-</html>
- + (stats.totalVolume / stats.totalDeposits).toFixed(0);
-    document.getElementById('biggestDeposit').textContent = '
-    </script>
-</body>
-</html>
- + stats.biggest.value.toLocaleString(undefined, { maximumFractionDigits: 0 });
-    document.getElementById('biggestCasino').textContent = stats.biggest.casino;
-    document.getElementById('timePeriod').textContent = daysDiff + 'd';
-    document.getElementById('dateRange').textContent = formatDate(minD) + ' – ' + formatDate(maxD);
-    
-    const casinos = Object.keys(stats.casinos).sort((a, b) => stats.casinos[b].volume - stats.casinos[a].volume);
-    const casinoListHTML = casinos.map(casino => `
-        <div class="casino-item">
-            <div class="casino-name">${casino}</div>
-            <div class="casino-stats">
-                <div class="casino-volume">${(stats.casinos[casino].volume / 1000000).toFixed(2)}M</div>
-                <div class="casino-count">${stats.casinos[casino].count.toLocaleString()} deposits</div>
-            </div>
-        </div>
-    `).join('');
-    
-    document.getElementById('casinoList').innerHTML = casinoListHTML;
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
+// EMBEDDED DATA
+const stats = {"casinos":{"Rollbit":{"volume":523486.28000000026,"count":1675},"Rainbet":{"volume":539016.2099999997,"count":1594},"Stake":{"volume":886386.8700000067,"count":1998},"Roobet":{"volume":3467918.27,"count":57},"Bitcasino":{"volume":49769.99000000002,"count":186},"Duelbits":{"volume":2802319.400000002,"count":504}},"totalVolume":8268897.020000005,"totalDeposits":6014,"biggest":{"value":1421281.22,"casino":"Duelbits"},"minDate":"2026-02-15","maxDate":"2026-02-18"};
 
+const minD = new Date(stats.minDate);
+const maxD = new Date(stats.maxDate);
+const daysDiff = Math.ceil((maxD - minD) / 86400000) + 1;
+const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+document.getElementById('headerSubtext').textContent = formatDate(minD) + ' – ' + formatDate(maxD) + ' (' + daysDiff + ' day' + (daysDiff > 1 ? 's' : '') + ')';
+document.getElementById('totalVolume').textContent = '$' + (stats.totalVolume / 1000000).toFixed(2) + 'M';
+document.getElementById('totalDeposits').textContent = stats.totalDeposits.toLocaleString() + ' deposits';
+document.getElementById('avgDeposit').textContent = '$' + (stats.totalVolume / stats.totalDeposits).toFixed(0);
+document.getElementById('biggestDeposit').textContent = '$' + stats.biggest.value.toLocaleString(undefined, { maximumFractionDigits: 0 });
+document.getElementById('biggestCasino').textContent = stats.biggest.casino;
+document.getElementById('timePeriod').textContent = daysDiff + 'd';
+document.getElementById('dateRange').textContent = formatDate(minD) + ' – ' + formatDate(maxD);
+
+const casinos = Object.keys(stats.casinos).sort((a, b) => stats.casinos[b].volume - stats.casinos[a].volume);
+const casinoListHTML = casinos.map(casino => '<div class="casino-item"><div class="casino-name">' + casino + '</div><div class="casino-stats"><div class="casino-volume">$' + (stats.casinos[casino].volume / 1000000).toFixed(2) + 'M</div><div class="casino-count">' + stats.casinos[casino].count.toLocaleString() + ' deposits</div></div></div>').join('');
+
+document.getElementById('casinoList').innerHTML = casinoListHTML;
+document.getElementById('loading').style.display = 'none';
+document.getElementById('content').style.display = 'block';
     </script>
 </body>
 </html>
