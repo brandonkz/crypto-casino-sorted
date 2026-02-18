@@ -718,16 +718,25 @@
                 </span>
             ` : '';
             
+            // Deposit indicator
+            const depositBadge = `
+                <span title="Deposit to casino" 
+                      style="display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 4px; font-size: 0.7rem; color: #10b981; margin-left: 8px;">
+                    ↓ Deposit
+                </span>
+            `;
+
             card.innerHTML = `
                 <div class="casino-logo">${bet.casino.icon}</div>
                 <div class="bet-details">
                     <div class="bet-amount ${sizeClass}">
                         ${bet.crypto.icon} ${bet.amount} ${bet.crypto.symbol}
                         <span style="font-size: 0.8rem; color: #9ca3af;">($${formatNumber(bet.usdValue)})</span>
+                        ${depositBadge}
                         ${verifiedBadge}
                     </div>
                     <div class="bet-info">
-                        <span class="bet-casino">${bet.casino.name}</span>
+                        <span class="bet-casino">→ ${bet.casino.name}</span>
                         <span class="crypto-icon">${bet.crypto.icon} ${bet.crypto.symbol}</span>
                     </div>
                 </div>
