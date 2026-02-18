@@ -477,31 +477,6 @@
   </style>
 </head>
 <body>
-  <div class="payment-overlay hidden" id="paymentOverlay">
-    <div class="payment-card">
-      <h2>Unlock Deposits Data Dashboard</h2>
-      <p class="payment-subtitle">Pay $50 USDT to access</p>
-      <div>
-        <div class="control-label">Payment wallet</div>
-        <div class="payment-wallet" id="paymentWalletDisplay">0x08a474203d14053eabc30a5bf877bd22a6554f0c</div>
-      </div>
-      <div>
-        <label class="control-label" for="txHashInput">Paste your transaction hash</label>
-        <input class="payment-input" id="txHashInput" type="text" placeholder="0x..." autocomplete="off" spellcheck="false">
-      </div>
-      <div class="payment-actions">
-        <button class="btn" id="verifyPaymentBtn">Verify Payment</button>
-        <button class="btn secondary reset-button hidden" id="resetPaymentBtn">Reset</button>
-      </div>
-      <div class="payment-message error" id="paymentError"></div>
-      <div class="payment-message success" id="paymentSuccess">Payment verified! Access unlocked.</div>
-      <a href="#" class="why-link" id="whyPaymentLink">Why crypto payment?</a>
-      <p class="why-details" id="whyPaymentDetails">
-        We verify payments directly on-chain for transparency and instant access. This avoids manual approvals,
-        reduces chargeback risk, and keeps access secure without sharing personal billing data.
-      </p>
-    </div>
-  </div>
   <div class="preview-content" id="previewContent">
   <nav style="background: rgba(10, 10, 10, 0.95); border-bottom: 2px solid #8b5cf6; padding: 1rem; position: sticky; top: 0; z-index: 100;">
     <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
@@ -1242,17 +1217,10 @@
     }
 
     async function init() {
-      const adminBypass = applyAdminBypass();
-      const storedAccess = loadStoredAccess();
-      const isUnlocked = adminBypass || (storedAccess && storedAccess.unlocked);
-      if (isUnlocked) {
-        hidePaymentOverlay();
-      } else {
-        showPaymentOverlay();
-      }
-
+      // Paywall removed - all users have full access
+      hidePaymentOverlay();
       applyParams();
-      await loadData({ preview: !isUnlocked });
+      await loadData({ preview: false });
       attachEvents();
     }
 
