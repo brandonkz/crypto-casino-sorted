@@ -102,7 +102,7 @@ const template = fs.readFileSync('analytics-mobile-optimized.html', 'utf8');
 
 // Replace fetch block with embedded data
 const updated = template.replace(
-    /\/\/ Placeholder[\s\S]*?}\);/,
+    /\/\/ Placeholder[\s\S]*?\.catch\(error => \{[\s\S]*?\}\);/,
     embedScript
 );
 
