@@ -250,6 +250,86 @@
             font-size: 0.875rem;
         }
 
+        .daily-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(139, 92, 246, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .daily-date {
+            font-weight: 600;
+            min-width: 100px;
+        }
+
+        .daily-bar-container {
+            flex: 1;
+            margin: 0 1rem;
+        }
+
+        .daily-bar-bg {
+            height: 2rem;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .daily-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
+            transition: width 1s ease-out;
+            display: flex;
+            align-items: center;
+            padding: 0 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .daily-volume {
+            font-weight: 700;
+            color: #8b5cf6;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .daily-count {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .period-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .period-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 8px;
+            color: #9ca3af;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .period-btn:hover {
+            background: rgba(139, 92, 246, 0.2);
+        }
+
+        .period-btn.active {
+            background: #8b5cf6;
+            color: white;
+            border-color: #8b5cf6;
+        }
+
         .loading {
             text-align: center;
             padding: 4rem 2rem;
@@ -334,6 +414,14 @@
                 </div>
             </div>
 
+            <!-- Daily Volume -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card wide-card">
+                    <div class="card-title">📅 Daily Volume</div>
+                    <div id="dailyVolume"></div>
+                </div>
+            </div>
+
             <!-- Market Share -->
             <div class="dashboard-grid">
                 <div class="dashboard-card wide-card">
@@ -387,6 +475,7 @@
 
         function renderAnalytics(data) {
             const { bets, stats } = data;
+            currentBets = bets; // Store for period switching
             
             // Header meta
             const lastUpdate = new Date(data.lastUpdated);
@@ -481,6 +570,9 @@
             }).join('');
             document.getElementById('marketShare').innerHTML = marketShareHtml;
 
+            // Daily volume
+            renderDailyVolume(bets, 'daily');
+
             // Casino rankings
             const casinoStats = {};
             bets.forEach(bet => {
@@ -518,6 +610,96 @@
             }).join('');
             document.getElementById('casinoRankings').innerHTML = rankingsHtml;
         }
+
+        function renderDailyVolume(bets, period = 'daily') {
+            // Group by date
+            const dailyData = {};
+            
+            bets.forEach(bet => {
+                const date = new Date(bet.timestamp);
+                let key;
+                
+                if (period === 'daily') {
+                    key = date.toISOString().split('T')[0]; // YYYY-MM-DD
+                } else if (period === 'weekly') {
+                    // Get Monday of the week
+                    const monday = new Date(date);
+                    const day = monday.getDay();
+                    const diff = monday.getDate() - day + (day === 0 ? -6 : 1);
+                    monday.setDate(diff);
+                    key = monday.toISOString().split('T')[0];
+                }
+                
+                if (!dailyData[key]) {
+                    dailyData[key] = { volume: 0, count: 0 };
+                }
+                dailyData[key].volume += bet.usdValue;
+                dailyData[key].count++;
+            });
+
+            // Sort by date (newest first)
+            const sorted = Object.entries(dailyData)
+                .sort((a, b) => b[0].localeCompare(a[0]))
+                .slice(0, 14); // Show last 14 periods
+
+            if (sorted.length === 0) {
+                document.getElementById('dailyVolume').innerHTML = 
+                    '<div style="color: #9ca3af; padding: 2rem; text-align: center;">No data available</div>';
+                return;
+            }
+
+            const maxVolume = Math.max(...sorted.map(([_, d]) => d.volume));
+            
+            // Show weekly toggle if we have 7+ days of data
+            const showWeeklyToggle = Object.keys(dailyData).length >= 7;
+
+            let html = '';
+            
+            if (showWeeklyToggle) {
+                html += `
+                    <div class="period-toggle">
+                        <button class="period-btn ${period === 'daily' ? 'active' : ''}" onclick="switchPeriod('daily')">Daily</button>
+                        <button class="period-btn ${period === 'weekly' ? 'active' : ''}" onclick="switchPeriod('weekly')">Weekly</button>
+                    </div>
+                `;
+            }
+
+            html += sorted.map(([dateStr, data]) => {
+                const date = new Date(dateStr);
+                const dateDisplay = period === 'daily' 
+                    ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+                    : `Week of ${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+                
+                const percent = (data.volume / maxVolume) * 100;
+                
+                return `
+                    <div class="daily-item">
+                        <div class="daily-date">${dateDisplay}</div>
+                        <div class="daily-bar-container">
+                            <div class="daily-bar-bg">
+                                <div class="daily-bar" style="width: ${percent}%">
+                                    ${data.volume > maxVolume * 0.3 ? '$' + (data.volume / 1000).toFixed(1) + 'k' : ''}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="daily-volume">$${(data.volume / 1000).toFixed(1)}k</div>
+                            <div class="daily-count">${data.count} deposits</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('dailyVolume').innerHTML = html;
+        }
+
+        let currentBets = [];
+        let currentPeriod = 'daily';
+
+        window.switchPeriod = function(period) {
+            currentPeriod = period;
+            renderDailyVolume(currentBets, period);
+        };
 
         // Load data on page load
         loadData();
