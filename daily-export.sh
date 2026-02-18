@@ -8,13 +8,13 @@ cd /Users/brandonkatz/.openclaw/workspace/crypto-casinos/site
 echo "🎰 Daily Deposit Export - $(date)"
 echo ""
 
-# Run export
-node export-deposits-csv.js
+# Run export (use full path for launchd)
+/opt/homebrew/bin/node export-deposits-csv.js
 
 # Generate analytics with embedded data for live site
 echo ""
 echo "📊 Generating live analytics..."
-node generate-live-analytics.js
+/opt/homebrew/bin/node generate-live-analytics.js
 
 # Check if successful
 if [ $? -eq 0 ]; then
