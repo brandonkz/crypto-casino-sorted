@@ -596,18 +596,7 @@
   </div>
 
   <script>
-    const PAYMENT_CONFIG = {
-      wallet: '0x08a474203d14053eabc30a5bf877bd22a6554f0c',
-      ethMinWei: 20000000000000000n,
-      usdtMinUnits: 50000000n,
-      usdtContract: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      etherscanApiKey: '4B1J3D8BDUYVWTGYX3NNUFQCPJD6KG38CF'
-    };
-    const ACCESS_KEY = 'ccs_deposits_access';
-    const ADMIN_BYPASS_PARAM = 'admin';
-    const ADMIN_BYPASS_VALUE = 'ccs_preview_2026';
-
-    const PREVIEW_ROWS = 50;
+    // Payment config removed - free access for all users
     const state = {
       data: [],
       filtered: [],
@@ -633,16 +622,7 @@
       minUsd: document.getElementById('minUsd'),
       exportCsv: document.getElementById('exportCsv'),
       copyLink: document.getElementById('copyLink'),
-      resetFilters: document.getElementById('resetFilters'),
-      paymentOverlay: document.getElementById('paymentOverlay'),
-      paymentWalletDisplay: document.getElementById('paymentWalletDisplay'),
-      txHashInput: document.getElementById('txHashInput'),
-      verifyPaymentBtn: document.getElementById('verifyPaymentBtn'),
-      paymentError: document.getElementById('paymentError'),
-      paymentSuccess: document.getElementById('paymentSuccess'),
-      whyPaymentLink: document.getElementById('whyPaymentLink'),
-      whyPaymentDetails: document.getElementById('whyPaymentDetails'),
-      resetPaymentBtn: document.getElementById('resetPaymentBtn')
+      resetFilters: document.getElementById('resetFilters')
     };
 
     const stats = {
@@ -654,166 +634,15 @@
     };
 
     const headerCells = Array.from(document.querySelectorAll('th[data-key]'));
-    let isVerifyingPayment = false;
 
-    function normalizeAddress(address) {
-      return String(address || '').toLowerCase();
-    }
+    // Payment functions removed - all users have free access
+    function showPaymentOverlay() { /* no-op */ }
+    function hidePaymentOverlay() { /* no-op */ }
+    function setPaymentError(message) { /* no-op */ }
+    function setPaymentSuccess(message) { /* no-op */ }
+    function setPaymentLoading(isLoading) { /* no-op */ }
 
-    function showPaymentOverlay() {
-      elements.paymentWalletDisplay.textContent = PAYMENT_CONFIG.wallet;
-      elements.paymentOverlay.classList.remove('hidden');
-      document.body.classList.add('payment-locked');
-      document.body.classList.add('preview-locked');
-    }
-
-    function hidePaymentOverlay() {
-      elements.paymentOverlay.classList.add('hidden');
-      document.body.classList.remove('payment-locked');
-      document.body.classList.remove('preview-locked');
-    }
-
-    function setPaymentError(message) {
-      elements.paymentError.textContent = message;
-      elements.paymentError.classList.toggle('show', Boolean(message));
-      elements.paymentSuccess.classList.remove('show');
-    }
-
-    function setPaymentSuccess(message) {
-      elements.paymentSuccess.textContent = message;
-      elements.paymentSuccess.classList.add('show');
-      elements.paymentError.classList.remove('show');
-    }
-
-    function setPaymentLoading(isLoading) {
-      isVerifyingPayment = isLoading;
-      if (isLoading) {
-        elements.verifyPaymentBtn.disabled = true;
-        elements.verifyPaymentBtn.innerHTML = '<span class="loading-spinner"></span>Verifying...';
-      } else {
-        elements.verifyPaymentBtn.disabled = false;
-        elements.verifyPaymentBtn.textContent = 'Verify Payment';
-      }
-    }
-
-    function loadStoredAccess() {
-      try {
-        const raw = localStorage.getItem(ACCESS_KEY);
-        if (!raw) return null;
-        const parsed = JSON.parse(raw);
-        if (parsed && parsed.unlocked) {
-          return parsed;
-        }
-      } catch (error) {
-        localStorage.removeItem(ACCESS_KEY);
-      }
-      return null;
-    }
-
-    function storeAccess(txHash) {
-      const payload = {
-        txHash,
-        unlocked: true,
-        timestamp: Date.now()
-      };
-      localStorage.setItem(ACCESS_KEY, JSON.stringify(payload));
-    }
-
-    function applyAdminBypass() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get(ADMIN_BYPASS_PARAM) !== ADMIN_BYPASS_VALUE) {
-        return false;
-      }
-      storeAccess('admin_bypass');
-      return true;
-    }
-
-    async function fetchEtherscan(params) {
-      const query = new URLSearchParams({ ...params, apikey: PAYMENT_CONFIG.etherscanApiKey });
-      const url = `https://api.etherscan.io/api?${query.toString()}`;
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error('Network error');
-      }
-      const data = await response.json();
-      if (data.status === '0' && data.message !== 'NOTOK' && data.result === 'Error! Invalid API Key') {
-        throw new Error('API key invalid');
-      }
-      return data;
-    }
-
-    function parseHexBigInt(hexValue) {
-      if (!hexValue) return 0n;
-      try {
-        return BigInt(hexValue);
-      } catch (error) {
-        return 0n;
-      }
-    }
-
-    function extractUsdtTransfer(receipt, walletAddress) {
-      const logs = receipt.logs || [];
-      const transferTopic = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
-      const normalizedWallet = normalizeAddress(walletAddress);
-
-      for (const log of logs) {
-        if (normalizeAddress(log.address) !== PAYMENT_CONFIG.usdtContract) continue;
-        if (!log.topics || log.topics[0] !== transferTopic) continue;
-        const toTopic = log.topics[2] || '';
-        const toAddress = normalizeAddress(`0x${toTopic.slice(-40)}`);
-        if (toAddress !== normalizedWallet) continue;
-        const value = parseHexBigInt(log.data);
-        return value;
-      }
-      return null;
-    }
-
-    async function verifyPayment(txHash) {
-      const normalizedTx = txHash.toLowerCase();
-      const stored = loadStoredAccess();
-      if (stored && stored.txHash && stored.txHash.toLowerCase() === normalizedTx) {
-        throw new Error('Transaction already used.');
-      }
-
-      const [txStatus, txData, receipt] = await Promise.all([
-        fetchEtherscan({ module: 'transaction', action: 'gettxreceiptstatus', txhash: normalizedTx }),
-        fetchEtherscan({ module: 'proxy', action: 'eth_getTransactionByHash', txhash: normalizedTx }),
-        fetchEtherscan({ module: 'proxy', action: 'eth_getTransactionReceipt', txhash: normalizedTx })
-      ]);
-
-      if (!txData.result || !receipt.result) {
-        throw new Error('Invalid transaction');
-      }
-
-      const receiptStatus = receipt.result.status;
-      const txReceiptStatus = txStatus.result && txStatus.result.status;
-      if (receiptStatus !== '0x1' || txReceiptStatus !== '1') {
-        throw new Error('Invalid transaction');
-      }
-
-      if (!txData.result.blockNumber) {
-        throw new Error('Transaction is still pending');
-      }
-
-      const wallet = normalizeAddress(PAYMENT_CONFIG.wallet);
-      const txTo = normalizeAddress(txData.result.to);
-
-      const ethValue = parseHexBigInt(txData.result.value);
-      const ethValid = txTo === wallet && ethValue >= PAYMENT_CONFIG.ethMinWei;
-
-      const usdtValue = extractUsdtTransfer(receipt.result, wallet);
-      const usdtValid = usdtValue !== null && usdtValue >= PAYMENT_CONFIG.usdtMinUnits;
-
-      if (ethValid || usdtValid) {
-        return { txHash: normalizedTx, paidWith: ethValid ? 'ETH' : 'USDT' };
-      }
-
-      if (txTo !== wallet && usdtValue === null) {
-        throw new Error('Wrong recipient');
-      }
-
-      throw new Error('Incorrect amount');
-    }
+    // Payment verification functions removed - no longer needed
 
     function parseCSV(text) {
       const rows = [];
@@ -1115,45 +944,6 @@
 
       headerCells.forEach((cell) => {
         cell.addEventListener('click', () => handleSort(cell.dataset.key));
-      });
-
-      elements.whyPaymentLink.addEventListener('click', (event) => {
-        event.preventDefault();
-        elements.whyPaymentDetails.classList.toggle('show');
-      });
-
-      elements.verifyPaymentBtn.addEventListener('click', async () => {
-        if (isVerifyingPayment) return;
-        const txHash = elements.txHashInput.value.trim();
-        if (!/^0x[a-fA-F0-9]{64}$/.test(txHash)) {
-          setPaymentError('Invalid transaction');
-          return;
-        }
-        setPaymentError('');
-        setPaymentLoading(true);
-        try {
-          const result = await verifyPayment(txHash);
-          storeAccess(result.txHash);
-          setPaymentSuccess('Payment verified! Access unlocked.');
-          await unlockData();
-          setTimeout(() => {
-            hidePaymentOverlay();
-          }, 900);
-        } catch (error) {
-          const message = error && error.message ? error.message : 'Invalid transaction';
-          setPaymentError(message);
-        } finally {
-          setPaymentLoading(false);
-        }
-      });
-
-      elements.resetPaymentBtn.addEventListener('click', () => {
-        localStorage.removeItem(ACCESS_KEY);
-        elements.txHashInput.value = '';
-        setPaymentError('');
-        elements.paymentSuccess.classList.remove('show');
-        showPaymentOverlay();
-        loadData({ preview: true });
       });
     }
 
