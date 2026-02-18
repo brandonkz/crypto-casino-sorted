@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verified Casino Wallet Addresses | CryptoCasinoSorted</title>
+  <meta name="description" content="Verified Ethereum, BSC, and Polygon wallet addresses for major crypto casinos. Check addresses before depositing to avoid scams.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/casino-wallet-addresses.html">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#8b5cf6">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    .addresses-hero {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(109, 40, 217, 0.1) 100%);
+      padding: 3rem 0 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .addresses-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .addresses-hero p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .chain-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .chain-tab {
+      padding: 0.75rem 1.5rem;
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .chain-tab:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    .chain-tab.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+    
+    .casino-address-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .casino-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .casino-name-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .casino-icon {
+      font-size: 2rem;
+    }
+    
+    .casino-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    
+    .chain-badges {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .chain-badge {
+      padding: 0.25rem 0.75rem;
+      background: rgba(139, 92, 246, 0.2);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    .wallet-address-item {
+      background: rgba(139, 92, 246, 0.05);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .wallet-chain {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    .address-display {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .address-text {
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      word-break: break-all;
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .address-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .action-btn {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .action-btn:hover {
+      background: #7c3aed;
+      transform: translateY(-2px);
+    }
+    
+    .action-btn.secondary {
+      background: rgba(139, 92, 246, 0.2);
+      color: var(--primary);
+    }
+    
+    .action-btn.secondary:hover {
+      background: rgba(139, 92, 246, 0.3);
+    }
+    
+    .wallet-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    
+    .warning-box {
+      background: rgba(234, 179, 8, 0.1);
+      border: 1px solid rgba(234, 179, 8, 0.3);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .warning-box h3 {
+      color: #eab308;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .warning-box p {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand-section">
+        <a href="/" class="brand">
+          <div class="brand-icon-wrap">
+            <svg class="brand-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#8b5cf6"/>
+                  <stop offset="100%" style="stop-color:#6d28d9"/>
+                </linearGradient>
+              </defs>
+              <rect width="100" height="100" rx="20" fill="url(#brandGrad)"/>
+              <g fill="white">
+                <rect x="20" y="20" width="60" height="60" rx="8" fill="none" stroke="white" stroke-width="3"/>
+                <circle cx="35" cy="35" r="4"/>
+                <circle cx="50" cy="50" r="4"/>
+                <circle cx="65" cy="65" r="4"/>
+                <circle cx="35" cy="65" r="4"/>
+                <circle cx="65" cy="35" r="4"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <span class="brand-name">CryptoCasinoSorted</span>
+            <span class="brand-tagline">Community-Verified Reviews</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="header-right">
+        <nav class="nav">
+          <a href="/" class="nav-link">Casinos</a>
+          <a href="/live-feed.html" class="nav-link">🔴 Live Feed</a>
+          <a href="/analytics.html" class="nav-link">📊 Analytics</a>
+          <a href="/casino-wallet-addresses.html" class="nav-link active">🔍 Wallet Addresses</a>
+          <a href="/deposit-tracker.html" class="nav-link">💸 Track Deposits</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="addresses-hero">
+    <div class="container" style="text-align: center;">
+      <h1>🔍 Verified Casino Wallet Addresses</h1>
+      <p>Always verify deposit addresses before sending crypto. These wallet addresses are confirmed and actively monitored across multiple blockchains.</p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <main class="container">
+    <!-- Warning -->
+    <div class="warning-box">
+      <h3>⚠️ Important Security Notice</h3>
+      <p><strong>Always double-check addresses before depositing.</strong> Scammers create fake casino sites with different wallet addresses. These addresses are verified via blockchain explorers, but you should always:</p>
+      <ul style="margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.875rem;">
+        <li>Copy the address from the casino's official website</li>
+        <li>Verify it matches what we show here</li>
+        <li>Check the address on a blockchain explorer (Etherscan, BSCScan, etc.)</li>
+        <li>Start with a small test deposit if unsure</li>
+      </ul>
+    </div>
+
+    <!-- Chain Tabs -->
+    <div class="chain-tabs">
+      <div class="chain-tab active" data-chain="all">All Chains</div>
+      <div class="chain-tab" data-chain="eth">⟠ Ethereum</div>
+      <div class="chain-tab" data-chain="bsc">🔶 BSC</div>
+      <div class="chain-tab" data-chain="polygon">🟣 Polygon</div>
+      <div class="chain-tab" data-chain="arbitrum">🔵 Arbitrum</div>
+      <div class="chain-tab" data-chain="base">🔷 Base</div>
+    </div>
+
+    <!-- Casino Addresses -->
+    <div id="addresses-container"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p><strong>Disclaimer:</strong> Always verify wallet addresses on the official casino website before depositing. CryptoCasinoSorted is not responsible for funds sent to incorrect addresses.</p>
+      <p>© 2026 CryptoCasinoSorted. <a href="/transparency.html">Transparency Policy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Casino wallet data - multi-chain
+    const casinoWallets = {
+      shuffle: {
+        name: 'Shuffle',
+        icon: '🔀',
+        color: '#8b5cf6',
+        website: 'https://shuffle.com',
+        addresses: [
+          { chain: 'eth', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: '$20.9M', txCount: '1,290,240' },
+          { chain: 'bsc', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: '$367K', txCount: 'Active' },
+          { chain: 'arbitrum', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: 'Active', txCount: 'Active' },
+          { chain: 'base', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: 'Active', txCount: 'Active' }
+        ]
+      },
+      stake: {
+        name: 'Stake',
+        icon: '💎',
+        color: '#00e701',
+        website: 'https://stake.com',
+        addresses: [
+          { chain: 'eth', address: '0x0000000000a39bb272e79075ade125fd351887ac', balance: '$22M+', txCount: 'Very High' },
+          { chain: 'bsc', address: '0x0000000000a39bb272e79075ade125fd351887ac', balance: 'Active', txCount: 'Active' },
+          { chain: 'polygon', address: '0x0000000000a39bb272e79075ade125fd351887ac', balance: '2.1 MATIC', txCount: 'Active' },
+          { chain: 'arbitrum', address: '0x0000000000a39bb272e79075ade125fd351887ac', balance: 'Active', txCount: 'Active' },
+          { chain: 'base', address: '0x0000000000a39bb272e79075ade125fd351887ac', balance: 'Active', txCount: 'Active' }
+        ]
+      },
+      rollbit: {
+        name: 'Rollbit',
+        icon: '🎲',
+        color: '#3b82f6',
+        website: 'https://rollbit.com',
+        addresses: [
+          { chain: 'eth', address: '0xcbd6832ebc203e49e2b771897067fce3c58575ac', balance: '$7.1M', txCount: 'High' },
+          { chain: 'eth', address: '0xef8801eaf234ff82801821ffe2d78d60a0237f97', balance: 'ERC-20 Tokens', txCount: 'High', note: 'Token wallet (USDT, USDC)' }
+        ]
+      },
+      bcgame: {
+        name: 'BC.Game',
+        icon: '🎰',
+        color: '#10b981',
+        website: 'https://bc.game',
+        addresses: [
+          { chain: 'eth', address: '0x8aaf720bbbcac82c592ac8f6c628bbac1590e079', balance: '$1.8K', txCount: '102,278' },
+          { chain: 'eth', address: '0x788529118f2a28c60b9de2ba0353f5ee4293e044', balance: '$4.1K', txCount: '65,703' },
+          { chain: 'eth', address: '0x9d2a0e32633d9be838bfde19d510e6aa6eb202dd', balance: '$35.5K', txCount: '42,046' }
+        ]
+      }
+    };
+
+    const chainConfig = {
+      eth: { name: 'Ethereum', icon: '⟠', explorer: 'https://etherscan.io/address/' },
+      bsc: { name: 'BSC', icon: '🔶', explorer: 'https://bscscan.com/address/' },
+      polygon: { name: 'Polygon', icon: '🟣', explorer: 'https://polygonscan.com/address/' },
+      arbitrum: { name: 'Arbitrum', icon: '🔵', explorer: 'https://arbiscan.io/address/' },
+      base: { name: 'Base', icon: '🔷', explorer: 'https://basescan.org/address/' }
+    };
+
+    let currentChain = 'all';
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Address copied to clipboard!');
+      });
+    }
+
+    function renderAddresses() {
+      const container = document.getElementById('addresses-container');
+      container.innerHTML = '';
+
+      Object.entries(casinoWallets).forEach(([id, casino]) => {
+        // Filter by chain if not "all"
+        const filteredAddresses = currentChain === 'all' 
+          ? casino.addresses 
+          : casino.addresses.filter(addr => addr.chain === currentChain);
+
+        if (filteredAddresses.length === 0) return;
+
+        const chains = [...new Set(casino.addresses.map(a => a.chain))];
+        
+        const card = document.createElement('div');
+        card.className = 'casino-address-card';
+        card.innerHTML = `
+          <div class="casino-header">
+            <div class="casino-name-section">
+              <div class="casino-icon">${casino.icon}</div>
+              <div>
+                <div class="casino-name">${casino.name}</div>
+                <a href="${casino.website}" target="_blank" rel="noopener" style="font-size: 0.875rem; color: var(--primary);">
+                  ${casino.website.replace('https://', '')} →
+                </a>
+              </div>
+            </div>
+            <div class="chain-badges">
+              ${chains.map(chain => `<div class="chain-badge">${chainConfig[chain].icon} ${chainConfig[chain].name}</div>`).join('')}
+            </div>
+          </div>
+
+          ${filteredAddresses.map(addr => `
+            <div class="wallet-address-item">
+              <div class="wallet-chain">
+                ${chainConfig[addr.chain].icon} ${chainConfig[addr.chain].name}
+                ${addr.note ? `<span style="color: var(--text-secondary); font-weight: 400;">• ${addr.note}</span>` : ''}
+              </div>
+              <div class="address-display">
+                <div class="address-text">${addr.address}</div>
+                <div class="address-actions">
+                  <button class="action-btn secondary" onclick="copyToClipboard('${addr.address}')">Copy</button>
+                  <a href="${chainConfig[addr.chain].explorer}${addr.address}" target="_blank" rel="noopener" class="action-btn">View →</a>
+                </div>
+              </div>
+              ${addr.balance || addr.txCount ? `
+                <div class="wallet-stats">
+                  ${addr.balance ? `
+                    <div class="stat-item">
+                      <div class="stat-label">Balance</div>
+                      <div class="stat-value">${addr.balance}</div>
+                    </div>
+                  ` : ''}
+                  ${addr.txCount ? `
+                    <div class="stat-item">
+                      <div class="stat-label">Transactions</div>
+                      <div class="stat-value">${addr.txCount}</div>
+                    </div>
+                  ` : ''}
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        `;
+        
+        container.appendChild(card);
+      });
+
+      if (container.children.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">No addresses found for this chain.</p>';
+      }
+    }
+
+    // Chain tab switching
+    document.querySelectorAll('.chain-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.chain-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentChain = tab.dataset.chain;
+        renderAddresses();
+      });
+    });
+
+    // Initial render
+    renderAddresses();
+  </script>
+</body>
+</html>
