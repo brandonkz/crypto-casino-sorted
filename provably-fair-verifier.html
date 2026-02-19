@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provably Fair Verifier | CryptoCasinoSorted</title>
+  <meta name="description" content="Verify provably fair casino results with server seed, client seed, and nonce. Check hashes and confirm fairness fast.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      padding: 3.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(circle at top, rgba(139, 92, 246, 0.18), transparent 55%);
+    }
+    .page-hero h1 {
+      font-size: 3.25rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .page-hero p {
+      color: var(--text-secondary);
+      max-width: 720px;
+      font-size: 1.1rem;
+    }
+    .section {
+      padding: 3rem 0;
+    }
+    .section h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+    .panel {
+      background: var(--dark-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .step-card {
+      background: rgba(15, 15, 15, 0.9);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+    .step-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    .step-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .field label {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .field input,
+    .field textarea {
+      background: #0b0b0b;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.75rem 0.85rem;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+    .field textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .field small {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      align-items: center;
+    }
+    .btn {
+      background: #8b5cf6;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .status-pill {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .status-good {
+      background: rgba(34, 197, 94, 0.2);
+      color: #86efac;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+    .status-bad {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+    .status-warn {
+      background: rgba(234, 179, 8, 0.2);
+      color: #fde047;
+      border: 1px solid rgba(234, 179, 8, 0.4);
+    }
+    .notice {
+      margin-top: 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .faq-item {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    .faq-item p {
+      color: var(--text-secondary);
+    }
+    .output-box {
+      background: #070707;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9rem;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <nav style="background: rgba(10, 10, 10, 0.95); border-bottom: 2px solid #8b5cf6; padding: 1rem; position: sticky; top: 0; z-index: 100;">
+    <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <a href="/" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #fff; font-weight: 800; font-size: 1.25rem;">
+            <span>🎰</span>
+            <span>CryptoCasinoSorted</span>
+        </a>
+        <div style="display: flex; gap: 1rem; font-size: 0.875rem; flex-wrap: wrap;">
+            <a href="/#casinos" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Casinos</a>
+            <a href="/analytics.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">📊 Live Data</a>
+            <a href="/deposits-data.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">💰 Deposit Data</a>
+            <a href="/casino-wallet-addresses.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">🔍 Wallet Addresses</a>
+            <a href="/provably-fair-verifier.html" style="color: #8b5cf6; text-decoration: none; font-weight: 600;">✓ Provably Fair</a>
+            <a href="/reviews/index.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Reviews</a>
+            <a href="/blog/index.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Blog</a>
+        </div>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="container">
+      <span class="badge">Provably Fair Toolkit</span>
+      <h1>Provably Fair Verifier</h1>
+      <p>Validate casino outcomes by recomputing hashes from the server seed, client seed, and nonce. This tool uses a common HMAC-SHA256 scheme and highlights mismatches instantly.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>How Provably Fair Works</h2>
+        <div class="grid">
+          <div class="step-card">
+            <h3>1) Server Seed (Commitment)</h3>
+            <p>The casino generates a secret server seed and publishes its SHA-256 hash before play. This locks the outcome so it cannot be changed later.</p>
+          </div>
+          <div class="step-card">
+            <h3>2) Client Seed (Your Input)</h3>
+            <p>You provide a client seed (often editable) to influence the randomness. It is combined with the server seed and nonce to create each result.</p>
+          </div>
+          <div class="step-card">
+            <h3>3) Nonce (Round Counter)</h3>
+            <p>The nonce increments every bet and ensures every roll uses a unique hash even when seeds stay the same.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="panel">
+          <h2>Verifier (HMAC-SHA256)</h2>
+          <p style="color: var(--text-secondary);">Scheme implemented: <strong>HMAC-SHA256(serverSeed, clientSeed:nonce)</strong>. Some casinos add extra fields or use a different delimiter. If your casino differs, compare their documentation and adjust inputs accordingly.</p>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="server-seed">Server Seed (Revealed)</label>
+              <input id="server-seed" type="text" placeholder="e.g. 3b92f0b5b4d1...">
+              <small>Revealed after play. Used as the HMAC key.</small>
+            </div>
+            <div class="field">
+              <label for="server-seed-hash">Server Seed Hash (Commitment)</label>
+              <input id="server-seed-hash" type="text" placeholder="e.g. 9f9c1f2a...">
+              <small>Should equal SHA-256(server seed).</small>
+            </div>
+            <div class="field">
+              <label for="client-seed">Client Seed</label>
+              <input id="client-seed" type="text" placeholder="e.g. player-1234">
+              <small>Exactly as shown in the casino bet history.</small>
+            </div>
+            <div class="field">
+              <label for="nonce">Nonce</label>
+              <input id="nonce" type="number" min="0" step="1" placeholder="0">
+              <small>Round/bet count (starts at 0 or 1 depending on the casino).</small>
+            </div>
+            <div class="field">
+              <label for="expected-hash">Expected Result/Hash</label>
+              <input id="expected-hash" type="text" placeholder="Optional: paste the expected hash or result">
+              <small>We compare this to the computed HMAC output.</small>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button class="btn" id="verify-btn">Verify Hash</button>
+            <span id="seed-status" class="status-pill status-warn">Waiting for inputs</span>
+            <span id="hash-status" class="status-pill status-warn">No comparison yet</span>
+          </div>
+
+          <div class="form-grid" style="margin-top: 2rem;">
+            <div class="field">
+              <label>Computed Server Seed Hash (SHA-256)</label>
+              <div id="computed-seed-hash" class="output-box">N/A</div>
+            </div>
+            <div class="field">
+              <label>Computed Result Hash (HMAC-SHA256)</label>
+              <div id="computed-result-hash" class="output-box">N/A</div>
+            </div>
+          </div>
+
+          <p class="notice">Tip: If the casino uses a different scheme (for example: <code>HMAC-SHA256(serverSeed, clientSeed:nonce:betId)</code> or SHA-512), copy their formula into your own tooling or contact support for their verifier specification.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>FAQ</h2>
+        <div class="panel">
+          <div class="faq-item">
+            <h3>Why do I need both the server seed and its hash?</h3>
+            <p>The hash proves the casino committed to a seed before the game started. When the seed is revealed, you can recompute the hash to confirm it matches the commitment.</p>
+          </div>
+          <div class="faq-item">
+            <h3>What if my computed hash does not match?</h3>
+            <p>First verify the exact client seed, nonce, and delimiter. If everything matches and the hash still differs, contact the casino and provide the bet ID for investigation.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Does a matching hash mean the game is fair?</h3>
+            <p>It proves the result was derived from the committed seeds. Fairness still depends on the casino using a transparent formula and honest bet-history data.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Why do some casinos show a different formula?</h3>
+            <p>There is no single standard. Some games use SHA-512, different separators, or include game IDs and timestamps. Always follow the casino's published formula.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const serverSeedInput = document.getElementById('server-seed');
+    const serverSeedHashInput = document.getElementById('server-seed-hash');
+    const clientSeedInput = document.getElementById('client-seed');
+    const nonceInput = document.getElementById('nonce');
+    const expectedHashInput = document.getElementById('expected-hash');
+    const verifyBtn = document.getElementById('verify-btn');
+    const computedSeedHashEl = document.getElementById('computed-seed-hash');
+    const computedResultHashEl = document.getElementById('computed-result-hash');
+    const seedStatusEl = document.getElementById('seed-status');
+    const hashStatusEl = document.getElementById('hash-status');
+
+    const encoder = new TextEncoder();
+
+    function bufferToHex(buffer) {
+      return Array.from(new Uint8Array(buffer))
+        .map((b) => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+
+    async function sha256Hex(message) {
+      const data = encoder.encode(message);
+      const hash = await crypto.subtle.digest('SHA-256', data);
+      return bufferToHex(hash);
+    }
+
+    async function hmacSha256Hex(key, message) {
+      const keyData = encoder.encode(key);
+      const cryptoKey = await crypto.subtle.importKey(
+        'raw',
+        keyData,
+        { name: 'HMAC', hash: 'SHA-256' },
+        false,
+        ['sign']
+      );
+      const sig = await crypto.subtle.sign('HMAC', cryptoKey, encoder.encode(message));
+      return bufferToHex(sig);
+    }
+
+    function updateStatus(element, status, text) {
+      element.className = `status-pill ${status}`;
+      element.textContent = text;
+    }
+
+    async function verifyHashes() {
+      if (!window.crypto || !crypto.subtle) {
+        computedSeedHashEl.textContent = 'Web Crypto API unavailable in this browser.';
+        computedResultHashEl.textContent = 'Web Crypto API unavailable in this browser.';
+        updateStatus(seedStatusEl, 'status-bad', 'Crypto API missing');
+        updateStatus(hashStatusEl, 'status-bad', 'Crypto API missing');
+        return;
+      }
+
+      const serverSeed = serverSeedInput.value.trim();
+      const serverSeedHash = serverSeedHashInput.value.trim().toLowerCase();
+      const clientSeed = clientSeedInput.value.trim();
+      const nonce = nonceInput.value.trim();
+      const expectedHash = expectedHashInput.value.trim().toLowerCase();
+
+      if (!serverSeed || !clientSeed || nonce === '') {
+        computedSeedHashEl.textContent = 'N/A';
+        computedResultHashEl.textContent = 'N/A';
+        updateStatus(seedStatusEl, 'status-warn', 'Waiting for inputs');
+        updateStatus(hashStatusEl, 'status-warn', 'No comparison yet');
+        return;
+      }
+
+      const message = `${clientSeed}:${nonce}`;
+
+      try {
+        const computedSeedHash = await sha256Hex(serverSeed);
+        const computedResultHash = await hmacSha256Hex(serverSeed, message);
+
+        computedSeedHashEl.textContent = computedSeedHash;
+        computedResultHashEl.textContent = computedResultHash;
+
+        if (serverSeedHash) {
+          if (serverSeedHash === computedSeedHash) {
+            updateStatus(seedStatusEl, 'status-good', 'Seed hash matches');
+          } else {
+            updateStatus(seedStatusEl, 'status-bad', 'Seed hash mismatch');
+          }
+        } else {
+          updateStatus(seedStatusEl, 'status-warn', 'Seed hash not provided');
+        }
+
+        if (expectedHash) {
+          if (expectedHash === computedResultHash) {
+            updateStatus(hashStatusEl, 'status-good', 'Result hash matches');
+          } else {
+            updateStatus(hashStatusEl, 'status-bad', 'Result hash mismatch');
+          }
+        } else {
+          updateStatus(hashStatusEl, 'status-warn', 'No expected hash');
+        }
+      } catch (error) {
+        computedSeedHashEl.textContent = 'Error computing hash.';
+        computedResultHashEl.textContent = 'Error computing hash.';
+        updateStatus(seedStatusEl, 'status-bad', 'Verification failed');
+        updateStatus(hashStatusEl, 'status-bad', 'Verification failed');
+      }
+    }
+
+    verifyBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      verifyHashes();
+    });
+
+    [serverSeedInput, serverSeedHashInput, clientSeedInput, nonceInput, expectedHashInput]
+      .forEach((input) => input.addEventListener('input', verifyHashes));
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why do I need both the server seed and its hash?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The hash proves the casino committed to a seed before the game started. When the seed is revealed, you can recompute the hash to confirm it matches the commitment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my computed hash does not match?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "First verify the exact client seed, nonce, and delimiter. If everything matches and the hash still differs, contact the casino and provide the bet ID for investigation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a matching hash mean the game is fair?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It proves the result was derived from the committed seeds. Fairness still depends on the casino using a transparent formula and honest bet-history data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do some casinos show a different formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no single standard. Some games use SHA-512, different separators, or include game IDs and timestamps. Always follow the casino's published formula."
+          }
+        }
+      ]
+    }
+  </script>
+</body>
+</html>
