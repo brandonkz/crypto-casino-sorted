@@ -25,12 +25,13 @@
     .calc-input { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 12px 16px; color: #f8fafc; font-size: 1.1rem; font-weight: 700; width: 200px; outline: none; transition: border-color 0.2s; }
     .calc-input:focus { border-color: #6366f1; }
     .calc-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-    .result-chip { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 14px 16px; }
+    .result-chip { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 14px 16px; transition: all 0.15s; }
     .result-chip .casino-name { font-size: 0.75rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
     .result-chip .earn-val { font-size: 1.4rem; font-weight: 900; color: #10b981; }
     .result-chip .rate-info { font-size: 0.72rem; color: #64748b; margin-top: 3px; }
     .result-chip.best { border-color: #10b981; background: #0f2720; }
     .result-chip.best .casino-name { color: #10b981; }
+    .result-chip:hover { border-color: #6366f1; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(99,102,241,0.2); transition: all 0.15s; }
     .best-badge { display: inline-block; background: #10b981; color: white; font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
 
     /* Section label */
@@ -228,11 +229,12 @@
       document.getElementById('calcResults').innerHTML = results.map(c => {
         const isBest = best && c.name === best.name;
         const earnStr = c.earn !== null ? fmt(c.earn) : '—';
-        return `<div class="result-chip${isBest ? ' best' : ''}">
+        return `<a class="result-chip${isBest ? ' best' : ''}" href="${c.affiliate}" target="_blank" rel="nofollow noopener" style="text-decoration:none;display:block;cursor:pointer;">
           <div class="casino-name" style="color:${c.color};">${c.name}${isBest ? '<span class="best-badge">BEST</span>' : ''}</div>
           <div class="earn-val" style="${c.earn === null ? 'color:#64748b;font-size:1rem;' : ''}">${earnStr}</div>
           <div class="rate-info">${c.note}</div>
-        </div>`;
+          <div style="font-size:0.7rem;color:#475569;margin-top:6px;font-weight:600;">Claim rakeback →</div>
+        </a>`;
       }).join('');
     }
 
