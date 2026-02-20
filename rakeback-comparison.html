@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Casino Rakeback Comparison 2026 | Calculator + Rates | CryptoCasinoSorted</title>
+  <meta name="description" content="Compare rakeback rates across 7 top crypto casinos. Enter your monthly wager and see exactly how much you earn back at Stake, Rollbit, BC.Game, Duelbits, Gamdom, Roobet, and Rainbet.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/rakeback-comparison.html">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.ico">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e2e8f0; margin: 0; }
+    .page { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
+    h1 { font-size: 2rem; font-weight: 900; color: #f8fafc; margin-bottom: 8px; }
+    .subtitle { color: #94a3b8; font-size: 0.95rem; margin-bottom: 36px; line-height: 1.6; }
+
+    /* Calculator */
+    .calc-card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 28px; margin-bottom: 32px; }
+    .calc-card h2 { font-size: 1.1rem; font-weight: 700; color: #f8fafc; margin: 0 0 20px; }
+    .calc-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .calc-label { font-size: 0.9rem; font-weight: 600; color: #94a3b8; white-space: nowrap; }
+    .calc-input { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 12px 16px; color: #f8fafc; font-size: 1.1rem; font-weight: 700; width: 200px; outline: none; transition: border-color 0.2s; }
+    .calc-input:focus { border-color: #6366f1; }
+    .calc-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .result-chip { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 14px 16px; }
+    .result-chip .casino-name { font-size: 0.75rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .result-chip .earn-val { font-size: 1.4rem; font-weight: 900; color: #10b981; }
+    .result-chip .rate-info { font-size: 0.72rem; color: #64748b; margin-top: 3px; }
+    .result-chip.best { border-color: #10b981; background: #0f2720; }
+    .result-chip.best .casino-name { color: #10b981; }
+    .best-badge { display: inline-block; background: #10b981; color: white; font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+
+    /* Section label */
+    .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #64748b; margin: 0 0 16px; display: flex; align-items: center; gap: 8px; }
+    .section-label::after { content:''; flex:1; height:1px; background:#1e293b; }
+
+    /* Comparison table */
+    .compare-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+    .compare-table th { background: #1e293b; padding: 12px 16px; text-align: left; font-size: 0.78rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+    .compare-table th:not(:first-child) { text-align: center; }
+    .compare-table td { padding: 14px 16px; border-bottom: 1px solid #1e293b; font-size: 0.875rem; color: #cbd5e1; vertical-align: middle; }
+    .compare-table td:not(:first-child) { text-align: center; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: #1e293b44; }
+    .casino-cell { display: flex; align-items: center; gap: 10px; }
+    .casino-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .casino-cell .name { font-weight: 700; color: #f1f5f9; }
+    .casino-cell .tag { font-size: 0.7rem; color: #64748b; }
+    .rate-high { color: #10b981; font-weight: 700; }
+    .rate-med { color: #f59e0b; font-weight: 700; }
+    .rate-low { color: #64748b; font-weight: 600; }
+    .pill { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; }
+    .pill-green { background: #064e3b; color: #10b981; }
+    .pill-yellow { background: #451a03; color: #f59e0b; }
+    .pill-blue { background: #1e1b4b; color: #818cf8; }
+    .pill-gray { background: #1e293b; color: #64748b; }
+
+    /* Notes */
+    .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 32px; }
+    .note-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 16px; }
+    .note-card .nc-title { font-size: 0.8rem; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; }
+    .note-card .nc-text { font-size: 0.78rem; color: #94a3b8; line-height: 1.6; }
+
+    /* CTA */
+    .cta-strip { background: linear-gradient(135deg, #4f46e5, #7c3aed); border-radius: 14px; padding: 24px; text-align: center; margin-bottom: 24px; }
+    .cta-strip p { color: rgba(255,255,255,0.85); font-size: 0.9rem; margin: 0 0 14px; }
+    .cta-strip a { display: inline-block; background: white; color: #4f46e5; padding: 10px 24px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.9rem; }
+
+    .disclaimer { font-size: 0.72rem; color: #475569; text-align: center; margin-top: 32px; line-height: 1.7; }
+
+    @media (max-width: 600px) {
+      .notes-grid { grid-template-columns: 1fr; }
+      .calc-results { grid-template-columns: 1fr 1fr; }
+      .compare-table { font-size: 0.8rem; }
+      .compare-table th, .compare-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav placeholder — include shared nav -->
+  <div id="nav-placeholder"></div>
+
+  <main class="page">
+    <h1>💰 Crypto Casino Rakeback Comparison 2026</h1>
+    <p class="subtitle">Enter your monthly wager to see exactly how much each casino gives back. Rates researched across Stake, Rollbit, BC.Game, Duelbits, Gamdom, Roobet, and Rainbet.</p>
+
+    <!-- Calculator -->
+    <div class="calc-card">
+      <h2>🧮 Rakeback Calculator</h2>
+      <div class="calc-row">
+        <span class="calc-label">Monthly wager ($)</span>
+        <input class="calc-input" type="number" id="wagerInput" value="1000" min="0" max="10000000" oninput="calcAll()">
+        <span class="calc-label" style="color:#64748b;">per month</span>
+      </div>
+      <div class="calc-results" id="calcResults"></div>
+    </div>
+
+    <!-- Full comparison table -->
+    <div class="section-label">Full Rakeback Breakdown</div>
+    <div style="overflow-x:auto;">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Casino</th>
+          <th>Base Rakeback</th>
+          <th>Max Rakeback</th>
+          <th>Structure</th>
+          <th>VIP Access</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="casino-cell"><div class="casino-dot" style="background:#10b981;"></div><div><div class="name">Stake</div><div class="tag">stake.com</div></div></div></td>
+          <td><span class="rate-med">5%</span></td>
+          <td><span class="rate-high">~15%+</span></td>
+          <td><span class="pill pill-blue">Tiered + Weekly/Monthly</span></td>
+          <td><span class="pill pill-yellow">Invite-only upper</span></td>
+        </tr>
+        <tr>
+          <td><div class="casino-cell"><div class="casino-dot" style="background:#ef4444;"></div><div><div class="name">Rollbit</div><div class="tag">rollbit.com</div></div></div></td>
+          <td><span class="rate-med">5%</span></td>
+          <td><span class="rate-high">up to 50%</span></td>
+          <td><span class="pill pill-blue">Base + Boost events</span></td>
+          <td><span class="pill pill-green">Open to all</span></td>
+        </tr>
+        <tr>
+          <td><div class="casino-cell"><div class="casino-dot" style="background:#f59e0b;"></div><div><div class="name">Rainbet</div><div class="tag">rainbet.com</div></div></div></td>
+          <td><span class="rate-med">10%</span></td>
+          <td><span class="rate-high">25–30%</span></td>
+          <td><span class="pill pill-blue">Tiered VIP</span></td>
+          <td><span class="pill pill-green">Open to all</span></td>
+        </tr>
+        <tr>
+          <td><div class="casino-cell"><div class="casino-dot" style="background:#8b5cf6;"></div><div><div class="name">Gamdom</div><div class="tag">gamdom.com</div></div></div></td>
+          <td><span class="rate-med">5%</span></td>
+          <td><span class="rate-high">up to 15%</span></td>
+          <td><span class="pill pill-blue">Instant rakeback</span></td>
+          <td><span class="pill pill-green">Open to all</span></td>
+        </tr>
+        <tr>
+          <td><div class="casino-cell"><div class="casino-dot" style="background:#06b6d4;"></div><div><div class="name">Duelbits</div><div class="tag">duelbits.com</div></div></div></td>
+          <td><span class="rate-med">5%</span></td>
+          <td><span class="rate-high">12.5%</span></td>
+          <td><span class="pill pill-blue">Ace's Rewards tiers</span></td>
+          <td><span class="pill pill-green">Auto-enrolled</span></td>
+        </tr>
+        <tr>
+          <td><div class="casino-cell"><div class="casino-dot" style="background:#f97316;"></div><div><div class="name">BC.Game</div><div class="tag">bc.game</div></div></div></td>
+          <td><span class="rate-low">~0.2%</span></td>
+          <td><span class="rate-med">~0.24% (unlock)</span></td>
+          <td><span class="pill pill-yellow">Wager × 1% × VIP%</span></td>
+          <td><span class="pill pill-green">Open to all</span></td>
+        </tr>
+        <tr>
+          <td><div class="casino-cell"><div class="casino-dot" style="background:#e879f9;"></div><div><div class="name">Roobet</div><div class="tag">roobet.com</div></div></div></td>
+          <td><span class="rate-low">Not public</span></td>
+          <td><span class="rate-med">Invite-only rates</span></td>
+          <td><span class="pill pill-gray">4-type system</span></td>
+          <td><span class="pill pill-yellow">Invite-only</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <!-- Notes -->
+    <div class="section-label">What the Numbers Actually Mean</div>
+    <div class="notes-grid">
+      <div class="note-card">
+        <div class="nc-title">🎰 Rollbit — Best for high volume</div>
+        <div class="nc-text">5% base but regularly runs 50% rakeback boost events. If you time your sessions around these, the EV is best-in-class. Also boosted up to 25% if you hold Rollbot NFTs. Claimable every 30 minutes.</div>
+      </div>
+      <div class="note-card">
+        <div class="nc-title">🌧️ Rainbet — Best base rate</div>
+        <div class="nc-text">10% from day one, climbing to 25–30% at higher VIP levels. No invite required. One of the few casinos that openly publishes its rakeback structure with no hidden thresholds.</div>
+      </div>
+      <div class="note-card">
+        <div class="nc-title">⚡ Stake — Most popular, not most generous</div>
+        <div class="nc-text">5% base is below average. Upper VIP tiers with better rates are invite-only — Stake decides who gets them. If you're not a whale, you're getting 5%. The brand name premium is real but the rakeback isn't.</div>
+      </div>
+      <div class="note-card">
+        <div class="nc-title">🎮 BC.Game — Confusing structure</div>
+        <div class="nc-text">Their "up to 24% rakeback" is actually Wagered × 1% × 24% = 0.24% effective. Far lower than competitors. Their rakeback works differently — BCD tokens you can unlock gradually, not cash back directly.</div>
+      </div>
+    </div>
+
+    <!-- On-chain data CTA -->
+    <div class="cta-strip">
+      <p>We track live on-chain deposits across all 7 casinos. 11,000+ deposits, $16M+ volume — no KYC required at any of them.</p>
+      <a href="/deposit-tracker.html">View Live Deposit Tracker →</a>
+    </div>
+
+    <div class="disclaimer">
+      Rakeback rates sourced from casino VIP pages, affiliate disclosures, and community reports (Feb 2026). Rates may vary by VIP tier, promo code, and region. Always verify current rates on the casino's official VIP page before wagering.
+      18+ only. Gamble responsibly.
+    </div>
+  </main>
+
+  <script>
+    // Casino rakeback data
+    const casinos = [
+      { name: 'Rollbit',  color: '#ef4444', baseRate: 0.05, maxRate: 0.50, note: '5% base + boost events up to 50%',  affiliate: 'https://rollbit.com/?r=cryptocasinosorted' },
+      { name: 'Rainbet',  color: '#f59e0b', baseRate: 0.10, maxRate: 0.28, note: '10% base, up to 25–30% VIP',         affiliate: 'https://rainbet.com/?ref=cryptocasinosorted' },
+      { name: 'Gamdom',   color: '#8b5cf6', baseRate: 0.05, maxRate: 0.15, note: 'Up to 15% instant rakeback',         affiliate: 'https://gamdom.com/?ref=cryptocasinosorted' },
+      { name: 'Duelbits', color: '#06b6d4', baseRate: 0.05, maxRate: 0.125, note: "5–12.5% via Ace's Rewards",        affiliate: 'https://duelbits.com/?ref=cryptocasinosorted' },
+      { name: 'Stake',    color: '#10b981', baseRate: 0.05, maxRate: 0.15, note: '5% base, higher VIP invite-only',   affiliate: 'https://stake.com/?c=cryptocasinosorted' },
+      { name: 'BC.Game',  color: '#f97316', baseRate: 0.002, maxRate: 0.0024, note: 'Wager × 1% × VIP% (0.2–0.24%)', affiliate: 'https://bc.game/i-cryptocasinosorted' },
+      { name: 'Roobet',   color: '#e879f9', baseRate: null, maxRate: null, note: 'Invite-only, rates not public',      affiliate: 'https://roobet.com/?ref=cryptocasinosorted' },
+    ];
+
+    function fmt(n) {
+      if (n >= 1000) return '$' + (n/1000).toFixed(1) + 'k';
+      return '$' + n.toFixed(2);
+    }
+
+    function calcAll() {
+      const wager = parseFloat(document.getElementById('wagerInput').value) || 0;
+      const results = casinos.map(c => {
+        const earn = c.baseRate ? wager * c.baseRate : null;
+        return { ...c, earn };
+      });
+
+      // Find best
+      const best = results.filter(r => r.earn !== null).sort((a,b) => b.earn - a.earn)[0];
+
+      document.getElementById('calcResults').innerHTML = results.map(c => {
+        const isBest = best && c.name === best.name;
+        const earnStr = c.earn !== null ? fmt(c.earn) : '—';
+        return `<div class="result-chip${isBest ? ' best' : ''}">
+          <div class="casino-name" style="color:${c.color};">${c.name}${isBest ? '<span class="best-badge">BEST</span>' : ''}</div>
+          <div class="earn-val" style="${c.earn === null ? 'color:#64748b;font-size:1rem;' : ''}">${earnStr}</div>
+          <div class="rate-info">${c.note}</div>
+        </div>`;
+      }).join('');
+    }
+
+    calcAll();
+  </script>
+</body>
+</html>
