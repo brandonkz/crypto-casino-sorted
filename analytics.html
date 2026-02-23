@@ -3,794 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Casino Data | CryptoCasinoSorted</title>
-    <meta name="description" content="Real-time crypto casino data across 13 casinos and 5 blockchains. Track volume, whales, and trends - all blockchain verified.">
+    <title>Live Casino Analytics | CryptoCasinoSorted</title>
+    <meta name="description" content="Real-time crypto casino deposit analytics. Track volume, deposits, and trends across major crypto casinos.">
     <link rel="canonical" href="https://cryptocasinosorted.com/analytics.html">
-    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#8b5cf6">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0L3N9F43ED');
+    </script>
     
     <style>
-        body {
-            background: #000;
-            color: #fff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        .header {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
-            padding: 2rem 0;
-            text-align: center;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000000;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .nav {
+            background: rgba(10, 10, 10, 0.95);
             border-bottom: 2px solid #8b5cf6;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            margin: 0 0 0.5rem;
-            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .header-meta {
-            color: #9ca3af;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
             font-size: 0.875rem;
+        }
+
+        .nav-link {
+            color: #9ca3af;
+            text-decoration: none;
+            font-weight: 600;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 20px;
         }
 
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        .dashboard-card {
-            background: rgba(15, 15, 20, 0.98);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 16px;
-            padding: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.125rem;
+        .header h1 {
+            font-size: 1.75rem;
+            margin-bottom: 10px;
             font-weight: 700;
-            margin-bottom: 1rem;
-            color: #8b5cf6;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .stat-large {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
             background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .stat-small {
-            color: #9ca3af;
+        .header p {
             font-size: 0.875rem;
+            color: #9ca3af;
         }
 
-        .chain-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem;
-            background: rgba(139, 92, 246, 0.05);
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid rgba(139, 92, 246, 0.3);
             border-radius: 8px;
-            margin-bottom: 0.5rem;
+            padding: 16px;
         }
 
-        .chain-name {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-        }
-
-        .chain-icon {
-            font-size: 1.25rem;
-        }
-
-        .chain-stats {
-            text-align: right;
-        }
-
-        .chain-volume {
-            font-weight: 700;
-            color: #8b5cf6;
-        }
-
-        .chain-count {
+        .stat-label {
             font-size: 0.75rem;
             color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .stat-subtext {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .casino-list {
+            background: rgba(139, 92, 246, 0.05);
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .casino-list h2 {
+            font-size: 1.125rem;
+            color: #ffffff;
+            margin-bottom: 16px;
         }
 
         .casino-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem;
-            background: rgba(139, 92, 246, 0.05);
-            border-radius: 8px;
-            margin-bottom: 0.75rem;
-            transition: all 0.2s;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
         }
 
-        .casino-item:hover {
-            background: rgba(139, 92, 246, 0.1);
-            transform: translateX(4px);
-        }
-
-        .casino-rank {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #9ca3af;
-            margin-right: 1rem;
-            min-width: 2rem;
-        }
-
-        .casino-info {
-            flex: 1;
+        .casino-item:last-child {
+            border-bottom: none;
         }
 
         .casino-name {
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: #ffffff;
         }
 
-        .casino-meta {
-            font-size: 0.75rem;
-            color: #9ca3af;
+        .casino-stats {
+            text-align: right;
+            font-size: 0.875rem;
         }
 
         .casino-volume {
-            font-size: 1.25rem;
-            font-weight: 700;
             color: #8b5cf6;
-            text-align: right;
+            font-weight: 600;
         }
 
-        .whale-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 1rem;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
-            border-radius: 8px;
-            margin-bottom: 0.75rem;
-            border: 1px solid rgba(139, 92, 246, 0.1);
-        }
-
-        .whale-info {
-            flex: 1;
-        }
-
-        .whale-amount {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.25rem;
-        }
-
-        .whale-meta {
-            font-size: 0.75rem;
+        .casino-count {
             color: #9ca3af;
-        }
-
-        .whale-casino {
-            padding: 0.25rem 0.75rem;
-            background: rgba(139, 92, 246, 0.2);
-            border-radius: 6px;
             font-size: 0.75rem;
-            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 2px solid rgba(139, 92, 246, 0.2);
+            margin-top: 40px;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .footer a {
             color: #8b5cf6;
-            margin-top: 0.5rem;
-            display: inline-block;
-        }
-
-        .market-share {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .share-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .share-bar-bg {
-            flex: 1;
-            height: 2rem;
-            background: rgba(139, 92, 246, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .share-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
-            transition: width 1s ease-out;
-            display: flex;
-            align-items: center;
-            padding: 0 0.75rem;
-            font-size: 0.875rem;
-            font-weight: 700;
-        }
-
-        .share-label {
-            min-width: 80px;
+            text-decoration: none;
             font-weight: 600;
-            font-size: 0.875rem;
-        }
-
-        .share-percent {
-            min-width: 50px;
-            text-align: right;
-            font-weight: 700;
-            color: #8b5cf6;
-            font-size: 0.875rem;
-        }
-
-        .daily-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem;
-            background: rgba(139, 92, 246, 0.05);
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-        }
-
-        .daily-date {
-            font-weight: 600;
-            min-width: 100px;
-        }
-
-        .daily-bar-container {
-            flex: 1;
-            margin: 0 1rem;
-        }
-
-        .daily-bar-bg {
-            height: 2rem;
-            background: rgba(139, 92, 246, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .daily-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
-            transition: width 1s ease-out;
-            display: flex;
-            align-items: center;
-            padding: 0 0.75rem;
-            font-size: 0.875rem;
-            font-weight: 700;
-        }
-
-        .daily-volume {
-            font-weight: 700;
-            color: #8b5cf6;
-            min-width: 80px;
-            text-align: right;
-        }
-
-        .daily-count {
-            font-size: 0.75rem;
-            color: #9ca3af;
-            min-width: 80px;
-            text-align: right;
-        }
-
-        .period-toggle {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .period-btn {
-            padding: 0.5rem 1rem;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 8px;
-            color: #9ca3af;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .period-btn:hover {
-            background: rgba(139, 92, 246, 0.2);
-        }
-
-        .period-btn.active {
-            background: #8b5cf6;
-            color: white;
-            border-color: #8b5cf6;
         }
 
         .loading {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 40px;
             color: #9ca3af;
         }
 
-        .loading-spinner {
-            font-size: 3rem;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .wide-card {
-            grid-column: 1 / -1;
-        }
-
-        @media (max-width: 768px) {
+        @media (min-width: 768px) {
             .header h1 {
-                font-size: 1.75rem;
+                font-size: 2.5rem;
             }
-
-            .dashboard-grid {
-                grid-template-columns: 1fr;
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <nav style="background: rgba(10, 10, 10, 0.95); border-bottom: 2px solid #8b5cf6; padding: 1rem; position: sticky; top: 0; z-index: 100;">
-        <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <a href="/" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #fff; font-weight: 800; font-size: 1.25rem;">
-                <span>🎰</span>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="/" class="brand">
+                <span>🎲</span>
                 <span>CryptoCasinoSorted</span>
             </a>
-            <div style="display: flex; gap: 1rem; font-size: 0.875rem; flex-wrap: wrap;">
-                <a href="/#casinos" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Casinos</a>
-                <a href="/analytics.html" style="color: #8b5cf6; text-decoration: none; font-weight: 600;">📊 Live Data</a>
-                <a href="/deposits-data.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">💰 Deposit Data</a>
-                <a href="/casino-wallet-addresses.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">🔍 Wallet Addresses</a>
-                <a href="/reviews/index.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Reviews</a>
-                <a href="/blog/index.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Blog</a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="../analytics.html" class="nav-link">Live</a>
+                <a href="/analytics.html" class="nav-link" style="color: #8b5cf6;">Live Data</a>
             </div>
         </div>
     </nav>
 
-    <header class="header">
-        <h1>📊 Live Casino Data</h1>
-        <div class="header-meta" id="headerMeta">Loading real-time blockchain data...</div>
-    </header>
-
     <div class="container">
-        <div id="loading" class="loading">
-            <div class="loading-spinner">⏳</div>
-            <div>Loading multi-chain analytics...</div>
+        <div class="header">
+            <h1>📊 Live Casino Analytics</h1>
+            <p id="headerSubtext">Loading data...</p>
         </div>
 
+        <div id="loading" class="loading">Loading analytics...</div>
+
         <div id="content" style="display: none;">
-            <!-- Top Stats -->
-            <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <div class="card-title">💰 Total Volume</div>
-                    <div class="stat-large" id="totalVolume">$0</div>
-                    <div class="stat-small" id="totalBets">0 deposits</div>
-                    <div class="stat-small" id="volumePeriod" style="color: #8b5cf6; margin-top: 0.25rem;"></div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Volume</div>
+                    <div class="stat-value" id="totalVolume">$0M</div>
+                    <div class="stat-subtext" id="totalDeposits"></div>
                 </div>
 
-                <div class="dashboard-card">
-                    <div class="card-title">🎰 Casinos</div>
-                    <div class="stat-large" id="totalCasinos">0</div>
-                    <div class="stat-small">Tracked across 5 chains</div>
+                <div class="stat-card">
+                    <div class="stat-label">Avg Deposit</div>
+                    <div class="stat-value" id="avgDeposit">$0</div>
                 </div>
 
-                <div class="dashboard-card">
-                    <div class="card-title">🔗 Chains</div>
-                    <div class="stat-large" id="activeChains">0</div>
-                    <div class="stat-small" id="chainsPeriod"></div>
+                <div class="stat-card">
+                    <div class="stat-label">Biggest</div>
+                    <div class="stat-value" id="biggestDeposit">$0</div>
+                    <div class="stat-subtext" id="biggestCasino"></div>
                 </div>
 
-                <div class="dashboard-card">
-                    <div class="card-title">📈 Avg Deposit</div>
-                    <div class="stat-large" id="avgDeposit">$0</div>
-                    <div class="stat-small" id="biggestDeposit">Biggest: $0</div>
-                    <div class="stat-small" id="avgPeriod" style="color: #8b5cf6; margin-top: 0.25rem;"></div>
+                <div class="stat-card">
+                    <div class="stat-label">Time Period</div>
+                    <div class="stat-value" id="timePeriod">-</div>
+                    <div class="stat-subtext" id="dateRange"></div>
                 </div>
             </div>
 
-            <!-- Chain Breakdown -->
-            <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <div class="card-title">🔗 Chain Breakdown</div>
-                    <div class="stat-small" id="chainBreakdownPeriod" style="margin-bottom: 1rem; color: #9ca3af;"></div>
-                    <div id="chainBreakdown"></div>
-                </div>
-
-                <div class="dashboard-card">
-                    <div class="card-title">🐋 Whale Watch</div>
-                    <div class="stat-small" id="whalePeriod" style="margin-bottom: 1rem; color: #9ca3af;"></div>
-                    <div id="whaleList"></div>
-                </div>
-            </div>
-
-            <!-- Daily Volume -->
-            <div class="dashboard-grid">
-                <div class="dashboard-card wide-card">
-                    <div class="card-title">📅 Daily Volume</div>
-                    <div id="dailyVolume"></div>
-                </div>
-            </div>
-
-            <!-- Market Share -->
-            <div class="dashboard-grid">
-                <div class="dashboard-card wide-card">
-                    <div class="card-title">📊 Casino Market Share</div>
-                    <div class="stat-small" id="marketSharePeriod" style="margin-bottom: 1rem; color: #9ca3af;"></div>
-                    <div class="market-share" id="marketShare"></div>
-                </div>
-            </div>
-
-            <!-- Casino Rankings -->
-            <div class="dashboard-grid">
-                <div class="dashboard-card wide-card">
-                    <div class="card-title">🏆 Casino Rankings</div>
-                    <div class="stat-small" id="rankingsPeriod" style="margin-bottom: 1rem; color: #9ca3af;"></div>
-                    <div id="casinoRankings"></div>
-                </div>
+            <div class="casino-list">
+                <h2>Casino Rankings</h2>
+                <div id="casinoList"></div>
             </div>
         </div>
     </div>
 
+    <div class="footer">
+        Powered by <a href="https://cryptocasinosorted.com">CryptoCasinoSorted</a> | 
+        Real blockchain data
+    </div>
+
     <script>
-        const chainConfig = {
-            eth: { name: 'Ethereum', icon: '⟠', color: '#627eea' },
-            bsc: { name: 'BSC', icon: '🔶', color: '#f3ba2f' },
-            polygon: { name: 'Polygon', icon: '🟣', color: '#8247e5' },
-            arbitrum: { name: 'Arbitrum', icon: '🔵', color: '#28a0f0' },
-            base: { name: 'Base', icon: '🔷', color: '#0052ff' }
-        };
+        // EMBEDDED DATA - 2026-02-23T00:00:18.381Z
+const stats = {"casinos":{"Rollbit":{"volume":1918396.6399999987,"count":5826},"Rainbet":{"volume":1566503.949999982,"count":5613},"Stake":{"volume":4921925.290000011,"count":6378},"Roobet":{"volume":11078013.470000012,"count":191},"Bitcasino":{"volume":300442.38000000006,"count":441},"Duelbits":{"volume":3481837.1500000074,"count":1197}},"totalVolume":23267118.879999608,"totalDeposits":19646,"biggest":{"value":2212000,"casino":"Stake"},"minDate":"2026-02-15","maxDate":"2026-02-22"};
 
-        async function loadData() {
-            try {
-                const response = await fetch('/live-bets.json');
-                const data = await response.json();
-                
-                if (!data || !data.bets || !data.stats) {
-                    throw new Error('Invalid data format');
-                }
+const minD = new Date(stats.minDate);
+const maxD = new Date(stats.maxDate);
+const daysDiff = Math.ceil((maxD - minD) / 86400000) + 1;
+const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-                renderAnalytics(data);
-                
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-            } catch (error) {
-                console.error('Error loading data:', error);
-                document.getElementById('loading').innerHTML = `
-                    <div>❌ Error loading data</div>
-                    <div style="font-size: 0.875rem; margin-top: 0.5rem;">
-                        Run the tracker to generate data: <code>node fetch-multi-chain-bets.js</code>
-                    </div>
-                `;
-            }
-        }
+document.getElementById('headerSubtext').textContent = formatDate(minD) + ' – ' + formatDate(maxD) + ' (' + daysDiff + ' day' + (daysDiff > 1 ? 's' : '') + ')';
+document.getElementById('totalVolume').textContent = '$' + (stats.totalVolume / 1000000).toFixed(2) + 'M';
+document.getElementById('totalDeposits').textContent = stats.totalDeposits.toLocaleString() + ' deposits';
+document.getElementById('avgDeposit').textContent = '$' + (stats.totalVolume / stats.totalDeposits).toFixed(0);
+document.getElementById('biggestDeposit').textContent = '$' + stats.biggest.value.toLocaleString(undefined, { maximumFractionDigits: 0 });
+document.getElementById('biggestCasino').textContent = stats.biggest.casino;
+document.getElementById('timePeriod').textContent = daysDiff + 'd';
+document.getElementById('dateRange').textContent = formatDate(minD) + ' – ' + formatDate(maxD);
 
-        function renderAnalytics(data) {
-            const { bets, stats } = data;
-            currentBets = bets; // Store for period switching
-            
-            // Calculate time period from actual data
-            if (bets.length === 0) {
-                document.getElementById('headerMeta').textContent = 'No data available';
-                return;
-            }
+const casinos = Object.keys(stats.casinos).sort((a, b) => stats.casinos[b].volume - stats.casinos[a].volume);
+const casinoListHTML = casinos.map(casino => '<div class="casino-item"><div class="casino-name">' + casino + '</div><div class="casino-stats"><div class="casino-volume">$' + (stats.casinos[casino].volume / 1000000).toFixed(2) + 'M</div><div class="casino-count">' + stats.casinos[casino].count.toLocaleString() + ' deposits</div></div></div>').join('');
 
-            const timestamps = bets.map(b => new Date(b.timestamp).getTime());
-            const oldestBet = Math.min(...timestamps);
-            const newestBet = Math.max(...timestamps);
-            const now = Date.now();
-            
-            const periodMs = now - oldestBet;
-            const hours = Math.floor(periodMs / 3600000);
-            const days = Math.floor(periodMs / 86400000);
-            
-            let periodText;
-            if (hours < 24) {
-                periodText = `Past ${hours} hours`;
-            } else if (days === 1) {
-                periodText = 'Past 24 hours';
-            } else if (days < 7) {
-                periodText = `Past ${days} days`;
-            } else if (days < 14) {
-                periodText = `Past week`;
-            } else if (days < 31) {
-                const weeks = Math.floor(days / 7);
-                periodText = `Past ${weeks} weeks`;
-            } else {
-                periodText = `Past ${Math.floor(days / 30)} months`;
-            }
-            
-            // Header meta
-            const lastUpdate = new Date(data.lastUpdated);
-            document.getElementById('headerMeta').textContent = 
-                `${periodText} • Last updated: ${lastUpdate.toLocaleTimeString()} • ${bets.length} deposits tracked`;
-
-            // Top stats
-            document.getElementById('totalVolume').textContent = 
-                '$' + (stats.totalVolume / 1000).toFixed(1) + 'k';
-            document.getElementById('totalBets').textContent = 
-                `${bets.length} deposits`;
-            document.getElementById('volumePeriod').textContent = periodText;
-            
-            document.getElementById('totalCasinos').textContent = 
-                stats.casinos.length;
-            
-            const activeChainCount = Object.keys(stats.chains).filter(c => stats.chains[c].deposits > 0).length;
-            document.getElementById('activeChains').textContent = activeChainCount;
-            document.getElementById('chainsPeriod').textContent = `Active in ${periodText.toLowerCase()}`;
-            
-            const avgDep = stats.totalVolume / bets.length;
-            document.getElementById('avgDeposit').textContent = 
-                '$' + avgDep.toFixed(0);
-            document.getElementById('avgPeriod').textContent = periodText;
-            
-            const biggest = Math.max(...bets.map(b => b.usdValue));
-            document.getElementById('biggestDeposit').textContent = 
-                `Biggest: $${biggest.toLocaleString()}`;
-
-            // Set period labels for other sections
-            document.getElementById('chainBreakdownPeriod').textContent = periodText;
-            document.getElementById('whalePeriod').textContent = `Top 5 deposits • ${periodText}`;
-            document.getElementById('marketSharePeriod').textContent = `By volume • ${periodText}`;
-            document.getElementById('rankingsPeriod').textContent = `Sorted by total volume • ${periodText}`;
-
-            // Chain breakdown
-            const chainHtml = Object.entries(stats.chains)
-                .filter(([_, data]) => data.deposits > 0)
-                .sort((a, b) => b[1].volume - a[1].volume)
-                .map(([chain, data]) => {
-                    const config = chainConfig[chain] || { name: chain, icon: '🔗' };
-                    return `
-                        <div class="chain-item">
-                            <div class="chain-name">
-                                <span class="chain-icon">${config.icon}</span>
-                                <span>${config.name}</span>
-                            </div>
-                            <div class="chain-stats">
-                                <div class="chain-volume">$${(data.volume / 1000).toFixed(1)}k</div>
-                                <div class="chain-count">${data.deposits} deposits</div>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-            document.getElementById('chainBreakdown').innerHTML = chainHtml;
-
-            // Whale watch (top 5 biggest deposits)
-            const whales = [...bets]
-                .sort((a, b) => b.usdValue - a.usdValue)
-                .slice(0, 5);
-            
-            const whaleHtml = whales.map(bet => {
-                const timeAgo = formatTimeAgo(bet.timestamp);
-                return `
-                    <div class="whale-item">
-                        <div class="whale-info">
-                            <div class="whale-amount">$${bet.usdValue.toLocaleString()}</div>
-                            <div class="whale-meta">
-                                ${bet.crypto.amount} ${bet.crypto.symbol} • ${timeAgo}
-                            </div>
-                            <div class="whale-casino">${bet.casino.icon} ${bet.casino.name}</div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-            document.getElementById('whaleList').innerHTML = whaleHtml;
-
-            // Casino market share
-            const casinoVolumes = {};
-            bets.forEach(bet => {
-                const name = bet.casino.name;
-                if (!casinoVolumes[name]) {
-                    casinoVolumes[name] = { volume: 0, icon: bet.casino.icon };
-                }
-                casinoVolumes[name].volume += bet.usdValue;
-            });
-
-            const sortedCasinos = Object.entries(casinoVolumes)
-                .sort((a, b) => b[1].volume - a[1].volume)
-                .slice(0, 8);
-
-            const marketShareHtml = sortedCasinos.map(([name, data]) => {
-                const percent = (data.volume / stats.totalVolume * 100);
-                return `
-                    <div class="share-item">
-                        <div class="share-label">${data.icon} ${name}</div>
-                        <div class="share-bar-bg">
-                            <div class="share-bar" style="width: ${percent}%"></div>
-                        </div>
-                        <div class="share-percent">${percent.toFixed(1)}%</div>
-                    </div>
-                `;
-            }).join('');
-            document.getElementById('marketShare').innerHTML = marketShareHtml;
-
-            // Daily volume
-            renderDailyVolume(bets, 'daily');
-
-            // Casino rankings
-            const casinoStats = {};
-            bets.forEach(bet => {
-                const name = bet.casino.name;
-                if (!casinoStats[name]) {
-                    casinoStats[name] = {
-                        volume: 0,
-                        count: 0,
-                        icon: bet.casino.icon,
-                        chains: new Set()
-                    };
-                }
-                casinoStats[name].volume += bet.usdValue;
-                casinoStats[name].count++;
-                casinoStats[name].chains.add(bet.chain.name);
-            });
-
-            const rankings = Object.entries(casinoStats)
-                .sort((a, b) => b[1].volume - a[1].volume);
-
-            const rankingsHtml = rankings.map(([name, data], index) => {
-                const avgDep = data.volume / data.count;
-                return `
-                    <div class="casino-item">
-                        <div class="casino-rank">#${index + 1}</div>
-                        <div class="casino-info">
-                            <div class="casino-name">${data.icon} ${name}</div>
-                            <div class="casino-meta">
-                                ${data.count} deposits • ${[...data.chains].join(', ')} • Avg: $${avgDep.toFixed(0)}
-                            </div>
-                        </div>
-                        <div class="casino-volume">$${(data.volume / 1000).toFixed(1)}k</div>
-                    </div>
-                `;
-            }).join('');
-            document.getElementById('casinoRankings').innerHTML = rankingsHtml;
-        }
-
-        function renderDailyVolume(bets, period = 'daily') {
-            // Group by date
-            const dailyData = {};
-            
-            bets.forEach(bet => {
-                const date = new Date(bet.timestamp);
-                let key;
-                
-                if (period === 'daily') {
-                    key = date.toISOString().split('T')[0]; // YYYY-MM-DD
-                } else if (period === 'weekly') {
-                    // Get Monday of the week
-                    const monday = new Date(date);
-                    const day = monday.getDay();
-                    const diff = monday.getDate() - day + (day === 0 ? -6 : 1);
-                    monday.setDate(diff);
-                    key = monday.toISOString().split('T')[0];
-                }
-                
-                if (!dailyData[key]) {
-                    dailyData[key] = { volume: 0, count: 0 };
-                }
-                dailyData[key].volume += bet.usdValue;
-                dailyData[key].count++;
-            });
-
-            // Sort by date (newest first)
-            const sorted = Object.entries(dailyData)
-                .sort((a, b) => b[0].localeCompare(a[0]))
-                .slice(0, 14); // Show last 14 periods
-
-            if (sorted.length === 0) {
-                document.getElementById('dailyVolume').innerHTML = 
-                    '<div style="color: #9ca3af; padding: 2rem; text-align: center;">No data available</div>';
-                return;
-            }
-
-            const maxVolume = Math.max(...sorted.map(([_, d]) => d.volume));
-            
-            // Show weekly toggle if we have 7+ days of data
-            const showWeeklyToggle = Object.keys(dailyData).length >= 7;
-
-            let html = '';
-            
-            if (showWeeklyToggle) {
-                html += `
-                    <div class="period-toggle">
-                        <button class="period-btn ${period === 'daily' ? 'active' : ''}" onclick="switchPeriod('daily')">Daily</button>
-                        <button class="period-btn ${period === 'weekly' ? 'active' : ''}" onclick="switchPeriod('weekly')">Weekly</button>
-                    </div>
-                `;
-            }
-
-            html += sorted.map(([dateStr, data]) => {
-                const date = new Date(dateStr);
-                const dateDisplay = period === 'daily' 
-                    ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-                    : `Week of ${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
-                
-                const percent = (data.volume / maxVolume) * 100;
-                
-                return `
-                    <div class="daily-item">
-                        <div class="daily-date">${dateDisplay}</div>
-                        <div class="daily-bar-container">
-                            <div class="daily-bar-bg">
-                                <div class="daily-bar" style="width: ${percent}%">
-                                    ${data.volume > maxVolume * 0.3 ? '$' + (data.volume / 1000).toFixed(1) + 'k' : ''}
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="daily-volume">$${(data.volume / 1000).toFixed(1)}k</div>
-                            <div class="daily-count">${data.count} deposits</div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            document.getElementById('dailyVolume').innerHTML = html;
-        }
-
-        let currentBets = [];
-        let currentPeriod = 'daily';
-
-        function formatTimeAgo(timestamp) {
-            const now = Date.now();
-            const then = new Date(timestamp).getTime();
-            const diffMs = now - then;
-            
-            const minutes = Math.floor(diffMs / 60000);
-            const hours = Math.floor(diffMs / 3600000);
-            const days = Math.floor(diffMs / 86400000);
-            
-            if (days > 0) {
-                return days === 1 ? '1 day ago' : `${days} days ago`;
-            } else if (hours > 0) {
-                return hours === 1 ? '1 hour ago' : `${hours} hours ago`;
-            } else if (minutes > 0) {
-                return minutes === 1 ? '1 min ago' : `${minutes} mins ago`;
-            } else {
-                return 'just now';
-            }
-        }
-
-        window.switchPeriod = function(period) {
-            currentPeriod = period;
-            renderDailyVolume(currentBets, period);
-        };
-
-        // Load data on page load
-        loadData();
-
-        // Refresh every 5 minutes
-        setInterval(loadData, 300000);
+document.getElementById('casinoList').innerHTML = casinoListHTML;
+document.getElementById('loading').style.display = 'none';
+document.getElementById('content').style.display = 'block';
     </script>
 </body>
 </html>
