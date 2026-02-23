@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Verify Provably Fair Games: Step-by-Step Technical Guide | CryptoCasinoSorted</title>
+    <meta name="description" content="Learn how to actually verify provably fair casino games. Step-by-step guide to checking hashes, seeds, and game outcomes on Stake, BC.Game, and other crypto casinos.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="canonical" href="https://cryptocasinosorted.com/blog/how-to-verify-provably-fair-games-step-by-step.html">
+    
+    <!-- Schema.org Article Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Verify Provably Fair Games: Step-by-Step Technical Guide",
+      "description": "Learn how to actually verify provably fair casino games. Step-by-step guide to checking hashes, seeds, and game outcomes on Stake, BC.Game, and other crypto casinos.",
+      "datePublished": "2026-02-23",
+      "author": {
+        "@type": "Organization",
+        "name": "CryptoCasinoSorted"
+      }
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RPC987YL8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8RPC987YL8');
+    </script>
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .blog-nav {
+            background: #1e293b;
+            border-bottom: 1px solid #334155;
+            padding: 1rem 0;
+        }
+
+        .blog-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .blog-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #f1f5f9;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .blog-logo:hover {
+            color: #a78bfa;
+        }
+
+        .blog-icon {
+            color: #a78bfa;
+            font-size: 1.3rem;
+        }
+
+        .blog-nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .blog-nav-links a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        .blog-nav-links a:hover {
+            color: #a78bfa;
+        }
+
+        .blog-nav-links a.active {
+            color: #a78bfa;
+            font-weight: 500;
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .blog-meta {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #f1f5f9;
+        }
+
+        .blog-content h2 {
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #f1f5f9;
+        }
+
+        .blog-content h3 {
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            color: #f1f5f9;
+        }
+
+        .blog-content p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+            font-size: 1.05rem;
+        }
+
+        .blog-content ul, .blog-content ol {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: #cbd5e1;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content strong {
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+
+        .blog-content a {
+            color: #a78bfa;
+            text-decoration: underline;
+        }
+
+        .blog-content a:hover {
+            color: #c4b5fd;
+        }
+
+        .blog-content code {
+            background: #1e293b;
+            color: #a78bfa;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .blog-content pre {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .blog-content pre code {
+            background: none;
+            padding: 0;
+            color: #e2e8f0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #7c3aed;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            color: #7c3aed;
+        }
+
+        .highlight-box {
+            background: #1e293b;
+            border-left: 4px solid #a78bfa;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #422006;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+            color: #fde68a;
+        }
+
+        .step-box {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .step-box h3 {
+            margin-top: 0;
+            color: #a78bfa;
+        }
+
+        @media (max-width: 768px) {
+            .blog-nav-inner {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .blog-nav-links {
+                gap: 1rem;
+            }
+
+            .blog-content h1 {
+                font-size: 2rem;
+            }
+
+            .blog-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .blog-content pre {
+                padding: 1rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+
+    <nav class="blog-nav">
+        <div class="blog-nav-inner">
+            <a href="/" class="blog-logo">
+                <span class="blog-icon">🎲</span>
+                <span>CryptoCasinoSorted</span>
+            </a>
+            <div class="blog-nav-links">
+                <a href="/">Home</a>
+                <a href="/blog/" class="active">Blog</a>
+                <a href="/analytics.html">Live Data</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="blog-container">
+        <article class="blog-content">
+            <div class="blog-meta">Published February 23, 2026</div>
+            
+            <h1>How to Verify Provably Fair Games: Step-by-Step Technical Guide</h1>
+
+            <p>"Provably fair" sounds great in theory. Crypto casinos claim you can verify every bet to prove they're not cheating. But how many players actually <em>do</em> it?</p>
+
+            <p>Almost none. Why? Because most guides explain <em>what</em> provably fair is, but not <em>how</em> to verify it yourself.</p>
+
+            <p>This guide changes that. I'll walk you through the exact process of verifying a provably fair bet on Stake, BC.Game, and other major crypto casinos. You'll learn how seeds work, how to check hashes, and how to confirm that your results weren't manipulated.</p>
+
+            <p>No math degree required—just copy, paste, and verify.</p>
+
+            <h2>What is Provably Fair? (The Quick Version)</h2>
+
+            <p>Traditional online casinos ask you to trust them. "We're fair, we promise." But you can't verify it.</p>
+
+            <p>Provably fair casinos use <strong>cryptographic hashing</strong> to let you verify every single bet independently. Here's the concept:</p>
+
+            <ol>
+                <li>The casino generates a <strong>server seed</strong> (a random string) and hashes it before you bet</li>
+                <li>You provide a <strong>client seed</strong> (or the casino generates one for you)</li>
+                <li>The game combines both seeds to determine the outcome</li>
+                <li>After the bet, the casino reveals the server seed so you can verify the hash matches</li>
+            </ol>
+
+            <p>If the hash doesn't match, the casino cheated. If it does, the result was pre-determined and fair.</p>
+
+            <p>Think of it like this: the casino writes down the answer in a sealed envelope before you roll the dice. After the roll, they open the envelope—if the answer inside matches what happened, it's fair.</p>
+
+            <h2>Why Most Players Don't Verify (And Why You Should)</h2>
+
+            <p>Let's be honest: checking hashes is tedious. Most players trust the casino's "Verify" button and move on.</p>
+
+            <p>But here's the thing: <strong>you should verify at least once</strong> to confirm the system works. If you never check, you're back to trusting the casino blindly.</p>
+
+            <p>You don't need to verify <em>every</em> bet—just spot-check occasionally, especially after big wins or losses.</p>
+
+            <div class="warning-box">
+                <p><strong>Red flag:</strong> If a casino makes verification difficult (hidden menus, broken verification tools, no seed info), that's a sign they might not actually be provably fair.</p>
+            </div>
+
+            <h2>How to Verify a Bet on Stake (Step-by-Step)</h2>
+
+            <p>Stake is one of the biggest crypto casinos and uses a clear provably fair system. Here's how to verify a bet:</p>
+
+            <div class="step-box">
+                <h3>Step 1: Make a Bet</h3>
+                <p>Play any provably fair game on Stake (Dice, Plinko, Mines, etc.). After the round ends, you'll see your bet in the history.</p>
+            </div>
+
+            <div class="step-box">
+                <h3>Step 2: Open Bet Details</h3>
+                <p>Click on the bet in your history. Look for a "Verify" or "Provably Fair" button. You'll see:</p>
+                <ul>
+                    <li><strong>Server Seed (Hashed):</strong> The encrypted server seed shown before the bet</li>
+                    <li><strong>Server Seed (Unhashed):</strong> The actual server seed revealed after the bet</li>
+                    <li><strong>Client Seed:</strong> Your seed (usually auto-generated unless you customize it)</li>
+                    <li><strong>Nonce:</strong> A counter that increments with each bet</li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <h3>Step 3: Verify the Hash</h3>
+                <p>Copy the <strong>unhashed server seed</strong> and run it through a SHA-256 hash calculator. You can use:</p>
+                <ul>
+                    <li><a href="https://emn178.github.io/online-tools/sha256.html" target="_blank">Online SHA-256 Tool</a></li>
+                    <li>Your browser's console (see code below)</li>
+                </ul>
+                <p>The hash result should <strong>exactly match</strong> the hashed server seed shown before the bet. If it doesn't, something's wrong.</p>
+            </div>
+
+            <div class="step-box">
+                <h3>Step 4: Recreate the Result</h3>
+                <p>Now verify the <em>outcome</em> was calculated correctly. Stake provides a verification script (usually JavaScript) that combines:</p>
+                <ul>
+                    <li>Server seed (unhashed)</li>
+                    <li>Client seed</li>
+                    <li>Nonce</li>
+                </ul>
+                <p>Run the script to regenerate the result. If it matches your actual bet outcome, it's provably fair.</p>
+            </div>
+
+            <h3>Example: Verifying a Dice Roll on Stake</h3>
+
+            <p>Let's say you roll <strong>55.42</strong> on Stake Dice. Here's the data:</p>
+
+            <pre><code>Server Seed (Hashed):   a3f5b8c9e2d1f4a7b6c8e9f0d3a5b7c9e1f3a5b7d9c1e3f5a7b9d1c3e5f7a9b1c3
+Server Seed (Unhashed): 8f3c5e7a9b1d3f5a7c9e1f3b5d7a9c1e3f5b7d9c1e3a5f7b9d1c3e5a7b9c1e3f5
+Client Seed:            my-custom-seed-12345
+Nonce:                  187</code></pre>
+
+            <p><strong>Step 1: Verify the hash</strong></p>
+
+            <p>Hash the unhashed server seed using SHA-256. Open your browser console (F12 → Console) and paste:</p>
+
+            <pre><code>async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+sha256('8f3c5e7a9b1d3f5a7c9e1f3b5d7a9c1e3f5b7d9c1e3a5f7b9d1c3e5a7b9c1e3f5').then(hash => console.log(hash));</code></pre>
+
+            <p>If the output matches <code>a3f5b8c9e2d1f4a7...</code>, the server seed is legit.</p>
+
+            <p><strong>Step 2: Verify the result</strong></p>
+
+            <p>Stake uses HMAC-SHA256 to generate the dice result. Here's the formula (simplified):</p>
+
+            <pre><code>Result = HMAC_SHA256(client_seed:nonce, server_seed) % 10000 / 100</code></pre>
+
+            <p>You can use Stake's built-in verifier or paste this into your console:</p>
+
+            <pre><code>// Simplified Stake Dice verification (actual implementation may vary)
+async function verifyDice(serverSeed, clientSeed, nonce) {
+    const key = await crypto.subtle.importKey(
+        'raw',
+        new TextEncoder().encode(serverSeed),
+        { name: 'HMAC', hash: 'SHA-256' },
+        false,
+        ['sign']
+    );
+    const message = `${clientSeed}:${nonce}`;
+    const signature = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(message));
+    const hashArray = Array.from(new Uint8Array(signature));
+    const hex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    const first5Hex = hex.substring(0, 5);
+    const result = (parseInt(first5Hex, 16) % 10000) / 100;
+    return result.toFixed(2);
+}
+
+verifyDice('8f3c5e7a...', 'my-custom-seed-12345', 187).then(result => console.log(result));</code></pre>
+
+            <p>If the output is <code>55.42</code>, your bet was provably fair.</p>
+
+            <h2>How to Verify on BC.Game</h2>
+
+            <p>BC.Game uses a similar system but with slightly different formatting:</p>
+
+            <ol>
+                <li>Click on a bet in your history → "Fairness"</li>
+                <li>Copy the <strong>Active Server Seed Hash</strong>, <strong>Server Seed</strong>, and <strong>Client Seed</strong></li>
+                <li>Hash the server seed using SHA-256—it should match the hash shown</li>
+                <li>Use BC.Game's built-in verifier or their open-source script (GitHub) to recalculate the result</li>
+            </ol>
+
+            <p>BC.Game provides <a href="https://github.com/BCGameTeam/provably-fair" target="_blank">verification code on GitHub</a> for each game type (Crash, Dice, Plinko, etc.).</p>
+
+            <h2>How to Verify on Other Casinos</h2>
+
+            <p>Most provably fair casinos follow a similar pattern, but the exact formula varies. Here's where to find verification info:</p>
+
+            <ul>
+                <li><strong>Rollbit:</strong> Click "Fairness" on any bet → use their JavaScript verifier</li>
+                <li><strong>Roobet:</strong> Bet history → "Verify" → copy seeds and use their tool</li>
+                <li><strong>Shuffle:</strong> Provably Fair section → open-source verification scripts</li>
+                <li><strong>Duelbits:</strong> Bet details → "Provably Fair" → hash checker + result formula</li>
+            </ul>
+
+            <p>Look for casinos that provide:</p>
+            <ul>
+                <li>Clear seed information (server seed, client seed, nonce)</li>
+                <li>Built-in verification tools</li>
+                <li>Open-source verification code (GitHub)</li>
+            </ul>
+
+            <p>If a casino hides this info or makes it hard to find, that's a red flag.</p>
+
+            <h2>Can You Change Your Client Seed?</h2>
+
+            <p>Yes—and you should, especially if you're a high roller.</p>
+
+            <p>Most casinos auto-generate a client seed for you, but you can customize it. This prevents any theoretical attack where the casino pre-calculates outcomes based on predictable client seeds.</p>
+
+            <p>On Stake, BC.Game, and most casinos:</p>
+
+            <ol>
+                <li>Go to Settings → Provably Fair (or similar)</li>
+                <li>Click "Change Client Seed"</li>
+                <li>Enter a random string (e.g., <code>my-lucky-seed-12345</code>)</li>
+                <li>Save and start betting</li>
+            </ol>
+
+            <p>You can change your client seed as often as you want. Each time you change it, the server seed also rotates.</p>
+
+            <div class="highlight-box">
+                <p><strong>Pro tip:</strong> Change your client seed before a big betting session, then verify a few bets afterward to confirm everything's legit.</p>
+            </div>
+
+            <h2>Common Verification Mistakes</h2>
+
+            <h3>Mistake 1: Not Checking the Server Seed Hash Before Betting</h3>
+
+            <p>The whole point of provably fair is that the server seed is <em>hashed before you bet</em>. If you only look at it after, you can't prove the casino didn't change it mid-game.</p>
+
+            <p>Solution: Check the hashed server seed before making large bets (most casinos display it in settings).</p>
+
+            <h3>Mistake 2: Trusting the Casino's Verifier Blindly</h3>
+
+            <p>The casino's "Verify" button is convenient, but you're still trusting <em>their</em> code. For maximum security, verify manually using independent tools or your browser console.</p>
+
+            <h3>Mistake 3: Not Understanding What You're Verifying</h3>
+
+            <p>You're verifying two things:</p>
+            <ol>
+                <li>The server seed wasn't changed (hash matches)</li>
+                <li>The result was calculated correctly (formula matches)</li>
+            </ol>
+
+            <p>If either fails, something's wrong.</p>
+
+            <h2>Is Provably Fair Really Better Than RNG?</h2>
+
+            <p>Yes, but only if the casino implements it correctly.</p>
+
+            <p>Traditional online casinos use RNG (random number generators) certified by third parties like eCOGRA or iTech Labs. You can't verify individual bets, but auditors check the RNG regularly.</p>
+
+            <p>Provably fair casinos let you verify <em>every single bet</em> yourself. No auditor required. But if the casino's implementation is flawed (weak seeds, predictable formulas), it's useless.</p>
+
+            <p><strong>Bottom line:</strong> A well-implemented provably fair system is more transparent than traditional RNG. But a poorly implemented one is worse than audited RNG.</p>
+
+            <div class="cta-box">
+                <h3>Track Real Casino Activity</h3>
+                <p>See live blockchain data from the biggest crypto casinos—deposits, withdrawals, and on-chain activity updated daily.</p>
+                <a href="/analytics.html" class="cta-button">View Live Data →</a>
+            </div>
+
+            <h2>Tools and Resources for Verification</h2>
+
+            <p>Here are the best tools for verifying provably fair bets:</p>
+
+            <h3>Hash Calculators</h3>
+            <ul>
+                <li><a href="https://emn178.github.io/online-tools/sha256.html" target="_blank">Online SHA-256 Tool</a></li>
+                <li><a href="https://cryptii.com/pipes/sha256-hash" target="_blank">Cryptii SHA-256 Hash</a></li>
+                <li>Browser console (see code examples above)</li>
+            </ul>
+
+            <h3>Open-Source Verifiers</h3>
+            <ul>
+                <li><a href="https://github.com/BCGameTeam/provably-fair" target="_blank">BC.Game Provably Fair Scripts</a></li>
+                <li><a href="https://github.com/stake-com/provably-fair" target="_blank">Stake Provably Fair Docs</a> (if available)</li>
+                <li>Most casinos link to verification scripts in their "Fairness" section</li>
+            </ul>
+
+            <h3>Learning Resources</h3>
+            <ul>
+                <li><a href="/blog/provably-fair-explained.html">Our beginner's guide to provably fair</a></li>
+                <li><a href="https://en.bitcoin.it/wiki/Provably_Fair" target="_blank">Bitcoin Wiki: Provably Fair</a></li>
+            </ul>
+
+            <h2>Final Thoughts: Trust, But Verify</h2>
+
+            <p>Provably fair is one of crypto gambling's biggest advantages over traditional online casinos. But only if you actually <em>use</em> it.</p>
+
+            <p>You don't need to verify every bet—just spot-check occasionally to keep casinos honest. If you've never verified a single bet, take 5 minutes today to try it.</p>
+
+            <p>The casinos that make verification easy (clear seed info, built-in tools, open-source code) are the ones worth trusting. The ones that hide it? Walk away.</p>
+
+            <p>Your money, your verification. Don't gamble on trust alone.</p>
+
+            <div class="cta-box">
+                <h3>More Crypto Casino Guides</h3>
+                <p>Explore our in-depth comparisons, strategies, and analysis of the top crypto casinos.</p>
+                <a href="/blog/" class="cta-button">Read More →</a>
+            </div>
+        </article>
+    </div>
+</body>
+</html>
