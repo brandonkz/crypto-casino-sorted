@@ -1239,24 +1239,55 @@
 
   <!-- Terminal Data Loader -->
   <script>
+    // Parse CSV properly (handles commas in quoted fields)
+    function parseCSV(text) {
+      const lines = text.split('\n');
+      const result = [];
+      
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+        
+        // Split by comma but respect quotes
+        const cols = [];
+        let current = '';
+        let inQuotes = false;
+        
+        for (let j = 0; j < line.length; j++) {
+          const char = line[j];
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            cols.push(current);
+            current = '';
+          } else {
+            current += char;
+          }
+        }
+        cols.push(current);
+        
+        // Parse deposit data
+        const usdValue = parseFloat(cols[8]);
+        if (isNaN(usdValue)) continue; // Skip invalid rows
+        
+        result.push({
+          date: cols[0],
+          time: cols[1],
+          casino: cols[3],
+          chain: cols[4],
+          usd: usdValue
+        });
+      }
+      
+      return result;
+    }
+
     // Load CSV and populate terminal feeds
     async function loadTerminalData() {
       try {
         const response = await fetch('/data/deposits-all.csv');
         const csvText = await response.text();
-        const rows = csvText.split('\n').slice(1).filter(r => r.trim());
-        
-        const deposits = rows.map(row => {
-          const cols = row.split(',');
-          return {
-            date: cols[0],
-            time: cols[1],
-            casino: cols[3],
-            chain: cols[4],
-            amount: parseFloat(cols[6]),
-            usd: parseFloat(cols[8])
-          };
-        });
+        const deposits = parseCSV(csvText);
 
         // Populate live deposit feed (last 20)
         const recentDeposits = deposits.slice(-20).reverse();
@@ -1275,7 +1306,7 @@
         // Populate whale watch (>$50k)
         const whales = deposits.filter(d => d.usd > 50000).slice(-10).reverse();
         const whaleFeed = document.getElementById('whale-feed');
-        if (whaleFeed) {
+        if (whaleFeed && whales.length > 0) {
           whaleFeed.innerHTML = whales.map(w => `
             <div class="whale-item">
               <span class="whale-casino">${w.casino}</span>
@@ -1283,6 +1314,8 @@
               <span class="whale-time">${w.date.substring(5)}</span>
             </div>
           `).join('');
+        } else if (whaleFeed) {
+          whaleFeed.innerHTML = '<div style="color: var(--text-secondary); font-size: 0.85rem;">No whales detected recently</div>';
         }
 
         // Calculate casino volume (last 24h simulation - using last 1000 deposits)
