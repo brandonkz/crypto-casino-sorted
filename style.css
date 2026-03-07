@@ -176,6 +176,33 @@ body {
   font-size: 0.95rem;
 }
 
+/* News Ticker */
+.ticker {
+  background: linear-gradient(90deg, #c9a96e 0%, #8b7355 50%, #c9a96e 100%);
+  color: #0b0b10;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.5rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-content {
+  display: flex;
+  gap: 2rem;
+  animation: scroll 30s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-content span {
+  display: inline-block;
+}
+
 /* Terminal Dashboard */
 .terminal {
   padding: 3rem 0 2rem;
@@ -183,47 +210,221 @@ body {
 }
 
 .terminal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   color: var(--accent);
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.terminal-section {
+  margin-bottom: 3rem;
+}
+
+.terminal-section-title {
+  font-size: 1.25rem;
   font-weight: 800;
-  letter-spacing: 0.5px;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
 }
 
-.terminal-sub {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.terminal-grid {
+/* Influencer Leaderboard */
+.influencer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.terminal-card {
+.influencer-card {
   background: var(--dark-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.25rem;
-  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.2s;
 }
 
-.terminal-card h4 {
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
+.influencer-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(201, 169, 110, 0.2);
+}
+
+.influencer-rank {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent);
+  min-width: 50px;
+  text-align: center;
+}
+
+.rank-1 .influencer-rank { color: #ffd700; }
+.rank-2 .influencer-rank { color: #c0c0c0; }
+.rank-3 .influencer-rank { color: #cd7f32; }
+
+.influencer-info {
+  flex: 1;
+}
+
+.influencer-name {
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--white);
+  margin-bottom: 0.25rem;
 }
 
-.terminal-card ul {
-  list-style: none;
-  display: grid;
-  gap: 0.5rem;
-  color: var(--text-secondary);
+.influencer-platform {
+  color: var(--accent);
   font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.influencer-stats {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.influencer-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.influencer-link:hover {
+  text-decoration: underline;
+}
+
+/* Terminal Panels */
+.terminal-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.terminal-panel {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.panel-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Deposit Feed */
+.deposit-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.deposit-item {
+  display: grid;
+  grid-template-columns: 50px 1fr 50px 80px;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.deposit-time {
+  color: var(--text-secondary);
+  font-family: monospace;
+}
+
+.deposit-casino {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.deposit-chain {
+  color: var(--accent);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.deposit-amount {
+  color: #10b981;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Whale Feed */
+.whale-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.whale-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(201, 169, 110, 0.05);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  border-radius: 4px;
+}
+
+.whale-casino {
+  color: var(--white);
+  font-weight: 700;
+}
+
+.whale-amount {
+  color: #fbbf24;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.whale-time {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* Performance List */
+.performance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.performance-item {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+}
+
+.perf-rank {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.perf-casino {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.perf-volume {
+  color: #10b981;
+  font-weight: 700;
 }
 
 /* Filters */
