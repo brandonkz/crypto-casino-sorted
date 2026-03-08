@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free Polymarket vs Kalshi arbitrage calculator. Find guaranteed profit opportunities across prediction markets. Real-time arb detection with optimal bet sizing.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/arbitrage-calculator.html">
+  <meta name="keywords" content="polymarket arbitrage, kalshi arbitrage, prediction market arbitrage, polymarket vs kalshi, arbitrage calculator, prediction market calculator">
+  <meta name="author" content="CryptoCasinoSorted">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#c9a96e">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0L3N9F43ED');
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Polymarket vs Kalshi Arbitrage Calculator | CryptoCasinoSorted">
+  <meta property="og:description" content="Find guaranteed profit opportunities across prediction markets. Real-time arb detection.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cryptocasinosorted.com/arbitrage-calculator.html">
+
+  <title>Polymarket vs Kalshi Arbitrage Calculator — Find Guaranteed Profits | CryptoCasinoSorted</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #ffffff;
+      --accent: #c9a96e;
+      --accent-glow: rgba(201, 169, 110, 0.15);
+      --dark: #0b0b10;
+      --dark-card: #12131a;
+      --dark-card-hover: #181a24;
+      --gray: #9aa3b2;
+      --border: #242836;
+      --text: #f5f5f5;
+      --text-secondary: #a7b0c0;
+      --green: #22c55e;
+      --green-bg: rgba(34, 197, 94, 0.1);
+      --green-border: rgba(34, 197, 94, 0.3);
+      --red: #ef4444;
+      --red-bg: rgba(239, 68, 68, 0.1);
+      --red-border: rgba(239, 68, 68, 0.3);
+      --blue: #3b82f6;
+      --purple: #8b5cf6;
+      --radius: 16px;
+      --shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 50% -10%, rgba(201, 169, 110, 0.12), transparent 60%), var(--dark);
+      min-height: 100vh;
+    }
+
+    /* Nav */
+    .header {
+      background: rgba(10, 10, 10, 0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.5rem;
+    }
+    .brand:hover { opacity: 0.9; }
+    .nav { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+    .nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav a:hover, .nav a.active { color: var(--accent); }
+
+    /* Layout */
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-glow);
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      color: var(--accent);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Platform inputs */
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 700px) {
+      .platforms-grid {
+        grid-template-columns: 1fr;
+      }
+      .vs-divider { display: none; }
+    }
+
+    .platform-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .platform-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .platform-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+    .platform-logo.poly { background: linear-gradient(135deg, #3b82f6, #6366f1); }
+    .platform-logo.kalshi { background: linear-gradient(135deg, #10b981, #059669); }
+    .platform-name { font-weight: 700; font-size: 1.1rem; }
+
+    .vs-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 3rem;
+    }
+    .vs-badge {
+      background: var(--accent);
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+    }
+
+    /* Form */
+    .form-group { margin-bottom: 1rem; }
+    .form-label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-wrapper .suffix {
+      position: absolute;
+      right: 12px;
+      color: var(--gray);
+      font-size: 0.85rem;
+      font-weight: 600;
+      pointer-events: none;
+    }
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      padding-right: 2.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.15);
+    }
+    .form-input::placeholder { color: var(--gray); }
+
+    /* Bankroll + calculate */
+    .controls-row {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .controls-row .form-group { flex: 1; min-width: 200px; margin-bottom: 0; }
+    .btn-calculate {
+      background: linear-gradient(135deg, var(--accent), #b8943d);
+      color: var(--dark);
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+    .btn-calculate:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(201, 169, 110, 0.4);
+    }
+
+    /* Results */
+    .results-card {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .results-card.visible { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-status {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .result-status.arb {
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+      color: var(--green);
+    }
+    .result-status.no-arb {
+      background: var(--red-bg);
+      border: 1px solid var(--red-border);
+      color: var(--red);
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .result-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .result-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+    .result-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+    .result-value.green { color: var(--green); }
+    .result-value.red { color: var(--red); }
+    .result-value.blue { color: var(--blue); }
+
+    /* Breakdown table */
+    .breakdown-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .breakdown-table th, .breakdown-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .breakdown-table th {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .breakdown-table td { font-weight: 600; }
+    .breakdown-table tr:last-child td { border-bottom: none; }
+    .breakdown-table .platform-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot.poly { background: var(--blue); }
+    .dot.kalshi { background: #10b981; }
+
+    /* How it works */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+    }
+    .step {
+      text-align: center;
+      padding: 1.25rem;
+    }
+    .step-num {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      margin: 0 auto 0.75rem;
+    }
+    .step h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .step p { font-size: 0.85rem; color: var(--text-secondary); }
+
+    /* Example scenarios */
+    .examples { margin-top: 1rem; }
+    .example-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin: 0.25rem;
+    }
+    .example-btn:hover {
+      background: var(--accent-glow);
+      border-color: rgba(201, 169, 110, 0.3);
+      color: var(--accent);
+    }
+
+    /* Live markets */
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .market-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin: 0 -0.75rem;
+    }
+    .market-row:last-child { border-bottom: none; }
+    .market-row:hover { background: rgba(255,255,255,0.03); }
+    .market-name { font-weight: 600; font-size: 0.95rem; }
+    .market-prices {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+    .market-prices span { font-weight: 600; }
+    .market-arb {
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    .market-arb.has-arb {
+      background: var(--green-bg);
+      color: var(--green);
+    }
+    .market-arb.no-arb {
+      color: var(--gray);
+    }
+
+    /* FAQ */
+    .faq-item { margin-bottom: 1rem; }
+    .faq-q {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+    .faq-a {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 3rem 0;
+      color: var(--gray);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    /* Tooltip */
+    .tooltip {
+      position: relative;
+      cursor: help;
+      border-bottom: 1px dotted var(--gray);
+    }
+    .tooltip:hover::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1d27;
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      color: var(--text);
+      z-index: 10;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.75rem; }
+      .card { padding: 1.25rem; }
+      .result-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<header class="header">
+  <div class="header-content">
+    <a href="/" class="brand">
+      <span>🎰</span>
+      <span>CryptoCasinoSorted</span>
+    </a>
+    <nav class="nav">
+      <a href="/#casinos">Casinos</a>
+      <a href="/analytics.html">📊 Live Data</a>
+      <a href="/calculators.html">🧮 Calculators</a>
+      <a href="/blog/index.html">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">⚡ Prediction Market Tool</div>
+    <h1>Polymarket vs Kalshi<br>Arbitrage Calculator</h1>
+    <p>Find guaranteed profit opportunities when prediction markets disagree on the same event. Enter prices, we'll do the math.</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- How It Works -->
+  <div class="card">
+    <div class="card-title">🧠 How Prediction Market Arbitrage Works</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Markets Disagree</h3>
+        <p>Polymarket prices YES at 62¢ but Kalshi prices NO at 45¢ for the same event</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Buy Both Sides</h3>
+        <p>Buy YES on one platform and NO on the other. Total cost: 62¢ + 45¢ = $1.07... wait, that's no good. But 62¢ + 35¢ = 97¢</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Guaranteed Profit</h3>
+        <p>One side always pays $1. You paid 97¢. That's 3¢ guaranteed profit per share, no matter what happens.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculator -->
+  <div class="card">
+    <div class="card-title">🧮 Arbitrage Calculator</div>
+
+    <!-- Example buttons -->
+    <div style="margin-bottom: 1.25rem;">
+      <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 600;">Try an example:</span>
+      <div class="examples">
+        <button class="example-btn" onclick="loadExample(62, 35, 1000)">✅ Arb: 62¢/35¢</button>
+        <button class="example-btn" onclick="loadExample(55, 48, 1000)">❌ No Arb: 55¢/48¢</button>
+        <button class="example-btn" onclick="loadExample(72, 20, 5000)">🔥 Big Spread: 72¢/20¢</button>
+        <button class="example-btn" onclick="loadExample(51, 47, 10000)">💎 Tight Arb: 51¢/47¢</button>
+      </div>
+    </div>
+
+    <div class="platforms-grid">
+      <!-- Polymarket -->
+      <div class="platform-card">
+        <div class="platform-header">
+          <div class="platform-logo poly">P</div>
+          <div class="platform-name">Polymarket</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">YES Price</label>
+          <div class="input-wrapper">
+            <input type="number" id="poly-yes" class="form-input" placeholder="e.g. 62" min="1" max="99" step="0.1" oninput="syncPrice('poly')">
+            <span class="suffix">¢</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">NO Price (auto-calculated)</label>
+          <div class="input-wrapper">
+            <input type="number" id="poly-no" class="form-input" placeholder="auto" readonly style="opacity: 0.6;">
+            <span class="suffix">¢</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VS -->
+      <div class="vs-divider">
+        <div class="vs-badge">VS</div>
+      </div>
+
+      <!-- Kalshi -->
+      <div class="platform-card">
+        <div class="platform-header">
+          <div class="platform-logo kalshi">K</div>
+          <div class="platform-name">Kalshi</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">YES Price</label>
+          <div class="input-wrapper">
+            <input type="number" id="kalshi-yes" class="form-input" placeholder="e.g. 58" min="1" max="99" step="0.1" oninput="syncPrice('kalshi')">
+            <span class="suffix">¢</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">NO Price (auto-calculated)</label>
+          <div class="input-wrapper">
+            <input type="number" id="kalshi-no" class="form-input" placeholder="auto" readonly style="opacity: 0.6;">
+            <span class="suffix">¢</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bankroll + Calculate -->
+    <div class="controls-row">
+      <div class="form-group">
+        <label class="form-label">Total Bankroll</label>
+        <div class="input-wrapper">
+          <input type="number" id="bankroll" class="form-input" placeholder="1000" value="1000" min="1" style="padding-right: 2rem;">
+          <span class="suffix">$</span>
+        </div>
+      </div>
+      <button class="btn-calculate" onclick="calculate()">Calculate Arbitrage →</button>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="card results-card" id="results">
+    <div class="card-title">📊 Results</div>
+
+    <div id="result-status" class="result-status"></div>
+
+    <div class="result-grid" id="result-grid"></div>
+
+    <div id="breakdown-section" style="display:none;">
+      <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">📋 Optimal Bet Breakdown</h3>
+      <table class="breakdown-table">
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Side</th>
+            <th>Price</th>
+            <th>Shares</th>
+            <th>Cost</th>
+            <th>Payout (if wins)</th>
+          </tr>
+        </thead>
+        <tbody id="breakdown-body"></tbody>
+      </table>
+    </div>
+
+    <div id="scenario-section" style="display:none; margin-top: 1.5rem;">
+      <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">🎯 Outcome Scenarios</h3>
+      <div id="scenario-grid" class="result-grid"></div>
+    </div>
+  </div>
+
+  <!-- Live Markets Section -->
+  <div class="card">
+    <div class="card-title">
+      <span class="live-dot"></span>
+      Popular Arbitrage Scenarios
+    </div>
+    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+      Click any scenario to load it into the calculator. Prices are examples — always verify current prices on each platform before trading.
+    </p>
+    <div id="sample-markets">
+      <div class="market-row" onclick="loadExample(62, 35, document.getElementById('bankroll').value || 1000)">
+        <div>
+          <div class="market-name">🇺🇸 Will candidate X win the election?</div>
+          <div style="font-size: 0.8rem; color: var(--gray);">Polymarket YES 62¢ · Kalshi YES 65¢</div>
+        </div>
+        <div class="market-prices">
+          <span class="market-arb has-arb">3% ARB</span>
+        </div>
+      </div>
+      <div class="market-row" onclick="loadExample(45, 52, document.getElementById('bankroll').value || 1000)">
+        <div>
+          <div class="market-name">📈 Will BTC hit $150K by June?</div>
+          <div style="font-size: 0.8rem; color: var(--gray);">Polymarket YES 45¢ · Kalshi YES 48¢</div>
+        </div>
+        <div class="market-prices">
+          <span class="market-arb has-arb">3% ARB</span>
+        </div>
+      </div>
+      <div class="market-row" onclick="loadExample(72, 25, document.getElementById('bankroll').value || 1000)">
+        <div>
+          <div class="market-name">🌡️ Will global temp record break in 2026?</div>
+          <div style="font-size: 0.8rem; color: var(--gray);">Polymarket YES 72¢ · Kalshi YES 75¢</div>
+        </div>
+        <div class="market-prices">
+          <span class="market-arb has-arb">3% ARB</span>
+        </div>
+      </div>
+      <div class="market-row" onclick="loadExample(50, 52, document.getElementById('bankroll').value || 1000)">
+        <div>
+          <div class="market-name">⚽ Will England win the World Cup?</div>
+          <div style="font-size: 0.8rem; color: var(--gray);">Polymarket YES 50¢ · Kalshi YES 52¢</div>
+        </div>
+        <div class="market-prices">
+          <span class="market-arb no-arb">No arb</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategy Tips -->
+  <div class="card">
+    <div class="card-title">💡 Arbitrage Strategy Tips</div>
+    <div style="display: grid; gap: 1rem;">
+      <div>
+        <div class="faq-q">Speed matters</div>
+        <div class="faq-a">Prediction market arbs are fleeting. Prices shift within minutes as traders spot the same gaps. Have accounts funded on both platforms before you start scanning.</div>
+      </div>
+      <div>
+        <div class="faq-q">Watch the fees</div>
+        <div class="faq-a">Polymarket charges no trading fees but has blockchain gas costs. Kalshi charges fees on winning trades (varies by market). A 2% arb might disappear after fees. This calculator shows pre-fee profit — always factor in platform costs.</div>
+      </div>
+      <div>
+        <div class="faq-q">Liquidity is king</div>
+        <div class="faq-a">An arb means nothing if you can't fill your order at the displayed price. Check order book depth on both platforms. Thin markets = slippage = your arb evaporates.</div>
+      </div>
+      <div>
+        <div class="faq-q">Capital lock-up</div>
+        <div class="faq-a">Your money is locked until the market resolves. A 3% arb on a market that resolves in 6 months is only ~6% annualized. Compare to risk-free alternatives like stablecoins or T-bills.</div>
+      </div>
+      <div>
+        <div class="faq-q">Resolution risk</div>
+        <div class="faq-a">Different platforms may resolve the "same" event differently due to different resolution criteria. Always read both sets of rules. Edge case resolutions have burned arb traders before.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ for SEO -->
+  <div class="card">
+    <div class="card-title">❓ FAQ</div>
+    <div style="display: grid; gap: 1.25rem;">
+      <div class="faq-item">
+        <div class="faq-q">What is prediction market arbitrage?</div>
+        <div class="faq-a">Arbitrage is when you exploit price differences between two markets for a guaranteed profit. If Polymarket prices an event at 62% YES and Kalshi prices the same event at 65% YES, the NO prices are 38¢ and 35¢ respectively. Buying YES on Polymarket (62¢) and NO on Kalshi (35¢) costs 97¢ total, but one side is guaranteed to pay $1 — a 3¢ risk-free profit per share.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is prediction market arbitrage legal?</div>
+        <div class="faq-a">In most jurisdictions, yes. Polymarket operates on blockchain (Polygon) and is available globally (with some restrictions). Kalshi is a CFTC-regulated exchange in the US. Check your local regulations, especially regarding event contracts and prediction markets.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How much can I make from prediction market arbitrage?</div>
+        <div class="faq-a">Typical arbs are 1-5% per trade. On a $10,000 bankroll, a 3% arb nets $300. The key is volume and speed — serious arb traders automate scanning and execution, running many small arbs per day.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's the difference between Polymarket and Kalshi?</div>
+        <div class="faq-a">Polymarket is a decentralized prediction market on Polygon (crypto-native, USDC deposits, global access). Kalshi is a centralized, CFTC-regulated exchange (USD deposits, US-focused). Different user bases = different prices = arbitrage opportunities.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I use this calculator for other prediction markets?</div>
+        <div class="faq-a">Absolutely. The math works for any two binary outcome markets: PredictIt, Manifold, Metaculus (if they add real-money markets), or even sports betting exchanges. Just enter the YES prices from each platform.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p style="margin-bottom: 0.5rem;">Built by <a href="/">CryptoCasinoSorted</a> · Free tools for smarter crypto betting</p>
+    <p>
+      <a href="/betting-calculator.html">Betting Calculator</a> ·
+      <a href="/house-edge-calculator.html">House Edge</a> ·
+      <a href="/wagering-calculator.html">Wagering Calculator</a> ·
+      <a href="/rakeback-comparison.html">Rakeback Comparison</a> ·
+      <a href="/provably-fair-verifier.html">Provably Fair Verifier</a>
+    </p>
+    <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--gray);">
+      ⚠️ This calculator is for educational purposes. Always verify current prices on each platform before placing trades. Past arbitrage opportunities do not guarantee future availability.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Sync YES/NO prices (they sum to 100 in prediction markets)
+  function syncPrice(platform) {
+    const yesInput = document.getElementById(`${platform}-yes`);
+    const noInput = document.getElementById(`${platform}-no`);
+    const yes = parseFloat(yesInput.value);
+    if (!isNaN(yes) && yes > 0 && yes < 100) {
+      noInput.value = (100 - yes).toFixed(1);
+    } else {
+      noInput.value = '';
+    }
+  }
+
+  // Load example values
+  function loadExample(polyYes, kalshiYes, bankroll) {
+    document.getElementById('poly-yes').value = polyYes;
+    document.getElementById('kalshi-yes').value = kalshiYes;
+    document.getElementById('bankroll').value = bankroll;
+    syncPrice('poly');
+    syncPrice('kalshi');
+    calculate();
+  }
+
+  function calculate() {
+    const polyYes = parseFloat(document.getElementById('poly-yes').value);
+    const kalshiYes = parseFloat(document.getElementById('kalshi-yes').value);
+    const bankroll = parseFloat(document.getElementById('bankroll').value) || 1000;
+
+    if (isNaN(polyYes) || isNaN(kalshiYes)) {
+      alert('Please enter YES prices for both platforms');
+      return;
+    }
+
+    const polyNo = 100 - polyYes;
+    const kalshiNo = 100 - kalshiYes;
+
+    // Check all 4 possible arb combinations:
+    // 1. Buy YES on Poly + NO on Kalshi
+    // 2. Buy NO on Poly + YES on Kalshi
+    // 3. Buy YES on Poly + YES on Kalshi (doesn't make sense for arb)
+    // 4. Buy NO on Poly + NO on Kalshi (doesn't make sense for arb)
+
+    const combo1Cost = polyYes + kalshiNo; // YES Poly + NO Kalshi
+    const combo2Cost = polyNo + kalshiYes; // NO Poly + YES Kalshi
+
+    // Find the best combo (lowest total cost)
+    let bestCombo, totalCost, side1Platform, side1Type, side1Price, side2Platform, side2Type, side2Price;
+
+    if (combo1Cost <= combo2Cost) {
+      bestCombo = 1;
+      totalCost = combo1Cost;
+      side1Platform = 'Polymarket';
+      side1Type = 'YES';
+      side1Price = polyYes;
+      side2Platform = 'Kalshi';
+      side2Type = 'NO';
+      side2Price = kalshiNo;
+    } else {
+      bestCombo = 2;
+      totalCost = combo2Cost;
+      side1Platform = 'Polymarket';
+      side1Type = 'NO';
+      side1Price = polyNo;
+      side2Platform = 'Kalshi';
+      side2Type = 'YES';
+      side2Price = kalshiYes;
+    }
+
+    const isArb = totalCost < 100;
+    const profitPerShare = isArb ? (100 - totalCost) : (totalCost - 100);
+    const profitPct = isArb ? ((100 - totalCost) / totalCost * 100) : 0;
+
+    // Calculate optimal bet sizing
+    // Each share costs totalCost cents and pays $1
+    const costPerShareDollars = totalCost / 100;
+    const maxShares = Math.floor(bankroll / costPerShareDollars);
+    const totalInvested = maxShares * costPerShareDollars;
+    const totalPayout = maxShares * 1; // $1 per share
+    const totalProfit = isArb ? (totalPayout - totalInvested) : 0;
+
+    // Per-side allocation
+    const side1CostPerShare = side1Price / 100;
+    const side2CostPerShare = side2Price / 100;
+    const side1Total = maxShares * side1CostPerShare;
+    const side2Total = maxShares * side2CostPerShare;
+
+    // Show results
+    const resultsCard = document.getElementById('results');
+    resultsCard.classList.add('visible');
+    resultsCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Status
+    const statusEl = document.getElementById('result-status');
+    if (isArb) {
+      statusEl.className = 'result-status arb';
+      statusEl.innerHTML = `✅ ARBITRAGE FOUND — ${profitPct.toFixed(2)}% guaranteed profit`;
+    } else {
+      statusEl.className = 'result-status no-arb';
+      statusEl.innerHTML = `❌ No arbitrage — combined cost is ${totalCost.toFixed(1)}¢ (need under 100¢)`;
+    }
+
+    // Grid
+    const gridEl = document.getElementById('result-grid');
+    gridEl.innerHTML = `
+      <div class="result-item">
+        <div class="result-label">Combined Cost</div>
+        <div class="result-value ${isArb ? 'green' : 'red'}">${totalCost.toFixed(1)}¢</div>
+      </div>
+      <div class="result-item">
+        <div class="result-label">Profit Per Share</div>
+        <div class="result-value ${isArb ? 'green' : 'red'}">${isArb ? '+' : '-'}${profitPerShare.toFixed(1)}¢</div>
+      </div>
+      <div class="result-item">
+        <div class="result-label">Return on Capital</div>
+        <div class="result-value ${isArb ? 'green' : 'red'}">${isArb ? '+' + profitPct.toFixed(2) + '%' : 'N/A'}</div>
+      </div>
+      <div class="result-item">
+        <div class="result-label">Max Shares ($${bankroll.toLocaleString()})</div>
+        <div class="result-value blue">${maxShares.toLocaleString()}</div>
+      </div>
+      <div class="result-item">
+        <div class="result-label">Total Invested</div>
+        <div class="result-value">$${totalInvested.toFixed(2)}</div>
+      </div>
+      <div class="result-item">
+        <div class="result-label">Guaranteed Profit</div>
+        <div class="result-value ${isArb ? 'green' : 'red'}">$${isArb ? totalProfit.toFixed(2) : '0.00'}</div>
+      </div>
+    `;
+
+    // Breakdown
+    const breakdownSection = document.getElementById('breakdown-section');
+    const breakdownBody = document.getElementById('breakdown-body');
+    if (isArb) {
+      breakdownSection.style.display = 'block';
+      breakdownBody.innerHTML = `
+        <tr>
+          <td><div class="platform-cell"><span class="dot poly"></span> ${side1Platform}</div></td>
+          <td>${side1Type}</td>
+          <td>${side1Price.toFixed(1)}¢</td>
+          <td>${maxShares.toLocaleString()}</td>
+          <td>$${side1Total.toFixed(2)}</td>
+          <td>$${(maxShares * 1).toFixed(2)}</td>
+        </tr>
+        <tr>
+          <td><div class="platform-cell"><span class="dot kalshi"></span> ${side2Platform}</div></td>
+          <td>${side2Type}</td>
+          <td>${side2Price.toFixed(1)}¢</td>
+          <td>${maxShares.toLocaleString()}</td>
+          <td>$${side2Total.toFixed(2)}</td>
+          <td>$${(maxShares * 1).toFixed(2)}</td>
+        </tr>
+        <tr style="font-weight: 800; color: var(--accent);">
+          <td colspan="4">TOTAL</td>
+          <td>$${totalInvested.toFixed(2)}</td>
+          <td>$${(maxShares * 1).toFixed(2)}</td>
+        </tr>
+      `;
+    } else {
+      breakdownSection.style.display = 'none';
+    }
+
+    // Scenarios
+    const scenarioSection = document.getElementById('scenario-section');
+    const scenarioGrid = document.getElementById('scenario-grid');
+    if (isArb) {
+      scenarioSection.style.display = 'block';
+
+      // Scenario A: The event happens (YES wins)
+      let scenarioAWinner, scenarioAPayout, scenarioAProfit;
+      if (side1Type === 'YES') {
+        // Side 1 (Poly YES) wins
+        scenarioAWinner = `${side1Platform} ${side1Type}`;
+        scenarioAPayout = maxShares * 1;
+      } else {
+        // Side 2 (Kalshi YES) wins
+        scenarioAWinner = `${side2Platform} ${side2Type}`;
+        scenarioAPayout = maxShares * 1;
+      }
+      scenarioAProfit = scenarioAPayout - totalInvested;
+
+      // Scenario B: The event doesn't happen (NO wins)
+      let scenarioBWinner, scenarioBPayout, scenarioBProfit;
+      if (side1Type === 'NO') {
+        scenarioBWinner = `${side1Platform} ${side1Type}`;
+        scenarioBPayout = maxShares * 1;
+      } else {
+        scenarioBWinner = `${side2Platform} ${side2Type}`;
+        scenarioBPayout = maxShares * 1;
+      }
+      scenarioBProfit = scenarioBPayout - totalInvested;
+
+      scenarioGrid.innerHTML = `
+        <div class="result-item" style="border-color: var(--green-border);">
+          <div class="result-label">If Event Happens (YES)</div>
+          <div class="result-value green">+$${scenarioAProfit.toFixed(2)}</div>
+          <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.25rem;">${scenarioAWinner} pays out</div>
+        </div>
+        <div class="result-item" style="border-color: var(--green-border);">
+          <div class="result-label">If Event Doesn't Happen (NO)</div>
+          <div class="result-value green">+$${scenarioBProfit.toFixed(2)}</div>
+          <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.25rem;">${scenarioBWinner} pays out</div>
+        </div>
+      `;
+    } else {
+      scenarioSection.style.display = 'none';
+    }
+
+    // Track event
+    if (typeof gtag === 'function') {
+      gtag('event', 'arb_calculate', {
+        'poly_yes': polyYes,
+        'kalshi_yes': kalshiYes,
+        'is_arb': isArb,
+        'profit_pct': profitPct.toFixed(2),
+        'bankroll': bankroll
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
