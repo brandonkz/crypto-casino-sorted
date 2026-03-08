@@ -10,14 +10,17 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 
 NEWS_FEEDS = [
+    ("Casino.org", "https://www.casino.org/news/feed/"),
+    ("Gambling Insider", "https://www.gamblinginsider.com/rss"),
+    ("SBC News", "https://sbcnews.co.uk/feed/"),
+    ("CDC Gaming", "https://cdcgaming.com/feed/"),
     ("Decrypt", "https://decrypt.co/feed"),
     ("CoinDesk", "https://www.coindesk.com/arc/outboundfeeds/rss/"),
     ("The Block", "https://www.theblock.co/rss.xml"),
-    ("Gambling Insider", "https://www.gamblinginsider.com/rss"),
-    ("PokerNews", "https://www.pokernews.com/rss.xml"),
 ]
 
-KEYWORDS = re.compile(r"casino|gambl|sportsbook|betting|igaming|gaming|crypto", re.I)
+# Require casino/gambling OR crypto+gaming relevance
+KEYWORDS = re.compile(r"casino|gambl|sportsbook|betting|igaming|crypto|blockchain|web3|gaming", re.I)
 
 MAX_ITEMS = 8
 TIMEOUT = 10
@@ -25,7 +28,8 @@ TIMEOUT = 10
 
 def fetch_rss(source, url):
     try:
-        with urllib.request.urlopen(url, timeout=TIMEOUT) as resp:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (CryptoCasinoSorted RSS)"})
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
             xml_data = resp.read()
         root = ET.fromstring(xml_data)
         items = []
