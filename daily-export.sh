@@ -30,6 +30,10 @@ if [ $? -eq 0 ]; then
   echo ""
   echo "🖥️ Generating terminal data..."
   /usr/bin/python3 generate-terminal-data.py
+
+  echo ""
+  echo "📰 Updating news + promos..."
+  /usr/bin/python3 update-news-promos.py
 else
   echo "❌ Export failed"
   exit 1
