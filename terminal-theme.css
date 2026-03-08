@@ -177,31 +177,106 @@ a:hover { color: #69f0ae; }
 .t-badge-red { background: var(--t-red-bg); color: var(--t-red); border: 1px solid var(--t-red-b); }
 .t-badge-purple { background: var(--t-purple-bg); color: var(--t-purple); }
 
-/* === TYPOGRAPHY === */
-.t-h1 {
+/* === GLOBAL HEADINGS (uniform across all pages) === */
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--t-mono);
+  color: var(--t-text);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+h1 {
   font-size: 1.75rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
-.t-h2 {
-  font-family: var(--t-mono);
-  font-size: 1.1rem;
+h2 {
+  font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
   margin-bottom: 8px;
-  color: var(--t-text);
   padding-bottom: 6px;
   border-bottom: 1px solid var(--t-border);
 }
-.t-h3 {
-  font-family: var(--t-mono);
-  font-size: 0.9rem;
+h3 {
+  font-size: 0.95rem;
   font-weight: 700;
   margin-bottom: 6px;
+}
+h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--t-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+h5, h6 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--t-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Page hero headings (larger) */
+.page-hero h1, .hero h1, .header h1, .dashboard-hero h1, .addresses-hero h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: var(--t-text);
 }
+
+/* Section headings */
+.section h2, .transparency-section h2, .calculators-container h2,
+.calculator-container h2, .casino-list h2, .chart-card h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--t-text);
+  font-family: var(--t-mono);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--t-border);
+  margin-bottom: 12px;
+}
+
+/* Card/panel headings */
+.calc-card h2, .payment-card h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--t-mono);
+  color: var(--t-text);
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Info/sub-section headings */
+.info-section h3, .step-card h3, .step h3, .no-results h3,
+.warning-box h3, .faq-item h3, .transparency-section h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: var(--t-mono);
+  color: var(--t-text);
+}
+
+/* Small data headings */
+.crypto-prices h4 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--t-mono);
+  color: var(--t-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1, .page-hero h1, .hero h1, .header h1, .dashboard-hero h1, .addresses-hero h1 { font-size: 1.4rem; }
+  h2, .section h2, .calculator-container h2, .calculators-container h2 { font-size: 1rem; }
+  h3 { font-size: 0.85rem; }
+}
+
+/* === UTILITY CLASSES === */
+.t-h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+.t-h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--t-border); }
+.t-h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
 .t-subtitle { color: var(--t-dim); font-size: 0.85rem; max-width: 600px; }
 .t-mono { font-family: var(--t-mono); }
 .t-dim { color: var(--t-dim); }
@@ -335,13 +410,12 @@ a:hover { color: #69f0ae; }
   border-bottom: 1px solid var(--t-border);
 }
 .t-article h1 {
-  font-family: var(--t-mono);
   font-size: 1.75rem;
   font-weight: 800;
-  color: var(--t-text);
   line-height: 1.3;
   margin-bottom: 12px;
-  letter-spacing: -0.02em;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 .t-article .subtitle {
   font-size: 1rem;
@@ -373,30 +447,28 @@ a:hover { color: #69f0ae; }
 }
 .t-article .post-content p { margin-bottom: 20px; }
 .t-article .post-content h2 {
-  font-family: var(--t-mono);
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.15rem;
   margin-top: 40px;
   margin-bottom: 16px;
-  color: var(--t-text);
   padding-bottom: 8px;
   border-bottom: 1px solid var(--t-border);
 }
 .t-article .post-content h3 {
-  font-family: var(--t-mono);
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.95rem;
   margin-top: 28px;
   margin-bottom: 12px;
-  color: var(--t-text);
+  border-bottom: none;
+  padding-bottom: 0;
 }
 .t-article .post-content h4 {
-  font-family: var(--t-mono);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.8rem;
   margin-top: 24px;
   margin-bottom: 8px;
-  color: #9aa3b2;
+  color: var(--t-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 .t-article .post-content ul, 
 .t-article .post-content ol {
