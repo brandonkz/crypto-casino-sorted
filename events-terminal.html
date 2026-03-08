@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="iGaming Events Terminal — upcoming conferences, tournaments, promo seasons and key dates for crypto casinos.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/events-terminal.html">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0a0a0f">
+  <title>CCT — iGaming Events Terminal</title>
+  <link rel="stylesheet" href="terminal-theme.css">
+  <style>
+    body { background: #08090d; color: #d4d8e8; }
+    .events-hero { padding: 20px 16px; text-align: left; }
+    .events-hero h1 { margin-bottom: 6px; }
+    .events-hero p { color: #5a6080; font-size: 0.9rem; }
+
+    .events-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; }
+    @media (max-width: 900px){ .events-grid { grid-template-columns: 1fr; } }
+
+    .event-row {
+      display: grid; grid-template-columns: 90px 1fr 110px 120px;
+      padding: 10px 14px; border-bottom: 1px solid #1a1d2e;
+      font-size: 12px; gap: 12px; align-items: center;
+    }
+    .event-row.header { font-size: 9px; color: #5a6080; text-transform: uppercase; letter-spacing: 0.08em; }
+    .event-type { font-weight: 700; color: #00e676; }
+    .event-name { font-weight: 700; color: #d4d8e8; }
+    .event-loc { color: #9aa3b2; font-size: 11px; }
+    .event-date { text-align: right; color: #5a6080; font-size: 11px; }
+
+    .countdown-card {
+      background: #0c0d14; border: 1px solid #1a1d2e; border-radius: 4px; padding: 14px; margin-bottom: 8px;
+    }
+    .countdown-title { font-family: "JetBrains Mono", monospace; font-size: 11px; color: #5a6080; text-transform: uppercase; letter-spacing: 0.08em; }
+    .countdown-name { font-weight: 700; font-size: 14px; margin-top: 6px; }
+    .countdown-days { font-size: 22px; font-weight: 800; color: #ffc400; margin-top: 6px; }
+
+    .tag { font-size: 9px; padding: 2px 6px; border-radius: 3px; font-weight: 700; border: 1px solid rgba(68,138,255,0.2); background: rgba(68,138,255,0.08); color: #448aff; }
+
+    @media (max-width: 768px){
+      .event-row { grid-template-columns: 1fr; gap: 6px; }
+      .event-row.header { display: none; }
+      .event-date { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="t-nav">
+    <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
+    <div class="t-nav-links">
+      <a href="/terminal.html">Terminal</a>
+      <a href="/events-terminal.html" class="active">Events</a>
+      <a href="/analytics.html">Live Data</a>
+      <a href="/calculators.html">Tools</a>
+      <a href="/blog/index.html">Blog</a>
+      <a href="/reviews/index.html" class="t-nav-hide-mobile">Reviews</a>
+    </div>
+  </nav>
+
+  <section class="events-hero t-container">
+    <h1>iGaming Events Terminal</h1>
+    <p>Upcoming conferences, tournaments, promo seasons and key dates that drive crypto casino activity.</p>
+  </section>
+
+  <section class="t-container t-section">
+    <div class="events-grid">
+
+      <!-- Upcoming Events -->
+      <div class="t-panel">
+        <div class="t-panel-header">
+          <div class="t-panel-title">🗓️ Upcoming Events</div>
+          <div class="t-badge t-badge-blue">CALENDAR</div>
+        </div>
+        <div class="t-panel-body flush" id="events-table"></div>
+      </div>
+
+      <!-- Countdown -->
+      <div>
+        <div class="t-panel" style="margin-bottom:12px;">
+          <div class="t-panel-header">
+            <div class="t-panel-title">⏳ Next 3 Events</div>
+            <div class="t-badge t-badge-amber">COUNTDOWN</div>
+          </div>
+          <div class="t-panel-body" id="event-countdown"></div>
+        </div>
+
+        <div class="t-panel">
+          <div class="t-panel-header">
+            <div class="t-panel-title">📌 Categories</div>
+            <div class="t-badge t-badge-blue">TYPES</div>
+          </div>
+          <div class="t-panel-body" id="event-types"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="t-footer">
+    <div class="t-container">
+      <p>CCT — Crypto Casino Terminal · <a href="/">CryptoCasinoSorted</a></p>
+      <p><a href="/terminal.html">Terminal</a> · <a href="/events-terminal.html">Events</a> · <a href="/blog/index.html">Blog</a></p>
+    </div>
+  </footer>
+
+<script>
+  function daysUntil(dateStr){
+    const now = new Date();
+    const target = new Date(dateStr + 'T00:00:00Z');
+    const diff = Math.ceil((target - now) / (1000*60*60*24));
+    return diff;
+  }
+
+  fetch('data/events.json?v=' + Date.now())
+    .then(r=>r.json())
+    .then(data=>{
+      const events = (data.events || []).sort((a,b)=>a.start.localeCompare(b.start));
+
+      // Table
+      const table = document.getElementById('events-table');
+      table.innerHTML = `
+        <div class="event-row header">
+          <div>Type</div><div>Event</div><div>Location</div><div style="text-align:right">Dates</div>
+        </div>
+        ${events.map(e=>`
+          <div class="event-row">
+            <div class="event-type">${e.type}</div>
+            <div class="event-name"><a href="${e.url}" target="_blank" rel="noopener">${e.name}</a></div>
+            <div class="event-loc">${e.location}</div>
+            <div class="event-date">${e.start} → ${e.end}</div>
+          </div>
+        `).join('')}
+      `;
+
+      // Countdown
+      const countdown = document.getElementById('event-countdown');
+      const next3 = events.slice(0,3);
+      countdown.innerHTML = next3.map(e=>`
+        <div class="countdown-card">
+          <div class="countdown-title">${e.type}</div>
+          <div class="countdown-name">${e.name}</div>
+          <div class="countdown-days">${daysUntil(e.start)} days</div>
+          <div class="event-loc">${e.location}</div>
+        </div>
+      `).join('');
+
+      // Types
+      const types = [...new Set(events.map(e=>e.type))];
+      const typesEl = document.getElementById('event-types');
+      typesEl.innerHTML = types.map(t=>`<span class="tag">${t}</span>`).join(' ');
+    });
+</script>
+</body>
+</html>

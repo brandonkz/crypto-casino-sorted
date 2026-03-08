@@ -38,6 +38,9 @@ if [ $? -eq 0 ]; then
   echo "🔥 Updating Reddit + Streamer watch..."
   /usr/bin/python3 update-reddit-streamers.py
 
+  echo "📅 Updating events calendar..."
+  /usr/bin/python3 update-events.py
+
   # Weekly recap (Mondays)
   if [ "$(date +%u)" -eq 1 ]; then
     echo ""
