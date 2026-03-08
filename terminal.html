@@ -291,6 +291,59 @@
     .hm-cell:hover{transform:scale(1.4);z-index:2;}
     .hm-hdr{font-size:6px;color:var(--muted);text-align:center;}
 
+    /* === HEALTH SCORES === */
+    .health-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border);}
+    .health-card{background:var(--bg2);padding:12px 14px;display:flex;flex-direction:column;gap:6px;}
+    .health-top{display:flex;justify-content:space-between;align-items:center;}
+    .health-name{font-weight:700;font-size:12px;display:flex;align-items:center;gap:6px;}
+    .health-score-num{font-size:20px;font-weight:800;}
+    .health-score-num.green{color:var(--green);}
+    .health-score-num.amber{color:var(--amber);}
+    .health-score-num.red{color:var(--red);}
+    .health-light{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+    .health-light.green{background:var(--green);box-shadow:0 0 6px var(--green);}
+    .health-light.amber{background:var(--amber);box-shadow:0 0 6px var(--amber);}
+    .health-light.red{background:var(--red);box-shadow:0 0 6px var(--red);}
+    .health-status{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;}
+    .health-status.green{color:var(--green);}
+    .health-status.amber{color:var(--amber);}
+    .health-status.red{color:var(--red);}
+    .health-bars{display:flex;gap:2px;height:6px;margin-top:2px;}
+    .health-bar-seg{flex:1;border-radius:1px;position:relative;}
+    .health-bar-fill{height:100%;border-radius:1px;transition:width 0.5s;}
+    .health-meta{display:flex;justify-content:space-between;font-size:9px;color:var(--dim);}
+    .health-sparkline{display:flex;align-items:flex-end;gap:1px;height:24px;}
+    .health-spark-bar{flex:1;min-width:3px;border-radius:1px 1px 0 0;transition:height 0.3s;}
+    .health-wow{font-size:10px;font-weight:700;}
+    .health-wow.up{color:var(--green);}
+    .health-wow.down{color:var(--red);}
+
+    /* === WHALE FEED === */
+    .whale-feed-row{
+      display:grid;grid-template-columns:24px 55px 90px 1fr 90px 80px;
+      padding:6px 12px;border-bottom:1px solid rgba(26,29,46,0.4);
+      font-size:11px;align-items:center;gap:8px;transition:background 0.15s;
+    }
+    .whale-feed-row:hover{background:rgba(255,255,255,0.015);}
+    .whale-feed-row.header{color:var(--muted);font-size:8px;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border);}
+    .whale-rank{color:var(--muted);text-align:center;font-size:9px;}
+    .whale-tag-cell .whale-tag{
+      font-size:7px;padding:2px 5px;border-radius:2px;font-weight:700;
+    }
+    .whale-tag.MEGA{background:var(--red-bg);color:var(--red);border:1px solid var(--red-b);}
+    .whale-tag.WHALE{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-b);}
+    .whale-tag.BIG{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(68,138,255,0.2);}
+    .whale-amount-cell{font-weight:700;text-align:right;}
+    .whale-wallet-cell{color:var(--muted);font-size:10px;font-family:var(--mono);}
+    .whale-date-cell{color:var(--dim);font-size:9px;text-align:right;}
+
+    @media(max-width:768px){
+      .health-grid{grid-template-columns:1fr;}
+      .whale-feed-row{grid-template-columns:20px 50px 70px 1fr 70px;font-size:10px;}
+      .whale-wallet-cell{display:none;}
+      div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
+    }
+
     /* === DISTRIBUTION === */
     .dist-row{display:flex;align-items:center;gap:6px;padding:3px 10px;font-size:9px;}
     .dist-label{min-width:55px;color:var(--dim);text-align:right;font-size:8px;}
@@ -452,6 +505,63 @@
     <div class="panel-body" id="intel"></div>
   </div>
 
+</div>
+
+<!-- === HEALTH SCORES (full width, below grid) === -->
+<div class="container" style="padding-top:12px;">
+  <div class="panel">
+    <div class="panel-h">
+      <div class="panel-t">🏥 Casino Health Scores</div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span class="panel-badge green">COMPOSITE 0-100</span>
+        <span style="font-size:8px;color:var(--dim);font-family:var(--mono);">VOL TREND + DEPOSIT TREND + CONSISTENCY + ACTIVITY</span>
+      </div>
+    </div>
+    <div class="panel-body flush" id="health-panel" style="overflow-x:auto;"></div>
+  </div>
+</div>
+
+<!-- === WHALE TRACKER (full width) === -->
+<div class="container" style="padding-top:0;">
+  <!-- Whale KPIs -->
+  <div class="panel" style="margin-bottom:1px;">
+    <div class="panel-h">
+      <div class="panel-t">🐋 Whale Intelligence</div>
+      <div class="panel-badge alert">≥ $5,000</div>
+    </div>
+    <div class="panel-body" style="padding:0;">
+      <div id="whale-kpis" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);"></div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-bottom:12px;">
+    <!-- Whale Timeline Chart -->
+    <div class="panel" style="border:none;">
+      <div class="panel-h">
+        <div class="panel-t">🐋 Whale Activity Timeline</div>
+        <div class="panel-badge data">DAILY</div>
+      </div>
+      <div class="chart-container" style="height:220px;"><canvas id="chart-whale-timeline"></canvas></div>
+    </div>
+
+    <!-- Whale Concentration by Casino -->
+    <div class="panel" style="border:none;">
+      <div class="panel-h">
+        <div class="panel-t">🎯 Whale Concentration by Casino</div>
+        <div class="panel-badge amber">% OF VOLUME</div>
+      </div>
+      <div class="chart-container" style="height:220px;"><canvas id="chart-whale-casino"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Whale Feed -->
+  <div class="panel" style="margin-bottom:12px;">
+    <div class="panel-h">
+      <div class="panel-t">🐋 Largest Deposits (All Time)</div>
+      <div class="panel-badge alert">TOP 50</div>
+    </div>
+    <div class="panel-body flush" id="whale-feed" style="max-height:400px;overflow-y:auto;"></div>
+  </div>
 </div>
 
 <script>
@@ -803,6 +913,177 @@ function render(D){
       <div class="intel-text"><span class="intel-tag ${i.tag}">${i.tag.toUpperCase()}</span>${i.text}</div>
     </div>
   `).join('');
+
+  // === HEALTH SCORES ===
+  if(D.health){
+    const healthPanel=document.getElementById('health-panel');
+    const healthHTML=casinos.map(c=>{
+      const h=D.health[c];
+      if(!h)return'';
+      const maxComp=30; // max component score
+      const compBars=[
+        {label:'VOL',score:h.components.volume_trend,max:30,color:'var(--green)'},
+        {label:'DEP',score:h.components.deposit_trend,max:25,color:'var(--blue)'},
+        {label:'CON',score:h.components.consistency,max:25,color:'var(--amber)'},
+        {label:'ACT',score:h.components.activity,max:20,color:'var(--purple)'},
+      ];
+      const sparkMax=Math.max(...h.sparkline_volume,1);
+      const wowArrow=h.wow_volume_delta>=0?'▲':'▼';
+      const wowCls=h.wow_volume_delta>=0?'up':'down';
+
+      return`<div class="health-card">
+        <div class="health-top">
+          <div class="health-name">
+            <span class="health-light ${h.light}"></span>
+            <span class="c-dot" style="background:${CC[c]||'#666'}"></span>
+            ${c}
+          </div>
+          <div style="text-align:right;">
+            <div class="health-score-num ${h.light}">${h.score}</div>
+            <div class="health-status ${h.light}">${h.status}</div>
+          </div>
+        </div>
+        <div class="health-bars">
+          ${compBars.map(b=>`<div class="health-bar-seg" style="background:rgba(255,255,255,0.03);" title="${b.label}: ${b.score}/${b.max}">
+            <div class="health-bar-fill" style="width:${(b.score/b.max*100)}%;background:${b.color};"></div>
+          </div>`).join('')}
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:7px;color:var(--muted);">
+          ${compBars.map(b=>`<span>${b.label} ${b.score.toFixed(0)}</span>`).join('')}
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:4px;">
+          <div class="health-sparkline">
+            ${h.sparkline_volume.map(v=>`<div class="health-spark-bar" style="height:${Math.max(2,v/sparkMax*24)}px;background:${CC[c]||'var(--green)'};"></div>`).join('')}
+          </div>
+          <div style="text-align:right;">
+            <div class="health-wow ${wowCls}">${wowArrow} ${Math.abs(h.wow_volume_delta).toFixed(1)}%</div>
+            <div style="font-size:8px;color:var(--muted);">7d trend</div>
+          </div>
+        </div>
+        <div class="health-meta">
+          <span>${h.unique_wallets} wallets</span>
+          <span>avg ${fmt(h.avg_deposit)}</span>
+        </div>
+      </div>`;
+    }).join('');
+    healthPanel.innerHTML=`<div class="health-grid">${healthHTML}</div>`;
+  }
+
+  // === WHALE TRACKER ===
+  if(D.whales){
+    const W=D.whales;
+
+    // Whale KPIs
+    const whaleKpis=document.getElementById('whale-kpis');
+    const kpiData=[
+      {l:'WHALE DEPOSITS',v:W.stats.total_count.toLocaleString(),c:'amber',s:'≥ $5,000'},
+      {l:'WHALE VOLUME',v:fmt(W.stats.total_volume),c:'amber',s:W.stats.pct_of_total_volume+'% of total'},
+      {l:'AVG WHALE SIZE',v:fmt(W.stats.avg_whale_size),c:'',s:'per deposit'},
+      {l:'BIGGEST SINGLE',v:fmt(W.stats.biggest_single),c:'red',s:'all time record'},
+      {l:'MEGA WHALES',v:W.stats.mega_count.toString(),c:'red',s:'≥ $50,000'},
+      {l:'WHALES',v:W.stats.whale_count.toString(),c:'amber',s:'$10K - $50K'},
+      {l:'BIG FISH',v:W.stats.big_fish_count.toString(),c:'blue',s:'$5K - $10K'},
+    ];
+    whaleKpis.innerHTML=kpiData.map(k=>`<div style="background:var(--bg2);padding:10px 12px;">
+      <div style="font-size:8px;color:var(--dim);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:2px;">${k.l}</div>
+      <div style="font-size:18px;font-weight:700;${k.c?'color:var(--'+k.c+')':''}">${k.v}</div>
+      <div style="font-size:8px;color:var(--dim);">${k.s}</div>
+    </div>`).join('');
+
+    // Whale Timeline Chart
+    new Chart(document.getElementById('chart-whale-timeline'),{
+      type:'bar',
+      data:{
+        labels:W.timeline.map(t=>t.date.slice(5)),
+        datasets:[
+          {
+            label:'Volume',
+            data:W.timeline.map(t=>t.volume),
+            backgroundColor:'rgba(255,196,0,0.4)',
+            borderColor:'#ffc400',
+            borderWidth:1,
+            borderRadius:2,
+            yAxisID:'y',
+          },
+          {
+            label:'Count',
+            type:'line',
+            data:W.timeline.map(t=>t.count),
+            borderColor:'#ff5252',
+            backgroundColor:'rgba(255,82,82,0.1)',
+            borderWidth:2,
+            pointRadius:3,
+            pointBackgroundColor:'#ff5252',
+            tension:0.3,
+            yAxisID:'y1',
+          }
+        ]
+      },
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        scales:{
+          y:{position:'left',ticks:{callback:v=>fmt(v)},grid:{color:'rgba(26,29,46,0.4)'}},
+          y1:{position:'right',grid:{display:false}},
+          x:{grid:{display:false},ticks:{maxRotation:0,font:{size:8}}}
+        },
+        plugins:{
+          legend:{display:true,position:'bottom',labels:{usePointStyle:true,padding:10,font:{size:9}}},
+          tooltip:{callbacks:{label:c=>c.datasetIndex===0?'Vol: '+fmt(c.raw):'Count: '+c.raw}}
+        }
+      }
+    });
+
+    // Whale Concentration by Casino
+    const wCasinos=casinos.filter(c=>W.by_casino[c]&&W.by_casino[c].count>0);
+    new Chart(document.getElementById('chart-whale-casino'),{
+      type:'bar',
+      data:{
+        labels:wCasinos,
+        datasets:[
+          {
+            label:'Whale % of Volume',
+            data:wCasinos.map(c=>W.by_casino[c].whale_pct),
+            backgroundColor:wCasinos.map((c,i)=>(CC[c]||CA[i])+'80'),
+            borderColor:wCasinos.map((c,i)=>CC[c]||CA[i]),
+            borderWidth:1,
+            borderRadius:3,
+          }
+        ]
+      },
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        indexAxis:'y',
+        scales:{
+          x:{ticks:{callback:v=>v+'%'},grid:{color:'rgba(26,29,46,0.4)'},max:100},
+          y:{grid:{display:false}}
+        },
+        plugins:{
+          tooltip:{callbacks:{label:c=>{
+            const cs=W.by_casino[wCasinos[c.dataIndex]];
+            return`${c.raw}% whale vol (${cs.count} deposits, ${fmt(cs.total_usd)})`;
+          }}}
+        }
+      }
+    });
+
+    // Whale Feed
+    const whaleFeed=document.getElementById('whale-feed');
+    const top50=W.deposits.slice(0,50);
+    whaleFeed.innerHTML=`<div class="whale-feed-row header">
+      <div>#</div><div>TAG</div><div>CASINO</div><div>WALLET</div><div style="text-align:right">AMOUNT</div><div style="text-align:right">DATE</div>
+    </div>`+top50.map((w,i)=>{
+      const tagCls=w.tag==='MEGA'?'MEGA':w.tag==='WHALE'?'WHALE':'BIG';
+      const amtColor=w.usd>=50000?'var(--red)':w.usd>=10000?'var(--amber)':'var(--blue)';
+      return`<div class="whale-feed-row">
+        <div class="whale-rank">${i+1}</div>
+        <div class="whale-tag-cell"><span class="whale-tag ${tagCls}">${w.tag}</span></div>
+        <div style="font-weight:600;"><span class="c-dot" style="background:${CC[w.casino]||'#666'}"></span>${w.casino}</div>
+        <div class="whale-wallet-cell">${w.wallet}</div>
+        <div class="whale-amount-cell" style="color:${amtColor}">${fmt(w.usd)}</div>
+        <div class="whale-date-cell">${w.date.slice(5)} ${w.time.slice(0,5)}</div>
+      </div>`;
+    }).join('');
+  }
 
   // Track
   if(typeof gtag==='function'){
