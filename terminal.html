@@ -627,7 +627,7 @@ fetchMarket();
 setInterval(fetchMarket,120000);
 
 // Load terminal data
-fetch('data/terminal-data.json').then(r=>r.json()).then(render).catch(e=>console.error(e));
+fetch('data/terminal-data.json?v='+Date.now()).then(r=>r.json()).then(render).catch(e=>console.error(e));
 
 function render(D){
   const{dates,casinos,daily,hourly,totals,summary,distribution}=D;
