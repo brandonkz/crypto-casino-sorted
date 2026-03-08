@@ -34,6 +34,16 @@ if [ $? -eq 0 ]; then
   echo ""
   echo "📰 Updating news + promos..."
   /usr/bin/python3 update-news-promos.py
+
+  echo "🔥 Updating Reddit + Streamer watch..."
+  /usr/bin/python3 update-reddit-streamers.py
+
+  # Weekly recap (Mondays)
+  if [ "$(date +%u)" -eq 1 ]; then
+    echo ""
+    echo "📝 Generating weekly recap..."
+    /usr/bin/python3 generate-weekly-recap.py
+  fi
 else
   echo "❌ Export failed"
   exit 1

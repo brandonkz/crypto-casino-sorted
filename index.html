@@ -165,6 +165,26 @@
             </div>
           </div>
         </div>
+        <div class="t-grid-2" style="margin-top:12px;">
+          <div class="t-panel">
+            <div class="t-panel-header">
+              <div class="t-panel-title">🔥 Reddit Buzz</div>
+              <div class="t-badge t-badge-red">HOT</div>
+            </div>
+            <div class="t-panel-body flush">
+              <table class="t-table" id="home-reddit"></table>
+            </div>
+          </div>
+          <div class="t-panel">
+            <div class="t-panel-header">
+              <div class="t-panel-title">🎥 Streamer Watch</div>
+              <div class="t-badge t-badge-blue">LIVE/ACTIVE</div>
+            </div>
+            <div class="t-panel-body flush">
+              <table class="t-table" id="home-streamers"></table>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="stats">
@@ -1413,6 +1433,48 @@
                   <td class="t-amber">${p.casino}</td>
                   <td>${p.offer} <span class="t-dim" style="font-size:0.7rem;">${p.details || ''}</span></td>
                   <td><span class="t-badge t-badge-amber">${p.type}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          `;
+        }
+
+        // Reddit Buzz
+        const redditRes = await fetch('/data/reddit.json');
+        const reddit = await redditRes.json();
+        const redditTable = document.getElementById('home-reddit');
+        if (redditTable) {
+          redditTable.innerHTML = `
+            <thead><tr>
+              <th>Sub</th><th>Thread</th><th>Tag</th>
+            </tr></thead>
+            <tbody>
+              ${(reddit.items || []).map(r => `
+                <tr>
+                  <td class="t-red">${r.subreddit}</td>
+                  <td><a href="${r.url}" target="_blank" rel="noopener">${r.title}</a></td>
+                  <td><span class="t-badge t-badge-red">${r.tag}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          `;
+        }
+
+        // Streamer Watch
+        const streamRes = await fetch('/data/streamers.json');
+        const streamers = await streamRes.json();
+        const streamTable = document.getElementById('home-streamers');
+        if (streamTable) {
+          streamTable.innerHTML = `
+            <thead><tr>
+              <th>Name</th><th>Focus</th><th>Platform</th>
+            </tr></thead>
+            <tbody>
+              ${(streamers.items || []).map(s => `
+                <tr>
+                  <td class="t-blue">${s.name}</td>
+                  <td><a href="${s.url}" target="_blank" rel="noopener">${s.focus}</a></td>
+                  <td><span class="t-badge t-badge-blue">${s.platform}</span></td>
                 </tr>
               `).join('')}
             </tbody>
