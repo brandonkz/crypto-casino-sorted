@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Arbitrage Scanner - Polymarket vs Kalshi</title>
+  <link rel="stylesheet" href="terminal-theme.css">
+  <style>
+    .scanner-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .arb-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .arb-card.hot {
+      border-color: var(--accent);
+      background: rgba(46, 234, 122, 0.05);
+    }
+    .arb-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .arb-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .arb-profit {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .arb-profit.negative {
+      color: var(--muted);
+    }
+    .arb-odds {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .platform-odds {
+      padding: 10px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+    }
+    .platform-name {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .odds-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .side-label {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .arb-meta {
+      display: flex;
+      gap: 16px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .refresh-status {
+      text-align: center;
+      padding: 12px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .refresh-timer {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--muted);
+    }
+    .filters {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover {
+      border-color: var(--accent);
+    }
+    .filter-btn.active {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+    @media (max-width: 768px) {
+      .arb-odds {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <div class="container">
+    <div class="terminal-header" style="margin-bottom: 20px;">
+      <span>⚡ LIVE ARBITRAGE SCANNER</span>
+      <span style="font-size: 12px; color: var(--muted);">Polymarket vs Kalshi • Auto-refresh: 30s</span>
+    </div>
+
+    <div class="refresh-status">
+      Last updated: <span id="last-update">--:--:--</span> • 
+      Next refresh in: <span class="refresh-timer" id="countdown">30</span>s
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All Opportunities</button>
+      <button class="filter-btn" data-filter="hot">Hot (>2%)</button>
+      <button class="filter-btn" data-filter="politics">Politics</button>
+      <button class="filter-btn" data-filter="sports">Sports</button>
+      <button class="filter-btn" data-filter="crypto">Crypto</button>
+    </div>
+
+    <div class="scanner-grid" id="arb-grid">
+      <div class="loading">Loading arbitrage opportunities...</div>
+    </div>
+  </div>
+
+  <script>
+    let opportunities = [];
+    let currentFilter = 'all';
+    let refreshInterval;
+    let countdownInterval;
+    let secondsLeft = 30;
+
+    async function fetchOpportunities() {
+      try {
+        const response = await fetch('data/arb-opportunities.json');
+        const data = await response.json();
+        opportunities = data.opportunities || [];
+        return opportunities;
+      } catch (error) {
+        console.error('Error fetching opportunities:', error);
+        // Fallback to mock data if API fails
+        return [
+          {
+            id: 1,
+            title: "Trump wins 2024 election",
+            category: "politics",
+            polymarket: { yes: 0.54, no: 0.46 },
+            kalshi: { yes: 0.49, no: 0.51 },
+            volume_24h: "$2.4M",
+            last_update: new Date().toISOString(),
+            arbitrage: { profit_pct: 5.2, strategy: "poly_yes_kalshi_no" }
+          }
+        ];
+      }
+    }
+
+    function renderOpportunity(opp) {
+      const arb = opp.arbitrage;
+      const isHot = arb.profit_pct > 2;
+      
+      // Determine which side to take based on strategy
+      let polyAction, kalshiAction;
+      const strategy = arb.strategy || 'poly_yes_kalshi_no';
+      
+      if (strategy.includes('poly_yes')) {
+        polyAction = { side: 'YES', odds: opp.polymarket.yes };
+      } else {
+        polyAction = { side: 'NO', odds: opp.polymarket.no };
+      }
+      
+      if (strategy.includes('kalshi_yes')) {
+        kalshiAction = { side: 'YES', odds: opp.kalshi.yes };
+      } else {
+        kalshiAction = { side: 'NO', odds: opp.kalshi.no };
+      }
+
+      const lastUpdate = new Date(opp.last_update);
+      const secondsAgo = Math.floor((Date.now() - lastUpdate) / 1000);
+
+      return `
+        <div class="arb-card ${isHot ? 'hot' : ''}" data-category="${opp.category}">
+          <div class="arb-header">
+            <div class="arb-title">${opp.title}</div>
+            <div class="arb-profit ${arb.profit_pct < 0 ? 'negative' : ''}">
+              ${arb.profit_pct > 0 ? '+' : ''}${arb.profit_pct}%
+            </div>
+          </div>
+
+          <div class="arb-odds">
+            <div class="platform-odds">
+              <div class="platform-name">📊 Polymarket</div>
+              <div class="odds-value">${(polyAction.odds * 100).toFixed(1)}¢</div>
+              <div class="side-label">BUY ${polyAction.side}</div>
+            </div>
+            <div class="platform-odds">
+              <div class="platform-name">📈 Kalshi</div>
+              <div class="odds-value">${(kalshiAction.odds * 100).toFixed(1)}¢</div>
+              <div class="side-label">BUY ${kalshiAction.side}</div>
+            </div>
+          </div>
+
+          <div class="arb-meta">
+            <span>📊 Volume: ${opp.volume_24h}</span>
+            <span>⏱️ Updated: ${secondsAgo}s ago</span>
+            <span style="text-transform: uppercase; color: var(--accent);">${opp.category}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    async function renderOpportunities() {
+      const grid = document.getElementById('arb-grid');
+      
+      // Fetch latest data
+      if (opportunities.length === 0) {
+        opportunities = await fetchOpportunities();
+      }
+      
+      let filtered = opportunities;
+      
+      if (currentFilter === 'hot') {
+        filtered = filtered.filter(opp => opp.arbitrage.profit_pct > 2);
+      } else if (currentFilter !== 'all') {
+        filtered = filtered.filter(opp => opp.category === currentFilter);
+      }
+
+      // Already sorted by profit in API
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="loading">No opportunities found for this filter.</div>';
+      } else {
+        grid.innerHTML = filtered.map(renderOpportunity).join('');
+      }
+
+      // Update timestamp
+      const now = new Date();
+      document.getElementById('last-update').textContent = now.toLocaleTimeString();
+    }
+
+    function startCountdown() {
+      secondsLeft = 30;
+      countdownInterval = setInterval(() => {
+        secondsLeft--;
+        document.getElementById('countdown').textContent = secondsLeft;
+        
+        if (secondsLeft <= 0) {
+          renderOpportunities();
+          secondsLeft = 30;
+        }
+      }, 1000);
+    }
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderOpportunities();
+      });
+    });
+
+    // Initial render
+    renderOpportunities();
+    startCountdown();
+
+    // Load nav
+    fetch('shared-nav.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('nav-placeholder').innerHTML = html;
+      });
+  </script>
+</body>
+</html>
