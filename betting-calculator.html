@@ -28,202 +28,206 @@
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="terminal-theme.css">
   <style>
-    .calculator-container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    
-    .calculator-card {
-      background: white;
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      margin-bottom: 24px;
-    }
-    
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-    
-    @media (max-width: 768px) {
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    .form-group {
-      margin-bottom: 24px;
-    }
-    
-    .form-label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #1f2937;
-    }
-    
-    .form-input {
-      width: 100%;
-      padding: 12px 16px;
-      border: 2px solid #e5e7eb;
-      border-radius: 8px;
-      font-size: 16px;
-      transition: border-color 0.2s;
-    }
-    
-    .form-input:focus {
-      outline: none;
-      border-color: #8b5cf6;
-    }
-    
-    .btn-calculate {
-      width: 100%;
-      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
-      color: white;
-      padding: 16px;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    
-    .btn-calculate:hover {
-      transform: translateY(-2px);
-    }
-    
-    .result-card {
-      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
-      color: white;
-      border-radius: 16px;
-      padding: 32px;
-      margin-bottom: 24px;
-      display: none;
-    }
-    
-    .result-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      opacity: 0.9;
-    }
-    
-    .result-amount {
-      font-size: 42px;
-      font-weight: 900;
-      margin-bottom: 8px;
-    }
-    
-    .result-subtitle {
-      font-size: 16px;
-      opacity: 0.8;
-      margin-bottom: 24px;
-    }
-    
-    .conversion-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-top: 24px;
-    }
-    
-    .conversion-card {
-      background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-    }
-    
-    .conversion-label {
-      font-size: 14px;
-      opacity: 0.8;
-      margin-bottom: 8px;
-    }
-    
-    .conversion-value {
-      font-size: 24px;
-      font-weight: 700;
-    }
-    
-    .info-section {
-      background: #f9fafb;
-      border-radius: 12px;
-      padding: 24px;
-      margin-top: 24px;
-    }
-    
-    .info-section h3 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #1f2937;
-    }
-    
-    .info-section p {
-      color: #6b7280;
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-    
-    .crypto-prices {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 24px;
-      border: 2px solid #e5e7eb;
-    }
-    
-    .crypto-prices h4 {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: #6b7280;
-    }
-    
-    .price-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 0;
-      border-bottom: 1px solid #f3f4f6;
-    }
-    
-    .price-row:last-child {
-      border-bottom: none;
-    }
-    
-    .loading-text {
-      color: #8b5cf6;
-      font-weight: 600;
-    }
+.calculator-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+
+.calculator-card,
+.crypto-prices,
+.info-section {
+  background: var(--t-bg2);
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius);
+  padding: 20px;
+  box-shadow: none;
+}
+
+.result-card {
+  background: var(--t-bg3);
+  border: 1px solid var(--t-border2);
+  border-radius: var(--t-radius);
+  color: var(--t-text);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-label {
+  display: block;
+  font-family: var(--t-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--t-dim);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--t-border2);
+  border-radius: var(--t-radius);
+  font-size: 0.95rem;
+  background: var(--t-bg);
+  color: var(--t-text);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--t-green);
+}
+
+.btn-calculate {
+  width: 100%;
+  background: var(--t-green);
+  color: #0b0c10;
+  padding: 14px;
+  border: none;
+  border-radius: var(--t-radius);
+  font-size: 0.85rem;
+  font-family: var(--t-mono);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-calculate:hover { background: #69f0ae; }
+
+.result-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--t-dim);
+  margin-bottom: 6px;
+}
+
+.result-amount {
+  font-size: 2.4rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.result-subtitle {
+  font-size: 0.9rem;
+  color: var(--t-dim);
+  margin-bottom: 20px;
+}
+
+.conversion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.conversion-card {
+  background: var(--t-bg);
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius);
+  padding: 14px;
+  text-align: center;
+}
+
+.conversion-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--t-dim);
+  margin-bottom: 6px;
+  font-family: var(--t-mono);
+}
+
+.conversion-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.info-section h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--t-text);
+  font-family: var(--t-mono);
+  border-bottom: 1px solid var(--t-border);
+  padding-bottom: 6px;
+}
+
+.info-section p {
+  color: var(--t-dim);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.crypto-prices h4 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: var(--t-muted);
+  font-family: var(--t-mono);
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--t-border);
+  color: var(--t-text);
+}
+
+.price-row:last-child { border-bottom: none; }
+
+.loading-text { color: var(--t-blue); font-weight: 600; }
+
+.calculator-container h2 {
+  color: var(--t-text);
+  font-family: var(--t-mono);
+}
+
+.calculator-container p { color: var(--t-dim) !important; }
+
+.calculator-container a {
+  background: var(--t-bg3) !important;
+  color: var(--t-text) !important;
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius) !important;
+  text-decoration: none;
+}
+
   </style>
 </head>
 <body>
   <!-- Header -->
 
-  <header class="header">
-    <div class="header-content">
-        <a href="/" class="brand">
-          <span class="brand-icon">🎰</span>
-          <span class="brand-name">CryptoCasinoSorted</span>
-        </a>
-        
-        <nav class="nav">
-          <a href="/#casinos" class="nav-link">Casinos</a>
-          <a href="/analytics.html" class="nav-link">📊 Live Data</a>
-          <a href="/reviews/index.html" class="nav-link">Reviews</a>
-          <a href="/blog/index.html" class="nav-link">Blog</a>
-          <a href="/wagering-calculator.html" class="nav-link">Calculators</a>
-          <a href="/blog/index.html" class="nav-link">Blog</a>
-          <a href="https://betsorted.co.za" class="nav-link" target="_blank">Sports Betting 🎯</a>
-        </nav>
-      </div>
-  </header>
+  <nav class="t-nav">
+  <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
+  <div class="t-nav-links">
+    <a href="/terminal.html">Terminal</a>
+    <a href="/analytics.html">Live Data</a>
+    <a href="/calculators.html">Tools</a>
+    <a href="/blog/index.html">Blog</a>
+    <a href="/reviews/index.html" class="t-nav-hide-mobile">Reviews</a>
+  </div>
+</nav>
 
   <!-- Calculator -->
   <section class="calculator-container">
@@ -351,16 +355,12 @@
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p class="footer-disclaimer">
-        <strong>Disclaimer:</strong> Gambling can be addictive. Please play responsibly. Cryptocurrency prices are volatile.
-      </p>
-      <p class="footer-copyright">
-        © 2026 CryptoCasinoSorted. Built by <a href="https://twitter.com/brandonkz" target="_blank" rel="noopener" style="color: var(--primary);">@brandonkz</a> • <a href="https://t.me/brandonkz" target="_blank" rel="noopener" style="color: var(--primary);">Get in touch on Telegram</a>
-      </p>
-    </div>
-  </footer>
+  <footer class="t-footer">
+  <div class="t-container">
+    <p>CCT — Crypto Casino Terminal · <a href="/">CryptoCasinoSorted</a></p>
+    <p><a href="/terminal.html">Terminal</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/index.html">Blog</a></p>
+  </div>
+</footer>
 
   <script>
     // Crypto prices (will be fetched from API in production)

@@ -7,82 +7,243 @@
   <meta name="description" content="Compare rakeback rates across 7 top crypto casinos. Enter your monthly wager and see exactly how much you earn back at Stake, Rollbit, BC.Game, Duelbits, Gamdom, Roobet, and Rainbet.">
   <link rel="canonical" href="https://cryptocasinosorted.com/rakeback-comparison.html">
   <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="terminal-theme.css">
   <link rel="icon" href="/favicon.ico">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e2e8f0; margin: 0; }
-    .page { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
-    h1 { font-size: 2rem; font-weight: 900; color: #f8fafc; margin-bottom: 8px; }
-    .subtitle { color: #94a3b8; font-size: 0.95rem; margin-bottom: 36px; line-height: 1.6; }
+body {
+  font-family: var(--t-sans);
+  background: var(--t-bg);
+  color: var(--t-text);
+  margin: 0;
+}
 
-    /* Calculator */
-    .calc-card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 28px; margin-bottom: 32px; }
-    .calc-card h2 { font-size: 1.1rem; font-weight: 700; color: #f8fafc; margin: 0 0 20px; }
-    .calc-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
-    .calc-label { font-size: 0.9rem; font-weight: 600; color: #94a3b8; white-space: nowrap; }
-    .calc-input { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 12px 16px; color: #f8fafc; font-size: 1.1rem; font-weight: 700; width: 200px; outline: none; transition: border-color 0.2s; }
-    .calc-input:focus { border-color: #6366f1; }
-    .calc-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-    .result-chip { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 14px 16px; transition: all 0.15s; }
-    .result-chip .casino-name { font-size: 0.75rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
-    .result-chip .earn-val { font-size: 1.4rem; font-weight: 900; color: #10b981; }
-    .result-chip .rate-info { font-size: 0.72rem; color: #64748b; margin-top: 3px; }
-    .result-chip.best { border-color: #10b981; background: #0f2720; }
-    .result-chip.best .casino-name { color: #10b981; }
-    .result-chip:hover { border-color: #6366f1; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(99,102,241,0.2); transition: all 0.15s; }
-    .best-badge { display: inline-block; background: #10b981; color: white; font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+.page { max-width: 1100px; margin: 0 auto; padding: 32px 16px 60px; }
 
-    /* Section label */
-    .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #64748b; margin: 0 0 16px; display: flex; align-items: center; gap: 8px; }
-    .section-label::after { content:''; flex:1; height:1px; background:#1e293b; }
+h1 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--t-text);
+  margin-bottom: 8px;
+  font-family: var(--t-mono);
+}
 
-    /* Comparison table */
-    .compare-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
-    .compare-table th { background: #1e293b; padding: 12px 16px; text-align: left; font-size: 0.78rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
-    .compare-table th:not(:first-child) { text-align: center; }
-    .compare-table td { padding: 14px 16px; border-bottom: 1px solid #1e293b; font-size: 0.875rem; color: #cbd5e1; vertical-align: middle; }
-    .compare-table td:not(:first-child) { text-align: center; }
-    .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table tr:hover td { background: #1e293b44; }
-    .casino-cell { display: flex; align-items: center; gap: 10px; }
-    .casino-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .casino-cell .name { font-weight: 700; color: #f1f5f9; }
-    .casino-cell .tag { font-size: 0.7rem; color: #64748b; }
-    .rate-high { color: #10b981; font-weight: 700; }
-    .rate-med { color: #f59e0b; font-weight: 700; }
-    .rate-low { color: #64748b; font-weight: 600; }
-    .pill { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; }
-    .pill-green { background: #064e3b; color: #10b981; }
-    .pill-yellow { background: #451a03; color: #f59e0b; }
-    .pill-blue { background: #1e1b4b; color: #818cf8; }
-    .pill-gray { background: #1e293b; color: #64748b; }
+.subtitle { color: var(--t-dim); font-size: 0.9rem; margin-bottom: 24px; line-height: 1.6; }
 
-    /* Notes */
-    .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 32px; }
-    .note-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 16px; }
-    .note-card .nc-title { font-size: 0.8rem; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; }
-    .note-card .nc-text { font-size: 0.78rem; color: #94a3b8; line-height: 1.6; }
+.calc-card {
+  background: var(--t-bg2);
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius);
+  padding: 20px;
+  margin-bottom: 24px;
+}
 
-    /* CTA */
-    .cta-strip { background: linear-gradient(135deg, #4f46e5, #7c3aed); border-radius: 14px; padding: 24px; text-align: center; margin-bottom: 24px; }
-    .cta-strip p { color: rgba(255,255,255,0.85); font-size: 0.9rem; margin: 0 0 14px; }
-    .cta-strip a { display: inline-block; background: white; color: #4f46e5; padding: 10px 24px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.9rem; }
+.calc-card h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--t-text);
+  margin: 0 0 16px;
+  font-family: var(--t-mono);
+}
 
-    .disclaimer { font-size: 0.72rem; color: #475569; text-align: center; margin-top: 32px; line-height: 1.7; }
+.calc-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
 
-    @media (max-width: 600px) {
-      .notes-grid { grid-template-columns: 1fr; }
-      .calc-results { grid-template-columns: 1fr 1fr; }
-      .compare-table { font-size: 0.8rem; }
-      .compare-table th, .compare-table td { padding: 10px 10px; }
-    }
+.calc-label { font-size: 0.75rem; font-weight: 700; color: var(--t-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+
+.calc-input {
+  background: var(--t-bg);
+  border: 1px solid var(--t-border2);
+  border-radius: var(--t-radius);
+  padding: 10px 12px;
+  color: var(--t-text);
+  font-size: 1rem;
+  font-weight: 700;
+  width: 200px;
+  outline: none;
+}
+
+.calc-input:focus { border-color: var(--t-green); }
+
+.calc-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+
+.result-chip {
+  background: var(--t-bg3);
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius);
+  padding: 12px 14px;
+  transition: border-color 0.15s;
+}
+
+.result-chip .casino-name {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--t-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.result-chip .earn-val { font-size: 1.2rem; font-weight: 900; color: var(--t-green); }
+
+.result-chip .rate-info { font-size: 0.65rem; color: var(--t-dim); margin-top: 3px; }
+
+.result-chip.best {
+  border-color: var(--t-green);
+  background: var(--t-green-bg);
+}
+
+.result-chip.best .casino-name { color: var(--t-green); }
+
+.result-chip:hover { border-color: var(--t-border2); transform: none; box-shadow: none; }
+
+.best-badge {
+  display: inline-block;
+  background: var(--t-green);
+  color: #0b0c10;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: var(--t-radius);
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--t-muted);
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--t-mono);
+}
+
+.section-label::after { content:''; flex:1; height:1px; background: var(--t-border); }
+
+.compare-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+
+.compare-table th {
+  background: var(--t-bg2);
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--t-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.compare-table th:not(:first-child) { text-align: center; }
+
+.compare-table td {
+  padding: 12px 12px;
+  border-bottom: 1px solid var(--t-border);
+  font-size: 0.8rem;
+  color: var(--t-text);
+  vertical-align: middle;
+}
+
+.compare-table td:not(:first-child) { text-align: center; }
+
+.compare-table tr:last-child td { border-bottom: none; }
+
+.compare-table tr:hover td { background: var(--t-bg3); }
+
+.casino-cell { display: flex; align-items: center; gap: 10px; }
+
+.casino-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+.casino-cell .name { font-weight: 700; color: var(--t-text); }
+
+.casino-cell .tag { font-size: 0.65rem; color: var(--t-muted); }
+
+.rate-high { color: var(--t-green); font-weight: 800; }
+
+.rate-med { color: var(--t-amber); font-weight: 800; }
+
+.rate-low { color: var(--t-muted); font-weight: 700; }
+
+.pill { display: inline-block; font-size: 0.6rem; font-weight: 700; padding: 2px 6px; border-radius: var(--t-radius); }
+
+.pill-green { background: var(--t-green-bg); color: var(--t-green); border: 1px solid var(--t-green-b); }
+
+.pill-yellow { background: var(--t-amber-bg); color: var(--t-amber); border: 1px solid var(--t-amber-b); }
+
+.pill-blue { background: var(--t-blue-bg); color: var(--t-blue); border: 1px solid var(--t-blue-b); }
+
+.pill-gray { background: var(--t-bg3); color: var(--t-muted); border: 1px solid var(--t-border); }
+
+.notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+
+.note-card {
+  background: var(--t-bg2);
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius);
+  padding: 14px;
+}
+
+.note-card .nc-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--t-text);
+  margin-bottom: 6px;
+}
+
+.note-card .nc-text { font-size: 0.75rem; color: var(--t-dim); line-height: 1.6; }
+
+.cta-strip {
+  background: var(--t-bg3);
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius);
+  padding: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cta-strip p { color: var(--t-dim); font-size: 0.85rem; margin: 0 0 12px; }
+
+.cta-strip a {
+  display: inline-block;
+  background: var(--t-green);
+  color: #0b0c10;
+  padding: 8px 20px;
+  border-radius: var(--t-radius);
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-family: var(--t-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.disclaimer { font-size: 0.7rem; color: var(--t-muted); text-align: center; margin-top: 24px; line-height: 1.7; }
+
+@media (max-width: 600px) {
+  .notes-grid { grid-template-columns: 1fr; }
+  .calc-results { grid-template-columns: 1fr 1fr; }
+  .compare-table { font-size: 0.75rem; }
+  .compare-table th, .compare-table td { padding: 8px 8px; }
+}
+
   </style>
 </head>
 <body>
   <!-- Nav placeholder — include shared nav -->
-  <div id="nav-placeholder"></div>
+  <nav class="t-nav">
+  <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
+  <div class="t-nav-links">
+    <a href="/terminal.html">Terminal</a>
+    <a href="/analytics.html">Live Data</a>
+    <a href="/calculators.html">Tools</a>
+    <a href="/blog/index.html">Blog</a>
+    <a href="/reviews/index.html" class="t-nav-hide-mobile">Reviews</a>
+  </div>
+</nav>
 
   <main class="page">
     <h1>💰 Crypto Casino Rakeback Comparison 2026</h1>
@@ -240,5 +401,11 @@
 
     calcAll();
   </script>
+  <footer class="t-footer">
+  <div class="t-container">
+    <p>CCT — Crypto Casino Terminal · <a href="/">CryptoCasinoSorted</a></p>
+    <p><a href="/terminal.html">Terminal</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/index.html">Blog</a></p>
+  </div>
+</footer>
 </body>
 </html>

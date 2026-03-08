@@ -7,6 +7,7 @@
   <meta name="description" content="Discover the best crypto casinos based on real Reddit user reviews from r/gambling and r/cryptocurrency. Unbiased community rankings, withdrawal speeds, and no-KYC options.">
   <link rel="canonical" href="https://cryptocasinosorted.com/blog/best-crypto-casinos-reddit-2026.html">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../terminal-theme.css">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
@@ -110,197 +111,22 @@
 
   <!-- Navigation + Blog Styles -->
   <style>
-    /* Navigation */
-    nav { background: #000; border-bottom: 1px solid #262626; }
-    .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
-    .logo { color: white; font-weight: 700; font-size: 1.125rem; text-decoration: none; margin-right: auto; }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9375rem; white-space: nowrap; }
-    .nav-links a:hover { color: white; }
-    
-    /* Blog Post Styling */
-    .blog-post { max-width: 900px; margin: 0 auto; padding: 40px 20px; background: #fff; }
-    .container { max-width: 70ch; margin: 0 auto; padding: 0 20px; } /* 70 characters max for readability */
-    
-    .post-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 2px solid #e5e7eb; }
-    .breadcrumb { font-size: 0.875rem; color: #6b7280; margin-bottom: 16px; }
-    .breadcrumb a { color: #8b5cf6; text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
-    
-    h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px; color: #111827; }
-    .subtitle { font-size: 1.25rem; color: #6b7280; margin-bottom: 24px; line-height: 1.6; }
-    .post-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.875rem; color: #9ca3af; }
-    
-    /* Mobile-optimized typography */
-    .post-content { font-size: 1.0625rem; line-height: 1.75; color: #374151; max-width: 70ch; }
-    .post-content p { margin-bottom: 28px; max-width: 70ch; }
-    .post-content h2 { font-size: 1.75rem; font-weight: 700; margin-top: 56px; margin-bottom: 24px; color: #111827; padding-bottom: 16px; border-bottom: 2px solid #e5e7eb; line-height: 1.3; }
-    .post-content h3 { font-size: 1.375rem; font-weight: 600; margin-top: 40px; margin-bottom: 20px; color: #1f2937; line-height: 1.4; }
-    .post-content h4 { font-size: 1.125rem; font-weight: 600; margin-top: 32px; margin-bottom: 16px; color: #374151; line-height: 1.5; }
-    .post-content ul, .post-content ol { margin-bottom: 28px; padding-left: 24px; }
-    .post-content li { margin-bottom: 12px; line-height: 1.75; }
-    
-    .lead { font-size: 1.1875rem; line-height: 1.8; color: #1f2937; margin-bottom: 40px; max-width: 70ch; }
-    
-    .highlight-box { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 32px; border-radius: 12px; margin: 32px 0; box-shadow: 0 10px 25px rgba(102,126,234,0.2); }
-    .highlight-box h3 { color: white; margin-top: 0; margin-bottom: 16px; border-bottom: none; padding-bottom: 0; }
-    .highlight-box ul { margin: 0; padding-left: 24px; }
-    .highlight-box li { margin-bottom: 8px; }
-    
-    .ranking-card { background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 32px; margin-bottom: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: all 0.3s; }
-    .ranking-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-color: #8b5cf6; }
-    .rank-number { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-size: 1.5rem; font-weight: 700; width: 48px; height: 48px; border-radius: 50%; text-align: center; line-height: 48px; margin-bottom: 16px; }
-    .ranking-content h3 { margin-top: 8px; font-size: 1.75rem; color: #111827; }
-    .rating { color: #f59e0b; font-size: 1rem; margin-bottom: 12px; }
-    
-    .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
-    .pros, .cons { background: #f9fafb; border-radius: 8px; padding: 20px; border-left: 4px solid #10b981; }
-    .cons { border-left-color: #ef4444; }
-    .pros h4, .cons h4 { font-size: 1.125rem; margin-top: 0; margin-bottom: 12px; }
-    .pros ul, .cons ul { margin: 0; padding-left: 20px; }
-    .pros li, .cons li { margin-bottom: 6px; font-size: 1rem; }
-    
-    .reddit-quotes { background: #f3f4f6; border-left: 4px solid #8b5cf6; padding: 24px; border-radius: 8px; margin: 24px 0; }
-    .reddit-quotes h4 { margin-top: 0; margin-bottom: 16px; color: #111827; }
-    blockquote { margin: 0 0 16px 0; padding: 16px; background: white; border-radius: 8px; font-style: italic; color: #374151; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-    blockquote cite { display: block; margin-top: 8px; font-size: 0.875rem; color: #6b7280; font-style: normal; }
-    
-    .bonus-info { background: #fef3c7; border: 2px solid #fbbf24; border-radius: 8px; padding: 20px; margin: 20px 0; }
-    .bonus-info strong { color: #92400e; }
-    
-    .cta-button { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.125rem; margin-top: 16px; transition: all 0.3s; box-shadow: 0 4px 12px rgba(102,126,234,0.3); }
-    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
-    
-    .comparison-table-wrapper { overflow-x: auto; margin: 32px 0; border: 2px solid #e5e7eb; border-radius: 12px; }
-    .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
-    .comparison-table thead { background: #f9fafb; }
-    .comparison-table th { padding: 16px; text-align: left; font-weight: 600; color: #111827; border-bottom: 2px solid #e5e7eb; }
-    .comparison-table td { padding: 16px; border-bottom: 1px solid #e5e7eb; }
-    .comparison-table tr:last-child td { border-bottom: none; }
-    .comparison-table tr:hover { background: #f9fafb; }
-    
-    .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 32px 0; }
-    .tip-card { background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 24px; }
-    .tip-card h3 { font-size: 1.25rem; margin-top: 0; margin-bottom: 16px; color: #111827; }
-    .tip-card ul { margin: 0; padding-left: 20px; }
-    .tip-card li { margin-bottom: 8px; }
-    
-    .faq { margin: 48px 0; }
-    .faq-item { background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 24px; margin-bottom: 16px; }
-    .faq-item h3 { font-size: 1.25rem; margin-top: 0; margin-bottom: 12px; color: #111827; }
-    .faq-item p { margin: 0; line-height: 1.7; }
-    
-    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin: 32px 0; }
-    .tool-card { background: #f9fafb; border: 2px solid #e5e7eb; border-radius: 12px; padding: 24px; text-align: center; transition: all 0.3s; }
-    .tool-card:hover { border-color: #8b5cf6; transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-    .tool-card h3 { font-size: 1.125rem; margin: 0 0 12px 0; }
-    .tool-card p { font-size: 0.9375rem; color: #6b7280; margin-bottom: 16px; }
-    .tool-link { color: #8b5cf6; font-weight: 600; text-decoration: none; }
-    .tool-link:hover { text-decoration: underline; }
-    
-    .final-cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 48px; border-radius: 16px; text-align: center; margin: 48px 0; }
-    .final-cta h2 { color: white; margin-top: 0; border: none; padding: 0; }
-    .final-cta p { color: rgba(255,255,255,0.95); margin-bottom: 24px; }
-    .cta-button-large { display: inline-block; background: white; color: #667eea; padding: 18px 48px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.25rem; transition: all 0.3s; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-    .cta-button-large:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
-    .disclaimer { font-size: 0.875rem; color: rgba(255,255,255,0.8); margin-top: 24px; }
-    
-    footer { background: #111827; color: white; padding: 48px 20px; margin-top: 80px; }
-    .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
-    .footer-section h4 { color: white; margin-bottom: 16px; }
-    .footer-section ul { list-style: none; padding: 0; margin: 0; }
-    .footer-section li { margin-bottom: 8px; }
-    .footer-section a { color: #9ca3af; text-decoration: none; }
-    .footer-section a:hover { color: white; }
-    .footer-bottom { text-align: center; margin-top: 32px; padding-top: 32px; border-top: 1px solid #374151; color: #9ca3af; font-size: 0.875rem; }
-    
-    @media (max-width: 768px) {
-      /* Navigation */
-      .nav-container { flex-direction: column; align-items: flex-start; gap: 12px; }
-      .logo { margin-right: 0; margin-bottom: 4px; }
-      .nav-links { width: 100%; gap: 12px; }
-      .nav-links a { font-size: 0.875rem; }
-      
-      /* Mobile typography - even more generous */
-      .blog-post { padding: 24px 16px; }
-      .container { padding: 0 16px; }
-      
-      h1 { font-size: 1.875rem; line-height: 1.3; margin-bottom: 20px; }
-      .subtitle { font-size: 1.0625rem; line-height: 1.7; margin-bottom: 28px; }
-      .post-meta { gap: 12px; font-size: 0.8125rem; }
-      
-      /* Body text optimized for mobile screens */
-      .post-content { font-size: 1rem; line-height: 1.75; } /* 16px minimum */
-      .post-content p { margin-bottom: 24px; }
-      .post-content h2 { font-size: 1.5rem; margin-top: 48px; margin-bottom: 20px; line-height: 1.3; }
-      .post-content h3 { font-size: 1.25rem; margin-top: 36px; margin-bottom: 16px; line-height: 1.4; }
-      .post-content h4 { font-size: 1.0625rem; margin-top: 28px; margin-bottom: 14px; }
-      .post-content li { margin-bottom: 10px; }
-      
-      .lead { font-size: 1.0625rem; line-height: 1.8; margin-bottom: 32px; }
-      
-      /* Cards and sections - more padding on mobile */
-      .highlight-box { padding: 24px 20px; margin: 28px -4px; border-radius: 8px; }
-      .ranking-card { padding: 24px 20px; margin-bottom: 24px; }
-      .rank-number { width: 40px; height: 40px; line-height: 40px; font-size: 1.25rem; }
-      .ranking-content h3 { font-size: 1.375rem; }
-      
-      /* Pros/Cons stack on mobile */
-      .pros-cons { grid-template-columns: 1fr; gap: 16px; }
-      .pros, .cons { padding: 16px; }
-      .pros ul, .cons ul { padding-left: 18px; }
-      .pros li, .cons li { font-size: 0.9375rem; }
-      
-      /* Tables */
-      .comparison-table { font-size: 0.8125rem; }
-      .comparison-table th, .comparison-table td { padding: 10px 8px; font-size: 0.8125rem; }
-      
-      /* Quotes */
-      .reddit-quotes { padding: 20px 16px; margin: 24px -4px; }
-      blockquote { padding: 14px; font-size: 0.9375rem; line-height: 1.6; }
-      blockquote cite { font-size: 0.8125rem; }
-      
-      /* Bonus info */
-      .bonus-info { padding: 16px; margin: 20px -4px; font-size: 0.9375rem; }
-      
-      /* CTAs - larger touch targets */
-      .cta-button { padding: 16px 28px; font-size: 1rem; display: block; text-align: center; min-height: 48px; }
-      .cta-button-large { padding: 20px 36px; font-size: 1.125rem; min-height: 56px; }
-      
-      /* Tools grid */
-      .tools-grid { grid-template-columns: 1fr; gap: 16px; }
-      .tool-card { padding: 20px; }
-      
-      /* FAQ */
-      .faq-item { padding: 20px 16px; margin-bottom: 12px; }
-      .faq-item h3 { font-size: 1.0625rem; line-height: 1.5; }
-      .faq-item p { font-size: 0.9375rem; line-height: 1.7; }
-      
-      /* Footer */
-      .footer-content { grid-template-columns: 1fr; gap: 24px; }
-      
-      /* Final CTA */
-      .final-cta { padding: 32px 20px; margin: 40px -4px 0; }
-      .final-cta h2 { font-size: 1.5rem; line-height: 1.3; margin-bottom: 16px; }
-      .final-cta p { font-size: 1rem; margin-bottom: 20px; }
-    }
+body { background: #08090d; color: #d4d8e8; }
+.blog-post { background: transparent; }
   </style>
-  <nav>
-    <div class="nav-container">
-      <a href="../index.html" class="logo">🎰 CryptoCasinoSorted</a>
-      <div class="nav-links">
-        <a href="../index.html">Casinos</a>
-        <a href="../analytics.html">Live Data</a>
-        <a href="../reviews/index.html">Reviews</a>
-        <a href="../calculators.html">Calculators</a>
-        <a href="index.html">Blog</a>
-        <a href="../../betsorted/index.html" style="color: #10b981;">Sports Betting 🎯</a>
-      </div>
-    </div>
-  </nav>
+  <nav class="t-nav">
+  <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
+  <div class="t-nav-links">
+    <a href="/terminal.html">Terminal</a>
+    <a href="/analytics.html">Live Data</a>
+    <a href="/calculators.html">Tools</a>
+    <a href="/blog/index.html">Blog</a>
+    <a href="/reviews/index.html" class="t-nav-hide-mobile">Reviews</a>
+  </div>
+</nav>
 
   <!-- Article -->
-  <article class="blog-post">
+  <article class="blog-post t-article">
     <div class="container">
       
       <!-- Header -->
@@ -844,34 +670,12 @@
   </article>
 
   <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>CryptoCasinoSorted</h4>
-          <p>Honest crypto casino reviews according to the community. No BS, just real user experiences.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="../calculators.html">Calculators</a></li>
-            <li><a href="../wallet-tracker.html">Live Bet Feed</a></li>
-            <li><a href="../reviews/index.html">Casino Reviews</a></li>
-            <li><a href="index.html">Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Other Sites</h4>
-          <ul>
-            <li><a href="../../betsorted/index.html">BetSorted (Sports Betting)</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 CryptoCasinoSorted. Gambling can be addictive. 18+</p>
-      </div>
-    </div>
-  </footer>
+  <footer class="t-footer">
+  <div class="t-container">
+    <p>CCT — Crypto Casino Terminal · <a href="/">CryptoCasinoSorted</a></p>
+    <p><a href="/terminal.html">Terminal</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/index.html">Blog</a></p>
+  </div>
+</footer>
 
   <!-- Affiliate Link Tracking -->
   <script>

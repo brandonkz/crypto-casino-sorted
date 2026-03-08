@@ -6,6 +6,7 @@
     <title>How to Verify Provably Fair Games: Step-by-Step Technical Guide | CryptoCasinoSorted</title>
     <meta name="description" content="Learn how to actually verify provably fair casino games. Step-by-step guide to checking hashes, seeds, and game outcomes on Stake, BC.Game, and other crypto casinos.">
     <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../terminal-theme.css">
     <link rel="canonical" href="https://cryptocasinosorted.com/blog/how-to-verify-provably-fair-games-step-by-step.html">
     
     <!-- Schema.org Article Markup -->
@@ -34,263 +35,20 @@
 </head>
 <body>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #0f172a;
-            color: #e2e8f0;
-        }
+body { background: #08090d; color: #d4d8e8; }
+.blog-post { background: transparent; }
+  </style>
 
-        .blog-nav {
-            background: #1e293b;
-            border-bottom: 1px solid #334155;
-            padding: 1rem 0;
-        }
-
-        .blog-nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .blog-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: #f1f5f9;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .blog-logo:hover {
-            color: #a78bfa;
-        }
-
-        .blog-icon {
-            color: #a78bfa;
-            font-size: 1.3rem;
-        }
-
-        .blog-nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .blog-nav-links a {
-            text-decoration: none;
-            color: #94a3b8;
-            font-weight: 400;
-            transition: color 0.2s;
-        }
-
-        .blog-nav-links a:hover {
-            color: #a78bfa;
-        }
-
-        .blog-nav-links a.active {
-            color: #a78bfa;
-            font-weight: 500;
-        }
-
-        .blog-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-        }
-
-        .blog-meta {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-        }
-
-        .blog-content h1 {
-            font-size: 2.5rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: #f1f5f9;
-        }
-
-        .blog-content h2 {
-            font-size: 1.8rem;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            color: #f1f5f9;
-        }
-
-        .blog-content h3 {
-            font-size: 1.3rem;
-            margin-top: 2rem;
-            margin-bottom: 0.8rem;
-            color: #f1f5f9;
-        }
-
-        .blog-content p {
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: #cbd5e1;
-            font-size: 1.05rem;
-        }
-
-        .blog-content ul, .blog-content ol {
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-            color: #cbd5e1;
-        }
-
-        .blog-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-content strong {
-            color: #f1f5f9;
-            font-weight: 600;
-        }
-
-        .blog-content a {
-            color: #a78bfa;
-            text-decoration: underline;
-        }
-
-        .blog-content a:hover {
-            color: #c4b5fd;
-        }
-
-        .blog-content code {
-            background: #1e293b;
-            color: #a78bfa;
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-family: 'Monaco', 'Courier New', monospace;
-            font-size: 0.9em;
-        }
-
-        .blog-content pre {
-            background: #1e293b;
-            border: 1px solid #334155;
-            padding: 1.5rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 1.5rem 0;
-        }
-
-        .blog-content pre code {
-            background: none;
-            padding: 0;
-            color: #e2e8f0;
-        }
-
-        .cta-box {
-            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2.5rem 0;
-            text-align: center;
-        }
-
-        .cta-box h3 {
-            color: white;
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
-
-        .cta-box p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #7c3aed;
-            padding: 0.8rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            color: #7c3aed;
-        }
-
-        .highlight-box {
-            background: #1e293b;
-            border-left: 4px solid #a78bfa;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-        }
-
-        .warning-box {
-            background: #422006;
-            border-left: 4px solid #f59e0b;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-            color: #fde68a;
-        }
-
-        .step-box {
-            background: #1e293b;
-            border: 1px solid #334155;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-        }
-
-        .step-box h3 {
-            margin-top: 0;
-            color: #a78bfa;
-        }
-
-        @media (max-width: 768px) {
-            .blog-nav-inner {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .blog-nav-links {
-                gap: 1rem;
-            }
-
-            .blog-content h1 {
-                font-size: 2rem;
-            }
-
-            .blog-content h2 {
-                font-size: 1.5rem;
-            }
-
-            .blog-content pre {
-                padding: 1rem;
-                font-size: 0.85rem;
-            }
-        }
-    </style>
-
-    <nav class="blog-nav">
-        <div class="blog-nav-inner">
-            <a href="/" class="blog-logo">
-                <span class="blog-icon">🎲</span>
-                <span>CryptoCasinoSorted</span>
-            </a>
-            <div class="blog-nav-links">
-                <a href="/">Home</a>
-                <a href="/blog/" class="active">Blog</a>
-                <a href="/analytics.html">Live Data</a>
-            </div>
-        </div>
-    </nav>
+    <nav class="t-nav">
+  <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
+  <div class="t-nav-links">
+    <a href="/terminal.html">Terminal</a>
+    <a href="/analytics.html">Live Data</a>
+    <a href="/calculators.html">Tools</a>
+    <a href="/blog/index.html">Blog</a>
+    <a href="/reviews/index.html" class="t-nav-hide-mobile">Reviews</a>
+  </div>
+</nav>
 
     <div class="blog-container">
         <article class="blog-content">
@@ -563,5 +321,11 @@ verifyDice('8f3c5e7a...', 'my-custom-seed-12345', 187).then(result => console.lo
             </div>
         </article>
     </div>
+  <footer class="t-footer">
+  <div class="t-container">
+    <p>CCT — Crypto Casino Terminal · <a href="/">CryptoCasinoSorted</a></p>
+    <p><a href="/terminal.html">Terminal</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/index.html">Blog</a></p>
+  </div>
+</footer>
 </body>
 </html>

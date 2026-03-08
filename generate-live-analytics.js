@@ -13,17 +13,40 @@ console.log('📊 Generating mobile-optimized analytics...\n');
 const csvContent = fs.readFileSync('data/deposits-all.csv', 'utf8');
 const lines = csvContent.trim().split('\n');
 
-// Parse data
+// Parse data (header-aware, supports new columns)
+function parseCSVLine(line) {
+    const values = [];
+    let current = '';
+    let inQuotes = false;
+
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+            inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+            values.push(current);
+            current = '';
+        } else {
+            current += char;
+        }
+    }
+    values.push(current);
+    return values;
+}
+
+const headers = parseCSVLine(lines[0]).map(h => h.trim());
 const data = [];
 for (let i = 1; i < lines.length; i++) {
-    const cols = lines[i].split(',');
-    if (cols.length >= 8) {
-        data.push({
-            date: cols[0],
-            casino: cols[3],
-            usdValue: parseFloat(cols[7]) || 0
-        });
-    }
+    const values = parseCSVLine(lines[i]);
+    const row = {};
+    headers.forEach((header, idx) => {
+        row[header] = values[idx] || '';
+    });
+    data.push({
+        date: row['Date'] || row['date'],
+        casino: row['Casino'] || row['casino'],
+        usdValue: parseFloat(row['USD Value'] || row['usd_value'] || row['usdValue'] || 0)
+    });
 }
 
 console.log(`   Parsed ${data.length} deposits`);

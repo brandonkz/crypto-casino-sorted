@@ -9,174 +9,165 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="terminal-theme.css">
   <style>
-    .page-hero {
-      padding: 3.5rem 0 2rem;
-      border-bottom: 1px solid var(--border);
-      background: radial-gradient(circle at top, rgba(139, 92, 246, 0.18), transparent 55%);
-    }
-    .page-hero h1 {
-      font-size: 3.25rem;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-    .page-hero p {
-      color: var(--text-secondary);
-      max-width: 720px;
-      font-size: 1.1rem;
-    }
-    .section {
-      padding: 3rem 0;
-    }
-    .section h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-    }
-    .panel {
-      background: var(--dark-card);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      box-shadow: var(--shadow);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-    .step-card {
-      background: rgba(15, 15, 15, 0.9);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-    }
-    .step-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    .step-card p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.25rem;
-      margin-top: 1.5rem;
-    }
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .field label {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    .field input,
-    .field textarea {
-      background: #0b0b0b;
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.75rem 0.85rem;
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 0.95rem;
-    }
-    .field textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-    .field small {
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-    }
-    .action-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      align-items: center;
-    }
-    .btn {
-      background: #8b5cf6;
-      color: #fff;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .status-pill {
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      display: inline-block;
-    }
-    .status-good {
-      background: rgba(34, 197, 94, 0.2);
-      color: #86efac;
-      border: 1px solid rgba(34, 197, 94, 0.4);
-    }
-    .status-bad {
-      background: rgba(239, 68, 68, 0.2);
-      color: #fca5a5;
-      border: 1px solid rgba(239, 68, 68, 0.4);
-    }
-    .status-warn {
-      background: rgba(234, 179, 8, 0.2);
-      color: #fde047;
-      border: 1px solid rgba(234, 179, 8, 0.4);
-    }
-    .notice {
-      margin-top: 1.5rem;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-    .faq-item {
-      padding: 1.25rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .faq-item h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.5rem;
-    }
-    .faq-item p {
-      color: var(--text-secondary);
-    }
-    .output-box {
-      background: #070707;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.9rem;
-      word-break: break-all;
-    }
+.page-hero {
+  padding: 2.5rem 0 1.5rem;
+  border-bottom: 1px solid var(--t-border);
+  background: var(--t-bg2);
+}
+
+.page-hero h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+  color: var(--t-text);
+  font-family: var(--t-mono);
+}
+
+.page-hero p {
+  color: var(--t-dim);
+  max-width: 720px;
+  font-size: 0.95rem;
+}
+
+.section { padding: 2rem 0; }
+
+.section h2 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  font-family: var(--t-mono);
+  color: var(--t-text);
+}
+
+.panel {
+  background: var(--t-bg2);
+  border-radius: var(--t-radius);
+  border: 1px solid var(--t-border);
+  padding: 1.5rem;
+  box-shadow: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.step-card {
+  background: var(--t-bg3);
+  border-radius: var(--t-radius);
+  border: 1px solid var(--t-border);
+  padding: 1rem;
+}
+
+.step-card h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: var(--t-text);
+}
+
+.step-card p { color: var(--t-dim); font-size: 0.9rem; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.field label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--t-dim);
+  font-family: var(--t-mono);
+}
+
+.field input,
+.field textarea {
+  background: var(--t-bg);
+  border: 1px solid var(--t-border2);
+  color: var(--t-text);
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--t-radius);
+  font-family: var(--t-mono);
+  font-size: 0.85rem;
+}
+
+.field textarea { min-height: 100px; resize: vertical; }
+
+.field small { color: var(--t-dim); font-size: 0.75rem; }
+
+.action-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; align-items: center; }
+
+.btn {
+  background: var(--t-green);
+  color: #0b0c10;
+  border: none;
+  padding: 0.65rem 1.2rem;
+  border-radius: var(--t-radius);
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--t-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.status-pill {
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--t-radius);
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: inline-block;
+  font-family: var(--t-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.status-good { background: var(--t-green-bg); color: var(--t-green); border: 1px solid var(--t-green-b); }
+.status-bad { background: var(--t-red-bg); color: var(--t-red); border: 1px solid var(--t-red-b); }
+.status-warn { background: var(--t-amber-bg); color: var(--t-amber); border: 1px solid var(--t-amber-b); }
+
+.notice { margin-top: 1rem; color: var(--t-dim); font-size: 0.9rem; }
+
+.faq-item { padding: 1rem 0; border-bottom: 1px solid var(--t-border); }
+
+.faq-item h3 { font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--t-text); }
+
+.faq-item p { color: var(--t-dim); }
+
+.output-box {
+  background: var(--t-bg);
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius);
+  padding: 0.85rem;
+  font-family: var(--t-mono);
+  font-size: 0.8rem;
+  word-break: break-all;
+  color: var(--t-text);
+}
+
   </style>
 </head>
 <body>
-  <nav style="background: rgba(10, 10, 10, 0.95); border-bottom: 2px solid #8b5cf6; padding: 1rem; position: sticky; top: 0; z-index: 100;">
-    <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-        <a href="/" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #fff; font-weight: 800; font-size: 1.25rem;">
-            <span>🎰</span>
-            <span>CryptoCasinoSorted</span>
-        </a>
-        <div style="display: flex; gap: 1rem; font-size: 0.875rem; flex-wrap: wrap;">
-            <a href="/#casinos" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Casinos</a>
-            <a href="/analytics.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">📊 Live Data</a>
-            <a href="/deposits-data.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">💰 Deposit Data</a>
-            <a href="/casino-wallet-addresses.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">🔍 Wallet Addresses</a>
-            <a href="/provably-fair-verifier.html" style="color: #8b5cf6; text-decoration: none; font-weight: 600;">✓ Provably Fair</a>
-            <a href="/reviews/index.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Reviews</a>
-            <a href="/blog/index.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Blog</a>
-        </div>
-    </div>
-  </nav>
+  <nav class="t-nav">
+  <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
+  <div class="t-nav-links">
+    <a href="/terminal.html">Terminal</a>
+    <a href="/analytics.html">Live Data</a>
+    <a href="/calculators.html">Tools</a>
+    <a href="/blog/index.html">Blog</a>
+    <a href="/reviews/index.html" class="t-nav-hide-mobile">Reviews</a>
+  </div>
+</nav>
 
   <header class="page-hero">
     <div class="container">
@@ -440,5 +431,11 @@
       ]
     }
   </script>
+  <footer class="t-footer">
+  <div class="t-container">
+    <p>CCT — Crypto Casino Terminal · <a href="/">CryptoCasinoSorted</a></p>
+    <p><a href="/terminal.html">Terminal</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/index.html">Blog</a></p>
+  </div>
+</footer>
 </body>
 </html>
