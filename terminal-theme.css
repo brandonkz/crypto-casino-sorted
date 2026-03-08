@@ -575,15 +575,13 @@ h5, h6 {
 .t-blog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1px;
-  background: var(--t-border);
-  border: 1px solid var(--t-border);
-  border-radius: var(--t-radius);
-  overflow: hidden;
+  gap: 12px;
 }
 .t-blog-card {
   background: var(--t-bg2);
-  padding: 16px 20px;
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius);
+  padding: 18px 20px;
   transition: background 0.2s;
   display: flex;
   flex-direction: column;
@@ -591,24 +589,44 @@ h5, h6 {
 .t-blog-card:hover { background: var(--t-bg3); }
 .t-blog-card h3 {
   font-family: var(--t-mono);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  margin-bottom: 6px;
-  line-height: 1.4;
+  margin-bottom: 8px;
+  line-height: 1.45;
 }
 .t-blog-card h3 a { color: var(--t-text); }
 .t-blog-card h3 a:hover { color: var(--t-green); }
 .t-blog-card p {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--t-dim);
-  line-height: 1.5;
+  line-height: 1.6;
   flex: 1;
 }
 .t-blog-card .meta {
   font-family: var(--t-mono);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   color: var(--t-muted);
-  margin-top: 8px;
+  margin-top: 10px;
+}
+
+/* Legacy blog cards (ensure spacing) */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+.blog-card {
+  background: var(--t-bg2);
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius);
+  padding: 18px 20px;
+}
+.blog-card h3 { line-height: 1.45; margin-bottom: 8px; }
+.blog-card p { line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .t-blog-grid, .blog-grid { grid-template-columns: 1fr; gap: 14px; }
+  .t-blog-card, .blog-card { padding: 18px 18px; }
 }
 
 /* === CALCULATOR PAGES === */
