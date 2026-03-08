@@ -57,6 +57,13 @@
     .top-right a{color:var(--dim);text-decoration:none;}
     .top-right a:hover{color:var(--green);}
     .nav-desktop{display:flex;align-items:center;gap:16px;}
+    .sec-link{
+      font-family:var(--mono);font-size:10px;font-weight:600;
+      color:var(--dim);text-decoration:none;padding:4px 10px;
+      border:1px solid var(--border);border-radius:3px;
+      white-space:nowrap;transition:all 0.15s;
+    }
+    .sec-link:hover{color:var(--green);border-color:var(--green-b);background:var(--green-bg);}
 
     /* === TICKER MARQUEE === */
     .marquee{
@@ -402,13 +409,21 @@
   </div>
 </div>
 
+<!-- SECTION NAV -->
+<div style="background:#06070a;border-bottom:1px solid var(--border);padding:4px 16px;display:flex;align-items:center;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+  <span style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-right:4px;white-space:nowrap;">JUMP TO:</span>
+  <a href="#dashboard" class="sec-link">📊 Dashboard</a>
+  <a href="#health" class="sec-link">🏥 Health Scores</a>
+  <a href="#whale-section" class="sec-link">🐋 Whale Tracker</a>
+</div>
+
 <!-- TICKER MARQUEE -->
 <div class="marquee">
   <div class="marquee-track" id="marquee"></div>
 </div>
 
 <!-- MAIN TERMINAL GRID -->
-<div class="terminal-grid">
+<div id="dashboard" class="terminal-grid">
 
   <!-- KPI ROW (spans full width) -->
   <div class="kpi-row" id="kpi-row"></div>
@@ -508,7 +523,7 @@
 </div>
 
 <!-- === HEALTH SCORES (full width, below grid) === -->
-<div class="container" style="padding-top:12px;">
+<div id="health" class="container" style="padding-top:12px;">
   <div class="panel">
     <div class="panel-h">
       <div class="panel-t">🏥 Casino Health Scores</div>
@@ -522,7 +537,7 @@
 </div>
 
 <!-- === WHALE TRACKER (full width) === -->
-<div class="container" style="padding-top:0;">
+<div id="whale-section" class="container" style="padding-top:0;">
   <!-- Whale KPIs -->
   <div class="panel" style="margin-bottom:1px;">
     <div class="panel-h">
