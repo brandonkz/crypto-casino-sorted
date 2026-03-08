@@ -344,6 +344,7 @@
     .promo-offer{color:var(--text);font-weight:600;}
     .promo-type{font-size:9px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-b);}
     .promo-link{color:var(--green);font-size:10px;text-align:right;}
+    .promo-row{cursor:pointer;}
 
     .reddit-sub{font-weight:700;color:var(--red);}
     .reddit-title{color:var(--text);font-weight:600;}
@@ -384,6 +385,7 @@
     .promo-offer{color:var(--text);font-weight:600;}
     .promo-type{font-size:9px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-b);}
     .promo-link{color:var(--green);font-size:10px;text-align:right;}
+    .promo-row{cursor:pointer;}
 
     @media(max-width:768px){
       .news-row, .promo-row{grid-template-columns:50px 1fr 70px;}
@@ -1240,12 +1242,12 @@ function render(D){
       const rows=p.promos||[];
       promos.innerHTML=`<div class="promo-row header">
         <div>CASINO</div><div>OFFER</div><div>TYPE</div><div style="text-align:right">LINK</div>
-      </div>`+rows.map(item=>`<div class="promo-row">
+      </div>`+rows.map(item=>`<a class="promo-row" href="${item.url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">
         <div class="promo-casino">${item.casino}</div>
         <div class="promo-offer">${item.offer} <span style="color:var(--dim);font-size:10px;">${item.details||''}</span></div>
         <div class="promo-type">${item.type}</div>
-        <div class="promo-link"><a href="${item.url}" target="_blank" rel="noopener" style="color:inherit;">Open →</a></div>
-      </div>`).join('');
+        <div class="promo-link">Deposit →</div>
+      </a>`).join('');
     })
     .catch(()=>{});
 

@@ -1425,14 +1425,15 @@
         if (promoTable) {
           promoTable.innerHTML = `
             <thead><tr>
-              <th>Casino</th><th>Offer</th><th>Type</th>
+              <th>Casino</th><th>Offer</th><th>Type</th><th>Link</th>
             </tr></thead>
             <tbody>
               ${(promos.promos || []).map(p => `
                 <tr>
-                  <td class="t-amber">${p.casino}</td>
-                  <td>${p.offer} <span class="t-dim" style="font-size:0.7rem;">${p.details || ''}</span></td>
+                  <td class="t-amber"><a href="${p.url}" target="_blank" rel="noopener">${p.casino}</a></td>
+                  <td><a href="${p.url}" target="_blank" rel="noopener">${p.offer}</a> <span class="t-dim" style="font-size:0.7rem;">${p.details || ''}</span></td>
                   <td><span class="t-badge t-badge-amber">${p.type}</span></td>
+                  <td><a href="${p.url}" target="_blank" rel="noopener">Deposit →</a></td>
                 </tr>
               `).join('')}
             </tbody>
