@@ -157,6 +157,30 @@
           <div class="stat-label">Casinos Tracked (7 Chains)</div>
         </div>
       </div>
+
+      <!-- Gaming News + Promo Radar -->
+      <div class="t-section" style="margin-top:24px;">
+        <div class="t-grid-2">
+          <div class="t-panel">
+            <div class="t-panel-header">
+              <div class="t-panel-title">📰 Gaming News</div>
+              <div class="t-badge t-badge-blue">LATEST</div>
+            </div>
+            <div class="t-panel-body flush">
+              <table class="t-table" id="home-news"></table>
+            </div>
+          </div>
+          <div class="t-panel">
+            <div class="t-panel-header">
+              <div class="t-panel-title">🎁 Promo Radar</div>
+              <div class="t-badge t-badge-amber">ACTIVE</div>
+            </div>
+            <div class="t-panel-body flush">
+              <table class="t-table" id="home-promos"></table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1346,6 +1370,58 @@
     } else {
       loadTerminalData();
     }
+
+    // Load Gaming News + Promo Radar
+    async function loadNewsPromos() {
+      try {
+        const [newsRes, promoRes] = await Promise.all([
+          fetch('/data/news.json'),
+          fetch('/data/promos.json')
+        ]);
+        const news = await newsRes.json();
+        const promos = await promoRes.json();
+
+        const newsTable = document.getElementById('home-news');
+        if (newsTable) {
+          newsTable.innerHTML = `
+            <thead><tr>
+              <th>Source</th><th>Headline</th><th>Tag</th>
+            </tr></thead>
+            <tbody>
+              ${(news.items || []).map(n => `
+                <tr>
+                  <td class="t-blue">${n.source}</td>
+                  <td><a href="${n.url}" target="_blank" rel="noopener">${n.title}</a></td>
+                  <td><span class="t-badge t-badge-blue">${n.tag}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          `;
+        }
+
+        const promoTable = document.getElementById('home-promos');
+        if (promoTable) {
+          promoTable.innerHTML = `
+            <thead><tr>
+              <th>Casino</th><th>Offer</th><th>Type</th>
+            </tr></thead>
+            <tbody>
+              ${(promos.promos || []).map(p => `
+                <tr>
+                  <td class="t-amber">${p.casino}</td>
+                  <td>${p.offer} <span class="t-dim" style="font-size:0.7rem;">${p.details || ''}</span></td>
+                  <td><span class="t-badge t-badge-amber">${p.type}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          `;
+        }
+      } catch (err) {
+        console.log('News/promos not loaded', err);
+      }
+    }
+
+    loadNewsPromos();
   </script>
 
   <!-- Affiliate Link Tracking -->
