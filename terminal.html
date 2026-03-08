@@ -90,54 +90,100 @@
 
     /* === MOBILE === */
     @media(max-width:768px){
-      html,body{overflow:auto;height:auto;font-size:13px;}
+      html,body{overflow-y:auto;overflow-x:hidden;height:auto;font-size:13px;}
       .top-bar{height:auto;padding:8px 12px;flex-wrap:wrap;gap:6px;}
       .logo span{display:none;}
       .nav-desktop{display:none;}
       .live-badge{font-size:9px;}
       .marquee{height:28px;font-size:11px;}
+
       .terminal-grid{
-        grid-template-columns:1fr;
-        grid-template-rows:none;
+        display:flex;
+        flex-direction:column;
         height:auto;
         gap:1px;
+        background:var(--border);
       }
-      .kpi-row{grid-template-columns:repeat(2,1fr) !important;grid-column:1 !important;}
-      .kpi{padding:10px 12px;}
-      .kpi-v{font-size:18px;}
-      .kpi-l{font-size:9px;}
-      .kpi-s{font-size:9px;}
-      .panel[style*="grid-row:span 3"]{grid-row:span 1 !important;}
-      .panel{min-height:0;}
-      .panel-body{max-height:350px;}
-      .panel-h{padding:8px 12px;}
-      .panel-t{font-size:10px;}
-      .chart-container{min-height:200px;padding:8px;}
-      .heatmap{overflow-x:auto;min-width:500px;}
-      .lb-row{font-size:11px;padding:6px 12px;grid-template-columns:20px 1fr 65px 45px 40px;}
-      .feed-item{font-size:11px;padding:6px 12px;grid-template-columns:42px 1fr auto;}
-      .feed-item .casino{font-size:11px;}
-      .feed-item .amount{font-size:11px;}
-      .whale-item{padding:8px 12px;}
-      .whale-amount{font-size:14px;}
-      .ind-row{padding:8px 12px;font-size:11px;}
-      .ind-val{font-size:14px;}
-      .intel-item{padding:8px 12px;font-size:11px;}
-      .dist-row{padding:5px 12px;font-size:10px;}
-      .dist-label{font-size:9px;min-width:50px;}
-      .dist-track{height:18px;}
-      .trend-item{padding:6px 12px;font-size:11px;}
 
-      /* Hide heatmap on very small screens - too data-dense */
-      .hm-panel-hide{display:block;}
+      /* KPIs: 2x4 grid */
+      .kpi-row{
+        display:grid !important;
+        grid-template-columns:1fr 1fr !important;
+        grid-column:unset !important;
+        order:0;
+      }
+      .kpi{padding:12px 14px;}
+      .kpi-v{font-size:20px;}
+      .kpi-l{font-size:9px;letter-spacing:0.08em;}
+      .kpi-s{font-size:9px;}
+
+      /* Panels: stack vertically with good heights */
+      .panel{min-height:0;order:10;}
+      .panel[style*="grid-row:span 3"]{grid-row:span 1 !important;}
+      .panel-h{padding:10px 14px;}
+      .panel-t{font-size:11px;}
+
+      /* Feed: capped height, scrollable */
+      .panel-body{max-height:300px;overflow-y:auto;}
+
+      /* Charts: good readable height */
+      .chart-container{height:220px !important;min-height:220px;padding:10px;}
+
+      /* Reorder panels for mobile priority */
+      .m-order-1{order:1 !important;}
+      .m-order-2{order:2 !important;}
+      .m-order-3{order:3 !important;}
+      .m-order-4{order:4 !important;}
+      .m-order-5{order:5 !important;}
+      .m-order-6{order:6 !important;}
+      .m-order-7{order:7 !important;}
+      .m-order-8{order:8 !important;}
+      .m-order-9{order:9 !important;}
+      .m-order-10{order:10 !important;}
+
+      /* Heatmap: horizontal scroll with note */
+      .heatmap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+      .heatmap-scroll-wrap{min-width:580px;}
+
+      /* Table: readable */
+      .lb-row{font-size:12px;padding:8px 14px;grid-template-columns:22px 1fr 68px 48px 44px;}
+      .lb-row.header{font-size:9px;}
+
+      /* Feed items: readable */
+      .feed-item{font-size:12px;padding:7px 14px;grid-template-columns:44px 1fr auto;}
+      .feed-item .time{font-size:10px;}
+      .feed-item .casino{font-size:12px;}
+      .feed-item .amount{font-size:12px;}
+
+      /* Whale alerts */
+      .whale-item{padding:10px 14px;font-size:12px;}
+      .whale-amount{font-size:16px;}
+      .whale-casino{font-size:12px;}
+
+      /* Market indicators */
+      .ind-row{padding:10px 14px;font-size:12px;}
+      .ind-val{font-size:16px;}
+      .ind-label{font-size:10px;}
+
+      /* Intel */
+      .intel-item{padding:10px 14px;font-size:12px;}
+      .intel-text{font-size:12px;line-height:1.5;}
+
+      /* Distribution */
+      .dist-row{padding:6px 14px;font-size:11px;}
+      .dist-label{font-size:10px;min-width:55px;}
+      .dist-track{height:20px;}
+      .dist-fill{font-size:8px;}
+      .dist-ct{font-size:9px;}
     }
 
     /* === SMALL MOBILE === */
     @media(max-width:380px){
-      .kpi-row{grid-template-columns:1fr 1fr !important;}
-      .kpi-v{font-size:16px;}
+      .kpi-v{font-size:17px;}
+      .kpi{padding:10px 12px;}
       .top-bar{padding:6px 8px;}
       .logo{font-size:11px;}
+      .chart-container{height:180px !important;min-height:180px;}
     }
 
     /* === PANEL === */
@@ -314,17 +360,8 @@
   <!-- KPI ROW (spans full width) -->
   <div class="kpi-row" id="kpi-row"></div>
 
-  <!-- COL 1: LIVE FEED -->
-  <div class="panel" style="grid-row:span 3;">
-    <div class="panel-h">
-      <div class="panel-t">⚡ Live Deposits</div>
-      <div class="panel-badge live">● LIVE</div>
-    </div>
-    <div class="panel-body" id="feed"></div>
-  </div>
-
-  <!-- COL 2 TOP: VOLUME CHART -->
-  <div class="panel">
+  <!-- COL 2 TOP: VOLUME CHART (mobile: 1st) -->
+  <div class="panel m-order-1">
     <div class="panel-h">
       <div class="panel-t">📊 Daily Volume (USD)</div>
       <div class="panel-badge data">21D</div>
@@ -332,17 +369,8 @@
     <div class="chart-container"><canvas id="chart-vol"></canvas></div>
   </div>
 
-  <!-- COL 3 TOP: DEPOSIT COUNT -->
-  <div class="panel">
-    <div class="panel-h">
-      <div class="panel-t">📈 Daily Deposits</div>
-      <div class="panel-badge data">21D</div>
-    </div>
-    <div class="chart-container"><canvas id="chart-count"></canvas></div>
-  </div>
-
-  <!-- COL 4: MARKET INDICATORS + WHALE ALERTS -->
-  <div class="panel">
+  <!-- COL 4: MARKET INDICATORS (mobile: 2nd) -->
+  <div class="panel m-order-2">
     <div class="panel-h">
       <div class="panel-t">🌐 Market Indicators</div>
       <div class="panel-badge live">● LIVE</div>
@@ -350,37 +378,8 @@
     <div class="panel-body" id="indicators"></div>
   </div>
 
-  <!-- COL 2 MID: STACKED AREA -->
-  <div class="panel">
-    <div class="panel-h">
-      <div class="panel-t">📊 Volume by Casino</div>
-      <div class="panel-badge data">STACKED</div>
-    </div>
-    <div class="chart-container"><canvas id="chart-stacked"></canvas></div>
-  </div>
-
-  <!-- COL 3 MID: HEATMAP -->
-  <div class="panel">
-    <div class="panel-h">
-      <div class="panel-t">🔥 Activity Heatmap</div>
-      <div class="panel-badge data">HOURLY</div>
-    </div>
-    <div class="panel-body">
-      <div class="heatmap" id="heatmap"></div>
-    </div>
-  </div>
-
-  <!-- COL 4 MID: WHALE ALERTS -->
-  <div class="panel">
-    <div class="panel-h">
-      <div class="panel-t">🐋 Whale Alerts</div>
-      <div class="panel-badge alert">$5K+</div>
-    </div>
-    <div class="panel-body" id="whales"></div>
-  </div>
-
-  <!-- COL 2 BOT: LEADERBOARD -->
-  <div class="panel">
+  <!-- COL 2 BOT: LEADERBOARD (mobile: 3rd) -->
+  <div class="panel m-order-3">
     <div class="panel-h">
       <div class="panel-t">🏆 Casino Leaderboard</div>
       <div class="panel-badge data">RANKED</div>
@@ -388,8 +387,44 @@
     <div class="panel-body" id="leaderboard"></div>
   </div>
 
-  <!-- COL 3 BOT: DISTRIBUTION + TRENDING -->
-  <div class="panel">
+  <!-- COL 1: LIVE FEED (mobile: 4th) -->
+  <div class="panel m-order-4" style="grid-row:span 3;">
+    <div class="panel-h">
+      <div class="panel-t">⚡ Live Deposits</div>
+      <div class="panel-badge live">● LIVE</div>
+    </div>
+    <div class="panel-body" id="feed"></div>
+  </div>
+
+  <!-- COL 3 TOP: DEPOSIT COUNT (mobile: 5th) -->
+  <div class="panel m-order-5">
+    <div class="panel-h">
+      <div class="panel-t">📈 Daily Deposits</div>
+      <div class="panel-badge data">21D</div>
+    </div>
+    <div class="chart-container"><canvas id="chart-count"></canvas></div>
+  </div>
+
+  <!-- COL 4 MID: WHALE ALERTS (mobile: 6th) -->
+  <div class="panel m-order-6">
+    <div class="panel-h">
+      <div class="panel-t">🐋 Whale Alerts</div>
+      <div class="panel-badge alert">$5K+</div>
+    </div>
+    <div class="panel-body" id="whales"></div>
+  </div>
+
+  <!-- COL 2 MID: STACKED AREA (mobile: 7th) -->
+  <div class="panel m-order-7">
+    <div class="panel-h">
+      <div class="panel-t">📊 Volume by Casino</div>
+      <div class="panel-badge data">STACKED</div>
+    </div>
+    <div class="chart-container"><canvas id="chart-stacked"></canvas></div>
+  </div>
+
+  <!-- COL 3 BOT: DISTRIBUTION (mobile: 8th) -->
+  <div class="panel m-order-8">
     <div class="panel-h">
       <div class="panel-t">💎 Deposit Distribution</div>
       <div class="panel-badge data">ALL TIME</div>
@@ -397,8 +432,19 @@
     <div class="panel-body" id="distribution"></div>
   </div>
 
-  <!-- COL 4 BOT: INTEL FEED -->
-  <div class="panel">
+  <!-- COL 3 MID: HEATMAP (mobile: 9th) -->
+  <div class="panel m-order-9">
+    <div class="panel-h">
+      <div class="panel-t">🔥 Activity Heatmap</div>
+      <div class="panel-badge data">HOURLY</div>
+    </div>
+    <div class="panel-body" style="overflow-x:auto;">
+      <div class="heatmap" id="heatmap"></div>
+    </div>
+  </div>
+
+  <!-- COL 4 BOT: INTEL FEED (mobile: 10th) -->
+  <div class="panel m-order-10">
     <div class="panel-h">
       <div class="panel-t">📰 Intel Feed</div>
       <div class="panel-badge hot">HOT</div>
