@@ -9,7 +9,7 @@ echo "🎰 Daily Deposit Export - $(date)"
 echo ""
 
 # Run export (use full path for launchd)
-/opt/homebrew/bin/node export-deposits-csv.js
+/opt/homebrew/bin/node fetch-multichain.js
 
 # Generate analytics with embedded data for live site
 echo ""
@@ -26,6 +26,10 @@ if [ $? -eq 0 ]; then
     TOTAL=$(wc -l < data/deposits-all.csv)
     echo "📊 Total tracked: $TOTAL deposits"
   fi
+# Generate terminal data for CCT dashboard
+  echo ""
+  echo "🖥️ Generating terminal data..."
+  /usr/bin/python3 generate-terminal-data.py
 else
   echo "❌ Export failed"
   exit 1
