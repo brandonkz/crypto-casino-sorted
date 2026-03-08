@@ -131,14 +131,20 @@ body {
 
 .badge {
   display: inline-block;
-  background: rgba(201, 169, 110, 0.12);
-  color: var(--accent);
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #5a6080;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 10px;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
+  border: 1px solid #1a1d2e;
+  font-family: 'JetBrains Mono', monospace;
 }
+.badge-instant { color: #00e676; background: rgba(0,230,118,0.06); border-color: rgba(0,230,118,0.15); }
+.badge-nokyc { color: #b388ff; background: rgba(179,136,255,0.06); border-color: rgba(179,136,255,0.15); }
+.badge-fair { color: #448aff; background: rgba(68,138,255,0.06); border-color: rgba(68,138,255,0.15); }
+.badge-vpn { color: #18ffff; background: rgba(24,255,255,0.06); border-color: rgba(24,255,255,0.15); }
 
 .stats {
   display: grid;
@@ -516,18 +522,23 @@ body {
 
 .casino-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1px;
+  background: #1a1d2e;
+  border: 1px solid #1a1d2e;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .casino-card {
-  background: var(--dark-card);
-  border: 2px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem;
-  transition: all 0.3s;
+  background: #0c0d14;
+  border: none;
+  border-radius: 0;
+  padding: 1.25rem 1.5rem;
+  transition: background 0.2s;
   position: relative;
   overflow: hidden;
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
 }
 
 .casino-card::before {
@@ -535,17 +546,17 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--white);
+  width: 3px;
+  height: 100%;
+  background: #00e676;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.2s;
 }
 
 .casino-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-  border-color: var(--white);
+  box-shadow: none;
+  transform: none;
+  background: #10111a;
 }
 
 .casino-card:hover::before {
@@ -553,51 +564,62 @@ body {
 }
 
 .casino-card.featured {
-  border: 2px solid var(--white);
-  background: var(--light-gray);
+  border: none;
+  background: #10111a;
+}
+
+.casino-card.featured::before {
+  opacity: 1;
+  background: #ffc400;
 }
 
 .featured-badge {
   position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  background: var(--white);
-  color: var(--dark);
-  padding: 0.5rem 1.25rem;
-  border-radius: 24px;
-  font-size: 0.8rem;
-  font-weight: 900;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(255, 196, 0, 0.1);
+  color: #ffc400;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.1em;
   z-index: 1;
+  border: 1px solid rgba(255, 196, 0, 0.25);
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .casino-header {
   display: flex;
   justify-content: space-between;
-  align-items: start;
-  margin-bottom: 1rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #1a1d2e;
 }
 
 .casino-name {
-  font-size: 2.25rem;
-  font-weight: 900;
-  color: var(--white);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #e8eaed;
   margin: 0;
   letter-spacing: -0.02em;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .casino-rating {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: var(--light-gray);
-  padding: 0.75rem 1.25rem;
-  border-radius: 24px;
-  font-weight: 800;
-  font-size: 1.05rem;
-  border: 2px solid var(--border);
-  color: var(--white);
+  gap: 0.3rem;
+  background: rgba(0, 230, 118, 0.08);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: 1px solid rgba(0, 230, 118, 0.25);
+  color: #00e676;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .star {
@@ -605,45 +627,48 @@ body {
 }
 
 .casino-description {
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
+  color: #9aa3b2;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  font-size: 0.8rem;
+  font-family: 'Inter', -apple-system, sans-serif;
 }
 
 .token-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  background: var(--light-gray);
-  padding: 0.75rem 1.25rem;
-  border-radius: 24px;
-  margin-bottom: 1.5rem;
-  border: 2px solid var(--border);
+  gap: 0.5rem;
+  background: rgba(68, 138, 255, 0.08);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(68, 138, 255, 0.2);
   text-decoration: none;
   transition: all 0.2s;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .token-badge:hover {
-  border-color: var(--white);
-  background: var(--border);
-  transform: translateY(-2px);
+  border-color: rgba(68, 138, 255, 0.5);
+  background: rgba(68, 138, 255, 0.12);
+  transform: none;
 }
 
 .token-symbol {
-  font-weight: 900;
-  font-size: 1.1rem;
-  color: var(--white);
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #448aff;
   letter-spacing: 0.5px;
 }
 
-.token-mcap {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+.token-mcap, .token-mc {
+  font-size: 0.7rem;
+  color: #5a6080;
   font-weight: 600;
 }
 
-.token-arrow {
-  color: var(--text-secondary);
+.token-arrow, .external-link {
+  color: #5a6080;
   font-size: 1rem;
   transition: transform 0.2s;
 }
@@ -653,105 +678,115 @@ body {
 }
 
 .casino-bonus {
-  background: transparent;
-  color: var(--text-secondary);
-  padding: 0.75rem 0;
-  border-top: 1px solid var(--border);
-  margin-top: 1rem;
+  background: rgba(255, 196, 0, 0.06);
+  color: #ffc400;
+  padding: 0.4rem 0;
+  border-top: 1px solid #1a1d2e;
+  margin-top: 0.75rem;
   text-align: center;
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.02em;
 }
 
 .casino-features {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  gap: 0.3rem;
+  margin-bottom: 0.75rem;
 }
 
 .feature {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  color: #9aa3b2;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .feature-icon {
-  color: var(--white);
+  color: #5a6080;
+  font-size: 0.75rem;
 }
 
 .casino-coins {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  gap: 0.3rem;
+  margin-bottom: 0.75rem;
 }
 
 .coin-badge {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-secondary);
-  padding: 0.5rem 1rem;
-  border-radius: 24px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  border: 2px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: #5a6080;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  border: 1px solid #1a1d2e;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .casino-cta {
   display: block;
   width: 100%;
-  background: var(--white);
-  color: var(--dark);
+  background: rgba(0, 230, 118, 0.1);
+  color: #00e676;
   text-align: center;
-  padding: 1.25rem 1.5rem;
-  border-radius: var(--radius-lg);
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
   text-decoration: none;
-  font-weight: 900;
-  font-size: 1.15rem;
+  font-weight: 700;
+  font-size: 0.8rem;
   transition: all 0.2s;
-  border: none;
+  border: 1px solid rgba(0, 230, 118, 0.25);
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
   position: relative;
   overflow: hidden;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .casino-cta:hover {
-  background: var(--text-secondary);
-  transform: scale(1.02);
+  background: rgba(0, 230, 118, 0.18);
+  border-color: rgba(0, 230, 118, 0.5);
+  transform: none;
 }
 
-/* Pros/Cons */
+/* Pros/Cons — Terminal Style */
 .pros-cons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #1a1d2e;
 }
 
 .pros, .cons {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
+  font-size: 0.7rem;
+  color: #9aa3b2;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .pros h4, .cons h4 {
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .pros h4 {
-  color: var(--white);
+  color: #00e676;
 }
 
 .cons h4 {
-  color: var(--text-secondary);
+  color: #ff5252;
 }
 
 .pros ul, .cons ul {
@@ -759,15 +794,21 @@ body {
   padding: 0;
 }
 
+.pros li, .cons li {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  margin-bottom: 0.15rem;
+}
+
 .pros li:before {
-  content: "✓ ";
-  color: var(--white);
+  content: "▸ ";
+  color: #00e676;
   font-weight: 600;
 }
 
 .cons li:before {
-  content: "✗ ";
-  color: var(--text-secondary);
+  content: "▸ ";
+  color: #ff5252;
   font-weight: 600;
 }
 
@@ -925,7 +966,7 @@ body {
   }
   
   .casino-name {
-    font-size: 1.75rem;
+    font-size: 1.1rem;
   }
   
   .stat-number {
@@ -945,60 +986,81 @@ body {
   }
   
   .casino-card {
-    padding: 1.5rem;
+    padding: 1rem 1.25rem;
   }
 }
 
-/* Reddit Sentiment */
+/* Reddit Sentiment — Terminal Style */
 .reddit-sentiment {
-  background: rgba(139, 92, 246, 0.08);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  border-radius: var(--radius);
-  padding: 1rem;
-  margin: 1rem 0;
-  font-size: 0.85rem;
+  background: rgba(179, 136, 255, 0.04);
+  border: 1px solid #1a1d2e;
+  border-radius: 4px;
+  padding: 0.6rem 0.75rem;
+  margin: 0.6rem 0;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .sentiment-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
   flex-wrap: wrap;
 }
 
 .sentiment-icon {
-  font-size: 1.1rem;
+  font-size: 0.85rem;
 }
 
 .sentiment-label {
-  color: var(--primary);
+  color: #b388ff;
   font-weight: 700;
+  font-size: 0.7rem;
 }
 
 .sentiment-mentions {
-  color: var(--text-secondary);
-  font-size: 0.8rem;
+  color: #5a6080;
+  font-size: 0.65rem;
 }
 
 .sentiment-details {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .sentiment-praise,
 .sentiment-complaints {
-  color: var(--text-secondary);
-  line-height: 1.5;
+  color: #9aa3b2;
+  line-height: 1.4;
+  font-size: 0.7rem;
 }
 
 .sentiment-praise {
-  padding-left: 1.5rem;
+  padding-left: 1rem;
 }
 
 .sentiment-complaints {
-  padding-left: 1.5rem;
+  padding-left: 1rem;
+}
+
+.reddit-quote {
+  color: #5a6080;
+  font-size: 0.7rem;
+  font-style: italic;
+  padding: 0.3rem 0 0.3rem 0.75rem;
+  border-left: 2px solid #1a1d2e;
+  margin: 0.3rem 0;
+  line-height: 1.4;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.casino-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Deposit Tracker */
