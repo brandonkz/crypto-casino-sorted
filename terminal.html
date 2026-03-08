@@ -57,6 +57,7 @@
     .top-right a{color:var(--dim);text-decoration:none;}
     .top-right a:hover{color:var(--green);}
     .nav-desktop{display:flex;align-items:center;gap:16px;}
+    .container{max-width:1600px;margin:0 auto;padding:0 16px;}
     .sec-link{
       font-family:var(--mono);font-size:10px;font-weight:600;
       color:var(--dim);text-decoration:none;padding:4px 10px;
@@ -327,32 +328,32 @@
 
     /* === NEWS / PROMO / REDDIT / STREAMER FEEDS === */
     .news-row, .promo-row, .reddit-row, .streamer-row{
-      display:grid;grid-template-columns:60px 1fr 90px 80px;
-      padding:8px 12px;border-bottom:1px solid rgba(26,29,46,0.4);
-      font-size:11px;align-items:center;gap:10px;transition:background 0.15s;
+      display:grid;grid-template-columns:90px 1fr 110px 90px;
+      padding:10px 14px;border-bottom:1px solid rgba(26,29,46,0.4);
+      font-size:12px;align-items:center;gap:12px;transition:background 0.15s;
     }
     .news-row:hover, .promo-row:hover, .reddit-row:hover, .streamer-row:hover{background:rgba(255,255,255,0.015);}
     .news-row.header, .promo-row.header, .reddit-row.header, .streamer-row.header{color:var(--muted);font-size:8px;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border);}
 
     .news-source{font-weight:700;color:var(--blue);}
-    .news-title{color:var(--text);font-weight:600;}
-    .news-tag{font-size:8px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(68,138,255,0.2);}
-    .news-time{color:var(--dim);font-size:9px;text-align:right;}
+    .news-title{color:var(--text);font-weight:600;line-height:1.4;white-space:normal;}
+    .news-tag{font-size:9px;padding:3px 6px;border-radius:2px;font-weight:700;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(68,138,255,0.2);}
+    .news-time{color:var(--dim);font-size:10px;text-align:right;}
 
     .promo-casino{font-weight:700;color:var(--amber);}
     .promo-offer{color:var(--text);font-weight:600;}
-    .promo-type{font-size:8px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-b);}
-    .promo-link{color:var(--green);font-size:9px;text-align:right;}
+    .promo-type{font-size:9px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-b);}
+    .promo-link{color:var(--green);font-size:10px;text-align:right;}
 
     .reddit-sub{font-weight:700;color:var(--red);}
     .reddit-title{color:var(--text);font-weight:600;}
-    .reddit-tag{font-size:8px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--red-bg);color:var(--red);border:1px solid var(--red-b);}
-    .reddit-time{color:var(--dim);font-size:9px;text-align:right;}
+    .reddit-tag{font-size:9px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--red-bg);color:var(--red);border:1px solid var(--red-b);}
+    .reddit-time{color:var(--dim);font-size:10px;text-align:right;}
 
     .streamer-name{font-weight:700;color:var(--blue);}
     .streamer-focus{color:var(--text);font-weight:600;}
-    .streamer-platform{font-size:8px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(68,138,255,0.2);}
-    .streamer-followers{color:var(--dim);font-size:9px;text-align:right;}
+    .streamer-platform{font-size:9px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(68,138,255,0.2);}
+    .streamer-followers{color:var(--dim);font-size:10px;text-align:right;}
 
     @media(max-width:768px){
       .news-row, .promo-row, .reddit-row, .streamer-row{grid-template-columns:50px 1fr 70px;}
@@ -368,14 +369,14 @@
     .news-row:hover, .promo-row:hover{background:rgba(255,255,255,0.015);}
     .news-row.header, .promo-row.header{color:var(--muted);font-size:8px;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border);}
     .news-source{font-weight:700;color:var(--blue);}
-    .news-title{color:var(--text);font-weight:600;}
-    .news-tag{font-size:8px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(68,138,255,0.2);}
-    .news-time{color:var(--dim);font-size:9px;text-align:right;}
+    .news-title{color:var(--text);font-weight:600;line-height:1.4;white-space:normal;}
+    .news-tag{font-size:9px;padding:3px 6px;border-radius:2px;font-weight:700;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(68,138,255,0.2);}
+    .news-time{color:var(--dim);font-size:10px;text-align:right;}
 
     .promo-casino{font-weight:700;color:var(--amber);}
     .promo-offer{color:var(--text);font-weight:600;}
-    .promo-type{font-size:8px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-b);}
-    .promo-link{color:var(--green);font-size:9px;text-align:right;}
+    .promo-type{font-size:9px;padding:2px 5px;border-radius:2px;font-weight:700;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-b);}
+    .promo-link{color:var(--green);font-size:10px;text-align:right;}
 
     @media(max-width:768px){
       .news-row, .promo-row{grid-template-columns:50px 1fr 70px;}
