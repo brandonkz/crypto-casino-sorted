@@ -89,8 +89,8 @@ def main():
             with open("data/news.json", "r") as f:
                 news = json.load(f)
             news["updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-            if not news.get("items"):
-                raise ValueError("empty news")
+            if not news.get("items") or len(news.get("items", [])) < 5:
+                raise ValueError("insufficient news")
             print("⚠️ No RSS matches — keeping previous news.json")
         except Exception:
             # Fallback seed headlines so the panel is never empty
@@ -110,6 +110,27 @@ def main():
                         "url": "/terminal.html",
                         "tag": "DATA",
                         "time": "Today"
+                    },
+                    {
+                        "source": "CryptoCasinoSorted",
+                        "title": "Casino health scores now rank platform momentum (0–100)",
+                        "url": "/terminal.html#health",
+                        "tag": "HEALTH",
+                        "time": "Today"
+                    },
+                    {
+                        "source": "CryptoCasinoSorted",
+                        "title": "Promo Radar refreshed daily — find the best bonus offers",
+                        "url": "/#promos",
+                        "tag": "PROMOS",
+                        "time": "This week"
+                    },
+                    {
+                        "source": "CryptoCasinoSorted",
+                        "title": "Top casinos by volume updated with on-chain data",
+                        "url": "/terminal.html#dashboard",
+                        "tag": "VOLUME",
+                        "time": "This week"
                     }
                 ]
             }
