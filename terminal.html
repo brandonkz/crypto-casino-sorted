@@ -358,12 +358,12 @@
     @media(max-width:768px){
       .news-row, .promo-row, .reddit-row, .streamer-row{
         grid-template-columns:1fr; gap:6px;
-        padding:12px 14px;
+        padding:12px 14px; align-items:flex-start;
       }
       .news-row.header, .promo-row.header, .reddit-row.header, .streamer-row.header{display:none;}
       .news-time, .promo-link, .reddit-time, .streamer-followers{display:none;}
-      .news-source, .promo-casino, .reddit-sub, .streamer-name{font-size:10px;}
-      .news-title, .promo-offer, .reddit-title, .streamer-focus{font-size:12px;line-height:1.45;}
+      .news-source, .promo-casino, .reddit-sub, .streamer-name{font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;display:block;}
+      .news-title, .promo-offer, .reddit-title, .streamer-focus{font-size:12px;line-height:1.5;display:block;}
       .news-tag, .promo-type, .reddit-tag, .streamer-platform{width:fit-content;}
     }
 
