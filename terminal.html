@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bloomberg-style crypto casino analytics terminal. Real-time on-chain deposit tracking, volume charts, market share, and whale alerts across Stake, Rollbit, Rainbet, Roobet, and more.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/terminal.html">
+  <meta name="keywords" content="crypto casino analytics, casino deposit tracker, on-chain gambling data, stake deposits, rollbit volume, crypto gambling terminal, casino market share">
+  <meta name="author" content="CryptoCasinoSorted">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0L3N9F43ED');
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Crypto Casino Terminal — On-Chain Analytics | CryptoCasinoSorted">
+  <meta property="og:description" content="Bloomberg-style analytics for crypto casinos. $62M+ tracked deposits, 10+ casinos, real on-chain data.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cryptocasinosorted.com/terminal.html">
+
+  <title>CCT — Crypto Casino Terminal | On-Chain Analytics Dashboard</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="icon" href="favicon.svg">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: #0f1017;
+      --bg-card-hover: #141520;
+      --bg-surface: #12131c;
+      --border: #1e2030;
+      --border-bright: #2a2d42;
+      --text: #e8eaed;
+      --text-dim: #6b7280;
+      --text-muted: #4a5060;
+      --green: #00d26a;
+      --green-dim: rgba(0, 210, 106, 0.15);
+      --red: #ff4757;
+      --red-dim: rgba(255, 71, 87, 0.15);
+      --blue: #4a9eff;
+      --blue-dim: rgba(74, 158, 255, 0.15);
+      --amber: #ffb300;
+      --amber-dim: rgba(255, 179, 0, 0.15);
+      --purple: #a855f7;
+      --cyan: #22d3ee;
+      --orange: #f97316;
+      --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* Terminal Top Bar */
+    .terminal-bar {
+      background: #060609;
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .terminal-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .terminal-logo {
+      font-family: var(--mono);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--green);
+      letter-spacing: -0.02em;
+    }
+    .terminal-logo span { color: var(--text-dim); font-weight: 400; }
+    .terminal-status {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--green);
+    }
+    .status-dot {
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+    .terminal-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+    .terminal-bar-right a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .terminal-bar-right a:hover { color: var(--green); }
+
+    /* Container */
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+    }
+
+    /* KPI Strip */
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .kpi {
+      background: var(--bg-card);
+      padding: 1rem 1.25rem;
+      transition: background 0.15s;
+    }
+    .kpi:hover { background: var(--bg-card-hover); }
+    .kpi-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+    .kpi-value {
+      font-family: var(--mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .kpi-sub {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      margin-top: 0.2rem;
+    }
+    .kpi-sub.green { color: var(--green); }
+    .kpi-sub.red { color: var(--red); }
+    .kpi-sub.dim { color: var(--text-dim); }
+
+    /* Grid layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .grid-2-1 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-2-1 { grid-template-columns: 1fr; }
+    }
+
+    /* Panel */
+    .panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .panel-title {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .panel-badge {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .panel-badge.green { background: var(--green-dim); color: var(--green); }
+    .panel-badge.blue { background: var(--blue-dim); color: var(--blue); }
+    .panel-badge.amber { background: var(--amber-dim); color: var(--amber); }
+    .panel-body { padding: 1rem; }
+    .panel-body.flush { padding: 0; }
+
+    /* Chart containers */
+    .chart-wrap {
+      position: relative;
+      height: 280px;
+      padding: 0.5rem;
+    }
+    .chart-wrap.tall { height: 350px; }
+
+    /* Leaderboard Table */
+    .lb-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+    .lb-table th {
+      text-align: left;
+      padding: 0.6rem 0.75rem;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg-card);
+    }
+    .lb-table th.right, .lb-table td.right { text-align: right; }
+    .lb-table td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid rgba(30, 32, 48, 0.5);
+    }
+    .lb-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .lb-table .rank {
+      color: var(--text-dim);
+      font-size: 0.7rem;
+      width: 2rem;
+    }
+    .lb-table .casino-name {
+      font-weight: 600;
+      color: var(--text);
+    }
+    .lb-table .mono-green { color: var(--green); }
+    .lb-table .mono-blue { color: var(--blue); }
+    .lb-table .mono-amber { color: var(--amber); }
+
+    /* Market share bar */
+    .share-bar {
+      display: flex;
+      height: 32px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .share-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: rgba(0,0,0,0.7);
+      transition: flex 0.3s;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .share-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+    }
+    .share-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--text-dim);
+    }
+    .share-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+    }
+
+    /* Live ticker */
+    .ticker-wrap {
+      max-height: 320px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid rgba(30, 32, 48, 0.5);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      transition: background 0.15s;
+    }
+    .ticker-item:hover { background: rgba(255,255,255,0.02); }
+    .ticker-item .time { color: var(--text-dim); font-size: 0.65rem; min-width: 45px; }
+    .ticker-item .casino { font-weight: 600; min-width: 80px; }
+    .ticker-item .amount { color: var(--green); font-weight: 600; }
+    .ticker-item .whale-tag {
+      background: var(--amber-dim);
+      color: var(--amber);
+      font-size: 0.6rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+
+    /* Heatmap */
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: 40px repeat(24, 1fr);
+      gap: 2px;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+    }
+    .heatmap-label {
+      display: flex;
+      align-items: center;
+      color: var(--text-dim);
+      font-size: 0.6rem;
+      padding-right: 4px;
+      justify-content: flex-end;
+    }
+    .heatmap-cell {
+      aspect-ratio: 1;
+      border-radius: 2px;
+      min-height: 14px;
+      transition: transform 0.15s;
+      cursor: default;
+      position: relative;
+    }
+    .heatmap-cell:hover { transform: scale(1.3); z-index: 2; }
+    .heatmap-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.55rem;
+      padding-bottom: 2px;
+    }
+
+    /* Distribution bars */
+    .dist-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.4rem 0;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+    }
+    .dist-label {
+      min-width: 80px;
+      color: var(--text-dim);
+      text-align: right;
+      font-size: 0.7rem;
+    }
+    .dist-bar-track {
+      flex: 1;
+      height: 20px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .dist-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      padding-left: 6px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      transition: width 0.5s ease;
+    }
+    .dist-count {
+      min-width: 50px;
+      text-align: right;
+      color: var(--text-dim);
+      font-size: 0.7rem;
+    }
+
+    /* Sparkline inline */
+    .spark-container { display: inline-block; vertical-align: middle; }
+
+    /* Footer */
+    .terminal-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-top: 1rem;
+    }
+    .terminal-footer a { color: var(--green); text-decoration: none; }
+
+    /* Tabs */
+    .tab-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .tab {
+      padding: 0.5rem 1rem;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+    .tab:hover { color: var(--text); }
+    .tab.active {
+      color: var(--green);
+      border-bottom-color: var(--green);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- Terminal Top Bar -->
+<div class="terminal-bar">
+  <div class="terminal-bar-left">
+    <div class="terminal-logo">CCT <span>Crypto Casino Terminal</span></div>
+    <div class="terminal-status">
+      <div class="status-dot"></div>
+      ON-CHAIN DATA
+    </div>
+  </div>
+  <div class="terminal-bar-right">
+    <span id="clock"></span>
+    <a href="/">← CryptoCasinoSorted</a>
+    <a href="/analytics.html">Live Data</a>
+    <a href="/calculators.html">Tools</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- KPI Strip -->
+  <div class="kpi-strip" id="kpi-strip">
+    <div class="kpi">
+      <div class="kpi-label">Total Volume (USD)</div>
+      <div class="kpi-value" id="kpi-volume">—</div>
+      <div class="kpi-sub dim" id="kpi-volume-sub"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Total Deposits</div>
+      <div class="kpi-value" id="kpi-deposits">—</div>
+      <div class="kpi-sub dim" id="kpi-deposits-sub"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Avg Deposit</div>
+      <div class="kpi-value" id="kpi-avg">—</div>
+      <div class="kpi-sub dim" id="kpi-avg-sub"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Median Deposit</div>
+      <div class="kpi-value" id="kpi-median">—</div>
+      <div class="kpi-sub dim" id="kpi-median-sub"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Largest Deposit</div>
+      <div class="kpi-value" id="kpi-max">—</div>
+      <div class="kpi-sub dim" id="kpi-max-sub"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Casinos Tracked</div>
+      <div class="kpi-value" id="kpi-casinos">—</div>
+      <div class="kpi-sub dim" id="kpi-casinos-sub"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Days Tracked</div>
+      <div class="kpi-value" id="kpi-days">—</div>
+      <div class="kpi-sub dim" id="kpi-days-sub"></div>
+    </div>
+  </div>
+
+  <!-- Market Share Bar -->
+  <div class="panel" style="margin-bottom: 1rem;">
+    <div class="panel-header">
+      <div class="panel-title">Market Share by Volume</div>
+      <div class="panel-badge green">USD</div>
+    </div>
+    <div class="panel-body">
+      <div class="share-bar" id="share-bar"></div>
+      <div class="share-legend" id="share-legend"></div>
+    </div>
+  </div>
+
+  <!-- Main Charts Row -->
+  <div class="grid-2">
+    <!-- Volume Chart -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Daily Volume (USD)</div>
+        <div class="panel-badge blue">21D</div>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="chart-volume"></canvas>
+      </div>
+    </div>
+
+    <!-- Deposit Count Chart -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Daily Deposit Count</div>
+        <div class="panel-badge green">21D</div>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="chart-count"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Casino Breakdown + Distribution -->
+  <div class="grid-3">
+    <!-- Casino Volume Comparison -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Casino Volume Comparison</div>
+        <div class="panel-badge amber">ALL TIME</div>
+      </div>
+      <div class="chart-wrap tall">
+        <canvas id="chart-casino-bars"></canvas>
+      </div>
+    </div>
+
+    <!-- Deposit Size Distribution -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Deposit Size Distribution</div>
+        <div class="panel-badge blue">COUNT</div>
+      </div>
+      <div class="panel-body" id="dist-body"></div>
+    </div>
+  </div>
+
+  <!-- Stacked Area + Leaderboard -->
+  <div class="grid-2">
+    <!-- Stacked area chart -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Volume by Casino (Stacked)</div>
+        <div class="panel-badge green">USD</div>
+      </div>
+      <div class="chart-wrap tall">
+        <canvas id="chart-stacked"></canvas>
+      </div>
+    </div>
+
+    <!-- Casino Leaderboard -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Casino Leaderboard</div>
+        <div class="panel-badge amber">RANKED</div>
+      </div>
+      <div class="panel-body flush" style="max-height: 380px; overflow-y: auto;">
+        <table class="lb-table" id="leaderboard"></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Heatmap -->
+  <div class="panel" style="margin-bottom: 1rem;">
+    <div class="panel-header">
+      <div class="panel-title">Deposit Activity Heatmap (Hourly)</div>
+      <div class="panel-badge blue">UTC</div>
+    </div>
+    <div class="panel-body" style="overflow-x: auto;">
+      <div class="heatmap-grid" id="heatmap"></div>
+    </div>
+  </div>
+
+  <!-- Avg Deposit per Casino + Donut -->
+  <div class="grid-2">
+    <!-- Avg deposit per casino -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Avg Deposit by Casino (USD)</div>
+        <div class="panel-badge amber">PER TX</div>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="chart-avg-casino"></canvas>
+      </div>
+    </div>
+
+    <!-- Donut chart -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Deposit Count Share</div>
+        <div class="panel-badge green">%</div>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="chart-donut"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily volume per casino line chart -->
+  <div class="panel" style="margin-bottom: 1rem;">
+    <div class="panel-header">
+      <div class="panel-title">Daily Volume per Casino</div>
+      <div>
+        <div class="tab-bar" id="casino-tabs" style="border-bottom: none;"></div>
+      </div>
+    </div>
+    <div class="chart-wrap tall">
+      <canvas id="chart-per-casino"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="terminal-footer">
+  <p>CCT — Crypto Casino Terminal · Built by <a href="/">CryptoCasinoSorted</a></p>
+  <p style="margin-top: 0.3rem;">Data sourced from Ethereum mainnet on-chain deposits · Updated daily at 02:00 UTC</p>
+  <p style="margin-top: 0.5rem;">
+    <a href="/betting-calculator.html">Betting Calc</a> ·
+    <a href="/house-edge-calculator.html">House Edge</a> ·
+    <a href="/arbitrage-calculator.html">Arb Calculator</a> ·
+    <a href="/provably-fair-verifier.html">Provably Fair</a> ·
+    <a href="/blog/index.html">Blog</a>
+  </p>
+</div>
+
+<script>
+const CASINO_COLORS = {
+  'Roobet': '#f97316',
+  'Stake': '#3b82f6',
+  'Stake 11': '#60a5fa',
+  'Duelbits': '#a855f7',
+  'Rollbit': '#22d3ee',
+  'Rainbet': '#22c55e',
+  'Bitcasino': '#eab308',
+  'Bitcasino 3': '#facc15',
+  'Shuffle': '#ec4899',
+  'BetFury': '#ef4444',
+  'Rollbit Tokens': '#67e8f9'
+};
+
+const SHARE_COLORS = ['#f97316','#3b82f6','#a855f7','#22d3ee','#22c55e','#eab308','#ec4899','#ef4444','#60a5fa','#facc15','#67e8f9'];
+
+function fmt(n) {
+  if (n >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (n >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return '$' + (n/1e3).toFixed(1) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+function fmtFull(n) {
+  return '$' + n.toLocaleString('en-US', {maximumFractionDigits: 0});
+}
+
+function fmtNum(n) {
+  return n.toLocaleString('en-US');
+}
+
+// Chart.js defaults
+Chart.defaults.color = '#6b7280';
+Chart.defaults.borderColor = 'rgba(30, 32, 48, 0.8)';
+Chart.defaults.font.family = "'JetBrains Mono', monospace";
+Chart.defaults.font.size = 11;
+Chart.defaults.plugins.legend.display = false;
+Chart.defaults.animation.duration = 600;
+
+// Clock
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent = now.toUTCString().replace('GMT','UTC');
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// Load data
+fetch('data/terminal-data.json')
+  .then(r => r.json())
+  .then(data => render(data))
+  .catch(e => console.error('Failed to load data:', e));
+
+function render(data) {
+  const {dates, casinos, daily, hourly, totals, summary, distribution} = data;
+
+  // KPIs
+  document.getElementById('kpi-volume').textContent = fmt(summary.total_volume_usd);
+  document.getElementById('kpi-volume-sub').textContent = fmtFull(summary.total_volume_usd);
+  document.getElementById('kpi-deposits').textContent = fmtNum(summary.total_deposits);
+  document.getElementById('kpi-deposits-sub').textContent = `${(summary.total_deposits / summary.days_tracked).toFixed(0)}/day avg`;
+  document.getElementById('kpi-avg').textContent = fmt(summary.avg_deposit_usd);
+  document.getElementById('kpi-avg-sub').textContent = 'per transaction';
+  document.getElementById('kpi-median').textContent = fmt(summary.median_deposit_usd);
+  document.getElementById('kpi-median-sub').textContent = '50th percentile';
+  document.getElementById('kpi-max').textContent = fmt(summary.max_deposit_usd);
+  document.getElementById('kpi-max-sub').textContent = 'single transaction';
+  document.getElementById('kpi-casinos').textContent = casinos.length;
+  document.getElementById('kpi-casinos-sub').textContent = 'Ethereum mainnet';
+  document.getElementById('kpi-days').textContent = summary.days_tracked;
+  document.getElementById('kpi-days-sub').textContent = `${summary.date_range.start} — ${summary.date_range.end}`;
+
+  // Market share bar
+  const totalVol = Object.values(totals).reduce((s, c) => s + c.volume_usd, 0);
+  const shareBar = document.getElementById('share-bar');
+  const shareLegend = document.getElementById('share-legend');
+  casinos.forEach((c, i) => {
+    const pct = (totals[c].volume_usd / totalVol * 100);
+    if (pct < 1) return;
+    const seg = document.createElement('div');
+    seg.className = 'share-segment';
+    seg.style.flex = pct.toString();
+    seg.style.background = CASINO_COLORS[c] || SHARE_COLORS[i % SHARE_COLORS.length];
+    seg.textContent = pct > 5 ? `${c} ${pct.toFixed(0)}%` : '';
+    seg.title = `${c}: ${pct.toFixed(1)}% (${fmt(totals[c].volume_usd)})`;
+    shareBar.appendChild(seg);
+
+    const legendItem = document.createElement('div');
+    legendItem.className = 'share-legend-item';
+    legendItem.innerHTML = `<span class="share-dot" style="background:${CASINO_COLORS[c] || SHARE_COLORS[i % SHARE_COLORS.length]}"></span>${c} ${pct.toFixed(1)}%`;
+    shareLegend.appendChild(legendItem);
+  });
+
+  // Daily volume chart
+  const dailyVolumes = dates.map(d => {
+    return Object.values(daily[d]).reduce((s, c) => s + c.volume_usd, 0);
+  });
+  new Chart(document.getElementById('chart-volume'), {
+    type: 'bar',
+    data: {
+      labels: dates.map(d => d.slice(5)),
+      datasets: [{
+        data: dailyVolumes,
+        backgroundColor: dailyVolumes.map((v, i) => {
+          const prev = i > 0 ? dailyVolumes[i-1] : v;
+          return v >= prev ? 'rgba(0, 210, 106, 0.6)' : 'rgba(255, 71, 87, 0.6)';
+        }),
+        borderColor: dailyVolumes.map((v, i) => {
+          const prev = i > 0 ? dailyVolumes[i-1] : v;
+          return v >= prev ? 'rgba(0, 210, 106, 1)' : 'rgba(255, 71, 87, 1)';
+        }),
+        borderWidth: 1,
+        borderRadius: 3,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          ticks: { callback: v => fmt(v) },
+          grid: { color: 'rgba(30, 32, 48, 0.5)' }
+        },
+        x: { grid: { display: false } }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => fmtFull(ctx.raw)
+          }
+        }
+      }
+    }
+  });
+
+  // Daily deposit count chart
+  const dailyCounts = dates.map(d => {
+    return Object.values(daily[d]).reduce((s, c) => s + c.count, 0);
+  });
+  new Chart(document.getElementById('chart-count'), {
+    type: 'line',
+    data: {
+      labels: dates.map(d => d.slice(5)),
+      datasets: [{
+        data: dailyCounts,
+        borderColor: '#00d26a',
+        backgroundColor: 'rgba(0, 210, 106, 0.1)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 3,
+        pointBackgroundColor: '#00d26a',
+        borderWidth: 2,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          grid: { color: 'rgba(30, 32, 48, 0.5)' }
+        },
+        x: { grid: { display: false } }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => `${fmtNum(ctx.raw)} deposits`
+          }
+        }
+      }
+    }
+  });
+
+  // Casino volume bars (horizontal)
+  const topCasinos = casinos.slice(0, 10);
+  new Chart(document.getElementById('chart-casino-bars'), {
+    type: 'bar',
+    data: {
+      labels: topCasinos,
+      datasets: [{
+        data: topCasinos.map(c => totals[c].volume_usd),
+        backgroundColor: topCasinos.map((c, i) => CASINO_COLORS[c] || SHARE_COLORS[i]),
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      indexAxis: 'y',
+      scales: {
+        x: {
+          ticks: { callback: v => fmt(v) },
+          grid: { color: 'rgba(30, 32, 48, 0.5)' }
+        },
+        y: {
+          grid: { display: false }
+        }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => `${fmtFull(ctx.raw)} (${fmtNum(totals[topCasinos[ctx.dataIndex]].count)} deposits)`
+          }
+        }
+      }
+    }
+  });
+
+  // Deposit size distribution
+  const distData = [
+    { label: '<$100', key: 'under_100', color: '#22c55e' },
+    { label: '$100-500', key: '100_500', color: '#3b82f6' },
+    { label: '$500-1K', key: '500_1000', color: '#a855f7' },
+    { label: '$1K-5K', key: '1000_5000', color: '#f97316' },
+    { label: '$5K-10K', key: '5000_10000', color: '#ec4899' },
+    { label: '$10K-50K', key: '10000_50000', color: '#eab308' },
+    { label: '$50K+', key: 'over_50000', color: '#ef4444' },
+  ];
+  const maxDist = Math.max(...distData.map(d => distribution[d.key]));
+  const distBody = document.getElementById('dist-body');
+  distData.forEach(d => {
+    const count = distribution[d.key];
+    const pct = (count / summary.total_deposits * 100);
+    const barPct = (count / maxDist * 100);
+    const row = document.createElement('div');
+    row.className = 'dist-row';
+    row.innerHTML = `
+      <div class="dist-label">${d.label}</div>
+      <div class="dist-bar-track">
+        <div class="dist-bar-fill" style="width:${barPct}%;background:${d.color};">${pct > 3 ? pct.toFixed(0) + '%' : ''}</div>
+      </div>
+      <div class="dist-count">${fmtNum(count)}</div>
+    `;
+    distBody.appendChild(row);
+  });
+
+  // Stacked area chart
+  const stackedDatasets = topCasinos.slice(0, 7).map((c, i) => ({
+    label: c,
+    data: dates.map(d => (daily[d][c]?.volume_usd || 0)),
+    backgroundColor: (CASINO_COLORS[c] || SHARE_COLORS[i]) + '40',
+    borderColor: CASINO_COLORS[c] || SHARE_COLORS[i],
+    borderWidth: 1.5,
+    fill: true,
+    tension: 0.3,
+    pointRadius: 0,
+  }));
+  new Chart(document.getElementById('chart-stacked'), {
+    type: 'line',
+    data: {
+      labels: dates.map(d => d.slice(5)),
+      datasets: stackedDatasets
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          stacked: true,
+          ticks: { callback: v => fmt(v) },
+          grid: { color: 'rgba(30, 32, 48, 0.5)' }
+        },
+        x: { grid: { display: false } }
+      },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'circle',
+            padding: 15,
+            font: { size: 10, family: "'JetBrains Mono', monospace" }
+          }
+        },
+        tooltip: {
+          mode: 'index',
+          callbacks: {
+            label: ctx => `${ctx.dataset.label}: ${fmt(ctx.raw)}`
+          }
+        }
+      }
+    }
+  });
+
+  // Leaderboard
+  const lb = document.getElementById('leaderboard');
+  let lbHTML = `<thead><tr>
+    <th>#</th><th>Casino</th><th class="right">Volume (USD)</th>
+    <th class="right">Deposits</th><th class="right">Avg</th><th class="right">Share</th>
+  </tr></thead><tbody>`;
+  casinos.forEach((c, i) => {
+    const t = totals[c];
+    const share = (t.volume_usd / totalVol * 100);
+    const avg = t.count > 0 ? t.volume_usd / t.count : 0;
+    lbHTML += `<tr>
+      <td class="rank">${i+1}</td>
+      <td class="casino-name">${c}</td>
+      <td class="right mono-green">${fmt(t.volume_usd)}</td>
+      <td class="right mono-blue">${fmtNum(t.count)}</td>
+      <td class="right">${fmt(avg)}</td>
+      <td class="right mono-amber">${share.toFixed(1)}%</td>
+    </tr>`;
+  });
+  lbHTML += '</tbody>';
+  lb.innerHTML = lbHTML;
+
+  // Heatmap
+  const heatmap = document.getElementById('heatmap');
+  // Header row
+  const headerBlank = document.createElement('div');
+  heatmap.appendChild(headerBlank);
+  for (let h = 0; h < 24; h++) {
+    const hdr = document.createElement('div');
+    hdr.className = 'heatmap-header';
+    hdr.textContent = h.toString().padStart(2, '0');
+    heatmap.appendChild(hdr);
+  }
+
+  // Find max for color scaling
+  let maxHeat = 0;
+  dates.forEach(d => {
+    for (let h = 0; h < 24; h++) {
+      const key = h.toString().padStart(2, '0');
+      const val = hourly[d]?.[key] || 0;
+      if (val > maxHeat) maxHeat = val;
+    }
+  });
+
+  // Last 14 days for readability
+  const heatDates = dates.slice(-14);
+  heatDates.forEach(d => {
+    const label = document.createElement('div');
+    label.className = 'heatmap-label';
+    label.textContent = d.slice(5);
+    heatmap.appendChild(label);
+
+    for (let h = 0; h < 24; h++) {
+      const key = h.toString().padStart(2, '0');
+      const val = hourly[d]?.[key] || 0;
+      const intensity = maxHeat > 0 ? val / maxHeat : 0;
+      const cell = document.createElement('div');
+      cell.className = 'heatmap-cell';
+      cell.title = `${d} ${key}:00 UTC — ${val} deposits`;
+
+      if (intensity === 0) {
+        cell.style.background = 'rgba(255,255,255,0.02)';
+      } else if (intensity < 0.25) {
+        cell.style.background = `rgba(0, 210, 106, ${0.15 + intensity * 0.3})`;
+      } else if (intensity < 0.5) {
+        cell.style.background = `rgba(0, 210, 106, ${0.3 + intensity * 0.4})`;
+      } else if (intensity < 0.75) {
+        cell.style.background = `rgba(255, 179, 0, ${0.4 + intensity * 0.3})`;
+      } else {
+        cell.style.background = `rgba(255, 71, 87, ${0.5 + intensity * 0.4})`;
+      }
+      heatmap.appendChild(cell);
+    }
+  });
+
+  // Avg deposit per casino
+  new Chart(document.getElementById('chart-avg-casino'), {
+    type: 'bar',
+    data: {
+      labels: topCasinos,
+      datasets: [{
+        data: topCasinos.map(c => totals[c].count > 0 ? totals[c].volume_usd / totals[c].count : 0),
+        backgroundColor: topCasinos.map((c, i) => (CASINO_COLORS[c] || SHARE_COLORS[i]) + 'aa'),
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          ticks: { callback: v => fmt(v) },
+          grid: { color: 'rgba(30, 32, 48, 0.5)' }
+        },
+        x: {
+          grid: { display: false },
+          ticks: { font: { size: 9 } }
+        }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => fmtFull(ctx.raw) + ' avg'
+          }
+        }
+      }
+    }
+  });
+
+  // Donut chart - deposit count share
+  new Chart(document.getElementById('chart-donut'), {
+    type: 'doughnut',
+    data: {
+      labels: topCasinos,
+      datasets: [{
+        data: topCasinos.map(c => totals[c].count),
+        backgroundColor: topCasinos.map((c, i) => CASINO_COLORS[c] || SHARE_COLORS[i]),
+        borderColor: '#0f1017',
+        borderWidth: 2,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '60%',
+      plugins: {
+        legend: {
+          display: true,
+          position: 'right',
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'circle',
+            padding: 10,
+            font: { size: 10, family: "'JetBrains Mono', monospace" }
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const pct = (ctx.raw / summary.total_deposits * 100).toFixed(1);
+              return `${ctx.label}: ${fmtNum(ctx.raw)} (${pct}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Per-casino tabs + chart
+  const tabBar = document.getElementById('casino-tabs');
+  let perCasinoChart = null;
+
+  function showCasino(casinoName) {
+    document.querySelectorAll('#casino-tabs .tab').forEach(t => t.classList.remove('active'));
+    document.querySelector(`#casino-tabs .tab[data-casino="${casinoName}"]`)?.classList.add('active');
+
+    const casinoData = dates.map(d => daily[d][casinoName]?.volume_usd || 0);
+    const casinoCounts = dates.map(d => daily[d][casinoName]?.count || 0);
+
+    if (perCasinoChart) perCasinoChart.destroy();
+
+    perCasinoChart = new Chart(document.getElementById('chart-per-casino'), {
+      type: 'bar',
+      data: {
+        labels: dates.map(d => d.slice(5)),
+        datasets: [
+          {
+            label: 'Volume (USD)',
+            data: casinoData,
+            backgroundColor: (CASINO_COLORS[casinoName] || '#3b82f6') + '80',
+            borderColor: CASINO_COLORS[casinoName] || '#3b82f6',
+            borderWidth: 1,
+            borderRadius: 3,
+            yAxisID: 'y',
+          },
+          {
+            label: 'Deposits',
+            data: casinoCounts,
+            type: 'line',
+            borderColor: '#fff',
+            backgroundColor: 'rgba(255,255,255,0.1)',
+            borderWidth: 2,
+            pointRadius: 3,
+            pointBackgroundColor: '#fff',
+            tension: 0.3,
+            yAxisID: 'y1',
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            position: 'left',
+            ticks: { callback: v => fmt(v) },
+            grid: { color: 'rgba(30, 32, 48, 0.5)' }
+          },
+          y1: {
+            position: 'right',
+            grid: { display: false },
+            ticks: { color: '#fff' }
+          },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: 'bottom',
+            labels: {
+              usePointStyle: true,
+              padding: 15,
+              font: { size: 10, family: "'JetBrains Mono', monospace" }
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => {
+                if (ctx.datasetIndex === 0) return `Volume: ${fmtFull(ctx.raw)}`;
+                return `Deposits: ${fmtNum(ctx.raw)}`;
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // Build tabs
+  topCasinos.slice(0, 7).forEach((c, i) => {
+    const tab = document.createElement('button');
+    tab.className = 'tab' + (i === 0 ? ' active' : '');
+    tab.dataset.casino = c;
+    tab.textContent = c;
+    tab.onclick = () => showCasino(c);
+    tabBar.appendChild(tab);
+  });
+
+  // Show first casino
+  showCasino(topCasinos[0]);
+
+  // Track page view
+  if (typeof gtag === 'function') {
+    gtag('event', 'terminal_view', {
+      total_volume: summary.total_volume_usd,
+      total_deposits: summary.total_deposits,
+      casinos: casinos.length
+    });
+  }
+}
+</script>
+
+</body>
+</html>
