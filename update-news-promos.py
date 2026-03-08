@@ -73,12 +73,29 @@ def update_news():
 
 
 def update_promos():
-    # For now, keep existing promos and just update timestamp
+    # Load casino affiliate links
+    ref_map = {}
+    try:
+        with open("data/casinos.json", "r") as f:
+            casinos = json.load(f)
+        for c in casinos:
+            if c.get("name") and c.get("ref_url"):
+                ref_map[c["name"].lower()] = c["ref_url"]
+    except Exception:
+        pass
+
+    # Keep existing promos, update timestamp + affiliate URLs
     try:
         with open("data/promos.json", "r") as f:
             promos = json.load(f)
     except Exception:
         promos = {"promos": []}
+
+    for p in promos.get("promos", []):
+        name = p.get("casino", "").lower()
+        if name in ref_map:
+            p["url"] = ref_map[name]
+
     promos["updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     return promos
 
