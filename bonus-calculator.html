@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casino Bonus ROI Calculator - True Expected Value with Wagering Requirements</title>
+  <meta name="description" content="Calculate the true expected value of casino bonuses. Most bonuses are -EV traps. See the real math behind wagering requirements, house edge, and RTP.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/bonus-calculator.html">
+  <link rel="stylesheet" href="terminal-theme.css">
+  <style>
+    .calc-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .calc-section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .calc-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .calc-label {
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .calc-input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      width: 100%;
+    }
+    .calc-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    select.calc-input {
+      cursor: pointer;
+    }
+    .result-panel {
+      background: var(--bg);
+      border: 2px solid var(--border);
+      padding: 24px;
+      margin-top: 24px;
+    }
+    .result-panel.positive {
+      border-color: var(--accent);
+    }
+    .result-panel.negative {
+      border-color: #ef4444;
+    }
+    .result-value {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .result-value.positive {
+      color: var(--accent);
+    }
+    .result-value.negative {
+      color: #ef4444;
+    }
+    .result-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .breakdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .breakdown-item {
+      font-size: 12px;
+    }
+    .breakdown-label {
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .breakdown-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .warning-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid #ef4444;
+      padding: 16px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .info-box {
+      background: rgba(46, 234, 122, 0.05);
+      border: 1px solid var(--accent);
+      padding: 16px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .verdict {
+      font-size: 15px;
+      font-weight: 600;
+      margin-top: 16px;
+      padding: 12px;
+      background: var(--panel);
+      border-left: 3px solid var(--accent);
+    }
+    .presets {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .preset-btn {
+      padding: 8px 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 12px;
+      cursor: pointer;
+      font-family: 'JetBrains Mono', monospace;
+      transition: all 0.2s;
+    }
+    .preset-btn:hover {
+      border-color: var(--accent);
+      background: rgba(46, 234, 122, 0.05);
+    }
+    @media (max-width: 768px) {
+      .calc-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .breakdown {
+        grid-template-columns: 1fr;
+      }
+      .result-value {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <div class="container calc-container">
+    <div class="terminal-header" style="margin-bottom: 24px;">
+      <span>🧮 BONUS WAGERING ROI CALCULATOR</span>
+    </div>
+
+    <p style="color: var(--muted); margin-bottom: 24px; font-size: 14px;">
+      Most casino bonuses are -EV traps. This calculator shows you the true expected value accounting for wagering requirements, house edge, max bet limits, and game restrictions.
+    </p>
+
+    <div class="presets">
+      <button class="preset-btn" onclick="loadPreset('stake100')">Stake: $100 Deposit Bonus</button>
+      <button class="preset-btn" onclick="loadPreset('rollbit200')">Rollbit: 200% Bonus</button>
+      <button class="preset-btn" onclick="loadPreset('bcgame300')">BC.Game: 300% Welcome</button>
+      <button class="preset-btn" onclick="loadPreset('trap')">Classic -EV Trap</button>
+    </div>
+
+    <div class="calc-section">
+      <h3 style="margin-top: 0; font-size: 16px; margin-bottom: 20px;">Bonus Terms</h3>
+
+      <div class="calc-row">
+        <label class="calc-label">Your Deposit ($)</label>
+        <input type="number" class="calc-input" id="deposit" value="100" oninput="calculate()">
+      </div>
+
+      <div class="calc-row">
+        <label class="calc-label">Bonus % (e.g., 100)</label>
+        <input type="number" class="calc-input" id="bonusPercent" value="100" oninput="calculate()">
+      </div>
+
+      <div class="calc-row">
+        <label class="calc-label">Max Bonus Cap ($)</label>
+        <input type="number" class="calc-input" id="bonusCap" value="1000" oninput="calculate()">
+      </div>
+
+      <div class="calc-row">
+        <label class="calc-label">Wagering Requirement (x)</label>
+        <input type="number" class="calc-input" id="wagerMultiple" value="40" oninput="calculate()">
+      </div>
+
+      <div class="calc-row">
+        <label class="calc-label">WR applies to</label>
+        <select class="calc-input" id="wagerBase" onchange="calculate()">
+          <option value="bonus">Bonus only</option>
+          <option value="both" selected>Deposit + Bonus</option>
+        </select>
+      </div>
+
+      <div class="calc-row">
+        <label class="calc-label">Max Bet Limit ($)</label>
+        <input type="number" class="calc-input" id="maxBet" value="5" oninput="calculate()">
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <h3 style="margin-top: 0; font-size: 16px; margin-bottom: 20px;">Game Selection</h3>
+
+      <div class="calc-row">
+        <label class="calc-label">Game Type</label>
+        <select class="calc-input" id="gameType" onchange="updateRTP()">
+          <option value="98.5">Blackjack (optimal) - 98.5% RTP</option>
+          <option value="98.9">Baccarat (banker) - 98.9% RTP</option>
+          <option value="99.0">Craps (pass/don't pass) - 99.0% RTP</option>
+          <option value="96.0" selected>Slots (average) - 96.0% RTP</option>
+          <option value="97.0">Slots (high RTP) - 97.0% RTP</option>
+          <option value="94.0">Slots (low RTP) - 94.0% RTP</option>
+          <option value="97.3">Roulette (European) - 97.3% RTP</option>
+          <option value="92.1">Roulette (American) - 92.1% RTP</option>
+          <option value="custom">Custom RTP</option>
+        </select>
+      </div>
+
+      <div class="calc-row" id="customRTPRow" style="display: none;">
+        <label class="calc-label">Custom RTP (%)</label>
+        <input type="number" class="calc-input" id="customRTP" value="96" step="0.1" oninput="calculate()">
+      </div>
+    </div>
+
+    <div class="result-panel" id="resultPanel">
+      <div class="result-label">Expected Value (EV)</div>
+      <div class="result-value" id="evValue">$0.00</div>
+      
+      <div id="verdict" class="verdict"></div>
+
+      <div class="breakdown">
+        <div class="breakdown-item">
+          <div class="breakdown-label">Bonus Amount</div>
+          <div class="breakdown-value" id="bonusAmount">$0</div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-label">Total to Wager</div>
+          <div class="breakdown-value" id="totalWager">$0</div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-label">Expected Loss</div>
+          <div class="breakdown-value" id="expectedLoss">$0</div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-label">House Edge</div>
+          <div class="breakdown-value" id="houseEdge">0%</div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-label">Effective ROI</div>
+          <div class="breakdown-value" id="roi">0%</div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-label">Time to Clear (est.)</div>
+          <div class="breakdown-value" id="timeEstimate">0 hours</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 24px; background: var(--panel); border: 1px solid var(--border);">
+      <h3 style="margin-top: 0; font-size: 16px;">How This Works</h3>
+      <p style="font-size: 13px; color: var(--muted); line-height: 1.6;">
+        <strong>Expected Value (EV)</strong> = Bonus Amount - (Total Wagering Requirement × House Edge)
+      </p>
+      <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 12px;">
+        Most bonuses are <strong>-EV (negative expected value)</strong> because the wagering requirement forces you to risk more than the bonus is worth. A 40x wagering requirement on a $100 bonus means you must wager $4,000. At 4% house edge (96% RTP slots), you'll lose ~$160 on average to clear a $100 bonus.
+      </p>
+      <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 12px;">
+        <strong>Only take bonuses with +EV or close to breakeven.</strong> Casinos know most players won't do this math — that's how they profit.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function updateRTP() {
+      const gameType = document.getElementById('gameType').value;
+      const customRow = document.getElementById('customRTPRow');
+      
+      if (gameType === 'custom') {
+        customRow.style.display = 'grid';
+      } else {
+        customRow.style.display = 'none';
+      }
+      
+      calculate();
+    }
+
+    function calculate() {
+      const deposit = parseFloat(document.getElementById('deposit').value) || 0;
+      const bonusPercent = parseFloat(document.getElementById('bonusPercent').value) || 0;
+      const bonusCap = parseFloat(document.getElementById('bonusCap').value) || 0;
+      const wagerMultiple = parseFloat(document.getElementById('wagerMultiple').value) || 0;
+      const wagerBase = document.getElementById('wagerBase').value;
+      const maxBet = parseFloat(document.getElementById('maxBet').value) || 0;
+      
+      let rtp;
+      const gameType = document.getElementById('gameType').value;
+      if (gameType === 'custom') {
+        rtp = parseFloat(document.getElementById('customRTP').value) || 96;
+      } else {
+        rtp = parseFloat(gameType);
+      }
+      
+      const houseEdge = 100 - rtp;
+      
+      // Calculate bonus amount (capped)
+      const bonusAmount = Math.min((deposit * bonusPercent) / 100, bonusCap);
+      
+      // Calculate total wagering requirement
+      let totalWager;
+      if (wagerBase === 'bonus') {
+        totalWager = bonusAmount * wagerMultiple;
+      } else {
+        totalWager = (deposit + bonusAmount) * wagerMultiple;
+      }
+      
+      // Expected loss from wagering
+      const expectedLoss = (totalWager * houseEdge) / 100;
+      
+      // Expected Value
+      const ev = bonusAmount - expectedLoss;
+      
+      // ROI
+      const roi = (ev / deposit) * 100;
+      
+      // Time estimate (assuming $50/hour average bet throughput with max bet limits)
+      const betsNeeded = totalWager / Math.min(maxBet, 10); // Conservative estimate
+      const timeHours = (betsNeeded * 0.5) / 60; // ~30 seconds per bet average
+      
+      // Update UI
+      document.getElementById('bonusAmount').textContent = `$${bonusAmount.toFixed(2)}`;
+      document.getElementById('totalWager').textContent = `$${totalWager.toFixed(0)}`;
+      document.getElementById('expectedLoss').textContent = `$${expectedLoss.toFixed(2)}`;
+      document.getElementById('houseEdge').textContent = `${houseEdge.toFixed(2)}%`;
+      document.getElementById('roi').textContent = `${roi.toFixed(1)}%`;
+      document.getElementById('timeEstimate').textContent = timeHours >= 1 
+        ? `${timeHours.toFixed(1)} hours`
+        : `${(timeHours * 60).toFixed(0)} min`;
+      
+      const evValue = document.getElementById('evValue');
+      const resultPanel = document.getElementById('resultPanel');
+      const verdict = document.getElementById('verdict');
+      
+      evValue.textContent = ev >= 0 ? `+$${ev.toFixed(2)}` : `-$${Math.abs(ev).toFixed(2)}`;
+      
+      if (ev > 0) {
+        evValue.className = 'result-value positive';
+        resultPanel.className = 'result-panel positive';
+        verdict.innerHTML = `✅ <strong>+EV Bonus</strong> — Take it. You'll profit $${ev.toFixed(2)} on average after clearing wagering.`;
+      } else if (ev > -5) {
+        evValue.className = 'result-value';
+        resultPanel.className = 'result-panel';
+        verdict.innerHTML = `⚠️ <strong>Near Breakeven</strong> — Small edge either way. Consider if you were going to play anyway.`;
+      } else {
+        evValue.className = 'result-value negative';
+        resultPanel.className = 'result-panel negative';
+        verdict.innerHTML = `🚫 <strong>-EV Trap</strong> — Skip it. You'll lose $${Math.abs(ev).toFixed(2)} on average. Better to play without the bonus.`;
+      }
+    }
+
+    function loadPreset(preset) {
+      const presets = {
+        stake100: {
+          deposit: 100,
+          bonusPercent: 100,
+          bonusCap: 1000,
+          wagerMultiple: 40,
+          wagerBase: 'both',
+          maxBet: 5,
+          gameType: '96.0'
+        },
+        rollbit200: {
+          deposit: 100,
+          bonusPercent: 200,
+          bonusCap: 5000,
+          wagerMultiple: 40,
+          wagerBase: 'both',
+          maxBet: 10,
+          gameType: '96.0'
+        },
+        bcgame300: {
+          deposit: 100,
+          bonusPercent: 300,
+          bonusCap: 20000,
+          wagerMultiple: 50,
+          wagerBase: 'both',
+          maxBet: 5,
+          gameType: '94.0'
+        },
+        trap: {
+          deposit: 50,
+          bonusPercent: 500,
+          bonusCap: 1000,
+          wagerMultiple: 60,
+          wagerBase: 'both',
+          maxBet: 2,
+          gameType: '92.1'
+        }
+      };
+
+      const p = presets[preset];
+      if (!p) return;
+
+      document.getElementById('deposit').value = p.deposit;
+      document.getElementById('bonusPercent').value = p.bonusPercent;
+      document.getElementById('bonusCap').value = p.bonusCap;
+      document.getElementById('wagerMultiple').value = p.wagerMultiple;
+      document.getElementById('wagerBase').value = p.wagerBase;
+      document.getElementById('maxBet').value = p.maxBet;
+      document.getElementById('gameType').value = p.gameType;
+
+      updateRTP();
+      calculate();
+    }
+
+    // Initial calculation
+    calculate();
+
+    // Load nav
+    fetch('shared-nav.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('nav-placeholder').innerHTML = html;
+      });
+  </script>
+</body>
+</html>
