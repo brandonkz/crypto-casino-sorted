@@ -7,7 +7,29 @@ import json
 import re
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
+from email.utils import parsedate_to_datetime
+
+
+def relative_time(pub_str):
+    """Convert RSS pubDate to a relative time label."""
+    try:
+        pub_dt = parsedate_to_datetime(pub_str)
+        now = datetime.now(timezone.utc)
+        diff = now - pub_dt
+        hours = diff.total_seconds() / 3600
+        if hours < 1:
+            return "Just now"
+        elif hours < 24:
+            h = int(hours)
+            return f"{h}h ago"
+        elif hours < 48:
+            return "Yesterday"
+        else:
+            days = int(hours / 24)
+            return f"{days}d ago"
+    except Exception:
+        return "Recent"
 
 NEWS_FEEDS = [
     ("Casino.org", "https://www.casino.org/news/feed/"),
@@ -46,7 +68,7 @@ def fetch_rss(source, url):
                 "title": title,
                 "url": link,
                 "tag": "NEWS",
-                "time": "Today",
+                "time": relative_time(pub) if pub else "Recent",
                 "published": pub,
             })
         return items
