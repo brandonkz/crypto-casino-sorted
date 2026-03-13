@@ -195,13 +195,21 @@
     }
 
     /* === PANEL === */
-    .panel{background:var(--bg2);overflow:hidden;display:flex;flex-direction:column;min-height:0;}
+    .panel{
+      background:var(--bg2);
+      border:1px solid var(--border);
+      box-shadow:0 6px 16px rgba(0,0,0,0.35);
+      overflow:hidden;display:flex;flex-direction:column;min-height:0;
+      transition:transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+    }
+    .panel:hover{border-color:var(--border2);box-shadow:0 10px 22px rgba(0,0,0,0.45);transform:translateY(-1px);}
     .panel-h{
       display:flex;align-items:center;justify-content:space-between;
       padding:6px 10px;border-bottom:1px solid var(--border);
-      background:var(--bg);flex-shrink:0;
+      background:linear-gradient(180deg,#0a0c12 0%, #0d0f18 100%);
+      flex-shrink:0;
     }
-    .panel-t{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--dim);}
+    .panel-t{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--dim);}
     .panel-badge{font-size:8px;padding:1px 6px;border-radius:3px;font-weight:700;}
     .panel-badge.live{background:var(--green-bg);color:var(--green);border:1px solid var(--green-b);}
     .panel-badge.data{background:var(--blue-bg);color:var(--blue);}
