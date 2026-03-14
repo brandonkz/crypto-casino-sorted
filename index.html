@@ -312,6 +312,59 @@
     </div>
   </section>
 
+  <!-- Gambler P&L Widget -->
+  <section class="terminal" style="padding-top: 0;">
+    <div class="container">
+      <div class="terminal-header">
+        <span>💀 ON-CHAIN GAMBLER P&L</span>
+        <a href="/gambler-pnl.html" style="color: #c9a96e; font-size: 0.8rem; text-decoration: none;">View full dashboard →</a>
+      </div>
+      <div id="pnl-widget" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; margin-bottom: 1rem;">
+        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Gamblers Tracked</div>
+          <div id="pnl-gamblers" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem;">—</div>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Total Deposited</div>
+          <div id="pnl-deposited" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem;">—</div>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Total Withdrawn</div>
+          <div id="pnl-withdrawn" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem;">—</div>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(239,68,68,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Net Gambler Loss</div>
+          <div id="pnl-loss" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem; color: #ef4444;">—</div>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(201,169,110,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(201,169,110,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">In Profit</div>
+          <div id="pnl-winners" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem; color: #c9a96e;">—</div>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Biggest Loss</div>
+          <div id="pnl-biggest" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem; color: #ef4444;">—</div>
+        </div>
+      </div>
+      <!-- Top 5 biggest losers mini-table -->
+      <div style="overflow-x: auto; border-radius: 10px; border: 1px solid rgba(139,92,246,0.15); background: rgba(15,15,15,0.6);">
+        <table style="width: 100%; border-collapse: collapse; min-width: 500px; font-size: 0.85rem;">
+          <thead>
+            <tr style="border-bottom: 1px solid rgba(148,163,184,0.15);">
+              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Wallet</th>
+              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Deposited</th>
+              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Withdrawn</th>
+              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Net P&L</th>
+            </tr>
+          </thead>
+          <tbody id="pnl-top-losers"></tbody>
+        </table>
+      </div>
+      <div style="text-align: center; margin-top: 1rem;">
+        <a href="/gambler-pnl.html" style="display: inline-block; padding: 0.6rem 1.5rem; background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4); border-radius: 8px; color: #c9a96e; text-decoration: none; font-weight: 600; font-size: 0.9rem;">View Full P&L Dashboard →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Filters -->
   <section class="filters" id="casinos">
     <div class="container">
@@ -1245,6 +1298,45 @@
   </footer>
 
   <script src="app.js"></script>
+
+  <!-- P&L Widget -->
+  <script>
+    (async function loadPnlWidget() {
+      try {
+        const resp = await fetch('data/gambler-pnl.json');
+        const data = await resp.json();
+        const g = data.gamblers;
+        const ep = data.ethPrice;
+        const fmt = v => '$' + Math.abs(v).toLocaleString(undefined, { maximumFractionDigits: 0 });
+        const totalDep = g.reduce((s, x) => s + x.totalDepositedETH, 0);
+        const totalWith = g.reduce((s, x) => s + x.totalWithdrawnETH, 0);
+        const netLoss = totalDep - totalWith;
+        const winners = g.filter(x => x.netPnlETH > 0).length;
+        const biggestLoss = Math.min(...g.map(x => x.netPnlETH));
+
+        document.getElementById('pnl-gamblers').textContent = g.length;
+        document.getElementById('pnl-deposited').textContent = fmt(totalDep * ep);
+        document.getElementById('pnl-withdrawn').textContent = fmt(totalWith * ep);
+        document.getElementById('pnl-loss').textContent = '-' + fmt(netLoss * ep);
+        document.getElementById('pnl-winners').textContent = winners + ' / ' + g.length;
+        document.getElementById('pnl-biggest').textContent = '-' + fmt(Math.abs(biggestLoss) * ep);
+
+        // Top 5 losers
+        const tbody = document.getElementById('pnl-top-losers');
+        tbody.innerHTML = g.slice(0, 5).map(x => {
+          const addr = x.address.slice(0, 6) + '...' + x.address.slice(-4);
+          return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.08);">' +
+            '<td style="padding: 0.6rem 1rem;"><a href="https://etherscan.io/address/' + x.address + '" target="_blank" style="color: #8b5cf6; text-decoration: none;">' + addr + '</a></td>' +
+            '<td style="padding: 0.6rem 1rem;">' + fmt(x.totalDepositedUSD) + '</td>' +
+            '<td style="padding: 0.6rem 1rem;">' + fmt(x.totalWithdrawnUSD) + '</td>' +
+            '<td style="padding: 0.6rem 1rem; color: #ef4444; font-weight: 700;">' + fmt(x.netPnlUSD) + '</td>' +
+            '</tr>';
+        }).join('');
+      } catch (e) {
+        console.log('P&L widget: no data yet');
+      }
+    })();
+  </script>
 
   <!-- Load Real Stats -->
   <script>
