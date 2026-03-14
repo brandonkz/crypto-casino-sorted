@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gambler P&L Tracker | CryptoCasinoSorted</title>
+  <meta name="description" content="Track crypto casino gambler profits and losses on-chain. Live P&L from deposits and withdrawals tied to major Ethereum casino wallets.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/gambler-pnl.html">
+  <meta name="author" content="CryptoCasinoSorted">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-0L3N9F43ED');
+  </script>
+
+  <style>
+    :root {
+      --bg: #000;
+      --panel: #0b0b0b;
+      --panel-2: #0f0f0f;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --purple: #8b5cf6;
+      --gold: #c9a96e;
+      --green: #10b981;
+      --red: #ef4444;
+      --border: rgba(139, 92, 246, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.12), transparent 40%),
+        radial-gradient(circle at 80% 10%, rgba(201, 169, 110, 0.1), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 45%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 120px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 120px);
+    }
+
+    a { color: inherit; }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .updated {
+      font-size: 0.9rem;
+      color: var(--gold);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(15, 15, 15, 0.8));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 0.4rem;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .search {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      background: var(--panel);
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+    }
+
+    th, td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    th {
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      cursor: pointer;
+      background: rgba(10, 10, 10, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    tr:hover td {
+      background: rgba(139, 92, 246, 0.08);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      font-size: 0.75rem;
+      color: var(--text);
+      margin: 0.15rem 0.2rem 0.15rem 0;
+      white-space: nowrap;
+    }
+
+    .value-pos { color: var(--green); }
+    .value-neg { color: var(--red); }
+
+    .section {
+      margin-top: 2.5rem;
+    }
+
+    .section h2 {
+      margin: 0 0 1rem;
+      font-size: 1.3rem;
+    }
+
+    .chart {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .chart-row {
+      display: grid;
+      grid-template-columns: 160px 1fr 1fr;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .chart-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .bar {
+      height: 12px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+    }
+
+    .bar.deposit span { background: var(--purple); }
+    .bar.withdraw span { background: var(--gold); }
+
+    .distribution {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .dist-card {
+      flex: 1;
+      min-width: 220px;
+      background: var(--panel);
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 1rem 1.2rem;
+    }
+
+    .dist-title {
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .dist-value {
+      font-size: 1.4rem;
+      margin-top: 0.4rem;
+      font-weight: 700;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 900px) {
+      .chart-row {
+        grid-template-columns: 1fr;
+      }
+
+      .chart-label {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav style="background: rgba(10, 10, 10, 0.95); border-bottom: 2px solid #8b5cf6; padding: 1rem; position: sticky; top: 0; z-index: 100;">
+    <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <a href="/" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #fff; font-weight: 800; font-size: 1.25rem;">
+        <span>🎰</span>
+        <span>CryptoCasinoSorted</span>
+      </a>
+      <div style="display: flex; gap: 1rem; font-size: 0.875rem; flex-wrap: wrap;">
+        <a href="/#casinos" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Casinos</a>
+        <a href="/analytics.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">📊 Live Data</a>
+        <a href="/deposits-data.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">💰 Deposit Data</a>
+        <a href="/casino-wallet-addresses.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">🔍 Wallet Addresses</a>
+        <a href="/provably-fair-verifier.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">✓ Provably Fair</a>
+        <a href="/reviews/index.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Reviews</a>
+        <a href="/blog/index.html" style="color: #9ca3af; text-decoration: none; font-weight: 600;">Blog</a>
+        <a href="/gambler-pnl.html" style="color: #c9a96e; text-decoration: none; font-weight: 700;">Gambler P&L</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="hero">
+      <h1>Gambler P&L Tracker</h1>
+      <p>On-chain profit and loss tracking for top crypto casino wallets. We follow depositors, trace their full transaction history, and calculate net P&L across every verified casino address.</p>
+      <div class="updated" id="lastUpdated">Loading data...</div>
+    </section>
+
+    <section class="stats-grid" id="summaryStats"></section>
+
+    <section class="controls">
+      <div class="search">
+        <input type="text" id="searchInput" placeholder="Search wallet address (0x...)" />
+      </div>
+      <div style="color: var(--muted); font-size: 0.9rem;">Click column headers to sort</div>
+    </section>
+
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-key="address">Wallet</th>
+            <th data-key="totalDepositedETH">Total Deposited</th>
+            <th data-key="totalWithdrawnETH">Total Withdrawn</th>
+            <th data-key="netPnlETH">Net P&L</th>
+            <th data-key="casinos">Casinos Used</th>
+            <th data-key="lastSeen">Last Active</th>
+          </tr>
+        </thead>
+        <tbody id="gamblersTable"></tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>💰 Overall Flow: Deposits vs Withdrawals</h2>
+      <p style="color: var(--muted); margin-bottom: 1rem;">Aggregate on-chain flow across all tracked gamblers. Note: withdrawals may be understated — casinos sometimes use unlabeled hot wallets for payouts.</p>
+      <div class="stats-grid" id="overallFlow"></div>
+      <div style="margin-top: 1.5rem;">
+        <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Per Casino Flow</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Casino</th>
+                <th>Total Deposited</th>
+                <th>Total Withdrawn</th>
+                <th>Net Flow</th>
+                <th>Retention Rate</th>
+              </tr>
+            </thead>
+            <tbody id="casinoFlowTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Casino Breakdown</h2>
+      <div class="chart" id="casinoChart"></div>
+    </section>
+
+    <section class="section">
+      <h2>P&L Distribution</h2>
+      <div class="distribution" id="pnlDistribution"></div>
+    </section>
+
+    <div class="footer">CryptoCasinoSorted · Blockchain-verified gambler P&L</div>
+  </div>
+
+  <script>
+    const state = {
+      gamblers: [],
+      filtered: [],
+      sortKey: 'netPnlETH',
+      sortDir: 'asc'
+    };
+
+    const casinoIcons = {
+      'Stake': '🟢',
+      'Rollbit': '🎲',
+      'Roobet': '🦘',
+      'BC.Game': '🎰',
+      'Duelbits': '⚔️',
+      'Rainbet': '🌧️',
+      'Gamdom': '🎯',
+      'Bitcasino': '🅱️',
+      'Shuffle': '🔀',
+      'BetFury': '🔥',
+      '500 Casino': '5️⃣',
+      'CSGO500': '🎮'
+    };
+
+    const formatEth = value => `${Number(value).toFixed(3)} ETH`;
+    const formatUsd = value => `$${Number(value).toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+
+    const truncateAddress = address => `${address.slice(0, 6)}...${address.slice(-4)}`;
+
+    const timeAgo = iso => {
+      if (!iso) return '-';
+      const date = new Date(iso);
+      const diff = Date.now() - date.getTime();
+      const seconds = Math.floor(diff / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+      if (days > 0) return `${days}d ago`;
+      if (hours > 0) return `${hours}h ago`;
+      if (minutes > 0) return `${minutes}m ago`;
+      return 'just now';
+    };
+
+    const renderSummary = gamblers => {
+      const totalGamblers = gamblers.length;
+      const totalDeposited = gamblers.reduce((sum, g) => sum + g.totalDepositedETH, 0);
+      const totalWithdrawn = gamblers.reduce((sum, g) => sum + g.totalWithdrawnETH, 0);
+      const avgPnl = gamblers.length ? gamblers.reduce((sum, g) => sum + g.netPnlETH, 0) / gamblers.length : 0;
+      const biggestLoss = gamblers.reduce((min, g) => Math.min(min, g.netPnlETH), 0);
+      const biggestWin = gamblers.reduce((max, g) => Math.max(max, g.netPnlETH), 0);
+
+      const cards = [
+        { label: 'Total Gamblers Tracked', value: totalGamblers.toLocaleString() },
+        { label: 'Total Deposited', value: formatEth(totalDeposited) },
+        { label: 'Total Withdrawn', value: formatEth(totalWithdrawn) },
+        { label: 'Average P&L', value: formatEth(avgPnl), className: avgPnl >= 0 ? 'value-pos' : 'value-neg' },
+        { label: 'Biggest Loss', value: formatEth(biggestLoss), className: 'value-neg' },
+        { label: 'Biggest Win', value: formatEth(biggestWin), className: biggestWin > 0 ? 'value-pos' : '' }
+      ];
+
+      const container = document.getElementById('summaryStats');
+      container.innerHTML = cards.map(card => `
+        <div class="stat-card">
+          <div class="stat-label">${card.label}</div>
+          <div class="stat-value ${card.className || ''}">${card.value}</div>
+        </div>
+      `).join('');
+    };
+
+    const renderTable = gamblers => {
+      const tbody = document.getElementById('gamblersTable');
+      tbody.innerHTML = gamblers.map(g => {
+        const casinos = Object.keys(g.casinoBreakdown || {});
+        const casinoHtml = casinos.length ? casinos.map(name => {
+          const icon = casinoIcons[name] || '🎰';
+          return `<span class="pill">${icon} ${name}</span>`;
+        }).join('') : '<span class="pill">Unknown</span>';
+
+        const pnlClass = g.netPnlETH >= 0 ? 'value-pos' : 'value-neg';
+
+        return `
+          <tr>
+            <td><a href="https://etherscan.io/address/${g.address}" target="_blank" rel="noopener">${truncateAddress(g.address)}</a></td>
+            <td>${formatEth(g.totalDepositedETH)}<br><span style="color: var(--muted); font-size: 0.8rem;">${formatUsd(g.totalDepositedUSD)}</span></td>
+            <td>${formatEth(g.totalWithdrawnETH)}<br><span style="color: var(--muted); font-size: 0.8rem;">${formatUsd(g.totalWithdrawnUSD)}</span></td>
+            <td class="${pnlClass}">${formatEth(g.netPnlETH)}<br><span style="color: var(--muted); font-size: 0.8rem;">${formatUsd(g.netPnlUSD)}</span></td>
+            <td>${casinoHtml}</td>
+            <td>${timeAgo(g.lastSeen)}</td>
+          </tr>
+        `;
+      }).join('');
+    };
+
+    const renderOverallFlow = (gamblers, ethPrice) => {
+      const totalDep = gamblers.reduce((s, g) => s + g.totalDepositedETH, 0);
+      const totalWith = gamblers.reduce((s, g) => s + g.totalWithdrawnETH, 0);
+      const netFlow = totalDep - totalWith;
+      const retentionRate = totalDep > 0 ? ((1 - totalWith / totalDep) * 100).toFixed(1) : '0';
+
+      // Overall summary cards
+      const container = document.getElementById('overallFlow');
+      container.innerHTML = `
+        <div class="stat-card">
+          <div class="stat-label">Total Deposited (All Casinos)</div>
+          <div class="stat-value">${formatUsd(totalDep * ethPrice)}</div>
+          <div style="color: var(--muted); font-size: 0.8rem; margin-top: 0.3rem;">${formatEth(totalDep)}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Withdrawn (All Casinos)</div>
+          <div class="stat-value">${formatUsd(totalWith * ethPrice)}</div>
+          <div style="color: var(--muted); font-size: 0.8rem; margin-top: 0.3rem;">${formatEth(totalWith)}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Net House Profit</div>
+          <div class="stat-value value-neg">${formatUsd(netFlow * ethPrice)}</div>
+          <div style="color: var(--muted); font-size: 0.8rem; margin-top: 0.3rem;">${formatEth(netFlow)}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Casino Retention Rate</div>
+          <div class="stat-value" style="color: var(--gold);">${retentionRate}%</div>
+          <div style="color: var(--muted); font-size: 0.8rem; margin-top: 0.3rem;">of deposits kept by house</div>
+        </div>
+      `;
+
+      // Per-casino flow table
+      const byCasino = {};
+      gamblers.forEach(g => {
+        Object.entries(g.casinoBreakdown || {}).forEach(([name, d]) => {
+          if (!byCasino[name]) byCasino[name] = { dep: 0, wit: 0 };
+          byCasino[name].dep += d.deposited || 0;
+          byCasino[name].wit += d.withdrawn || 0;
+        });
+      });
+
+      const casinoTable = document.getElementById('casinoFlowTable');
+      casinoTable.innerHTML = Object.entries(byCasino)
+        .sort((a, b) => b[1].dep - a[1].dep)
+        .map(([name, d]) => {
+          const net = d.dep - d.wit;
+          const retention = d.dep > 0 ? ((1 - d.wit / d.dep) * 100).toFixed(1) : '0';
+          const icon = casinoIcons[name] || '🎰';
+          return `
+            <tr>
+              <td>${icon} ${name}</td>
+              <td>${formatEth(d.dep)}<br><span style="color: var(--muted); font-size: 0.8rem;">${formatUsd(d.dep * ethPrice)}</span></td>
+              <td>${formatEth(d.wit)}<br><span style="color: var(--muted); font-size: 0.8rem;">${formatUsd(d.wit * ethPrice)}</span></td>
+              <td class="value-neg">${formatEth(net)}<br><span style="color: var(--muted); font-size: 0.8rem;">${formatUsd(net * ethPrice)}</span></td>
+              <td>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.07); border-radius: 999px; overflow: hidden;">
+                    <div style="width: ${retention}%; height: 100%; background: ${parseFloat(retention) > 90 ? 'var(--red)' : parseFloat(retention) > 50 ? 'var(--gold)' : 'var(--green)'}; border-radius: 999px;"></div>
+                  </div>
+                  <span style="font-weight: 700; min-width: 50px;">${retention}%</span>
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join('');
+    };
+
+    const renderCasinoChart = gamblers => {
+      const totals = {};
+      gamblers.forEach(g => {
+        Object.entries(g.casinoBreakdown || {}).forEach(([name, data]) => {
+          if (!totals[name]) {
+            totals[name] = { deposited: 0, withdrawn: 0 };
+          }
+          totals[name].deposited += data.deposited || 0;
+          totals[name].withdrawn += data.withdrawn || 0;
+        });
+      });
+
+      const entries = Object.entries(totals)
+        .sort((a, b) => (b[1].deposited + b[1].withdrawn) - (a[1].deposited + a[1].withdrawn));
+
+      const maxValue = Math.max(...entries.map(entry => Math.max(entry[1].deposited, entry[1].withdrawn)), 1);
+
+      const chart = document.getElementById('casinoChart');
+      chart.innerHTML = entries.map(([name, data]) => {
+        const depositWidth = Math.max(4, (data.deposited / maxValue) * 100);
+        const withdrawWidth = Math.max(4, (data.withdrawn / maxValue) * 100);
+        return `
+          <div class="chart-row">
+            <div class="chart-label">${name}</div>
+            <div>
+              <div class="bar deposit"><span style="width:${depositWidth}%"></span></div>
+              <div style="font-size:0.75rem;color:var(--muted);margin-top:0.2rem;">Deposited: ${formatEth(data.deposited)}</div>
+            </div>
+            <div>
+              <div class="bar withdraw"><span style="width:${withdrawWidth}%"></span></div>
+              <div style="font-size:0.75rem;color:var(--muted);margin-top:0.2rem;">Withdrawn: ${formatEth(data.withdrawn)}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    };
+
+    const renderDistribution = gamblers => {
+      const winners = gamblers.filter(g => g.netPnlETH > 0).length;
+      const losers = gamblers.filter(g => g.netPnlETH < 0).length;
+      const flat = gamblers.length - winners - losers;
+
+      const container = document.getElementById('pnlDistribution');
+      container.innerHTML = `
+        <div class="dist-card">
+          <div class="dist-title">In Profit</div>
+          <div class="dist-value value-pos">${winners}</div>
+        </div>
+        <div class="dist-card">
+          <div class="dist-title">In Loss</div>
+          <div class="dist-value value-neg">${losers}</div>
+        </div>
+        <div class="dist-card">
+          <div class="dist-title">Break Even</div>
+          <div class="dist-value">${flat}</div>
+        </div>
+      `;
+    };
+
+    const sortGamblers = () => {
+      const { sortKey, sortDir } = state;
+      const dir = sortDir === 'asc' ? 1 : -1;
+      state.filtered.sort((a, b) => {
+        if (sortKey === 'casinos') {
+          return dir * (Object.keys(a.casinoBreakdown || {}).length - Object.keys(b.casinoBreakdown || {}).length);
+        }
+        if (sortKey === 'address') {
+          return dir * a.address.localeCompare(b.address);
+        }
+        if (sortKey === 'lastSeen') {
+          const aTime = a.lastSeen ? new Date(a.lastSeen).getTime() : 0;
+          const bTime = b.lastSeen ? new Date(b.lastSeen).getTime() : 0;
+          return dir * (aTime - bTime);
+        }
+        return dir * ((a[sortKey] || 0) - (b[sortKey] || 0));
+      });
+    };
+
+    const applyFilters = () => {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      if (!query) {
+        state.filtered = [...state.gamblers];
+      } else {
+        state.filtered = state.gamblers.filter(g => g.address.includes(query));
+      }
+      sortGamblers();
+      renderTable(state.filtered);
+    };
+
+    const attachSortHandlers = () => {
+      document.querySelectorAll('th[data-key]').forEach(th => {
+        th.addEventListener('click', () => {
+          const key = th.getAttribute('data-key');
+          if (state.sortKey === key) {
+            state.sortDir = state.sortDir === 'asc' ? 'desc' : 'asc';
+          } else {
+            state.sortKey = key;
+            state.sortDir = 'asc';
+          }
+          applyFilters();
+        });
+      });
+    };
+
+    const updateLastUpdated = iso => {
+      const updated = document.getElementById('lastUpdated');
+      updated.textContent = `Data updated ${timeAgo(iso)} (${new Date(iso).toLocaleString()})`;
+    };
+
+    const init = async () => {
+      try {
+        const response = await fetch('data/gambler-pnl.json');
+        const data = await response.json();
+        state.gamblers = data.gamblers || [];
+        state.filtered = [...state.gamblers];
+
+        updateLastUpdated(data.lastUpdated);
+        renderSummary(state.gamblers);
+        renderOverallFlow(state.gamblers, data.ethPrice);
+        sortGamblers();
+        renderTable(state.filtered);
+        renderCasinoChart(state.gamblers);
+        renderDistribution(state.gamblers);
+
+        attachSortHandlers();
+
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+      } catch (error) {
+        document.getElementById('lastUpdated').textContent = 'Failed to load data.';
+        console.error(error);
+      }
+    };
+
+    init();
+  </script>
+</body>
+</html>
