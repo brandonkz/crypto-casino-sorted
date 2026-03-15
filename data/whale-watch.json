@@ -1,0 +1,54 @@
+{
+  "whales": [
+    {
+      "address": "0xa26148ae51fa8e787df319c04137602cc018b521",
+      "casino": "Roobet",
+      "casinoIcon": "🦘",
+      "depositETH": 59.554579,
+      "depositUSD": 123052,
+      "depositTxHash": "0x1583b9440582ed883a78fa8ed14659f28eaa4eb2a9b86967050f5eea204a7b7d",
+      "depositTimestamp": "2026-03-14T10:10:35.000Z",
+      "firstSeen": "2026-03-14T10:28:20.714Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-03-15T03:30:32.854Z",
+      "status": "watching",
+      "daysSinceDeposit": 0,
+      "updates": []
+    },
+    {
+      "address": "0xa26148ae51fa8e787df319c04137602cc018b521",
+      "casino": "Roobet",
+      "casinoIcon": "🦘",
+      "depositETH": 20.750653,
+      "depositUSD": 43506,
+      "depositTxHash": "0xc0ae6df2379080dc3fda3cb71bcbabfa2dc370c4c5c805b488d025f9140c695b",
+      "depositTimestamp": "2026-03-15T03:09:11.000Z",
+      "firstSeen": "2026-03-15T03:30:21.699Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-03-15T03:30:33.805Z",
+      "status": "watching",
+      "daysSinceDeposit": 0,
+      "updates": []
+    },
+    {
+      "address": "0xbb17e1821a76a2f3c2c2ae3c6ac2b0a17d91030b",
+      "casino": "Shuffle",
+      "casinoIcon": "🔀",
+      "depositETH": 7,
+      "depositUSD": 14676,
+      "depositTxHash": "0x0c604c7a581e18253420d3c1d50e4a851bb6a5bef0c0ce05813c11c32b60958d",
+      "depositTimestamp": "2026-03-15T03:11:11.000Z",
+      "firstSeen": "2026-03-15T03:30:28.846Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-03-15T03:30:34.365Z",
+      "status": "watching",
+      "daysSinceDeposit": 0,
+      "updates": []
+    }
+  ],
+  "lastScan": "2026-03-15T03:30:34.365Z",
+  "ethPrice": 2096.63
+}
