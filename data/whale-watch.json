@@ -11,9 +11,9 @@
       "firstSeen": "2026-03-14T10:28:20.714Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-15T03:30:32.854Z",
+      "lastChecked": "2026-03-16T03:30:45.211Z",
       "status": "watching",
-      "daysSinceDeposit": 0,
+      "daysSinceDeposit": 1,
       "updates": []
     },
     {
@@ -27,9 +27,9 @@
       "firstSeen": "2026-03-15T03:30:21.699Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-15T03:30:33.805Z",
+      "lastChecked": "2026-03-16T03:30:46.197Z",
       "status": "watching",
-      "daysSinceDeposit": 0,
+      "daysSinceDeposit": 1,
       "updates": []
     },
     {
@@ -43,12 +43,44 @@
       "firstSeen": "2026-03-15T03:30:28.846Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-15T03:30:34.365Z",
+      "lastChecked": "2026-03-16T03:30:46.771Z",
+      "status": "watching",
+      "daysSinceDeposit": 1,
+      "updates": []
+    },
+    {
+      "address": "0xa26148ae51fa8e787df319c04137602cc018b521",
+      "casino": "Roobet",
+      "casinoIcon": "🦘",
+      "depositETH": 53.303659,
+      "depositUSD": 117360,
+      "depositTxHash": "0x8a652b7e43362f2b558b68190c143274a49ab742549b0f41941300b6e33cd17b",
+      "depositTimestamp": "2026-03-16T03:20:47.000Z",
+      "firstSeen": "2026-03-16T03:30:33.844Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-03-16T03:30:47.728Z",
+      "status": "watching",
+      "daysSinceDeposit": 0,
+      "updates": []
+    },
+    {
+      "address": "0xa26148ae51fa8e787df319c04137602cc018b521",
+      "casino": "Roobet",
+      "casinoIcon": "🦘",
+      "depositETH": 21.424928,
+      "depositUSD": 47172,
+      "depositTxHash": "0x2d9c40779de28c9f43027a8a199acd2a3840c6dd740066ac88c846402fd29a4e",
+      "depositTimestamp": "2026-03-16T03:10:47.000Z",
+      "firstSeen": "2026-03-16T03:30:33.844Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-03-16T03:30:48.922Z",
       "status": "watching",
       "daysSinceDeposit": 0,
       "updates": []
     }
   ],
-  "lastScan": "2026-03-15T03:30:34.365Z",
-  "ethPrice": 2096.63
+  "lastScan": "2026-03-16T03:30:48.922Z",
+  "ethPrice": 2201.72
 }
