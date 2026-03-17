@@ -11,9 +11,9 @@
       "firstSeen": "2026-03-14T10:28:20.714Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-16T03:30:45.211Z",
+      "lastChecked": "2026-03-17T03:33:02.255Z",
       "status": "watching",
-      "daysSinceDeposit": 1,
+      "daysSinceDeposit": 2,
       "updates": []
     },
     {
@@ -27,9 +27,9 @@
       "firstSeen": "2026-03-15T03:30:21.699Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-16T03:30:46.197Z",
+      "lastChecked": "2026-03-17T03:33:03.281Z",
       "status": "watching",
-      "daysSinceDeposit": 1,
+      "daysSinceDeposit": 2,
       "updates": []
     },
     {
@@ -43,9 +43,9 @@
       "firstSeen": "2026-03-15T03:30:28.846Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-16T03:30:46.771Z",
+      "lastChecked": "2026-03-17T03:33:03.887Z",
       "status": "watching",
-      "daysSinceDeposit": 1,
+      "daysSinceDeposit": 2,
       "updates": []
     },
     {
@@ -59,9 +59,9 @@
       "firstSeen": "2026-03-16T03:30:33.844Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-16T03:30:47.728Z",
+      "lastChecked": "2026-03-17T03:33:04.916Z",
       "status": "watching",
-      "daysSinceDeposit": 0,
+      "daysSinceDeposit": 1,
       "updates": []
     },
     {
@@ -75,12 +75,44 @@
       "firstSeen": "2026-03-16T03:30:33.844Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-16T03:30:48.922Z",
+      "lastChecked": "2026-03-17T03:33:05.937Z",
+      "status": "watching",
+      "daysSinceDeposit": 1,
+      "updates": []
+    },
+    {
+      "address": "0xa26148ae51fa8e787df319c04137602cc018b521",
+      "casino": "Roobet",
+      "casinoIcon": "🦘",
+      "depositETH": 135.255003,
+      "depositUSD": 315824,
+      "depositTxHash": "0x460d9ddea76b518947a5871b093caea239891c7e4e11c3bedaa17b4d90245a02",
+      "depositTimestamp": "2026-03-17T03:24:23.000Z",
+      "firstSeen": "2026-03-17T03:32:52.007Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-03-17T03:33:06.912Z",
+      "status": "watching",
+      "daysSinceDeposit": 0,
+      "updates": []
+    },
+    {
+      "address": "0xa26148ae51fa8e787df319c04137602cc018b521",
+      "casino": "Roobet",
+      "casinoIcon": "🦘",
+      "depositETH": 67.586243,
+      "depositUSD": 157816,
+      "depositTxHash": "0xef5b7aa8e2dbaaab0d2102043ffd11b90c680f7ecf098af31e2d2e4198e564e9",
+      "depositTimestamp": "2026-03-17T03:14:23.000Z",
+      "firstSeen": "2026-03-17T03:32:52.007Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-03-17T03:33:07.855Z",
       "status": "watching",
       "daysSinceDeposit": 0,
       "updates": []
     }
   ],
-  "lastScan": "2026-03-16T03:30:48.922Z",
-  "ethPrice": 2201.72
+  "lastScan": "2026-03-17T03:33:07.855Z",
+  "ethPrice": 2335.03
 }
