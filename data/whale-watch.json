@@ -11,9 +11,9 @@
       "firstSeen": "2026-03-14T10:28:20.714Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-18T03:37:59.882Z",
+      "lastChecked": "2026-03-19T03:37:58.071Z",
       "status": "watching",
-      "daysSinceDeposit": 3,
+      "daysSinceDeposit": 4,
       "updates": []
     },
     {
@@ -27,9 +27,9 @@
       "firstSeen": "2026-03-15T03:30:21.699Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-18T03:38:00.867Z",
+      "lastChecked": "2026-03-19T03:37:59.055Z",
       "status": "watching",
-      "daysSinceDeposit": 3,
+      "daysSinceDeposit": 4,
       "updates": []
     },
     {
@@ -43,9 +43,9 @@
       "firstSeen": "2026-03-15T03:30:28.846Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-17T03:33:03.887Z",
+      "lastChecked": "2026-03-19T03:37:59.631Z",
       "status": "watching",
-      "daysSinceDeposit": 2,
+      "daysSinceDeposit": 4,
       "updates": []
     },
     {
@@ -59,9 +59,9 @@
       "firstSeen": "2026-03-16T03:30:33.844Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-18T03:38:02.576Z",
+      "lastChecked": "2026-03-19T03:38:00.862Z",
       "status": "watching",
-      "daysSinceDeposit": 2,
+      "daysSinceDeposit": 3,
       "updates": []
     },
     {
@@ -75,9 +75,9 @@
       "firstSeen": "2026-03-16T03:30:33.844Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-18T03:38:03.516Z",
+      "lastChecked": "2026-03-19T03:38:01.846Z",
       "status": "watching",
-      "daysSinceDeposit": 2,
+      "daysSinceDeposit": 3,
       "updates": []
     },
     {
@@ -91,9 +91,9 @@
       "firstSeen": "2026-03-17T03:32:52.007Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-17T03:33:06.912Z",
+      "lastChecked": "2026-03-19T03:38:02.821Z",
       "status": "watching",
-      "daysSinceDeposit": 0,
+      "daysSinceDeposit": 2,
       "updates": []
     },
     {
@@ -107,12 +107,44 @@
       "firstSeen": "2026-03-17T03:32:52.007Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-18T03:38:04.960Z",
+      "lastChecked": "2026-03-19T03:38:03.821Z",
       "status": "watching",
-      "daysSinceDeposit": 1,
+      "daysSinceDeposit": 2,
+      "updates": []
+    },
+    {
+      "address": "0xa26148ae51fa8e787df319c04137602cc018b521",
+      "casino": "Roobet",
+      "casinoIcon": "🦘",
+      "depositETH": 21.141849,
+      "depositUSD": 46933,
+      "depositTxHash": "0xe4261795a98ae97ccaba63d188f906dc5c8c7b6efa329fc659bb75079aeca6e4",
+      "depositTimestamp": "2026-03-19T03:25:35.000Z",
+      "firstSeen": "2026-03-19T03:37:47.199Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-03-19T03:38:04.843Z",
+      "status": "watching",
+      "daysSinceDeposit": 0,
+      "updates": []
+    },
+    {
+      "address": "0x2889fa9e734e8fa8cd2c2f7f19150ac2619b588d",
+      "casino": "Shuffle",
+      "casinoIcon": "🔀",
+      "depositETH": 10.481959,
+      "depositUSD": 23269,
+      "depositTxHash": "0x5f21c8202c4a4c69c20e6c635caad35fe3f6eeaa024be95e4c6ee8f7ac4546c0",
+      "depositTimestamp": "2026-03-19T03:15:35.000Z",
+      "firstSeen": "2026-03-19T03:37:54.283Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-03-19T03:38:05.450Z",
+      "status": "watching",
+      "daysSinceDeposit": 0,
       "updates": []
     }
   ],
-  "lastScan": "2026-03-18T03:38:04.960Z",
-  "ethPrice": 2347
+  "lastScan": "2026-03-19T03:38:05.450Z",
+  "ethPrice": 2219.93
 }
