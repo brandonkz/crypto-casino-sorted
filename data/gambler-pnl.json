@@ -1,15 +1,15 @@
 {
-  "lastUpdated": "2026-03-18T03:43:10.258Z",
-  "ethPrice": 2347,
+  "lastUpdated": "2026-03-21T03:44:52.978Z",
+  "ethPrice": 2151.16,
   "gamblers": [
     {
       "address": "0xc3ec8193559f49cd63ab24c3a692e3e9fdaf3ecb",
       "totalDepositedETH": 7467.136457,
-      "totalDepositedUSD": 17525369.264796,
+      "totalDepositedUSD": 16063005.261039,
       "totalWithdrawnETH": 7.198716,
-      "totalWithdrawnUSD": 16895.386452,
+      "totalWithdrawnUSD": 15485.589911,
       "netPnlETH": -7459.937741,
-      "netPnlUSD": -17508473.878344,
+      "netPnlUSD": -16047519.671128,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 7467.136457092322,
@@ -27,11 +27,11 @@
     {
       "address": "0x55fc2bf5178da7cd6dac36fc8f41a5093c9895b0",
       "totalDepositedETH": 5654.169921,
-      "totalDepositedUSD": 13270336.804418,
+      "totalDepositedUSD": 12163024.167103,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -5654.169921,
-      "netPnlUSD": -13270336.804418,
+      "netPnlUSD": -12163024.167103,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 5654.16992092782,
@@ -45,11 +45,11 @@
     {
       "address": "0x91347e4fee8f1078f23a155826968a6b3ff71f49",
       "totalDepositedETH": 5574.352569,
-      "totalDepositedUSD": 13083005.479488,
+      "totalDepositedUSD": 11991324.272371,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -5574.352569,
-      "netPnlUSD": -13083005.479488,
+      "netPnlUSD": -11991324.272371,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 5574.3525690190445,
@@ -63,11 +63,11 @@
     {
       "address": "0x3d9a10842f161169f7a307d2273694f3345a0675",
       "totalDepositedETH": 4248.442158,
-      "totalDepositedUSD": 9971093.745228,
+      "totalDepositedUSD": 9139078.832972,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -4248.442158,
-      "netPnlUSD": -9971093.745228,
+      "netPnlUSD": -9139078.832972,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 4248.442158171303,
@@ -81,11 +81,11 @@
     {
       "address": "0x3d03c61f4fa2d6b89639b0015c78375ec26cd6f0",
       "totalDepositedETH": 3451.973878,
-      "totalDepositedUSD": 8101782.691124,
+      "totalDepositedUSD": 7425748.126902,
       "totalWithdrawnETH": 4.745829,
-      "totalWithdrawnUSD": 11138.459667,
+      "totalWithdrawnUSD": 10209.036599,
       "netPnlETH": -3447.228049,
-      "netPnlUSD": -8090644.231457,
+      "netPnlUSD": -7415539.090303,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 3451.973877769184,
@@ -103,11 +103,11 @@
     {
       "address": "0x97ec55064513022bf0adbad5b838836f09841896",
       "totalDepositedETH": 2320.122746,
-      "totalDepositedUSD": 5445328.085624,
+      "totalDepositedUSD": 4990955.246984,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -2320.122746,
-      "netPnlUSD": -5445328.085624,
+      "netPnlUSD": -4990955.246984,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 2320.1227463248297,
@@ -121,11 +121,11 @@
     {
       "address": "0xc105d345e102038bdc3bbb23821f0cc137311920",
       "totalDepositedETH": 1732.965159,
-      "totalDepositedUSD": 4067269.228147,
+      "totalDepositedUSD": 3727885.33141,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -1732.965159,
-      "netPnlUSD": -4067269.228147,
+      "netPnlUSD": -3727885.33141,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 1732.96515898875,
@@ -139,11 +139,11 @@
     {
       "address": "0x926b173dcabc052c6008b80aa911b62cd0774f5e",
       "totalDepositedETH": 1460.111148,
-      "totalDepositedUSD": 3426880.86435,
+      "totalDepositedUSD": 3140932.697126,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -1460.111148,
-      "netPnlUSD": -3426880.86435,
+      "netPnlUSD": -3140932.697126,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 1460.1111479975127,
@@ -155,35 +155,13 @@
       "txCount": 1443
     },
     {
-      "address": "0x2ade9e3a987a2f521f3142971871b689ab61668e",
-      "totalDepositedETH": 1459.857898,
-      "totalDepositedUSD": 3426286.487322,
-      "totalWithdrawnETH": 12.997698,
-      "totalWithdrawnUSD": 30505.597181,
-      "netPnlETH": -1446.8602,
-      "netPnlUSD": -3395780.890141,
-      "casinoBreakdown": {
-        "Stake": {
-          "deposited": 1459.8578983048671,
-          "withdrawn": 0.1499358892188
-        },
-        "Rollbit": {
-          "deposited": 0,
-          "withdrawn": 12.847762099999999
-        }
-      },
-      "firstSeen": "2022-10-18T18:00:59.000Z",
-      "lastSeen": "2026-03-18T03:25:11.000Z",
-      "txCount": 3629
-    },
-    {
       "address": "0xf93b0736e18f8995a3a7d66445259001a9b88558",
       "totalDepositedETH": 1108.945468,
-      "totalDepositedUSD": 2602695.012738,
+      "totalDepositedUSD": 2385519.13234,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -1108.945468,
-      "netPnlUSD": -2602695.012738,
+      "netPnlUSD": -2385519.13234,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 1108.9454677196366,
@@ -197,11 +175,11 @@
     {
       "address": "0x91e1f874ef66629a648e6954073207dd9950bf55",
       "totalDepositedETH": 863.686166,
-      "totalDepositedUSD": 2027071.431399,
+      "totalDepositedUSD": 1857927.132666,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -863.686166,
-      "netPnlUSD": -2027071.431399,
+      "netPnlUSD": -1857927.132666,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 863.6861659134215,
@@ -215,11 +193,11 @@
     {
       "address": "0xf34c84e9c7256247ebd28232b8cb00163436daea",
       "totalDepositedETH": 777.427769,
-      "totalDepositedUSD": 1824622.973432,
+      "totalDepositedUSD": 1672371.519185,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -777.427769,
-      "netPnlUSD": -1824622.973432,
+      "netPnlUSD": -1672371.519185,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 777.4277688248416,
@@ -233,11 +211,11 @@
     {
       "address": "0x7c7afb342cb1ab2493475e2774cba815171bfe2e",
       "totalDepositedETH": 792.96068,
-      "totalDepositedUSD": 1861078.714847,
+      "totalDepositedUSD": 1705785.295369,
       "totalWithdrawnETH": 22.711684,
-      "totalWithdrawnUSD": 53304.321753,
+      "totalWithdrawnUSD": 48856.465608,
       "netPnlETH": -770.248996,
-      "netPnlUSD": -1807774.393094,
+      "netPnlUSD": -1656928.829761,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 792.9606795259426,
@@ -261,49 +239,31 @@
       "txCount": 3311
     },
     {
-      "address": "0xb1a1f57ab3af398ac0d2b2622d291db51b346135",
-      "totalDepositedETH": 663.848311,
-      "totalDepositedUSD": 1558051.985209,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -663.848311,
-      "netPnlUSD": -1558051.985209,
+      "address": "0x2d1415f063d83e92b77e0c42a2413c166f3d23ca",
+      "totalDepositedETH": 642.811388,
+      "totalDepositedUSD": 1382790.145293,
+      "totalWithdrawnETH": 2.903179,
+      "totalWithdrawnUSD": 6245.201906,
+      "netPnlETH": -639.908209,
+      "netPnlUSD": -1376544.943387,
       "casinoBreakdown": {
-        "Bitcasino": {
-          "deposited": 663.8483106982316,
-          "withdrawn": 0
+        "Rollbit": {
+          "deposited": 642.8113879454532,
+          "withdrawn": 2.9031787061566
         }
       },
-      "firstSeen": "2023-11-22T09:50:35.000Z",
-      "lastSeen": "2026-03-16T23:51:59.000Z",
-      "txCount": 711
-    },
-    {
-      "address": "0x569db5473984dea797004b7499f810c1183a903f",
-      "totalDepositedETH": 642.887796,
-      "totalDepositedUSD": 1508857.657468,
-      "totalWithdrawnETH": 0.031119,
-      "totalWithdrawnUSD": 73.036645,
-      "netPnlETH": -642.856677,
-      "netPnlUSD": -1508784.620823,
-      "casinoBreakdown": {
-        "Stake": {
-          "deposited": 642.8877961091168,
-          "withdrawn": 0.03111914988
-        }
-      },
-      "firstSeen": "2022-09-26T22:41:23.000Z",
-      "lastSeen": "2026-03-18T02:09:47.000Z",
-      "txCount": 2426
+      "firstSeen": "2021-10-29T05:49:39.000Z",
+      "lastSeen": "2026-03-21T01:40:47.000Z",
+      "txCount": 4247
     },
     {
       "address": "0x9ca91356f04e760378cb933d02f0540e3d69c57f",
       "totalDepositedETH": 873.651673,
-      "totalDepositedUSD": 2050460.47703,
+      "totalDepositedUSD": 1879364.533348,
       "totalWithdrawnETH": 236.327616,
-      "totalWithdrawnUSD": 554660.914635,
+      "totalWithdrawnUSD": 508378.514327,
       "netPnlETH": -637.324057,
-      "netPnlUSD": -1495799.562395,
+      "netPnlUSD": -1370986.019021,
       "casinoBreakdown": {
         "500 Casino": {
           "deposited": 873.65167321262,
@@ -324,30 +284,92 @@
     },
     {
       "address": "0x183f433f14dad7bb0153f0c19fae85dfc1e1418a",
-      "totalDepositedETH": 617.47524,
-      "totalDepositedUSD": 1449214.387359,
+      "totalDepositedETH": 617.733972,
+      "totalDepositedUSD": 1328844.611211,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
-      "netPnlETH": -617.47524,
-      "netPnlUSD": -1449214.387359,
+      "netPnlETH": -617.733972,
+      "netPnlUSD": -1328844.611211,
       "casinoBreakdown": {
         "Bitcasino": {
-          "deposited": 617.4752396074384,
+          "deposited": 617.7339720016967,
           "withdrawn": 0
         }
       },
       "firstSeen": "2024-01-28T23:08:23.000Z",
-      "lastSeen": "2026-03-18T03:38:23.000Z",
-      "txCount": 3741
+      "lastSeen": "2026-03-19T02:16:23.000Z",
+      "txCount": 3743
+    },
+    {
+      "address": "0xcd046949a5e5aeee2751f9d312db7f93a92df456",
+      "totalDepositedETH": 612.155881,
+      "totalDepositedUSD": 1316845.245078,
+      "totalWithdrawnETH": 0.320407,
+      "totalWithdrawnUSD": 689.247454,
+      "netPnlETH": -611.835474,
+      "netPnlUSD": -1316155.997623,
+      "casinoBreakdown": {
+        "Stake": {
+          "deposited": 612.1558810491418,
+          "withdrawn": 0.32040734031120005
+        }
+      },
+      "firstSeen": "2023-01-14T11:59:35.000Z",
+      "lastSeen": "2026-03-21T03:25:59.000Z",
+      "txCount": 7392
+    },
+    {
+      "address": "0xa10bdec04c85134254909769e99ac62980f36264",
+      "totalDepositedETH": 588.758381,
+      "totalDepositedUSD": 1266513.478128,
+      "totalWithdrawnETH": 14.513955,
+      "totalWithdrawnUSD": 31221.840069,
+      "netPnlETH": -574.244425,
+      "netPnlUSD": -1235291.638059,
+      "casinoBreakdown": {
+        "Stake": {
+          "deposited": 0,
+          "withdrawn": 0.88418268
+        },
+        "Rollbit": {
+          "deposited": 588.7583806540907,
+          "withdrawn": 6.952597243214599
+        },
+        "Shuffle": {
+          "deposited": 0,
+          "withdrawn": 6.6771753700000005
+        }
+      },
+      "firstSeen": "2022-10-12T04:03:35.000Z",
+      "lastSeen": "2026-03-21T00:40:59.000Z",
+      "txCount": 1558
+    },
+    {
+      "address": "0x069d47e625fe0745368632f361076d7d4bbc696f",
+      "totalDepositedETH": 550.66628,
+      "totalDepositedUSD": 1184571.274885,
+      "totalWithdrawnETH": 0.004614,
+      "totalWithdrawnUSD": 9.925947,
+      "netPnlETH": -550.661666,
+      "netPnlUSD": -1184561.348938,
+      "casinoBreakdown": {
+        "BetFury": {
+          "deposited": 550.6662800000003,
+          "withdrawn": 0.0046142299999999995
+        }
+      },
+      "firstSeen": "2021-11-18T18:51:43.000Z",
+      "lastSeen": "2026-03-21T02:16:23.000Z",
+      "txCount": 1588
     },
     {
       "address": "0xed75a4d43762733013e39c37ca1420cda29f178a",
       "totalDepositedETH": 492.237605,
-      "totalDepositedUSD": 1155281.657889,
+      "totalDepositedUSD": 1058881.845413,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -492.237605,
-      "netPnlUSD": -1155281.657889,
+      "netPnlUSD": -1058881.845413,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 492.23760455448826,
@@ -361,11 +383,11 @@
     {
       "address": "0xb75ef5ab73da4b75e4fc3864cb7931304560dfc9",
       "totalDepositedETH": 482.178604,
-      "totalDepositedUSD": 1131673.184227,
+      "totalDepositedUSD": 1037243.326366,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -482.178604,
-      "netPnlUSD": -1131673.184227,
+      "netPnlUSD": -1037243.326366,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 482.17860427230295,
@@ -377,13 +399,31 @@
       "txCount": 55
     },
     {
+      "address": "0x5b2e478fd8ae06cc5a7bee8dd51373ec5ff60a36",
+      "totalDepositedETH": 465.564854,
+      "totalDepositedUSD": 1001504.491355,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -465.564854,
+      "netPnlUSD": -1001504.491355,
+      "casinoBreakdown": {
+        "Rollbit": {
+          "deposited": 465.56485401142095,
+          "withdrawn": 0
+        }
+      },
+      "firstSeen": "2022-04-25T23:58:24.000Z",
+      "lastSeen": "2026-03-21T02:55:35.000Z",
+      "txCount": 4267
+    },
+    {
       "address": "0xc75fa22d634be25caa59b0249d6024d924c142e8",
       "totalDepositedETH": 469.025888,
-      "totalDepositedUSD": 1100803.759619,
+      "totalDepositedUSD": 1008949.729672,
       "totalWithdrawnETH": 3.557009,
-      "totalWithdrawnUSD": 8348.300123,
+      "totalWithdrawnUSD": 7651.69548,
       "netPnlETH": -465.468879,
-      "netPnlUSD": -1092455.459496,
+      "netPnlUSD": -1001298.034192,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 469.0258882056515,
@@ -399,31 +439,49 @@
       "txCount": 1087
     },
     {
-      "address": "0x5b2e478fd8ae06cc5a7bee8dd51373ec5ff60a36",
-      "totalDepositedETH": 462.927206,
-      "totalDepositedUSD": 1086490.151625,
+      "address": "0x9aa02f6f138cb2e5bb90496f50b887dcd177787e",
+      "totalDepositedETH": 444.274921,
+      "totalDepositedUSD": 955706.439058,
+      "totalWithdrawnETH": 0.342049,
+      "totalWithdrawnUSD": 735.803116,
+      "netPnlETH": -443.932872,
+      "netPnlUSD": -954970.635942,
+      "casinoBreakdown": {
+        "BetFury": {
+          "deposited": 444.27492100000006,
+          "withdrawn": 0.3420494600000004
+        }
+      },
+      "firstSeen": "2023-06-19T14:52:47.000Z",
+      "lastSeen": "2026-03-20T06:32:35.000Z",
+      "txCount": 1556
+    },
+    {
+      "address": "0x589d3d32ba631bc1abb25b7937078ddaac4dfd3d",
+      "totalDepositedETH": 421.143111,
+      "totalDepositedUSD": 905946.214442,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
-      "netPnlETH": -462.927206,
-      "netPnlUSD": -1086490.151625,
+      "netPnlETH": -421.143111,
+      "netPnlUSD": -905946.214442,
       "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 462.9272056346414,
+        "Stake": {
+          "deposited": 421.14311089920574,
           "withdrawn": 0
         }
       },
-      "firstSeen": "2022-04-25T23:58:24.000Z",
-      "lastSeen": "2026-03-18T03:23:23.000Z",
-      "txCount": 4245
+      "firstSeen": "2024-04-21T22:58:47.000Z",
+      "lastSeen": "2026-03-21T02:38:47.000Z",
+      "txCount": 1220
     },
     {
       "address": "0x336c4be17c9c7d7eb3bd882a2fcd7d0a8c7b76dc",
       "totalDepositedETH": 413.083793,
-      "totalDepositedUSD": 969507.661083,
+      "totalDepositedUSD": 888609.331152,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -413.083793,
-      "netPnlUSD": -969507.661083,
+      "netPnlUSD": -888609.331152,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 413.0837925362497,
@@ -435,13 +493,71 @@
       "txCount": 573
     },
     {
+      "address": "0x6d85c9266436432969f2290c95676e89103796da",
+      "totalDepositedETH": 411.837463,
+      "totalDepositedUSD": 885928.276803,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -411.837463,
+      "netPnlUSD": -885928.276803,
+      "casinoBreakdown": {
+        "Bitcasino": {
+          "deposited": 411.8374629516663,
+          "withdrawn": 0
+        }
+      },
+      "firstSeen": "2023-07-04T13:37:11.000Z",
+      "lastSeen": "2026-03-17T17:06:23.000Z",
+      "txCount": 4494
+    },
+    {
+      "address": "0x63acbb2bba920885baad05f2db6de7971751892d",
+      "totalDepositedETH": 409.472445,
+      "totalDepositedUSD": 880840.744328,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -409.472445,
+      "netPnlUSD": -880840.744328,
+      "casinoBreakdown": {
+        "Bitcasino": {
+          "deposited": 409.4724447870368,
+          "withdrawn": 0
+        }
+      },
+      "firstSeen": "2023-12-28T21:51:47.000Z",
+      "lastSeen": "2026-03-20T01:15:35.000Z",
+      "txCount": 1691
+    },
+    {
+      "address": "0xfe02d616e463f006997a70195a31c733c0ad6142",
+      "totalDepositedETH": 409.437566,
+      "totalDepositedUSD": 880765.715493,
+      "totalWithdrawnETH": 15.058033,
+      "totalWithdrawnUSD": 32392.237623,
+      "netPnlETH": -394.379534,
+      "netPnlUSD": -848373.47787,
+      "casinoBreakdown": {
+        "Rollbit": {
+          "deposited": 409.4375664725755,
+          "withdrawn": 15.0355427
+        },
+        "Stake": {
+          "deposited": 0,
+          "withdrawn": 0.02249
+        }
+      },
+      "firstSeen": "2022-04-28T07:05:23.000Z",
+      "lastSeen": "2026-03-21T01:28:47.000Z",
+      "txCount": 1057
+    },
+    {
       "address": "0x8fb7f17e4cfd81f65ca57c4000c0db96791719c3",
       "totalDepositedETH": 370.237698,
-      "totalDepositedUSD": 868947.87671,
+      "totalDepositedUSD": 796440.525975,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -370.237698,
-      "netPnlUSD": -868947.87671,
+      "netPnlUSD": -796440.525975,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 370.23769778845366,
@@ -455,11 +571,11 @@
     {
       "address": "0xe391087142a63fd89e95f7b62ddd49192e5a2cf2",
       "totalDepositedETH": 338.284693,
-      "totalDepositedUSD": 793954.174054,
+      "totalDepositedUSD": 727704.499812,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -338.284693,
-      "netPnlUSD": -793954.174054,
+      "netPnlUSD": -727704.499812,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 338.28469282235096,
@@ -473,11 +589,11 @@
     {
       "address": "0xa1ec6f53f3cec326db7a50247a9825e62cd4f39a",
       "totalDepositedETH": 502.170586,
-      "totalDepositedUSD": 1178594.365847,
+      "totalDepositedUSD": 1080249.278243,
       "totalWithdrawnETH": 177.562973,
-      "totalWithdrawnUSD": 416740.29793,
+      "totalWithdrawnUSD": 381966.365273,
       "netPnlETH": -324.607613,
-      "netPnlUSD": -761854.067918,
+      "netPnlUSD": -698282.91297,
       "casinoBreakdown": {
         "500 Casino": {
           "deposited": 502.17058621530583,
@@ -501,13 +617,31 @@
       "txCount": 188
     },
     {
+      "address": "0x191cce9363743298a0c7e405cd8333f210ed3f85",
+      "totalDepositedETH": 300.79791,
+      "totalDepositedUSD": 647064.432966,
+      "totalWithdrawnETH": 0.659199,
+      "totalWithdrawnUSD": 1418.042951,
+      "netPnlETH": -300.138711,
+      "netPnlUSD": -645646.390015,
+      "casinoBreakdown": {
+        "Rollbit": {
+          "deposited": 300.79791041395066,
+          "withdrawn": 0.6591992
+        }
+      },
+      "firstSeen": "2022-05-13T20:31:11.000Z",
+      "lastSeen": "2026-03-21T00:42:35.000Z",
+      "txCount": 6314
+    },
+    {
       "address": "0xaa61c9fba68d17a85fe917edad1a93c1f42cd6ee",
       "totalDepositedETH": 293.216072,
-      "totalDepositedUSD": 688178.121094,
+      "totalDepositedUSD": 630754.685544,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -293.216072,
-      "netPnlUSD": -688178.121094,
+      "netPnlUSD": -630754.685544,
       "casinoBreakdown": {
         "500 Casino": {
           "deposited": 293.2160720468047,
@@ -519,13 +653,31 @@
       "txCount": 424
     },
     {
+      "address": "0xdfb7fb57fa7598f2da0de1caa4905753367b07a2",
+      "totalDepositedETH": 292.829085,
+      "totalDepositedUSD": 629922.214942,
+      "totalWithdrawnETH": 0.376227,
+      "totalWithdrawnUSD": 809.324568,
+      "netPnlETH": -292.452858,
+      "netPnlUSD": -629112.890373,
+      "casinoBreakdown": {
+        "Rollbit": {
+          "deposited": 292.8290852106156,
+          "withdrawn": 0.3762270441494
+        }
+      },
+      "firstSeen": "2022-02-08T20:20:05.000Z",
+      "lastSeen": "2026-03-21T02:54:23.000Z",
+      "txCount": 3234
+    },
+    {
       "address": "0xcbf64fc842f72dd74bfb23d20d9672233139e5bd",
       "totalDepositedETH": 276.508484,
-      "totalDepositedUSD": 648965.411798,
+      "totalDepositedUSD": 594813.990304,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -276.508484,
-      "netPnlUSD": -648965.411798,
+      "netPnlUSD": -594813.990304,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 276.50848393623636,
@@ -537,13 +689,39 @@
       "txCount": 511
     },
     {
+      "address": "0x72abb742cc57219c30ccf8ca72de09a1c7bff500",
+      "totalDepositedETH": 278.699681,
+      "totalDepositedUSD": 599527.606032,
+      "totalWithdrawnETH": 9.769134,
+      "totalWithdrawnUSD": 21014.969543,
+      "netPnlETH": -268.930547,
+      "netPnlUSD": -578512.63649,
+      "casinoBreakdown": {
+        "Stake": {
+          "deposited": 0,
+          "withdrawn": 9.730728650000005
+        },
+        "Bitcasino": {
+          "deposited": 278.699681117181,
+          "withdrawn": 0
+        },
+        "Rollbit": {
+          "deposited": 0,
+          "withdrawn": 0.038405
+        }
+      },
+      "firstSeen": "2023-07-20T21:55:11.000Z",
+      "lastSeen": "2026-03-19T05:28:11.000Z",
+      "txCount": 1346
+    },
+    {
       "address": "0xe25f2a07b4268f3ddbd5af740a7da7367e420948",
       "totalDepositedETH": 267.355328,
-      "totalDepositedUSD": 627482.953676,
+      "totalDepositedUSD": 575124.086336,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -267.355328,
-      "netPnlUSD": -627482.953676,
+      "netPnlUSD": -575124.086336,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 267.35532751432834,
@@ -555,13 +733,31 @@
       "txCount": 1253
     },
     {
+      "address": "0xb946495319052d794e07c89190a8353c8e6f2682",
+      "totalDepositedETH": 253.032849,
+      "totalDepositedUSD": 544314.14369,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -253.032849,
+      "netPnlUSD": -544314.14369,
+      "casinoBreakdown": {
+        "Rollbit": {
+          "deposited": 253.03284910936753,
+          "withdrawn": 0
+        }
+      },
+      "firstSeen": "2021-03-29T17:16:17.000Z",
+      "lastSeen": "2026-03-21T02:45:23.000Z",
+      "txCount": 649
+    },
+    {
       "address": "0xdc1f6514c5e7b1c8dc9e03dd37350161e8e0c1d4",
       "totalDepositedETH": 250.424978,
-      "totalDepositedUSD": 587747.422356,
+      "totalDepositedUSD": 538704.194749,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -250.424978,
-      "netPnlUSD": -587747.422356,
+      "netPnlUSD": -538704.194749,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 250.42497756983084,
@@ -575,11 +771,11 @@
     {
       "address": "0xfa55d5059df481c954b42277d2716b74c34035f3",
       "totalDepositedETH": 239.332368,
-      "totalDepositedUSD": 561713.067197,
+      "totalDepositedUSD": 514842.21629,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -239.332368,
-      "netPnlUSD": -561713.067197,
+      "netPnlUSD": -514842.21629,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 239.33236778752445,
@@ -593,11 +789,11 @@
     {
       "address": "0xffe5a180e035a5f8c5f1201c587042d2cea1584a",
       "totalDepositedETH": 231.602183,
-      "totalDepositedUSD": 543570.322842,
+      "totalDepositedUSD": 498213.351378,
       "totalWithdrawnETH": 2.819409,
-      "totalWithdrawnUSD": 6617.153838,
+      "totalWithdrawnUSD": 6065.000703,
       "netPnlETH": -228.782773,
-      "netPnlUSD": -536953.169003,
+      "netPnlUSD": -492148.350675,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 231.60218271907547,
@@ -613,57 +809,31 @@
       "txCount": 2508
     },
     {
-      "address": "0xe90840b2ea6bd9b7817f880c0e54c0c522d4bec3",
-      "totalDepositedETH": 222.60112,
-      "totalDepositedUSD": 522444.827988,
-      "totalWithdrawnETH": 0.011691,
-      "totalWithdrawnUSD": 27.438836,
-      "netPnlETH": -222.589429,
-      "netPnlUSD": -522417.389152,
+      "address": "0xb239b4315b538510d8667188d3a705c4cce1b835",
+      "totalDepositedETH": 213.625944,
+      "totalDepositedUSD": 459543.586667,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -213.625944,
+      "netPnlUSD": -459543.586667,
       "casinoBreakdown": {
-        "Stake": {
-          "deposited": 222.6011197221147,
-          "withdrawn": 0.0116910249972
+        "Shuffle": {
+          "deposited": 213.625944451641,
+          "withdrawn": 0
         }
       },
-      "firstSeen": "2022-08-17T17:19:59.000Z",
-      "lastSeen": "2026-03-18T03:13:59.000Z",
-      "txCount": 2581
-    },
-    {
-      "address": "0x76f7bcd267e60c007ef2c159e65f1759a3c5ba30",
-      "totalDepositedETH": 220.82455,
-      "totalDepositedUSD": 518275.218013,
-      "totalWithdrawnETH": 1.016148,
-      "totalWithdrawnUSD": 2384.898528,
-      "netPnlETH": -219.808402,
-      "netPnlUSD": -515890.319485,
-      "casinoBreakdown": {
-        "Stake": {
-          "deposited": 220.82454964337316,
-          "withdrawn": 0.7572748273547999
-        },
-        "Roobet": {
-          "deposited": 0,
-          "withdrawn": 0.23776031148587873
-        },
-        "Gamdom": {
-          "deposited": 0,
-          "withdrawn": 0.0211125085581061
-        }
-      },
-      "firstSeen": "2023-08-29T09:46:47.000Z",
-      "lastSeen": "2026-03-18T03:19:35.000Z",
-      "txCount": 2398
+      "firstSeen": "2025-02-19T02:15:23.000Z",
+      "lastSeen": "2026-03-21T03:42:35.000Z",
+      "txCount": 2543
     },
     {
       "address": "0xde66a780fb2b788791a9b041fefa1d0216ac91c3",
       "totalDepositedETH": 212.440617,
-      "totalDepositedUSD": 498598.127504,
+      "totalDepositedUSD": 456993.75712,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -212.440617,
-      "netPnlUSD": -498598.127504,
+      "netPnlUSD": -456993.75712,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 212.440616746545,
@@ -675,125 +845,49 @@
       "txCount": 389
     },
     {
-      "address": "0x5ae2b165ade6bc88f397e411ecd93e2fc48184d2",
-      "totalDepositedETH": 211.953849,
-      "totalDepositedUSD": 497455.683382,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -211.953849,
-      "netPnlUSD": -497455.683382,
-      "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 211.95384890565813,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2022-10-21T03:15:47.000Z",
-      "lastSeen": "2026-03-18T03:02:47.000Z",
-      "txCount": 1144
-    },
-    {
-      "address": "0x343f935aa6b565eb05e1a48785536f3869ca1851",
-      "totalDepositedETH": 205.999399,
-      "totalDepositedUSD": 483480.590391,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -205.999399,
-      "netPnlUSD": -483480.590391,
-      "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 205.99939939955692,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2022-04-13T14:18:41.000Z",
-      "lastSeen": "2026-03-18T01:13:11.000Z",
-      "txCount": 718
-    },
-    {
-      "address": "0xb239b4315b538510d8667188d3a705c4cce1b835",
-      "totalDepositedETH": 199.6897,
-      "totalDepositedUSD": 468671.724866,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -199.6897,
-      "netPnlUSD": -468671.724866,
-      "casinoBreakdown": {
-        "Shuffle": {
-          "deposited": 199.68969955951187,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2025-02-19T02:15:23.000Z",
-      "lastSeen": "2026-03-18T03:41:23.000Z",
-      "txCount": 2422
-    },
-    {
-      "address": "0xf1f21d492ad00782716498f225d5cabb62f2a7eb",
-      "totalDepositedETH": 190.982449,
-      "totalDepositedUSD": 448235.807899,
-      "totalWithdrawnETH": 0.568916,
-      "totalWithdrawnUSD": 1335.244866,
-      "netPnlETH": -190.413533,
-      "netPnlUSD": -446900.563033,
-      "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 190.9824490408322,
-          "withdrawn": 0
-        },
-        "500 Casino": {
-          "deposited": 0,
-          "withdrawn": 0.5689155800000001
-        }
-      },
-      "firstSeen": "2023-03-07T00:53:11.000Z",
-      "lastSeen": "2026-03-18T00:42:35.000Z",
-      "txCount": 2281
-    },
-    {
       "address": "0x6963a0bd7e77b9a57327370267a8ee9f275386c4",
-      "totalDepositedETH": 184.457851,
-      "totalDepositedUSD": 432922.576297,
+      "totalDepositedETH": 188.281426,
+      "totalDepositedUSD": 405023.472354,
       "totalWithdrawnETH": 0.054801,
-      "totalWithdrawnUSD": 128.619097,
-      "netPnlETH": -184.40305,
-      "netPnlUSD": -432793.9572,
+      "totalWithdrawnUSD": 117.886773,
+      "netPnlETH": -188.226625,
+      "netPnlUSD": -404905.585581,
       "casinoBreakdown": {
         "BetFury": {
-          "deposited": 184.4578509999999,
+          "deposited": 188.28142599999984,
           "withdrawn": 0.054801490000000015
         }
       },
       "firstSeen": "2021-11-05T22:49:51.000Z",
-      "lastSeen": "2026-03-17T22:17:35.000Z",
-      "txCount": 2840
+      "lastSeen": "2026-03-20T19:34:23.000Z",
+      "txCount": 2864
     },
     {
       "address": "0xa968d192f799af47834e08de0533924c0c056a4d",
-      "totalDepositedETH": 181.658323,
-      "totalDepositedUSD": 426352.084266,
+      "totalDepositedETH": 183.101234,
+      "totalDepositedUSD": 393880.050172,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
-      "netPnlETH": -181.658323,
-      "netPnlUSD": -426352.084266,
+      "netPnlETH": -183.101234,
+      "netPnlUSD": -393880.050172,
       "casinoBreakdown": {
         "Bitcasino": {
-          "deposited": 181.65832307872938,
+          "deposited": 183.10123383287706,
           "withdrawn": 0
         }
       },
       "firstSeen": "2023-03-09T09:08:11.000Z",
-      "lastSeen": "2026-03-17T18:42:11.000Z",
-      "txCount": 526
+      "lastSeen": "2026-03-20T19:25:35.000Z",
+      "txCount": 531
     },
     {
       "address": "0xc242f1c7f8ae8150b45556dab6f87b396fc8fb3b",
       "totalDepositedETH": 177.800614,
-      "totalDepositedUSD": 417298.040119,
+      "totalDepositedUSD": 382477.567952,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -177.800614,
-      "netPnlUSD": -417298.040119,
+      "netPnlUSD": -382477.567952,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 177.80061359988395,
@@ -807,11 +901,11 @@
     {
       "address": "0xf710d09e19067886f8e785b52fc5482300ff3e36",
       "totalDepositedETH": 167.374292,
-      "totalDepositedUSD": 392827.463631,
+      "totalDepositedUSD": 360048.88226,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -167.374292,
-      "netPnlUSD": -392827.463631,
+      "netPnlUSD": -360048.88226,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 167.37429213096263,
@@ -823,31 +917,31 @@
       "txCount": 415
     },
     {
-      "address": "0xe751d7d3fd983fae25a2ab78e4ec9a7e0fa22ec6",
-      "totalDepositedETH": 163.083028,
-      "totalDepositedUSD": 382755.865604,
+      "address": "0x0ab8ab2d5e6a86379794d54b3cd23555d980a40d",
+      "totalDepositedETH": 162.621122,
+      "totalDepositedUSD": 349824.053379,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
-      "netPnlETH": -163.083028,
-      "netPnlUSD": -382755.865604,
+      "netPnlETH": -162.621122,
+      "netPnlUSD": -349824.053379,
       "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 163.0830275264027,
+        "Shuffle": {
+          "deposited": 162.62112226829768,
           "withdrawn": 0
         }
       },
-      "firstSeen": "2023-12-22T17:20:11.000Z",
-      "lastSeen": "2026-03-18T03:36:23.000Z",
-      "txCount": 5649
+      "firstSeen": "2023-07-25T03:01:11.000Z",
+      "lastSeen": "2026-03-21T03:12:47.000Z",
+      "txCount": 2093
     },
     {
       "address": "0x199051471887252ad07625632ca903664cd0857a",
       "totalDepositedETH": 183.819923,
-      "totalDepositedUSD": 431425.359958,
+      "totalDepositedUSD": 395426.066181,
       "totalWithdrawnETH": 22.42266,
-      "totalWithdrawnUSD": 52625.98368,
+      "totalWithdrawnUSD": 48234.72989,
       "netPnlETH": -161.397263,
-      "netPnlUSD": -378799.376278,
+      "netPnlUSD": -347191.33629,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 183.81992328827252,
@@ -871,13 +965,53 @@
       "txCount": 1660
     },
     {
+      "address": "0xcb304ef83d18767d0a02bd71a725e02c91a746e8",
+      "totalDepositedETH": 193.453424,
+      "totalDepositedUSD": 416149.267671,
+      "totalWithdrawnETH": 34.658013,
+      "totalWithdrawnUSD": 74554.932047,
+      "netPnlETH": -158.795411,
+      "netPnlUSD": -341594.335624,
+      "casinoBreakdown": {
+        "Rollbit": {
+          "deposited": 193.45342404605407,
+          "withdrawn": 0.2039358844646
+        },
+        "Stake": {
+          "deposited": 0,
+          "withdrawn": 34.45407748839011
+        }
+      },
+      "firstSeen": "2021-12-01T20:44:55.000Z",
+      "lastSeen": "2026-03-21T01:53:47.000Z",
+      "txCount": 782
+    },
+    {
+      "address": "0x8fe7f10ec05c5aa209cb85261f35cebc55d283ea",
+      "totalDepositedETH": 158.741279,
+      "totalDepositedUSD": 341477.888696,
+      "totalWithdrawnETH": 0.388636,
+      "totalWithdrawnUSD": 836.01912,
+      "netPnlETH": -158.352642,
+      "netPnlUSD": -340641.869576,
+      "casinoBreakdown": {
+        "Rollbit": {
+          "deposited": 158.74127851786386,
+          "withdrawn": 0.3886364194901999
+        }
+      },
+      "firstSeen": "2023-09-24T22:13:11.000Z",
+      "lastSeen": "2026-03-21T02:01:11.000Z",
+      "txCount": 2022
+    },
+    {
       "address": "0xcc468b161b0a6493b7fae18eee48393e133b9984",
       "totalDepositedETH": 156.91613,
-      "totalDepositedUSD": 368282.157938,
+      "totalDepositedUSD": 337551.70297,
       "totalWithdrawnETH": 0.783369,
-      "totalWithdrawnUSD": 1838.567583,
+      "totalWithdrawnUSD": 1685.152553,
       "netPnlETH": -156.132761,
-      "netPnlUSD": -366443.590355,
+      "netPnlUSD": -335866.550417,
       "casinoBreakdown": {
         "500 Casino": {
           "deposited": 156.91613035286326,
@@ -895,11 +1029,11 @@
     {
       "address": "0x74b8dae00ef06ef13b2aef3e3df509e3cad8d922",
       "totalDepositedETH": 154.680644,
-      "totalDepositedUSD": 363035.472319,
+      "totalDepositedUSD": 332742.814927,
       "totalWithdrawnETH": 0.022303,
-      "totalWithdrawnUSD": 52.346037,
+      "totalWithdrawnUSD": 47.978143,
       "netPnlETH": -154.658341,
-      "netPnlUSD": -362983.126282,
+      "netPnlUSD": -332694.836784,
       "casinoBreakdown": {
         "Gamdom": {
           "deposited": 154.6806443626021,
@@ -911,31 +1045,35 @@
       "txCount": 465
     },
     {
-      "address": "0xa043152e77344296f32169272541f60640f8b186",
-      "totalDepositedETH": 134.850765,
-      "totalDepositedUSD": 316494.746534,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -134.850765,
-      "netPnlUSD": -316494.746534,
+      "address": "0x368d4ccdbb709eac32eba60d3057704bd3e90a7f",
+      "totalDepositedETH": 155.803805,
+      "totalDepositedUSD": 335158.914144,
+      "totalWithdrawnETH": 11.109359,
+      "totalWithdrawnUSD": 23898.00933,
+      "netPnlETH": -144.694446,
+      "netPnlUSD": -311260.904814,
       "casinoBreakdown": {
-        "Shuffle": {
-          "deposited": 134.85076545959225,
+        "Rollbit": {
+          "deposited": 155.8038054556312,
           "withdrawn": 0
+        },
+        "Stake": {
+          "deposited": 0,
+          "withdrawn": 11.10935929
         }
       },
-      "firstSeen": "2025-08-07T18:41:47.000Z",
-      "lastSeen": "2026-03-18T03:25:59.000Z",
-      "txCount": 649
+      "firstSeen": "2021-07-15T00:18:01.000Z",
+      "lastSeen": "2026-03-21T01:55:59.000Z",
+      "txCount": 1295
     },
     {
       "address": "0xa8b13c34d2f9608027998d8033880ae0669a3b28",
       "totalDepositedETH": 131.035207,
-      "totalDepositedUSD": 307539.630768,
+      "totalDepositedUSD": 281877.695834,
       "totalWithdrawnETH": 0.055521,
-      "totalWithdrawnUSD": 130.306894,
+      "totalWithdrawnUSD": 119.433736,
       "netPnlETH": -130.979686,
-      "netPnlUSD": -307409.323874,
+      "netPnlUSD": -281758.262098,
       "casinoBreakdown": {
         "Gamdom": {
           "deposited": 131.03520697385417,
@@ -947,13 +1085,49 @@
       "txCount": 1449
     },
     {
+      "address": "0x8aa589be893acb12921cc4ad5d4b63275296753e",
+      "totalDepositedETH": 127.116016,
+      "totalDepositedUSD": 273446.889369,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -127.116016,
+      "netPnlUSD": -273446.889369,
+      "casinoBreakdown": {
+        "Bitcasino": {
+          "deposited": 127.11601618159285,
+          "withdrawn": 0
+        }
+      },
+      "firstSeen": "2024-08-16T17:40:11.000Z",
+      "lastSeen": "2026-03-19T02:48:11.000Z",
+      "txCount": 894
+    },
+    {
+      "address": "0xb23400e13df4056392c55e1fad2647ed501ab80f",
+      "totalDepositedETH": 124.51183,
+      "totalDepositedUSD": 267844.867694,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -124.51183,
+      "netPnlUSD": -267844.867694,
+      "casinoBreakdown": {
+        "Rollbit": {
+          "deposited": 124.51182975397289,
+          "withdrawn": 0
+        }
+      },
+      "firstSeen": "2023-02-04T02:55:11.000Z",
+      "lastSeen": "2026-03-21T02:35:59.000Z",
+      "txCount": 4459
+    },
+    {
       "address": "0x9a62c2f51402a3feaca89821c46af5a22dd615df",
       "totalDepositedETH": 124.245346,
-      "totalDepositedUSD": 291603.827393,
+      "totalDepositedUSD": 267271.618805,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -124.245346,
-      "netPnlUSD": -291603.827393,
+      "netPnlUSD": -267271.618805,
       "casinoBreakdown": {
         "500 Casino": {
           "deposited": 124.24534614094401,
@@ -965,31 +1139,13 @@
       "txCount": 195
     },
     {
-      "address": "0xb23400e13df4056392c55e1fad2647ed501ab80f",
-      "totalDepositedETH": 122.590545,
-      "totalDepositedUSD": 287720.008254,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -122.590545,
-      "netPnlUSD": -287720.008254,
-      "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 122.59054463326679,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2023-02-04T02:55:11.000Z",
-      "lastSeen": "2026-03-18T00:58:11.000Z",
-      "txCount": 4427
-    },
-    {
       "address": "0x02e105584f79a2bb496e8915f140c4e537620149",
       "totalDepositedETH": 121.23066,
-      "totalDepositedUSD": 284528.358448,
+      "totalDepositedUSD": 260786.546041,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -121.23066,
-      "netPnlUSD": -284528.358448,
+      "netPnlUSD": -260786.546041,
       "casinoBreakdown": {
         "500 Casino": {
           "deposited": 121.23065975613953,
@@ -1001,13 +1157,35 @@
       "txCount": 332
     },
     {
+      "address": "0xaf2e61c35a386afc843cf8da318aee977ed25909",
+      "totalDepositedETH": 130.658729,
+      "totalDepositedUSD": 281067.830556,
+      "totalWithdrawnETH": 15.370521,
+      "totalWithdrawnUSD": 33064.449696,
+      "netPnlETH": -115.288208,
+      "netPnlUSD": -248003.38086,
+      "casinoBreakdown": {
+        "Rollbit": {
+          "deposited": 130.65872857241496,
+          "withdrawn": 0
+        },
+        "Stake": {
+          "deposited": 0,
+          "withdrawn": 15.370520879999999
+        }
+      },
+      "firstSeen": "2023-12-15T04:08:59.000Z",
+      "lastSeen": "2026-03-21T03:22:47.000Z",
+      "txCount": 160
+    },
+    {
       "address": "0x223065a3d805729f343720210b0998446fde17c0",
       "totalDepositedETH": 118.725063,
-      "totalDepositedUSD": 278647.723226,
+      "totalDepositedUSD": 255396.606858,
       "totalWithdrawnETH": 5.722985,
-      "totalWithdrawnUSD": 13431.844809,
+      "totalWithdrawnUSD": 12311.055509,
       "netPnlETH": -113.002079,
-      "netPnlUSD": -265215.878417,
+      "netPnlUSD": -243085.551348,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 0,
@@ -1023,31 +1201,49 @@
       "txCount": 1593
     },
     {
+      "address": "0xdbd464a0c7988b6d60a6eb61b3ddc908aea6293f",
+      "totalDepositedETH": 108.174781,
+      "totalDepositedUSD": 232701.261858,
+      "totalWithdrawnETH": 0.032546,
+      "totalWithdrawnUSD": 70.012537,
+      "netPnlETH": -108.142235,
+      "netPnlUSD": -232631.249321,
+      "casinoBreakdown": {
+        "Stake": {
+          "deposited": 108.17478098227954,
+          "withdrawn": 0.0325464105852
+        }
+      },
+      "firstSeen": "2025-07-17T01:36:47.000Z",
+      "lastSeen": "2026-03-21T03:36:35.000Z",
+      "txCount": 1480
+    },
+    {
       "address": "0xb3a10777372223eb3e279e17c986efd8a5cd1dff",
-      "totalDepositedETH": 105.09012,
-      "totalDepositedUSD": 246646.512793,
+      "totalDepositedETH": 105.642111,
+      "totalDepositedUSD": 227253.083635,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
-      "netPnlETH": -105.09012,
-      "netPnlUSD": -246646.512793,
+      "netPnlETH": -105.642111,
+      "netPnlUSD": -227253.083635,
       "casinoBreakdown": {
         "Bitcasino": {
-          "deposited": 105.09012049130159,
+          "deposited": 105.64211106353258,
           "withdrawn": 0
         }
       },
       "firstSeen": "2025-10-25T07:51:11.000Z",
-      "lastSeen": "2026-03-18T03:10:11.000Z",
-      "txCount": 316
+      "lastSeen": "2026-03-20T10:40:11.000Z",
+      "txCount": 327
     },
     {
       "address": "0xc7eb359c9deb5a665b9a9e2b8c60d24e20548f3a",
       "totalDepositedETH": 104.083639,
-      "totalDepositedUSD": 244284.300209,
+      "totalDepositedUSD": 223900.560391,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -104.083639,
-      "netPnlUSD": -244284.300209,
+      "netPnlUSD": -223900.560391,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 104.08363877684693,
@@ -1061,11 +1257,11 @@
     {
       "address": "0xddd23c54d337d69b912107560a2decd9ef76549c",
       "totalDepositedETH": 102.574065,
-      "totalDepositedUSD": 240741.330845,
+      "totalDepositedUSD": 220653.225931,
       "totalWithdrawnETH": 0.247,
-      "totalWithdrawnUSD": 579.709,
+      "totalWithdrawnUSD": 531.33652,
       "netPnlETH": -102.327065,
-      "netPnlUSD": -240161.621845,
+      "netPnlUSD": -220121.889411,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 102.5740651235827,
@@ -1079,11 +1275,11 @@
     {
       "address": "0x1c57f176cd0d0e904e571fbbd87c6cf7dde550ce",
       "totalDepositedETH": 100.056858,
-      "totalDepositedUSD": 234833.445433,
+      "totalDepositedUSD": 215238.310387,
       "totalWithdrawnETH": 0.003,
-      "totalWithdrawnUSD": 7.041,
+      "totalWithdrawnUSD": 6.45348,
       "netPnlETH": -100.053858,
-      "netPnlUSD": -234826.404433,
+      "netPnlUSD": -215231.856907,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 100.05685787524176,
@@ -1095,93 +1291,31 @@
       "txCount": 442
     },
     {
-      "address": "0x77d1136d39f88cf542e7b458230908aaea31b6bb",
-      "totalDepositedETH": 99.26211,
-      "totalDepositedUSD": 232968.173076,
-      "totalWithdrawnETH": 0.364151,
-      "totalWithdrawnUSD": 854.663034,
-      "netPnlETH": -98.897959,
-      "netPnlUSD": -232113.510042,
+      "address": "0x4c8a721f1a47b89167b366a88dc5d5c09ae669df",
+      "totalDepositedETH": 98.377718,
+      "totalDepositedUSD": 211626.21096,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -98.377718,
+      "netPnlUSD": -211626.21096,
       "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 99.2621103862284,
-          "withdrawn": 0.3641512715988
-        }
-      },
-      "firstSeen": "2022-11-21T07:38:35.000Z",
-      "lastSeen": "2026-03-18T01:41:59.000Z",
-      "txCount": 622
-    },
-    {
-      "address": "0xf2593d2cef2404115ecd3e6fbe41a4c42c4835b4",
-      "totalDepositedETH": 96.781582,
-      "totalDepositedUSD": 227146.373364,
-      "totalWithdrawnETH": 0.420713,
-      "totalWithdrawnUSD": 987.413131,
-      "netPnlETH": -96.360869,
-      "netPnlUSD": -226158.960233,
-      "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 96.78158217462335,
-          "withdrawn": 0.4207128807672
-        }
-      },
-      "firstSeen": "2023-12-01T05:09:47.000Z",
-      "lastSeen": "2026-03-18T02:33:59.000Z",
-      "txCount": 1465
-    },
-    {
-      "address": "0x6de3c878b822794686fa3fbdf48ce4078d0a82e3",
-      "totalDepositedETH": 93.215842,
-      "totalDepositedUSD": 218777.581479,
-      "totalWithdrawnETH": 0.073154,
-      "totalWithdrawnUSD": 171.693265,
-      "netPnlETH": -93.142688,
-      "netPnlUSD": -218605.888215,
-      "casinoBreakdown": {
-        "Stake": {
-          "deposited": 93.21584213013378,
-          "withdrawn": 0.0398213522825
-        },
         "Shuffle": {
-          "deposited": 0,
-          "withdrawn": 0.033333
-        }
-      },
-      "firstSeen": "2025-04-05T03:05:23.000Z",
-      "lastSeen": "2026-03-18T03:07:59.000Z",
-      "txCount": 966
-    },
-    {
-      "address": "0x162f709e4c155661c58aea05738613d6727ede34",
-      "totalDepositedETH": 96.354821,
-      "totalDepositedUSD": 226144.7639,
-      "totalWithdrawnETH": 3.817161,
-      "totalWithdrawnUSD": 8958.87718,
-      "netPnlETH": -92.537659,
-      "netPnlUSD": -217185.88672,
-      "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 96.35482057928861,
+          "deposited": 98.37771758498417,
           "withdrawn": 0
-        },
-        "Stake": {
-          "deposited": 0,
-          "withdrawn": 3.817161133347117
         }
       },
-      "firstSeen": "2024-05-07T21:53:47.000Z",
-      "lastSeen": "2026-03-18T03:32:23.000Z",
-      "txCount": 571
+      "firstSeen": "2025-01-09T04:29:35.000Z",
+      "lastSeen": "2026-03-21T03:04:11.000Z",
+      "txCount": 1240
     },
     {
       "address": "0x1d5650fe57f99638fa8cc75a44fe5446c762a6a9",
       "totalDepositedETH": 90.952816,
-      "totalDepositedUSD": 213466.258187,
+      "totalDepositedUSD": 195654.058782,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -90.952816,
-      "netPnlUSD": -213466.258187,
+      "netPnlUSD": -195654.058782,
       "casinoBreakdown": {
         "CSGO500": {
           "deposited": 90.95281558884962,
@@ -1193,53 +1327,13 @@
       "txCount": 352
     },
     {
-      "address": "0x29e1ee5127081cfd3b5fe473c795d6d7991b77be",
-      "totalDepositedETH": 86.752888,
-      "totalDepositedUSD": 203609.027905,
-      "totalWithdrawnETH": 1.178887,
-      "totalWithdrawnUSD": 2766.848428,
-      "netPnlETH": -85.574001,
-      "netPnlUSD": -200842.179477,
-      "casinoBreakdown": {
-        "Stake": {
-          "deposited": 86.75288790138814,
-          "withdrawn": 0.5748551345397
-        },
-        "Roobet": {
-          "deposited": 0,
-          "withdrawn": 0.6040321376330675
-        }
-      },
-      "firstSeen": "2024-04-21T21:38:11.000Z",
-      "lastSeen": "2026-03-18T03:20:11.000Z",
-      "txCount": 359
-    },
-    {
-      "address": "0xa6e2c18e9faf2ee6578e88c0e3eb21236a306c52",
-      "totalDepositedETH": 84.688576,
-      "totalDepositedUSD": 198764.087527,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -84.688576,
-      "netPnlUSD": -198764.087527,
-      "casinoBreakdown": {
-        "Bitcasino": {
-          "deposited": 84.68857585313623,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2024-06-18T07:45:11.000Z",
-      "lastSeen": "2026-03-16T22:18:23.000Z",
-      "txCount": 2215
-    },
-    {
       "address": "0x4d58e70965892f0851a2ecbe1a075c87ccda5260",
       "totalDepositedETH": 81.774014,
-      "totalDepositedUSD": 191923.611074,
+      "totalDepositedUSD": 175908.988154,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -81.774014,
-      "netPnlUSD": -191923.611074,
+      "netPnlUSD": -175908.988154,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 81.77401409207881,
@@ -1251,31 +1345,85 @@
       "txCount": 366
     },
     {
-      "address": "0xac6c1c4e5fea4592cba62fa2ff783276177c9dec",
-      "totalDepositedETH": 77.957015,
-      "totalDepositedUSD": 182965.114442,
+      "address": "0x427f057ac8e672e4b16064ba22baf16c868ef7da",
+      "totalDepositedETH": 75.87951,
+      "totalDepositedUSD": 163228.96653,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
-      "netPnlETH": -77.957015,
-      "netPnlUSD": -182965.114442,
+      "netPnlETH": -75.87951,
+      "netPnlUSD": -163228.96653,
       "casinoBreakdown": {
-        "Bitcasino": {
-          "deposited": 77.95701510090574,
+        "Stake": {
+          "deposited": 75.87950990626355,
           "withdrawn": 0
         }
       },
-      "firstSeen": "2021-11-17T17:46:51.000Z",
-      "lastSeen": "2026-03-15T19:10:47.000Z",
-      "txCount": 520
+      "firstSeen": "2022-08-21T17:46:38.000Z",
+      "lastSeen": "2026-03-21T03:20:47.000Z",
+      "txCount": 884
+    },
+    {
+      "address": "0x453eb895160bac6349cd5d5b7ce837b672e2e936",
+      "totalDepositedETH": 74.492155,
+      "totalDepositedUSD": 160244.54415,
+      "totalWithdrawnETH": 0.032008,
+      "totalWithdrawnUSD": 68.855199,
+      "netPnlETH": -74.460147,
+      "netPnlUSD": -160175.688951,
+      "casinoBreakdown": {
+        "BetFury": {
+          "deposited": 74.492155,
+          "withdrawn": 0.03200840409999999
+        }
+      },
+      "firstSeen": "2022-06-19T09:30:36.000Z",
+      "lastSeen": "2026-03-19T00:14:59.000Z",
+      "txCount": 254
+    },
+    {
+      "address": "0xaac3d17c282e59878eb5539811ffc4853f09f8c3",
+      "totalDepositedETH": 73.505053,
+      "totalDepositedUSD": 158121.130613,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -73.505053,
+      "netPnlUSD": -158121.130613,
+      "casinoBreakdown": {
+        "Rainbet": {
+          "deposited": 73.50505337245639,
+          "withdrawn": 0
+        }
+      },
+      "firstSeen": "2026-02-21T16:15:35.000Z",
+      "lastSeen": "2026-03-21T03:14:23.000Z",
+      "txCount": 154
+    },
+    {
+      "address": "0x94e339c5521946d5109005559f0378464f3267db",
+      "totalDepositedETH": 67.749814,
+      "totalDepositedUSD": 145740.689258,
+      "totalWithdrawnETH": 0.071872,
+      "totalWithdrawnUSD": 154.609143,
+      "netPnlETH": -67.677941,
+      "netPnlUSD": -145586.080115,
+      "casinoBreakdown": {
+        "Stake": {
+          "deposited": 67.74981370865156,
+          "withdrawn": 0.0718724514474
+        }
+      },
+      "firstSeen": "2023-09-04T06:16:11.000Z",
+      "lastSeen": "2026-03-21T03:07:11.000Z",
+      "txCount": 308
     },
     {
       "address": "0xe18e3a9d974f709361483f1cf20e63558553eec4",
       "totalDepositedETH": 66.536938,
-      "totalDepositedUSD": 156162.192563,
+      "totalDepositedUSD": 143131.598702,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -66.536938,
-      "netPnlUSD": -156162.192563,
+      "netPnlUSD": -143131.598702,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 66.53693760661515,
@@ -1289,11 +1437,11 @@
     {
       "address": "0x4e259d1842ab5de584db7c1e47d459834c80bd8d",
       "totalDepositedETH": 66.290005,
-      "totalDepositedUSD": 155582.640828,
+      "totalDepositedUSD": 142600.406325,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -66.290005,
-      "netPnlUSD": -155582.640828,
+      "netPnlUSD": -142600.406325,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 66.29000461371739,
@@ -1305,75 +1453,13 @@
       "txCount": 577
     },
     {
-      "address": "0xbb7ce0c6248e6fa3996b21e1e91dc852f2f9405b",
-      "totalDepositedETH": 66.063672,
-      "totalDepositedUSD": 155051.437013,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -66.063672,
-      "netPnlUSD": -155051.437013,
-      "casinoBreakdown": {
-        "Shuffle": {
-          "deposited": 66.06367150097111,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2025-09-20T17:44:47.000Z",
-      "lastSeen": "2026-03-18T03:14:11.000Z",
-      "txCount": 1985
-    },
-    {
-      "address": "0x3507766f98b0dce263beabc34488c79162631fe7",
-      "totalDepositedETH": 66.216709,
-      "totalDepositedUSD": 155410.616388,
-      "totalWithdrawnETH": 1.241648,
-      "totalWithdrawnUSD": 2914.147679,
-      "netPnlETH": -64.975061,
-      "netPnlUSD": -152496.468709,
-      "casinoBreakdown": {
-        "Shuffle": {
-          "deposited": 0,
-          "withdrawn": 0.55074535
-        },
-        "Stake": {
-          "deposited": 66.21670915540093,
-          "withdrawn": 0
-        },
-        "Roobet": {
-          "deposited": 0,
-          "withdrawn": 0.6909025744280168
-        }
-      },
-      "firstSeen": "2025-02-14T01:06:47.000Z",
-      "lastSeen": "2026-03-18T03:27:47.000Z",
-      "txCount": 382
-    },
-    {
-      "address": "0xba61e54521e134af7981403029c6cef195222a77",
-      "totalDepositedETH": 63.412839,
-      "totalDepositedUSD": 148829.933133,
-      "totalWithdrawnETH": 0.001441,
-      "totalWithdrawnUSD": 3.38259,
-      "netPnlETH": -63.411398,
-      "netPnlUSD": -148826.550543,
-      "casinoBreakdown": {
-        "BetFury": {
-          "deposited": 63.412839000000005,
-          "withdrawn": 0.00144124
-        }
-      },
-      "firstSeen": "2022-04-09T23:08:06.000Z",
-      "lastSeen": "2026-03-15T21:55:23.000Z",
-      "txCount": 313
-    },
-    {
       "address": "0x5477e0db04254415962f879930d5f40234940ff8",
       "totalDepositedETH": 62.653486,
-      "totalDepositedUSD": 147047.732809,
+      "totalDepositedUSD": 134777.674014,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -62.653486,
-      "netPnlUSD": -147047.732809,
+      "netPnlUSD": -134777.674014,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 62.65348649739176,
@@ -1385,31 +1471,31 @@
       "txCount": 92
     },
     {
-      "address": "0x441df69467a5a18f8e822f8d7cebf8dfc3ec945e",
-      "totalDepositedETH": 61.461825,
-      "totalDepositedUSD": 144250.902325,
+      "address": "0x29b9eb57d016daf5122bed198cac07b83f595ab2",
+      "totalDepositedETH": 60.28795,
+      "totalDepositedUSD": 129689.025713,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
-      "netPnlETH": -61.461825,
-      "netPnlUSD": -144250.902325,
+      "netPnlETH": -60.28795,
+      "netPnlUSD": -129689.025713,
       "casinoBreakdown": {
-        "Bitcasino": {
-          "deposited": 61.46182459540667,
+        "Rollbit": {
+          "deposited": 60.287949623773514,
           "withdrawn": 0
         }
       },
-      "firstSeen": "2023-06-30T14:26:11.000Z",
-      "lastSeen": "2026-03-17T10:43:47.000Z",
-      "txCount": 683
+      "firstSeen": "2024-06-08T18:12:35.000Z",
+      "lastSeen": "2026-03-21T01:45:59.000Z",
+      "txCount": 464
     },
     {
       "address": "0x1d7c88acb2ea4a92dce1110a0270c22480f95f90",
       "totalDepositedETH": 60.086983,
-      "totalDepositedUSD": 141024.14887,
+      "totalDepositedUSD": 129256.714138,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -60.086983,
-      "netPnlUSD": -141024.14887,
+      "netPnlUSD": -129256.714138,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 60.08698290139784,
@@ -1421,13 +1507,35 @@
       "txCount": 130
     },
     {
+      "address": "0xd2a06adec4b886a65b849898f744290c72468d50",
+      "totalDepositedETH": 59.774209,
+      "totalDepositedUSD": 128583.887432,
+      "totalWithdrawnETH": 0.477909,
+      "totalWithdrawnUSD": 1028.057761,
+      "netPnlETH": -59.2963,
+      "netPnlUSD": -127555.829671,
+      "casinoBreakdown": {
+        "BetFury": {
+          "deposited": 59.77420899999998,
+          "withdrawn": 0
+        },
+        "Duelbits": {
+          "deposited": 0,
+          "withdrawn": 0.4779085522510399
+        }
+      },
+      "firstSeen": "2022-12-17T11:24:59.000Z",
+      "lastSeen": "2026-03-19T15:20:11.000Z",
+      "txCount": 1079
+    },
+    {
       "address": "0xd125f675f068a5a7c965c98978d801317fb55522",
       "totalDepositedETH": 59.219795,
-      "totalDepositedUSD": 138988.858622,
+      "totalDepositedUSD": 127391.25399,
       "totalWithdrawnETH": 0.46566,
-      "totalWithdrawnUSD": 1092.903973,
+      "totalWithdrawnUSD": 1001.709123,
       "netPnlETH": -58.754135,
-      "netPnlUSD": -137895.954649,
+      "netPnlUSD": -126389.544867,
       "casinoBreakdown": {
         "500 Casino": {
           "deposited": 59.21979489657308,
@@ -1443,35 +1551,31 @@
       "txCount": 355
     },
     {
-      "address": "0xd2a06adec4b886a65b849898f744290c72468d50",
-      "totalDepositedETH": 58.347052,
-      "totalDepositedUSD": 136940.531044,
-      "totalWithdrawnETH": 0.477909,
-      "totalWithdrawnUSD": 1121.651372,
-      "netPnlETH": -57.869143,
-      "netPnlUSD": -135818.879672,
+      "address": "0x306a2ea8d604a150e305994ad27faabc453ce3b8",
+      "totalDepositedETH": 57.108179,
+      "totalDepositedUSD": 122848.830338,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -57.108179,
+      "netPnlUSD": -122848.830338,
       "casinoBreakdown": {
         "BetFury": {
-          "deposited": 58.34705199999998,
+          "deposited": 57.10817900000003,
           "withdrawn": 0
-        },
-        "Duelbits": {
-          "deposited": 0,
-          "withdrawn": 0.4779085522510399
         }
       },
-      "firstSeen": "2022-12-17T11:24:59.000Z",
-      "lastSeen": "2026-03-16T16:04:11.000Z",
-      "txCount": 1063
+      "firstSeen": "2021-01-31T08:26:22.000Z",
+      "lastSeen": "2026-03-19T10:15:47.000Z",
+      "txCount": 1008
     },
     {
       "address": "0xe0c78aeb9bf5f568d32969c4ae006b3b1fbc7ae8",
       "totalDepositedETH": 56.513593,
-      "totalDepositedUSD": 132637.403528,
+      "totalDepositedUSD": 121569.781412,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -56.513593,
-      "netPnlUSD": -132637.403528,
+      "netPnlUSD": -121569.781412,
       "casinoBreakdown": {
         "500 Casino": {
           "deposited": 56.513593322687875,
@@ -1483,71 +1587,13 @@
       "txCount": 338
     },
     {
-      "address": "0xef2f8e04a305812edd2aa18376de3fada206aacb",
-      "totalDepositedETH": 54.340171,
-      "totalDepositedUSD": 127536.380165,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -54.340171,
-      "netPnlUSD": -127536.380165,
-      "casinoBreakdown": {
-        "Bitcasino": {
-          "deposited": 54.34017050080283,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2023-11-21T07:21:35.000Z",
-      "lastSeen": "2026-03-16T07:53:47.000Z",
-      "txCount": 313
-    },
-    {
-      "address": "0xcd1fe73f95c98e50da378fb63d4b31ec99927fc7",
-      "totalDepositedETH": 70.157504,
-      "totalDepositedUSD": 164659.662784,
-      "totalWithdrawnETH": 16.220706,
-      "totalWithdrawnUSD": 38069.995874,
-      "netPnlETH": -53.936799,
-      "netPnlUSD": -126589.66691,
-      "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 70.157504381697,
-          "withdrawn": 16.2207055277316
-        }
-      },
-      "firstSeen": "2021-06-12T16:32:26.000Z",
-      "lastSeen": "2026-03-18T00:54:59.000Z",
-      "txCount": 817
-    },
-    {
-      "address": "0x6a1d363748a9fbcb947f5d02d989c5a8a859eea6",
-      "totalDepositedETH": 55.48455,
-      "totalDepositedUSD": 130222.239983,
-      "totalWithdrawnETH": 1.586416,
-      "totalWithdrawnUSD": 3723.318446,
-      "netPnlETH": -53.898134,
-      "netPnlUSD": -126498.921537,
-      "casinoBreakdown": {
-        "Bitcasino": {
-          "deposited": 55.484550482872024,
-          "withdrawn": 0
-        },
-        "Stake": {
-          "deposited": 0,
-          "withdrawn": 1.58641604
-        }
-      },
-      "firstSeen": "2024-08-26T22:24:47.000Z",
-      "lastSeen": "2026-03-15T04:14:59.000Z",
-      "txCount": 190
-    },
-    {
       "address": "0xe86cd5695f1b9cac071f8fcc7c704e92e125b556",
       "totalDepositedETH": 57.89946,
-      "totalDepositedUSD": 135890.03302,
+      "totalDepositedUSD": 124551.002741,
       "totalWithdrawnETH": 4.347903,
-      "totalWithdrawnUSD": 10204.529139,
+      "totalWithdrawnUSD": 9353.035749,
       "netPnlETH": -53.551557,
-      "netPnlUSD": -125685.503881,
+      "netPnlUSD": -115197.966992,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 57.899460170629354,
@@ -1563,13 +1609,31 @@
       "txCount": 397
     },
     {
+      "address": "0x80fd0f47c2d1c97394fcc7f2738d1a947eda5228",
+      "totalDepositedETH": 52.916565,
+      "totalDepositedUSD": 113831.997195,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -52.916565,
+      "netPnlUSD": -113831.997195,
+      "casinoBreakdown": {
+        "Bitcasino": {
+          "deposited": 52.91656464182418,
+          "withdrawn": 0
+        }
+      },
+      "firstSeen": "2021-01-20T02:20:08.000Z",
+      "lastSeen": "2026-03-20T08:42:59.000Z",
+      "txCount": 1379
+    },
+    {
       "address": "0xd25a2a67dedeb593fd87e268717ae8e7c637b846",
       "totalDepositedETH": 51.769262,
-      "totalDepositedUSD": 121502.457313,
+      "totalDepositedUSD": 111363.965093,
       "totalWithdrawnETH": 0.025544,
-      "totalWithdrawnUSD": 59.952266,
+      "totalWithdrawnUSD": 54.949687,
       "netPnlETH": -51.743718,
-      "netPnlUSD": -121442.505047,
+      "netPnlUSD": -111309.015405,
       "casinoBreakdown": {
         "Gamdom": {
           "deposited": 51.769261743824096,
@@ -1583,11 +1647,11 @@
     {
       "address": "0x496a428e742e796ebaaa6936a309f25f10cc4bed",
       "totalDepositedETH": 51.446104,
-      "totalDepositedUSD": 120744.006549,
+      "totalDepositedUSD": 110668.801503,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -51.446104,
-      "netPnlUSD": -120744.006549,
+      "netPnlUSD": -110668.801503,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 51.446104196413415,
@@ -1601,11 +1665,11 @@
     {
       "address": "0x197386810502b55d4ff79398da571634419572ee",
       "totalDepositedETH": 49.995174,
-      "totalDepositedUSD": 117338.673342,
+      "totalDepositedUSD": 107547.618468,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -49.995174,
-      "netPnlUSD": -117338.673342,
+      "netPnlUSD": -107547.618468,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 49.995173984500894,
@@ -1617,31 +1681,31 @@
       "txCount": 31
     },
     {
-      "address": "0x0bceb38ff6e6a3d499be120234eccfea56a81fd9",
-      "totalDepositedETH": 49.46515,
-      "totalDepositedUSD": 116094.706167,
+      "address": "0x0936c66022cc4a075345b4e9877541358a413505",
+      "totalDepositedETH": 49.227881,
+      "totalDepositedUSD": 105897.047932,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
-      "netPnlETH": -49.46515,
-      "netPnlUSD": -116094.706167,
+      "netPnlETH": -49.227881,
+      "netPnlUSD": -105897.047932,
       "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 49.46514962395823,
+        "Shuffle": {
+          "deposited": 49.22788073955228,
           "withdrawn": 0
         }
       },
-      "firstSeen": "2024-02-15T09:17:47.000Z",
-      "lastSeen": "2026-03-18T02:38:59.000Z",
-      "txCount": 526
+      "firstSeen": "2024-12-29T23:58:11.000Z",
+      "lastSeen": "2026-03-21T03:12:47.000Z",
+      "txCount": 402
     },
     {
       "address": "0x12f797c92946f5867e77fd76b0e11cff1b4ad084",
       "totalDepositedETH": 45.499568,
-      "totalDepositedUSD": 106787.486498,
+      "totalDepositedUSD": 97876.851067,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -45.499568,
-      "netPnlUSD": -106787.486498,
+      "netPnlUSD": -97876.851067,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 45.4995681710806,
@@ -1655,11 +1719,11 @@
     {
       "address": "0x22b11ead52f580989ab969ff0331a5117bb704ca",
       "totalDepositedETH": 44.034932,
-      "totalDepositedUSD": 103349.985346,
+      "totalDepositedUSD": 94726.184268,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -44.034932,
-      "netPnlUSD": -103349.985346,
+      "netPnlUSD": -94726.184268,
       "casinoBreakdown": {
         "Stake": {
           "deposited": 44.03493197528971,
@@ -1671,13 +1735,31 @@
       "txCount": 102
     },
     {
+      "address": "0x7d460b56877d1f4ffbd29884eb43072cd007f7fd",
+      "totalDepositedETH": 43.961821,
+      "totalDepositedUSD": 94568.910446,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -43.961821,
+      "netPnlUSD": -94568.910446,
+      "casinoBreakdown": {
+        "Bitcasino": {
+          "deposited": 43.96182080651592,
+          "withdrawn": 0
+        }
+      },
+      "firstSeen": "2025-09-22T13:09:35.000Z",
+      "lastSeen": "2026-03-20T21:55:59.000Z",
+      "txCount": 258
+    },
+    {
       "address": "0xf042e4f460f55a14ad06fc2d7dde8dd138ad2fd2",
       "totalDepositedETH": 45.637423,
-      "totalDepositedUSD": 107111.031781,
+      "totalDepositedUSD": 98173.398861,
       "totalWithdrawnETH": 1.755192,
-      "totalWithdrawnUSD": 4119.436069,
+      "totalWithdrawnUSD": 3775.699231,
       "netPnlETH": -43.882231,
-      "netPnlUSD": -102991.595712,
+      "netPnlUSD": -94397.69963,
       "casinoBreakdown": {
         "Gamdom": {
           "deposited": 45.63742299997803,
@@ -1693,49 +1775,93 @@
       "txCount": 344
     },
     {
-      "address": "0x3e2411c3cf082d0b411500b31d1a1dfa5e59bec2",
-      "totalDepositedETH": 43.341983,
-      "totalDepositedUSD": 101723.633553,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -43.341983,
-      "netPnlUSD": -101723.633553,
+      "address": "0x6dde73ffc1fd8b5507b95f5df10b3cdbce6ff196",
+      "totalDepositedETH": 45.061222,
+      "totalDepositedUSD": 96933.898082,
+      "totalWithdrawnETH": 1.472636,
+      "totalWithdrawnUSD": 3167.876302,
+      "netPnlETH": -43.588586,
+      "netPnlUSD": -93766.02178,
       "casinoBreakdown": {
-        "Stake": {
-          "deposited": 43.34198276633265,
+        "Shuffle": {
+          "deposited": 45.061221890684244,
           "withdrawn": 0
+        },
+        "Stake": {
+          "deposited": 0,
+          "withdrawn": 0.011580000782808053
+        },
+        "Roobet": {
+          "deposited": 0,
+          "withdrawn": 1.461056298867229
         }
       },
-      "firstSeen": "2022-08-19T23:43:49.000Z",
-      "lastSeen": "2026-03-18T03:05:59.000Z",
-      "txCount": 806
+      "firstSeen": "2024-07-04T06:05:47.000Z",
+      "lastSeen": "2026-03-21T02:41:47.000Z",
+      "txCount": 496
     },
     {
       "address": "0x7c8a7c38bd1fb03fb3cefce58ffa8f367ffb2427",
-      "totalDepositedETH": 43.139707,
-      "totalDepositedUSD": 101248.892263,
+      "totalDepositedETH": 43.449763,
+      "totalDepositedUSD": 93467.391981,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
-      "netPnlETH": -43.139707,
-      "netPnlUSD": -101248.892263,
+      "netPnlETH": -43.449763,
+      "netPnlUSD": -93467.391981,
       "casinoBreakdown": {
         "Bitcasino": {
-          "deposited": 43.13970697166606,
+          "deposited": 43.44976290960609,
           "withdrawn": 0
         }
       },
       "firstSeen": "2024-03-13T15:04:11.000Z",
-      "lastSeen": "2026-03-17T18:09:47.000Z",
-      "txCount": 427
+      "lastSeen": "2026-03-20T22:07:35.000Z",
+      "txCount": 437
+    },
+    {
+      "address": "0x86349df087415dd3b8623dd433dbae576b5044ff",
+      "totalDepositedETH": 43.22997,
+      "totalDepositedUSD": 92994.581327,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -43.22997,
+      "netPnlUSD": -92994.581327,
+      "casinoBreakdown": {
+        "Shuffle": {
+          "deposited": 43.22996956364877,
+          "withdrawn": 0
+        }
+      },
+      "firstSeen": "2026-02-15T12:32:59.000Z",
+      "lastSeen": "2026-03-21T03:37:35.000Z",
+      "txCount": 147
+    },
+    {
+      "address": "0x41590f905a77714403db90d510e31a66558836a1",
+      "totalDepositedETH": 42.958105,
+      "totalDepositedUSD": 92409.757816,
+      "totalWithdrawnETH": 0,
+      "totalWithdrawnUSD": 0,
+      "netPnlETH": -42.958105,
+      "netPnlUSD": -92409.757816,
+      "casinoBreakdown": {
+        "Shuffle": {
+          "deposited": 42.95810530867817,
+          "withdrawn": 0
+        }
+      },
+      "firstSeen": "2025-12-26T18:06:23.000Z",
+      "lastSeen": "2026-03-21T03:19:11.000Z",
+      "txCount": 80
     },
     {
       "address": "0xb808b80381d5d36bd1f365e3a19ca7e93bb4d8b7",
       "totalDepositedETH": 42.353915,
-      "totalDepositedUSD": 99404.638181,
+      "totalDepositedUSD": 91110.047494,
       "totalWithdrawnETH": 0,
       "totalWithdrawnUSD": 0,
       "netPnlETH": -42.353915,
-      "netPnlUSD": -99404.638181,
+      "netPnlUSD": -91110.047494,
       "casinoBreakdown": {
         "Bitcasino": {
           "deposited": 42.35391486186667,
@@ -1747,31 +1873,13 @@
       "txCount": 119
     },
     {
-      "address": "0x7d460b56877d1f4ffbd29884eb43072cd007f7fd",
-      "totalDepositedETH": 41.826329,
-      "totalDepositedUSD": 98166.39391,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -41.826329,
-      "netPnlUSD": -98166.39391,
-      "casinoBreakdown": {
-        "Bitcasino": {
-          "deposited": 41.82632889236573,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2025-09-22T13:09:35.000Z",
-      "lastSeen": "2026-03-17T07:20:47.000Z",
-      "txCount": 218
-    },
-    {
       "address": "0x5f23c4600f8a83ecbfeede8097ac530dc956e104",
       "totalDepositedETH": 43.118288,
-      "totalDepositedUSD": 101198.622812,
+      "totalDepositedUSD": 92754.337217,
       "totalWithdrawnETH": 1.447397,
-      "totalWithdrawnUSD": 3397.040521,
+      "totalWithdrawnUSD": 3113.582312,
       "netPnlETH": -41.670891,
-      "netPnlUSD": -97801.582292,
+      "netPnlUSD": -89640.754905,
       "casinoBreakdown": {
         "Gamdom": {
           "deposited": 43.11828837333472,
@@ -1795,31 +1903,35 @@
       "txCount": 698
     },
     {
-      "address": "0xbc1332fd8df995954dcd1ba2d065db2a5c62eb73",
-      "totalDepositedETH": 40.776217,
-      "totalDepositedUSD": 95701.781726,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -40.776217,
-      "netPnlUSD": -95701.781726,
+      "address": "0xb00204d7c6a65755eac72221588f6909fd2c08d6",
+      "totalDepositedETH": 41.189446,
+      "totalDepositedUSD": 88605.089517,
+      "totalWithdrawnETH": 0.15176,
+      "totalWithdrawnUSD": 326.459046,
+      "netPnlETH": -41.037687,
+      "netPnlUSD": -88278.630471,
       "casinoBreakdown": {
-        "Rollbit": {
-          "deposited": 40.77621718209752,
-          "withdrawn": 0
+        "Stake": {
+          "deposited": 41.18944639970344,
+          "withdrawn": 0.0139982886036
+        },
+        "Roobet": {
+          "deposited": 0,
+          "withdrawn": 0.13776124851321264
         }
       },
-      "firstSeen": "2023-12-18T23:34:35.000Z",
-      "lastSeen": "2026-03-18T02:22:35.000Z",
-      "txCount": 562
+      "firstSeen": "2025-05-31T09:20:11.000Z",
+      "lastSeen": "2026-03-21T03:34:59.000Z",
+      "txCount": 335
     },
     {
       "address": "0x2c8f6bc9715a435146738c4982fd0f5b348f1979",
       "totalDepositedETH": 41.367354,
-      "totalDepositedUSD": 97089.179556,
+      "totalDepositedUSD": 88987.796973,
       "totalWithdrawnETH": 0.655263,
-      "totalWithdrawnUSD": 1537.902932,
+      "totalWithdrawnUSD": 1409.576171,
       "netPnlETH": -40.712091,
-      "netPnlUSD": -95551.276624,
+      "netPnlUSD": -87578.220802,
       "casinoBreakdown": {
         "CSGO500": {
           "deposited": 41.36735388000895,
@@ -1841,118 +1953,6 @@
       "firstSeen": "2020-12-23T19:39:57.000Z",
       "lastSeen": "2022-04-08T08:05:23.000Z",
       "txCount": 756
-    },
-    {
-      "address": "0x8a0762e3b4e3bb00722491b270be7282c760ab3b",
-      "totalDepositedETH": 40.28855,
-      "totalDepositedUSD": 94557.22731,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -40.28855,
-      "netPnlUSD": -94557.22731,
-      "casinoBreakdown": {
-        "Bitcasino": {
-          "deposited": 40.288550195847485,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2021-07-04T08:25:43.000Z",
-      "lastSeen": "2023-04-18T08:28:23.000Z",
-      "txCount": 639
-    },
-    {
-      "address": "0xfad8d1818d7a65444f8db43e13789611cfe7cffa",
-      "totalDepositedETH": 39.692453,
-      "totalDepositedUSD": 93158.188219,
-      "totalWithdrawnETH": 0.001213,
-      "totalWithdrawnUSD": 2.847995,
-      "netPnlETH": -39.69124,
-      "netPnlUSD": -93155.340223,
-      "casinoBreakdown": {
-        "Stake": {
-          "deposited": 39.69245343780531,
-          "withdrawn": 0.0012134620134
-        }
-      },
-      "firstSeen": "2026-02-08T22:31:47.000Z",
-      "lastSeen": "2026-03-18T03:27:47.000Z",
-      "txCount": 110
-    },
-    {
-      "address": "0xfa5af9ba6689cb7da84c21a3d839579a1b168aaf",
-      "totalDepositedETH": 38.717019,
-      "totalDepositedUSD": 90868.843202,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -38.717019,
-      "netPnlUSD": -90868.843202,
-      "casinoBreakdown": {
-        "Bitcasino": {
-          "deposited": 38.71701883325145,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2020-12-03T16:49:34.000Z",
-      "lastSeen": "2023-06-20T08:48:11.000Z",
-      "txCount": 369
-    },
-    {
-      "address": "0x7f2d78e87d688e2a9882fb627ea6a5ae396bc902",
-      "totalDepositedETH": 38.386917,
-      "totalDepositedUSD": 90094.095332,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -38.386917,
-      "netPnlUSD": -90094.095332,
-      "casinoBreakdown": {
-        "Bitcasino": {
-          "deposited": 38.386917482778784,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2023-03-16T05:27:35.000Z",
-      "lastSeen": "2026-03-15T12:34:35.000Z",
-      "txCount": 289
-    },
-    {
-      "address": "0x1f4717e6c016a7de72068a56863685ca01203437",
-      "totalDepositedETH": 38.477083,
-      "totalDepositedUSD": 90305.713186,
-      "totalWithdrawnETH": 1,
-      "totalWithdrawnUSD": 2347,
-      "netPnlETH": -37.477083,
-      "netPnlUSD": -87958.713186,
-      "casinoBreakdown": {
-        "Bitcasino": {
-          "deposited": 38.47708273796936,
-          "withdrawn": 0
-        },
-        "Stake": {
-          "deposited": 0,
-          "withdrawn": 1
-        }
-      },
-      "firstSeen": "2020-08-29T19:41:31.000Z",
-      "lastSeen": "2021-08-26T21:01:45.000Z",
-      "txCount": 43
-    },
-    {
-      "address": "0xdf276ffdb16d1787c17b2bb6f945290156de80fb",
-      "totalDepositedETH": 36.940736,
-      "totalDepositedUSD": 86699.90718,
-      "totalWithdrawnETH": 0,
-      "totalWithdrawnUSD": 0,
-      "netPnlETH": -36.940736,
-      "netPnlUSD": -86699.90718,
-      "casinoBreakdown": {
-        "Gamdom": {
-          "deposited": 36.94073590972267,
-          "withdrawn": 0
-        }
-      },
-      "firstSeen": "2024-12-06T14:44:47.000Z",
-      "lastSeen": "2025-08-29T15:53:59.000Z",
-      "txCount": 224
     }
   ]
 }
