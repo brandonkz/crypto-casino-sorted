@@ -137,6 +137,10 @@
       /* Charts: good readable height */
       .chart-container{height:140px !important;min-height:140px;padding:10px;}
 
+      /* Mobile-only blocks + hide heavy charts */
+      .mobile-only{display:block !important;}
+      .hide-mobile{display:none !important;}
+
       /* Reorder panels for mobile priority */
       .m-order-1{order:1 !important;}
       .m-order-2{order:2 !important;}
@@ -217,6 +221,15 @@
     .panel-badge.hot{background:var(--red-bg);color:var(--red);border:1px solid var(--red-b);}
     .panel-body{flex:1;overflow-y:auto;overflow-x:hidden;padding:0;min-height:0;}
     .panel-body::-webkit-scrollbar{width:3px;}
+
+    .mobile-only{display:none;}
+
+    .ms-section-title{font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:0.1em;padding:10px 12px 6px;}
+    .ms-row{display:flex;align-items:center;gap:8px;padding:6px 12px;border-bottom:1px solid rgba(26,29,46,0.4);font-size:11px;}
+    .ms-row:last-child{border-bottom:none;}
+    .ms-rank{color:var(--dim);font-size:10px;min-width:26px;}
+    .ms-name{flex:1;}
+    .ms-val{font-weight:700;}
     .panel-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
 
     /* === KPI ROW === */
@@ -689,8 +702,17 @@
   <!-- KPI ROW (spans full width) -->
   <div class="kpi-row" id="kpi-row"></div>
 
+  <!-- MOBILE SNAPSHOT (mobile only) -->
+  <div class="panel mobile-only m-order-1">
+    <div class="panel-h">
+      <div class="panel-t">📌 Mobile Snapshot</div>
+      <div class="panel-badge data">TOP 5</div>
+    </div>
+    <div class="panel-body" id="mobile-stats"></div>
+  </div>
+
   <!-- COL 2 TOP: VOLUME CHART (mobile: 1st) -->
-  <div class="panel m-order-1">
+  <div class="panel m-order-1 hide-mobile">
     <div class="panel-h">
       <div class="panel-t">📊 Daily Volume (USD)</div>
       <div class="panel-badge data">21D</div>
@@ -726,7 +748,7 @@
   </div>
 
   <!-- COL 3 TOP: DEPOSIT COUNT (mobile: 5th) -->
-  <div class="panel m-order-5">
+  <div class="panel m-order-5 hide-mobile">
     <div class="panel-h">
       <div class="panel-t">📈 Daily Deposits</div>
       <div class="panel-badge data">21D</div>
@@ -744,7 +766,7 @@
   </div>
 
   <!-- COL 2 MID: STACKED AREA (mobile: 7th) -->
-  <div class="panel m-order-7">
+  <div class="panel m-order-7 hide-mobile">
     <div class="panel-h">
       <div class="panel-t">📊 Volume by Casino</div>
       <div class="panel-badge data">STACKED</div>
@@ -762,7 +784,7 @@
   </div>
 
   <!-- COL 3 MID: HEATMAP (mobile: 9th) -->
-  <div class="panel m-order-9">
+  <div class="panel m-order-9 hide-mobile">
     <div class="panel-h">
       <div class="panel-t">🔥 Activity Heatmap</div>
       <div class="panel-badge data">HOURLY</div>
@@ -935,6 +957,19 @@ function render(D){
     {l:'LARGEST TX',v:fmt(summary.max_deposit_usd),c:'amber',s:'single deposit'},
     {l:'CASINOS',v:casinos.length.toString(),c:'',s:'Ethereum mainnet'},
   ].map(k=>`<div class="kpi"><div class="kpi-l">${k.l}</div><div class="kpi-v${k.c?' '+k.c:''}">${k.v}</div><div class="kpi-s${k.sc?' '+k.sc:''}">${k.s}</div></div>`).join('');
+
+  // === MOBILE SNAPSHOT ===
+  const mobileEl=document.getElementById('mobile-stats');
+  if(mobileEl){
+    const topByVol=[...casinos].sort((a,b)=>totals[b].volume_usd-totals[a].volume_usd).slice(0,5);
+    const topByCount=[...casinos].sort((a,b)=>totals[b].count-totals[a].count).slice(0,5);
+    mobileEl.innerHTML=
+      `<div class="ms-section-title">Top 5 by Volume</div>`+
+      topByVol.map((c,i)=>`<div class="ms-row"><div class="ms-rank">#${i+1}</div><div class="ms-name">${c}</div><div class="ms-val">${fmt(totals[c].volume_usd)}</div></div>`).join('')+
+      `<div class="ms-section-title">Top 5 by Deposits</div>`+
+      topByCount.map((c,i)=>`<div class="ms-row"><div class="ms-rank">#${i+1}</div><div class="ms-name">${c}</div><div class="ms-val">${fmtK(totals[c].count)}</div></div>`).join('');
+  }
+
 
   // === MARQUEE ===
   const marqueeItems=[];
