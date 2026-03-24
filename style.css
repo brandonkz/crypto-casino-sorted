@@ -130,6 +130,23 @@ body {
   margin: 0 auto 3rem;
 }
 
+.market-intel-cta {
+  display: inline-block;
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(109, 40, 217, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.market-intel-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(109, 40, 217, 0.35);
+}
+
 .badge {
   display: inline-block;
   background: rgba(255, 255, 255, 0.04);
