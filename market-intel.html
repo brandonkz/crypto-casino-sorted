@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Crypto Casino Market Intel — promos, streamers, Reddit pulse, and iGaming events.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/market-intel.html">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0L3N9F43ED');</script>
+
+  <title>Market Intel | CryptoCasinoSorted</title>
+  <link rel="icon" href="favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{--bg:#0a0b10;--panel:#11141b;--border:#1e2230;--text:#e5e7eb;--muted:#9ca3af;--accent:#a78bfa;--green:#22c55e;--orange:#f59e0b;--blue:#60a5fa;}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;background:var(--bg);color:var(--text);min-height:100vh;}
+    .container{max-width:1400px;margin:0 auto;padding:24px;}
+    .header{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+    .header h1{font-size:2rem;font-weight:800;}
+    .header p{color:var(--muted);}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:0.9rem;}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;min-height:220px;}
+    .card h2{font-size:1rem;font-weight:700;margin-bottom:10px;color:var(--accent);}
+    .item{padding:10px 0;border-bottom:1px dashed #22283a;}
+    .item:last-child{border-bottom:none;}
+    .item a{color:var(--text);text-decoration:none;font-weight:600;}
+    .item a:hover{color:var(--accent);}
+    .tag{display:inline-block;font-size:0.7rem;color:#0b0b0b;background:var(--accent);padding:2px 6px;border-radius:6px;margin-right:6px;}
+    .sub{color:var(--muted);font-size:0.85rem;margin-top:4px;}
+    .pill{display:inline-block;background:#0f172a;border:1px solid #1f2937;color:#93c5fd;font-size:0.7rem;padding:2px 6px;border-radius:6px;margin-right:6px;}
+    .event-date{color:var(--green);font-size:0.85rem;font-weight:600;}
+
+    .loading{color:var(--muted);padding:16px;border:1px dashed var(--border);border-radius:8px;}
+    .footer{margin-top:24px;color:var(--muted);font-size:0.85rem;}
+  </style>
+</head>
+<body>
+  <!-- Shared nav -->
+  <div id="nav"></div>
+
+  <div class="container">
+    <div class="header">
+      <h1>🛰️ Market Intel</h1>
+      <p>Promos, streamer activity, Reddit pulse, and iGaming events — updated daily.</p>
+      <div class="meta">
+        <span id="lastUpdated">Updated: —</span>
+      </div>
+    </div>
+
+    <div id="loading" class="loading">Loading market intel...</div>
+
+    <div id="content" class="grid" style="display:none;">
+      <div class="card">
+        <h2>🔥 Promos & Bonuses</h2>
+        <div id="promos"></div>
+      </div>
+      <div class="card">
+        <h2>🎥 Streamer Intel</h2>
+        <div id="streamers"></div>
+      </div>
+      <div class="card">
+        <h2>💬 Reddit Pulse</h2>
+        <div id="reddit"></div>
+      </div>
+      <div class="card">
+        <h2>📰 Industry News</h2>
+        <div id="news"></div>
+      </div>
+      <div class="card">
+        <h2>📅 Events Calendar</h2>
+        <div id="events"></div>
+      </div>
+    </div>
+
+    <div class="footer">Powered by CryptoCasinoSorted • Market Intel v1</div>
+  </div>
+
+  <script>
+    // Load shared nav
+    fetch('/shared-nav.html').then(r=>r.text()).then(html=>{
+      document.getElementById('nav').innerHTML = html
+        .replace('{{CASINOS_COLOR}}','#9ca3af')
+        .replace('{{TERMINAL_COLOR}}','#9ca3af')
+        .replace('{{ARB_COLOR}}','#9ca3af')
+        .replace('{{BONUS_COLOR}}','#9ca3af')
+        .replace('{{ANALYTICS_COLOR}}','#9ca3af')
+        .replace('{{INTEL_COLOR}}','#a78bfa')
+        .replace('{{DEPOSITS_COLOR}}','#9ca3af')
+        .replace('{{WALLETS_COLOR}}','#9ca3af')
+        .replace('{{PROVABLY_FAIR_COLOR}}','#9ca3af')
+        .replace('{{REVIEWS_COLOR}}','#9ca3af')
+        .replace('{{BLOG_COLOR}}','#9ca3af');
+    });
+
+    async function loadIntel(){
+      const [news, promos, reddit, streamers, events] = await Promise.all([
+        fetch('/data/news.json').then(r=>r.json()),
+        fetch('/data/promos.json').then(r=>r.json()),
+        fetch('/data/reddit.json').then(r=>r.json()),
+        fetch('/data/streamers.json').then(r=>r.json()),
+        fetch('/data/events.json').then(r=>r.json()),
+      ]);
+
+      document.getElementById('lastUpdated').textContent = `Updated: ${news.updated || promos.updated || reddit.updated || streamers.updated || events.updated || '—'}`;
+
+      // Promos
+      document.getElementById('promos').innerHTML = (promos.promos || []).slice(0,8).map(p => `
+        <div class="item">
+          <div><span class="tag">${p.type || 'PROMO'}</span><strong>${p.casino}</strong></div>
+          <div class="sub">${p.offer} • ${p.details || ''}</div>
+          <div class="sub"><a href="${p.url}" target="_blank" rel="noopener">Open offer →</a></div>
+        </div>
+      `).join('') || '<div class="sub">No promos found.</div>';
+
+      // Streamers
+      document.getElementById('streamers').innerHTML = (streamers.items || []).slice(0,8).map(s => `
+        <div class="item">
+          <div><span class="pill">${s.platform}</span><strong>${s.name}</strong></div>
+          <div class="sub">${s.followers} • ${s.focus || 'Casino streams'}</div>
+          <div class="sub"><a href="${s.url}" target="_blank" rel="noopener">Channel →</a></div>
+        </div>
+      `).join('') || '<div class="sub">No streamer data.</div>';
+
+      // Reddit
+      document.getElementById('reddit').innerHTML = (reddit.items || []).slice(0,8).map(r => `
+        <div class="item">
+          <div><span class="pill">${r.subreddit}</span><strong>${r.tag || 'POST'}</strong></div>
+          <div class="sub"><a href="${r.url}" target="_blank" rel="noopener">${r.title}</a></div>
+          <div class="sub">${r.time || ''}</div>
+        </div>
+      `).join('') || '<div class="sub">No Reddit data.</div>';
+
+      // News
+      document.getElementById('news').innerHTML = (news.items || []).slice(0,8).map(n => `
+        <div class="item">
+          <div><span class="pill">${n.source}</span><strong>${n.tag || 'NEWS'}</strong></div>
+          <div class="sub"><a href="${n.url}" target="_blank" rel="noopener">${n.title}</a></div>
+          <div class="sub">${n.time || ''}</div>
+        </div>
+      `).join('') || '<div class="sub">No news data.</div>';
+
+      // Events
+      document.getElementById('events').innerHTML = (events.events || []).slice(0,8).map(e => `
+        <div class="item">
+          <div><span class="pill">${e.type}</span><strong>${e.name}</strong></div>
+          <div class="sub">${e.location || ''}</div>
+          <div class="event-date">${e.start}${e.end && e.end !== e.start ? ' → ' + e.end : ''}</div>
+          <div class="sub"><a href="${e.url}" target="_blank" rel="noopener">Details →</a></div>
+        </div>
+      `).join('') || '<div class="sub">No events data.</div>';
+
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('content').style.display = 'grid';
+    }
+
+    loadIntel().catch(err => {
+      document.getElementById('loading').textContent = 'Failed to load intel.';
+      console.error(err);
+    });
+  </script>
+</body>
+</html>
