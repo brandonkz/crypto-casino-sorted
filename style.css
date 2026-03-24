@@ -147,6 +147,23 @@ body {
   box-shadow: 0 14px 28px rgba(109, 40, 217, 0.35);
 }
 
+.telegram-cta {
+  display: inline-block;
+  background: #229ed9;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(34, 158, 217, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.telegram-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(34, 158, 217, 0.35);
+}
+
 .badge {
   display: inline-block;
   background: rgba(255, 255, 255, 0.04);
