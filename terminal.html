@@ -850,6 +850,7 @@ const CC={
 };
 const CA=['#ff9100','#448aff','#b388ff','#18ffff','#00e676','#ffc400','#ff4081','#ff5252','#82b1ff','#ffe57f','#84ffff'];
 
+
 function fmt(n){if(n>=1e9)return'$'+(n/1e9).toFixed(1)+'B';if(n>=1e6)return'$'+(n/1e6).toFixed(1)+'M';if(n>=1e3)return'$'+(n/1e3).toFixed(1)+'K';return'$'+n.toFixed(0);}
 function fmtK(n){if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n.toString();}
 
@@ -857,10 +858,13 @@ function fmtK(n){if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).
 function uc(){document.getElementById('clock').textContent=new Date().toUTCString().replace('GMT','UTC');}
 setInterval(uc,1000);uc();
 
-// Chart defaults
-Chart.defaults.color='#5a6080';Chart.defaults.borderColor='rgba(26,29,46,0.6)';
-Chart.defaults.font.family="'JetBrains Mono',monospace";Chart.defaults.font.size=9;
-Chart.defaults.plugins.legend.display=false;Chart.defaults.animation.duration=400;
+// Chart defaults (improved readability)
+Chart.defaults.color='#cbd5e1';
+Chart.defaults.borderColor='rgba(255,255,255,0.08)';
+Chart.defaults.font.family="'JetBrains Mono',monospace";
+Chart.defaults.font.size=10;
+Chart.defaults.plugins.legend.display=false;
+Chart.defaults.animation.duration=400;
 
 // Fetch market data
 async function fetchMarket(){
@@ -989,8 +993,8 @@ function render(D){
     options:{
       responsive:true,maintainAspectRatio:false,
       scales:{
-        y:{ticks:{callback:v=>fmt(v)},grid:{color:'rgba(26,29,46,0.4)'}},
-        x:{grid:{display:false},ticks:{maxRotation:0,font:{size:8}}}
+        y:{ticks:{callback:v=>fmt(v),color:'#cbd5e1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
+        x:{grid:{display:false},ticks:{maxRotation:0,color:'#cbd5e1',font:{size:9}}}
       },
       plugins:{tooltip:{callbacks:{label:c=>'$'+c.raw.toLocaleString('en',{maximumFractionDigits:0})}}}
     }
@@ -1009,8 +1013,8 @@ function render(D){
     options:{
       responsive:true,maintainAspectRatio:false,
       scales:{
-        y:{grid:{color:'rgba(26,29,46,0.4)'}},
-        x:{grid:{display:false},ticks:{maxRotation:0,font:{size:8}}}
+        y:{ticks:{color:'#cbd5e1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
+        x:{grid:{display:false},ticks:{maxRotation:0,color:'#cbd5e1',font:{size:9}}}
       },
       plugins:{tooltip:{callbacks:{label:c=>c.raw.toLocaleString()+' deposits'}}}
     }
@@ -1031,11 +1035,11 @@ function render(D){
     options:{
       responsive:true,maintainAspectRatio:false,
       scales:{
-        y:{stacked:true,ticks:{callback:v=>fmt(v)},grid:{color:'rgba(26,29,46,0.4)'}},
-        x:{grid:{display:false},ticks:{maxRotation:0,font:{size:8}}}
+        y:{stacked:true,ticks:{callback:v=>fmt(v),color:'#cbd5e1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
+        x:{grid:{display:false},ticks:{maxRotation:0,color:'#cbd5e1',font:{size:9}}}
       },
       plugins:{
-        legend:{display:true,position:'bottom',labels:{usePointStyle:true,pointStyle:'circle',padding:8,font:{size:8}}},
+        legend:{display:true,position:'bottom',labels:{usePointStyle:true,pointStyle:'circle',padding:8,font:{size:9},color:'#cbd5e1'}},
         tooltip:{mode:'index',callbacks:{label:c=>`${c.dataset.label}: ${fmt(c.raw)}`}}
       }
     }
@@ -1300,12 +1304,12 @@ function render(D){
       options:{
         responsive:true,maintainAspectRatio:false,
         scales:{
-          y:{position:'left',ticks:{callback:v=>fmt(v)},grid:{color:'rgba(26,29,46,0.4)'}},
-          y1:{position:'right',grid:{display:false}},
-          x:{grid:{display:false},ticks:{maxRotation:0,font:{size:8}}}
+          y:{position:'left',ticks:{callback:v=>fmt(v),color:'#cbd5e1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
+          y1:{position:'right',ticks:{color:'#cbd5e1',font:{size:10}},grid:{display:false}},
+          x:{grid:{display:false},ticks:{maxRotation:0,color:'#cbd5e1',font:{size:9}}}
         },
         plugins:{
-          legend:{display:true,position:'bottom',labels:{usePointStyle:true,padding:10,font:{size:9}}},
+          legend:{display:true,position:'bottom',labels:{usePointStyle:true,padding:10,font:{size:9},color:'#cbd5e1'}},
           tooltip:{callbacks:{label:c=>c.datasetIndex===0?'Vol: '+fmt(c.raw):'Count: '+c.raw}}
         }
       }
@@ -1332,8 +1336,8 @@ function render(D){
         responsive:true,maintainAspectRatio:false,
         indexAxis:'y',
         scales:{
-          x:{ticks:{callback:v=>v+'%'},grid:{color:'rgba(26,29,46,0.4)'},max:100},
-          y:{grid:{display:false}}
+          x:{ticks:{callback:v=>v+'%',color:'#cbd5e1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'},max:100},
+          y:{grid:{display:false},ticks:{color:'#cbd5e1',font:{size:9}}}
         },
         plugins:{
           tooltip:{callbacks:{label:c=>{
