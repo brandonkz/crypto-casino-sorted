@@ -11,9 +11,9 @@
       "firstSeen": "2026-03-14T10:28:20.714Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:38.821Z",
+      "lastChecked": "2026-03-26T03:32:52.343Z",
       "status": "watching",
-      "daysSinceDeposit": 10,
+      "daysSinceDeposit": 11,
       "updates": []
     },
     {
@@ -27,9 +27,9 @@
       "firstSeen": "2026-03-15T03:30:21.699Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:39.738Z",
+      "lastChecked": "2026-03-26T03:32:52.988Z",
       "status": "watching",
-      "daysSinceDeposit": 10,
+      "daysSinceDeposit": 11,
       "updates": []
     },
     {
@@ -41,12 +41,19 @@
       "depositTxHash": "0x0c604c7a581e18253420d3c1d50e4a851bb6a5bef0c0ce05813c11c32b60958d",
       "depositTimestamp": "2026-03-15T03:11:11.000Z",
       "firstSeen": "2026-03-15T03:30:28.846Z",
-      "withdrawnETH": 0,
-      "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:40.323Z",
-      "status": "watching",
-      "daysSinceDeposit": 10,
-      "updates": []
+      "withdrawnETH": 0.009979,
+      "withdrawnUSD": 21,
+      "lastChecked": "2026-03-26T03:32:53.585Z",
+      "status": "updated",
+      "daysSinceDeposit": 11,
+      "updates": [
+        {
+          "date": "2026-03-26T03:32:53.585Z",
+          "withdrawnETH": 0.009979,
+          "withdrawnUSD": 21,
+          "note": "Received from: Shuffle"
+        }
+      ]
     },
     {
       "address": "0xa26148ae51fa8e787df319c04137602cc018b521",
@@ -59,9 +66,9 @@
       "firstSeen": "2026-03-16T03:30:33.844Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:41.237Z",
+      "lastChecked": "2026-03-26T03:32:54.599Z",
       "status": "watching",
-      "daysSinceDeposit": 9,
+      "daysSinceDeposit": 10,
       "updates": []
     },
     {
@@ -75,9 +82,9 @@
       "firstSeen": "2026-03-16T03:30:33.844Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:42.152Z",
+      "lastChecked": "2026-03-26T03:32:55.517Z",
       "status": "watching",
-      "daysSinceDeposit": 9,
+      "daysSinceDeposit": 10,
       "updates": []
     },
     {
@@ -91,9 +98,9 @@
       "firstSeen": "2026-03-17T03:32:52.007Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:43.039Z",
+      "lastChecked": "2026-03-26T03:32:56.441Z",
       "status": "watching",
-      "daysSinceDeposit": 8,
+      "daysSinceDeposit": 9,
       "updates": []
     },
     {
@@ -107,9 +114,9 @@
       "firstSeen": "2026-03-17T03:32:52.007Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-24T03:32:55.280Z",
+      "lastChecked": "2026-03-26T03:32:57.362Z",
       "status": "watching",
-      "daysSinceDeposit": 7,
+      "daysSinceDeposit": 9,
       "updates": []
     },
     {
@@ -123,9 +130,9 @@
       "firstSeen": "2026-03-19T03:37:47.199Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:44.523Z",
+      "lastChecked": "2026-03-26T03:32:58.282Z",
       "status": "watching",
-      "daysSinceDeposit": 6,
+      "daysSinceDeposit": 7,
       "updates": []
     },
     {
@@ -139,9 +146,9 @@
       "firstSeen": "2026-03-19T03:37:54.283Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:45.049Z",
+      "lastChecked": "2026-03-26T03:32:58.839Z",
       "status": "watching",
-      "daysSinceDeposit": 6,
+      "daysSinceDeposit": 7,
       "updates": []
     },
     {
@@ -155,9 +162,9 @@
       "firstSeen": "2026-03-21T03:42:16.322Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:45.608Z",
+      "lastChecked": "2026-03-26T03:32:59.374Z",
       "status": "watching",
-      "daysSinceDeposit": 3,
+      "daysSinceDeposit": 4,
       "updates": []
     },
     {
@@ -171,9 +178,9 @@
       "firstSeen": "2026-03-22T03:37:44.675Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:46.783Z",
+      "lastChecked": "2026-03-26T03:33:00.639Z",
       "status": "watching",
-      "daysSinceDeposit": 3,
+      "daysSinceDeposit": 4,
       "updates": []
     },
     {
@@ -187,9 +194,9 @@
       "firstSeen": "2026-03-23T03:32:31.508Z",
       "withdrawnETH": 0.01138,
       "withdrawnUSD": 24,
-      "lastChecked": "2026-03-25T03:30:47.394Z",
+      "lastChecked": "2026-03-26T03:33:01.260Z",
       "status": "updated",
-      "daysSinceDeposit": 2,
+      "daysSinceDeposit": 3,
       "updates": [
         {
           "date": "2026-03-23T03:32:52.715Z",
@@ -216,9 +223,9 @@
       "firstSeen": "2026-03-23T03:32:33.741Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-24T03:33:00.503Z",
+      "lastChecked": "2026-03-26T03:33:02.482Z",
       "status": "watching",
-      "daysSinceDeposit": 1,
+      "daysSinceDeposit": 3,
       "updates": []
     },
     {
@@ -232,9 +239,9 @@
       "firstSeen": "2026-03-24T03:32:39.980Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:49.341Z",
+      "lastChecked": "2026-03-26T03:33:03.506Z",
       "status": "watching",
-      "daysSinceDeposit": 1,
+      "daysSinceDeposit": 2,
       "updates": []
     },
     {
@@ -248,9 +255,9 @@
       "firstSeen": "2026-03-24T03:32:39.980Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:50.264Z",
+      "lastChecked": "2026-03-26T03:33:04.426Z",
       "status": "watching",
-      "daysSinceDeposit": 1,
+      "daysSinceDeposit": 2,
       "updates": []
     },
     {
@@ -264,9 +271,9 @@
       "firstSeen": "2026-03-24T03:32:44.427Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:50.802Z",
+      "lastChecked": "2026-03-26T03:33:04.954Z",
       "status": "watching",
-      "daysSinceDeposit": 1,
+      "daysSinceDeposit": 2,
       "updates": []
     },
     {
@@ -280,9 +287,9 @@
       "firstSeen": "2026-03-25T03:30:34.839Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": null,
+      "lastChecked": "2026-03-26T03:33:05.549Z",
       "status": "watching",
-      "daysSinceDeposit": 0,
+      "daysSinceDeposit": 1,
       "updates": []
     },
     {
@@ -296,9 +303,9 @@
       "firstSeen": "2026-03-25T03:30:34.840Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-25T03:30:51.828Z",
+      "lastChecked": "2026-03-26T03:33:06.071Z",
       "status": "watching",
-      "daysSinceDeposit": 0,
+      "daysSinceDeposit": 1,
       "updates": []
     },
     {
@@ -312,12 +319,51 @@
       "firstSeen": "2026-03-25T03:30:34.840Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": null,
+      "lastChecked": "2026-03-26T03:33:06.596Z",
+      "status": "watching",
+      "daysSinceDeposit": 1,
+      "updates": []
+    },
+    {
+      "address": "0x04bb47d46e2e2b9e512878d8d0af836bf2c06482",
+      "casino": "BC.Game",
+      "casinoIcon": "🎰",
+      "depositETH": 10.944835,
+      "depositUSD": 23502,
+      "depositTxHash": "0x4be87f0b0861aba931e0459511bfb9cb0b4a977dd6b47a85d97c67d7bc678308",
+      "depositTimestamp": "2026-03-26T01:00:23.000Z",
+      "firstSeen": "2026-03-26T03:32:37.071Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-03-26T03:33:07.846Z",
       "status": "watching",
       "daysSinceDeposit": 0,
       "updates": []
+    },
+    {
+      "address": "0x9aa02f6f138cb2e5bb90496f50b887dcd177787e",
+      "casino": "BetFury",
+      "casinoIcon": "🔥",
+      "depositETH": 5.599997,
+      "depositUSD": 12025,
+      "depositTxHash": "0x7b1cb2baeca4524d8491d21ea24dd02effbce1c04c0e3d2ca96156b1d1c0f97f",
+      "depositTimestamp": "2026-03-25T13:13:47.000Z",
+      "firstSeen": "2026-03-26T03:32:50.218Z",
+      "withdrawnETH": 0.118871,
+      "withdrawnUSD": 255,
+      "lastChecked": "2026-03-26T03:33:09.544Z",
+      "status": "updated",
+      "daysSinceDeposit": 0,
+      "updates": [
+        {
+          "date": "2026-03-26T03:33:09.545Z",
+          "withdrawnETH": 0.118871,
+          "withdrawnUSD": 255,
+          "note": "Received from: BetFury"
+        }
+      ]
     }
   ],
-  "lastScan": "2026-03-25T03:30:52.337Z",
-  "ethPrice": 2149.72
+  "lastScan": "2026-03-26T03:33:09.545Z",
+  "ethPrice": 2147.31
 }
