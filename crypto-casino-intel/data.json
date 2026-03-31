@@ -1,0 +1,508 @@
+{
+  "competitors": [
+    {
+      "name": "Stake.com",
+      "logo": "🎰",
+      "welcomeBonus": {
+        "type": "Rakeback + Code",
+        "details": "200% rakeback on first $1,000 wagered (geo-dependent)",
+        "wageringReq": "N/A (instant rakeback)",
+        "maxBonus": "$2,000",
+        "code": "RESEARCH_NEEDED"
+      },
+      "currentPromos": [
+        "Daily races",
+        "Weekly/monthly bonuses (login required)",
+        "VIP reload bonuses"
+      ],
+      "vipStructure": {
+        "tiers": "Bronze → Platinum IV",
+        "rakeback": "5% base, up to 15% VIP",
+        "perks": "Weekly/monthly bonuses, reload bonuses, host"
+      },
+      "withdrawalTime": "Instant (crypto)",
+      "kycRequired": "Optional (limits apply without)",
+      "lastUpdated": "2026-03-30",
+      "researchNeeded": [
+        "Current welcome bonus code",
+        "Exact VIP rakeback % by tier",
+        "Monthly promo calendar"
+      ]
+    },
+    {
+      "name": "Rollbit",
+      "logo": "🎲",
+      "welcomeBonus": {
+        "type": "RESEARCH_NEEDED",
+        "details": "Geo-gated, login required",
+        "wageringReq": "RESEARCH_NEEDED",
+        "maxBonus": "RESEARCH_NEEDED",
+        "code": "RESEARCH_NEEDED"
+      },
+      "currentPromos": [
+        "RESEARCH_NEEDED"
+      ],
+      "vipStructure": {
+        "tiers": "RESEARCH_NEEDED",
+        "rakeback": "RESEARCH_NEEDED",
+        "perks": "RESEARCH_NEEDED"
+      },
+      "withdrawalTime": "RESEARCH_NEEDED",
+      "kycRequired": "RESEARCH_NEEDED",
+      "lastUpdated": "2026-03-30",
+      "researchNeeded": [
+        "Welcome bonus structure",
+        "VIP tiers and rakeback %",
+        "Withdrawal times",
+        "KYC policy"
+      ]
+    },
+    {
+      "name": "Roobet",
+      "logo": "🦘",
+      "welcomeBonus": {
+        "type": "RESEARCH_NEEDED",
+        "details": "Geo-blocked in many regions",
+        "wageringReq": "RESEARCH_NEEDED",
+        "maxBonus": "RESEARCH_NEEDED",
+        "code": "RESEARCH_NEEDED"
+      },
+      "currentPromos": [
+        "RESEARCH_NEEDED"
+      ],
+      "vipStructure": {
+        "tiers": "RESEARCH_NEEDED",
+        "rakeback": "RESEARCH_NEEDED",
+        "perks": "RESEARCH_NEEDED"
+      },
+      "withdrawalTime": "RESEARCH_NEEDED",
+      "kycRequired": "RESEARCH_NEEDED",
+      "lastUpdated": "2026-03-30",
+      "researchNeeded": [
+        "Welcome bonus (if accessible)",
+        "VIP program details",
+        "Typical promo types"
+      ]
+    },
+    {
+      "name": "Shuffle.com",
+      "logo": "🃏",
+      "welcomeBonus": {
+        "type": "RESEARCH_NEEDED",
+        "details": "RESEARCH_NEEDED",
+        "wageringReq": "RESEARCH_NEEDED",
+        "maxBonus": "RESEARCH_NEEDED",
+        "code": "RESEARCH_NEEDED"
+      },
+      "currentPromos": [
+        "RESEARCH_NEEDED"
+      ],
+      "vipStructure": {
+        "tiers": "RESEARCH_NEEDED",
+        "rakeback": "RESEARCH_NEEDED",
+        "perks": "RESEARCH_NEEDED"
+      },
+      "withdrawalTime": "RESEARCH_NEEDED",
+      "kycRequired": "RESEARCH_NEEDED",
+      "lastUpdated": "2026-03-30",
+      "researchNeeded": [
+        "All details (geo-blocked)"
+      ]
+    },
+    {
+      "name": "BC.Game",
+      "logo": "🎮",
+      "welcomeBonus": {
+        "type": "Deposit Match",
+        "details": "RESEARCH_NEEDED",
+        "wageringReq": "RESEARCH_NEEDED",
+        "maxBonus": "RESEARCH_NEEDED",
+        "code": "RESEARCH_NEEDED"
+      },
+      "currentPromos": [
+        "Lucky spin (login required)",
+        "Daily tasks",
+        "RESEARCH_NEEDED"
+      ],
+      "vipStructure": {
+        "tiers": "RESEARCH_NEEDED",
+        "rakeback": "RESEARCH_NEEDED",
+        "perks": "RESEARCH_NEEDED"
+      },
+      "withdrawalTime": "RESEARCH_NEEDED",
+      "kycRequired": "RESEARCH_NEEDED",
+      "lastUpdated": "2026-03-30",
+      "researchNeeded": [
+        "Welcome bonus % and wagering",
+        "VIP tiers",
+        "Rakeback structure"
+      ]
+    },
+    {
+      "name": "Duelbits",
+      "logo": "⚔️",
+      "welcomeBonus": {
+        "type": "Dual Offer (Casino + Sports)",
+        "details": "Casino: Up to 500 free spins (unlocked via wagering). Sports: 100% up to $100 in free bets. Up to 50% rakeback (no deposit required)",
+        "wageringReq": "Free spins: $200-$1,000 wagered to unlock (no additional wagering on winnings). Sports: 5x deposit, min odds 1.50",
+        "maxBonus": "$100 (sports) + 500 free spins (casino) + 50% rakeback",
+        "code": "vipgrinders / maxbonus / HELLAGOOD"
+      },
+      "currentPromos": [
+        "Duelbits TV: $50,000 monthly giveaways (live streams on X/Kick)",
+        "Level-up bonuses (no deposit required, claim via VIP Lounge)",
+        "Weekly/monthly reload bonuses (VIP tiers)",
+        "Daily live casino giveaways",
+        "$19,000 weekly leaderboard"
+      ],
+      "vipStructure": {
+        "tiers": "Joker ($1k) → Club ($2.5k) → Heart ($5k) → Diamond ($10k) → Spade ($20k) → Flush ($35k)",
+        "rakeback": "Up to 50% (code-dependent, via Ace's VIP Lounge)",
+        "perks": "Rakeback, weekly/monthly reload bonuses, level-up bonuses, exclusive tournaments"
+      },
+      "withdrawalTime": "Few minutes (crypto, may require verification on first withdrawal)",
+      "kycRequired": "Optional (no-KYC crypto casino, verification may be required for large withdrawals)",
+      "lastUpdated": "2026-03-30",
+      "researchNeeded": []
+    }
+  ],
+  "benchmarks": {
+    "welcomeBonuses": {
+      "depositMatch": {
+        "typical": "100-150%",
+        "aggressive": "200%+",
+        "maxAmount": "$500-$2,000",
+        "wageringReq": "20x-40x (deposit + bonus)"
+      },
+      "noDeposit": {
+        "typical": "$5-$50 free play",
+        "wageringReq": "40x-60x"
+      },
+      "rakeback": {
+        "typical": "Up to 10% on first $1k-$5k wagered",
+        "notes": "Instant, no wagering requirement"
+      }
+    },
+    "vipPrograms": {
+      "tiers": "4-8 tiers typical",
+      "rakeback": "Base 5-10%, VIP 15-25%",
+      "lossback": "5-15% (usually weekly/monthly)",
+      "levelUp": "Based on total wagered or loyalty points"
+    },
+    "withdrawals": {
+      "crypto": "Instant to 30 minutes (typical)",
+      "slow": "1-24 hours (red flag if longer)",
+      "kycDelays": "Can add 24-72 hours if triggered"
+    },
+    "kyc": {
+      "optional": "Most allow play without KYC up to limits",
+      "required": "Triggered by withdrawal amount ($2k-$10k typical)",
+      "FullKYC": "ID + proof of address + selfie"
+    }
+  },
+  "promoTypes": {
+    "depositMatch": {
+      "description": "Casino matches your deposit by a percentage (e.g., 100% up to $500). You deposit $500, get $500 bonus = $1,000 to play with.",
+      "wagering": "Usually 20x-40x the (deposit + bonus). Example: $1,000 balance with 30x wagering = must wager $30,000 before withdrawing bonus funds.",
+      "fairRange": "20x-30x on deposit+bonus, or 30x-40x on bonus only",
+      "predatory": "50x+, game restrictions, max bet limits, expiry <7 days"
+    },
+    "noDeposit": {
+      "description": "Free bonus (e.g., $10-$50) just for signing up. No deposit required.",
+      "wagering": "Usually 40x-60x the bonus amount.",
+      "fairRange": "40x-50x, withdraw cap $100-$500",
+      "predatory": "80x+, game restrictions, $50 max withdraw"
+    },
+    "rakeback": {
+      "description": "Get a % of the house edge back on every bet, win or lose. Example: 10% rakeback on $10,000 wagered with 1% house edge = $10 back.",
+      "wagering": "None (instant cashback)",
+      "fairRange": "5-15% base, 20-25% VIP",
+      "predatory": "N/A (always player-friendly)"
+    },
+    "lossback": {
+      "description": "Get a % of your net losses back (usually weekly/monthly). Example: lose $1,000, get 10% back = $100.",
+      "wagering": "Usually 1x (must wager it once) or none",
+      "fairRange": "5-15%, weekly/monthly, no game restrictions",
+      "predatory": "<5%, high wagering, game restrictions"
+    },
+    "cashback": {
+      "description": "Generic term — can mean rakeback or lossback depending on casino. Check the fine print.",
+      "wagering": "Varies (1x-10x typical)",
+      "fairRange": "Depends on type",
+      "predatory": "High wagering, game restrictions"
+    }
+  },
+  "influencerMarketing": {
+    "kickGrowthLeaders": [
+      {
+        "rank": 1,
+        "streamer": "BakaPrase",
+        "twitter": "@BakaPrase",
+        "kick": "bakaprase",
+        "country": "Serbia",
+        "totalFollowers": "521,569",
+        "followersGained": "179,653",
+        "growthPercent": "34%",
+        "partner": "Vavada"
+      },
+      {
+        "rank": 2,
+        "streamer": "Adrianozendejas32",
+        "twitter": "@adrianozendejas",
+        "kick": "adrianozendejas32",
+        "country": "Mexico",
+        "totalFollowers": "472,100",
+        "followersGained": "62,562",
+        "growthPercent": "13%",
+        "partner": "Stake"
+      },
+      {
+        "rank": 3,
+        "streamer": "Westcol",
+        "twitter": "@WestCOL",
+        "kick": "westcol",
+        "country": "Colombia",
+        "totalFollowers": "3,713,207",
+        "followersGained": "43,183",
+        "growthPercent": "1%",
+        "partner": "Stake"
+      },
+      {
+        "rank": 4,
+        "streamer": "Clavicular",
+        "twitter": "@Clavicular0",
+        "kick": "clavicular",
+        "country": "USA",
+        "totalFollowers": "193,757",
+        "followersGained": "34,347",
+        "growthPercent": "18%",
+        "partner": "Stake"
+      },
+      {
+        "rank": 5,
+        "streamer": "Willito",
+        "twitter": "@willitooo_",
+        "kick": "willito",
+        "country": "USA",
+        "totalFollowers": "195,607",
+        "followersGained": "32,256",
+        "growthPercent": "16%",
+        "partner": "Unknown"
+      },
+      {
+        "rank": 6,
+        "streamer": "Peller",
+        "twitter": "@Peller089",
+        "kick": "peller",
+        "country": "Nigeria",
+        "totalFollowers": "178,541",
+        "followersGained": "32,049",
+        "growthPercent": "18%",
+        "partner": "Stake"
+      },
+      {
+        "rank": 7,
+        "streamer": "Lasapaaaaa",
+        "twitter": "@leandroloaizam",
+        "kick": "lasapaaaaa",
+        "country": "Colombia",
+        "totalFollowers": "465,681",
+        "followersGained": "21,558",
+        "growthPercent": "5%",
+        "partner": "Stake"
+      },
+      {
+        "rank": 8,
+        "streamer": "Wassimostv",
+        "twitter": "@wassimostv",
+        "kick": "wassimostv",
+        "country": "Qatar",
+        "totalFollowers": "153,621",
+        "followersGained": "18,344",
+        "growthPercent": "12%",
+        "partner": "Shuffle"
+      },
+      {
+        "rank": 9,
+        "streamer": "Ismaelsanchez18",
+        "twitter": "Unknown",
+        "kick": "ismaelsanchez18",
+        "country": "Ecuador",
+        "totalFollowers": "328,436",
+        "followersGained": "18,303",
+        "growthPercent": "5%",
+        "partner": "Unknown"
+      },
+      {
+        "rank": 10,
+        "streamer": "Chanty",
+        "twitter": "Unknown",
+        "kick": "chanty",
+        "country": "Colombia",
+        "totalFollowers": "395,860",
+        "followersGained": "17,569",
+        "growthPercent": "4%",
+        "partner": "Unknown"
+      }
+    ],
+    "topStreamers": [
+      {
+        "rank": 1,
+        "streamer": "xQc",
+        "followers": "12.5M",
+        "platform": "Twitch/Kick",
+        "partner": "Stake",
+        "notes": "Largest crypto casino influencer, multi-year deal",
+        "twitter": "@xQc",
+        "kick": "xqc",
+        "country": "Canada"
+      },
+      {
+        "rank": 2,
+        "streamer": "Trainwreckstv",
+        "followers": "2.2M",
+        "platform": "Kick",
+        "partner": "Stake",
+        "notes": "Co-owner of Kick, heavy casino streams",
+        "twitter": "@Trainwreckstv",
+        "kick": "trainwreckstv",
+        "country": "USA"
+      },
+      {
+        "rank": 3,
+        "streamer": "Adin Ross",
+        "followers": "7.6M",
+        "platform": "Kick",
+        "partner": "Stake",
+        "notes": "High-profile partnership, celebrity collabs",
+        "twitter": "@adinross",
+        "kick": "adinross",
+        "country": "USA"
+      },
+      {
+        "rank": 4,
+        "streamer": "Roshtein",
+        "followers": "1.3M",
+        "platform": "Twitch/Kick",
+        "partner": "Stake",
+        "notes": "OG slots streamer, daily casino content",
+        "twitter": "@roshtein",
+        "kick": "roshtein",
+        "country": "Sweden"
+      },
+      {
+        "rank": 5,
+        "streamer": "Mellstroy",
+        "followers": "Unknown",
+        "platform": "Kick",
+        "partner": "Unknown",
+        "notes": "Russian market focus",
+        "kick": "mellstroy",
+        "country": "Russia"
+      },
+      {
+        "rank": 6,
+        "streamer": "Jynxzi",
+        "followers": "Unknown",
+        "platform": "Twitch",
+        "partner": "Unknown",
+        "notes": "Gaming crossover audience",
+        "country": "USA"
+      },
+      {
+        "rank": 7,
+        "streamer": "Nickmercs",
+        "followers": "4.3M",
+        "platform": "Kick",
+        "partner": "Stake",
+        "notes": "FPS streamer, casino side content",
+        "twitter": "@nickmercs",
+        "kick": "nickmercs",
+        "country": "USA"
+      },
+      {
+        "rank": 8,
+        "streamer": "Wassimostv",
+        "followers": "Unknown",
+        "platform": "Unknown",
+        "partner": "Shuffle",
+        "notes": "First non-Stake partnership in top 10",
+        "twitter": "@wassimostv",
+        "kick": "wassimostv",
+        "country": "Qatar"
+      },
+      {
+        "rank": 9,
+        "streamer": "LosPollosTV",
+        "followers": "Unknown",
+        "platform": "Kick",
+        "partner": "Unknown",
+        "notes": "Rising casino streamer"
+      },
+      {
+        "rank": 10,
+        "streamer": "Pokerface",
+        "followers": "Unknown",
+        "platform": "Unknown",
+        "partner": "Unknown",
+        "notes": "Slots specialist",
+        "country": "USA"
+      }
+    ],
+    "marketDominance": {
+      "stake": {
+        "topStreamers": 10,
+        "estimatedReach": "25M+ followers",
+        "notes": "Clear market leader in influencer partnerships"
+      },
+      "shuffle": {
+        "topStreamers": 2,
+        "estimatedReach": "Unknown",
+        "notes": "Breaking into top-tier with Wassimostv"
+      },
+      "vavada": {
+        "topStreamers": 1,
+        "estimatedReach": "500K+ followers",
+        "notes": "New entrant, fastest-growing streamer (BakaPrase)"
+      },
+      "others": {
+        "topStreamers": 7,
+        "estimatedReach": "Unknown",
+        "notes": "Independent or undisclosed partnerships"
+      }
+    },
+    "researchNeeded": [
+      "Follower counts for ranks 5, 6, 8-10",
+      "Platform details for Mellstroy, Jynxzi, Wassimostv, LosPollosTV, Pokerface",
+      "Partnership details for unconfirmed streamers",
+      "Estimated deal values (if publicly disclosed)",
+      "Promo codes used by each streamer"
+    ]
+  },
+  "redFlags": {
+    "bonuses": [
+      "Wagering requirement >50x",
+      "Max bet limit <$5 while clearing bonus",
+      "Bonus expiry <7 days",
+      "Game restrictions (slots only, low RTP games)",
+      "Max withdraw cap on deposit match bonuses"
+    ],
+    "withdrawals": [
+      "Withdrawal time >24 hours (crypto)",
+      "Mandatory KYC before first withdrawal with no warning",
+      "Withdrawal limits <$5,000/day for non-VIP",
+      "Fees on crypto withdrawals"
+    ],
+    "vip": [
+      "Lossback/rakeback only paid in bonus balance (not real cash)",
+      "VIP demotion for inactivity",
+      "Unclear tier-up requirements"
+    ],
+    "general": [
+      "No license info or fake license",
+      "No provably fair verification",
+      "Bonus terms hidden or unclear",
+      "Customer support unresponsive"
+    ]
+  }
+}
