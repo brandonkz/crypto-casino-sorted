@@ -18,118 +18,210 @@
     </script>
     
     <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-  font-family: var(--t-sans);
-  background: var(--t-bg);
-  color: var(--t-text);
-  min-height: 100vh;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000000;
+            color: #fff;
+            min-height: 100vh;
+        }
 
-.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .nav {
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 2px solid #8b5cf6;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-.header { text-align: center; margin-bottom: 24px; }
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
 
-.header h1 {
-  font-size: 1.75rem;
-  margin-bottom: 8px;
-  font-weight: 800;
-  color: var(--t-text);
-  font-family: var(--t-mono);
-}
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
 
-.header p { font-size: 0.85rem; color: var(--t-dim); }
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+        }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  margin-bottom: 24px;
-}
+        .nav-link {
+            color: #9ca3af;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-.stat-card {
-  background: var(--t-bg2);
-  border: 1px solid var(--t-border);
-  border-radius: var(--t-radius);
-  padding: 14px;
-}
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-.stat-label {
-  font-size: 0.65rem;
-  color: var(--t-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 6px;
-  font-family: var(--t-mono);
-}
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-.stat-value {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--t-text);
-  font-family: var(--t-mono);
-}
+        .header h1 {
+            font-size: 1.75rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.stat-subtext {
-  font-size: 0.7rem;
-  color: var(--t-dim);
-  margin-top: 4px;
-}
+        .header p {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
 
-.casino-list {
-  background: var(--t-bg2);
-  border: 1px solid var(--t-border);
-  border-radius: var(--t-radius);
-  padding: 18px;
-}
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
 
-.casino-list h2 {
-  font-size: 0.95rem;
-  color: var(--t-text);
-  margin-bottom: 12px;
-  font-family: var(--t-mono);
-}
+        .stat-card {
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+        }
 
-.casino-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--t-border);
-}
+        .stat-label {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
 
-.casino-item:last-child { border-bottom: none; }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
 
-.casino-name { font-weight: 700; color: var(--t-text); }
+        .stat-subtext {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
 
-.casino-stats { text-align: right; font-size: 0.8rem; }
+        .casino-list {
+            background: rgba(139, 92, 246, 0.05);
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+        }
 
-.casino-volume { color: var(--t-green); font-weight: 700; font-family: var(--t-mono); }
+        .casino-list h2 {
+            font-size: 1.125rem;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
 
-.casino-count { color: var(--t-muted); font-size: 0.7rem; }
+        .casino-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
 
-.loading { text-align: center; padding: 32px; color: var(--t-dim); }
+        .casino-item:last-child {
+            border-bottom: none;
+        }
 
-@media (min-width: 768px) {
-  .header h1 { font-size: 1.4rem; }
-  .stat-value { font-size: 1.5rem; }
-  .stats-grid { grid-template-columns: repeat(4, 1fr); }
-}
+        .casino-name {
+            font-weight: 600;
+            color: #ffffff;
+        }
 
-  </style>
-  <link rel="stylesheet" href="terminal-theme.css">
+        .casino-stats {
+            text-align: right;
+            font-size: 0.875rem;
+        }
+
+        .casino-volume {
+            color: #8b5cf6;
+            font-weight: 600;
+        }
+
+        .casino-count {
+            color: #9ca3af;
+            font-size: 0.75rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 2px solid rgba(139, 92, 246, 0.2);
+            margin-top: 40px;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .footer a {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #9ca3af;
+        }
+
+        @media (min-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="t-nav">
   <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
   <div class="t-nav-links">
-    <a href="/terminal.html">Terminal</a>
-      <a href="/events-terminal.html">Events</a>
-    <a href="/analytics.html">Live Data</a>
-    <a href="/calculators.html">Tools</a>
-    <a href="/blog/index.html">Blog</a>
-    <a href="/reviews/index.html" class="t-nav-hide-mobile">Reviews</a>
+    <a href="/reviews/" class="t-nav-primary">⭐ Reviews</a>
+    <a href="/analytics.html">📊 Dashboard</a>
+    <a href="/casino-wallet-addresses.html">🔍 Wallets</a>
+    <a href="/market-intel.html">🛰️ Market Intel</a>
+    <a href="/blog/">📖 Guides</a>
+    <a href="/calculators.html" class="t-nav-hide-mobile">🧮 Tools</a>
   </div>
 </nav>
 
@@ -180,8 +272,8 @@ body {
     </div>
 
     <script>
-        // EMBEDDED DATA - 2026-03-08T00:00:28.575Z
-const stats = {"casinos":{"Rollbit":{"volume":5206244.389999995,"count":16615},"Rainbet":{"volume":3951604.820000221,"count":15835},"Stake":{"volume":11108037.299999842,"count":18751},"Roobet":{"volume":35450873.65999998,"count":523},"Bitcasino":{"volume":637925.9799999982,"count":1097},"Duelbits":{"volume":5681407.909999988,"count":3831},"Shuffle":{"volume":425622.1399999999,"count":793},"Bitcasino 3":{"volume":115899.66,"count":190},"BetFury":{"volume":28468.49,"count":106}},"totalVolume":62606084.34999821,"totalDeposits":57741,"biggest":{"value":2212000,"casino":"Stake"},"minDate":"2026-02-15","maxDate":"2026-03-07"};
+        // EMBEDDED DATA - 2026-04-01T00:00:58.917Z
+const stats = {"casinos":{"Rollbit":{"volume":12705524.62000009,"count":35633},"Rainbet":{"volume":7375385.21000145,"count":34566},"Stake":{"volume":18914632.109999593,"count":39219},"Roobet":{"volume":65393954.040000014,"count":1060},"Bitcasino":{"volume":1304101.3799999938,"count":2058},"Duelbits":{"volume":9107210.309999974,"count":8323},"Shuffle":{"volume":7123525.169999997,"count":14193},"Bitcasino 3":{"volume":992276.3399999985,"count":1770},"BetFury":{"volume":481330.3899999995,"count":970},"BC.Game":{"volume":0,"count":57}},"totalVolume":123397939.56999443,"totalDeposits":137849,"biggest":{"value":2212000,"casino":"Stake"},"minDate":"2026-02-15","maxDate":"2026-03-31"};
 
 const minD = new Date(stats.minDate);
 const maxD = new Date(stats.maxDate);
@@ -204,12 +296,5 @@ document.getElementById('casinoList').innerHTML = casinoListHTML;
 document.getElementById('loading').style.display = 'none';
 document.getElementById('content').style.display = 'block';
     </script>
-  <footer class="t-footer">
-  <div class="t-container">
-    <p>CCT — Crypto Casino Terminal · <a href="/">CryptoCasinoSorted</a></p>
-    <p><a href="/terminal.html">Terminal</a>
-      <a href="/events-terminal.html">Events</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/index.html">Blog</a></p>
-  </div>
-</footer>
 </body>
 </html>

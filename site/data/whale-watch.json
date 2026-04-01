@@ -1,0 +1,29 @@
+{
+  "whales": [
+    {
+      "address": "0xaf6735774faa5de77408d523b7dcbb6bfe670711",
+      "casino": "Chips.gg",
+      "casinoIcon": "🎲",
+      "depositETH": 5.250005,
+      "depositUSD": 10853,
+      "depositTxHash": "0x7ddbb49a8c2b4d743a45ac38678bc92ec0092186d4719b59f7e9d8d399fa2308",
+      "depositTimestamp": "2026-03-30T23:49:35.000Z",
+      "firstSeen": "2026-03-31T04:22:34.376Z",
+      "withdrawnETH": 0.000021,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-03-31T04:22:39.486Z",
+      "status": "updated",
+      "daysSinceDeposit": 0,
+      "updates": [
+        {
+          "date": "2026-03-31T04:22:39.486Z",
+          "withdrawnETH": 0.000021,
+          "withdrawnUSD": 0,
+          "note": "Received from: Chips.gg"
+        }
+      ]
+    }
+  ],
+  "lastScan": "2026-03-31T04:22:39.507Z",
+  "ethPrice": 2067.15
+}

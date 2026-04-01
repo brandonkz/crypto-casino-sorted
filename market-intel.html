@@ -42,6 +42,7 @@
     .telegram-join{display:inline-block;background:#229ed9;color:#fff;padding:8px 14px;border-radius:8px;font-weight:700;text-decoration:none;font-size:0.9rem;}
     .telegram-join:hover{opacity:0.9;}
   </style>
+  <link rel="stylesheet" href="/terminal-theme.css">
 </head>
 <body>
   <!-- Shared nav -->
@@ -90,18 +91,7 @@
   <script>
     // Load shared nav
     fetch('/shared-nav.html').then(r=>r.text()).then(html=>{
-      document.getElementById('nav').innerHTML = html
-        .replace('{{CASINOS_COLOR}}','#9ca3af')
-        .replace('{{TERMINAL_COLOR}}','#9ca3af')
-        .replace('{{ARB_COLOR}}','#9ca3af')
-        .replace('{{BONUS_COLOR}}','#9ca3af')
-        .replace('{{ANALYTICS_COLOR}}','#9ca3af')
-        .replace('{{INTEL_COLOR}}','#a78bfa')
-        .replace('{{DEPOSITS_COLOR}}','#9ca3af')
-        .replace('{{WALLETS_COLOR}}','#9ca3af')
-        .replace('{{PROVABLY_FAIR_COLOR}}','#9ca3af')
-        .replace('{{REVIEWS_COLOR}}','#9ca3af')
-        .replace('{{BLOG_COLOR}}','#9ca3af');
+      document.getElementById('nav').innerHTML = html;
     });
 
     async function loadIntel(){

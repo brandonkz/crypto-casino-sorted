@@ -299,18 +299,7 @@
     fetch('shared-nav.html')
       .then(res => res.text())
       .then(html => {
-        document.getElementById('nav-placeholder').innerHTML = html
-          .replace('{{CASINOS_COLOR}}','#9ca3af')
-          .replace('{{TERMINAL_COLOR}}','#9ca3af')
-          .replace('{{ARB_COLOR}}','#a78bfa')
-          .replace('{{BONUS_COLOR}}','#9ca3af')
-          .replace('{{ANALYTICS_COLOR}}','#9ca3af')
-          .replace('{{INTEL_COLOR}}','#9ca3af')
-          .replace('{{DEPOSITS_COLOR}}','#9ca3af')
-          .replace('{{WALLETS_COLOR}}','#9ca3af')
-          .replace('{{PROVABLY_FAIR_COLOR}}','#9ca3af')
-          .replace('{{REVIEWS_COLOR}}','#9ca3af')
-          .replace('{{BLOG_COLOR}}','#9ca3af');
+        document.getElementById('nav-placeholder').innerHTML = html;
       });
   </script>
 </body>

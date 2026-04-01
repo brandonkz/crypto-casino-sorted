@@ -1,2171 +1,298 @@
 {
-  "lastUpdated": "2026-02-18T17:01:38.662Z",
+  "lastUpdated": "2026-03-14T07:07:25.335Z",
   "bets": [
     {
       "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1640"
-      },
-      "amount": "0.1640",
-      "usdValue": 323,
-      "timestamp": "2026-02-18T17:00:23.000Z",
-      "txHash": "0xb9eb0c3290a9743df7391537efd27acbc12f20f77a9899613016a0b9da347f64",
-      "explorerUrl": "https://etherscan.io/tx/0xb9eb0c3290a9743df7391537efd27acbc12f20f77a9899613016a0b9da347f64",
-      "from": "0x8fd29b25c3c2a89300ea5c14f34878269ff4f443",
-      "blockNumber": "24485076"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1263"
-      },
-      "amount": "0.1263",
-      "usdValue": 249,
-      "timestamp": "2026-02-18T17:00:23.000Z",
-      "txHash": "0x6de30d6a7ab9e25799868334be42ea8e907b75d0609710f93c2ef336bad6bada",
-      "explorerUrl": "https://etherscan.io/tx/0x6de30d6a7ab9e25799868334be42ea8e907b75d0609710f93c2ef336bad6bada",
-      "from": "0x959d13e279ee075583fe21b73b4faf2e193f1b1f",
-      "blockNumber": "24485076"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0529"
-      },
-      "amount": "0.0529",
-      "usdValue": 104,
-      "timestamp": "2026-02-18T16:59:35.000Z",
-      "txHash": "0xede3360564fa18da750ce006ecc99f4f53e82802260163e6ac35c03f9a9dabcf",
-      "explorerUrl": "https://etherscan.io/tx/0xede3360564fa18da750ce006ecc99f4f53e82802260163e6ac35c03f9a9dabcf",
-      "from": "0xefe26571155689254fe45eaf46168aa68d6390ff",
-      "blockNumber": "24485072"
-    },
-    {
-      "casino": {
-        "id": "shuffle_bsc",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "bsc",
-        "name": "BSC",
-        "icon": "🔶",
-        "color": "#f3ba2f"
-      },
-      "crypto": {
-        "symbol": "BNB",
-        "icon": "🔶",
-        "amount": "0.4634"
-      },
-      "amount": "0.4634",
-      "usdValue": 286,
-      "timestamp": "2026-02-18T16:59:08.000Z",
-      "txHash": "0x1e4328120ac8ab04a403752102527e3f9f85af4b74603e0d22a5d0f6af9b1a80",
-      "explorerUrl": "https://bscscan.com/tx/0x1e4328120ac8ab04a403752102527e3f9f85af4b74603e0d22a5d0f6af9b1a80",
-      "from": "0x2e729d79db725fe986f8d37a1631f2a66f2cf09b",
-      "blockNumber": "81973789"
-    },
-    {
-      "casino": {
-        "id": "stake_eth_2",
+        "id": "stake_1",
         "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
+        "icon": "🟢",
+        "color": "#00d632"
       },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "0.0866"
+        "amount": "0.6624"
       },
-      "amount": "0.0866",
-      "usdValue": 171,
-      "timestamp": "2026-02-18T16:58:47.000Z",
-      "txHash": "0xc4a2369ebac8e1ad1a24db8a6321d24da8281cb0bd01d7d2700c3832e587d6e0",
-      "explorerUrl": "https://etherscan.io/tx/0xc4a2369ebac8e1ad1a24db8a6321d24da8281cb0bd01d7d2700c3832e587d6e0",
-      "from": "0x329d2325e965fadcffcc60e9da5c4c5ac686e747",
-      "blockNumber": "24485068"
+      "amount": "0.6624",
+      "usdValue": 1377,
+      "timestamp": "2026-03-14T07:03:59.000Z",
+      "txHash": "0xe4be8ac29020f41cc19fc9d0ba992dc9696c10f3cc8488120e5b1355b3493aa8",
+      "etherscanUrl": "https://etherscan.io/tx/0xe4be8ac29020f41cc19fc9d0ba992dc9696c10f3cc8488120e5b1355b3493aa8",
+      "from": "0x6751309d5800cbbfdfe30ba8faa887ae577fa3bf",
+      "blockNumber": "24654107"
     },
     {
       "casino": {
-        "id": "stake_eth_2",
+        "id": "stake_11",
         "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
+        "icon": "🟢",
+        "color": "#00d632"
       },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "2.0182"
+        "amount": "2.2395"
       },
-      "amount": "2.0182",
-      "usdValue": 3978,
-      "timestamp": "2026-02-18T16:58:47.000Z",
-      "txHash": "0x773b1698051bd42412b2cf073c97ad6ceab14a7c391a50f9886c1cd0b6312532",
-      "explorerUrl": "https://etherscan.io/tx/0x773b1698051bd42412b2cf073c97ad6ceab14a7c391a50f9886c1cd0b6312532",
-      "from": "0xddd1480ba4e25d556183713dbed8c95d316bd82f",
-      "blockNumber": "24485068"
+      "amount": "2.2395",
+      "usdValue": 4655,
+      "timestamp": "2026-03-14T07:01:59.000Z",
+      "txHash": "0xea33fe3c90b631580e91d167010a422cd134877077be04ef51c52e7c55d11029",
+      "etherscanUrl": "https://etherscan.io/tx/0xea33fe3c90b631580e91d167010a422cd134877077be04ef51c52e7c55d11029",
+      "from": "0xc4f16e1ede97e2ba1aaed9dc07679fd2de25dc96",
+      "blockNumber": "24654097"
     },
     {
       "casino": {
-        "id": "stake_eth_2",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1435"
-      },
-      "amount": "0.1435",
-      "usdValue": 283,
-      "timestamp": "2026-02-18T16:58:35.000Z",
-      "txHash": "0x19c641700183725f70341c630aad2c49a087de93890c195fff9919bff83f382d",
-      "explorerUrl": "https://etherscan.io/tx/0x19c641700183725f70341c630aad2c49a087de93890c195fff9919bff83f382d",
-      "from": "0x76f333c1a0e993808265148560abfc65c18dd7d1",
-      "blockNumber": "24485067"
-    },
-    {
-      "casino": {
-        "id": "stake_eth_2",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1189"
-      },
-      "amount": "0.1189",
-      "usdValue": 234,
-      "timestamp": "2026-02-18T16:58:35.000Z",
-      "txHash": "0x636d3f2b770229f934be79cfd95ed1d4f1fe39d9bad2c3464e44f16a772560df",
-      "explorerUrl": "https://etherscan.io/tx/0x636d3f2b770229f934be79cfd95ed1d4f1fe39d9bad2c3464e44f16a772560df",
-      "from": "0x3b12cccba9d20ddbbac07074c2b271821c37f7fc",
-      "blockNumber": "24485067"
-    },
-    {
-      "casino": {
-        "id": "stake_eth_2",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.8500"
-      },
-      "amount": "0.8500",
-      "usdValue": 1675,
-      "timestamp": "2026-02-18T16:58:35.000Z",
-      "txHash": "0x90bff16ad430949757b4447035438bcf84b8228dc0260fdb08528287a7f0c632",
-      "explorerUrl": "https://etherscan.io/tx/0x90bff16ad430949757b4447035438bcf84b8228dc0260fdb08528287a7f0c632",
-      "from": "0x14a7cbcf358c0075ba0d4c7d36e7fa5042e5365c",
-      "blockNumber": "24485067"
-    },
-    {
-      "casino": {
-        "id": "stake_eth_2",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "26.0000"
-      },
-      "amount": "26.0000",
-      "usdValue": 51243,
-      "timestamp": "2026-02-18T16:58:35.000Z",
-      "txHash": "0xcd9c55372c2753ecd9cbbace3b2e842997b446c9f5a99efe3bdeb9baf08c6dad",
-      "explorerUrl": "https://etherscan.io/tx/0xcd9c55372c2753ecd9cbbace3b2e842997b446c9f5a99efe3bdeb9baf08c6dad",
-      "from": "0x24d109b3a9e9736bbad6fde05fcd32ba6479e0ab",
-      "blockNumber": "24485067"
-    },
-    {
-      "casino": {
-        "id": "stake_eth_2",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.4455"
-      },
-      "amount": "0.4455",
-      "usdValue": 878,
-      "timestamp": "2026-02-18T16:57:47.000Z",
-      "txHash": "0x77a49c6b3b3d238413f0ab3b7c9bf7c30aa8f5a5fed6f737492092ac27d68c5f",
-      "explorerUrl": "https://etherscan.io/tx/0x77a49c6b3b3d238413f0ab3b7c9bf7c30aa8f5a5fed6f737492092ac27d68c5f",
-      "from": "0x82452d795f66e1a9490e08f28dcdef7dda9619db",
-      "blockNumber": "24485063"
-    },
-    {
-      "casino": {
-        "id": "stake_eth_2",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1338"
-      },
-      "amount": "0.1338",
-      "usdValue": 264,
-      "timestamp": "2026-02-18T16:57:23.000Z",
-      "txHash": "0xde3ee386882b563a6fbc59ef73b96082f98e1df1d05cd9459d2698e0678a27a3",
-      "explorerUrl": "https://etherscan.io/tx/0xde3ee386882b563a6fbc59ef73b96082f98e1df1d05cd9459d2698e0678a27a3",
-      "from": "0x2e4c7323f92b3703a2a571ef9dd2d4041dfa3cce",
-      "blockNumber": "24485061"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
+        "id": "shuffle",
         "name": "Shuffle",
         "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
+        "color": "#a855f7"
       },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "0.1146"
+        "amount": "0.4812"
       },
-      "amount": "0.1146",
-      "usdValue": 226,
-      "timestamp": "2026-02-18T16:56:35.000Z",
-      "txHash": "0xe5ee795143fe01f685a32d34d613e3ca3ac644ee12700de614c692d5d571f3bb",
-      "explorerUrl": "https://etherscan.io/tx/0xe5ee795143fe01f685a32d34d613e3ca3ac644ee12700de614c692d5d571f3bb",
-      "from": "0xb4a4d36916b18b8865f76268efefc958a44e9a5c",
-      "blockNumber": "24485057"
+      "amount": "0.4812",
+      "usdValue": 1000,
+      "timestamp": "2026-03-14T06:53:23.000Z",
+      "txHash": "0xd42882a8ba321561ad86a450313570c8a1ba3743647c1484ab6f63ab2fdb1bbd",
+      "etherscanUrl": "https://etherscan.io/tx/0xd42882a8ba321561ad86a450313570c8a1ba3743647c1484ab6f63ab2fdb1bbd",
+      "from": "0x897626071b53fe06734a178050e0e773079485aa",
+      "blockNumber": "24654054"
     },
     {
       "casino": {
-        "id": "shuffle_bsc",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "bsc",
-        "name": "BSC",
-        "icon": "🔶",
-        "color": "#f3ba2f"
-      },
-      "crypto": {
-        "symbol": "BNB",
-        "icon": "🔶",
-        "amount": "0.4619"
-      },
-      "amount": "0.4619",
-      "usdValue": 285,
-      "timestamp": "2026-02-18T16:56:22.000Z",
-      "txHash": "0x48222517a02263bcdada1de07c91b99374824f7252ea81df0075b6a924b9d455",
-      "explorerUrl": "https://bscscan.com/tx/0x48222517a02263bcdada1de07c91b99374824f7252ea81df0075b6a924b9d455",
-      "from": "0x2e729d79db725fe986f8d37a1631f2a66f2cf09b",
-      "blockNumber": "81973419"
-    },
-    {
-      "casino": {
-        "id": "shuffle_bsc",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "bsc",
-        "name": "BSC",
-        "icon": "🔶",
-        "color": "#f3ba2f"
-      },
-      "crypto": {
-        "symbol": "BNB",
-        "icon": "🔶",
-        "amount": "0.2035"
-      },
-      "amount": "0.2035",
-      "usdValue": 125,
-      "timestamp": "2026-02-18T16:55:10.000Z",
-      "txHash": "0x353b005455b60bb2406014a6855de9ecb2c70528099d0d8f03b2482da671c714",
-      "explorerUrl": "https://bscscan.com/tx/0x353b005455b60bb2406014a6855de9ecb2c70528099d0d8f03b2482da671c714",
-      "from": "0xd059619a4446a653d2fda905748176b6673cb19b",
-      "blockNumber": "81973259"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.2414"
-      },
-      "amount": "0.2414",
-      "usdValue": 476,
-      "timestamp": "2026-02-18T16:54:23.000Z",
-      "txHash": "0xc8d5214998134dd97712f8bd62c28df7be082a4d310d1ea29b8e000495ed2b4e",
-      "explorerUrl": "https://etherscan.io/tx/0xc8d5214998134dd97712f8bd62c28df7be082a4d310d1ea29b8e000495ed2b4e",
-      "from": "0x73a2223af0de417abf0c2d1802ae603f02df144f",
-      "blockNumber": "24485046"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "2.8607"
-      },
-      "amount": "2.8607",
-      "usdValue": 5638,
-      "timestamp": "2026-02-18T16:53:35.000Z",
-      "txHash": "0x85fabe36af0b2a8ba378805cb5e099c46e296f387f69637d03b81ff5a1ae9f24",
-      "explorerUrl": "https://etherscan.io/tx/0x85fabe36af0b2a8ba378805cb5e099c46e296f387f69637d03b81ff5a1ae9f24",
-      "from": "0x77e0bf95e56c709b4fd166ef5ce4c88c5096de88",
-      "blockNumber": "24485042"
-    },
-    {
-      "casino": {
-        "id": "shuffle_bsc",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "bsc",
-        "name": "BSC",
-        "icon": "🔶",
-        "color": "#f3ba2f"
-      },
-      "crypto": {
-        "symbol": "BNB",
-        "icon": "🔶",
-        "amount": "0.4693"
-      },
-      "amount": "0.4693",
-      "usdValue": 289,
-      "timestamp": "2026-02-18T16:52:58.000Z",
-      "txHash": "0x92afab9bfe8ded2ffd1361b6823011030dc4db9bf532c72f9f671499b881f2ce",
-      "explorerUrl": "https://bscscan.com/tx/0x92afab9bfe8ded2ffd1361b6823011030dc4db9bf532c72f9f671499b881f2ce",
-      "from": "0x2e729d79db725fe986f8d37a1631f2a66f2cf09b",
-      "blockNumber": "81972967"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
+        "id": "rollbit",
         "name": "Rollbit",
         "icon": "🎲",
         "color": "#3b82f6"
       },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "0.0575"
+        "amount": "0.7000"
       },
-      "amount": "0.0575",
-      "usdValue": 113,
-      "timestamp": "2026-02-18T16:51:35.000Z",
-      "txHash": "0xdb1af5b69b1b5dd9e032bf3b4e281bf8cea03a674be8e04056976962ae5fd1bc",
-      "explorerUrl": "https://etherscan.io/tx/0xdb1af5b69b1b5dd9e032bf3b4e281bf8cea03a674be8e04056976962ae5fd1bc",
-      "from": "0x129d3d7709fc352f4c1c84570d0caad90346295e",
-      "blockNumber": "24485032"
+      "amount": "0.7000",
+      "usdValue": 1455,
+      "timestamp": "2026-03-14T06:42:23.000Z",
+      "txHash": "0x117531a5ad8222fdcea8df6f1e63a859b2954d3cc8e775f14dc7430759f5fbef",
+      "etherscanUrl": "https://etherscan.io/tx/0x117531a5ad8222fdcea8df6f1e63a859b2954d3cc8e775f14dc7430759f5fbef",
+      "from": "0x7b61428914157399700a072eb3315e43b56a4beb",
+      "blockNumber": "24653999"
     },
     {
       "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0800"
-      },
-      "amount": "0.0800",
-      "usdValue": 158,
-      "timestamp": "2026-02-18T16:49:35.000Z",
-      "txHash": "0xb2688762dc96c3d591e40a7df46f286b82317683651aa1898a24fe3536e73610",
-      "explorerUrl": "https://etherscan.io/tx/0xb2688762dc96c3d591e40a7df46f286b82317683651aa1898a24fe3536e73610",
-      "from": "0x43ec6a6e50c3c5f0cf8c31e95c86e140d8b7e46d",
-      "blockNumber": "24485022"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
-        "name": "Rollbit",
-        "icon": "🎲",
-        "color": "#3b82f6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1404"
-      },
-      "amount": "0.1404",
-      "usdValue": 277,
-      "timestamp": "2026-02-18T16:49:35.000Z",
-      "txHash": "0x77c0f200d89ec79a342894bfe36e28bffb429d2efb3e27db584678643a00cf26",
-      "explorerUrl": "https://etherscan.io/tx/0x77c0f200d89ec79a342894bfe36e28bffb429d2efb3e27db584678643a00cf26",
-      "from": "0xcf72b4e9b93b51b9341ad34f9ca428e0d3dae09a",
-      "blockNumber": "24485022"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
-        "name": "Rollbit",
-        "icon": "🎲",
-        "color": "#3b82f6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0703"
-      },
-      "amount": "0.0703",
-      "usdValue": 138,
-      "timestamp": "2026-02-18T16:48:23.000Z",
-      "txHash": "0xeb8a7872764d8cf2cba14ce72739a80d1278e821768cd1c393a398104ed68b61",
-      "explorerUrl": "https://etherscan.io/tx/0xeb8a7872764d8cf2cba14ce72739a80d1278e821768cd1c393a398104ed68b61",
-      "from": "0x3742d06f00de97fe64a953c603d7c1135dbfc5ad",
-      "blockNumber": "24485016"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
-        "name": "Rollbit",
-        "icon": "🎲",
-        "color": "#3b82f6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1190"
-      },
-      "amount": "0.1190",
-      "usdValue": 235,
-      "timestamp": "2026-02-18T16:47:35.000Z",
-      "txHash": "0x086648fecd08df75e0951c13518131124751900e8f3c92a54e417c0f203a181c",
-      "explorerUrl": "https://etherscan.io/tx/0x086648fecd08df75e0951c13518131124751900e8f3c92a54e417c0f203a181c",
-      "from": "0x3c2fc9aa1da31ca940c053b200e2990087bf812c",
-      "blockNumber": "24485012"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1834"
-      },
-      "amount": "0.1834",
-      "usdValue": 361,
-      "timestamp": "2026-02-18T16:45:59.000Z",
-      "txHash": "0x77413f2a9d2ddc08a8e2e0620e8f97ac4c48c6f0ddf945a141c49d44d81ff502",
-      "explorerUrl": "https://etherscan.io/tx/0x77413f2a9d2ddc08a8e2e0620e8f97ac4c48c6f0ddf945a141c49d44d81ff502",
-      "from": "0xfa5f5ecf38d99bd88296e0667bba4c9574531272",
-      "blockNumber": "24485004"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1479"
-      },
-      "amount": "0.1479",
-      "usdValue": 292,
-      "timestamp": "2026-02-18T16:45:59.000Z",
-      "txHash": "0x5f09578edcbc9652cb3e2fafbb727e16e52745664ddd9ff55ca942417ec6086a",
-      "explorerUrl": "https://etherscan.io/tx/0x5f09578edcbc9652cb3e2fafbb727e16e52745664ddd9ff55ca942417ec6086a",
-      "from": "0xfd9ac6ebb2763980ca236dcc737a955480bfd6aa",
-      "blockNumber": "24485004"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "1.1000"
-      },
-      "amount": "1.1000",
-      "usdValue": 2168,
-      "timestamp": "2026-02-18T16:45:59.000Z",
-      "txHash": "0xd6ed2cc8740e9f19b1ecaf4accee3828c868a1da87841071b4c71d2a7d6b317e",
-      "explorerUrl": "https://etherscan.io/tx/0xd6ed2cc8740e9f19b1ecaf4accee3828c868a1da87841071b4c71d2a7d6b317e",
-      "from": "0x52653f7a14903be0d00cd3225fd3ace2295c3ebc",
-      "blockNumber": "24485004"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0770"
-      },
-      "amount": "0.0770",
-      "usdValue": 152,
-      "timestamp": "2026-02-18T16:45:11.000Z",
-      "txHash": "0xa097df3f18b6b946f941369bb2c76d250c9f7da192337738ab78c0c30efda3b7",
-      "explorerUrl": "https://etherscan.io/tx/0xa097df3f18b6b946f941369bb2c76d250c9f7da192337738ab78c0c30efda3b7",
-      "from": "0x0368c09a0c31f981bfa81e43c3539bac12f9705f",
-      "blockNumber": "24485000"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "23.7043"
-      },
-      "amount": "23.7043",
-      "usdValue": 46718,
-      "timestamp": "2026-02-18T16:44:47.000Z",
-      "txHash": "0x1a58a8a2317711369ed3ff70a5509d108013dcf4f60e0640946c5f98d73268fa",
-      "explorerUrl": "https://etherscan.io/tx/0x1a58a8a2317711369ed3ff70a5509d108013dcf4f60e0640946c5f98d73268fa",
-      "from": "0x4c7bd6be1d87abc77a40bab37cea78d0a2462ca5",
-      "blockNumber": "24484998"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
-        "name": "Rollbit",
-        "icon": "🎲",
-        "color": "#3b82f6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0997"
-      },
-      "amount": "0.0997",
-      "usdValue": 196,
-      "timestamp": "2026-02-18T16:44:11.000Z",
-      "txHash": "0x2806c6e2b89a01588163024729143668793d2e2e5abd9d96870d461f4f4a30ff",
-      "explorerUrl": "https://etherscan.io/tx/0x2806c6e2b89a01588163024729143668793d2e2e5abd9d96870d461f4f4a30ff",
-      "from": "0xb23400e13df4056392c55e1fad2647ed501ab80f",
-      "blockNumber": "24484995"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "13.5944"
-      },
-      "amount": "13.5944",
-      "usdValue": 26793,
-      "timestamp": "2026-02-18T16:42:35.000Z",
-      "txHash": "0x133f9715caf063199f7fa3a3222794bdd6bf661f096272d6f73213e915d7f62a",
-      "explorerUrl": "https://etherscan.io/tx/0x133f9715caf063199f7fa3a3222794bdd6bf661f096272d6f73213e915d7f62a",
-      "from": "0x9ee7cec09b3ccc80715b4d90dc5319a927642014",
-      "blockNumber": "24484987"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
-        "name": "Rollbit",
-        "icon": "🎲",
-        "color": "#3b82f6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1881"
-      },
-      "amount": "0.1881",
-      "usdValue": 371,
-      "timestamp": "2026-02-18T16:41:59.000Z",
-      "txHash": "0x05529c93cc23203c53ffb66dfb0fb616a9da5bd31c658e84eb2279b9f222b746",
-      "explorerUrl": "https://etherscan.io/tx/0x05529c93cc23203c53ffb66dfb0fb616a9da5bd31c658e84eb2279b9f222b746",
-      "from": "0x1f2ff57887bb943a5fcc40a3a794771e17c5279c",
-      "blockNumber": "24484984"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "1.1500"
-      },
-      "amount": "1.1500",
-      "usdValue": 2267,
-      "timestamp": "2026-02-18T16:41:47.000Z",
-      "txHash": "0xfb8704a6f3c8679b3ba6bbac745bfffe6be76e0214c0cbfabc51f3ad154806fc",
-      "explorerUrl": "https://etherscan.io/tx/0xfb8704a6f3c8679b3ba6bbac745bfffe6be76e0214c0cbfabc51f3ad154806fc",
-      "from": "0x52653f7a14903be0d00cd3225fd3ace2295c3ebc",
-      "blockNumber": "24484983"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0573"
-      },
-      "amount": "0.0573",
-      "usdValue": 113,
-      "timestamp": "2026-02-18T16:41:11.000Z",
-      "txHash": "0x4cb156d0e974b4de269839d3cbb8b28a670df1cfd58bca386a43b3ffd9c3995e",
-      "explorerUrl": "https://etherscan.io/tx/0x4cb156d0e974b4de269839d3cbb8b28a670df1cfd58bca386a43b3ffd9c3995e",
-      "from": "0x63f69d24b3c7ee8a62d2c2786f2f80b837f767e1",
-      "blockNumber": "24484980"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
-        "name": "Rollbit",
-        "icon": "🎲",
-        "color": "#3b82f6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.8614"
-      },
-      "amount": "0.8614",
-      "usdValue": 1698,
-      "timestamp": "2026-02-18T16:40:23.000Z",
-      "txHash": "0xecc1c9634006b773bf4205c25ade4812efce19dba775798c9df27529b008e5b4",
-      "explorerUrl": "https://etherscan.io/tx/0xecc1c9634006b773bf4205c25ade4812efce19dba775798c9df27529b008e5b4",
-      "from": "0xf38216700bfff29085a9d3c4ae734d06543e8f5d",
-      "blockNumber": "24484977"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
-        "name": "Rollbit",
-        "icon": "🎲",
-        "color": "#3b82f6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0730"
-      },
-      "amount": "0.0730",
-      "usdValue": 144,
-      "timestamp": "2026-02-18T16:37:23.000Z",
-      "txHash": "0xeea458ed354061da993482e592f97a83db728a664c842ab00dd3ec28f14fd415",
-      "explorerUrl": "https://etherscan.io/tx/0xeea458ed354061da993482e592f97a83db728a664c842ab00dd3ec28f14fd415",
-      "from": "0x5893b5855a3a8d3677e9cbc064e4cf1088a7fb86",
-      "blockNumber": "24484962"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.4749"
-      },
-      "amount": "0.4749",
-      "usdValue": 936,
-      "timestamp": "2026-02-18T16:37:11.000Z",
-      "txHash": "0x412b67c5b0bea43adbc82246f6d081445747f381ae9f13b26112cfe541f361c4",
-      "explorerUrl": "https://etherscan.io/tx/0x412b67c5b0bea43adbc82246f6d081445747f381ae9f13b26112cfe541f361c4",
-      "from": "0xe5824d9fe6ea266cffbda1ba11bfdfa5a46f94f7",
-      "blockNumber": "24484961"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "2.8000"
-      },
-      "amount": "2.8000",
-      "usdValue": 5518,
-      "timestamp": "2026-02-18T16:36:23.000Z",
-      "txHash": "0xd563ccfed9e57c55f11faf64259ef46af2c0cc3a01becb7b00e415530c91cfeb",
-      "explorerUrl": "https://etherscan.io/tx/0xd563ccfed9e57c55f11faf64259ef46af2c0cc3a01becb7b00e415530c91cfeb",
-      "from": "0x9455136a22d5f635f40703ffa42cbed1112129fe",
-      "blockNumber": "24484957"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
-        "name": "Rollbit",
-        "icon": "🎲",
-        "color": "#3b82f6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "1.7835"
-      },
-      "amount": "1.7835",
-      "usdValue": 3515,
-      "timestamp": "2026-02-18T16:36:23.000Z",
-      "txHash": "0xd38f1de6fa46e10d7ead3dbde1ed6c22f67c3029ca1282c26c5c8b23daf100be",
-      "explorerUrl": "https://etherscan.io/tx/0xd38f1de6fa46e10d7ead3dbde1ed6c22f67c3029ca1282c26c5c8b23daf100be",
-      "from": "0xe71bd1a69b0101a62f414d4a983d2d072ee8bbdc",
-      "blockNumber": "24484957"
-    },
-    {
-      "casino": {
-        "id": "shuffle_eth",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0570"
-      },
-      "amount": "0.0570",
-      "usdValue": 112,
-      "timestamp": "2026-02-18T16:35:35.000Z",
-      "txHash": "0x29046088f5ac714e9a4a64af8290b073538d6d9ab15c81384535b43f453e7b12",
-      "explorerUrl": "https://etherscan.io/tx/0x29046088f5ac714e9a4a64af8290b073538d6d9ab15c81384535b43f453e7b12",
-      "from": "0x43a89b4323af9b391551fc9c1555efe70fb90f4a",
-      "blockNumber": "24484953"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
-        "name": "Rollbit",
-        "icon": "🎲",
-        "color": "#3b82f6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.3022"
-      },
-      "amount": "0.3022",
-      "usdValue": 596,
-      "timestamp": "2026-02-18T16:35:35.000Z",
-      "txHash": "0xfde75a91db5034eba21415c98266161edd2cdb2f9477e709a296e71bf3ae6b22",
-      "explorerUrl": "https://etherscan.io/tx/0xfde75a91db5034eba21415c98266161edd2cdb2f9477e709a296e71bf3ae6b22",
-      "from": "0xa7086f39803bb55787602c715b9025a7dc225329",
-      "blockNumber": "24484953"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
-        "name": "Rollbit",
-        "icon": "🎲",
-        "color": "#3b82f6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0901"
-      },
-      "amount": "0.0901",
-      "usdValue": 178,
-      "timestamp": "2026-02-18T16:34:23.000Z",
-      "txHash": "0x3c326413bc8ad76eb81903c3ef19a48dc3ee2e0896b4b7632f7419628db028e1",
-      "explorerUrl": "https://etherscan.io/tx/0x3c326413bc8ad76eb81903c3ef19a48dc3ee2e0896b4b7632f7419628db028e1",
-      "from": "0xcf72b4e9b93b51b9341ad34f9ca428e0d3dae09a",
-      "blockNumber": "24484947"
-    },
-    {
-      "casino": {
-        "id": "rollbit_eth",
-        "name": "Rollbit",
-        "icon": "🎲",
-        "color": "#3b82f6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.2339"
-      },
-      "amount": "0.2339",
-      "usdValue": 461,
-      "timestamp": "2026-02-18T16:34:23.000Z",
-      "txHash": "0xccf3d0786a945aed9a817bb2fca9f5f03dc74c5ed3f6511ca97ab23dd3793951",
-      "explorerUrl": "https://etherscan.io/tx/0xccf3d0786a945aed9a817bb2fca9f5f03dc74c5ed3f6511ca97ab23dd3793951",
-      "from": "0x2d1415f063d83e92b77e0c42a2413c166f3d23ca",
-      "blockNumber": "24484947"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1600"
-      },
-      "amount": "0.1600",
-      "usdValue": 315,
-      "timestamp": "2026-02-18T16:25:23.000Z",
-      "txHash": "0x48e9e6d7c21b1a5026f062d3f12b5e9a0e3351c00a7794e6de5a4767181a7d6e",
-      "explorerUrl": "https://etherscan.io/tx/0x48e9e6d7c21b1a5026f062d3f12b5e9a0e3351c00a7794e6de5a4767181a7d6e",
-      "from": "0x4fffb90520bbbcbd278b1eea55a66375f3f1bb4f",
-      "blockNumber": "24484902"
-    },
-    {
-      "casino": {
-        "id": "shuffle_bsc",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "bsc",
-        "name": "BSC",
-        "icon": "🔶",
-        "color": "#f3ba2f"
-      },
-      "crypto": {
-        "symbol": "BNB",
-        "icon": "🔶",
-        "amount": "2.9969"
-      },
-      "amount": "2.9969",
-      "usdValue": 1847,
-      "timestamp": "2026-02-18T16:10:25.000Z",
-      "txHash": "0x0bc5dba85c87bea92321c0cf7390c1561763837fdf3261bde5bfcd3160db0e2e",
-      "explorerUrl": "https://bscscan.com/tx/0x0bc5dba85c87bea92321c0cf7390c1561763837fdf3261bde5bfcd3160db0e2e",
-      "from": "0x6e53cf9136beb5923f9df96393712c3438cfb135",
-      "blockNumber": "81967293"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.2100"
-      },
-      "amount": "0.2100",
-      "usdValue": 414,
-      "timestamp": "2026-02-18T15:47:11.000Z",
-      "txHash": "0x3b0ea6d0a6499b8ee657098c5bc3f86b0a7ded32fb5ef1802487b26b6b87017e",
-      "explorerUrl": "https://etherscan.io/tx/0x3b0ea6d0a6499b8ee657098c5bc3f86b0a7ded32fb5ef1802487b26b6b87017e",
-      "from": "0x8ddba2f642407f39d7fc7a5fcc13b5e416199357",
-      "blockNumber": "24484711"
-    },
-    {
-      "casino": {
-        "id": "betfury_eth",
-        "name": "BetFury",
-        "icon": "🔥",
+        "id": "bitcasino_1",
+        "name": "Bitcasino",
+        "icon": "🅱️",
         "color": "#f97316"
       },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "0.1203"
+        "amount": "0.7189"
       },
-      "amount": "0.1203",
-      "usdValue": 237,
-      "timestamp": "2026-02-18T15:37:59.000Z",
-      "txHash": "0x87b36bfde56db1d809a23348a77dc0ed1f587ca45633ae21cfa6bbbba731296d",
-      "explorerUrl": "https://etherscan.io/tx/0x87b36bfde56db1d809a23348a77dc0ed1f587ca45633ae21cfa6bbbba731296d",
-      "from": "0x0d4fb6795e1b93578adcfa02e2a4d30f3f5f8c52",
-      "blockNumber": "24484665"
+      "amount": "0.7189",
+      "usdValue": 1494,
+      "timestamp": "2026-03-14T06:17:11.000Z",
+      "txHash": "0x4e536dd3ce020d2cee9ab7d4df89599244bac33da25877cb276b80f1f8f46c08",
+      "etherscanUrl": "https://etherscan.io/tx/0x4e536dd3ce020d2cee9ab7d4df89599244bac33da25877cb276b80f1f8f46c08",
+      "from": "0x183f433f14dad7bb0153f0c19fae85dfc1e1418a",
+      "blockNumber": "24653874"
     },
     {
       "casino": {
-        "id": "betfury_eth",
-        "name": "BetFury",
-        "icon": "🔥",
+        "id": "bitcasino_1",
+        "name": "Bitcasino",
+        "icon": "🅱️",
         "color": "#f97316"
       },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "2.0100"
+        "amount": "0.6881"
       },
-      "amount": "2.0100",
-      "usdValue": 3961,
-      "timestamp": "2026-02-18T15:36:59.000Z",
-      "txHash": "0x61f3f8a2cade90be2e165fe6f69c4405d42663dc9721481bb3697cc8f9fd4e74",
-      "explorerUrl": "https://etherscan.io/tx/0x61f3f8a2cade90be2e165fe6f69c4405d42663dc9721481bb3697cc8f9fd4e74",
-      "from": "0x6963a0bd7e77b9a57327370267a8ee9f275386c4",
-      "blockNumber": "24484660"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "1.0000"
-      },
-      "amount": "1.0000",
-      "usdValue": 1971,
-      "timestamp": "2026-02-18T15:27:11.000Z",
-      "txHash": "0x5a847e6b0e6e9106ed835fd50d67c15245da16949d68e85d984feb1bcffa810c",
-      "explorerUrl": "https://etherscan.io/tx/0x5a847e6b0e6e9106ed835fd50d67c15245da16949d68e85d984feb1bcffa810c",
-      "from": "0x7402442d1ad6f300c554727b6ff2408ff028cc00",
-      "blockNumber": "24484611"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.2039"
-      },
-      "amount": "0.2039",
-      "usdValue": 402,
-      "timestamp": "2026-02-18T15:00:11.000Z",
-      "txHash": "0x70e60d9444d5610cefdcd5cb4ab2ba7065ba78e1f77d0d5e2b23c40b64fcf581",
-      "explorerUrl": "https://etherscan.io/tx/0x70e60d9444d5610cefdcd5cb4ab2ba7065ba78e1f77d0d5e2b23c40b64fcf581",
-      "from": "0x3f45a24ec8fcf1329df739c2cfe8bb5615b4d411",
-      "blockNumber": "24484476"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.4323"
-      },
-      "amount": "0.4323",
-      "usdValue": 852,
-      "timestamp": "2026-02-18T14:43:35.000Z",
-      "txHash": "0x49945b8a6bd3b01000bc191fd649620969130418a90ccfb07444d1ccd94ffeb7",
-      "explorerUrl": "https://etherscan.io/tx/0x49945b8a6bd3b01000bc191fd649620969130418a90ccfb07444d1ccd94ffeb7",
-      "from": "0x6bdf69a8fc21017188c9641fc8804604cc9999eb",
-      "blockNumber": "24484394"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "4.3000"
-      },
-      "amount": "4.3000",
-      "usdValue": 8475,
-      "timestamp": "2026-02-18T14:22:35.000Z",
-      "txHash": "0x05258db1fc9ea9ffff4f9bbb4757d83dac852f4b37803511474f968c68d56aa4",
-      "explorerUrl": "https://etherscan.io/tx/0x05258db1fc9ea9ffff4f9bbb4757d83dac852f4b37803511474f968c68d56aa4",
-      "from": "0x5bf9123dd298fd24ae52de60c5c15fd0e4dcba7c",
-      "blockNumber": "24484289"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "6.0000"
-      },
-      "amount": "6.0000",
-      "usdValue": 11825,
-      "timestamp": "2026-02-18T13:57:35.000Z",
-      "txHash": "0xd59b053e2403314d095c09f973aa3c0414abf4cd045fee43772d1626962f80c9",
-      "explorerUrl": "https://etherscan.io/tx/0xd59b053e2403314d095c09f973aa3c0414abf4cd045fee43772d1626962f80c9",
-      "from": "0xf9b64dc47dbe8c75f6ffc573cbc7599404bfe5a7",
-      "blockNumber": "24484166"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "1.2002"
-      },
-      "amount": "1.2002",
-      "usdValue": 2365,
-      "timestamp": "2026-02-18T13:47:35.000Z",
-      "txHash": "0xc04a1ec43bea135d339fd9295fcf533114978892280ed86a1f7773b6320a4a98",
-      "explorerUrl": "https://etherscan.io/tx/0xc04a1ec43bea135d339fd9295fcf533114978892280ed86a1f7773b6320a4a98",
-      "from": "0x331d4abdf61ebdea70650834b7df55ba9ca5a82f",
-      "blockNumber": "24484116"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.8000"
-      },
-      "amount": "0.8000",
-      "usdValue": 1577,
-      "timestamp": "2026-02-18T13:44:59.000Z",
-      "txHash": "0x3079adf472e50449cce5fec5da47021b554b47238efeac6a7b1826ca08cbe7c1",
-      "explorerUrl": "https://etherscan.io/tx/0x3079adf472e50449cce5fec5da47021b554b47238efeac6a7b1826ca08cbe7c1",
-      "from": "0x2a9a6bf65ab612e4bb3c5dc7478d45dc17ffd5de",
-      "blockNumber": "24484103"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0707"
-      },
-      "amount": "0.0707",
-      "usdValue": 139,
-      "timestamp": "2026-02-18T13:18:47.000Z",
-      "txHash": "0x0807fd3eda2f4c20b2d77c10810b00bade1cf95af630b33535382a6aa9dc4b30",
-      "explorerUrl": "https://etherscan.io/tx/0x0807fd3eda2f4c20b2d77c10810b00bade1cf95af630b33535382a6aa9dc4b30",
-      "from": "0xf338f64de06c471d009f71be40fef5f0acfdf211",
-      "blockNumber": "24483972"
-    },
-    {
-      "casino": {
-        "id": "betfury_eth",
-        "name": "BetFury",
-        "icon": "🔥",
-        "color": "#f97316"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.2029"
-      },
-      "amount": "0.2029",
-      "usdValue": 400,
-      "timestamp": "2026-02-18T13:13:11.000Z",
-      "txHash": "0x9e72e8c06d299ba0706bddc18b612c66e4bac910c341b4510c040a24c2e4f9f7",
-      "explorerUrl": "https://etherscan.io/tx/0x9e72e8c06d299ba0706bddc18b612c66e4bac910c341b4510c040a24c2e4f9f7",
-      "from": "0xd2a06adec4b886a65b849898f744290c72468d50",
-      "blockNumber": "24483944"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1050"
-      },
-      "amount": "0.1050",
-      "usdValue": 207,
-      "timestamp": "2026-02-18T13:01:35.000Z",
-      "txHash": "0x0644c3027c090a94ce115316927174869d323bcc4166a9fa7ab574cf023f8de5",
-      "explorerUrl": "https://etherscan.io/tx/0x0644c3027c090a94ce115316927174869d323bcc4166a9fa7ab574cf023f8de5",
-      "from": "0xc644689500b08ba0ab1a4972bf129955468b7bda",
-      "blockNumber": "24483886"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.3025"
-      },
-      "amount": "0.3025",
-      "usdValue": 596,
-      "timestamp": "2026-02-18T12:58:11.000Z",
-      "txHash": "0x96e936c5598c2536a78ffe9fd42c542b7a8890c89d6451dbe422c8eea8d6ae24",
-      "explorerUrl": "https://etherscan.io/tx/0x96e936c5598c2536a78ffe9fd42c542b7a8890c89d6451dbe422c8eea8d6ae24",
-      "from": "0x038ed400ed7f6fb8d9b2313e85b33c4e1bd631da",
-      "blockNumber": "24483869"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.4900"
-      },
-      "amount": "0.4900",
-      "usdValue": 966,
-      "timestamp": "2026-02-18T12:45:11.000Z",
-      "txHash": "0x401e1ab178c796c7e85644390b983a76a77ab4452a8c4aa020c96b3b1f92bed0",
-      "explorerUrl": "https://etherscan.io/tx/0x401e1ab178c796c7e85644390b983a76a77ab4452a8c4aa020c96b3b1f92bed0",
-      "from": "0xa816d5f2333817b0843eb85e01bba823885a913c",
-      "blockNumber": "24483804"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "1.1400"
-      },
-      "amount": "1.1400",
-      "usdValue": 2247,
-      "timestamp": "2026-02-18T12:43:59.000Z",
-      "txHash": "0xda31774e9e02ece3b99e04db6643b8ae821aa7bb8209c9aff6d1bf822f29ddc1",
-      "explorerUrl": "https://etherscan.io/tx/0xda31774e9e02ece3b99e04db6643b8ae821aa7bb8209c9aff6d1bf822f29ddc1",
-      "from": "0x55b05577303a419a163eab61069c3fd76d1c59bd",
-      "blockNumber": "24483798"
-    },
-    {
-      "casino": {
-        "id": "stake_eth",
-        "name": "Stake",
-        "icon": "💎",
-        "color": "#00e701"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.8500"
-      },
-      "amount": "0.8500",
-      "usdValue": 1675,
-      "timestamp": "2026-02-18T12:27:59.000Z",
-      "txHash": "0x46b7dca846d7fde5b57d2fa871a674fe47abb831e9eef82dc5d39539eaa9583c",
-      "explorerUrl": "https://etherscan.io/tx/0x46b7dca846d7fde5b57d2fa871a674fe47abb831e9eef82dc5d39539eaa9583c",
-      "from": "0x1e88e6ca9c94e619d6a1be3f451a428abfa38475",
-      "blockNumber": "24483718"
-    },
-    {
-      "casino": {
-        "id": "bitcasino_eth1",
-        "name": "Bitcasino.io",
-        "icon": "🎲",
-        "color": "#14b8a6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "2.2800"
-      },
-      "amount": "2.2800",
-      "usdValue": 4494,
-      "timestamp": "2026-02-18T11:52:23.000Z",
-      "txHash": "0x87a7a0e03b0c865c156da51cb42939bda5bc7cff6599543bbcc8cd723cb76c53",
-      "explorerUrl": "https://etherscan.io/tx/0x87a7a0e03b0c865c156da51cb42939bda5bc7cff6599543bbcc8cd723cb76c53",
-      "from": "0xec9d319abf8b2bbd23220869c5383dc2f66fa9a7",
-      "blockNumber": "24483540"
-    },
-    {
-      "casino": {
-        "id": "betfury_eth",
-        "name": "BetFury",
-        "icon": "🔥",
-        "color": "#f97316"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1208"
-      },
-      "amount": "0.1208",
-      "usdValue": 238,
-      "timestamp": "2026-02-18T10:48:35.000Z",
-      "txHash": "0x7d01f5510383890d2529bf272a92b33cab9456f3f3554ba3264dde8e5b57e4b4",
-      "explorerUrl": "https://etherscan.io/tx/0x7d01f5510383890d2529bf272a92b33cab9456f3f3554ba3264dde8e5b57e4b4",
-      "from": "0xb6517173df4277ab6d1ed985cfbc8c086aa6d08c",
-      "blockNumber": "24483222"
-    },
-    {
-      "casino": {
-        "id": "bitcasino_eth1",
-        "name": "Bitcasino.io",
-        "icon": "🎲",
-        "color": "#14b8a6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "3.7241"
-      },
-      "amount": "3.7241",
-      "usdValue": 7340,
-      "timestamp": "2026-02-18T10:27:11.000Z",
-      "txHash": "0x37b06d2f18a37e61bb819a5f3c3b89bdfb8546b0df97f843e684b567a909cc95",
-      "explorerUrl": "https://etherscan.io/tx/0x37b06d2f18a37e61bb819a5f3c3b89bdfb8546b0df97f843e684b567a909cc95",
-      "from": "0xec9d319abf8b2bbd23220869c5383dc2f66fa9a7",
-      "blockNumber": "24483116"
-    },
-    {
-      "casino": {
-        "id": "bitcasino_eth1",
-        "name": "Bitcasino.io",
-        "icon": "🎲",
-        "color": "#14b8a6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0745"
-      },
-      "amount": "0.0745",
-      "usdValue": 147,
-      "timestamp": "2026-02-18T10:26:35.000Z",
-      "txHash": "0x508c47df00e73d463e94586d3e24348c84df525efdb079892d0b8e361a5cde2f",
-      "explorerUrl": "https://etherscan.io/tx/0x508c47df00e73d463e94586d3e24348c84df525efdb079892d0b8e361a5cde2f",
-      "from": "0x7f1f411631c24688d7a2ff536a9beda5996f49f5",
-      "blockNumber": "24483113"
-    },
-    {
-      "casino": {
-        "id": "bitcasino_eth1",
-        "name": "Bitcasino.io",
-        "icon": "🎲",
-        "color": "#14b8a6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.1111"
-      },
-      "amount": "0.1111",
-      "usdValue": 219,
-      "timestamp": "2026-02-18T10:25:35.000Z",
-      "txHash": "0xd32aa4f057f46a9decc50e1b4626fcbe8efd7dcf421c497587148c3e50bbe472",
-      "explorerUrl": "https://etherscan.io/tx/0xd32aa4f057f46a9decc50e1b4626fcbe8efd7dcf421c497587148c3e50bbe472",
+      "amount": "0.6881",
+      "usdValue": 1430,
+      "timestamp": "2026-03-14T06:15:47.000Z",
+      "txHash": "0x17807b24a30104508e67fbfd98714567a4dfdc9d7d0b7eac4e1ad16999a981d1",
+      "etherscanUrl": "https://etherscan.io/tx/0x17807b24a30104508e67fbfd98714567a4dfdc9d7d0b7eac4e1ad16999a981d1",
       "from": "0x4d58eacb412be4c888fbc070f2ba8aa7ced2cb4e",
-      "blockNumber": "24483108"
+      "blockNumber": "24653867"
     },
     {
       "casino": {
-        "id": "shuffle_base",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "base",
-        "name": "Base",
-        "icon": "🔷",
-        "color": "#0052ff"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "2.8800"
-      },
-      "amount": "2.8800",
-      "usdValue": 5676,
-      "timestamp": "2026-02-18T08:39:11.000Z",
-      "txHash": "0x465229554ba985b1be8951644fc85ad1ab3d96d8526ce38f71090b16e7e7759b",
-      "explorerUrl": "https://basescan.org/tx/0x465229554ba985b1be8951644fc85ad1ab3d96d8526ce38f71090b16e7e7759b",
-      "from": "0x4ffa5da2ce2a938e82d0bd93b456043f385125a3",
-      "blockNumber": "42307302"
-    },
-    {
-      "casino": {
-        "id": "betfury_eth",
+        "id": "betfury",
         "name": "BetFury",
         "icon": "🔥",
-        "color": "#f97316"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
+        "color": "#dc2626"
       },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "0.0918"
+        "amount": "0.8459"
       },
-      "amount": "0.0918",
-      "usdValue": 181,
-      "timestamp": "2026-02-18T08:21:47.000Z",
-      "txHash": "0x8b26dbe324cc85aee135d178e3094ab44be8737d0ca7a35db01f24eca369557c",
-      "explorerUrl": "https://etherscan.io/tx/0x8b26dbe324cc85aee135d178e3094ab44be8737d0ca7a35db01f24eca369557c",
-      "from": "0x860caa59404b98ea0b0957c5683bb358f7c6c518",
-      "blockNumber": "24482493"
-    },
-    {
-      "casino": {
-        "id": "betfury_eth",
-        "name": "BetFury",
-        "icon": "🔥",
-        "color": "#f97316"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0958"
-      },
-      "amount": "0.0958",
-      "usdValue": 189,
-      "timestamp": "2026-02-18T08:21:35.000Z",
-      "txHash": "0xdf11a0502a3b4cbc8e41938f2882f5d650436cdf1b63b4e866c9447f5ad7dd68",
-      "explorerUrl": "https://etherscan.io/tx/0xdf11a0502a3b4cbc8e41938f2882f5d650436cdf1b63b4e866c9447f5ad7dd68",
-      "from": "0x39658a8ae7e818322f71c054b0ad11fb7e274589",
-      "blockNumber": "24482492"
-    },
-    {
-      "casino": {
-        "id": "shuffle_base",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "base",
-        "name": "Base",
-        "icon": "🔷",
-        "color": "#0052ff"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0837"
-      },
-      "amount": "0.0837",
-      "usdValue": 165,
-      "timestamp": "2026-02-18T07:57:39.000Z",
-      "txHash": "0x13282be2d4dfe04950ca54e5ab701867e6988c198238be5903a21c92c0151ded",
-      "explorerUrl": "https://basescan.org/tx/0x13282be2d4dfe04950ca54e5ab701867e6988c198238be5903a21c92c0151ded",
-      "from": "0xce28910a471ce91c10316258d94f3b90dcba4eaf",
-      "blockNumber": "42306056"
-    },
-    {
-      "casino": {
-        "id": "shuffle_base",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "base",
-        "name": "Base",
-        "icon": "🔷",
-        "color": "#0052ff"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0677"
-      },
-      "amount": "0.0677",
-      "usdValue": 133,
-      "timestamp": "2026-02-18T07:23:51.000Z",
-      "txHash": "0x05b4e19a0f3f720b02925caf7af6b6e0aea5851d501d1491fad3787012726b76",
-      "explorerUrl": "https://basescan.org/tx/0x05b4e19a0f3f720b02925caf7af6b6e0aea5851d501d1491fad3787012726b76",
-      "from": "0xce28910a471ce91c10316258d94f3b90dcba4eaf",
-      "blockNumber": "42305042"
-    },
-    {
-      "casino": {
-        "id": "betfury_eth",
-        "name": "BetFury",
-        "icon": "🔥",
-        "color": "#f97316"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0961"
-      },
-      "amount": "0.0961",
-      "usdValue": 189,
-      "timestamp": "2026-02-18T06:44:35.000Z",
-      "txHash": "0xe94c8b8ca98fa9a81a1a021e3d79d2f8a207d650e4328a242cf84eb56a9c6767",
-      "explorerUrl": "https://etherscan.io/tx/0xe94c8b8ca98fa9a81a1a021e3d79d2f8a207d650e4328a242cf84eb56a9c6767",
-      "from": "0x39658a8ae7e818322f71c054b0ad11fb7e274589",
-      "blockNumber": "24482007"
-    },
-    {
-      "casino": {
-        "id": "shuffle_base",
-        "name": "Shuffle",
-        "icon": "🔀",
-        "color": "#8b5cf6"
-      },
-      "chain": {
-        "id": "base",
-        "name": "Base",
-        "icon": "🔷",
-        "color": "#0052ff"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.3501"
-      },
-      "amount": "0.3501",
-      "usdValue": 690,
-      "timestamp": "2026-02-18T06:41:01.000Z",
-      "txHash": "0xe512c4f1884a0ffb24cf15d35f40e2e5fe1a6b6456f434095d2d4ca8f4f45e7a",
-      "explorerUrl": "https://basescan.org/tx/0xe512c4f1884a0ffb24cf15d35f40e2e5fe1a6b6456f434095d2d4ca8f4f45e7a",
-      "from": "0x262ea296bb075b44b82c113b5e08dc0a75696738",
-      "blockNumber": "42303757"
-    },
-    {
-      "casino": {
-        "id": "betfury_eth",
-        "name": "BetFury",
-        "icon": "🔥",
-        "color": "#f97316"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.0576"
-      },
-      "amount": "0.0576",
-      "usdValue": 113,
-      "timestamp": "2026-02-18T05:53:35.000Z",
-      "txHash": "0xb206b84de9adac53cca6a30e89d27d9b8fa11622caf82bd95fe0ebe5bdd3f2d5",
-      "explorerUrl": "https://etherscan.io/tx/0xb206b84de9adac53cca6a30e89d27d9b8fa11622caf82bd95fe0ebe5bdd3f2d5",
-      "from": "0xba61e54521e134af7981403029c6cef195222a77",
-      "blockNumber": "24481752"
-    },
-    {
-      "casino": {
-        "id": "betfury_eth",
-        "name": "BetFury",
-        "icon": "🔥",
-        "color": "#f97316"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "3.4967"
-      },
-      "amount": "3.4967",
-      "usdValue": 6892,
-      "timestamp": "2026-02-18T05:40:11.000Z",
-      "txHash": "0x17d082ffd495a337e7619d09db2bb32553da33b483cbfcaed440fbb8f9a55f5c",
-      "explorerUrl": "https://etherscan.io/tx/0x17d082ffd495a337e7619d09db2bb32553da33b483cbfcaed440fbb8f9a55f5c",
+      "amount": "0.8459",
+      "usdValue": 1758,
+      "timestamp": "2026-03-14T04:33:23.000Z",
+      "txHash": "0x85e5578b46e87d45a97bd2e83c8d49a5981c1623be25ff49b287bcc207aca6e2",
+      "etherscanUrl": "https://etherscan.io/tx/0x85e5578b46e87d45a97bd2e83c8d49a5981c1623be25ff49b287bcc207aca6e2",
       "from": "0x6963a0bd7e77b9a57327370267a8ee9f275386c4",
-      "blockNumber": "24481685"
+      "blockNumber": "24653356"
     },
     {
       "casino": {
-        "id": "bitcasino_eth1",
-        "name": "Bitcasino.io",
-        "icon": "🎲",
-        "color": "#14b8a6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
+        "id": "bitcasino_3",
+        "name": "Bitcasino",
+        "icon": "🅱️",
+        "color": "#f97316"
       },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "0.1307"
+        "amount": "1.0692"
       },
-      "amount": "0.1307",
-      "usdValue": 258,
-      "timestamp": "2026-02-18T00:35:47.000Z",
-      "txHash": "0x8faed5f26165d44256b2c1ce697b1fa45b8f22f9ce560f0a5dac8b07673473d4",
-      "explorerUrl": "https://etherscan.io/tx/0x8faed5f26165d44256b2c1ce697b1fa45b8f22f9ce560f0a5dac8b07673473d4",
-      "from": "0xb6d8116a2f7c9539cd28aeeca566e6c94929987f",
-      "blockNumber": "24480172"
-    },
-    {
-      "casino": {
-        "id": "bitcasino_eth1",
-        "name": "Bitcasino.io",
-        "icon": "🎲",
-        "color": "#14b8a6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
-      },
-      "crypto": {
-        "symbol": "ETH",
-        "icon": "💎",
-        "amount": "0.2785"
-      },
-      "amount": "0.2785",
-      "usdValue": 549,
-      "timestamp": "2026-02-18T00:34:23.000Z",
-      "txHash": "0x517f21ceb7ac0ae001cba15f1f45a347cd056971cb49ca01497d52067f4f42d0",
-      "explorerUrl": "https://etherscan.io/tx/0x517f21ceb7ac0ae001cba15f1f45a347cd056971cb49ca01497d52067f4f42d0",
+      "amount": "1.0692",
+      "usdValue": 2222,
+      "timestamp": "2026-03-13T23:31:11.000Z",
+      "txHash": "0xac4a861317c38e07bdbe62580e607ab005ec4e03db26919c36fc92f1284eda18",
+      "etherscanUrl": "https://etherscan.io/tx/0xac4a861317c38e07bdbe62580e607ab005ec4e03db26919c36fc92f1284eda18",
       "from": "0x183f433f14dad7bb0153f0c19fae85dfc1e1418a",
-      "blockNumber": "24480165"
+      "blockNumber": "24651848"
     },
     {
       "casino": {
-        "id": "bitcasino_eth1",
-        "name": "Bitcasino.io",
+        "id": "rollbit_ens",
+        "name": "Rollbit",
         "icon": "🎲",
-        "color": "#14b8a6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
+        "color": "#3b82f6"
       },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "0.0695"
+        "amount": "320.0000"
       },
-      "amount": "0.0695",
-      "usdValue": 137,
-      "timestamp": "2026-02-18T00:08:47.000Z",
-      "txHash": "0x86c3a2b1bf160724b692291f807d623c529bb9448e9bbf502c066e7c2d7cbcbe",
-      "explorerUrl": "https://etherscan.io/tx/0x86c3a2b1bf160724b692291f807d623c529bb9448e9bbf502c066e7c2d7cbcbe",
-      "from": "0x183f433f14dad7bb0153f0c19fae85dfc1e1418a",
-      "blockNumber": "24480037"
+      "amount": "320.0000",
+      "usdValue": 665094,
+      "timestamp": "2025-12-05T07:57:47.000Z",
+      "txHash": "0xc9ecee361eafb7d06dc7f013900a7deeed0c8ad2143648ac0e4100b230418485",
+      "etherscanUrl": "https://etherscan.io/tx/0xc9ecee361eafb7d06dc7f013900a7deeed0c8ad2143648ac0e4100b230418485",
+      "from": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "blockNumber": "23945422"
     },
     {
       "casino": {
-        "id": "bitcasino_eth1",
-        "name": "Bitcasino.io",
+        "id": "rollbit_ens",
+        "name": "Rollbit",
         "icon": "🎲",
-        "color": "#14b8a6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
+        "color": "#3b82f6"
       },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "0.1227"
+        "amount": "333.0000"
       },
-      "amount": "0.1227",
-      "usdValue": 242,
-      "timestamp": "2026-02-17T23:37:23.000Z",
-      "txHash": "0xb50e98f9b7e0f8d1f844534b8794f65fd8e8b9666bad72f2ab0e25a8d52f03cb",
-      "explorerUrl": "https://etherscan.io/tx/0xb50e98f9b7e0f8d1f844534b8794f65fd8e8b9666bad72f2ab0e25a8d52f03cb",
-      "from": "0x4dd31241adbabc37e7a7814d0a015fe4e4543f8c",
-      "blockNumber": "24479882"
+      "amount": "333.0000",
+      "usdValue": 692114,
+      "timestamp": "2025-11-28T00:53:59.000Z",
+      "txHash": "0x925ee2d2d1f6a1fe4d8591fdc905c8f8c075863a0a2b91d348c54aa861b43e70",
+      "etherscanUrl": "https://etherscan.io/tx/0x925ee2d2d1f6a1fe4d8591fdc905c8f8c075863a0a2b91d348c54aa861b43e70",
+      "from": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "blockNumber": "23893738"
     },
     {
       "casino": {
-        "id": "bitcasino_eth1",
-        "name": "Bitcasino.io",
-        "icon": "🎲",
-        "color": "#14b8a6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
+        "id": "gamdom",
+        "name": "Gamdom",
+        "icon": "🎯",
+        "color": "#8b5cf6"
       },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "0.1003"
+        "amount": "3.1392"
       },
-      "amount": "0.1003",
-      "usdValue": 198,
-      "timestamp": "2026-02-17T21:59:47.000Z",
-      "txHash": "0x065ea218905b0f4b0c25a3c230790ceb521c017c760192e2703ff9b9c1e794c5",
-      "explorerUrl": "https://etherscan.io/tx/0x065ea218905b0f4b0c25a3c230790ceb521c017c760192e2703ff9b9c1e794c5",
-      "from": "0x7f1f411631c24688d7a2ff536a9beda5996f49f5",
-      "blockNumber": "24479395"
+      "amount": "3.1392",
+      "usdValue": 6525,
+      "timestamp": "2025-07-21T11:08:35.000Z",
+      "txHash": "0x7a461d55d4a5340a5d7e2fd1091e5eab0ab4431aaeea76df47ad47e74300066f",
+      "etherscanUrl": "https://etherscan.io/tx/0x7a461d55d4a5340a5d7e2fd1091e5eab0ab4431aaeea76df47ad47e74300066f",
+      "from": "0x2f13d388b85e0ecd32e7c3d7f36d1053354ef104",
+      "blockNumber": "22967171"
     },
     {
       "casino": {
-        "id": "bitcasino_eth1",
-        "name": "Bitcasino.io",
-        "icon": "🎲",
-        "color": "#14b8a6"
-      },
-      "chain": {
-        "id": "eth",
-        "name": "Ethereum",
-        "icon": "⟠",
-        "color": "#627eea"
+        "id": "csgo500",
+        "name": "CSGO500",
+        "icon": "🎮",
+        "color": "#22c55e"
       },
       "crypto": {
         "symbol": "ETH",
         "icon": "💎",
-        "amount": "0.1004"
+        "amount": "1.1589"
       },
-      "amount": "0.1004",
-      "usdValue": 198,
-      "timestamp": "2026-02-17T20:57:35.000Z",
-      "txHash": "0x3f720998e345cde858e78f4b731005ae2e472cb1a8af9b7a4d9517a3d5ca5cf2",
-      "explorerUrl": "https://etherscan.io/tx/0x3f720998e345cde858e78f4b731005ae2e472cb1a8af9b7a4d9517a3d5ca5cf2",
-      "from": "0x67181b25792f06004564d7d501e32bb3bf1b8fc4",
-      "blockNumber": "24479085"
+      "amount": "1.1589",
+      "usdValue": 2409,
+      "timestamp": "2022-04-08T08:05:23.000Z",
+      "txHash": "0xe96ab086b201bad7b9209f276fe09fcdf0d4e55298909736f4d8a71b27ea9168",
+      "etherscanUrl": "https://etherscan.io/tx/0xe96ab086b201bad7b9209f276fe09fcdf0d4e55298909736f4d8a71b27ea9168",
+      "from": "0x1d5650fe57f99638fa8cc75a44fe5446c762a6a9",
+      "blockNumber": "14543952"
+    },
+    {
+      "casino": {
+        "id": "bitcasino_2",
+        "name": "Bitcasino",
+        "icon": "🅱️",
+        "color": "#f97316"
+      },
+      "crypto": {
+        "symbol": "ETH",
+        "icon": "💎",
+        "amount": "0.5508"
+      },
+      "amount": "0.5508",
+      "usdValue": 1145,
+      "timestamp": "2021-08-05T07:04:22.000Z",
+      "txHash": "0x0601d615bf125b9806d0d0226c75fc2a8982eb7b7fcf54f782c54780d750305b",
+      "etherscanUrl": "https://etherscan.io/tx/0x0601d615bf125b9806d0d0226c75fc2a8982eb7b7fcf54f782c54780d750305b",
+      "from": "0x8fb7f17e4cfd81f65ca57c4000c0db96791719c3",
+      "blockNumber": "12963559"
+    },
+    {
+      "casino": {
+        "id": "bitcasino_2",
+        "name": "Bitcasino",
+        "icon": "🅱️",
+        "color": "#f97316"
+      },
+      "crypto": {
+        "symbol": "ETH",
+        "icon": "💎",
+        "amount": "0.6992"
+      },
+      "amount": "0.6992",
+      "usdValue": 1453,
+      "timestamp": "2021-08-05T06:56:51.000Z",
+      "txHash": "0x4c9779812e903a39eab6b46742c2fcd9e265fffe5ca51d324645ad083283bdb3",
+      "etherscanUrl": "https://etherscan.io/tx/0x4c9779812e903a39eab6b46742c2fcd9e265fffe5ca51d324645ad083283bdb3",
+      "from": "0x1af1c359a9ec0f562af50938688863d5f779f7dc",
+      "blockNumber": "12963524"
     }
   ],
   "stats": {
-    "totalBets": 81,
-    "chains": {
-      "eth": {
-        "deposits": 72,
-        "volume": 219460
-      },
-      "bsc": {
-        "deposits": 5,
-        "volume": 2832
-      },
-      "polygon": {
-        "deposits": 0,
-        "volume": 0
-      },
-      "arbitrum": {
-        "deposits": 0,
-        "volume": 0
-      },
-      "base": {
-        "deposits": 4,
-        "volume": 6664
-      }
-    },
+    "totalBets": 14,
     "casinos": [
-      "Shuffle",
       "Stake",
+      "Shuffle",
       "Rollbit",
+      "Bitcasino",
       "BetFury",
-      "Bitcasino.io"
+      "Gamdom",
+      "CSGO500"
     ],
-    "totalVolume": 228956
-  },
-  "supportedChains": [
-    {
-      "id": "eth",
-      "name": "Ethereum",
-      "icon": "⟠"
-    },
-    {
-      "id": "bsc",
-      "name": "BSC",
-      "icon": "🔶"
-    },
-    {
-      "id": "polygon",
-      "name": "Polygon",
-      "icon": "🟣"
-    },
-    {
-      "id": "arbitrum",
-      "name": "Arbitrum",
-      "icon": "🔵"
-    },
-    {
-      "id": "base",
-      "name": "Base",
-      "icon": "🔷"
-    }
-  ]
+    "totalVolume": 1384131
+  }
 }

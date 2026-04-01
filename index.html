@@ -126,18 +126,16 @@
   <!-- Header -->
 
     <nav class="t-nav">
-    <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
-    <div class="t-nav-links">
-      <a href="/analytics.html" style="color:#8b5cf6; font-weight:800;">📊 Dashboard</a>
-      <a href="/terminal.html">Terminal</a>
-      <a href="/events-terminal.html">Events</a>
-      <a href="/market-intel.html">Market Intel</a>
-      <a href="/calculators.html">Tools</a>
-      <a href="/communities.html">Communities</a>
-      <a href="/blog/index.html">Blog</a>
-      <a href="/reviews/index.html" class="t-nav-hide-mobile">Reviews</a>
-    </div>
-  </nav>
+  <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
+  <div class="t-nav-links">
+    <a href="/reviews/" class="t-nav-primary">⭐ Reviews</a>
+    <a href="/analytics.html">📊 Dashboard</a>
+    <a href="/casino-wallet-addresses.html">🔍 Wallets</a>
+    <a href="/market-intel.html">🛰️ Market Intel</a>
+    <a href="/blog/">📖 Guides</a>
+    <a href="/calculators.html" class="t-nav-hide-mobile">🧮 Tools</a>
+  </div>
+</nav>
 
   <!-- Hero -->
   <section class="hero">
@@ -254,167 +252,6 @@
     </div>
   </section>
 
-  <!-- Terminal Dashboard -->
-  <section class="terminal">
-    <div class="container">
-      <div class="terminal-header">
-        <span>📊 MARKET INTELLIGENCE</span>
-      </div>
-
-      <!-- Influencer Leaderboard (Prominent) -->
-      <div class="terminal-section">
-        <h3 class="terminal-section-title">🎮 Crypto Casino Influencers</h3>
-        <div class="influencer-grid">
-          <div class="influencer-card rank-1">
-            <div class="influencer-rank">#1</div>
-            <div class="influencer-info">
-              <div class="influencer-name">Roshtein</div>
-              <div class="influencer-platform">Kick • 1.2M followers</div>
-              <div class="influencer-stats">Avg 50k viewers • Slots focus</div>
-            </div>
-            <a href="https://kick.com/roshtein" target="_blank" class="influencer-link">Watch →</a>
-          </div>
-
-          <div class="influencer-card rank-2">
-            <div class="influencer-rank">#2</div>
-            <div class="influencer-info">
-              <div class="influencer-name">Trainwreckstv</div>
-              <div class="influencer-platform">Kick • 890k followers</div>
-              <div class="influencer-stats">Whale spins • High stakes</div>
-            </div>
-            <a href="https://kick.com/trainwreckstv" target="_blank" class="influencer-link">Watch →</a>
-          </div>
-
-          <div class="influencer-card rank-3">
-            <div class="influencer-rank">#3</div>
-            <div class="influencer-info">
-              <div class="influencer-name">ClassyBeef</div>
-              <div class="influencer-platform">Kick • 420k followers</div>
-              <div class="influencer-stats">Mid-tier • Consistent</div>
-            </div>
-            <a href="https://kick.com/classybeef" target="_blank" class="influencer-link">Watch →</a>
-          </div>
-
-          <div class="influencer-card">
-            <div class="influencer-rank">#4</div>
-            <div class="influencer-info">
-              <div class="influencer-name">Xposed</div>
-              <div class="influencer-platform">Kick • 380k followers</div>
-              <div class="influencer-stats">Daily streams • High energy</div>
-            </div>
-            <a href="https://kick.com/xposed" target="_blank" class="influencer-link">Watch →</a>
-          </div>
-
-          <div class="influencer-card">
-            <div class="influencer-rank">#5</div>
-            <div class="influencer-info">
-              <div class="influencer-name">DeuceAce</div>
-              <div class="influencer-platform">Kick • 290k followers</div>
-              <div class="influencer-stats">Bonus hunting • Strategy</div>
-            </div>
-            <a href="https://kick.com/deuceace" target="_blank" class="influencer-link">Watch →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Live Data Panels -->
-      <div class="terminal-panels">
-        <!-- Live Deposit Feed -->
-        <div class="terminal-panel">
-          <h4 class="panel-title">⚡ LIVE DEPOSITS</h4>
-          <div class="deposit-feed" id="deposit-feed">
-            <div class="deposit-item">
-              <span class="deposit-time">23:43</span>
-              <span class="deposit-casino">Bitcasino</span>
-              <span class="deposit-chain">ETH</span>
-              <span class="deposit-amount">$130</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Whale Watch -->
-        <div class="terminal-panel">
-          <h4 class="panel-title">🐋 WHALE WATCH (>$50k)</h4>
-          <div class="whale-feed" id="whale-feed">
-            <div class="whale-item">
-              <span class="whale-casino">Duelbits</span>
-              <span class="whale-amount">$775,574</span>
-              <span class="whale-time">Feb 15</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Casino Performance -->
-        <div class="terminal-panel">
-          <h4 class="panel-title">📈 TOP VOLUME (24H)</h4>
-          <div class="performance-list" id="performance-list">
-            <div class="performance-item">
-              <span class="perf-rank">1</span>
-              <span class="perf-casino">Rainbet</span>
-              <span class="perf-volume">Loading...</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gambler P&L Widget -->
-  <section class="terminal" style="padding-top: 0;">
-    <div class="container">
-      <div class="terminal-header">
-        <span>💀 ON-CHAIN GAMBLER P&L — <span style="color:#ef4444; font-size:0.85em;">The House Always Wins</span></span>
-        <div style="display:flex; gap:10px; align-items:center;">
-          <a href="/analytics.html" style="color: #8b5cf6; font-size: 0.8rem; text-decoration: none; font-weight:600;">📊 Full Analytics →</a>
-          <a href="/gambler-pnl.html" style="color: #c9a96e; font-size: 0.8rem; text-decoration: none;">View P&L dashboard →</a>
-        </div>
-      </div>
-      <div id="pnl-widget" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; margin-bottom: 1rem;">
-        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
-          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Gamblers Tracked</div>
-          <div id="pnl-gamblers" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem;">—</div>
-        </div>
-        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
-          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Total Deposited</div>
-          <div id="pnl-deposited" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem;">—</div>
-        </div>
-        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
-          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Total Withdrawn</div>
-          <div id="pnl-withdrawn" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem;">—</div>
-        </div>
-        <div style="background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(239,68,68,0.25); border-radius: 12px; padding: 1rem;">
-          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Net Gambler Loss</div>
-          <div id="pnl-loss" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem; color: #ef4444;">—</div>
-        </div>
-        <div style="background: linear-gradient(135deg, rgba(201,169,110,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(201,169,110,0.25); border-radius: 12px; padding: 1rem;">
-          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">In Profit</div>
-          <div id="pnl-winners" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem; color: #c9a96e;">—</div>
-        </div>
-        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
-          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Biggest Loss</div>
-          <div id="pnl-biggest" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem; color: #ef4444;">—</div>
-        </div>
-      </div>
-      <!-- Top 5 biggest losers mini-table -->
-      <div style="overflow-x: auto; border-radius: 10px; border: 1px solid rgba(139,92,246,0.15); background: rgba(15,15,15,0.6);">
-        <table style="width: 100%; border-collapse: collapse; min-width: 500px; font-size: 0.85rem;">
-          <thead>
-            <tr style="border-bottom: 1px solid rgba(148,163,184,0.15);">
-              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Wallet</th>
-              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Deposited</th>
-              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Withdrawn</th>
-              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Net P&L</th>
-            </tr>
-          </thead>
-          <tbody id="pnl-top-losers"></tbody>
-        </table>
-      </div>
-      <div style="text-align: center; margin-top: 1rem;">
-        <a href="/gambler-pnl.html" style="display: inline-block; padding: 0.6rem 1.5rem; background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4); border-radius: 8px; color: #c9a96e; text-decoration: none; font-weight: 600; font-size: 0.9rem;">View Full P&L Dashboard →</a>
-      </div>
-    </div>
-  </section>
-
   <!-- Trust / Dashboard Bridge Section -->
   <section style="padding: 2.5rem 0 1.5rem; background: linear-gradient(180deg, rgba(139,92,246,0.06) 0%, transparent 100%);">
     <div class="container">
@@ -439,6 +276,14 @@
       </div>
     </div>
   </section>
+
+  <!-- Featured Reviews CTA -->
+  <section style="padding: 1.5rem 0 0.5rem;">
+    <div class="container" style="text-align:center;">
+      <a href="/reviews/" style="display:inline-flex; align-items:center; gap:8px; padding:0.8rem 2rem; background:linear-gradient(135deg,#c9a96e,#b8860b); border-radius:12px; color:#fff; text-decoration:none; font-weight:800; font-size:1rem; box-shadow: 0 4px 20px rgba(201,169,110,0.35); transition:transform 0.15s;">⭐ Read Full Casino Reviews <span style="font-size:1.2rem;">→</span></a>
+    </div>
+  </section>
+
 
   <!-- Filters -->
   <section class="filters" id="casinos">
@@ -1317,6 +1162,167 @@
           <li>✗ Platforms that freeze accounts</li>
           <li>✗ Hidden terms and conditions</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terminal Dashboard -->
+  <section class="terminal">
+    <div class="container">
+      <div class="terminal-header">
+        <span>📊 MARKET INTELLIGENCE</span>
+      </div>
+
+      <!-- Influencer Leaderboard (Prominent) -->
+      <div class="terminal-section">
+        <h3 class="terminal-section-title">🎮 Crypto Casino Influencers</h3>
+        <div class="influencer-grid">
+          <div class="influencer-card rank-1">
+            <div class="influencer-rank">#1</div>
+            <div class="influencer-info">
+              <div class="influencer-name">Roshtein</div>
+              <div class="influencer-platform">Kick • 1.2M followers</div>
+              <div class="influencer-stats">Avg 50k viewers • Slots focus</div>
+            </div>
+            <a href="https://kick.com/roshtein" target="_blank" class="influencer-link">Watch →</a>
+          </div>
+
+          <div class="influencer-card rank-2">
+            <div class="influencer-rank">#2</div>
+            <div class="influencer-info">
+              <div class="influencer-name">Trainwreckstv</div>
+              <div class="influencer-platform">Kick • 890k followers</div>
+              <div class="influencer-stats">Whale spins • High stakes</div>
+            </div>
+            <a href="https://kick.com/trainwreckstv" target="_blank" class="influencer-link">Watch →</a>
+          </div>
+
+          <div class="influencer-card rank-3">
+            <div class="influencer-rank">#3</div>
+            <div class="influencer-info">
+              <div class="influencer-name">ClassyBeef</div>
+              <div class="influencer-platform">Kick • 420k followers</div>
+              <div class="influencer-stats">Mid-tier • Consistent</div>
+            </div>
+            <a href="https://kick.com/classybeef" target="_blank" class="influencer-link">Watch →</a>
+          </div>
+
+          <div class="influencer-card">
+            <div class="influencer-rank">#4</div>
+            <div class="influencer-info">
+              <div class="influencer-name">Xposed</div>
+              <div class="influencer-platform">Kick • 380k followers</div>
+              <div class="influencer-stats">Daily streams • High energy</div>
+            </div>
+            <a href="https://kick.com/xposed" target="_blank" class="influencer-link">Watch →</a>
+          </div>
+
+          <div class="influencer-card">
+            <div class="influencer-rank">#5</div>
+            <div class="influencer-info">
+              <div class="influencer-name">DeuceAce</div>
+              <div class="influencer-platform">Kick • 290k followers</div>
+              <div class="influencer-stats">Bonus hunting • Strategy</div>
+            </div>
+            <a href="https://kick.com/deuceace" target="_blank" class="influencer-link">Watch →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Data Panels -->
+      <div class="terminal-panels">
+        <!-- Live Deposit Feed -->
+        <div class="terminal-panel">
+          <h4 class="panel-title">⚡ LIVE DEPOSITS</h4>
+          <div class="deposit-feed" id="deposit-feed">
+            <div class="deposit-item">
+              <span class="deposit-time">23:43</span>
+              <span class="deposit-casino">Bitcasino</span>
+              <span class="deposit-chain">ETH</span>
+              <span class="deposit-amount">$130</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Whale Watch -->
+        <div class="terminal-panel">
+          <h4 class="panel-title">🐋 WHALE WATCH (>$50k)</h4>
+          <div class="whale-feed" id="whale-feed">
+            <div class="whale-item">
+              <span class="whale-casino">Duelbits</span>
+              <span class="whale-amount">$775,574</span>
+              <span class="whale-time">Feb 15</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Casino Performance -->
+        <div class="terminal-panel">
+          <h4 class="panel-title">📈 TOP VOLUME (24H)</h4>
+          <div class="performance-list" id="performance-list">
+            <div class="performance-item">
+              <span class="perf-rank">1</span>
+              <span class="perf-casino">Rainbet</span>
+              <span class="perf-volume">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gambler P&L Widget -->
+  <section class="terminal" style="padding-top: 0;">
+    <div class="container">
+      <div class="terminal-header">
+        <span>💀 ON-CHAIN GAMBLER P&L — <span style="color:#ef4444; font-size:0.85em;">The House Always Wins</span></span>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <a href="/analytics.html" style="color: #8b5cf6; font-size: 0.8rem; text-decoration: none; font-weight:600;">📊 Full Analytics →</a>
+          <a href="/gambler-pnl.html" style="color: #c9a96e; font-size: 0.8rem; text-decoration: none;">View P&L dashboard →</a>
+        </div>
+      </div>
+      <div id="pnl-widget" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; margin-bottom: 1rem;">
+        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Gamblers Tracked</div>
+          <div id="pnl-gamblers" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem;">—</div>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Total Deposited</div>
+          <div id="pnl-deposited" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem;">—</div>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Total Withdrawn</div>
+          <div id="pnl-withdrawn" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem;">—</div>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(239,68,68,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Net Gambler Loss</div>
+          <div id="pnl-loss" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem; color: #ef4444;">—</div>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(201,169,110,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(201,169,110,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">In Profit</div>
+          <div id="pnl-winners" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem; color: #c9a96e;">—</div>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(15,15,15,0.8)); border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;">Biggest Loss</div>
+          <div id="pnl-biggest" style="font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem; color: #ef4444;">—</div>
+        </div>
+      </div>
+      <!-- Top 5 biggest losers mini-table -->
+      <div style="overflow-x: auto; border-radius: 10px; border: 1px solid rgba(139,92,246,0.15); background: rgba(15,15,15,0.6);">
+        <table style="width: 100%; border-collapse: collapse; min-width: 500px; font-size: 0.85rem;">
+          <thead>
+            <tr style="border-bottom: 1px solid rgba(148,163,184,0.15);">
+              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Wallet</th>
+              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Deposited</th>
+              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Withdrawn</th>
+              <th style="padding: 0.7rem 1rem; text-align: left; color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;">Net P&L</th>
+            </tr>
+          </thead>
+          <tbody id="pnl-top-losers"></tbody>
+        </table>
+      </div>
+      <div style="text-align: center; margin-top: 1rem;">
+        <a href="/gambler-pnl.html" style="display: inline-block; padding: 0.6rem 1.5rem; background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4); border-radius: 8px; color: #c9a96e; text-decoration: none; font-weight: 600; font-size: 0.9rem;">View Full P&L Dashboard →</a>
       </div>
     </div>
   </section>

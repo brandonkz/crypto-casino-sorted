@@ -100,6 +100,13 @@ a:hover { color: #69f0ae; }
 }
 .t-nav-links a:hover { color: var(--t-green); }
 .t-nav-links a.active { color: var(--t-green); }
+.t-nav-links a.t-nav-primary {
+  color: #ffc400;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+.t-nav-links a.t-nav-primary:hover { color: #ffe082; }
 .t-nav-live {
   display: flex;
   align-items: center;

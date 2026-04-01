@@ -1,0 +1,15 @@
+{
+  "date": "2026-03-31T04:22:39.508Z",
+  "tweets": [
+    {
+      "label": "🐋 NEW WHALE — 0xaf67...0711",
+      "text": "🐋 Whale alert.\n\n$10,853 just deposited into Chips.gg.\n\nWallet: 0xaf67...0711\nTx: etherscan.io/tx/0x7ddbb49a...\n\nI'll be tracking this wallet. Let's see if any of it comes back.",
+      "type": "new_whale"
+    },
+    {
+      "label": "📊 UPDATE — 0xaf67...0711",
+      "text": "Update on the $10,853 Chips.gg whale (0xaf67...0711):\n\nDay 0 since deposit.\nDeposited: $10,853\nWithdrawn: $0\nNet: -$10,853\n\nStill $0 back. The blockchain remembers.",
+      "type": "update"
+    }
+  ]
+}
