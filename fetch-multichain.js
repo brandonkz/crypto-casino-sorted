@@ -85,6 +85,51 @@ function escapeCSV(value) {
   return value;
 }
 
+/**
+ * Build a set of all known wallet addresses for each casino.
+ * Used to filter out internal wallet-to-wallet transfers that aren't real user deposits.
+ */
+function buildCasinoInternalAddresses() {
+  const env = process.env;
+  const map = {}; // casino name (lowercase) → Set of lowercase addresses
+
+  // Gather every env var that maps to a casino wallet
+  const prefixes = {
+    'roobet': ['ROOBET_HOT_WALLET', 'ROOBET_HOT_WALLET_2', 'ROOBET_BASE_WALLET_1', 'ROOBET_BASE_WALLET_2', 'ROOBET_BSC_WALLET', 'ROOBET_POLYGON_WALLET_1', 'ROOBET_POLYGON_WALLET_2'],
+    'stake': ['STAKE_WALLET_1', 'STAKE_WALLET_2', 'STAKE_WALLET_3', 'STAKE_WALLET_4', 'STAKE_WALLET_11', 'STAKE_BSC_WALLET', 'STAKE_BSC_WALLET_2', 'STAKE_POLYGON_WALLET', 'STAKE_POLYGON_WALLET_2', 'STAKE_ARB_WALLET', 'STAKE_BASE_WALLET', 'STAKE_BASE_WALLET_1', 'STAKE_BASE_WALLET_2', 'STAKE_BASE_WALLET_3'],
+    'rollbit': ['ROLLBIT_HOT_WALLET', 'ROLLBIT_HOT_WALLET_2', 'ROLLBIT_ENS', 'ROLLBIT_TOKEN_WALLET', 'ROLLBIT_BSC_WALLET', 'ROLLBIT_BSC_WALLET_2', 'ROLLBIT_BSC_WALLET_3', 'ROLLBIT_BASE_WALLET_1', 'ROLLBIT_BASE_WALLET_2', 'ROLLBIT_POLYGON_WALLET_1', 'ROLLBIT_POLYGON_WALLET_2', 'ROLLBIT_POLYGON_WALLET_3', 'ROLLBIT_OP_WALLET'],
+    'bc.game': ['BCGAME_HOT_WALLET_1', 'BCGAME_HOT_WALLET_2', 'BCGAME_HOT_WALLET_3', 'BCGAME_HOT_WALLET_4', 'BCGAME_HOT_WALLET_5', 'BCGAME_HOT_WALLET_6', 'BCGAME_WALLET_3', 'BCGAME_BASE_WALLET', 'BCGAME_ARB_WALLET', 'BCGAME_BSC_WALLET', 'BCGAME_POLYGON_WALLET', 'BCGAME_OP_WALLET', 'BCGAME_AVAX_WALLET'],
+    'duelbits': ['DUELBITS_HOT_WALLET', 'DUELBITS_BASE_WALLET', 'DUELBITS_BSC_WALLET', 'DUELBITS_POLYGON_WALLET'],
+    'rainbet': ['RAINBET_WALLET', 'RAINBET_BSC_WALLET', 'RAINBET_POLYGON_WALLET'],
+    'gamdom': ['GAMDOM_HOT_WALLET', 'GAMDOM_HOT_WALLET_2', 'GAMDOM_BASE_WALLET', 'GAMDOM_BSC_WALLET', 'GAMDOM_POLYGON_WALLET'],
+    'bitcasino': ['BITCASINO_HOT_WALLET', 'BITCASINO_WALLET_2', 'BITCASINO_WALLET_3', 'BITCASINO_WALLET_4', 'BITCASINO_WALLET_5', 'BITCASINO_WALLET_6'],
+    'shuffle': ['SHUFFLE_ETH_WALLET', 'SHUFFLE_GAS_WALLET', 'SHUFFLE_BSC_WALLET', 'SHUFFLE_ARB_WALLET', 'SHUFFLE_BASE_WALLET', 'SHUFFLE_POLYGON_WALLET', 'SHUFFLE_AVAX_WALLET'],
+    'betfury': ['BETFURY_ETH_WALLET', 'BETFURY_BASE_WALLET', 'BETFURY_ARB_WALLET', 'BETFURY_BSC_WALLET', 'BETFURY_POLYGON_WALLET', 'BETFURY_OP_WALLET', 'BETFURY_AVAX_WALLET', 'BETFURY_BASE_WALLET_2'],
+    '500 casino': ['CASINO500_ETH_WALLET', 'CASINO500_ETH_WALLET_2'],
+    'csgo500': ['CSGO500_ETH_WALLET'],
+    'metawin': ['METAWIN_ETH_WALLET', 'METAWIN_BASE_WALLET', 'METAWIN_ARB_WALLET', 'METAWIN_BSC_WALLET', 'METAWIN_POLYGON_WALLET'],
+    'cloudbet': ['CLOUDBET_ETH_WALLET', 'CLOUDBET_BASE_WALLET', 'CLOUDBET_ARB_WALLET', 'CLOUDBET_BSC_WALLET', 'CLOUDBET_POLYGON_WALLET', 'CLOUDBET_AVAX_WALLET'],
+    'wolfbet': ['WOLFBET_ETH_WALLET', 'WOLFBET_BASE_WALLET', 'WOLFBET_BSC_WALLET'],
+  };
+
+  // Also include AlphaPo (shared payment processor)
+  const alphapoAddr = env.ALPHAPO_ETH_WALLET;
+
+  for (const [casino, envKeys] of Object.entries(prefixes)) {
+    const addrs = new Set();
+    for (const key of envKeys) {
+      const addr = env[key];
+      if (addr) addrs.add(addr.toLowerCase());
+    }
+    // AlphaPo processes for multiple casinos — don't exclude it globally,
+    // but if it sends to a casino wallet that's still a processor transfer, not a user deposit.
+    // For now we only exclude same-casino wallets.
+    map[casino] = addrs;
+  }
+
+  return map;
+}
+
 function buildCasinoWallets() {
   return {
     ethereum: [
@@ -188,9 +233,29 @@ async function getEvmTransactions({ chainId, address, startBlock }) {
   return data.result;
 }
 
+// Module-level cache so we only build once per run
+let _internalAddresses = null;
+function getInternalAddresses() {
+  if (!_internalAddresses) _internalAddresses = buildCasinoInternalAddresses();
+  return _internalAddresses;
+}
+
 function buildEvmDeposits({ chain, address, label, txs }) {
+  const internalMap = getInternalAddresses();
+  // Resolve the casino name from the label (e.g. "Roobet", "Stake 4" → "stake")
+  const casinoKey = (label.split(/\s+\d/)[0] || label).toLowerCase().trim();
+  const ownAddresses = internalMap[casinoKey] || new Set();
+
   return txs
-    .filter(tx => tx.to && tx.to.toLowerCase() === address.toLowerCase() && tx.value !== '0')
+    .filter(tx => {
+      if (!tx.to || tx.to.toLowerCase() !== address.toLowerCase()) return false;
+      if (tx.value === '0') return false;
+      // CRITICAL: exclude internal wallet-to-wallet transfers within the same casino
+      if (tx.from && ownAddresses.has(tx.from.toLowerCase())) {
+        return false;
+      }
+      return true;
+    })
     .map(tx => {
       const timestamp = parseInt(tx.timeStamp) * 1000;
       const date = new Date(timestamp);
