@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verified Casino Wallet Addresses | CryptoCasinoSorted</title>
-  <meta name="description" content="Verified Ethereum, BSC, and Polygon wallet addresses for major crypto casinos. Check addresses before depositing to avoid scams.">
+  <meta name="description" content="Verified Ethereum, BSC, Polygon, Arbitrum, Base, Bitcoin, Solana, and TRON wallet addresses for major crypto casinos. Check addresses before depositing to avoid scams.">
   <link rel="canonical" href="https://cryptocasinosorted.com/casino-wallet-addresses.html">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#8b5cf6">
@@ -264,6 +264,9 @@
       <div class="chain-tab" data-chain="polygon">🟣 Polygon</div>
       <div class="chain-tab" data-chain="arbitrum">🔵 Arbitrum</div>
       <div class="chain-tab" data-chain="base">🔷 Base</div>
+      <div class="chain-tab" data-chain="btc">₿ Bitcoin</div>
+      <div class="chain-tab" data-chain="sol">◎ Solana</div>
+      <div class="chain-tab" data-chain="tron">⬡ TRON</div>
     </div>
 
     <!-- Casino Addresses -->
@@ -280,41 +283,59 @@
 </footer>
 
   <script>
-    // Casino wallet data - multi-chain (Etherscan-verified)
+    // Casino wallet data - multi-chain (Etherscan/BscScan/Arkham verified)
+    // Last updated: 2026-04-01
     const casinoWallets = {
-      shuffle: {
-        name: 'Shuffle',
-        icon: '🔀',
-        color: '#8b5cf6',
-        website: 'https://shuffle.com',
-        addresses: [
-          { chain: 'eth', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: '$20.9M', txCount: '1,290,240' },
-          { chain: 'bsc', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: '$367K', txCount: 'Active' },
-          { chain: 'arbitrum', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: 'Active', txCount: 'Active' },
-          { chain: 'base', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: 'Active', txCount: 'Active' }
-        ]
-      },
       stake: {
         name: 'Stake',
         icon: '💎',
         color: '#00e701',
         website: 'https://stake.com',
         addresses: [
-          { chain: 'eth', address: '0x974caa59e49682cda0ad2bbe82983419a2ecc400', balance: '$22M+', txCount: 'Very High' },
+          { chain: 'eth', address: '0x974caa59e49682cda0ad2bbe82983419a2ecc400', balance: '$37.6M', txCount: 'Very High', note: 'Main Hot Wallet' },
+          { chain: 'eth', address: '0x019d0706d65c4768ec8081ed7ce41f59eef9b86c', balance: 'Active', txCount: 'Active', note: 'Hot Wallet' },
+          { chain: 'eth', address: '0xfa500178de024bf43cfa69b7e636a28ab68f2741', balance: 'Active', txCount: 'Active', note: 'Hot Wallet' },
+          { chain: 'eth', address: '0xdebfbe80c8aeba98a32968278463ccb639c6c4e3', balance: 'Inactive', txCount: '149K+', note: 'Stake.com 2 (Etherscan)' },
+          { chain: 'eth', address: '0xb04c0eb29c72cebc467b9d4944d29116fa02c44a', balance: 'Low', txCount: 'Historical', note: 'Stake.com 4 (Etherscan)' },
+          { chain: 'eth', address: '0x0392b64b8bfda184f0a72ce37d73dc7df978c4f7', balance: 'Low', txCount: 'Historical', note: 'Stake.com 8 (Etherscan)' },
+          { chain: 'eth', address: '0x787b8840100d9baadd7463f4a73b5ba73b00c6ca', balance: '$6.2M', txCount: '2.5M+', note: 'Stake.com 11 (Etherscan)' },
           { chain: 'bsc', address: '0x974caa59e49682cda0ad2bbe82983419a2ecc400', balance: 'Active', txCount: 'Active' },
           { chain: 'polygon', address: '0x974caa59e49682cda0ad2bbe82983419a2ecc400', balance: 'Active', txCount: 'Active' },
           { chain: 'arbitrum', address: '0x974caa59e49682cda0ad2bbe82983419a2ecc400', balance: 'Active', txCount: 'Active' },
-          { chain: 'base', address: '0x974caa59e49682cda0ad2bbe82983419a2ecc400', balance: 'Active', txCount: 'Active' }
+          { chain: 'base', address: '0x974caa59e49682cda0ad2bbe82983419a2ecc400', balance: 'Active', txCount: 'Active' },
+          { chain: 'sol', address: '2Ptr6Wx8iyf63suwdRrsdbinDG29Jw81TbqZTeSHjWEf', balance: 'Active', txCount: 'Active', note: 'Hot Wallet' },
+          { chain: 'sol', address: 'G9X7F4JzLzbSGMCndiBdWNi5YzZZakmtkdwq7xS3Q3FE', balance: 'Active', txCount: 'Active', note: 'Hot Wallet 2' },
+          { chain: 'tron', address: 'TZ8Ksz21Hk1tQuztCKCUJBRXStCav9uyjM', balance: 'Active', txCount: 'Active', note: 'Hot Wallet' }
         ]
       },
-      rollbit: {
-        name: 'Rollbit',
-        icon: '🎲',
-        color: '#3b82f6',
-        website: 'https://rollbit.com',
+      shuffle: {
+        name: 'Shuffle',
+        icon: '🔀',
+        color: '#8b5cf6',
+        website: 'https://shuffle.com',
         addresses: [
-          { chain: 'eth', address: '0xcbd6832ebc203e49e2b771897067fce3c58575ac', balance: '$7.1M', txCount: 'High' },
-          { chain: 'eth', address: '0xef8801eaf234ff82801821ffe2d78d60a0237f97', balance: 'ERC-20 Tokens', txCount: 'High', note: 'Token wallet (USDT, USDC)' }
+          { chain: 'eth', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: '$20.9M', txCount: '1,290,240', note: 'Hot Wallet' },
+          { chain: 'bsc', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: '$367K', txCount: 'Active' },
+          { chain: 'polygon', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: 'Active', txCount: 'Active' },
+          { chain: 'arbitrum', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: 'Active', txCount: 'Active' },
+          { chain: 'base', address: '0xdfaa75323fb721e5f29d43859390f62cc4b600b8', balance: 'Active', txCount: 'Active' },
+          { chain: 'sol', address: '6uFtNmyQqeKza3Tz5H93K75dKV6vZNN3sUddYDzQzbbn', balance: 'Active', txCount: 'Active', note: 'Hot Wallet' },
+          { chain: 'sol', address: '76iXe9yKFDjGv3HicUVVy8AYxHLC71L1wYa12zaZzHHp', balance: 'Active', txCount: 'Active', note: 'Hot Wallet 2' },
+          { chain: 'sol', address: 'Ca3WC7MhcCdvLyMCozh5F9d162wmru4XGNeTe7dwpUHU', balance: 'Active', txCount: 'Active', note: 'Hot Wallet 3' },
+          { chain: 'tron', address: 'TWGSJz33dNGMhQYhSRLSKKUyFNewh8JEnp', balance: 'Active', txCount: 'Active', note: 'Hot Wallet' }
+        ]
+      },
+      rainbet: {
+        name: 'Rainbet',
+        icon: '🌧️',
+        color: '#38bdf8',
+        website: 'https://rainbet.com',
+        addresses: [
+          { chain: 'eth', address: '0x307576dd4f73f91bb8c4a2edb762938e8e067d31', balance: '$24.4M', txCount: '1.4M+', note: 'Hot Wallet' },
+          { chain: 'bsc', address: '0x307576dd4f73f91bb8c4a2edb762938e8e067d31', balance: 'Active', txCount: 'Active' },
+          { chain: 'polygon', address: '0x307576dd4f73f91bb8c4a2edb762938e8e067d31', balance: 'Active', txCount: 'Active' },
+          { chain: 'arbitrum', address: '0x307576dd4f73f91bb8c4a2edb762938e8e067d31', balance: 'Active', txCount: 'Active' },
+          { chain: 'base', address: '0x307576dd4f73f91bb8c4a2edb762938e8e067d31', balance: 'Active', txCount: 'Active' }
         ]
       },
       roobet: {
@@ -323,7 +344,47 @@
         color: '#f59e0b',
         website: 'https://roobet.com',
         addresses: [
-          { chain: 'eth', address: '0xc94ebb328ac25b95db0e0aa968371885fa516215', balance: 'Active', txCount: 'Active' }
+          { chain: 'eth', address: '0xc94ebb328ac25b95db0e0aa968371885fa516215', balance: '$12.7M', txCount: '4.3M+', note: 'Primary Hot Wallet' },
+          { chain: 'eth', address: '0xa26148ae51fa8e787df319c04137602cc018b521', balance: 'Active', txCount: 'Active', note: 'Hot Wallet 2 (Arkham)' },
+          { chain: 'btc', address: 'bc1q7w7p3knsrp9yl8tnjppj5p5hdggx3n3elzzp6pe99xu7uda79sxsse99c6', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: 'bc1qgd5gyq0l9tw6ujdn5eq833wxjrq5yq769txa3pgz9tc5c9kft9fsrdat96', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: 'bc1qhcq7gzm047qhnxwatk5gzksxywpphglmjs44xkl8nxfs4v09756smg4ncm', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: 'bc1qhmmsjng9d4txu3fz5h9n3s3ytqkryxhxxj9xde2w9wfhejldycds9akyps', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: 'bc1qjz3rswma8uhn6yh0a3r4x3yp5maul9flnrrlcgz9daym4c6smn2sgvg905', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: 'bc1qk62shu4tymvfpahzav0u9fdfcscuzzcvv578m7e0xrufauqanseqh462j3', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: 'bc1qpdqadgyntgyjgucz63h2d8m23ch8dzlzqd2chpl26676crlkrt7slc42xp', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: 'bc1qrhyukxvyeqhtzhpay87fahq6fffq5d2ypd2vmlxfhrgea9awyhwq9yx9wa', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: 'bc1qs2de7ts5rwt967cglstnfk02w6ryp66q2zhsdmmv26m0rwvs8vgs6762cm', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: 'bc1qwcwss6pkd9yykr76ccdfy76z66vcegjp5a4qgr4sqdkqt93slm6qfgejuu', balance: 'Active', txCount: 'Active' }
+        ]
+      },
+      bcgame: {
+        name: 'BC.Game',
+        icon: '🎰',
+        color: '#10b981',
+        website: 'https://bc.game',
+        addresses: [
+          { chain: 'eth', address: '0x788529118f2a28c60b9de2ba0353f5ee4293e044', balance: '$4.1K', txCount: '65,703', note: 'Hot Wallet 1 (Etherscan)' },
+          { chain: 'eth', address: '0x8aaf720bbbcac82c592ac8f6c628bbac1590e079', balance: '$1.8K', txCount: '102,278', note: 'Hot Wallet 2 (Etherscan)' },
+          { chain: 'eth', address: '0xe983fd1798689eee00c0fb77e79b8f372df41060', balance: 'Active', txCount: 'Active', note: 'Hot Wallet 4 (Etherscan)' },
+          { chain: 'eth', address: '0x9d2a0e32633d9be838bfde19d510e6aa6eb202dd', balance: '$35.5K', txCount: '42,046', note: 'Hot Wallet 5 (Etherscan)' },
+          { chain: 'sol', address: '4UZ9DjqpD9TxSw7n6NA8njsEQiDpft1FBqkTzkQQvri8', balance: 'Active', txCount: 'Active', note: 'Hot Wallet' },
+          { chain: 'tron', address: 'TTUM1sLKN5735BdrdsJqLPnYaKESeWQGkB', balance: 'Active', txCount: 'Active', note: 'Hot Wallet' },
+          { chain: 'btc', address: 'bc1q5z5e9a9ctym7t6w6rgqmr39nhaucaxudwha2l7', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: 'bc1qn9punl5rplaf495gwgwtsjva2dvypvql8mfwuu', balance: 'Active', txCount: 'Active' }
+        ]
+      },
+      rollbit: {
+        name: 'Rollbit',
+        icon: '🎲',
+        color: '#3b82f6',
+        website: 'https://rollbit.com',
+        addresses: [
+          { chain: 'eth', address: '0xcbd6832ebc203e49e2b771897067fce3c58575ac', balance: '$5.8M', txCount: 'High', note: 'Main Hot Wallet' },
+          { chain: 'eth', address: '0xef8801eaf234ff82801821ffe2d78d60a0237f97', balance: 'ERC-20 Tokens', txCount: 'High', note: 'Token wallet (USDT, USDC)' },
+          { chain: 'sol', address: '7AE2GE3hWVGh2sB1RtqqLdHuMi5ciUbm2pdifn4EhDiH', balance: 'Active', txCount: 'Active', note: 'Hot Wallet' },
+          { chain: 'sol', address: 'CR7eypYfgub5dtysFWFS1bAQ5FNL3x2GPuguSfCFnQgj', balance: 'Active', txCount: 'Active', note: 'Hot Wallet 2' },
+          { chain: 'sol', address: 'RBHdGVfDfMjfU6iUfCb1LczMJcQLx7hGnxbzRsoDNvx', balance: 'Active', txCount: 'Active', note: 'Treasury' }
         ]
       },
       duelbits: {
@@ -333,16 +394,10 @@
         website: 'https://duelbits.com',
         addresses: [
           { chain: 'eth', address: '0x014435b1e39945cf4f5f0c3cbb5833195a95cc9b', balance: 'Active', txCount: 'Active', note: 'Current hot wallet' },
-          { chain: 'eth', address: '0x4e80744fa23cec76e1621ce0dfaceb4b1d532e12', balance: 'Inactive', txCount: 'Archived', note: 'Old wallet (archived)' }
-        ]
-      },
-      gamdom: {
-        name: 'Gamdom',
-        icon: '🎮',
-        color: '#06b6d4',
-        website: 'https://gamdom.com',
-        addresses: [
-          { chain: 'eth', address: '0xd5fbda4c79f38920159fe5f22df9655fde292d47', balance: 'Active', txCount: 'High' }
+          { chain: 'eth', address: '0x4e80744fa23cec76e1621ce0dfaceb4b1d532e12', balance: 'Inactive', txCount: 'Archived', note: 'Old wallet (archived)' },
+          { chain: 'btc', address: '35CbQZDxbScRrcUKVhSb25JhYL4j9wgf2V', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: '3LQiCzJ2M57M5PbecaEi7xD73XJYGBpLS5', balance: 'Active', txCount: 'Active' },
+          { chain: 'btc', address: '3Lbn7GteNgTUi7BCedJAaxbwnFDbtXeAoq', balance: 'Active', txCount: 'Active' }
         ]
       },
       betfury: {
@@ -351,27 +406,28 @@
         color: '#f97316',
         website: 'https://betfury.io',
         addresses: [
-          { chain: 'eth', address: '0x52a258ed593c793251a89bfd36cae158ee9fc4f8', balance: 'Active', txCount: 'Active' }
+          { chain: 'eth', address: '0x52a258ed593c793251a89bfd36cae158ee9fc4f8', balance: 'Active', txCount: 'Active', note: 'Hot Wallet (Etherscan)' },
+          { chain: 'bsc', address: '0xbb46693ebbea1ac2070e59b4d043b47e2e095f86', balance: 'Active', txCount: '823K+', note: 'Hot Wallet (BscScan)' }
         ]
       },
-      bcgame: {
-        name: 'BC.Game',
-        icon: '🎰',
-        color: '#10b981',
-        website: 'https://bc.game',
+      metawin: {
+        name: 'MetaWin',
+        icon: '🏆',
+        color: '#c084fc',
+        website: 'https://metawin.com',
         addresses: [
-          { chain: 'eth', address: '0x788529118f2a28c60b9de2ba0353f5ee4293e044', balance: '$4.1K', txCount: '65,703', note: 'Hot Wallet 1' },
-          { chain: 'eth', address: '0x8aaf720bbbcac82c592ac8f6c628bbac1590e079', balance: '$1.8K', txCount: '102,278', note: 'Hot Wallet 2 (main)' },
-          { chain: 'eth', address: '0x9d2a0e32633d9be838bfde19d510e6aa6eb202dd', balance: '$35.5K', txCount: '42,046', note: 'Hot Wallet 5' }
+          { chain: 'eth', address: '0x1544d2de126e3a4b194cfad2a5c6966b3460ebe3', balance: 'Active', txCount: 'Active', note: 'Deployer (Etherscan)' },
+          { chain: 'eth', address: '0xf872ada8968c981cfb3769d58a03a3c018128b5a', balance: '$432', txCount: '34.6K+', note: 'Competition ETH Prize 1' }
         ]
       },
-      casino500: {
-        name: '500 Casino',
-        icon: '🃏',
-        color: '#a855f7',
-        website: 'https://500.casino',
+      gamdom: {
+        name: 'Gamdom',
+        icon: '🎮',
+        color: '#06b6d4',
+        website: 'https://gamdom.com',
         addresses: [
-          { chain: 'eth', address: '0xafc53db8506736e8264b4629e971a152ec3ff7d4', balance: 'Active', txCount: 'Active' }
+          { chain: 'eth', address: '0xd5fbda4c79f38920159fe5f22df9655fde292d47', balance: 'Active', txCount: 'High', note: 'Hot Wallet' },
+          { chain: 'eth', address: '0x580450dff316ae00d0fbef9621a304020a046ce2', balance: 'Active', txCount: 'Active', note: 'Hot Wallet 2 (Arkham)' }
         ]
       },
       bitcasino: {
@@ -382,16 +438,29 @@
         addresses: [
           { chain: 'eth', address: '0x5bcbdfb6cc624b959c39a2d16110d1f2d9204f72', balance: 'Active', txCount: 'Active', note: 'Hot Wallet 1' },
           { chain: 'eth', address: '0xe48c9a989438606a79a7560cfba3d34bafbac38e', balance: 'Active', txCount: 'Active', note: 'Hot Wallet 2' },
-          { chain: 'eth', address: '0x094b4cf43908f0adb3dbdb5025f52470aac3b160', balance: 'Active', txCount: 'Active', note: 'Secondary wallet' }
+          { chain: 'eth', address: '0x094b4cf43908f0adb3dbdb5025f52470aac3b160', balance: 'Active', txCount: 'Active', note: 'Secondary wallet' },
+          { chain: 'eth', address: '0x4a0941ede069087aa9f8cad2299860e858651595', balance: 'Active', txCount: 'Active', note: 'Hot Wallet (Arkham)' },
+          { chain: 'eth', address: '0x921b9c3e2685dcf8356326ab7a3baf3799d4a913', balance: 'Active', txCount: 'Active', note: 'Hot Wallet (Arkham)' },
+          { chain: 'eth', address: '0x9e3ef83728a399d6f5f757e3fa04f4850bbfb5f0', balance: 'Active', txCount: 'Active', note: 'Hot Wallet (Arkham)' },
+          { chain: 'eth', address: '0xb241a2cb977b798d91d4255a2ed9e42cd18de1dd', balance: 'Active', txCount: 'Active', note: 'Hot Wallet (Arkham)' }
         ]
       },
-      csgo500: {
-        name: 'CSGO500',
-        icon: '🔫',
-        color: '#64748b',
-        website: 'https://csgo500.com',
+      casino500: {
+        name: '500 Casino',
+        icon: '🃏',
+        color: '#a855f7',
+        website: 'https://500.casino',
         addresses: [
-          { chain: 'eth', address: '0x12352a385b6ca96b724d6203e234dc25f73e224c', balance: 'Active', txCount: 'Active', note: 'Main hot wallet' }
+          { chain: 'eth', address: '0xafc53db8506736e8264b4629e971a152ec3ff7d4', balance: '$1.6K', txCount: '278K+', note: 'Hot Wallet (Etherscan)' }
+        ]
+      },
+      chipsgg: {
+        name: 'Chips.gg',
+        icon: '🎰',
+        color: '#facc15',
+        website: 'https://chips.gg',
+        addresses: [
+          { chain: 'eth', address: '0xbde1148eec7b6939f6d6ccf9aaa020f3c0bcc180', balance: 'Active', txCount: 'Active', note: 'Hot Wallet' }
         ]
       }
     };
@@ -401,7 +470,10 @@
       bsc: { name: 'BSC', icon: '🔶', explorer: 'https://bscscan.com/address/' },
       polygon: { name: 'Polygon', icon: '🟣', explorer: 'https://polygonscan.com/address/' },
       arbitrum: { name: 'Arbitrum', icon: '🔵', explorer: 'https://arbiscan.io/address/' },
-      base: { name: 'Base', icon: '🔷', explorer: 'https://basescan.org/address/' }
+      base: { name: 'Base', icon: '🔷', explorer: 'https://basescan.org/address/' },
+      btc: { name: 'Bitcoin', icon: '₿', explorer: 'https://mempool.space/address/' },
+      sol: { name: 'Solana', icon: '◎', explorer: 'https://solscan.io/account/' },
+      tron: { name: 'TRON', icon: '⬡', explorer: 'https://tronscan.org/#/address/' }
     };
 
     let currentChain = 'all';
