@@ -711,3 +711,195 @@ h5, h6 {
 }
 .t-footer a { color: var(--t-green); }
 .t-footer p { margin-bottom: 6px; }
+
+/* ==========================================================
+   BLOG READABILITY OVERRIDES
+   Force readable contrast on ALL blog pages regardless of
+   inline/per-page <style> blocks. Uses !important to win
+   specificity wars against per-page CSS.
+   ========================================================== */
+
+/* --- Body-level text on blog pages --- */
+.blog-post,
+.blog-content,
+.blog-container,
+.t-article {
+  color: #d4d8e8 !important;
+}
+
+/* --- Headings: bright and clear --- */
+.blog-post h1,
+.blog-content h1,
+.blog-container h1,
+.blog-title,
+.blog-header h1 {
+  color: #e8ecf4 !important;
+}
+
+.blog-post h2,
+.blog-content h2,
+.blog-container h2 {
+  color: #d4d8e8 !important;
+}
+
+.blog-post h3,
+.blog-content h3,
+.blog-container h3 {
+  color: #c0c8dc !important;
+}
+
+.blog-post h4,
+.blog-content h4,
+.blog-container h4 {
+  color: #a0a8c0 !important;
+}
+
+/* --- Body text / paragraphs --- */
+.blog-post p,
+.blog-content p,
+.blog-container p {
+  color: #d4d8e8 !important;
+  line-height: 1.8;
+}
+
+/* --- List items --- */
+.blog-post li,
+.blog-content li,
+.blog-container li {
+  color: #d4d8e8 !important;
+  line-height: 1.7;
+}
+
+/* --- Strong/bold text --- */
+.blog-post strong,
+.blog-content strong,
+.blog-container strong {
+  color: #e8ecf4 !important;
+}
+
+/* --- Links: green accent, readable --- */
+.blog-post a,
+.blog-content a,
+.blog-container a {
+  color: var(--t-green, #00e676) !important;
+}
+
+.blog-post a:hover,
+.blog-content a:hover,
+.blog-container a:hover {
+  color: #69f0ae !important;
+}
+
+/* --- Meta text (dates, read time) --- */
+.blog-meta {
+  color: #7a8299 !important;
+}
+
+/* --- Back link --- */
+.back-link,
+.blog-back {
+  color: var(--t-green, #00e676) !important;
+}
+
+/* --- Blockquotes --- */
+.blog-post blockquote,
+.blog-content blockquote,
+.blog-container blockquote {
+  color: #a0a8c0 !important;
+  border-left-color: var(--t-green, #00e676) !important;
+}
+
+/* --- FAQ sections --- */
+.faq-question {
+  color: #d4d8e8 !important;
+}
+
+.faq-answer {
+  color: #c0c8dc !important;
+}
+
+/* --- Table text readability --- */
+.comparison-table td,
+.comp-table td,
+.info-table td,
+.data-table td {
+  color: #d4d8e8 !important;
+}
+
+.comparison-table th,
+.comp-table th,
+.info-table th,
+.data-table th {
+  color: #e8ecf4 !important;
+}
+
+/* --- Info/tip/warning boxes --- */
+.tip-box,
+.info-box,
+.highlight-box,
+.checklist-box,
+.example-box,
+.math-box,
+.methodology,
+.tldr {
+  color: #d4d8e8 !important;
+}
+
+.tip-box strong,
+.info-box strong,
+.highlight-box strong {
+  color: #e8ecf4 !important;
+}
+
+.warning-box,
+.danger-box {
+  color: #d4d8e8 !important;
+}
+
+/* --- Casino/ranking cards --- */
+.casino-card p,
+.rank-card p,
+.score-card p {
+  color: #c0c8dc !important;
+}
+
+/* --- Verdict sections --- */
+.verdict,
+.verdict-box {
+  color: #d4d8e8 !important;
+}
+
+/* --- Reddit quotes --- */
+.reddit-quote {
+  color: #c0c8dc !important;
+}
+
+/* --- Pros/Cons lists --- */
+.pros li,
+.cons li {
+  color: #c0c8dc !important;
+}
+
+/* --- Related content --- */
+.related-content,
+.related-list {
+  color: #c0c8dc !important;
+}
+
+/* --- Old-gen footer --- */
+footer {
+  color: #7a8299 !important;
+}
+
+footer a {
+  color: var(--t-green, #00e676) !important;
+}
+
+/* --- Old-gen nav overrides --- */
+.blog-nav-links a {
+  color: #7a8299 !important;
+}
+.blog-nav-links a:hover,
+.blog-nav-links a.active {
+  color: var(--t-green, #00e676) !important;
+}
