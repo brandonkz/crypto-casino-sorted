@@ -16,199 +16,143 @@
       gtag('js', new Date());
       gtag('config', 'G-0L3N9F43ED');
     </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="terminal-theme.css">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000000;
-            color: #fff;
-            min-height: 100vh;
-        }
-
-        .nav {
-            background: rgba(10, 10, 10, 0.95);
-            border-bottom: 2px solid #8b5cf6;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 800;
-            font-size: 1.25rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.875rem;
-        }
-
-        .nav-link {
-            color: #9ca3af;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
+        /* Dashboard-specific overrides using the terminal theme system */
+        .dashboard-hero {
+            background: var(--t-bg2);
+            padding: 2rem 0 1.25rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--t-border);
             text-align: center;
-            margin-bottom: 30px;
         }
-
-        .header h1 {
+        .dashboard-hero h1 {
+            font-family: var(--t-mono);
             font-size: 1.75rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .header p {
-            font-size: 0.875rem;
-            color: #9ca3af;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .stat-card {
-            background: rgba(139, 92, 246, 0.1);
-            border: 2px solid rgba(139, 92, 246, 0.3);
-            border-radius: 8px;
-            padding: 16px;
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: #9ca3af;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-weight: 800;
+            color: var(--t-text);
             margin-bottom: 6px;
+            letter-spacing: -0.03em;
+        }
+        .dashboard-hero p {
+            color: var(--t-dim);
+            font-family: var(--t-mono);
+            font-size: 0.8rem;
         }
 
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .kpi-grid { grid-template-columns: 1fr; }
         }
 
-        .stat-subtext {
-            font-size: 0.75rem;
-            color: #6b7280;
-            margin-top: 4px;
-        }
-
-        .casino-list {
-            background: rgba(139, 92, 246, 0.05);
-            border: 2px solid rgba(139, 92, 246, 0.2);
-            border-radius: 8px;
-            padding: 20px;
-        }
-
-        .casino-list h2 {
-            font-size: 1.125rem;
-            color: #ffffff;
-            margin-bottom: 16px;
-        }
-
-        .casino-item {
+        .casino-rank {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+            justify-content: space-between;
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(26,29,46,0.5);
+            font-family: var(--t-mono);
+            font-size: 0.8rem;
+            transition: background 0.15s;
         }
-
-        .casino-item:last-child {
-            border-bottom: none;
+        .casino-rank:last-child { border-bottom: none; }
+        .casino-rank:hover { background: rgba(255,255,255,0.015); }
+        .casino-rank-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
-        .casino-name {
+        .casino-rank-pos {
+            color: var(--t-dim);
+            font-size: 0.7rem;
+            font-weight: 700;
+            min-width: 20px;
+        }
+        .casino-rank-name {
             font-weight: 600;
-            color: #ffffff;
+            color: var(--t-text);
         }
-
-        .casino-stats {
+        .casino-rank-right {
             text-align: right;
-            font-size: 0.875rem;
+        }
+        .casino-rank-vol {
+            color: var(--t-green);
+            font-weight: 700;
+        }
+        .casino-rank-count {
+            color: var(--t-dim);
+            font-size: 0.7rem;
+            margin-top: 2px;
         }
 
-        .casino-volume {
-            color: #8b5cf6;
-            font-weight: 600;
+        /* Volume bar behind each casino row */
+        .casino-rank-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: var(--t-green-bg);
+            border-right: 1px solid var(--t-green-b);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .casino-rank {
+            position: relative;
+        }
+        .casino-rank-left, .casino-rank-right {
+            position: relative;
+            z-index: 1;
         }
 
-        .casino-count {
-            color: #9ca3af;
-            font-size: 0.75rem;
-        }
-
-        .footer {
+        .dashboard-footer {
             text-align: center;
-            padding: 30px 20px;
-            border-top: 2px solid rgba(139, 92, 246, 0.2);
-            margin-top: 40px;
-            font-size: 0.875rem;
-            color: #6b7280;
+            padding: 24px 16px;
+            border-top: 1px solid var(--t-border);
+            margin-top: 32px;
+            font-family: var(--t-mono);
+            font-size: 0.7rem;
+            color: var(--t-dim);
         }
-
-        .footer a {
-            color: #8b5cf6;
+        .dashboard-footer a {
+            color: var(--t-green);
             text-decoration: none;
             font-weight: 600;
         }
 
         .loading {
             text-align: center;
-            padding: 40px;
-            color: #9ca3af;
+            padding: 48px;
+            color: var(--t-dim);
+            font-family: var(--t-mono);
+            font-size: 0.85rem;
         }
 
-        @media (min-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .stat-value {
-                font-size: 2rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
+        /* Related tools links */
+        .related-tools {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .related-tools a {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
     </style>
 </head>
@@ -217,7 +161,7 @@
   <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
   <div class="t-nav-links">
     <a href="/reviews/" class="t-nav-primary">⭐ Reviews</a>
-    <a href="/analytics.html">📊 Dashboard</a>
+    <a href="/analytics.html" class="active">📊 Dashboard</a>
     <a href="/casino-wallet-addresses.html">🔍 Wallets</a>
     <a href="/market-intel.html">🛰️ Market Intel</a>
     <a href="/blog/">📖 Guides</a>
@@ -225,50 +169,60 @@
   </div>
 </nav>
 
-    <div class="container">
-        <div class="header">
+    <div class="dashboard-hero">
+        <div class="t-container">
             <h1>📊 Live Casino Analytics</h1>
             <p id="headerSubtext">Loading data...</p>
         </div>
+    </div>
 
-        <div id="loading" class="loading">Loading analytics...</div>
+    <div id="loading" class="loading">Loading analytics...</div>
 
-        <div id="content" style="display: none;">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-label">Total Volume</div>
-                    <div class="stat-value" id="totalVolume">$0M</div>
-                    <div class="stat-subtext" id="totalDeposits"></div>
+    <div id="content" style="display: none;">
+        <div class="t-container">
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="t-kpi">
+                    <div class="t-kpi-label">Total Volume</div>
+                    <div class="t-kpi-value t-green" id="totalVolume">$0M</div>
+                    <div style="font-family:var(--t-mono); font-size:0.7rem; color:var(--t-dim); margin-top:2px;" id="totalDeposits"></div>
                 </div>
-
-                <div class="stat-card">
-                    <div class="stat-label">Avg Deposit</div>
-                    <div class="stat-value" id="avgDeposit">$0</div>
+                <div class="t-kpi">
+                    <div class="t-kpi-label">Avg Deposit</div>
+                    <div class="t-kpi-value" id="avgDeposit">$0</div>
                 </div>
-
-                <div class="stat-card">
-                    <div class="stat-label">Biggest</div>
-                    <div class="stat-value" id="biggestDeposit">$0</div>
-                    <div class="stat-subtext" id="biggestCasino"></div>
+                <div class="t-kpi">
+                    <div class="t-kpi-label">Biggest Deposit</div>
+                    <div class="t-kpi-value t-amber" id="biggestDeposit">$0</div>
+                    <div style="font-family:var(--t-mono); font-size:0.7rem; color:var(--t-dim); margin-top:2px;" id="biggestCasino"></div>
                 </div>
-
-                <div class="stat-card">
-                    <div class="stat-label">Time Period</div>
-                    <div class="stat-value" id="timePeriod">-</div>
-                    <div class="stat-subtext" id="dateRange"></div>
+                <div class="t-kpi">
+                    <div class="t-kpi-label">Time Period</div>
+                    <div class="t-kpi-value" id="timePeriod">-</div>
+                    <div style="font-family:var(--t-mono); font-size:0.7rem; color:var(--t-dim); margin-top:2px;" id="dateRange"></div>
                 </div>
             </div>
 
-            <div class="casino-list">
-                <h2>Casino Rankings</h2>
-                <div id="casinoList"></div>
+            <!-- Casino Rankings Panel -->
+            <div class="t-panel">
+                <div class="t-panel-header">
+                    <div class="t-panel-title">🏆 Casino Rankings by Volume</div>
+                    <div class="t-badge t-badge-green">LIVE</div>
+                </div>
+                <div class="t-panel-body flush" id="casinoList"></div>
+            </div>
+
+            <!-- Related tools -->
+            <div class="related-tools">
+                <a href="/gambler-pnl.html" class="t-btn t-btn-amber">💀 Gambler P&L</a>
+                <a href="/casino-wallet-addresses.html" class="t-btn t-btn-blue">🔍 Wallet Addresses</a>
+                <a href="/transparency.html" class="t-btn t-btn-green">📋 Methodology</a>
             </div>
         </div>
     </div>
 
-    <div class="footer">
-        Powered by <a href="https://cryptocasinosorted.com">CryptoCasinoSorted</a> | 
-        Real blockchain data
+    <div class="dashboard-footer">
+        Powered by <a href="https://cryptocasinosorted.com">CryptoCasinoSorted</a> · Real blockchain data · On-chain verified
     </div>
 
     <script>
@@ -280,7 +234,7 @@ const maxD = new Date(stats.maxDate);
 const daysDiff = Math.ceil((maxD - minD) / 86400000) + 1;
 const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-document.getElementById('headerSubtext').textContent = formatDate(minD) + ' – ' + formatDate(maxD) + ' (' + daysDiff + ' day' + (daysDiff > 1 ? 's' : '') + ')';
+document.getElementById('headerSubtext').textContent = formatDate(minD) + ' – ' + formatDate(maxD) + ' · ' + daysDiff + ' day' + (daysDiff > 1 ? 's' : '') + ' tracked';
 document.getElementById('totalVolume').textContent = '$' + (stats.totalVolume / 1000000).toFixed(2) + 'M';
 document.getElementById('totalDeposits').textContent = stats.totalDeposits.toLocaleString() + ' deposits';
 document.getElementById('avgDeposit').textContent = '$' + (stats.totalVolume / stats.totalDeposits).toFixed(0);
@@ -289,8 +243,25 @@ document.getElementById('biggestCasino').textContent = stats.biggest.casino;
 document.getElementById('timePeriod').textContent = daysDiff + 'd';
 document.getElementById('dateRange').textContent = formatDate(minD) + ' – ' + formatDate(maxD);
 
+// Build casino ranking rows with volume bars
 const casinos = Object.keys(stats.casinos).sort((a, b) => stats.casinos[b].volume - stats.casinos[a].volume);
-const casinoListHTML = casinos.map(casino => '<div class="casino-item"><div class="casino-name">' + casino + '</div><div class="casino-stats"><div class="casino-volume">$' + (stats.casinos[casino].volume / 1000000).toFixed(2) + 'M</div><div class="casino-count">' + stats.casinos[casino].count.toLocaleString() + ' deposits</div></div></div>').join('');
+const maxVol = stats.casinos[casinos[0]].volume;
+
+const casinoListHTML = casinos.map((casino, i) => {
+    const vol = stats.casinos[casino].volume;
+    const pct = maxVol > 0 ? (vol / maxVol * 100) : 0;
+    return '<div class="casino-rank">' +
+        '<div class="casino-rank-bar" style="width:' + pct.toFixed(1) + '%"></div>' +
+        '<div class="casino-rank-left">' +
+            '<span class="casino-rank-pos">#' + (i + 1) + '</span>' +
+            '<span class="casino-rank-name">' + casino + '</span>' +
+        '</div>' +
+        '<div class="casino-rank-right">' +
+            '<div class="casino-rank-vol">$' + (vol / 1000000).toFixed(2) + 'M</div>' +
+            '<div class="casino-rank-count">' + stats.casinos[casino].count.toLocaleString() + ' deposits</div>' +
+        '</div>' +
+    '</div>';
+}).join('');
 
 document.getElementById('casinoList').innerHTML = casinoListHTML;
 document.getElementById('loading').style.display = 'none';
