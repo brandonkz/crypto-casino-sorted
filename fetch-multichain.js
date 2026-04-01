@@ -139,7 +139,8 @@ function buildCasinoWallets() {
       { casino: 'Rollbit', label: 'Rollbit', address: process.env.ROLLBIT_HOT_WALLET },
       { casino: 'Rollbit', label: 'Rollbit ENS', address: process.env.ROLLBIT_ENS },
       { casino: 'Rollbit', label: 'Rollbit Tokens', address: process.env.ROLLBIT_TOKEN_WALLET },
-      { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_HOT_WALLET },
+      // DISABLED: Roobet hot wallet tracks internal transfers, not user deposits. Re-enable when genuine deposit wallet confirmed.
+      // { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_HOT_WALLET },
       { casino: 'BC.Game', label: 'BC.Game', address: process.env.BCGAME_HOT_WALLET_1 },
       { casino: 'BC.Game', label: 'BC.Game 2', address: process.env.BCGAME_HOT_WALLET_2 },
       { casino: 'BC.Game', label: 'BC.Game 5', address: process.env.BCGAME_WALLET_3 },
@@ -157,7 +158,7 @@ function buildCasinoWallets() {
     bsc: [
       { casino: 'Stake', label: 'Stake', address: process.env.STAKE_BSC_WALLET },
       { casino: 'Shuffle', label: 'Shuffle', address: process.env.SHUFFLE_BSC_WALLET },
-      { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_BSC_WALLET },
+      // { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_BSC_WALLET }, // DISABLED: internal transfers
       { casino: 'BC.Game', label: 'BC.Game', address: process.env.BCGAME_BSC_WALLET },
       { casino: 'Duelbits', label: 'Duelbits', address: process.env.DUELBITS_BSC_WALLET },
       { casino: 'Rainbet', label: 'Rainbet', address: process.env.RAINBET_BSC_WALLET },
@@ -166,7 +167,7 @@ function buildCasinoWallets() {
     ],
     polygon: [
       { casino: 'Stake', label: 'Stake', address: process.env.STAKE_POLYGON_WALLET },
-      { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_POLYGON_WALLET },
+      // { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_POLYGON_WALLET }, // DISABLED
       { casino: 'BC.Game', label: 'BC.Game', address: process.env.BCGAME_POLYGON_WALLET },
       { casino: 'Duelbits', label: 'Duelbits', address: process.env.DUELBITS_POLYGON_WALLET },
       { casino: 'Rainbet', label: 'Rainbet', address: process.env.RAINBET_POLYGON_WALLET },
@@ -176,7 +177,7 @@ function buildCasinoWallets() {
     arbitrum: [
       { casino: 'Stake', label: 'Stake', address: process.env.STAKE_ARB_WALLET },
       { casino: 'Shuffle', label: 'Shuffle', address: process.env.SHUFFLE_ARB_WALLET },
-      { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_ARBITRUM_WALLET },
+      // { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_ARBITRUM_WALLET }, // DISABLED
       { casino: 'BC.Game', label: 'BC.Game', address: process.env.BCGAME_ARBITRUM_WALLET },
       { casino: 'Duelbits', label: 'Duelbits', address: process.env.DUELBITS_ARBITRUM_WALLET },
       { casino: 'Rainbet', label: 'Rainbet', address: process.env.RAINBET_ARBITRUM_WALLET },
@@ -190,7 +191,7 @@ function buildCasinoWallets() {
     solana: [
       { casino: 'Stake', label: 'Stake', address: process.env.STAKE_SOL_WALLET },
       { casino: 'Rollbit', label: 'Rollbit', address: process.env.ROLLBIT_SOL_WALLET },
-      { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_SOL_WALLET },
+      // { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_SOL_WALLET }, // DISABLED
       { casino: 'BC.Game', label: 'BC.Game', address: process.env.BCGAME_SOL_WALLET },
       { casino: 'Duelbits', label: 'Duelbits', address: process.env.DUELBITS_SOL_WALLET },
       { casino: 'Rainbet', label: 'Rainbet', address: process.env.RAINBET_SOL_WALLET },
@@ -200,7 +201,7 @@ function buildCasinoWallets() {
     tron: [
       { casino: 'Stake', label: 'Stake', address: process.env.STAKE_TRON_WALLET },
       { casino: 'Rollbit', label: 'Rollbit', address: process.env.ROLLBIT_TRON_WALLET },
-      { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_TRON_WALLET },
+      // { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_TRON_WALLET }, // DISABLED
       { casino: 'BC.Game', label: 'BC.Game', address: process.env.BCGAME_TRON_WALLET },
       { casino: 'Duelbits', label: 'Duelbits', address: process.env.DUELBITS_TRON_WALLET },
       { casino: 'Rainbet', label: 'Rainbet', address: process.env.RAINBET_TRON_WALLET },
@@ -210,7 +211,7 @@ function buildCasinoWallets() {
     ton: [
       { casino: 'Stake', label: 'Stake', address: process.env.STAKE_TON_WALLET },
       { casino: 'Rollbit', label: 'Rollbit', address: process.env.ROLLBIT_TON_WALLET },
-      { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_TON_WALLET },
+      // { casino: 'Roobet', label: 'Roobet', address: process.env.ROOBET_TON_WALLET }, // DISABLED
       { casino: 'BC.Game', label: 'BC.Game', address: process.env.BCGAME_TON_WALLET },
       { casino: 'Duelbits', label: 'Duelbits', address: process.env.DUELBITS_TON_WALLET },
       { casino: 'Rainbet', label: 'Rainbet', address: process.env.RAINBET_TON_WALLET },

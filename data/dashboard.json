@@ -1,35 +1,24 @@
 {
-  "generated": "2026-04-01T08:09:05.328Z",
+  "generated": "2026-04-01T15:40:48.035Z",
   "dataRange": {
     "from": "2026-02-15",
     "to": "2026-03-31"
   },
   "totalDays": 45,
   "overview": {
-    "totalVolume": 123397940,
-    "totalDeposits": 137849,
-    "uniqueWallets": 13,
-    "avgDeposit": 895,
-    "vol7d": 14946878,
-    "deposits7d": 24600,
-    "growth7d": -24.7,
-    "vol30d": 77072054,
-    "deposits30d": 98226,
+    "totalVolume": 58003986,
+    "totalDeposits": 136789,
+    "uniqueWallets": 12,
+    "avgDeposit": 424,
+    "vol7d": 7622907,
+    "deposits7d": 24494,
+    "growth7d": -12.1,
+    "vol30d": 38019768,
+    "deposits30d": 97536,
     "largestDeposit": 2212000,
-    "casinosTracked": 9
+    "casinosTracked": 8
   },
   "casinoBreakdown": [
-    {
-      "name": "Roobet",
-      "totalVolume": 65393954,
-      "totalDeposits": 1060,
-      "vol7d": 7323971,
-      "vol30d": 39052286,
-      "deposits7d": 106,
-      "uniqueWallets": 1,
-      "avgDeposit": 61692,
-      "marketShare": "53.0"
-    },
     {
       "name": "Stake",
       "totalVolume": 18914632,
@@ -39,7 +28,7 @@
       "deposits7d": 5917,
       "uniqueWallets": 2,
       "avgDeposit": 482,
-      "marketShare": "15.3"
+      "marketShare": "32.6"
     },
     {
       "name": "Rollbit",
@@ -50,7 +39,7 @@
       "deposits7d": 5761,
       "uniqueWallets": 3,
       "avgDeposit": 357,
-      "marketShare": "10.3"
+      "marketShare": "21.9"
     },
     {
       "name": "Duelbits",
@@ -61,7 +50,7 @@
       "deposits7d": 1506,
       "uniqueWallets": 1,
       "avgDeposit": 1094,
-      "marketShare": "7.4"
+      "marketShare": "15.7"
     },
     {
       "name": "Rainbet",
@@ -72,7 +61,7 @@
       "deposits7d": 5854,
       "uniqueWallets": 1,
       "avgDeposit": 213,
-      "marketShare": "6.0"
+      "marketShare": "12.7"
     },
     {
       "name": "Shuffle",
@@ -83,7 +72,7 @@
       "deposits7d": 4327,
       "uniqueWallets": 1,
       "avgDeposit": 502,
-      "marketShare": "5.8"
+      "marketShare": "12.3"
     },
     {
       "name": "Bitcasino",
@@ -94,7 +83,7 @@
       "deposits7d": 776,
       "uniqueWallets": 2,
       "avgDeposit": 600,
-      "marketShare": "1.9"
+      "marketShare": "4.0"
     },
     {
       "name": "BetFury",
@@ -105,7 +94,7 @@
       "deposits7d": 296,
       "uniqueWallets": 1,
       "avgDeposit": 496,
-      "marketShare": "0.4"
+      "marketShare": "0.8"
     },
     {
       "name": "BC.Game",
@@ -122,9 +111,15 @@
   "chainBreakdown": [
     {
       "name": "Ethereum",
-      "volume": 123397940,
-      "deposits": 137792,
-      "share": "100.0"
+      "volume": 33541343,
+      "deposits": 86832,
+      "share": "57.8"
+    },
+    {
+      "name": "Unknown",
+      "volume": 24462643,
+      "deposits": 49900,
+      "share": "42.2"
     },
     {
       "name": "Polygon",
@@ -136,63 +131,63 @@
   "dailyVolume": [
     {
       "date": "2026-03-02",
-      "volume": 2630086,
-      "deposits": 2793
+      "volume": 1717369,
+      "deposits": 2772
     },
     {
       "date": "2026-03-03",
-      "volume": 3281869,
-      "deposits": 2907
+      "volume": 817590,
+      "deposits": 2884
     },
     {
       "date": "2026-03-04",
-      "volume": 2202518,
-      "deposits": 2750
+      "volume": 1100548,
+      "deposits": 2725
     },
     {
       "date": "2026-03-05",
-      "volume": 2391720,
-      "deposits": 2437
+      "volume": 878728,
+      "deposits": 2414
     },
     {
       "date": "2026-03-06",
-      "volume": 2429147,
-      "deposits": 3736
+      "volume": 1408431,
+      "deposits": 3716
     },
     {
       "date": "2026-03-07",
-      "volume": 3379173,
-      "deposits": 3567
+      "volume": 1282642,
+      "deposits": 3526
     },
     {
       "date": "2026-03-08",
-      "volume": 2502362,
-      "deposits": 3618
+      "volume": 1433170,
+      "deposits": 3585
     },
     {
       "date": "2026-03-09",
-      "volume": 3550756,
-      "deposits": 3690
+      "volume": 2509072,
+      "deposits": 3662
     },
     {
       "date": "2026-03-10",
-      "volume": 2358267,
-      "deposits": 3266
+      "volume": 1647933,
+      "deposits": 3215
     },
     {
       "date": "2026-03-11",
-      "volume": 2047942,
-      "deposits": 2935
+      "volume": 1154013,
+      "deposits": 2892
     },
     {
       "date": "2026-03-12",
-      "volume": 2550897,
-      "deposits": 3893
+      "volume": 1252116,
+      "deposits": 3813
     },
     {
       "date": "2026-03-13",
-      "volume": 2353252,
-      "deposits": 3314
+      "volume": 1184217,
+      "deposits": 3291
     },
     {
       "date": "2026-03-14",
@@ -201,88 +196,88 @@
     },
     {
       "date": "2026-03-15",
-      "volume": 2891719,
-      "deposits": 3440
+      "volume": 1610511,
+      "deposits": 3415
     },
     {
       "date": "2026-03-16",
-      "volume": 5041663,
-      "deposits": 4004
+      "volume": 2462699,
+      "deposits": 3982
     },
     {
       "date": "2026-03-17",
-      "volume": 2587064,
-      "deposits": 3534
+      "volume": 1194725,
+      "deposits": 3521
     },
     {
       "date": "2026-03-18",
-      "volume": 1964337,
-      "deposits": 3731
+      "volume": 1052362,
+      "deposits": 3717
     },
     {
       "date": "2026-03-19",
-      "volume": 3564226,
-      "deposits": 3172
+      "volume": 1320224,
+      "deposits": 3153
     },
     {
       "date": "2026-03-20",
-      "volume": 1838241,
-      "deposits": 3499
+      "volume": 1015212,
+      "deposits": 3481
     },
     {
       "date": "2026-03-21",
-      "volume": 2315967,
-      "deposits": 3400
+      "volume": 1171545,
+      "deposits": 3383
     },
     {
       "date": "2026-03-22",
-      "volume": 3363894,
-      "deposits": 3288
+      "volume": 1233584,
+      "deposits": 3275
     },
     {
       "date": "2026-03-23",
-      "volume": 2414153,
-      "deposits": 3370
+      "volume": 1217105,
+      "deposits": 3356
     },
     {
       "date": "2026-03-24",
-      "volume": 4395869,
-      "deposits": 3146
+      "volume": 1663011,
+      "deposits": 3128
     },
     {
       "date": "2026-03-25",
-      "volume": 1941369,
-      "deposits": 3090
+      "volume": 1091481,
+      "deposits": 3076
     },
     {
       "date": "2026-03-26",
-      "volume": 2365882,
-      "deposits": 3508
+      "volume": 1026078,
+      "deposits": 3489
     },
     {
       "date": "2026-03-27",
-      "volume": 1881602,
-      "deposits": 3211
+      "volume": 1099208,
+      "deposits": 3199
     },
     {
       "date": "2026-03-28",
-      "volume": 2259005,
-      "deposits": 4484
+      "volume": 1294175,
+      "deposits": 4469
     },
     {
       "date": "2026-03-29",
-      "volume": 2114027,
-      "deposits": 3438
+      "volume": 1136329,
+      "deposits": 3423
     },
     {
       "date": "2026-03-30",
-      "volume": 2118123,
-      "deposits": 3215
+      "volume": 990642,
+      "deposits": 3198
     },
     {
       "date": "2026-03-31",
-      "volume": 2266870,
-      "deposits": 3654
+      "volume": 984994,
+      "deposits": 3640
     }
   ],
   "topDeposits": [
@@ -296,15 +291,6 @@
       "txHash": null
     },
     {
-      "casino": "Roobet",
-      "usd": 1475743,
-      "amount": "527.051054",
-      "token": "ETH",
-      "wallet": "0xc94ebb328ac25b95db0e0aa968371885fa516215",
-      "date": "2026-03-24",
-      "txHash": "0x85c21feb19dfe2db4d13fd1ec19967c82a38c5cddc3961422197f8f6f3668619"
-    },
-    {
       "casino": "Duelbits",
       "usd": 1421281,
       "amount": "507.600434",
@@ -312,15 +298,6 @@
       "wallet": "0x014435b1e39945cf4f5f0c3cbb5833195a95cc9b",
       "date": "2026-02-15",
       "txHash": null
-    },
-    {
-      "casino": "Roobet",
-      "usd": 1329676,
-      "amount": "474.884447",
-      "token": "ETH",
-      "wallet": "0xc94ebb328ac25b95db0e0aa968371885fa516215",
-      "date": "2026-03-22",
-      "txHash": "0x071626a27d634db14eef5c005a8a28395ffe3f54c1eea9cda527c2fb4e4be17e"
     },
     {
       "casino": "Rollbit",
@@ -332,15 +309,6 @@
       "txHash": "0x53fafd82c6fcc3c0a933d5351d9b8767255237a57a84125fe3d9242b6121ea5f"
     },
     {
-      "casino": "Roobet",
-      "usd": 865007,
-      "amount": "308.931077",
-      "token": "ETH",
-      "wallet": "0xc94ebb328ac25b95db0e0aa968371885fa516215",
-      "date": "2026-03-03",
-      "txHash": null
-    },
-    {
       "casino": "Duelbits",
       "usd": 775574,
       "amount": "276.990853",
@@ -348,24 +316,6 @@
       "wallet": "0x014435b1e39945cf4f5f0c3cbb5833195a95cc9b",
       "date": "2026-02-15",
       "txHash": null
-    },
-    {
-      "casino": "Roobet",
-      "usd": 727909,
-      "amount": "259.967377",
-      "token": "ETH",
-      "wallet": "0xc94ebb328ac25b95db0e0aa968371885fa516215",
-      "date": "2026-02-25",
-      "txHash": null
-    },
-    {
-      "casino": "Roobet",
-      "usd": 720088,
-      "amount": "257.174277",
-      "token": "ETH",
-      "wallet": "0xc94ebb328ac25b95db0e0aa968371885fa516215",
-      "date": "2026-03-07",
-      "txHash": "0x3ca624be3fd8b784aaacbad63babab83494c996fafd297cdb3870401e415285e"
     },
     {
       "casino": "Stake",
@@ -377,60 +327,97 @@
       "txHash": null
     },
     {
-      "casino": "Roobet",
-      "usd": 616782,
-      "amount": "220.279160",
+      "casino": "Stake",
+      "usd": 354633,
+      "amount": "126.654588",
       "token": "ETH",
-      "wallet": "0xc94ebb328ac25b95db0e0aa968371885fa516215",
-      "date": "2026-02-26",
+      "wallet": "0x787b8840100d9baadd7463f4a73b5ba73b00c6ca",
+      "date": "2026-02-17",
       "txHash": null
     },
     {
-      "casino": "Roobet",
-      "usd": 602507,
-      "amount": "215.181063",
+      "casino": "Stake",
+      "usd": 350650,
+      "amount": "125.232008",
       "token": "ETH",
-      "wallet": "0xc94ebb328ac25b95db0e0aa968371885fa516215",
-      "date": "2026-02-27",
+      "wallet": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "date": "2026-02-23",
       "txHash": null
     },
     {
-      "casino": "Roobet",
-      "usd": 600397,
-      "amount": "214.427602",
+      "casino": "Duelbits",
+      "usd": 297652,
+      "amount": "106.304124",
       "token": "ETH",
-      "wallet": "0xc94ebb328ac25b95db0e0aa968371885fa516215",
-      "date": "2026-02-18",
+      "wallet": "0x014435b1e39945cf4f5f0c3cbb5833195a95cc9b",
+      "date": "2026-03-08",
+      "txHash": "0xa2e86c7a4b016518eef981a21cb2e70ad6a868ffa4dcbf07a31d42402be8e962"
+    },
+    {
+      "casino": "Stake",
+      "usd": 248965,
+      "amount": "88.915926",
+      "token": "ETH",
+      "wallet": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "date": "2026-02-19",
       "txHash": null
     },
     {
-      "casino": "Roobet",
-      "usd": 576604,
-      "amount": "205.930138",
+      "casino": "Stake",
+      "usd": 184279,
+      "amount": "65.814073",
       "token": "ETH",
-      "wallet": "0xc94ebb328ac25b95db0e0aa968371885fa516215",
-      "date": "2026-02-28",
+      "wallet": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "date": "2026-03-06",
+      "txHash": "0xfd7de020c67a3c7a50e17dc98edf3c032c4c58d56187712466d62b306316f5b6"
+    },
+    {
+      "casino": "Rainbet",
+      "usd": 140000,
+      "amount": "49.999998",
+      "token": "ETH",
+      "wallet": "0x307576dd4f73f91bb8c4a2edb762938e8e067d31",
+      "date": "2026-02-19",
       "txHash": null
     },
     {
-      "casino": "Roobet",
-      "usd": 570406,
-      "amount": "203.716542",
+      "casino": "Rollbit",
+      "usd": 140000,
+      "amount": "49.999999",
       "token": "ETH",
-      "wallet": "0xc94ebb328ac25b95db0e0aa968371885fa516215",
-      "date": "2026-03-31",
-      "txHash": "0xe6807735714593a783fac6293f7a6f2da5e865556c31a1b7d936ca0aca88b23c"
+      "wallet": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "date": "2026-03-09",
+      "txHash": "0x35ca48c1b24c6e926f3fd899f8b7313ce3b3b4992b4fab08a01a0f4d865725b6"
+    },
+    {
+      "casino": "Stake",
+      "usd": 140000,
+      "amount": "50.000000",
+      "token": "ETH",
+      "wallet": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "date": "2026-03-15",
+      "txHash": "0x31c8c0f06abd37d55695ab822a28103af8d6c52137e086351b628fcc257b4b92"
+    },
+    {
+      "casino": "Shuffle",
+      "usd": 139999,
+      "amount": "49.999768",
+      "token": "ETH",
+      "wallet": "0xdfaa75323fb721e5f29d43859390f62cc4b600b8",
+      "date": "2026-03-22",
+      "txHash": "0x99962f8fc42d4aa0709782d236b1f46172de397c86b824575f53980e74082c87"
+    },
+    {
+      "casino": "Duelbits",
+      "usd": 136024,
+      "amount": "48.580004",
+      "token": "ETH",
+      "wallet": "0x014435b1e39945cf4f5f0c3cbb5833195a95cc9b",
+      "date": "2026-02-23",
+      "txHash": null
     }
   ],
   "topWallets": [
-    {
-      "address": "0xc94ebb328ac25b95db0e0aa968371885fa516215",
-      "totalVolume": 65393954,
-      "deposits": 1060,
-      "casinos": [
-        "Roobet"
-      ]
-    },
     {
       "address": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
       "totalVolume": 11445525,
