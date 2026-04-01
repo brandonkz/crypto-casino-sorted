@@ -1,0 +1,166 @@
+{
+  "_meta": {
+    "source": "Arkham Intelligence API + Etherscan/BscScan labels",
+    "date": "2026-04-01",
+    "note": "Full address dump from Arkham trial + Etherscan-verified expansions (April 2026). EVM addresses (0x) are usable across ETH/BSC/Polygon/Arbitrum/Base. BTC (bc1/3/35) and Solana and Tron addresses also captured."
+  },
+  "stake-com": {
+    "name": "Stake.com",
+    "ethereum": [
+      {"address": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400", "label": "Hot Wallet (main)"},
+      {"address": "0x019D0706D65c4768ec8081eD7CE41F59Eef9b86c", "label": "Hot Wallet"},
+      {"address": "0xFa500178de024BF43CFA69B7e636A28AB68F2741", "label": "Hot Wallet"},
+      {"address": "0xdebfbe80c8aeba98a32968278463ccb639c6c4e3", "label": "Stake.com 2 (Etherscan-labeled)"},
+      {"address": "0xb04c0eb29c72cebc467b9d4944d29116fa02c44a", "label": "Stake.com 4 (Etherscan-labeled)"},
+      {"address": "0x0392b64b8bfda184f0a72ce37d73dc7df978c4f7", "label": "Stake.com 8 (Etherscan-labeled)"},
+      {"address": "0x787b8840100d9baadd7463f4a73b5ba73b00c6ca", "label": "Stake.com 11 (Etherscan-labeled)"}
+    ],
+    "solana": [
+      {"address": "2Ptr6Wx8iyf63suwdRrsdbinDG29Jw81TbqZTeSHjWEf", "label": "Hot Wallet"},
+      {"address": "G9X7F4JzLzbSGMCndiBdWNi5YzZZakmtkdwq7xS3Q3FE", "label": "Hot Wallet"}
+    ],
+    "tron": [
+      {"address": "TZ8Ksz21Hk1tQuztCKCUJBRXStCav9uyjM", "label": "Hot Wallet"}
+    ]
+  },
+  "rollbit": {
+    "name": "Rollbit",
+    "ethereum": [
+      {"address": "0xCBD6832Ebc203e49E2B771897067fce3c58575ac", "label": "Hot Wallet"},
+      {"address": "0xEf8801eaf234ff82801821FFe2d78D60a0237F97", "label": "Hot Wallet"}
+    ],
+    "solana": [
+      {"address": "7AE2GE3hWVGh2sB1RtqqLdHuMi5ciUbm2pdifn4EhDiH", "label": "Hot Wallet"},
+      {"address": "CR7eypYfgub5dtysFWFS1bAQ5FNL3x2GPuguSfCFnQgj", "label": "Hot Wallet"},
+      {"address": "RBHdGVfDfMjfU6iUfCb1LczMJcQLx7hGnxbzRsoDNvx", "label": "Treasury"}
+    ]
+  },
+  "roobet": {
+    "name": "Roobet",
+    "ethereum": [
+      {"address": "0xA26148AE51fa8E787DF319C04137602Cc018b521", "label": "Hot Wallet"},
+      {"address": "0xC94eBB328aC25b95DB0E0AA968371885Fa516215", "label": "Hot Wallet (primary)"}
+    ],
+    "bitcoin": [
+      {"address": "bc1q7w7p3knsrp9yl8tnjppj5p5hdggx3n3elzzp6pe99xu7uda79sxsse99c6", "label": ""},
+      {"address": "bc1qgd5gyq0l9tw6ujdn5eq833wxjrq5yq769txa3pgz9tc5c9kft9fsrdat96", "label": ""},
+      {"address": "bc1qhcq7gzm047qhnxwatk5gzksxywpphglmjs44xkl8nxfs4v09756smg4ncm", "label": ""},
+      {"address": "bc1qhmmsjng9d4txu3fz5h9n3s3ytqkryxhxxj9xde2w9wfhejldycds9akyps", "label": ""},
+      {"address": "bc1qjz3rswma8uhn6yh0a3r4x3yp5maul9flnrrlcgz9daym4c6smn2sgvg905", "label": ""},
+      {"address": "bc1qk62shu4tymvfpahzav0u9fdfcscuzzcvv578m7e0xrufauqanseqh462j3", "label": ""},
+      {"address": "bc1qpdqadgyntgyjgucz63h2d8m23ch8dzlzqd2chpl26676crlkrt7slc42xp", "label": ""},
+      {"address": "bc1qrhyukxvyeqhtzhpay87fahq6fffq5d2ypd2vmlxfhrgea9awyhwq9yx9wa", "label": ""},
+      {"address": "bc1qs2de7ts5rwt967cglstnfk02w6ryp66q2zhsdmmv26m0rwvs8vgs6762cm", "label": ""},
+      {"address": "bc1qwcwss6pkd9yykr76ccdfy76z66vcegjp5a4qgr4sqdkqt93slm6qfgejuu", "label": ""}
+    ]
+  },
+  "bc-game": {
+    "name": "BC.Game",
+    "ethereum": [
+      {"address": "0x120A5B1FD4782cD8639E3814781A5D30382e65dB", "label": "Hot Wallet (Arkham)"},
+      {"address": "0x1Edcf2E6b7ce0747D6c56d5B0B51E3Fd1a485958", "label": "Hot Wallet (Arkham)"},
+      {"address": "0x49395574019Ae44d46D535215303A09fD596727c", "label": "Hot Wallet (Arkham)"},
+      {"address": "0xd27047Fe310178316b3ACC4746E2A30823Bb9186", "label": "Hot Wallet (Arkham)"},
+      {"address": "0x788529118f2a28c60b9de2ba0353f5ee4293e044", "label": "Hot Wallet 1 (Etherscan-labeled)"},
+      {"address": "0x8aaf720bbbcac82c592ac8f6c628bbac1590e079", "label": "Hot Wallet 2 (Etherscan-labeled)"},
+      {"address": "0xe983fd1798689eee00c0fb77e79b8f372df41060", "label": "Hot Wallet 4 (Etherscan-labeled)"},
+      {"address": "0x9d2a0e32633d9be838bfde19d510e6aa6eb202dd", "label": "Hot Wallet 5 (Etherscan-labeled)"}
+    ],
+    "solana": [
+      {"address": "4UZ9DjqpD9TxSw7n6NA8njsEQiDpft1FBqkTzkQQvri8", "label": "Hot Wallet"}
+    ],
+    "tron": [
+      {"address": "TTUM1sLKN5735BdrdsJqLPnYaKESeWQGkB", "label": "Hot Wallet"}
+    ],
+    "bitcoin": [
+      {"address": "bc1q5z5e9a9ctym7t6w6rgqmr39nhaucaxudwha2l7", "label": ""},
+      {"address": "bc1qn9punl5rplaf495gwgwtsjva2dvypvql8mfwuu", "label": ""}
+    ]
+  },
+  "shuffle": {
+    "name": "Shuffle.com",
+    "ethereum": [
+      {"address": "0xDFaa75323fB721e5f29D43859390f62Cc4B600b8", "label": "Hot Wallet"},
+      {"address": "0x911A978F0CAC392079b51DB03E6f3027Dfe6F96E", "label": "Gas Supplier"}
+    ],
+    "solana": [
+      {"address": "6uFtNmyQqeKza3Tz5H93K75dKV6vZNN3sUddYDzQzbbn", "label": "Hot Wallet"},
+      {"address": "76iXe9yKFDjGv3HicUVVy8AYxHLC71L1wYa12zaZzHHp", "label": "Hot Wallet"},
+      {"address": "Ca3WC7MhcCdvLyMCozh5F9d162wmru4XGNeTe7dwpUHU", "label": "Hot Wallet"}
+    ],
+    "tron": [
+      {"address": "TWGSJz33dNGMhQYhSRLSKKUyFNewh8JEnp", "label": "Hot Wallet"}
+    ]
+  },
+  "duelbits": {
+    "name": "Duelbits",
+    "ethereum": [
+      {"address": "0x014435B1E39945CF4f5F0c3cbb5833195A95CC9B", "label": "Hot Wallet"}
+    ],
+    "bitcoin": [
+      {"address": "35CbQZDxbScRrcUKVhSb25JhYL4j9wgf2V", "label": ""},
+      {"address": "3LQiCzJ2M57M5PbecaEi7xD73XJYGBpLS5", "label": ""},
+      {"address": "3Lbn7GteNgTUi7BCedJAaxbwnFDbtXeAoq", "label": ""}
+    ]
+  },
+  "rainbet": {
+    "name": "Rainbet",
+    "ethereum": [
+      {"address": "0x307576Dd4F73f91BB8c4A2EdB762938E8e067d31", "label": "Hot Wallet ($24.4M, active on 6 EVM chains)"}
+    ]
+  },
+  "gamdom": {
+    "name": "Gamdom",
+    "ethereum": [
+      {"address": "0xd5fbda4c79f38920159fe5f22df9655fde292d47", "label": "Hot Wallet"},
+      {"address": "0x580450Dff316AE00D0fbEF9621A304020A046CE2", "label": "Hot Wallet (Arkham)"}
+    ]
+  },
+  "bitcasino": {
+    "name": "Bitcasino",
+    "ethereum": [
+      {"address": "0x5BCbdfB6cc624b959c39a2d16110d1f2d9204F72", "label": "Hot Wallet"},
+      {"address": "0x094b4cf43908F0AdB3dBDb5025F52470AAc3B160", "label": "Hot Wallet"},
+      {"address": "0x4A0941EDE069087AA9f8cAD2299860E858651595", "label": "Hot Wallet (Arkham)"},
+      {"address": "0x921B9c3e2685dCF8356326aB7a3bAf3799d4a913", "label": "Hot Wallet (Arkham)"},
+      {"address": "0x9e3ef83728a399d6f5f757E3FA04f4850BBfB5f0", "label": "Hot Wallet (Arkham)"},
+      {"address": "0xB241a2cb977B798d91D4255A2eD9e42cd18De1Dd", "label": "Hot Wallet (Arkham)"},
+      {"address": "0xe48c9a989438606a79a7560cfba3d34bafbac38e", "label": "Hot Wallet 2 (site-sourced, verify)"}
+    ]
+  },
+  "chips-gg": {
+    "name": "Chips.gg",
+    "ethereum": [
+      {"address": "0xbDE1148Eec7B6939f6D6cCF9AaA020f3c0bcC180", "label": "Hot Wallet"}
+    ]
+  },
+  "500-casino": {
+    "name": "500 Casino",
+    "ethereum": [
+      {"address": "0x68416deBc20D13e5Ef694CdCaC9506F4C1A20184", "label": "Hot Wallet (Arkham)"},
+      {"address": "0xafc53db8506736e8264b4629e971a152ec3ff7d4", "label": "Hot Wallet (Etherscan-labeled)"}
+    ]
+  },
+  "alphapo": {
+    "name": "AlphaPo (payment processor for casinos)",
+    "ethereum": [
+      {"address": "0xf60DC2b5079ABDe7d4cC0CC1920f184Dc9DC4907", "label": ""}
+    ]
+  },
+  "betfury": {
+    "name": "BetFury",
+    "ethereum": [
+      {"address": "0x52a258ed593c793251a89bfd36cae158ee9fc4f8", "label": "Hot Wallet (Etherscan-labeled)"}
+    ],
+    "bsc": [
+      {"address": "0xbb46693ebbea1ac2070e59b4d043b47e2e095f86", "label": "Contract/Hot Wallet (BscScan, 823K txns)"}
+    ]
+  },
+  "metawin": {
+    "name": "MetaWin",
+    "ethereum": [
+      {"address": "0x1544d2de126e3a4b194cfad2a5c6966b3460ebe3", "label": "Deployer (Etherscan-labeled)"},
+      {"address": "0xf872ada8968c981cfb3769d58a03a3c018128b5a", "label": "Competition ETH Prize 1 (Etherscan, 34.6K txns)"}
+    ]
+  }
+}
