@@ -19,20 +19,58 @@ MAX_ITEMS = 6
 TIMEOUT = 10
 
 
+def _relative_time(iso_str):
+    """Convert ISO timestamp to a human-friendly relative time."""
+    try:
+        dt = datetime.fromisoformat(iso_str.replace("Z", "+00:00"))
+        now = datetime.now(timezone.utc)
+        delta = now - dt
+        hours = delta.total_seconds() / 3600
+        if hours < 1:
+            return "Just now"
+        if hours < 24:
+            return f"{int(hours)}h ago"
+        days = int(hours / 24)
+        if days == 1:
+            return "Yesterday"
+        if days < 7:
+            return f"{days}d ago"
+        return f"{days}d ago"
+    except Exception:
+        return "Recent"
+
+
+# Skip posts older than 7 days (pinned / stale)
+MAX_AGE_DAYS = 7
+
+
 def fetch_reddit(sub, url):
     try:
-        with urllib.request.urlopen(url, timeout=TIMEOUT) as resp:
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "CryptoCasinoSorted/1.0 (RSS reader; +https://cryptocasinosorted.com)"
+        })
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
             xml_data = resp.read()
         root = ET.fromstring(xml_data)
+        now = datetime.now(timezone.utc)
         items = []
         for entry in root.findall(".//{http://www.w3.org/2005/Atom}entry"):
             title = (entry.findtext("{http://www.w3.org/2005/Atom}title") or "").strip()
             link_el = entry.find("{http://www.w3.org/2005/Atom}link")
             link = link_el.get('href') if link_el is not None else ""
+            updated = (entry.findtext("{http://www.w3.org/2005/Atom}updated") or "").strip()
             if not title or not link:
                 continue
             if not KEYWORDS.search(title):
                 continue
+            # Skip stale/pinned posts
+            if updated:
+                try:
+                    dt = datetime.fromisoformat(updated.replace("Z", "+00:00"))
+                    if (now - dt).days > MAX_AGE_DAYS:
+                        continue
+                except Exception:
+                    pass
             tag = "DISCUSSION"
             if re.search(r"withdraw|payout|cashout", title, re.I): tag = "WITHDRAWALS"
             if re.search(r"odds|sportsbook|bet", title, re.I): tag = "SPORTS"
@@ -43,7 +81,7 @@ def fetch_reddit(sub, url):
                 "url": link,
                 "score": 0,
                 "tag": tag,
-                "time": "Today"
+                "time": _relative_time(updated) if updated else "Recent"
             })
         return items
     except Exception:
