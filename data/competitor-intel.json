@@ -1,0 +1,102 @@
+{
+  "updated": "2026-04-01",
+  "source": "crypto-casino-intel monitor",
+  "competitors": [
+    {
+      "name": "Stake.com",
+      "logo": "🎰",
+      "welcomeBonus": {
+        "type": "Rakeback + Code",
+        "details": "200% rakeback on first $1,000 wagered (geo-dependent)",
+        "wageringReq": "N/A (instant rakeback)",
+        "maxBonus": "$2,000",
+        "code": "RESEARCH_NEEDED"
+      },
+      "vipTiers": "Bronze → Platinum IV",
+      "rakeback": "5% base, up to 15% VIP",
+      "withdrawalTime": "Instant (crypto)",
+      "lastUpdated": "2026-03-30"
+    },
+    {
+      "name": "Rollbit",
+      "logo": "🎲",
+      "welcomeBonus": {
+        "type": "RESEARCH_NEEDED",
+        "details": "Geo-gated, login required",
+        "wageringReq": "RESEARCH_NEEDED",
+        "maxBonus": "RESEARCH_NEEDED",
+        "code": "RESEARCH_NEEDED"
+      },
+      "vipTiers": null,
+      "rakeback": null,
+      "withdrawalTime": null,
+      "lastUpdated": "2026-03-30"
+    },
+    {
+      "name": "Roobet",
+      "logo": "🦘",
+      "welcomeBonus": {
+        "type": "RESEARCH_NEEDED",
+        "details": "Geo-blocked in many regions",
+        "wageringReq": "RESEARCH_NEEDED",
+        "maxBonus": "RESEARCH_NEEDED",
+        "code": "RESEARCH_NEEDED"
+      },
+      "vipTiers": null,
+      "rakeback": null,
+      "withdrawalTime": null,
+      "lastUpdated": "2026-03-30"
+    },
+    {
+      "name": "Duelbits",
+      "logo": "⚔️",
+      "welcomeBonus": {
+        "type": "Dual Offer (Casino + Sports)",
+        "details": "Casino: Up to 500 free spins (unlocked via wagering). Sports: 100% up to $100 in free bets. Up to 50% rakeback (no deposit required)",
+        "wageringReq": "Free spins: $200-$1,000 wagered to unlock (no additional wagering on winnings). Sports: 5x deposit, min odds 1.50",
+        "maxBonus": "$100 (sports) + 500 free spins (casino) + 50% rakeback",
+        "code": "vipgrinders / maxbonus / HELLAGOOD"
+      },
+      "vipTiers": "Joker ($1k) → Club ($2.5k) → Heart ($5k) → Diamond ($10k) → Spade ($20k) → Flush ($35k)",
+      "rakeback": "Up to 50% (code-dependent, via Ace's VIP Lounge)",
+      "withdrawalTime": "Few minutes (crypto, may require verification on first withdrawal)",
+      "lastUpdated": "2026-03-30"
+    }
+  ],
+  "marketSnapshot": {
+    "totalStreamers": 20,
+    "partnerships": {
+      "Stake": 10,
+      "Shuffle": 2,
+      "Vavada": 1
+    },
+    "totalCompetitors": 6,
+    "completionRate": 17
+  },
+  "redFlags": {
+    "bonuses": [
+      "Wagering requirement >50x",
+      "Max bet limit <$5 while clearing bonus",
+      "Bonus expiry <7 days",
+      "Game restrictions (slots only, low RTP games)",
+      "Max withdraw cap on deposit match bonuses"
+    ],
+    "withdrawals": [
+      "Withdrawal time >24 hours (crypto)",
+      "Mandatory KYC before first withdrawal with no warning",
+      "Withdrawal limits <$5,000/day for non-VIP",
+      "Fees on crypto withdrawals"
+    ],
+    "vip": [
+      "Lossback/rakeback only paid in bonus balance (not real cash)",
+      "VIP demotion for inactivity",
+      "Unclear tier-up requirements"
+    ],
+    "general": [
+      "No license info or fake license",
+      "No provably fair verification",
+      "Bonus terms hidden or unclear",
+      "Customer support unresponsive"
+    ]
+  }
+}

@@ -83,6 +83,14 @@
         <h2>📅 Events Calendar</h2>
         <div id="events"></div>
       </div>
+      <div class="card">
+        <h2>🛰️ Intel Monitor</h2>
+        <div id="intelAlerts"></div>
+      </div>
+      <div class="card">
+        <h2>🏢 Competitor Intel</h2>
+        <div id="competitors"></div>
+      </div>
     </div>
 
     <div class="footer">Powered by CryptoCasinoSorted • Market Intel v1</div>
@@ -95,12 +103,14 @@
     });
 
     async function loadIntel(){
-      const [news, promos, reddit, streamers, events] = await Promise.all([
+      const [news, promos, reddit, streamers, events, intelAlerts, competitors] = await Promise.all([
         fetch('/data/news.json').then(r=>r.json()),
         fetch('/data/promos.json').then(r=>r.json()),
         fetch('/data/reddit.json').then(r=>r.json()),
         fetch('/data/streamers.json').then(r=>r.json()),
         fetch('/data/events.json').then(r=>r.json()),
+        fetch('/data/intel-alerts.json').then(r=>r.json()).catch(()=>({items:[]})),
+        fetch('/data/competitor-intel.json').then(r=>r.json()).catch(()=>({competitors:[]})),
       ]);
 
       document.getElementById('lastUpdated').textContent = `Updated: ${news.updated || promos.updated || reddit.updated || streamers.updated || events.updated || '—'}`;
@@ -150,6 +160,27 @@
           <div class="sub"><a href="${e.url}" target="_blank" rel="noopener">Details →</a></div>
         </div>
       `).join('') || '<div class="sub">No events data.</div>';
+
+      // Intel Monitor Alerts
+      document.getElementById('intelAlerts').innerHTML = (intelAlerts.items || []).slice(0,8).map(a => `
+        <div class="item">
+          <div><span class="pill">${a.source}</span><span class="tag" style="background:${a.score>=5?'var(--green)':'var(--orange)'}">${a.score>=5?'HIGH':'MED'}</span></div>
+          <div class="sub">${a.url ? '<a href="'+a.url+'" target="_blank" rel="noopener">'+a.title+'</a>' : a.title}</div>
+          <div class="sub" style="color:var(--muted);font-size:0.75rem;">${a.query || ''}</div>
+        </div>
+      `).join('') || '<div class="sub">No intel alerts.</div>';
+
+      // Competitor Intel
+      document.getElementById('competitors').innerHTML = (competitors.competitors || []).slice(0,6).map(c => `
+        <div class="item">
+          <div><strong>${c.logo || '🎰'} ${c.name}</strong></div>
+          ${c.welcomeBonus ? '<div class="sub">💰 '+(c.welcomeBonus.details || c.welcomeBonus.type || 'Bonus available')+'</div>' : ''}
+          ${c.rakeback ? '<div class="sub">🔄 Rakeback: '+c.rakeback+'</div>' : ''}
+          ${c.vipTiers ? '<div class="sub">⭐ VIP: '+c.vipTiers+'</div>' : ''}
+          ${c.withdrawalTime ? '<div class="sub">⚡ Withdrawal: '+c.withdrawalTime+'</div>' : ''}
+          <div class="sub" style="color:var(--muted);font-size:0.75rem;">Updated: ${c.lastUpdated || '—'}</div>
+        </div>
+      `).join('') || '<div class="sub">No competitor data.</div>';
 
       document.getElementById('loading').style.display = 'none';
       document.getElementById('content').style.display = 'grid';
