@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Casino On-Chain Dashboard | CryptoCasinoSorted</title>
+  <meta name="description" content="On-chain crypto casino intelligence. Live deposit flows, casino market share, whale activity, and wallet coverage across Stake, Rollbit, Shuffle, Roobet and more.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/crypto-casino-dashboard.html">
+  <meta name="author" content="CryptoCasinoSorted">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#08090d">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0L3N9F43ED');</script>
+
+  <meta property="og:title" content="Crypto Casino On-Chain Dashboard | CryptoCasinoSorted">
+  <meta property="og:description" content="On-chain crypto casino intelligence. Live deposit flows, casino market share, whale activity, and wallet coverage.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cryptocasinosorted.com/crypto-casino-dashboard.html">
+  <meta property="og:image" content="https://cryptocasinosorted.com/favicon.svg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crypto Casino On-Chain Dashboard | CryptoCasinoSorted">
+  <meta name="twitter:description" content="On-chain crypto casino intelligence. Live deposit flows, casino market share, whale activity, and wallet coverage.">
+
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="terminal-theme.css">
+
+  <style>
+    /* Dashboard-specific styles */
+    .dash-hero {
+      padding: 24px 0 16px;
+      border-bottom: 1px solid var(--t-border);
+      margin-bottom: 20px;
+    }
+    .dash-hero h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+    .dash-hero .sub {
+      color: var(--t-dim);
+      font-size: 0.8rem;
+      font-family: var(--t-mono);
+    }
+    .dash-hero .sub span { color: var(--t-green); }
+    .dash-meta {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+      font-family: var(--t-mono);
+      font-size: 10px;
+      color: var(--t-muted);
+    }
+    .dash-meta .live {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--t-green);
+    }
+    .dash-meta .live::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--t-green);
+      border-radius: 50%;
+      animation: t-pulse 2s infinite;
+    }
+
+    /* KPI row */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .kpi-card {
+      background: var(--t-bg2);
+      border: 1px solid var(--t-border);
+      border-radius: var(--t-radius);
+      padding: 14px 16px;
+    }
+    .kpi-label {
+      font-family: var(--t-mono);
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--t-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .kpi-value {
+      font-family: var(--t-mono);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--t-text);
+      line-height: 1.2;
+    }
+    .kpi-change {
+      font-family: var(--t-mono);
+      font-size: 10px;
+      font-weight: 700;
+      margin-top: 3px;
+    }
+    .kpi-change.up { color: var(--t-green); }
+    .kpi-change.down { color: var(--t-red); }
+    .kpi-sub {
+      font-family: var(--t-mono);
+      font-size: 10px;
+      color: var(--t-muted);
+      margin-top: 2px;
+    }
+
+    /* Chart area */
+    .chart-container {
+      position: relative;
+      background: var(--t-bg2);
+      border: 1px solid var(--t-border);
+      border-radius: var(--t-radius);
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .chart-title {
+      font-family: var(--t-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--t-dim);
+    }
+    .chart-canvas {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+    }
+    .chart-bar {
+      flex: 1;
+      background: var(--t-green);
+      border-radius: 2px 2px 0 0;
+      min-height: 2px;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      position: relative;
+      cursor: pointer;
+    }
+    .chart-bar:hover {
+      opacity: 1;
+    }
+    .chart-bar .tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--t-bg);
+      border: 1px solid var(--t-border2);
+      border-radius: 3px;
+      padding: 4px 8px;
+      font-family: var(--t-mono);
+      font-size: 9px;
+      color: var(--t-text);
+      white-space: nowrap;
+      z-index: 10;
+    }
+    .chart-bar:hover .tooltip { display: block; }
+    .chart-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+      font-family: var(--t-mono);
+      font-size: 9px;
+      color: var(--t-muted);
+    }
+
+    /* Two-col layout */
+    .dash-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 900px) {
+      .dash-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Casino table */
+    .casino-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 0.8fr;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(26,29,46,0.5);
+      align-items: center;
+      font-family: var(--t-mono);
+      font-size: 0.78rem;
+      transition: background 0.15s;
+    }
+    .casino-row:hover { background: rgba(255,255,255,0.015); }
+    .casino-row.header {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--t-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--t-border);
+      background: var(--t-bg);
+    }
+    .casino-row.header:hover { background: var(--t-bg); }
+    .casino-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--t-text);
+    }
+    .casino-rank {
+      color: var(--t-muted);
+      font-size: 10px;
+      width: 20px;
+    }
+    .casino-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .casino-bar {
+      height: 4px;
+      background: var(--t-green);
+      border-radius: 2px;
+      opacity: 0.6;
+    }
+    .casino-share {
+      font-size: 10px;
+      color: var(--t-dim);
+    }
+
+    /* Whale table */
+    .whale-row {
+      display: grid;
+      grid-template-columns: 0.5fr 1.5fr 1fr 1fr 0.8fr;
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(26,29,46,0.5);
+      font-family: var(--t-mono);
+      font-size: 0.75rem;
+      align-items: center;
+    }
+    .whale-row:hover { background: rgba(255,255,255,0.015); }
+    .whale-row.header {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--t-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--t-border);
+      background: var(--t-bg);
+    }
+    .addr { color: var(--t-blue); }
+    .addr a { color: var(--t-blue); text-decoration: none; }
+    .addr a:hover { text-decoration: underline; }
+
+    /* Wallet coverage grid */
+    .coverage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+      padding: 12px;
+    }
+    .coverage-card {
+      background: var(--t-bg3);
+      border: 1px solid var(--t-border);
+      border-radius: var(--t-radius);
+      padding: 10px 12px;
+    }
+    .coverage-name {
+      font-family: var(--t-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--t-text);
+      margin-bottom: 4px;
+    }
+    .coverage-chains {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .chain-tag {
+      font-family: var(--t-mono);
+      font-size: 8px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    .chain-ethereum { background: rgba(98,126,234,0.15); color: #7b8ff0; border: 1px solid rgba(98,126,234,0.25); }
+    .chain-bitcoin { background: rgba(247,147,26,0.15); color: #f7931a; border: 1px solid rgba(247,147,26,0.25); }
+    .chain-solana { background: rgba(153,69,255,0.15); color: #9945ff; border: 1px solid rgba(153,69,255,0.25); }
+    .chain-tron { background: rgba(255,6,10,0.15); color: #ff6b6b; border: 1px solid rgba(255,6,10,0.25); }
+    .chain-bsc { background: rgba(243,186,47,0.15); color: #f3ba2f; border: 1px solid rgba(243,186,47,0.25); }
+    .chain-arbitrum { background: rgba(40,160,240,0.15); color: #28a0f0; border: 1px solid rgba(40,160,240,0.25); }
+    .chain-base { background: rgba(0,82,255,0.15); color: #4488ff; border: 1px solid rgba(0,82,255,0.25); }
+    .chain-polygon { background: rgba(130,71,229,0.15); color: #8247e5; border: 1px solid rgba(130,71,229,0.25); }
+
+    /* Top wallets */
+    .tw-row {
+      display: grid;
+      grid-template-columns: 0.3fr 1.5fr 1fr 0.5fr 1fr;
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(26,29,46,0.5);
+      font-family: var(--t-mono);
+      font-size: 0.75rem;
+      align-items: center;
+    }
+    .tw-row:hover { background: rgba(255,255,255,0.015); }
+    .tw-row.header {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--t-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--t-border);
+      background: var(--t-bg);
+    }
+
+    /* Methodology note */
+    .methodology {
+      background: var(--t-bg2);
+      border: 1px solid var(--t-border);
+      border-left: 3px solid var(--t-amber);
+      border-radius: var(--t-radius);
+      padding: 12px 16px;
+      margin-top: 20px;
+      margin-bottom: 16px;
+    }
+    .methodology h4 {
+      font-family: var(--t-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--t-amber);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .methodology p {
+      font-size: 0.78rem;
+      color: var(--t-dim);
+      line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .kpi-row { grid-template-columns: 1fr 1fr; }
+      .kpi-value { font-size: 1.1rem; }
+      .casino-row { grid-template-columns: 1.5fr 1fr 1fr; }
+      .casino-row .hide-mobile { display: none; }
+      .whale-row { grid-template-columns: 0.3fr 1.2fr 1fr 1fr; }
+      .whale-row .hide-mobile { display: none; }
+      .tw-row { grid-template-columns: 0.3fr 1.5fr 1fr 1fr; }
+      .tw-row .hide-mobile { display: none; }
+      .coverage-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .coverage-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Terminal Nav -->
+<nav class="t-nav">
+  <a href="/" class="t-nav-logo">
+    CCS <span class="sub">DASHBOARD</span>
+  </a>
+  <div class="t-nav-links">
+    <a href="/">Home</a>
+    <a href="/analytics.html">Live Data</a>
+    <a href="/crypto-casino-dashboard.html" class="active">Dashboard</a>
+    <a href="/deposits-data.html" class="t-nav-hide-mobile">Deposits</a>
+    <a href="/casino-wallet-addresses.html" class="t-nav-hide-mobile">Wallets</a>
+  </div>
+  <div class="t-nav-live">LIVE</div>
+</nav>
+
+<div class="t-container-wide">
+
+  <!-- Hero -->
+  <div class="dash-hero">
+    <h1>Crypto Casino On-Chain Dashboard</h1>
+    <div class="sub">Real deposit flow intelligence across <span id="casinoCount">—</span> casinos · Ethereum on-chain data</div>
+    <div class="dash-meta">
+      <div class="live">DATA FEED ACTIVE</div>
+      <div>Updated: <span id="lastUpdated">—</span></div>
+      <div>Range: <span id="dateRange">—</span></div>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-row" id="kpiRow">
+    <div class="kpi-card"><div class="kpi-label">Loading...</div><div class="kpi-value">—</div></div>
+  </div>
+
+  <!-- Volume Chart -->
+  <div class="chart-container">
+    <div class="chart-header">
+      <div class="chart-title">Daily Deposit Volume (30d)</div>
+      <div id="chartTotal" style="font-family:var(--t-mono);font-size:10px;color:var(--t-dim);"></div>
+    </div>
+    <div class="chart-canvas" id="chartCanvas"></div>
+    <div class="chart-labels" id="chartLabels"></div>
+  </div>
+
+  <!-- Casino Breakdown + Top Deposits -->
+  <div class="dash-grid">
+    <!-- Casino Table -->
+    <div class="t-panel">
+      <div class="t-panel-header">
+        <div class="t-panel-title">Deposits by Casino</div>
+        <span class="t-badge t-badge-green">MARKET SHARE</span>
+      </div>
+      <div class="t-panel-body flush" id="casinoTable">
+        <div style="padding:16px;color:var(--t-dim);">Loading...</div>
+      </div>
+    </div>
+
+    <!-- Top Deposits (Whales) -->
+    <div class="t-panel">
+      <div class="t-panel-header">
+        <div class="t-panel-title">🐋 Largest Deposits</div>
+        <span class="t-badge t-badge-amber">ALL TIME</span>
+      </div>
+      <div class="t-panel-body flush" id="whaleTable">
+        <div style="padding:16px;color:var(--t-dim);">Loading...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Wallets by Volume -->
+  <div class="t-panel">
+    <div class="t-panel-header">
+      <div class="t-panel-title">Top Depositing Wallets</div>
+      <span class="t-badge t-badge-blue">BY CUMULATIVE VOLUME</span>
+    </div>
+    <div class="t-panel-body flush" id="topWalletsTable">
+      <div style="padding:16px;color:var(--t-dim);">Loading...</div>
+    </div>
+  </div>
+
+  <!-- Wallet Coverage -->
+  <div class="t-panel">
+    <div class="t-panel-header">
+      <div class="t-panel-title">Wallet Coverage by Casino</div>
+      <span class="t-badge t-badge-purple" style="border:1px solid rgba(179,136,255,0.25);">MULTI-CHAIN</span>
+    </div>
+    <div class="t-panel-body flush">
+      <div class="coverage-grid" id="coverageGrid">
+        <div style="padding:16px;color:var(--t-dim);">Loading...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Methodology -->
+  <div class="methodology">
+    <h4>⚠ Data Methodology</h4>
+    <p>
+      This dashboard tracks <strong>on-chain deposits</strong> to known crypto casino wallet addresses on <strong>Ethereum mainnet</strong> (ETH).
+      Wallet addresses are sourced from Arkham Intelligence and Etherscan labels. Data does not include deposits on other chains (BTC, SOL, TRON, BSC)
+      or fiat deposits. Volume figures represent ETH deposits only and are a subset of total casino activity.
+      Casino names are normalized (e.g. "Stake 11" → "Stake"). All USD values use the ETH price at the time of the transaction.
+    </p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="t-footer">
+  <p>CryptoCasinoSorted — On-Chain Casino Intelligence</p>
+  <p>Data sourced from Ethereum blockchain · Arkham Intelligence · Etherscan</p>
+  <p style="margin-top:8px;">🎰 <a href="/">Home</a> · <a href="/analytics.html">Live Data</a> · <a href="/deposits-data.html">Deposits</a> · <a href="/casino-wallet-addresses.html">Wallet Addresses</a></p>
+</footer>
+
+<script>
+(async function() {
+  let data;
+  try {
+    const resp = await fetch('data/dashboard.json');
+    data = await resp.json();
+  } catch(e) {
+    document.querySelector('.dash-hero .sub').textContent = 'Failed to load dashboard data.';
+    return;
+  }
+
+  const o = data.overview;
+
+  // Meta
+  document.getElementById('casinoCount').textContent = o.casinosTracked;
+  document.getElementById('lastUpdated').textContent = new Date(data.generated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  document.getElementById('dateRange').textContent = `${data.dataRange.from} → ${data.dataRange.to} (${data.totalDays} days)`;
+
+  // KPI Cards
+  function fmtUSD(n) {
+    if (n >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+    if (n >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+    if (n >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+    return '$' + n.toLocaleString();
+  }
+  function fmtNum(n) {
+    if (n >= 1e6) return (n/1e6).toFixed(1) + 'M';
+    if (n >= 1e3) return (n/1e3).toFixed(1) + 'K';
+    return n.toLocaleString();
+  }
+
+  const kpis = [
+    { label: 'Total Volume (All Time)', value: fmtUSD(o.totalVolume), sub: `${fmtNum(o.totalDeposits)} deposits` },
+    { label: '30-Day Volume', value: fmtUSD(o.vol30d), sub: `${fmtNum(o.deposits30d)} deposits` },
+    { label: '7-Day Volume', value: fmtUSD(o.vol7d), change: o.growth7d, sub: `${fmtNum(o.deposits7d)} deposits` },
+    { label: 'Avg Deposit', value: fmtUSD(o.avgDeposit), sub: 'per transaction' },
+    { label: 'Largest Single Deposit', value: fmtUSD(o.largestDeposit), sub: data.topDeposits[0]?.casino || '' },
+    { label: 'Casinos Tracked', value: o.casinosTracked, sub: `${data.walletCoverage.reduce((s,w) => s + w.totalAddresses, 0)} wallet addresses` },
+  ];
+
+  document.getElementById('kpiRow').innerHTML = kpis.map(k => `
+    <div class="kpi-card">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-value">${k.value}</div>
+      ${k.change !== undefined && k.change !== null ? `<div class="kpi-change ${k.change >= 0 ? 'up' : 'down'}">${k.change >= 0 ? '▲' : '▼'} ${Math.abs(k.change)}% vs prev 7d</div>` : ''}
+      ${k.sub ? `<div class="kpi-sub">${k.sub}</div>` : ''}
+    </div>
+  `).join('');
+
+  // Volume Chart
+  const dv = data.dailyVolume;
+  const maxVol = Math.max(...dv.map(d => d.volume));
+  const chartHTML = dv.map(d => {
+    const pct = (d.volume / maxVol) * 100;
+    const date = d.date.slice(5);
+    return `<div class="chart-bar" style="height:${Math.max(pct, 1)}%"><div class="tooltip">${date}: ${fmtUSD(d.volume)}<br>${d.deposits.toLocaleString()} deposits</div></div>`;
+  }).join('');
+  document.getElementById('chartCanvas').innerHTML = chartHTML;
+
+  // Chart labels (show first, middle, last)
+  if (dv.length > 0) {
+    const first = dv[0].date.slice(5);
+    const mid = dv[Math.floor(dv.length/2)].date.slice(5);
+    const last = dv[dv.length-1].date.slice(5);
+    document.getElementById('chartLabels').innerHTML = `<span>${first}</span><span>${mid}</span><span>${last}</span>`;
+  }
+  document.getElementById('chartTotal').textContent = `30d Total: ${fmtUSD(o.vol30d)}`;
+
+  // Casino Table
+  const cb = data.casinoBreakdown;
+  const maxCasinoVol = cb[0]?.totalVolume || 1;
+  let casinoHTML = `
+    <div class="casino-row header">
+      <div>Casino</div>
+      <div style="text-align:right">Total Volume</div>
+      <div style="text-align:right">7d Volume</div>
+      <div style="text-align:right" class="hide-mobile">Deposits</div>
+      <div style="text-align:right">Share</div>
+    </div>
+  `;
+  cb.forEach((c, i) => {
+    const barW = (c.totalVolume / maxCasinoVol) * 100;
+    casinoHTML += `
+      <div class="casino-row">
+        <div class="casino-name"><span class="casino-rank">${i+1}</span> ${c.name}</div>
+        <div style="text-align:right;color:var(--t-text)">${fmtUSD(c.totalVolume)}</div>
+        <div style="text-align:right;color:${c.vol7d > 0 ? 'var(--t-green)' : 'var(--t-muted)'}">${c.vol7d > 0 ? fmtUSD(c.vol7d) : '—'}</div>
+        <div style="text-align:right" class="hide-mobile">${fmtNum(c.totalDeposits)}</div>
+        <div style="text-align:right">
+          <div class="casino-bar-wrap" style="justify-content:flex-end;">
+            <span class="casino-share">${c.marketShare}%</span>
+            <div class="casino-bar" style="width:${Math.max(barW, 3)}%;max-width:60px;"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  document.getElementById('casinoTable').innerHTML = casinoHTML;
+
+  // Whale Table
+  let whaleHTML = `
+    <div class="whale-row header">
+      <div>#</div>
+      <div>Wallet</div>
+      <div style="text-align:right">Amount</div>
+      <div style="text-align:right">USD</div>
+      <div class="hide-mobile">Casino</div>
+    </div>
+  `;
+  data.topDeposits.slice(0, 10).forEach((d, i) => {
+    const shortAddr = d.wallet ? d.wallet.slice(0,6) + '…' + d.wallet.slice(-4) : '—';
+    const etherscanUrl = d.txHash ? `https://etherscan.io/tx/${d.txHash}` : (d.wallet ? `https://etherscan.io/address/${d.wallet}` : '#');
+    whaleHTML += `
+      <div class="whale-row">
+        <div style="color:var(--t-muted)">${i+1}</div>
+        <div class="addr"><a href="${etherscanUrl}" target="_blank" rel="noopener">${shortAddr}</a></div>
+        <div style="text-align:right">${parseFloat(d.amount).toFixed(2)} ${d.token}</div>
+        <div style="text-align:right;color:var(--t-amber);font-weight:700">${fmtUSD(d.usd)}</div>
+        <div class="hide-mobile" style="color:var(--t-dim)">${d.casino}</div>
+      </div>
+    `;
+  });
+  document.getElementById('whaleTable').innerHTML = whaleHTML;
+
+  // Top Wallets
+  let twHTML = `
+    <div class="tw-row header">
+      <div>#</div>
+      <div>Wallet</div>
+      <div style="text-align:right">Total Volume</div>
+      <div style="text-align:right" class="hide-mobile">Deposits</div>
+      <div>Casinos</div>
+    </div>
+  `;
+  data.topWallets.slice(0, 15).forEach((w, i) => {
+    const shortAddr = w.address.slice(0,6) + '…' + w.address.slice(-4);
+    twHTML += `
+      <div class="tw-row">
+        <div style="color:var(--t-muted)">${i+1}</div>
+        <div class="addr"><a href="https://etherscan.io/address/${w.address}" target="_blank" rel="noopener">${shortAddr}</a></div>
+        <div style="text-align:right;color:var(--t-green);font-weight:700">${fmtUSD(w.totalVolume)}</div>
+        <div style="text-align:right" class="hide-mobile">${fmtNum(w.deposits)}</div>
+        <div style="color:var(--t-dim);font-size:10px">${w.casinos.join(', ')}</div>
+      </div>
+    `;
+  });
+  document.getElementById('topWalletsTable').innerHTML = twHTML;
+
+  // Wallet Coverage
+  const chainColors = { ethereum: 'ethereum', bitcoin: 'bitcoin', solana: 'solana', tron: 'tron', bsc: 'bsc', arbitrum: 'arbitrum', base: 'base', polygon: 'polygon' };
+  let covHTML = '';
+  data.walletCoverage.forEach(w => {
+    const tags = Object.entries(w.chains).map(([chain, count]) =>
+      `<span class="chain-tag chain-${chainColors[chain] || ''}">${chain} ${count}</span>`
+    ).join('');
+    covHTML += `
+      <div class="coverage-card">
+        <div class="coverage-name">${w.name}</div>
+        <div class="coverage-chains">${tags}</div>
+      </div>
+    `;
+  });
+  document.getElementById('coverageGrid').innerHTML = covHTML;
+
+})();
+</script>
+
+</body>
+</html>
