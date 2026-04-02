@@ -73,12 +73,20 @@ const growth7d = volPrev7d > 0 ? ((vol7d / volPrev7d) - 1) * 100 : null;
 
 // Casino breakdown
 const casinoMap = {};
-// Normalize casino names (Stake 11 -> Stake, Bitcasino 3 -> Bitcasino, etc.)
+// Normalize casino names and strip bogus/source-specific variants
 function normalizeCasino(name) {
-  if (/^Stake\b/i.test(name)) return 'Stake';
-  if (/^Bitcasino/i.test(name)) return 'Bitcasino';
-  if (/^Rollbit/i.test(name)) return 'Rollbit';
-  return name;
+  const raw = String(name || '').trim();
+  if (!raw) return 'Unknown';
+  if (/^Stake\b/i.test(raw)) return 'Stake';
+  if (/^Bitcasino\b/i.test(raw)) return 'Bitcasino';
+  if (/^Rollbit\b/i.test(raw)) return 'Rollbit';
+  if (/^Roobet\b/i.test(raw)) return 'Roobet';
+  if (/^BC\.Game\b/i.test(raw)) return 'BC.Game';
+  if (/^Shuffle(\.com)?\b/i.test(raw)) return 'Shuffle';
+  if (/^Rainbet\b/i.test(raw)) return 'Rainbet';
+  if (/^Duelbits\b/i.test(raw)) return 'Duelbits';
+  if (/^BetFury\b/i.test(raw)) return 'BetFury';
+  return raw;
 }
 
 rows.forEach(r => {

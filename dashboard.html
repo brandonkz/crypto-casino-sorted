@@ -229,108 +229,34 @@
     </div>
 
     <script>
-        // Parse CSV
-        function parseCSV(text) {
-            const lines = text.trim().split('\n');
-            const headers = lines[0].split(',');
-            
-            return lines.slice(1).map(line => {
-                const values = [];
-                let current = '';
-                let inQuotes = false;
-                
-                for (let i = 0; i < line.length; i++) {
-                    const char = line[i];
-                    
-                    if (char === '"') {
-                        inQuotes = !inQuotes;
-                    } else if (char === ',' && !inQuotes) {
-                        values.push(current);
-                        current = '';
-                    } else {
-                        current += char;
-                    }
-                }
-                values.push(current);
-                
-                const obj = {};
-                headers.forEach((header, i) => {
-                    obj[header.trim()] = values[i]?.trim() || '';
-                });
-                return obj;
-            });
-        }
-
-        // Load and analyze data
         async function loadData() {
             try {
-                const response = await fetch('./data/deposits-all.csv');
-                if (!response.ok) throw new Error('Failed to load data');
-                
-                const text = await response.text();
-                const data = parseCSV(text);
-                
-                // Analyze data
-                const totalVolume = data.reduce((sum, d) => sum + parseFloat(d['USD Value'] || 0), 0);
-                const totalDeposits = data.length;
-                const avgDeposit = totalVolume / totalDeposits;
-                
-                const biggest = data.reduce((max, d) => {
-                    const val = parseFloat(d['USD Value'] || 0);
-                    return val > max.value ? { value: val, casino: d.Casino } : max;
-                }, { value: 0, casino: '' });
-                
-                // Update stats
-                document.getElementById('totalVolume').textContent = '$' + totalVolume.toLocaleString('en-US', { maximumFractionDigits: 0 });
-                document.getElementById('totalDeposits').textContent = totalDeposits.toLocaleString();
-                document.getElementById('avgDeposit').textContent = '$' + avgDeposit.toLocaleString('en-US', { maximumFractionDigits: 2 });
-                document.getElementById('biggestDeposit').textContent = '$' + biggest.value.toLocaleString('en-US', { maximumFractionDigits: 2 });
-                document.getElementById('biggestCasino').textContent = biggest.casino;
-                
-                // Casino breakdown
-                const casinoStats = {};
-                data.forEach(d => {
-                    const casino = d.Casino;
-                    if (!casinoStats[casino]) {
-                        casinoStats[casino] = { volume: 0, count: 0 };
-                    }
-                    casinoStats[casino].volume += parseFloat(d['USD Value'] || 0);
-                    casinoStats[casino].count += 1;
-                });
-                
-                // Hourly breakdown
-                const hourlyStats = Array(24).fill(0);
-                data.forEach(d => {
-                    const time = d.Time;
-                    if (time) {
-                        const hour = parseInt(time.split(':')[0]);
-                        hourlyStats[hour] += parseFloat(d['USD Value'] || 0);
-                    }
-                });
-                
-                // Size distribution
+                const response = await fetch('./data/dashboard.json');
+                if (!response.ok) throw new Error('Failed to load cleaned dashboard data');
+                const data = await response.json();
+                const overview = data.overview || {};
+                const casinoRows = data.casinoBreakdown || [];
+                const dailyVolume = data.dailyVolume || [];
+                const topDeposit = data.topDeposits?.[0] || {};
+
+                document.getElementById('totalVolume').textContent = '$' + (overview.totalVolume || 0).toLocaleString('en-US', { maximumFractionDigits: 0 });
+                document.getElementById('totalDeposits').textContent = (overview.totalDeposits || 0).toLocaleString();
+                document.getElementById('avgDeposit').textContent = '$' + (overview.avgDeposit || 0).toLocaleString('en-US', { maximumFractionDigits: 2 });
+                document.getElementById('biggestDeposit').textContent = '$' + (overview.largestDeposit || 0).toLocaleString('en-US', { maximumFractionDigits: 2 });
+                document.getElementById('biggestCasino').textContent = topDeposit.casino || '—';
+
                 const ranges = [
-                    { label: '<$100', min: 0, max: 100, count: 0 },
-                    { label: '$100-500', min: 100, max: 500, count: 0 },
-                    { label: '$500-1K', min: 500, max: 1000, count: 0 },
-                    { label: '$1K-5K', min: 1000, max: 5000, count: 0 },
-                    { label: '$5K-10K', min: 5000, max: 10000, count: 0 },
-                    { label: '>$10K', min: 10000, max: Infinity, count: 0 }
+                    { label: '<$100', count: 0 },
+                    { label: '$100-500', count: 0 },
+                    { label: '$500-1K', count: 0 },
+                    { label: '$1K-5K', count: 0 },
+                    { label: '$5K-10K', count: 0 },
+                    { label: '>$10K', count: 0 }
                 ];
-                
-                data.forEach(d => {
-                    const val = parseFloat(d['USD Value'] || 0);
-                    const range = ranges.find(r => val >= r.min && val < r.max);
-                    if (range) range.count++;
-                });
-                
-                // Create charts
-                createCharts(casinoStats, hourlyStats, ranges);
-                
-                // Show content
+
+                createCharts(casinoRows, dailyVolume, ranges);
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
-                
             } catch (error) {
                 document.getElementById('loading').style.display = 'none';
                 const errorEl = document.getElementById('error');
@@ -339,9 +265,9 @@
             }
         }
 
-        function createCharts(casinoStats, hourlyStats, ranges) {
-            const casinos = Object.keys(casinoStats);
-            const colors = ['#8b5cf6', '#ec4899', '#3b82f6', '#10b981'];
+        function createCharts(casinoRows, dailyVolume, ranges) {
+            const casinos = casinoRows.map(r => r.name);
+            const colors = ['#8b5cf6', '#ec4899', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#6366f1', '#14b8a6', '#84cc16'];
             
             // Volume by Casino (Pie)
             new Chart(document.getElementById('casinoChart'), {
@@ -349,7 +275,7 @@
                 data: {
                     labels: casinos,
                     datasets: [{
-                        data: casinos.map(c => casinoStats[c].volume),
+                        data: casinoRows.map(r => r.totalVolume),
                         backgroundColor: colors,
                         borderWidth: 0
                     }]
@@ -378,7 +304,7 @@
                     labels: casinos,
                     datasets: [{
                         label: 'Deposits',
-                        data: casinos.map(c => casinoStats[c].count),
+                        data: casinoRows.map(r => r.totalDeposits),
                         backgroundColor: colors,
                         borderRadius: 8
                     }]
@@ -399,10 +325,10 @@
             new Chart(document.getElementById('hourlyChart'), {
                 type: 'line',
                 data: {
-                    labels: Array.from({ length: 24 }, (_, i) => i + ':00'),
+                    labels: dailyVolume.map(d => d.date),
                     datasets: [{
                         label: 'Volume ($)',
-                        data: hourlyStats,
+                        data: dailyVolume.map(d => d.volume),
                         borderColor: '#8b5cf6',
                         backgroundColor: 'rgba(139, 92, 246, 0.1)',
                         fill: true,
@@ -458,7 +384,7 @@
                     labels: casinos,
                     datasets: [{
                         label: 'Avg Deposit ($)',
-                        data: casinos.map(c => casinoStats[c].volume / casinoStats[c].count),
+                        data: casinoRows.map(r => r.avgDeposit),
                         backgroundColor: colors,
                         borderRadius: 8
                     }]

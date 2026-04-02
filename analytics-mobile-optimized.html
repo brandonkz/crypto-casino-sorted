@@ -272,78 +272,50 @@
     </div>
 
     <script>
-        // Placeholder - will be replaced with embedded data by generate script
-        fetch('./data/deposits-all.csv')
-            .then(response => response.text())
-            .then(text => {
-                const lines = text.trim().split('\n');
-                const data = [];
-                
-                for (let i = 1; i < lines.length; i++) {
-                    const cols = lines[i].split(',');
-                    if (cols.length >= 8) {
-                        data.push({
-                            date: cols[0],
-                            casino: cols[3].includes('Stake') ? 'Stake' : cols[3].includes('Rollbit') ? 'Rollbit' : cols[3],
-                            usdValue: parseFloat(cols[7]) || 0
-                        });
-                    }
-                }
-                
-                // Calculate stats
-                const casinoStats = {};
-                let totalVolume = 0;
-                let biggest = { value: 0, casino: '' };
-                
-                data.forEach(d => {
-                    if (!casinoStats[d.casino]) {
-                        casinoStats[d.casino] = { volume: 0, count: 0 };
-                    }
-                    casinoStats[d.casino].volume += d.usdValue;
-                    casinoStats[d.casino].count += 1;
-                    totalVolume += d.usdValue;
-                    
-                    if (d.usdValue > biggest.value) {
-                        biggest = { value: d.usdValue, casino: d.casino };
-                    }
-                });
-                
-                const minDate = new Date(data[0]?.date);
-                const maxDate = new Date(data[data.length - 1]?.date);
-                const daysDiff = Math.ceil((maxDate - minDate) / (86400000)) + 1;
-                
-                // Update UI
-                const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                document.getElementById('headerSubtext').textContent = `${formatDate(minDate)} – ${formatDate(maxDate)} (${daysDiff} day${daysDiff > 1 ? 's' : ''})`;
-                document.getElementById('totalVolume').textContent = '$' + (totalVolume / 1000000).toFixed(2) + 'M';
-                document.getElementById('totalDeposits').textContent = data.length.toLocaleString() + ' deposits';
-                document.getElementById('avgDeposit').textContent = '$' + (totalVolume / data.length).toFixed(0);
-                document.getElementById('biggestDeposit').textContent = '$' + biggest.value.toLocaleString(undefined, { maximumFractionDigits: 0 });
-                document.getElementById('biggestCasino').textContent = biggest.casino;
-                document.getElementById('timePeriod').textContent = daysDiff + 'd';
-                document.getElementById('dateRange').textContent = `${formatDate(minDate)} – ${formatDate(maxDate)}`;
-                
-                // Casino list (sorted by volume)
-                const casinos = Object.keys(casinoStats).sort((a, b) => casinoStats[b].volume - casinoStats[a].volume);
-                const casinoListHTML = casinos.map(casino => `
-                    <div class="casino-item">
-                        <div class="casino-name">${casino}</div>
-                        <div class="casino-stats">
-                            <div class="casino-volume">$${(casinoStats[casino].volume / 1000000).toFixed(2)}M</div>
-                            <div class="casino-count">${casinoStats[casino].count.toLocaleString()} deposits</div>
-                        </div>
-                    </div>
-                `).join('');
-                
-                document.getElementById('casinoList').innerHTML = casinoListHTML;
-                
-                // Show content, hide loading
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-            })
-            .catch(error => {
-                document.getElementById('loading').textContent = 'Error loading data';
-            });
+      function fmtShortUsd(v) {
+        if (v >= 1000000) return '$' + (v / 1000000).toFixed(2) + 'M';
+        if (v >= 1000) return '$' + (v / 1000).toFixed(0) + 'k';
+        return '$' + Math.round(v).toLocaleString();
+      }
+      function formatDate(s) {
+        return new Date(s + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      }
+      fetch('./data/dashboard.json')
+        .then(response => response.json())
+        .then(data => {
+          const overview = data.overview || {};
+          const rows = data.casinoBreakdown || [];
+          const minDate = data.dataRange?.from;
+          const maxDate = data.dataRange?.to;
+          const minD = new Date(minDate + 'T00:00:00Z');
+          const maxD = new Date(maxDate + 'T00:00:00Z');
+          const daysDiff = Math.ceil((maxD - minD) / 86400000) + 1;
+
+          document.getElementById('headerSubtext').textContent = `${formatDate(minDate)} – ${formatDate(maxDate)} (${daysDiff} day${daysDiff > 1 ? 's' : ''})`;
+          document.getElementById('totalVolume').textContent = fmtShortUsd(overview.totalVolume || 0);
+          document.getElementById('totalDeposits').textContent = (overview.totalDeposits || 0).toLocaleString() + ' deposits';
+          document.getElementById('avgDeposit').textContent = '$' + Math.round(overview.avgDeposit || 0).toLocaleString();
+          document.getElementById('biggestDeposit').textContent = '$' + Math.round(overview.largestDeposit || 0).toLocaleString();
+          document.getElementById('biggestCasino').textContent = data.topDeposits?.[0]?.casino || '—';
+          document.getElementById('timePeriod').textContent = daysDiff + 'd';
+          document.getElementById('dateRange').textContent = `${formatDate(minDate)} – ${formatDate(maxDate)}`;
+
+          document.getElementById('casinoList').innerHTML = rows.map(casino => `
+            <div class="casino-item">
+              <div class="casino-name">${casino.name}</div>
+              <div class="casino-stats">
+                <div class="casino-volume">${fmtShortUsd(casino.totalVolume)}</div>
+                <div class="casino-count">${casino.totalDeposits.toLocaleString()} deposits</div>
+              </div>
+            </div>
+          `).join('');
+
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('content').style.display = 'block';
+        })
+        .catch(() => {
+          document.getElementById('loading').textContent = 'Error loading data';
+        });
     </script>
 </body>
 </html>

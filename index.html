@@ -1557,27 +1557,52 @@
           whaleFeed.innerHTML = '<div style="color: var(--text-secondary); font-size: 0.85rem;">No whales detected recently</div>';
         }
 
-        // Calculate casino volume (last 24h simulation - using last 1000 deposits)
-        const recent = deposits.slice(-1000);
-        const casinoVolume = {};
-        recent.forEach(d => {
-          if (!casinoVolume[d.casino]) casinoVolume[d.casino] = 0;
-          casinoVolume[d.casino] += d.usd;
-        });
-
-        const sorted = Object.entries(casinoVolume)
-          .sort((a, b) => b[1] - a[1])
-          .slice(0, 5);
-
+        // Load cleaned ranking from dashboard.json instead of raw CSV labels
         const perfList = document.getElementById('performance-list');
-        if (perfList) {
-          perfList.innerHTML = sorted.map((item, i) => `
-            <div class="performance-item">
-              <span class="perf-rank">${i + 1}</span>
-              <span class="perf-casino">${item[0]}</span>
-              <span class="perf-volume">$${Math.round(item[1]).toLocaleString()}</span>
-            </div>
-          `).join('');
+        try {
+          const dashRes = await fetch('/data/dashboard.json');
+          const dashboard = await dashRes.json();
+          const sorted = (dashboard.casinoBreakdown || []).slice(0, 5);
+          if (perfList) {
+            perfList.innerHTML = sorted.map((item, i) => `
+              <div class="performance-item">
+                <span class="perf-rank">${i + 1}</span>
+                <span class="perf-casino">${item.name}</span>
+                <span class="perf-volume">$${Math.round(item.vol7d || item.totalVolume).toLocaleString()}</span>
+              </div>
+            `).join('');
+          }
+        } catch (e) {
+          // Fallback: raw CSV with basic normalization
+          const recent = deposits.slice(-1000);
+          const normalizeCasino = (name) => {
+            const raw = String(name || '').trim();
+            if (/^Stake\b/i.test(raw)) return 'Stake';
+            if (/^Bitcasino\b/i.test(raw)) return 'Bitcasino';
+            if (/^Rollbit\b/i.test(raw)) return 'Rollbit';
+            if (/^Roobet\b/i.test(raw)) return 'Roobet';
+            if (/^BC\.Game\b/i.test(raw)) return 'BC.Game';
+            if (/^Shuffle(\.com)?\b/i.test(raw)) return 'Shuffle';
+            return raw;
+          };
+          const casinoVolume = {};
+          recent.forEach(d => {
+            const casino = normalizeCasino(d.casino);
+            if (!casinoVolume[casino]) casinoVolume[casino] = 0;
+            casinoVolume[casino] += d.usd;
+          });
+          const sorted = Object.entries(casinoVolume)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 5);
+          if (perfList) {
+            perfList.innerHTML = sorted.map((item, i) => `
+              <div class="performance-item">
+                <span class="perf-rank">${i + 1}</span>
+                <span class="perf-casino">${item[0]}</span>
+                <span class="perf-volume">$${Math.round(item[1]).toLocaleString()}</span>
+              </div>
+            `).join('');
+          }
         }
 
       } catch (err) {

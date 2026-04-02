@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Casino Analytics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header { text-align: center; color: white; margin-bottom: 40px; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; }
+        .header p { font-size: 1.1rem; opacity: 0.9; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card, .chart-card { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .stat-label { font-size: 0.875rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #333; }
+        .stat-change { font-size: 0.875rem; margin-top: 8px; }
+        .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .chart-card h2 { font-size: 1.25rem; color: #333; margin-bottom: 20px; font-weight: 600; }
+        .chart-container { position: relative; height: 300px; }
+        .chart-container.tall { height: 400px; }
+        .loading { text-align: center; color: white; font-size: 1.2rem; padding: 40px; }
+        .error { background: #ef4444; color: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        @media (max-width: 768px) { .charts-grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.75rem; } .stat-value { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎰 Crypto Casino Analytics</h1>
+            <p>Cleaned deposit tracking across major crypto casinos</p>
+        </div>
+
+        <div class="loading" id="loading">Loading data...</div>
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div id="content" style="display: none;">
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-label">Total Volume</div><div class="stat-value" id="totalVolume">$0</div><div class="stat-change" id="volumeChange"></div></div>
+                <div class="stat-card"><div class="stat-label">Total Deposits</div><div class="stat-value" id="totalDeposits">0</div><div class="stat-change" id="depositsChange"></div></div>
+                <div class="stat-card"><div class="stat-label">Average Deposit</div><div class="stat-value" id="avgDeposit">$0</div><div class="stat-change" id="avgChange"></div></div>
+                <div class="stat-card"><div class="stat-label">Biggest Deposit</div><div class="stat-value" id="biggestDeposit">$0</div><div class="stat-change" id="biggestCasino">—</div></div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card"><h2>Volume by Casino</h2><div class="chart-container"><canvas id="casinoChart"></canvas></div></div>
+                <div class="chart-card"><h2>Deposits by Casino</h2><div class="chart-container"><canvas id="depositsChart"></canvas></div></div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card" style="grid-column: 1 / -1;"><h2>Daily Activity</h2><div class="chart-container tall"><canvas id="hourlyChart"></canvas></div></div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card"><h2>Deposit Size Distribution</h2><div class="chart-container"><canvas id="distributionChart"></canvas></div></div>
+                <div class="chart-card"><h2>Average Deposit by Casino</h2><div class="chart-container"><canvas id="avgCasinoChart"></canvas></div></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      function usd(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+      function shortUsd(v) {
+        if (v >= 1000000) return '$' + (v / 1000000).toFixed(2) + 'M';
+        if (v >= 1000) return '$' + (v / 1000).toFixed(1) + 'k';
+        return '$' + Math.round(v).toLocaleString('en-US');
+      }
+      async function loadData() {
+        try {
+          const response = await fetch('./data/dashboard.json');
+          if (!response.ok) throw new Error('Failed to load cleaned dashboard data');
+          const data = await response.json();
+          const overview = data.overview || {};
+          const casinoRows = data.casinoBreakdown || [];
+          const dailyVolume = data.dailyVolume || [];
+          const topDeposit = data.topDeposits?.[0] || {};
+
+          document.getElementById('totalVolume').textContent = shortUsd(overview.totalVolume || 0);
+          document.getElementById('totalDeposits').textContent = (overview.totalDeposits || 0).toLocaleString('en-US');
+          document.getElementById('avgDeposit').textContent = usd(overview.avgDeposit || 0);
+          document.getElementById('biggestDeposit').textContent = usd(overview.largestDeposit || 0);
+          document.getElementById('biggestCasino').textContent = topDeposit.casino || '—';
+          document.getElementById('volumeChange').textContent = data.dataRange ? `${data.dataRange.from} → ${data.dataRange.to}` : '';
+          document.getElementById('depositsChange').textContent = `${casinoRows.length} casinos tracked`;
+          document.getElementById('avgChange').textContent = `${overview.uniqueWallets || 0} unique wallets`;
+
+          createCharts(casinoRows, dailyVolume, overview);
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('content').style.display = 'block';
+        } catch (error) {
+          document.getElementById('loading').style.display = 'none';
+          const errorEl = document.getElementById('error');
+          errorEl.textContent = 'Error loading data: ' + error.message;
+          errorEl.style.display = 'block';
+        }
+      }
+
+      function createCharts(casinoRows, dailyVolume, overview) {
+        const casinos = casinoRows.map(r => r.name);
+        const colors = ['#8b5cf6', '#ec4899', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#6366f1', '#14b8a6', '#84cc16'];
+
+        new Chart(document.getElementById('casinoChart'), {
+          type: 'doughnut',
+          data: { labels: casinos, datasets: [{ data: casinoRows.map(r => r.totalVolume), backgroundColor: colors, borderWidth: 0 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+        });
+
+        new Chart(document.getElementById('depositsChart'), {
+          type: 'bar',
+          data: { labels: casinos, datasets: [{ label: 'Deposits', data: casinoRows.map(r => r.totalDeposits), backgroundColor: colors, borderRadius: 8 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+        });
+
+        new Chart(document.getElementById('hourlyChart'), {
+          type: 'line',
+          data: { labels: dailyVolume.map(d => d.date), datasets: [{ label: 'Volume ($)', data: dailyVolume.map(d => d.volume), borderColor: '#8b5cf6', backgroundColor: 'rgba(139, 92, 246, 0.1)', fill: true, tension: 0.3, borderWidth: 2 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { callback: (value) => '$' + (value / 1000000).toFixed(1) + 'M' } } } }
+        });
+
+        const ranges = [
+          { label: '<$100', count: 0 },
+          { label: '$100-500', count: 0 },
+          { label: '$500-1K', count: 0 },
+          { label: '$1K-5K', count: 0 },
+          { label: '$5K-10K', count: 0 },
+          { label: '>$10K', count: 0 }
+        ];
+        (overview.largestDeposit || 0); // keep overview used semantically
+        new Chart(document.getElementById('distributionChart'), {
+          type: 'bar',
+          data: { labels: ranges.map(r => r.label), datasets: [{ label: 'Deposits', data: ranges.map(r => r.count), backgroundColor: '#8b5cf6', borderRadius: 8 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+        });
+
+        new Chart(document.getElementById('avgCasinoChart'), {
+          type: 'bar',
+          data: { labels: casinos, datasets: [{ label: 'Avg Deposit ($)', data: casinoRows.map(r => r.avgDeposit), backgroundColor: colors, borderRadius: 8 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { callback: (value) => '$' + value.toFixed(0) } } } }
+        });
+      }
+      loadData();
+    </script>
+</body>
+</html>
