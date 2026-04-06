@@ -11,19 +11,102 @@
       "firstSeen": "2026-03-31T04:22:34.376Z",
       "withdrawnETH": 0.000021,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-03-31T04:22:39.486Z",
+      "lastChecked": "2026-04-06T04:15:46.314Z",
       "status": "updated",
-      "daysSinceDeposit": 0,
+      "daysSinceDeposit": 6,
       "updates": [
         {
           "date": "2026-03-31T04:22:39.486Z",
           "withdrawnETH": 0.000021,
           "withdrawnUSD": 0,
           "note": "Received from: Chips.gg"
+        },
+        {
+          "date": "2026-04-05T04:10:18.093Z",
+          "withdrawnETH": 0,
+          "withdrawnUSD": 0,
+          "note": null
+        },
+        {
+          "date": "2026-04-06T04:15:46.314Z",
+          "withdrawnETH": 0.000021,
+          "withdrawnUSD": 0,
+          "note": "Received from: Chips.gg"
         }
       ]
+    },
+    {
+      "address": "0x273ee6bfd54bd56c8b0fdda875a21e0d818eefcd",
+      "casino": "BC.Game",
+      "casinoIcon": "🎰",
+      "depositETH": 9.964453,
+      "depositUSD": 21193,
+      "depositTxHash": "0xfee4164fc80e22a8fc2532cd3340d1c4b6809d715ed7a8a501830531bac606b6",
+      "depositTimestamp": "2026-04-06T03:45:23.000Z",
+      "firstSeen": "2026-04-06T04:15:31.493Z",
+      "withdrawnETH": 0.024595,
+      "withdrawnUSD": 52,
+      "lastChecked": "2026-04-06T04:15:47.428Z",
+      "status": "updated",
+      "daysSinceDeposit": 0,
+      "updates": [
+        {
+          "date": "2026-04-06T04:15:47.428Z",
+          "withdrawnETH": 0.024595,
+          "withdrawnUSD": 52,
+          "note": "Received from: Cloudbet"
+        }
+      ]
+    },
+    {
+      "address": "0x6b1ced801db5fa142cf23c8cf497d36031f9e17c",
+      "casino": "BC.Game",
+      "casinoIcon": "🎰",
+      "depositETH": 9.456921,
+      "depositUSD": 20113,
+      "depositTxHash": "0xaa80a1317b708caf6015d1464f97015a507452acef38f2e8466fc0b049a8ab5d",
+      "depositTimestamp": "2026-04-06T01:00:23.000Z",
+      "firstSeen": "2026-04-06T04:15:31.493Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-04-06T04:15:48.289Z",
+      "status": "watching",
+      "daysSinceDeposit": 0,
+      "updates": []
+    },
+    {
+      "address": "0x44de46e4814fabfea8a1b73d5cb2c21db9d6e4f4",
+      "casino": "BC.Game",
+      "casinoIcon": "🎰",
+      "depositETH": 9.499998,
+      "depositUSD": 20205,
+      "depositTxHash": "0x06f5ac663087874898100b438e012ca97d3f99e813d9e9be8f3d37513435b7be",
+      "depositTimestamp": "2026-04-06T00:57:23.000Z",
+      "firstSeen": "2026-04-06T04:15:31.493Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-04-06T04:15:48.838Z",
+      "status": "watching",
+      "daysSinceDeposit": 0,
+      "updates": []
+    },
+    {
+      "address": "0x6567e3ee8a2ddeb321d13ca1b420f69d21c18727",
+      "casino": "Cloudbet",
+      "casinoIcon": "☁️",
+      "depositETH": 150,
+      "depositUSD": 319023,
+      "depositTxHash": "0xbb504baf7a57c6614fbfc2ec278e736334fb746ad981f9d092140a37b91bb5cb",
+      "depositTimestamp": "2026-04-06T01:32:23.000Z",
+      "firstSeen": "2026-04-06T04:15:44.977Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-04-06T04:15:50.430Z",
+      "status": "watching",
+      "daysSinceDeposit": 0,
+      "updates": []
     }
   ],
-  "lastScan": "2026-03-31T04:22:39.507Z",
-  "ethPrice": 2067.15
+  "lastScan": "2026-04-06T04:15:50.430Z",
+  "ethPrice": 2126.82
 }
