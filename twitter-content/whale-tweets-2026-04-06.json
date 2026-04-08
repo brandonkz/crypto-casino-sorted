@@ -1,0 +1,30 @@
+{
+  "date": "2026-04-06T04:15:50.433Z",
+  "tweets": [
+    {
+      "label": "🐋 NEW WHALE — 0x273e...efcd",
+      "text": "🐋 Whale alert.\n\n$21,193 just deposited into BC.Game.\n\nWallet: 0x273e...efcd\nTx: etherscan.io/tx/0xfee4164f...\n\nI'll be tracking this wallet. Let's see if any of it comes back.",
+      "type": "new_whale"
+    },
+    {
+      "label": "🐋 NEW WHALE — 0x6b1c...e17c",
+      "text": "🐋 Whale alert.\n\n$20,113 just deposited into BC.Game.\n\nWallet: 0x6b1c...e17c\nTx: etherscan.io/tx/0xaa80a131...\n\nI'll be tracking this wallet. Let's see if any of it comes back.",
+      "type": "new_whale"
+    },
+    {
+      "label": "🐋 NEW WHALE — 0x44de...e4f4",
+      "text": "🐋 Whale alert.\n\n$20,205 just deposited into BC.Game.\n\nWallet: 0x44de...e4f4\nTx: etherscan.io/tx/0x06f5ac66...\n\nI'll be tracking this wallet. Let's see if any of it comes back.",
+      "type": "new_whale"
+    },
+    {
+      "label": "📊 UPDATE — 0xaf67...0711",
+      "text": "Update on the $10,853 Chips.gg whale (0xaf67...0711):\n\nDay 6 since deposit.\nDeposited: $10,853\nWithdrawn: $0\nNet: -$10,853\n\nStill $0 back. The blockchain remembers.",
+      "type": "update"
+    },
+    {
+      "label": "📊 UPDATE — 0x273e...efcd",
+      "text": "Update on the $21,193 BC.Game whale (0x273e...efcd):\n\nDay 0 since deposit.\nDeposited: $21,193\nWithdrawn: $52\nNet: -$21,141\n\nGot some back. Still down $21,141.",
+      "type": "update"
+    }
+  ]
+}

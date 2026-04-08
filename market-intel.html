@@ -3,193 +3,362 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Crypto Casino Market Intel — promos, streamers, Reddit pulse, and iGaming events.">
-  <link rel="canonical" href="https://cryptocasinosorted.com/market-intel.html">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#0a0a0f">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0L3N9F43ED');</script>
-
-  <title>Market Intel | CryptoCasinoSorted</title>
-  <link rel="icon" href="favicon.svg">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <title>CryptoCasinoSorted Market Intel</title>
+  <meta name="description" content="Daily crypto casino market intel, tracked deposit flow, headlines, and casino leaderboard.">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    :root{--bg:#0a0b10;--panel:#11141b;--border:#1e2230;--text:#e5e7eb;--muted:#9ca3af;--accent:#a78bfa;--green:#22c55e;--orange:#f59e0b;--blue:#60a5fa;}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;background:var(--bg);color:var(--text);min-height:100vh;}
-    .container{max-width:1400px;margin:0 auto;padding:24px;}
-    .header{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
-    .header h1{font-size:2rem;font-weight:800;}
-    .header p{color:var(--muted);}
-    .meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:0.9rem;}
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(18, 26, 51, 0.76);
+      --text: #ecf3ff;
+      --muted: #9fb0d0;
+      --accent: #22c55e;
+      --accent-2: #06b6d4;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 18px 50px rgba(0,0,0,0.28);
+      --radius: 18px;
+    }
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
-    .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;min-height:220px;}
-    .card h2{font-size:1rem;font-weight:700;margin-bottom:10px;color:var(--accent);}
-    .item{padding:10px 0;border-bottom:1px dashed #22283a;}
-    .item:last-child{border-bottom:none;}
-    .item a{color:var(--text);text-decoration:none;font-weight:600;}
-    .item a:hover{color:var(--accent);}
-    .tag{display:inline-block;font-size:0.7rem;color:#0b0b0b;background:var(--accent);padding:2px 6px;border-radius:6px;margin-right:6px;}
-    .sub{color:var(--muted);font-size:0.85rem;margin-top:4px;}
-    .pill{display:inline-block;background:#0f172a;border:1px solid #1f2937;color:#93c5fd;font-size:0.7rem;padding:2px 6px;border-radius:6px;margin-right:6px;}
-    .event-date{color:var(--green);font-size:0.85rem;font-weight:600;}
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34,197,94,0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(6,182,212,0.15), transparent 25%),
+        linear-gradient(180deg, #08101f 0%, #0b1020 100%);
+      color: var(--text);
+    }
 
-    .loading{color:var(--muted);padding:16px;border:1px dashed var(--border);border-radius:8px;}
-    .footer{margin-top:24px;color:var(--muted);font-size:0.85rem;}
-    .telegram-join{display:inline-block;background:#229ed9;color:#fff;padding:8px 14px;border-radius:8px;font-weight:700;text-decoration:none;font-size:0.9rem;}
-    .telegram-join:hover{opacity:0.9;}
+    a { color: inherit; text-decoration: none; }
+
+    .t-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: rgba(8, 16, 31, 0.85);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .t-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .t-nav-logo-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #04111c;
+      font-size: 1.15rem;
+      font-weight: 900;
+      box-shadow: var(--shadow);
+    }
+
+    .t-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .t-nav-links a {
+      color: var(--muted);
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: 0.18s ease;
+    }
+
+    .t-nav-links a:hover,
+    .t-nav-links a.active {
+      color: white;
+      background: rgba(255,255,255,0.07);
+    }
+
+    .page {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .hero,
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero {
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(34,197,94,0.12);
+      color: #9bf4bf;
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 820px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 22px;
+    }
+
+    .panel {
+      padding: 22px;
+      margin-bottom: 22px;
+    }
+
+    .panel h2 {
+      margin: 0 0 14px;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+
+    .feed-list,
+    .news-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .feed-item,
+    .news-item {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.05);
+      color: #d7e2fb;
+      line-height: 1.55;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .mini-stat {
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mini-label {
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .mini-value {
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    @media (max-width: 960px) {
+      .grid,
+      .stats-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .t-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .page { padding: 24px 14px 56px; }
+      .hero, .panel { padding: 18px; }
+    }
   </style>
-  <link rel="stylesheet" href="/terminal-theme.css">
 </head>
 <body>
-  <!-- Shared nav -->
   <div id="nav"></div>
 
-  <div class="container">
-    <div class="header">
-      <h1>🛰️ Market Intel</h1>
-      <p>Promos, streamer activity, Reddit pulse, and iGaming events — updated daily.</p>
-      <div class="meta">
-        <span id="lastUpdated">Updated: —</span>
+  <div class="page">
+    <section class="hero">
+      <div class="eyebrow">🛰️ Market Intel</div>
+      <h1>Daily crypto casino intel, in the same visual language.</h1>
+      <p>
+        This page now matches the dashboard and the rest of CryptoCasinoSorted more closely. Cleaner navigation, cleaner cards, and a more product-like layout instead of a disconnected utility page.
+      </p>
+      <div class="stats-row">
+        <div class="mini-stat">
+          <div class="mini-label">Last updated</div>
+          <div class="mini-value" id="lastUpdated">Loading...</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-label">Top casino</div>
+          <div class="mini-value" id="topCasino">Loading...</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-label">Biggest deposit</div>
+          <div class="mini-value" id="biggestDeposit">Loading...</div>
+        </div>
       </div>
-      <div style="margin-top:8px;">
-        <a class="telegram-join" href="https://t.me/cryptocasinostats" target="_blank" rel="noopener">📲 Join Telegram Intel</a>
+    </section>
+
+    <div class="grid">
+      <div>
+        <section class="panel">
+          <h2>Top headlines</h2>
+          <div class="sub" style="margin-bottom:14px;">The latest stories shaping the crypto casino market.</div>
+          <ul class="news-list" id="newsList">
+            <li class="news-item">Loading headlines...</li>
+          </ul>
+        </section>
+
+        <section class="panel">
+          <h2>Top promos</h2>
+          <div class="sub" style="margin-bottom:14px;">Current promo highlights from tracked operators.</div>
+          <ul class="news-list" id="promoList">
+            <li class="news-item">Loading promos...</li>
+          </ul>
+        </section>
       </div>
+
+      <aside>
+        <section class="panel">
+          <h2>Casino snapshot</h2>
+          <div class="sub" style="margin-bottom:14px;">Quick ranking of where the money is flowing.</div>
+          <ul class="feed-list" id="casinoSnapshot">
+            <li class="feed-item">Loading snapshot...</li>
+          </ul>
+        </section>
+
+        <section class="panel">
+          <h2>XTP activity feed</h2>
+          <div class="sub" style="margin-bottom:14px;">Same feed logic as the dashboard so the site feels unified.</div>
+          <ul class="feed-list" id="xtpFeed">
+            <li class="feed-item">Loading activity...</li>
+          </ul>
+        </section>
+      </aside>
     </div>
-
-    <div id="loading" class="loading">Loading market intel...</div>
-
-    <div id="content" class="grid" style="display:none;">
-      <div class="card">
-        <h2>🔥 Promos & Bonuses</h2>
-        <div id="promos"></div>
-      </div>
-      <div class="card">
-        <h2>🎥 Streamer Intel</h2>
-        <div id="streamers"></div>
-      </div>
-      <div class="card">
-        <h2>💬 Reddit Pulse</h2>
-        <div id="reddit"></div>
-      </div>
-      <div class="card">
-        <h2>📰 Industry News</h2>
-        <div id="news"></div>
-      </div>
-      <div class="card">
-        <h2>📅 Events Calendar</h2>
-        <div id="events"></div>
-      </div>
-      <div class="card">
-        <h2>🛰️ Intel Monitor</h2>
-        <div id="intelAlerts"></div>
-      </div>
-      <div class="card">
-        <h2>🏢 Competitor Intel</h2>
-        <div id="competitors"></div>
-      </div>
-    </div>
-
-    <div class="footer">Powered by CryptoCasinoSorted • Market Intel v1</div>
   </div>
 
   <script>
-    // Load shared nav
-    fetch('/shared-nav.html').then(r=>r.text()).then(html=>{
-      document.getElementById('nav').innerHTML = html;
-    });
-
-    async function loadIntel(){
-      const [news, promos, reddit, streamers, events, intelAlerts, competitors] = await Promise.all([
-        fetch('/data/news.json').then(r=>r.json()),
-        fetch('/data/promos.json').then(r=>r.json()),
-        fetch('/data/reddit.json').then(r=>r.json()),
-        fetch('/data/streamers.json').then(r=>r.json()),
-        fetch('/data/events.json').then(r=>r.json()),
-        fetch('/data/intel-alerts.json').then(r=>r.json()).catch(()=>({items:[]})),
-        fetch('/data/competitor-intel.json').then(r=>r.json()).catch(()=>({competitors:[]})),
-      ]);
-
-      document.getElementById('lastUpdated').textContent = `Updated: ${news.updated || promos.updated || reddit.updated || streamers.updated || events.updated || '—'}`;
-
-      // Promos
-      document.getElementById('promos').innerHTML = (promos.promos || []).slice(0,8).map(p => `
-        <div class="item">
-          <div><span class="tag">${p.type || 'PROMO'}</span><strong>${p.casino}</strong></div>
-          <div class="sub">${p.offer} • ${p.details || ''}</div>
-          <div class="sub"><a href="${p.url}" target="_blank" rel="noopener">Open offer →</a></div>
-        </div>
-      `).join('') || '<div class="sub">No promos found.</div>';
-
-      // Streamers
-      document.getElementById('streamers').innerHTML = (streamers.items || []).slice(0,8).map(s => `
-        <div class="item">
-          <div><span class="pill">${s.platform}</span><strong>${s.name}</strong></div>
-          <div class="sub">${s.followers} • ${s.focus || 'Casino streams'}</div>
-          <div class="sub"><a href="${s.url}" target="_blank" rel="noopener">Channel →</a></div>
-        </div>
-      `).join('') || '<div class="sub">No streamer data.</div>';
-
-      // Reddit
-      document.getElementById('reddit').innerHTML = (reddit.items || []).slice(0,8).map(r => `
-        <div class="item">
-          <div><span class="pill">${r.subreddit}</span><strong>${r.tag || 'POST'}</strong></div>
-          <div class="sub"><a href="${r.url}" target="_blank" rel="noopener">${r.title}</a></div>
-          <div class="sub">${r.time || ''}</div>
-        </div>
-      `).join('') || '<div class="sub">No Reddit data.</div>';
-
-      // News
-      document.getElementById('news').innerHTML = (news.items || []).slice(0,8).map(n => `
-        <div class="item">
-          <div><span class="pill">${n.source}</span><strong>${n.tag || 'NEWS'}</strong></div>
-          <div class="sub"><a href="${n.url}" target="_blank" rel="noopener">${n.title}</a></div>
-          <div class="sub">${n.time || ''}</div>
-        </div>
-      `).join('') || '<div class="sub">No news data.</div>';
-
-      // Events
-      document.getElementById('events').innerHTML = (events.events || []).slice(0,8).map(e => `
-        <div class="item">
-          <div><span class="pill">${e.type}</span><strong>${e.name}</strong></div>
-          <div class="sub">${e.location || ''}</div>
-          <div class="event-date">${e.start}${e.end && e.end !== e.start ? ' → ' + e.end : ''}</div>
-          <div class="sub"><a href="${e.url}" target="_blank" rel="noopener">Details →</a></div>
-        </div>
-      `).join('') || '<div class="sub">No events data.</div>';
-
-      // Intel Monitor Alerts
-      document.getElementById('intelAlerts').innerHTML = (intelAlerts.items || []).slice(0,8).map(a => `
-        <div class="item">
-          <div><span class="pill">${a.source}</span><span class="tag" style="background:${a.score>=5?'var(--green)':'var(--orange)'}">${a.score>=5?'HIGH':'MED'}</span></div>
-          <div class="sub">${a.url ? '<a href="'+a.url+'" target="_blank" rel="noopener">'+a.title+'</a>' : a.title}</div>
-          <div class="sub" style="color:var(--muted);font-size:0.75rem;">${a.query || ''}</div>
-        </div>
-      `).join('') || '<div class="sub">No intel alerts.</div>';
-
-      // Competitor Intel
-      document.getElementById('competitors').innerHTML = (competitors.competitors || []).slice(0,6).map(c => `
-        <div class="item">
-          <div><strong>${c.logo || '🎰'} ${c.name}</strong></div>
-          ${c.welcomeBonus ? '<div class="sub">💰 '+(c.welcomeBonus.details || c.welcomeBonus.type || 'Bonus available')+'</div>' : ''}
-          ${c.rakeback ? '<div class="sub">🔄 Rakeback: '+c.rakeback+'</div>' : ''}
-          ${c.vipTiers ? '<div class="sub">⭐ VIP: '+c.vipTiers+'</div>' : ''}
-          ${c.withdrawalTime ? '<div class="sub">⚡ Withdrawal: '+c.withdrawalTime+'</div>' : ''}
-          <div class="sub" style="color:var(--muted);font-size:0.75rem;">Updated: ${c.lastUpdated || '—'}</div>
-        </div>
-      `).join('') || '<div class="sub">No competitor data.</div>';
-
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('content').style.display = 'grid';
+    async function loadNav() {
+      try {
+        const res = await fetch('/shared-nav.html');
+        if (!res.ok) throw new Error('nav failed');
+        const html = await res.text();
+        document.getElementById('nav').innerHTML = html;
+        const active = document.querySelector('.t-nav-links a[href="/market-intel.html"]');
+        if (active) active.classList.add('active');
+      } catch {
+        document.getElementById('nav').innerHTML = '<div style="padding:16px 20px;color:#9fb0d0;">CryptoCasinoSorted</div>';
+      }
     }
 
-    loadIntel().catch(err => {
-      document.getElementById('loading').textContent = 'Failed to load intel.';
-      console.error(err);
-    });
+    async function loadPage() {
+      try {
+        const [newsRes, promosRes, dashboardRes, xtpRes] = await Promise.all([
+          fetch('./data/news.json'),
+          fetch('./data/promos.json'),
+          fetch('./data/dashboard-data.json'),
+          fetch('../xtp/data.json').catch(() => fetch('/xtp/data.json'))
+        ]);
+
+        const news = newsRes.ok ? await newsRes.json() : [];
+        const promos = promosRes.ok ? await promosRes.json() : [];
+        const dashboard = dashboardRes.ok ? await dashboardRes.json() : { dailyVolume: [], casinoStats: [] };
+        const xtp = xtpRes && xtpRes.ok ? await xtpRes.json() : { activityFeed: [] };
+
+        renderNews(news);
+        renderPromos(promos);
+        renderSnapshot(dashboard);
+        renderFeed(xtp.activityFeed || []);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    function renderNews(items) {
+      const html = items.slice(0, 6).map(item => `<li class="news-item"><strong>${escapeHtml(item.title || 'Untitled')}</strong></li>`).join('');
+      document.getElementById('newsList').innerHTML = html || '<li class="news-item">No headlines available.</li>';
+    }
+
+    function renderPromos(items) {
+      const html = items.slice(0, 5).map(item => `<li class="news-item"><strong>${escapeHtml(item.title || item.name || 'Promo')}</strong></li>`).join('');
+      document.getElementById('promoList').innerHTML = html || '<li class="news-item">No promos available.</li>';
+    }
+
+    function renderSnapshot(data) {
+      const dailyVolume = data.dailyVolume || [];
+      const casinoStats = [...(data.casinoStats || [])].sort((a, b) => (b.volume || 0) - (a.volume || 0));
+      const topCasino = casinoStats[0];
+      const biggest = dailyVolume.reduce((m, row) => Math.max(m, row.biggestDeposit || 0), 0);
+      document.getElementById('lastUpdated').textContent = data.lastUpdated ? new Date(data.lastUpdated).toLocaleString() : 'Unknown';
+      document.getElementById('topCasino').textContent = topCasino ? topCasino.casino : 'N/A';
+      document.getElementById('biggestDeposit').textContent = biggest ? `$${Math.round(biggest).toLocaleString()}` : 'N/A';
+      document.getElementById('casinoSnapshot').innerHTML = casinoStats.slice(0, 6).map(item => `<li class="feed-item"><strong>${escapeHtml(item.casino)}</strong><br>$${Math.round(item.volume || 0).toLocaleString()} across ${(item.deposits || 0).toLocaleString()} deposits</li>`).join('') || '<li class="feed-item">No casino snapshot available.</li>';
+    }
+
+    function renderFeed(feed) {
+      const html = feed.slice(0, 12).map(item => `<li class="feed-item">${escapeHtml(item)}</li>`).join('');
+      document.getElementById('xtpFeed').innerHTML = html || '<li class="feed-item">No activity available.</li>';
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    loadNav();
+    loadPage();
   </script>
 </body>
 </html>
