@@ -89,7 +89,7 @@
     }
 
     .page {
-      max-width: 1280px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 32px 20px 64px;
     }
@@ -144,22 +144,26 @@
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
       margin-bottom: 24px;
     }
 
     .stat-card {
-      padding: 20px;
+      padding: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.05);
     }
 
     .stat-label {
       color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 10px;
+      font-size: 0.84rem;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .stat-value {
-      font-size: 1.6rem;
+      font-size: 1.45rem;
       font-weight: 800;
       letter-spacing: -0.03em;
     }
@@ -171,9 +175,9 @@
     }
 
     .controls {
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
-      justify-content: space-between;
       gap: 16px;
       background: var(--panel);
       border: 1px solid var(--border);
@@ -261,7 +265,7 @@
       .page { padding: 24px 14px 56px; }
       .hero, .controls, .panel, .stat-card { padding: 18px; }
       .stats-grid { grid-template-columns: 1fr; }
-      .controls { flex-direction: column; align-items: stretch; }
+      .controls { grid-template-columns: 1fr; }
       .search input { width: 100%; }
     }
   </style>
@@ -272,10 +276,9 @@
   <div class="page">
     <section class="hero">
       <div class="eyebrow">📉 Gambler P&amp;L</div>
-      <h1>On-chain gambler losses, with the same site language.</h1>
+      <h1>Track gambler wins and losses on-chain.</h1>
       <p>
-        We track verified crypto casino depositor wallets, trace deposits and withdrawals, and calculate net profit or loss over time.
-        This page now matches the rest of CryptoCasinoSorted visually, instead of feeling like a separate app.
+        We trace deposits and withdrawals across verified crypto casino wallets, then calculate net profit or loss at the wallet level.
       </p>
       <div class="updated" id="lastUpdated">Loading data...</div>
     </section>
