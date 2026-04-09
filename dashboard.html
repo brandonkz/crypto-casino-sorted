@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptoCasinoSorted Dashboard</title>
-    <meta name="description" content="Live crypto casino dashboard with on-chain deposit charts, tracked casino stats, and XTP activity feed.">
+    <meta name="description" content="Live crypto casino dashboard with on-chain deposit charts, tracked casino stats, and market activity signals.">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
@@ -324,7 +324,7 @@
                 <div class="eyebrow">📊 Live dashboard</div>
                 <h1>Crypto casino flow, cleaned up.</h1>
                 <p>
-                    Track deposit volume, whale concentration, casino share, and the latest XTP activity feed in one place.
+                    Track deposit volume, whale concentration, casino share, and the latest market activity signals in one place.
                     This dashboard now uses the same nav language and visual system as Market Intel.
                 </p>
             </div>
@@ -408,8 +408,8 @@
 
             <aside class="sidebar">
                 <div class="feed-card">
-                    <h2>XTP activity feed</h2>
-                    <div class="panel-subtitle" style="margin-bottom:14px;">Same feed logic and visual style as Market Intel.</div>
+                    <h2>Market activity feed</h2>
+                    <div class="panel-subtitle" style="margin-bottom:14px;">Quick signals pulled from tracked casino data.</div>
                     <ul class="feed-list" id="activityFeed">
                         <li class="feed-item">Loading activity feed...</li>
                     </ul>
@@ -437,21 +437,16 @@
 
         async function loadDashboard() {
             try {
-                const [dashboardRes, xtpRes] = await Promise.all([
-                    fetch('./data/dashboard-data.json'),
-                    fetch('../xtp/data.json').catch(() => fetch('/xtp/data.json'))
-                ]);
+                const dashboardRes = await fetch('./data/dashboard.json');
 
                 if (!dashboardRes.ok) throw new Error('Dashboard data unavailable');
 
                 const dashboard = await dashboardRes.json();
-                let xtp = { activityFeed: [] };
-                if (xtpRes && xtpRes.ok) xtp = await xtpRes.json();
 
                 renderStats(dashboard);
                 renderCharts(dashboard);
-                renderTable(dashboard.casinoStats || []);
-                renderFeed(xtp.activityFeed || []);
+                renderTable(dashboard.casinoStats || dashboard.casinoBreakdown || []);
+                renderFeed(buildActivityFeed(dashboard));
             } catch (error) {
                 console.error(error);
                 document.getElementById('casinoTableBody').innerHTML = `<tr><td colspan="4" class="error">${error.message}</td></tr>`;
@@ -461,21 +456,28 @@
 
         function renderStats(data) {
             const dailyVolume = data.dailyVolume || [];
-            const casinoStats = data.casinoStats || [];
+            const casinoStats = (data.casinoStats || data.casinoBreakdown || []).map(item => ({
+                casino: item.casino || item.name || 'Unknown',
+                volume: item.volume ?? item.totalVolume ?? 0,
+                deposits: item.deposits ?? item.totalDeposits ?? 0
+            }));
             const totals = dailyVolume.reduce((acc, row) => {
                 acc.volume += row.volume || 0;
                 acc.deposits += row.deposits || 0;
                 if ((row.biggestDeposit || 0) > acc.biggest) acc.biggest = row.biggestDeposit || 0;
                 return acc;
             }, { volume: 0, deposits: 0, biggest: 0 });
+            if (!totals.biggest) totals.biggest = data.overview?.largestDeposit || data.topDeposits?.[0]?.usd || 0;
 
             const topCasino = [...casinoStats].sort((a, b) => (b.volume || 0) - (a.volume || 0))[0];
-            document.getElementById('totalVolume').textContent = fmtMoney(totals.volume);
-            document.getElementById('totalDeposits').textContent = fmtNumber(totals.deposits);
+            document.getElementById('totalVolume').textContent = fmtMoney(totals.volume || data.overview?.totalVolume || 0);
+            document.getElementById('totalDeposits').textContent = fmtNumber(totals.deposits || data.overview?.totalDeposits || 0);
             document.getElementById('topCasino').textContent = topCasino ? topCasino.casino : 'N/A';
             document.getElementById('biggestDeposit').textContent = fmtMoney(totals.biggest);
-            document.getElementById('lastUpdated').textContent = data.lastUpdated ? new Date(data.lastUpdated).toLocaleString() : 'Unknown';
-            if (dailyVolume.length) {
+            document.getElementById('lastUpdated').textContent = (data.lastUpdated || data.generated) ? new Date(data.lastUpdated || data.generated).toLocaleString() : 'Unknown';
+            if (data.dataRange?.from && data.dataRange?.to) {
+                document.getElementById('dateRange').textContent = `${data.dataRange.from} to ${data.dataRange.to}`;
+            } else if (dailyVolume.length) {
                 document.getElementById('dateRange').textContent = `${dailyVolume[0].date} to ${dailyVolume[dailyVolume.length - 1].date}`;
             } else {
                 document.getElementById('dateRange').textContent = 'No range available';
@@ -484,7 +486,14 @@
 
         function renderCharts(data) {
             const dailyVolume = data.dailyVolume || [];
-            const casinoStats = [...(data.casinoStats || [])].sort((a, b) => (b.volume || 0) - (a.volume || 0)).slice(0, 8);
+            const casinoStats = [...(data.casinoStats || data.casinoBreakdown || [])]
+                .map(item => ({
+                    casino: item.casino || item.name || 'Unknown',
+                    volume: item.volume ?? item.totalVolume ?? 0,
+                    deposits: item.deposits ?? item.totalDeposits ?? 0,
+                    avgDeposit: item.avgDeposit ?? 0
+                }))
+                .sort((a, b) => (b.volume || 0) - (a.volume || 0)).slice(0, 8);
 
             new Chart(document.getElementById('volumeChart'), {
                 type: 'line',
@@ -543,17 +552,38 @@
         }
 
         function renderTable(stats) {
-            const rows = [...stats].sort((a, b) => (b.volume || 0) - (a.volume || 0)).map(row => {
-                const avg = row.deposits ? row.volume / row.deposits : 0;
-                return `<tr>
+            const rows = [...stats]
+                .map(row => ({
+                    casino: row.casino || row.name || 'Unknown',
+                    deposits: row.deposits ?? row.totalDeposits ?? 0,
+                    volume: row.volume ?? row.totalVolume ?? 0,
+                    avgDeposit: row.avgDeposit ?? ((row.totalDeposits || row.deposits) ? ((row.totalVolume || row.volume || 0) / (row.totalDeposits || row.deposits || 1)) : 0)
+                }))
+                .sort((a, b) => (b.volume || 0) - (a.volume || 0))
+                .map(row => `<tr>
                     <td>${row.casino}</td>
                     <td>${fmtNumber(row.deposits)}</td>
                     <td>${fmtMoney(row.volume)}</td>
-                    <td>${fmtMoney(avg)}</td>
-                </tr>`;
-            }).join('');
+                    <td>${fmtMoney(row.avgDeposit)}</td>
+                </tr>`).join('');
 
             document.getElementById('casinoTableBody').innerHTML = rows || '<tr><td colspan="4" class="loading">No casino stats available.</td></tr>';
+        }
+
+        function buildActivityFeed(data) {
+            const casinoStats = [...(data.casinoStats || data.casinoBreakdown || [])]
+                .map(item => ({
+                    casino: item.casino || item.name || 'Unknown',
+                    volume: item.volume ?? item.totalVolume ?? 0,
+                    deposits: item.deposits ?? item.totalDeposits ?? 0
+                }))
+                .sort((a, b) => (b.volume || 0) - (a.volume || 0));
+            const feed = [];
+            if (casinoStats[0]) feed.push(`${casinoStats[0].casino} leads tracked volume at ${fmtMoney(casinoStats[0].volume)}.`);
+            if (casinoStats[1]) feed.push(`${casinoStats[1].casino} follows with ${fmtMoney(casinoStats[1].volume)} in tracked deposits.`);
+            if (data.overview?.largestDeposit || data.topDeposits?.[0]?.usd) feed.push(`Largest tracked deposit in this dataset: ${fmtMoney(data.overview?.largestDeposit || data.topDeposits?.[0]?.usd || 0)}.`);
+            if (data.overview?.totalDeposits) feed.push(`${fmtNumber(data.overview.totalDeposits)} deposits are included in the current range.`);
+            return feed;
         }
 
         function renderFeed(feed) {
