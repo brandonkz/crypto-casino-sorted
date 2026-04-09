@@ -9,330 +9,123 @@
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#08090d">
   <link rel="icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="terminal-theme.css">
-  <style>
-    :root {
-      --bg: #0b1020;
-      --panel: rgba(18, 26, 51, 0.76);
-      --text: #ecf3ff;
-      --muted: #9fb0d0;
-      --accent: #22c55e;
-      --accent-2: #06b6d4;
-      --border: rgba(255,255,255,0.08);
-      --shadow: 0 18px 50px rgba(0,0,0,0.28);
-      --radius: 18px;
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(34,197,94,0.18), transparent 30%),
-        radial-gradient(circle at top right, rgba(6,182,212,0.15), transparent 25%),
-        linear-gradient(180deg, #08101f 0%, #0b1020 100%);
-      color: var(--text);
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .t-nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 24px;
-      background: rgba(8, 16, 31, 0.85);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(16px);
-    }
-
-    .t-nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      font-size: 1rem;
-    }
-
-    .t-nav-logo span:last-child {
-      color: var(--text);
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      text-transform: none;
-    }
-
-    .t-nav-logo-badge {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #04111c;
-      font-size: 1.15rem;
-      font-weight: 900;
-      box-shadow: var(--shadow);
-    }
-
-    .t-nav-links {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .t-nav-links a {
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 1rem;
-      text-transform: none;
-      letter-spacing: 0;
-      padding: 8px 12px;
-      border-radius: 999px;
-      transition: 0.18s ease;
-    }
-
-    .t-nav-links a:hover,
-    .t-nav-links a.active {
-      color: white;
-      background: rgba(255,255,255,0.07);
-    }
-
-    .page {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 32px 20px 64px;
-    }
-
-    .hero,
-    .panel,
-    .toolbar,
-    .note {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-    }
-
-    .hero {
-      padding: 28px;
-      margin-bottom: 24px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(34,197,94,0.12);
-      color: #9bf4bf;
-      font-weight: 700;
-      font-size: 0.88rem;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-    }
-
-    .sub {
-      color: var(--muted);
-      max-width: 860px;
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .stats {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .stat {
-      padding:16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.05);
-    }
-
-    .stat-label {
-      font-size:11px;
-      color: var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.1em;
-      margin-bottom:8px;
-    }
-
-    .stat-value { font-size: 1.5rem; font-weight: 800; }
-
-    .toolbar {
-      display:grid;
-      grid-template-columns: 1.6fr 1fr 180px;
-      gap:12px;
-      margin: 20px 0;
-      padding: 18px;
-    }
-
-    .input, .select {
-      width:100%;
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
-      padding: 12px 14px;
-    }
-
-    .panel { overflow:hidden; }
-    .panel-head {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:16px 18px;
-      border-bottom:1px solid var(--border);
-    }
-    .panel-title {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .table-wrap { overflow:auto; }
-    table { width:100%; border-collapse: collapse; min-width: 980px; }
-    th, td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); text-align:left; vertical-align: top; }
-    th { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); background: rgba(255,255,255,0.01); }
-    td { font-size: 14px; }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-    .wallet { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; color: var(--text); }
-    .muted { color: var(--muted); }
-    .pos { color: #34d399; font-weight: 700; }
-    .neg { color: #f87171; font-weight: 700; }
-    .chips { display:flex; gap:6px; flex-wrap:wrap; }
-    .chip { display:inline-flex; padding: 4px 8px; border-radius: 999px; background: rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.25); color:#93c5fd; font-size:11px; }
-    .actions { display:flex; gap:8px; flex-wrap:wrap; }
-    .btn {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:8px 10px;
-      border-radius: 10px;
-      border:1px solid rgba(255,255,255,0.08);
-      color: var(--text);
-      text-decoration:none;
-      font-size:12px;
-      font-weight:700;
-      background: rgba(255,255,255,0.03);
-    }
-    .btn:hover { border-color: rgba(255,255,255,0.18); }
-    .note {
-      margin-top: 18px;
-      padding: 16px 18px;
-      color: #fde68a;
-      background: rgba(251,191,36,0.08);
-      border-color: rgba(251,191,36,0.18);
-    }
-
-    @media (max-width: 960px) {
-      .stats,
-      .toolbar { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 720px) {
-      .t-nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-      }
-      .page { padding: 24px 14px 56px; }
-      .hero, .panel, .toolbar, .note { padding-left: 18px; padding-right: 18px; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="nav"></div>
-  <div class="page">
-    <section class="hero">
-      <div class="eyebrow">👛 Player Wallets</div>
-      <h1>Tracked player wallets.</h1>
-      <p class="sub">Wallets identified from on-chain casino activity, ranked by deposited volume and net P&amp;L. Public blockchain addresses do not always map one-to-one to individual humans.</p>
-      <div class="stats" id="summaryStats">
-        <div class="stat"><div class="stat-label">Wallets</div><div class="stat-value">Loading...</div></div>
-      </div>
-    </section>
-
-    <div class="toolbar">
-      <input id="searchInput" class="input" type="search" placeholder="Search wallet address or casino name">
-      <select id="casinoFilter" class="select">
-        <option value="">All casinos</option>
-      </select>
-      <select id="sortMode" class="select">
-        <option value="deposited">Sort by deposited</option>
-        <option value="loss">Sort by biggest loss</option>
-        <option value="recent">Sort by recent activity</option>
-        <option value="tx">Sort by tx count</option>
-      </select>
-    </div>
-
-    <section class="panel">
-      <div class="panel-head">
-        <div class="panel-title">Player wallet directory</div>
-        <div class="muted" id="resultCount">Loading...</div>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Wallet</th>
-              <th>Casinos</th>
-              <th>Deposited</th>
-              <th>Withdrawn</th>
-              <th>Net P&amp;L</th>
-              <th>Tx count</th>
-              <th>Last seen</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="walletTable">
-            <tr><td colspan="8" class="muted">Loading wallets...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <div class="note">
-      <strong>Note:</strong> this is heuristic on-chain attribution. One wallet can touch multiple casinos, and one human can use multiple wallets.
+  <div class="ticker">
+    <div class="ticker-content">
+      <span>🔥 Whale Alert: $2.21M deposit spotted (Stake)</span>
+      <span>•</span>
+      <span>📊 Stake leading volume last 30d</span>
+      <span>•</span>
+      <span>🎁 Duelbits VIP promos heating up</span>
+      <span>•</span>
+      <span>⚡ Rollbit withdrawals averaging 3-5 minutes</span>
+      <span>•</span>
+      <span>🚨 Shuffle climbing market share</span>
+      <span>•</span>
     </div>
   </div>
 
+  <nav class="t-nav">
+    <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
+    <div class="t-nav-links">
+      <a href="/reviews/" class="t-nav-primary">⭐ Reviews</a>
+      <a href="/dashboard.html">📊 Dashboard</a>
+      <a href="/casino-wallet-addresses.html">🔍 Wallets</a>
+      <a href="/player-wallets.html">👛 Players</a>
+      <a href="/market-intel.html">🛰️ Market Intel</a>
+      <a href="/blog/">📖 Guides</a>
+      <a href="/calculators.html" class="t-nav-hide-mobile">🧮 Tools</a>
+    </div>
+  </nav>
+
+  <section class="t-section">
+    <div class="t-container-wide">
+      <div class="t-panel">
+        <div class="t-panel-header">
+          <div class="t-panel-title">Player Wallets</div>
+          <div class="t-badge t-badge-blue">Tracked</div>
+        </div>
+        <div class="t-panel-body">
+          <h1>Casino player wallets, ranked.</h1>
+          <p class="t-subtitle">Tracked player wallets interacting with crypto casinos, ranked by deposited volume and net P&amp;L.</p>
+          <div class="t-grid-3" id="summaryStats" style="margin-top:12px;"></div>
+        </div>
+      </div>
+
+      <div class="t-panel">
+        <div class="t-panel-header">
+          <div class="t-panel-title">Filters</div>
+          <div class="t-dim" id="resultCount">Loading...</div>
+        </div>
+        <div class="t-panel-body">
+          <div class="t-grid-3">
+            <div>
+              <label class="t-label" for="searchInput">Search</label>
+              <input class="t-input" id="searchInput" type="text" placeholder="Search wallet or casino" />
+            </div>
+            <div>
+              <label class="t-label" for="casinoFilter">Casino filter</label>
+              <select class="t-select" id="casinoFilter"></select>
+            </div>
+            <div>
+              <label class="t-label" for="sortMode">Sort by</label>
+              <select class="t-select" id="sortMode">
+                <option value="deposit">Largest deposits</option>
+                <option value="loss">Biggest losses</option>
+                <option value="recent">Most recent</option>
+                <option value="tx">Most transactions</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-panel">
+        <div class="t-panel-header">
+          <div class="t-panel-title">Wallet Leaderboard</div>
+        </div>
+        <div class="t-panel-body">
+          <div style="overflow:auto;">
+            <table class="t-table">
+              <thead>
+                <tr>
+                  <th>Wallet</th>
+                  <th>Casinos</th>
+                  <th>Deposited</th>
+                  <th>Withdrawn</th>
+                  <th>Net P&amp;L</th>
+                  <th>Tx count</th>
+                  <th>Last seen</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="walletTable">
+                <tr><td colspan="8" class="t-dim">Loading wallets...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-panel">
+        <div class="t-panel-header">
+          <div class="t-panel-title">Note</div>
+        </div>
+        <div class="t-panel-body">
+          <strong>Note:</strong> this is heuristic on-chain attribution. One wallet can touch multiple casinos, and one human can use multiple wallets.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <script>
     let allWallets = [];
-
-    async function loadNav() {
-      try {
-        const res = await fetch('/shared-nav.html');
-        if (!res.ok) throw new Error('nav failed');
-        const html = await res.text();
-        document.getElementById('nav').innerHTML = html;
-        const active = document.querySelector('.t-nav-links a[href="/player-wallets.html"]');
-        if (active) active.classList.add('active');
-      } catch {
-        document.getElementById('nav').innerHTML = '<div style="padding:16px 20px;color:#9fb0d0;">CryptoCasinoSorted</div>';
-      }
-    }
 
     async function loadWallets() {
       const res = await fetch('./data/gambler-pnl.json');
@@ -360,11 +153,11 @@
       const totalDeposited = allWallets.reduce((sum, w) => sum + w.totalDepositedUSD, 0);
 
       document.getElementById('summaryStats').innerHTML = `
-        <div class="stat"><div class="stat-label">Wallets</div><div class="stat-value">${allWallets.length.toLocaleString()}</div></div>
-        <div class="stat"><div class="stat-label">Active in last 30d</div><div class="stat-value">${activeRecently.toLocaleString()}</div></div>
-        <div class="stat"><div class="stat-label">Total deposited</div><div class="stat-value">${formatUsd(totalDeposited)}</div></div>
-        <div class="stat"><div class="stat-label">Biggest tracked loss</div><div class="stat-value neg">${formatUsd(biggestLoss)}</div></div>
-        <div class="stat"><div class="stat-label">Last updated</div><div class="stat-value mono" style="font-size:1rem;">${lastUpdated ? formatDate(lastUpdated) : 'Unknown'}</div></div>
+        <div class="t-kpi"><div class="t-kpi-label">Wallets</div><div class="t-kpi-value">${allWallets.length.toLocaleString()}</div></div>
+        <div class="t-kpi"><div class="t-kpi-label">Active in last 30d</div><div class="t-kpi-value">${activeRecently.toLocaleString()}</div></div>
+        <div class="t-kpi"><div class="t-kpi-label">Total deposited</div><div class="t-kpi-value">${formatUsd(totalDeposited)}</div></div>
+        <div class="t-kpi"><div class="t-kpi-label">Biggest tracked loss</div><div class="t-kpi-value t-red">${formatUsd(biggestLoss)}</div></div>
+        <div class="t-kpi"><div class="t-kpi-label">Last updated</div><div class="t-kpi-value t-mono" style="font-size:1rem;">${lastUpdated ? formatDate(lastUpdated) : 'Unknown'}</div></div>
       `;
     }
 
@@ -401,26 +194,30 @@
       const tbody = document.getElementById('walletTable');
 
       if (!rows.length) {
-        tbody.innerHTML = '<tr><td colspan="8" class="muted">No wallets match this filter.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="8" class="t-dim">No wallets match this filter.</td></tr>';
         return;
       }
 
       tbody.innerHTML = rows.slice(0, 500).map(w => `
         <tr>
           <td>
-            <div class="wallet">${escapeHtml(shortAddr(w.address))}</div>
-            <div class="muted mono" style="font-size:11px; margin-top:4px;">${escapeHtml(w.address)}</div>
+            <div class="t-mono">${escapeHtml(shortAddr(w.address))}</div>
+            <div class="t-dim t-mono" style="font-size:11px; margin-top:4px;">${escapeHtml(w.address)}</div>
           </td>
-          <td><div class="chips">${w.casinos.map(c => `<span class="chip">${escapeHtml(c)}</span>`).join('')}</div></td>
-          <td class="mono">${formatUsd(w.totalDepositedUSD)}</td>
-          <td class="mono">${formatUsd(w.totalWithdrawnUSD)}</td>
-          <td class="mono ${w.netPnlUSD <= 0 ? 'neg' : 'pos'}">${formatUsd(w.netPnlUSD)}</td>
-          <td class="mono">${w.txCount.toLocaleString()}</td>
-          <td class="mono">${formatDate(w.lastSeen)}</td>
           <td>
-            <div class="actions">
-              <button class="btn" onclick="copyAddress('${w.address}')">Copy</button>
-              <a class="btn" href="https://etherscan.io/address/${w.address}" target="_blank" rel="noopener noreferrer">Etherscan</a>
+            <div style="display:flex; flex-wrap:wrap; gap:6px;">
+              ${w.casinos.map(c => `<span class="t-badge t-badge-blue">${escapeHtml(c)}</span>`).join('')}
+            </div>
+          </td>
+          <td class="t-mono">${formatUsd(w.totalDepositedUSD)}</td>
+          <td class="t-mono">${formatUsd(w.totalWithdrawnUSD)}</td>
+          <td class="t-mono ${w.netPnlUSD <= 0 ? 't-red' : 't-green'}">${formatUsd(w.netPnlUSD)}</td>
+          <td class="t-mono">${w.txCount.toLocaleString()}</td>
+          <td class="t-mono">${formatDate(w.lastSeen)}</td>
+          <td>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <button class="t-btn t-btn-green" onclick="copyAddress('${w.address}')">Copy</button>
+              <a class="t-btn t-btn-blue" href="https://etherscan.io/address/${w.address}" target="_blank" rel="noopener noreferrer">Etherscan</a>
             </div>
           </td>
         </tr>
@@ -463,10 +260,9 @@
     document.getElementById('casinoFilter').addEventListener('change', renderTable);
     document.getElementById('sortMode').addEventListener('change', renderTable);
 
-    loadNav();
     loadWallets().catch(error => {
       console.error(error);
-      document.getElementById('walletTable').innerHTML = '<tr><td colspan="8" class="muted">Failed to load wallet data.</td></tr>';
+      document.getElementById('walletTable').innerHTML = '<tr><td colspan="8" class="t-dim">Failed to load wallet data.</td></tr>';
     });
   </script>
 </body>
