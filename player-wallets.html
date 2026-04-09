@@ -55,6 +55,16 @@
       gap: 12px;
       font-weight: 800;
       letter-spacing: -0.02em;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .t-nav-logo span:last-child {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-transform: none;
     }
 
     .t-nav-logo-badge {
@@ -80,6 +90,9 @@
     .t-nav-links a {
       color: var(--muted);
       font-weight: 600;
+      font-size: 1rem;
+      text-transform: none;
+      letter-spacing: 0;
       padding: 8px 12px;
       border-radius: 999px;
       transition: 0.18s ease;
@@ -254,8 +267,8 @@
   <div class="page">
     <section class="hero">
       <div class="eyebrow">👛 Player Wallets</div>
-      <h1>Tracked wallets that actually play in crypto casinos.</h1>
-      <p class="sub">This page is separate from the verified casino deposit-address directory. These are player wallets identified from on-chain casino interactions, ranked by deposited volume and net P&amp;L. Wallets are public blockchain addresses, not guaranteed unique humans.</p>
+      <h1>Tracked player wallets.</h1>
+      <p class="sub">Wallets identified from on-chain casino activity, ranked by deposited volume and net P&amp;L. Public blockchain addresses do not always map one-to-one to individual humans.</p>
       <div class="stats" id="summaryStats">
         <div class="stat"><div class="stat-label">Wallets</div><div class="stat-value">Loading...</div></div>
       </div>
