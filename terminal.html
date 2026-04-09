@@ -1454,19 +1454,19 @@ function render(D){
     })
     .catch(()=>{});
 
-  // === STREAMER WATCH ===
+  // === FASTEST GROWING STREAMERS ===
   fetch('data/streamers.json?v='+Date.now())
     .then(r=>r.json())
     .then(s=>{
       const streamers=document.getElementById('streamer-feed');
       const rows=s.items||[];
       streamers.innerHTML=`<div class="streamer-row header">
-        <div>NAME</div><div>FOCUS</div><div>PLATFORM</div><div style="text-align:right">FOLLOWERS</div>
+        <div>NAME</div><div>GROWTH SIGNAL</div><div>PLATFORM</div><div style="text-align:right">FOLLOWERS</div>
       </div>`+rows.map(item=>`<div class="streamer-row">
         <div class="streamer-name">${item.name}</div>
-        <div class="streamer-focus"><a href="${item.url}" target="_blank" rel="noopener" style="color:inherit;">${item.focus}</a></div>
+        <div class="streamer-focus"><a href="${item.url}" target="_blank" rel="noopener" style="color:inherit;">${item.growth || item.focus}</a></div>
         <div class="streamer-platform">${item.platform}</div>
-        <div class="streamer-followers">${item.followers}</div>
+        <div class="streamer-followers">${item.followers || 'N/A'}</div>
       </div>`).join('');
     })
     .catch(()=>{});

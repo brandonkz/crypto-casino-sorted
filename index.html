@@ -212,8 +212,8 @@
           </div>
           <div class="t-panel">
             <div class="t-panel-header">
-              <div class="t-panel-title">🎥 Streamer Watch</div>
-              <div class="t-badge t-badge-blue">LIVE/ACTIVE</div>
+              <div class="t-panel-title">📈 Fastest Growing Streamers</div>
+              <div class="t-badge t-badge-purple">RISING</div>
             </div>
             <div class="t-panel-body flush">
               <table class="t-table" id="home-streamers"></table>
@@ -1686,21 +1686,22 @@
           `;
         }
 
-        // Streamer Watch
+        // Fastest Growing Streamers
         const streamRes = await fetch('/data/streamers.json');
         const streamers = await streamRes.json();
         const streamTable = document.getElementById('home-streamers');
         if (streamTable) {
           streamTable.innerHTML = `
             <thead><tr>
-              <th>Name</th><th>Focus</th><th>Platform</th>
+              <th>Name</th><th>Growth Signal</th><th>Platform</th><th>Followers</th>
             </tr></thead>
             <tbody>
               ${(streamers.items || []).map(s => `
                 <tr>
-                  <td class="t-blue">${s.name}</td>
-                  <td><a href="${s.url}" target="_blank" rel="noopener">${s.focus}</a></td>
+                  <td class="t-purple">${s.name}</td>
+                  <td><a href="${s.url}" target="_blank" rel="noopener">${s.growth || s.focus}</a></td>
                   <td><span class="t-badge t-badge-blue">${s.platform}</span></td>
+                  <td class="t-dim">${s.followers || 'N/A'}</td>
                 </tr>
               `).join('')}
             </tbody>
