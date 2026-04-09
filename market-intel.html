@@ -304,14 +304,17 @@
         const [newsRes, promosRes, dashboardRes, xtpRes] = await Promise.all([
           fetch('./data/news.json'),
           fetch('./data/promos.json'),
-          fetch('./data/dashboard-data.json'),
+          fetch('./data/dashboard.json'),
           fetch('../xtp/data.json').catch(() => fetch('/xtp/data.json'))
         ]);
 
-        const news = newsRes.ok ? await newsRes.json() : [];
-        const promos = promosRes.ok ? await promosRes.json() : [];
-        const dashboard = dashboardRes.ok ? await dashboardRes.json() : { dailyVolume: [], casinoStats: [] };
+        const newsPayload = newsRes.ok ? await newsRes.json() : [];
+        const promosPayload = promosRes.ok ? await promosRes.json() : [];
+        const dashboard = dashboardRes.ok ? await dashboardRes.json() : {};
         const xtp = xtpRes && xtpRes.ok ? await xtpRes.json() : { activityFeed: [] };
+
+        const news = Array.isArray(newsPayload) ? newsPayload : (newsPayload.items || []);
+        const promos = Array.isArray(promosPayload) ? promosPayload : (promosPayload.promos || []);
 
         renderNews(news);
         renderPromos(promos);
@@ -334,10 +337,16 @@
 
     function renderSnapshot(data) {
       const dailyVolume = data.dailyVolume || [];
-      const casinoStats = [...(data.casinoStats || [])].sort((a, b) => (b.volume || 0) - (a.volume || 0));
+      const casinoStats = [...(data.casinoStats || data.casinoBreakdown || [])]
+        .map(item => ({
+          casino: item.casino || item.name || 'Unknown',
+          volume: item.volume ?? item.totalVolume ?? 0,
+          deposits: item.deposits ?? item.totalDeposits ?? 0
+        }))
+        .sort((a, b) => (b.volume || 0) - (a.volume || 0));
       const topCasino = casinoStats[0];
-      const biggest = dailyVolume.reduce((m, row) => Math.max(m, row.biggestDeposit || 0), 0);
-      document.getElementById('lastUpdated').textContent = data.lastUpdated ? new Date(data.lastUpdated).toLocaleString() : 'Unknown';
+      const biggest = data.overview?.largestDeposit || (data.topDeposits?.[0]?.usd) || dailyVolume.reduce((m, row) => Math.max(m, row.biggestDeposit || 0), 0);
+      document.getElementById('lastUpdated').textContent = data.lastUpdated || data.generated ? new Date(data.lastUpdated || data.generated).toLocaleString() : 'Unknown';
       document.getElementById('topCasino').textContent = topCasino ? topCasino.casino : 'N/A';
       document.getElementById('biggestDeposit').textContent = biggest ? `$${Math.round(biggest).toLocaleString()}` : 'N/A';
       document.getElementById('casinoSnapshot').innerHTML = casinoStats.slice(0, 6).map(item => `<li class="feed-item"><strong>${escapeHtml(item.casino)}</strong><br>$${Math.round(item.volume || 0).toLocaleString()} across ${(item.deposits || 0).toLocaleString()} deposits</li>`).join('') || '<li class="feed-item">No casino snapshot available.</li>';

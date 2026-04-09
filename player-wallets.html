@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casino Player Wallets | CryptoCasinoSorted</title>
+  <meta name="description" content="Tracked player wallets interacting with crypto casinos, ranked by deposited volume and net P&L.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/player-wallets.html">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#08090d">
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="terminal-theme.css">
+  <style>
+    body { background: var(--t-bg); color: var(--t-text); }
+    .page { max-width: 1280px; margin: 0 auto; padding: 24px; }
+    .hero { padding: 24px 0 18px; border-bottom: 1px solid var(--t-border); margin-bottom: 20px; }
+    .eyebrow { display:inline-flex; gap:8px; align-items:center; font-size:11px; text-transform:uppercase; letter-spacing:.12em; color: var(--t-green); font-family: var(--t-mono); margin-bottom:10px; }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); line-height:1; margin: 0 0 12px; letter-spacing: -.04em; }
+    .sub { color: var(--t-dim); max-width: 860px; line-height: 1.6; }
+    .stats { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap:12px; margin-top:18px; }
+    .stat { background: var(--t-bg2); border:1px solid var(--t-border); border-radius: var(--t-radius); padding:14px; }
+    .stat-label { font-size:11px; color: var(--t-muted); text-transform:uppercase; letter-spacing:.1em; font-family: var(--t-mono); margin-bottom:8px; }
+    .stat-value { font-size: 1.5rem; font-weight: 800; }
+    .toolbar { display:grid; grid-template-columns: 1.6fr 1fr 180px; gap:12px; margin: 20px 0; }
+    .input, .select { width:100%; background: var(--t-bg2); color: var(--t-text); border:1px solid var(--t-border); border-radius: var(--t-radius); padding: 12px 14px; }
+    .panel { background: var(--t-bg2); border:1px solid var(--t-border); border-radius: var(--t-radius); overflow:hidden; }
+    .panel-head { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 16px; border-bottom:1px solid var(--t-border); }
+    .panel-title { font-family: var(--t-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--t-muted); }
+    .table-wrap { overflow:auto; }
+    table { width:100%; border-collapse: collapse; min-width: 980px; }
+    th, td { padding: 12px 14px; border-bottom: 1px solid var(--t-border); text-align:left; vertical-align: top; }
+    th { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--t-muted); font-family: var(--t-mono); background: rgba(255,255,255,0.01); }
+    td { font-size: 14px; }
+    .mono { font-family: var(--t-mono); }
+    .wallet { font-family: var(--t-mono); font-size: 12px; color: var(--t-text); }
+    .muted { color: var(--t-dim); }
+    .pos { color: #34d399; font-weight: 700; }
+    .neg { color: #f87171; font-weight: 700; }
+    .chips { display:flex; gap:6px; flex-wrap:wrap; }
+    .chip { display:inline-flex; padding: 4px 8px; border-radius: 999px; background: rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.25); color:#93c5fd; font-size:11px; font-family: var(--t-mono); }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:8px 10px; border-radius: 10px; border:1px solid var(--t-border); color: var(--t-text); text-decoration:none; font-size:12px; font-weight:700; }
+    .btn:hover { border-color: var(--t-border2); }
+    .note { margin-top: 18px; padding: 14px; border:1px solid rgba(251,191,36,0.25); background: rgba(251,191,36,0.08); border-radius: var(--t-radius); color: #fde68a; }
+    @media (max-width: 900px) {
+      .page { padding: 16px; }
+      .toolbar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="nav"></div>
+  <div class="page">
+    <section class="hero">
+      <div class="eyebrow">👛 Player Wallets</div>
+      <h1>Tracked wallets that actually play in crypto casinos.</h1>
+      <p class="sub">This page is separate from the verified casino deposit-address directory. These are player wallets identified from on-chain casino interactions, ranked by deposited volume and net P&amp;L. Wallets are public blockchain addresses, not guaranteed unique humans.</p>
+      <div class="stats" id="summaryStats">
+        <div class="stat"><div class="stat-label">Wallets</div><div class="stat-value">Loading...</div></div>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <input id="searchInput" class="input" type="search" placeholder="Search wallet address or casino name">
+      <select id="casinoFilter" class="select">
+        <option value="">All casinos</option>
+      </select>
+      <select id="sortMode" class="select">
+        <option value="deposited">Sort by deposited</option>
+        <option value="loss">Sort by biggest loss</option>
+        <option value="recent">Sort by recent activity</option>
+        <option value="tx">Sort by tx count</option>
+      </select>
+    </div>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title">Player wallet directory</div>
+        <div class="muted" id="resultCount">Loading...</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Wallet</th>
+              <th>Casinos</th>
+              <th>Deposited</th>
+              <th>Withdrawn</th>
+              <th>Net P&amp;L</th>
+              <th>Tx count</th>
+              <th>Last seen</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="walletTable">
+            <tr><td colspan="8" class="muted">Loading wallets...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="note">
+      <strong>Note:</strong> this is heuristic on-chain attribution. One wallet can touch multiple casinos, and one human can use multiple wallets.
+    </div>
+  </div>
+
+  <script>
+    let allWallets = [];
+
+    async function loadNav() {
+      try {
+        const res = await fetch('/shared-nav.html');
+        if (!res.ok) throw new Error('nav failed');
+        const html = await res.text();
+        document.getElementById('nav').innerHTML = html;
+      } catch {
+        document.getElementById('nav').innerHTML = '<div style="padding:16px 20px;color:#9fb0d0;">CryptoCasinoSorted</div>';
+      }
+    }
+
+    async function loadWallets() {
+      const res = await fetch('./data/gambler-pnl.json');
+      const payload = await res.json();
+      allWallets = (payload.gamblers || []).map(item => ({
+        address: item.address,
+        casinos: Object.keys(item.casinoBreakdown || {}),
+        totalDepositedUSD: Number(item.totalDepositedUSD || 0),
+        totalWithdrawnUSD: Number(item.totalWithdrawnUSD || 0),
+        netPnlUSD: Number(item.netPnlUSD || 0),
+        txCount: Number(item.txCount || 0),
+        firstSeen: item.firstSeen,
+        lastSeen: item.lastSeen
+      }));
+
+      renderSummary(payload.lastUpdated);
+      populateCasinoFilter();
+      renderTable();
+    }
+
+    function renderSummary(lastUpdated) {
+      const activeCutoff = Date.now() - (30 * 24 * 60 * 60 * 1000);
+      const activeRecently = allWallets.filter(w => w.lastSeen && new Date(w.lastSeen).getTime() >= activeCutoff).length;
+      const biggestLoss = allWallets.reduce((min, w) => Math.min(min, w.netPnlUSD), 0);
+      const totalDeposited = allWallets.reduce((sum, w) => sum + w.totalDepositedUSD, 0);
+
+      document.getElementById('summaryStats').innerHTML = `
+        <div class="stat"><div class="stat-label">Wallets</div><div class="stat-value">${allWallets.length.toLocaleString()}</div></div>
+        <div class="stat"><div class="stat-label">Active in last 30d</div><div class="stat-value">${activeRecently.toLocaleString()}</div></div>
+        <div class="stat"><div class="stat-label">Total deposited</div><div class="stat-value">${formatUsd(totalDeposited)}</div></div>
+        <div class="stat"><div class="stat-label">Biggest tracked loss</div><div class="stat-value neg">${formatUsd(biggestLoss)}</div></div>
+        <div class="stat"><div class="stat-label">Last updated</div><div class="stat-value mono" style="font-size:1rem;">${lastUpdated ? formatDate(lastUpdated) : 'Unknown'}</div></div>
+      `;
+    }
+
+    function populateCasinoFilter() {
+      const casinos = [...new Set(allWallets.flatMap(w => w.casinos))].sort();
+      const select = document.getElementById('casinoFilter');
+      select.innerHTML = '<option value="">All casinos</option>' + casinos.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+    }
+
+    function getFilteredWallets() {
+      const search = document.getElementById('searchInput').value.trim().toLowerCase();
+      const casino = document.getElementById('casinoFilter').value;
+      const sortMode = document.getElementById('sortMode').value;
+
+      let rows = allWallets.filter(w => {
+        const matchesSearch = !search || w.address.toLowerCase().includes(search) || w.casinos.some(c => c.toLowerCase().includes(search));
+        const matchesCasino = !casino || w.casinos.includes(casino);
+        return matchesSearch && matchesCasino;
+      });
+
+      rows.sort((a, b) => {
+        if (sortMode === 'loss') return a.netPnlUSD - b.netPnlUSD;
+        if (sortMode === 'recent') return new Date(b.lastSeen || 0) - new Date(a.lastSeen || 0);
+        if (sortMode === 'tx') return b.txCount - a.txCount;
+        return b.totalDepositedUSD - a.totalDepositedUSD;
+      });
+
+      return rows;
+    }
+
+    function renderTable() {
+      const rows = getFilteredWallets();
+      document.getElementById('resultCount').textContent = `${rows.length.toLocaleString()} wallets`;
+      const tbody = document.getElementById('walletTable');
+
+      if (!rows.length) {
+        tbody.innerHTML = '<tr><td colspan="8" class="muted">No wallets match this filter.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = rows.slice(0, 500).map(w => `
+        <tr>
+          <td>
+            <div class="wallet">${escapeHtml(shortAddr(w.address))}</div>
+            <div class="muted mono" style="font-size:11px; margin-top:4px;">${escapeHtml(w.address)}</div>
+          </td>
+          <td><div class="chips">${w.casinos.map(c => `<span class="chip">${escapeHtml(c)}</span>`).join('')}</div></td>
+          <td class="mono">${formatUsd(w.totalDepositedUSD)}</td>
+          <td class="mono">${formatUsd(w.totalWithdrawnUSD)}</td>
+          <td class="mono ${w.netPnlUSD <= 0 ? 'neg' : 'pos'}">${formatUsd(w.netPnlUSD)}</td>
+          <td class="mono">${w.txCount.toLocaleString()}</td>
+          <td class="mono">${formatDate(w.lastSeen)}</td>
+          <td>
+            <div class="actions">
+              <button class="btn" onclick="copyAddress('${w.address}')">Copy</button>
+              <a class="btn" href="https://etherscan.io/address/${w.address}" target="_blank" rel="noopener noreferrer">Etherscan</a>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function formatUsd(value) {
+      const num = Number(value || 0);
+      const sign = num < 0 ? '-' : '';
+      return `${sign}$${Math.abs(Math.round(num)).toLocaleString()}`;
+    }
+
+    function formatDate(value) {
+      if (!value) return 'Unknown';
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return 'Unknown';
+      return d.toLocaleDateString();
+    }
+
+    function shortAddr(addr) {
+      return `${addr.slice(0, 6)}…${addr.slice(-4)}`;
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    async function copyAddress(addr) {
+      try {
+        await navigator.clipboard.writeText(addr);
+      } catch {}
+    }
+
+    document.getElementById('searchInput').addEventListener('input', renderTable);
+    document.getElementById('casinoFilter').addEventListener('change', renderTable);
+    document.getElementById('sortMode').addEventListener('change', renderTable);
+
+    loadNav();
+    loadWallets().catch(error => {
+      console.error(error);
+      document.getElementById('walletTable').innerHTML = '<tr><td colspan="8" class="muted">Failed to load wallet data.</td></tr>';
+    });
+  </script>
+</body>
+</html>
