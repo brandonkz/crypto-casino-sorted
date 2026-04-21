@@ -220,6 +220,18 @@
             </div>
           </div>
         </div>
+        <div class="t-panel" style="margin-top:12px;">
+          <div class="t-panel-header">
+            <div class="t-panel-title">🎁 Welcome Offers Tracker</div>
+            <div class="t-badge t-badge-amber">RESEARCH</div>
+          </div>
+          <div class="t-panel-body flush">
+            <div class="t-dim" style="padding:12px 16px 0; font-size:0.78rem;">
+              Headline offers and angles for the biggest crypto casino brands. Terms move fast, so verify the live deposit screen before publishing hard claims.
+            </div>
+            <table class="t-table" id="home-welcome-offers"></table>
+          </div>
+        </div>
       </div>
 
       <div style="margin-top:14px; text-align:center; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
@@ -1621,12 +1633,14 @@
     // Load Gaming News + Promo Radar
     async function loadNewsPromos() {
       try {
-        const [newsRes, promoRes] = await Promise.all([
+        const [newsRes, promoRes, welcomeRes] = await Promise.all([
           fetch('/data/news.json'),
-          fetch('/data/promos.json')
+          fetch('/data/promos.json'),
+          fetch('/data/welcome-offers.json')
         ]);
         const news = await newsRes.json();
         const promos = await promoRes.json();
+        const welcomeOffers = await welcomeRes.json();
 
         const newsTable = document.getElementById('home-news');
         if (newsTable) {
@@ -1659,6 +1673,27 @@
                   <td><a href="${p.url}" target="_blank" rel="noopener">${p.offer}</a> <span class="t-dim" style="font-size:0.7rem;">${p.details || ''}</span></td>
                   <td><span class="t-badge t-badge-amber">${p.type}</span></td>
                   <td><a href="${p.url}" target="_blank" rel="noopener">Deposit →</a></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          `;
+        }
+
+        const welcomeTable = document.getElementById('home-welcome-offers');
+        if (welcomeTable) {
+          welcomeTable.innerHTML = `
+            <thead><tr>
+              <th>Casino</th><th>Offer</th><th>Promo</th><th>KYC</th><th>Geo</th><th>Angle</th>
+            </tr></thead>
+            <tbody>
+              ${(welcomeOffers.items || []).map(w => `
+                <tr>
+                  <td class="t-amber"><a href="${w.url}" target="_blank" rel="noopener">${w.casino}</a></td>
+                  <td><a href="${w.url}" target="_blank" rel="noopener">${w.offer}</a><div class="t-dim" style="font-size:0.72rem; margin-top:3px;">${w.wagering || ''}</div></td>
+                  <td>${w.promoCode || 'Check live'}</td>
+                  <td>${w.kyc || ''}</td>
+                  <td>${w.geo || ''}</td>
+                  <td>${w.angle || ''}</td>
                 </tr>
               `).join('')}
             </tbody>
