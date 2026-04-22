@@ -3,38 +3,45 @@
   "promos": [
     {
       "casino": "Stake",
-      "offer": "200% deposit bonus up to $1,000",
+      "offer": "200% up to $1,000",
       "details": "Code: CRYPTO200",
-      "type": "DEPOSIT",
+      "type": "WELCOME",
       "url": "https://stake.com/?c=yooWfJdE"
     },
     {
+      "casino": "BC.Game",
+      "offer": "300% up to $20,000",
+      "details": "Biggest headline offer in current tracker",
+      "type": "WELCOME",
+      "url": "https://bc.game/i-4bau8curc-n/"
+    },
+    {
       "casino": "Shuffle",
-      "offer": "100% welcome bonus + 50 free spins",
-      "details": "Limited time",
+      "offer": "200% up to $500",
+      "details": "No KYC, instant-withdrawal angle",
       "type": "WELCOME",
       "url": "https://shuffle.com?r=cl46Ld1iQb"
     },
     {
       "casino": "Rollbit",
-      "offer": "0% house edge promos + instant withdrawals",
-      "details": "VIP\u2011weighted",
-      "type": "VIP",
+      "offer": "150% up to $2,500",
+      "details": "Verify live terms, offers can vary",
+      "type": "WELCOME",
       "url": "https://rollbit.com/referral/brandonkz"
     },
     {
-      "casino": "Roobet",
-      "offer": "Rakeback boost weekend",
-      "details": "Ends Sunday",
-      "type": "RAKEBACK",
-      "url": "https://roobet.com/?ref=brandonkz"
+      "casino": "Duelbits",
+      "offer": "100% up to $500 + 100 free spins",
+      "details": "VPN-friendly, esports angle",
+      "type": "WELCOME",
+      "url": "https://duelbits.io/?a=sorted"
     },
     {
-      "casino": "Duelbits",
-      "offer": "$250 crypto match",
-      "details": "No KYC tier",
-      "type": "MATCH",
-      "url": "https://duelbits.io/?a=sorted"
+      "casino": "Thunderpick",
+      "offer": "500% up to $2,000",
+      "details": "Esports-led onboarding offer",
+      "type": "WELCOME",
+      "url": "https://thunderpick.io/?ref=cryptocasinosorted"
     }
   ]
 }
