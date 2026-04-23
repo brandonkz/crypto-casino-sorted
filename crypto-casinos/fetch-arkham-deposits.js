@@ -38,8 +38,19 @@ function arkhamGet(endpoint) {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
-        try { resolve(JSON.parse(data)); }
-        catch (e) { reject(e); }
+        let parsed;
+        try {
+          parsed = JSON.parse(data);
+        } catch (e) {
+          return reject(e);
+        }
+
+        if (res.statusCode >= 400) {
+          const message = parsed?.message || `HTTP ${res.statusCode}`;
+          return reject(new Error(`Arkham API ${res.statusCode}: ${message}`));
+        }
+
+        resolve(parsed);
       });
     });
     req.on('error', reject);
@@ -54,22 +65,25 @@ async function fetchDepositsForWallet(address, casino, sinceHours = 24) {
     const data = await arkhamGet(endpoint);
     const transfers = data.transfers || [];
     // Only count inflows (deposits TO this wallet)
-    return transfers
-      .filter(t => t.toAddress?.address?.toLowerCase() === address.toLowerCase())
-      .map(t => ({
-        casino,
-        address,
-        txHash: t.transactionHash,
-        timestamp: t.blockTimestamp,
-        token: t.tokenSymbol,
-        amount: t.unitValue,
-        usdValue: t.historicalUSD,
-        fromAddress: t.fromAddress?.address,
-        fromEntity: t.fromAddress?.arkhamEntity?.name || null
-      }));
+    return {
+      deposits: transfers
+        .filter(t => t.toAddress?.address?.toLowerCase() === address.toLowerCase())
+        .map(t => ({
+          casino,
+          address,
+          txHash: t.transactionHash,
+          timestamp: t.blockTimestamp,
+          token: t.tokenSymbol,
+          amount: t.unitValue,
+          usdValue: t.historicalUSD,
+          fromAddress: t.fromAddress?.address,
+          fromEntity: t.fromAddress?.arkhamEntity?.name || null
+        })),
+      error: null
+    };
   } catch (e) {
     console.error(`  ⚠️ Error fetching ${casino} (${address}): ${e.message}`);
-    return [];
+    return { deposits: [], error: e.message };
   }
 }
 
@@ -80,12 +94,21 @@ async function main() {
   console.log(`Fetching Arkham deposits for ${wallets.length} wallets across ${new Set(wallets.map(w=>w.casino)).size} casinos...`);
   
   const allDeposits = [];
+  const errors = [];
   for (const w of wallets) {
     process.stdout.write(`  ${w.casino} (${w.address.slice(0,8)}...)  `);
-    const deposits = await fetchDepositsForWallet(w.address, w.casino);
-    console.log(`${deposits.length} deposits`);
-    allDeposits.push(...deposits);
+    const result = await fetchDepositsForWallet(w.address, w.casino);
+    console.log(`${result.deposits.length} deposits`);
+    allDeposits.push(...result.deposits);
+    if (result.error) {
+      errors.push({ casino: w.casino, address: w.address, message: result.error });
+    }
     await new Promise(r => setTimeout(r, 200)); // rate limit
+  }
+
+  if (errors.length > 0 && allDeposits.length === 0) {
+    const sample = errors[0];
+    throw new Error(`Arkham fetch failed for all wallets. Example: ${sample.casino} (${sample.address}) -> ${sample.message}`);
   }
 
   // Write CSV
