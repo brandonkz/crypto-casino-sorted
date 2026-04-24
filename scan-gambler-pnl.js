@@ -17,7 +17,10 @@ dotenv.config({ path: ENV_PATH });
 dotenv.config({ path: path.join(__dirname, 'site', '.env') });
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
-const OUTPUT_FILE = path.join(__dirname, 'site', 'data', 'gambler-pnl.json');
+const OUTPUT_FILES = [
+  path.join(__dirname, 'data', 'gambler-pnl.json'),
+  path.join(__dirname, 'site', 'data', 'gambler-pnl.json')
+];
 const ETHERSCAN_URL = 'https://api.etherscan.io/v2/api';
 const CHAIN_ID = 1;
 const RATE_LIMIT_MS = 250;
@@ -324,10 +327,12 @@ async function main() {
     gamblers: topGamblers
   };
 
-  fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(payload, null, 2));
+  for (const outputFile of OUTPUT_FILES) {
+    fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+    fs.writeFileSync(outputFile, JSON.stringify(payload, null, 2));
+  }
 
-  console.log(`Saved ${topGamblers.length} gamblers to ${OUTPUT_FILE}`);
+  console.log(`Saved ${topGamblers.length} gamblers to ${OUTPUT_FILES.join(', ')}`);
 }
 
 main().catch(error => {

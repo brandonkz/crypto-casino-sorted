@@ -19,7 +19,11 @@ dotenv.config({ path: path.join(__dirname, 'site', '.env') });
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 const ETHERSCAN_URL = 'https://api.etherscan.io/v2/api';
-const WHALE_FILE = path.join(__dirname, 'site', 'data', 'whale-watch.json');
+const WHALE_FILES = [
+  path.join(__dirname, 'data', 'whale-watch.json'),
+  path.join(__dirname, 'site', 'data', 'whale-watch.json')
+];
+const PRIMARY_WHALE_FILE = WHALE_FILES[0];
 const TWEET_FILE = path.join(__dirname, 'twitter-content', `whale-tweets-${new Date().toISOString().slice(0, 10)}.json`);
 const MIN_DEPOSIT_USD = 10000;
 const RATE_LIMIT_MS = 250;
@@ -118,15 +122,19 @@ async function fetchEthPrice() {
 }
 
 function loadWhaleData() {
-  if (fs.existsSync(WHALE_FILE)) {
-    return JSON.parse(fs.readFileSync(WHALE_FILE, 'utf8'));
+  for (const whaleFile of WHALE_FILES) {
+    if (fs.existsSync(whaleFile)) {
+      return JSON.parse(fs.readFileSync(whaleFile, 'utf8'));
+    }
   }
   return { whales: [], lastScan: null };
 }
 
 function saveWhaleData(data) {
-  fs.mkdirSync(path.dirname(WHALE_FILE), { recursive: true });
-  fs.writeFileSync(WHALE_FILE, JSON.stringify(data, null, 2));
+  for (const whaleFile of WHALE_FILES) {
+    fs.mkdirSync(path.dirname(whaleFile), { recursive: true });
+    fs.writeFileSync(whaleFile, JSON.stringify(data, null, 2));
+  }
 }
 
 function fmt(n) { return '$' + Math.abs(Math.round(n)).toLocaleString(); }
