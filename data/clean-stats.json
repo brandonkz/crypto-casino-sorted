@@ -1,26 +1,26 @@
 {
-  "date": "2026-04-24",
+  "date": "2026-04-25",
   "input": {
-    "file": "/Users/brandonkatz/.openclaw/workspace/crypto-casinos/site/data/deposits-2026-04-24.csv",
-    "deposits": 3580,
-    "volume": 12576772.799999975
+    "file": "/Users/brandonkatz/.openclaw/workspace/crypto-casinos/site/data/deposits-2026-04-25.csv",
+    "deposits": 4047,
+    "volume": 20464811.299999997
   },
   "clean": {
-    "file": "/Users/brandonkatz/.openclaw/workspace/crypto-casinos/site/data/deposits-2026-04-24-clean.csv",
-    "deposits": 2733,
-    "volume": 3396105.640000001,
-    "percentage": "76.3"
+    "file": "/Users/brandonkatz/.openclaw/workspace/crypto-casinos/site/data/deposits-2026-04-25-clean.csv",
+    "deposits": 3140,
+    "volume": 4134389.199999998,
+    "percentage": "77.6"
   },
   "flagged": {
-    "file": "/Users/brandonkatz/.openclaw/workspace/crypto-casinos/site/data/deposits-2026-04-24-flagged.csv",
-    "deposits": 847,
-    "volume": 9180667.16,
-    "percentage": "23.7",
+    "file": "/Users/brandonkatz/.openclaw/workspace/crypto-casinos/site/data/deposits-2026-04-25-flagged.csv",
+    "deposits": 907,
+    "volume": 16330422.100000009,
+    "percentage": "22.4",
     "breakdown": {
-      "payment_processor": 3,
-      "repeat_wallet_count": 838,
-      "repeat_wallet_volume": 64,
-      "round_number": 1
+      "payment_processor": 4,
+      "repeat_wallet_count": 870,
+      "repeat_wallet_volume": 97,
+      "round_number": 3
     }
   },
   "thresholds": {
