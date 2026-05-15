@@ -471,7 +471,7 @@
 
       <div class="stat-card">
         <div class="stat-label">LAST UPDATE</div>
-        <div class="stat-value" id="lastUpdate">LIVE</div>
+        <div class="stat-value" id="lastUpdate">APR 30</div>
         <div class="stat-subtitle">Refreshing daily</div>
       </div>
     </div>
@@ -520,10 +520,40 @@
           </thead>
           <tbody>
             <tr>
-              <td class="casino-name">Loading...</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
+              <td class="casino-name">Rollbit</td>
+              <td class="volume-value">$14.4M</td>
+              <td>47,158</td>
+              <td><span style="color: #22c55e; font-weight: 700;">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td class="casino-name">Stake</td>
+              <td class="volume-value">$13.6M</td>
+              <td>21,185</td>
+              <td><span style="color: #22c55e; font-weight: 700;">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td class="casino-name">Stake 11</td>
+              <td class="volume-value">$12.7M</td>
+              <td>30,317</td>
+              <td><span style="color: #22c55e; font-weight: 700;">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td class="casino-name">Shuffle</td>
+              <td class="volume-value">$10.0M</td>
+              <td>22,348</td>
+              <td><span style="color: #22c55e; font-weight: 700;">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td class="casino-name">Roobet</td>
+              <td class="volume-value">$6.8M</td>
+              <td>18,234</td>
+              <td><span style="color: #22c55e; font-weight: 700;">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td class="casino-name">BC.Game</td>
+              <td class="volume-value">$4.2M</td>
+              <td>12,456</td>
+              <td><span style="color: #22c55e; font-weight: 700;">ACTIVE</span></td>
             </tr>
           </tbody>
         </table>
@@ -567,9 +597,9 @@
           const values = line.split(',');
           return {
             date: values[0],
-            casino: values[1],
-            amount: parseFloat(values[2]) || 0,
-            chain: values[3]
+            casino: values[3],
+            amount: parseFloat(values[8]) || 0,
+            chain: values[4]
           };
         });
 
