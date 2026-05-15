@@ -517,8 +517,18 @@
         grid-template-columns: 1fr;
       }
 
+      header {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
       nav {
-        display: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        font-size: 0.75rem;
+        width: 100%;
       }
 
       .detail-row {
