@@ -753,16 +753,16 @@
 
     <!-- News/Promo Grid -->
     <section class="news-promo-grid">
-      <!-- Whale Activity -->
+      <!-- Casino Stats -->
       <div class="content-card">
         <div class="content-card-header">
-          <div class="content-card-title">WHALE ACTIVITY</div>
-          <div class="badge badge-blue">LIVE</div>
+          <div class="content-card-title">CASINO VOLUME</div>
+          <div class="badge badge-blue">TRACKED</div>
         </div>
-        <div class="content-list" id="whaleActivity">
+        <div class="content-list" id="casinoStats">
           <div class="content-item">
             <div class="content-date">LOADING</div>
-            <div class="content-text">Loading whale deposits...</div>
+            <div class="content-text">Loading casino data...</div>
           </div>
         </div>
       </div>
@@ -1452,73 +1452,74 @@
   </footer>
 
   <script>
-    // Load whale activity from deposit data
-    async function loadWhaleActivity() {
+    // Load casino stats from deposit data
+    async function loadCasinoStats() {
       try {
         const response = await fetch('./data/deposits-all.csv');
         const csvText = await response.text();
         
-        // Parse CSV
+        // Parse CSV and aggregate by casino
         const lines = csvText.trim().split('\n');
-        const deposits = [];
+        const casinoData = {};
         
         // Skip header, parse deposits
         for (let i = 1; i < lines.length; i++) {
           const cols = lines[i].split(',');
-          const date = cols[0];
           const casino = cols[3];
-          const chain = cols[4];
           const usdValue = parseFloat(cols[8]) || 0;
           
-          // Only whale deposits (>$100K)
-          if (usdValue >= 100000) {
-            deposits.push({ date, casino, chain, usdValue });
+          if (!casinoData[casino]) {
+            casinoData[casino] = { total: 0, count: 0 };
           }
+          
+          casinoData[casino].total += usdValue;
+          casinoData[casino].count += 1;
         }
         
-        // Get 4 most recent whales
-        const recentWhales = deposits.slice(-4).reverse();
+        // Sort by volume and get top 4
+        const topCasinos = Object.entries(casinoData)
+          .sort((a, b) => b[1].total - a[1].total)
+          .slice(0, 4);
         
-        // Populate news feed
-        const container = document.getElementById('whaleActivity');
-        if (recentWhales.length === 0) {
+        // Populate stats feed
+        const container = document.getElementById('casinoStats');
+        if (topCasinos.length === 0) {
           container.innerHTML = `
             <div class="content-item">
               <div class="content-date">NO DATA</div>
-              <div class="content-text">No recent whale deposits tracked</div>
+              <div class="content-text">No casino data available</div>
             </div>
           `;
           return;
         }
         
-        container.innerHTML = recentWhales.map(whale => {
-          const dateObj = new Date(whale.date);
-          const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase();
-          const amount = whale.usdValue >= 1000000 
-            ? '$' + (whale.usdValue / 1000000).toFixed(2) + 'M'
-            : '$' + (whale.usdValue / 1000).toFixed(0) + 'K';
+        container.innerHTML = topCasinos.map(([casino, data]) => {
+          const volume = data.total >= 1000000 
+            ? '$' + (data.total / 1000000).toFixed(1) + 'M'
+            : '$' + (data.total / 1000).toFixed(0) + 'K';
+          const deposits = data.count.toLocaleString();
           
           return `
             <div class="content-item">
-              <div class="content-date">🐋 ${dateStr}</div>
-              <div class="content-text">${amount} deposit to ${whale.casino} (${whale.chain})</div>
+              <div class="content-date">${casino.toUpperCase()}</div>
+              <div class="content-text">${volume} total volume (${deposits} deposits)</div>
             </div>
           `;
         }).join('');
         
       } catch (error) {
-        console.error('Error loading whale activity:', error);
-        document.getElementById('whaleActivity').innerHTML = `
+        console.error('Error loading casino stats:', error);
+        document.getElementById('casinoStats').innerHTML = `
           <div class="content-item">
             <div class="content-date">ERROR</div>
-            <div class="content-text">Could not load whale activity</div>
+            <div class="content-text">Could not load casino data</div>
           </div>
         `;
       }
     }
     
     // Load on page load
-    loadWhaleActivity();
+    loadCasinoStats();
   </script>
 
 </body>
