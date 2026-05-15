@@ -453,13 +453,13 @@
     <div class="stats-grid">
       <div class="stat-card accent-blue">
         <div class="stat-label">TOTAL TRACKED</div>
-        <div class="stat-value" id="totalVolume">$83.4M+</div>
+        <div class="stat-value" id="totalVolume">$76.5M+</div>
         <div class="stat-subtitle">Verified on-chain</div>
       </div>
 
       <div class="stat-card accent-orange">
         <div class="stat-label">30D VOLUME</div>
-        <div class="stat-value" id="monthVolume">$41.2M</div>
+        <div class="stat-value" id="monthVolume">Loading...</div>
         <div class="stat-subtitle">Last 30 days</div>
       </div>
 
@@ -556,7 +556,7 @@
     async function loadData() {
       try {
         // Load all deposits CSV
-        const response = await fetch('./crypto-casinos/deposits-all.csv');
+        const response = await fetch('./data/deposits-all.csv');
         const csvText = await response.text();
         
         // Parse CSV
