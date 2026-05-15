@@ -753,28 +753,16 @@
 
     <!-- News/Promo Grid -->
     <section class="news-promo-grid">
-      <!-- Gaming News -->
+      <!-- Whale Activity -->
       <div class="content-card">
         <div class="content-card-header">
-          <div class="content-card-title">GAMING NEWS</div>
-          <div class="badge badge-blue">LATEST</div>
+          <div class="content-card-title">WHALE ACTIVITY</div>
+          <div class="badge badge-blue">LIVE</div>
         </div>
-        <div class="content-list">
+        <div class="content-list" id="whaleActivity">
           <div class="content-item">
-            <div class="content-date">MAY 15</div>
-            <div class="content-text">Adin Ross streams $2M+ session on Rainbet — 47K live viewers</div>
-          </div>
-          <div class="content-item">
-            <div class="content-date">MAY 14</div>
-            <div class="content-text">Shuffle climbing fast — now 25 partnered streamers (10.6% share)</div>
-          </div>
-          <div class="content-item">
-            <div class="content-date">MAY 13</div>
-            <div class="content-text">XTP enters market with institutional-grade compliance</div>
-          </div>
-          <div class="content-item">
-            <div class="content-date">MAY 12</div>
-            <div class="content-text">Stake still dominates: 62 streamers, 26.3% of all partnerships</div>
+            <div class="content-date">LOADING</div>
+            <div class="content-text">Loading whale deposits...</div>
           </div>
         </div>
       </div>
@@ -1462,6 +1450,76 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Load whale activity from deposit data
+    async function loadWhaleActivity() {
+      try {
+        const response = await fetch('./data/deposits-all.csv');
+        const csvText = await response.text();
+        
+        // Parse CSV
+        const lines = csvText.trim().split('\n');
+        const deposits = [];
+        
+        // Skip header, parse deposits
+        for (let i = 1; i < lines.length; i++) {
+          const cols = lines[i].split(',');
+          const date = cols[0];
+          const casino = cols[3];
+          const chain = cols[4];
+          const usdValue = parseFloat(cols[8]) || 0;
+          
+          // Only whale deposits (>$100K)
+          if (usdValue >= 100000) {
+            deposits.push({ date, casino, chain, usdValue });
+          }
+        }
+        
+        // Get 4 most recent whales
+        const recentWhales = deposits.slice(-4).reverse();
+        
+        // Populate news feed
+        const container = document.getElementById('whaleActivity');
+        if (recentWhales.length === 0) {
+          container.innerHTML = `
+            <div class="content-item">
+              <div class="content-date">NO DATA</div>
+              <div class="content-text">No recent whale deposits tracked</div>
+            </div>
+          `;
+          return;
+        }
+        
+        container.innerHTML = recentWhales.map(whale => {
+          const dateObj = new Date(whale.date);
+          const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase();
+          const amount = whale.usdValue >= 1000000 
+            ? '$' + (whale.usdValue / 1000000).toFixed(2) + 'M'
+            : '$' + (whale.usdValue / 1000).toFixed(0) + 'K';
+          
+          return `
+            <div class="content-item">
+              <div class="content-date">🐋 ${dateStr}</div>
+              <div class="content-text">${amount} deposit to ${whale.casino} (${whale.chain})</div>
+            </div>
+          `;
+        }).join('');
+        
+      } catch (error) {
+        console.error('Error loading whale activity:', error);
+        document.getElementById('whaleActivity').innerHTML = `
+          <div class="content-item">
+            <div class="content-date">ERROR</div>
+            <div class="content-text">Could not load whale activity</div>
+          </div>
+        `;
+      }
+    }
+    
+    // Load on page load
+    loadWhaleActivity();
+  </script>
 
 </body>
 </html>
