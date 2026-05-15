@@ -1455,8 +1455,16 @@
     // Load casino stats from deposit data
     async function loadCasinoStats() {
       try {
+        console.log('Loading casino stats...');
         const response = await fetch('./data/deposits-all.csv');
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const csvText = await response.text();
+        console.log('CSV loaded, length:', csvText.length);
         
         // Parse CSV and aggregate by casino
         const lines = csvText.trim().split('\n');
@@ -1493,6 +1501,8 @@
           return;
         }
         
+        console.log('Top casinos:', topCasinos);
+        
         container.innerHTML = topCasinos.map(([casino, data]) => {
           const volume = data.total >= 1000000 
             ? '$' + (data.total / 1000000).toFixed(1) + 'M'
@@ -1507,12 +1517,15 @@
           `;
         }).join('');
         
+        console.log('Casino stats rendered successfully');
+        
       } catch (error) {
         console.error('Error loading casino stats:', error);
-        document.getElementById('casinoStats').innerHTML = `
+        const container = document.getElementById('casinoStats');
+        container.innerHTML = `
           <div class="content-item">
             <div class="content-date">ERROR</div>
-            <div class="content-text">Could not load casino data</div>
+            <div class="content-text">Could not load casino data: ${error.message}</div>
           </div>
         `;
       }
