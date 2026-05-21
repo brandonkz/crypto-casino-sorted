@@ -127,9 +127,10 @@ a:hover { color: #69f0ae; }
 @keyframes t-pulse { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
 
 @media (max-width: 768px) {
-  .t-nav { padding: 0 12px; height: 40px; }
+  .t-nav { padding: 0 12px; height: 40px; overflow: hidden; }
   .t-nav-logo .sub { display: none; }
-  .t-nav-links { gap: 10px; }
+  .t-nav-links { gap: 10px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .t-nav-links::-webkit-scrollbar { display: none; }
   .t-nav-links a { font-size: 9px; }
   .t-nav-hide-mobile { display: none; }
 }
