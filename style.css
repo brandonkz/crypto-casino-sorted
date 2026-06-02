@@ -671,6 +671,49 @@ body {
   font-family: 'Inter', -apple-system, sans-serif;
 }
 
+.casino-review-snapshot,
+.reddit-take {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid #1a1d2e;
+  border-radius: 4px;
+  padding: 0.65rem 0.75rem;
+  margin: 0.65rem 0;
+}
+
+.casino-review-snapshot p {
+  color: #9aa3b2;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.snapshot-kicker {
+  color: #ffc400;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.review-link {
+  display: inline-flex;
+  color: #00e676;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin-top: 0.55rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.review-link:hover {
+  color: #66ffa6;
+}
+
 .token-badge {
   display: inline-flex;
   align-items: center;
@@ -1092,6 +1135,10 @@ body {
   margin: 0.3rem 0;
   line-height: 1.4;
   font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.reddit-take .reddit-quote {
+  margin: 0.25rem 0;
 }
 
 .casino-badges {
