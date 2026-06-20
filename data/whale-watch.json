@@ -9,11 +9,11 @@
       "depositTxHash": "0x7ddbb49a8c2b4d743a45ac38678bc92ec0092186d4719b59f7e9d8d399fa2308",
       "depositTimestamp": "2026-03-30T23:49:35.000Z",
       "firstSeen": "2026-03-31T04:22:34.376Z",
-      "withdrawnETH": 0.000021,
+      "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-04-06T04:15:46.314Z",
+      "lastChecked": "2026-06-20T04:10:29.357Z",
       "status": "updated",
-      "daysSinceDeposit": 6,
+      "daysSinceDeposit": 81,
       "updates": [
         {
           "date": "2026-03-31T04:22:39.486Z",
@@ -32,6 +32,12 @@
           "withdrawnETH": 0.000021,
           "withdrawnUSD": 0,
           "note": "Received from: Chips.gg"
+        },
+        {
+          "date": "2026-06-20T04:10:29.357Z",
+          "withdrawnETH": 0,
+          "withdrawnUSD": 0,
+          "note": null
         }
       ]
     },
@@ -44,17 +50,23 @@
       "depositTxHash": "0xfee4164fc80e22a8fc2532cd3340d1c4b6809d715ed7a8a501830531bac606b6",
       "depositTimestamp": "2026-04-06T03:45:23.000Z",
       "firstSeen": "2026-04-06T04:15:31.493Z",
-      "withdrawnETH": 0.024595,
-      "withdrawnUSD": 52,
-      "lastChecked": "2026-04-06T04:15:47.428Z",
+      "withdrawnETH": 0,
+      "withdrawnUSD": 0,
+      "lastChecked": "2026-06-20T04:10:30.423Z",
       "status": "updated",
-      "daysSinceDeposit": 0,
+      "daysSinceDeposit": 75,
       "updates": [
         {
           "date": "2026-04-06T04:15:47.428Z",
           "withdrawnETH": 0.024595,
           "withdrawnUSD": 52,
           "note": "Received from: Cloudbet"
+        },
+        {
+          "date": "2026-06-20T04:10:30.423Z",
+          "withdrawnETH": 0,
+          "withdrawnUSD": 0,
+          "note": null
         }
       ]
     },
@@ -69,9 +81,9 @@
       "firstSeen": "2026-04-06T04:15:31.493Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-04-06T04:15:48.289Z",
+      "lastChecked": "2026-06-20T04:10:31.208Z",
       "status": "watching",
-      "daysSinceDeposit": 0,
+      "daysSinceDeposit": 75,
       "updates": []
     },
     {
@@ -85,9 +97,9 @@
       "firstSeen": "2026-04-06T04:15:31.493Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-04-06T04:15:48.838Z",
+      "lastChecked": "2026-06-20T04:10:31.780Z",
       "status": "watching",
-      "daysSinceDeposit": 0,
+      "daysSinceDeposit": 75,
       "updates": []
     },
     {
@@ -101,12 +113,12 @@
       "firstSeen": "2026-04-06T04:15:44.977Z",
       "withdrawnETH": 0,
       "withdrawnUSD": 0,
-      "lastChecked": "2026-04-06T04:15:50.430Z",
+      "lastChecked": "2026-06-20T04:10:34.310Z",
       "status": "watching",
-      "daysSinceDeposit": 0,
+      "daysSinceDeposit": 75,
       "updates": []
     }
   ],
-  "lastScan": "2026-04-06T04:15:50.430Z",
-  "ethPrice": 2126.82
+  "lastScan": "2026-06-20T04:10:34.310Z",
+  "ethPrice": 1706.73
 }
