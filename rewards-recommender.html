@@ -368,6 +368,33 @@
       font-weight: 750;
       line-height: 1.45;
     }
+    .reward-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: fit-content;
+      min-height: 34px;
+      margin-top: 11px;
+      padding: 8px 12px;
+      border-radius: 7px;
+      border: 1px solid rgba(102, 240, 111, 0.48);
+      background: linear-gradient(135deg, rgba(102, 240, 111, 0.18), rgba(255, 157, 0, 0.13));
+      color: var(--ink);
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .reward-link:hover { border-color: rgba(102, 240, 111, 0.78); color: var(--lime); }
+    .reward-link.disabled {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      pointer-events: none;
+    }
     .mini-stat {
       border: 1px solid var(--line);
       background: rgba(4, 16, 38, 0.58);
@@ -783,6 +810,14 @@
       `;
     }
 
+    function rewardLink(op) {
+      const label = op.reward_page_label || 'Official Rewards Page';
+      if (!op.reward_page_url) {
+        return `<span class="reward-link disabled">${label}</span>`;
+      }
+      return `<a class="reward-link" href="${op.reward_page_url}" target="_blank" rel="nofollow noopener">${label} -></a>`;
+    }
+
     function render() {
       if (!state.operators.length) return;
       const inputs = getInputs();
@@ -812,6 +847,7 @@
                 <div class="offer-label">What You Get</div>
                 <div class="offer-copy-text">${op.offer_summary}</div>
                 <div class="offer-sub" style="margin-top:7px;">${offerSubtext(op, inputs)}</div>
+                ${rewardLink(op)}
               </div>
             </div>
             <div class="result-grid">

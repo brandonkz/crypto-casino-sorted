@@ -162,6 +162,23 @@ h1 {
 
 .casino-cell .tag { font-size: 0.65rem; color: var(--t-muted); }
 
+.reward-page-link {
+  display: inline-block;
+  border: 1px solid var(--t-amber-b);
+  background: var(--t-amber-bg);
+  color: var(--t-amber);
+  border-radius: var(--t-radius);
+  padding: 5px 8px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.reward-page-link:hover { border-color: var(--t-amber); color: var(--t-text); }
+
 .rate-high { color: var(--t-green); font-weight: 800; }
 
 .rate-med { color: var(--t-amber); font-weight: 800; }
@@ -269,6 +286,7 @@ h1 {
           <th>Max Rakeback</th>
           <th>Structure</th>
           <th>VIP Access</th>
+          <th>Reward Page</th>
         </tr>
       </thead>
       <tbody>
@@ -278,6 +296,7 @@ h1 {
           <td><span class="rate-high">~15%+</span></td>
           <td><span class="pill pill-blue">Tiered + Weekly/Monthly</span></td>
           <td><span class="pill pill-yellow">Invite-only upper</span></td>
+          <td><a class="reward-page-link" href="https://stake.com/vip-club" target="_blank" rel="nofollow noopener">VIP Club</a></td>
         </tr>
         <tr>
           <td><div class="casino-cell"><div class="casino-dot" style="background:#ef4444;"></div><div><div class="name">Rollbit</div><div class="tag">rollbit.com</div></div></div></td>
@@ -285,6 +304,7 @@ h1 {
           <td><span class="rate-high">up to 50%</span></td>
           <td><span class="pill pill-blue">Base + Boost events</span></td>
           <td><span class="pill pill-green">Open to all</span></td>
+          <td><a class="reward-page-link" href="https://rollbit.com/rewards" target="_blank" rel="nofollow noopener">Rewards</a></td>
         </tr>
         <tr>
           <td><div class="casino-cell"><div class="casino-dot" style="background:#f59e0b;"></div><div><div class="name">Rainbet</div><div class="tag">rainbet.com</div></div></div></td>
@@ -292,6 +312,7 @@ h1 {
           <td><span class="rate-high">25–30%</span></td>
           <td><span class="pill pill-blue">Tiered VIP</span></td>
           <td><span class="pill pill-green">Open to all</span></td>
+          <td><a class="reward-page-link" href="https://rainbet.com/vip" target="_blank" rel="nofollow noopener">VIP</a></td>
         </tr>
         <tr>
           <td><div class="casino-cell"><div class="casino-dot" style="background:#8b5cf6;"></div><div><div class="name">Gamdom</div><div class="tag">gamdom.com</div></div></div></td>
@@ -299,6 +320,7 @@ h1 {
           <td><span class="rate-high">up to 15%</span></td>
           <td><span class="pill pill-blue">Instant rakeback</span></td>
           <td><span class="pill pill-green">Open to all</span></td>
+          <td><a class="reward-page-link" href="https://gamdom.com/promotions/rakeback" target="_blank" rel="nofollow noopener">Rakeback</a></td>
         </tr>
         <tr>
           <td><div class="casino-cell"><div class="casino-dot" style="background:#06b6d4;"></div><div><div class="name">Duelbits</div><div class="tag">duelbits.com</div></div></div></td>
@@ -306,6 +328,7 @@ h1 {
           <td><span class="rate-high">12.5%</span></td>
           <td><span class="pill pill-blue">Ace's Rewards tiers</span></td>
           <td><span class="pill pill-green">Auto-enrolled</span></td>
+          <td><a class="reward-page-link" href="https://duelbits.com/promotions/rakeback" target="_blank" rel="nofollow noopener">Rakeback</a></td>
         </tr>
         <tr>
           <td><div class="casino-cell"><div class="casino-dot" style="background:#f97316;"></div><div><div class="name">BC.Game</div><div class="tag">bc.game</div></div></div></td>
@@ -313,6 +336,7 @@ h1 {
           <td><span class="rate-med">~0.24% (unlock)</span></td>
           <td><span class="pill pill-yellow">Wager × 1% × VIP%</span></td>
           <td><span class="pill pill-green">Open to all</span></td>
+          <td><a class="reward-page-link" href="https://bc.game/vip" target="_blank" rel="nofollow noopener">VIP</a></td>
         </tr>
         <tr>
           <td><div class="casino-cell"><div class="casino-dot" style="background:#e879f9;"></div><div><div class="name">Roobet</div><div class="tag">roobet.com</div></div></div></td>
@@ -320,6 +344,7 @@ h1 {
           <td><span class="rate-med">Invite-only rates</span></td>
           <td><span class="pill pill-gray">4-type system</span></td>
           <td><span class="pill pill-yellow">Invite-only</span></td>
+          <td><a class="reward-page-link" href="https://roobet.com/vip" target="_blank" rel="nofollow noopener">VIP</a></td>
         </tr>
       </tbody>
     </table>
@@ -361,13 +386,13 @@ h1 {
   <script>
     // Casino rakeback data
     const casinos = [
-      { name: 'Rollbit',  color: '#ef4444', baseRate: 0.05, maxRate: 0.50, note: '5% base + boost events up to 50%',  affiliate: 'https://rollbit.com/?r=cryptocasinosorted' },
-      { name: 'Rainbet',  color: '#f59e0b', baseRate: 0.10, maxRate: 0.28, note: '10% base, up to 25–30% VIP',         affiliate: 'https://rainbet.com/?ref=cryptocasinosorted' },
-      { name: 'Gamdom',   color: '#8b5cf6', baseRate: 0.05, maxRate: 0.15, note: 'Up to 15% instant rakeback',         affiliate: 'https://gamdom.com/?ref=cryptocasinosorted' },
-      { name: 'Duelbits', color: '#06b6d4', baseRate: 0.05, maxRate: 0.125, note: "5–12.5% via Ace's Rewards",        affiliate: 'https://duelbits.com/?ref=cryptocasinosorted' },
-      { name: 'Stake',    color: '#10b981', baseRate: 0.05, maxRate: 0.15, note: '5% base, higher VIP invite-only',   affiliate: 'https://stake.com/?c=OYTAREab' },
-      { name: 'BC.Game',  color: '#f97316', baseRate: 0.002, maxRate: 0.0024, note: 'Wager × 1% × VIP% (0.2–0.24%)', affiliate: 'https://bc.game/i-cryptocasinosorted' },
-      { name: 'Roobet',   color: '#e879f9', baseRate: null, maxRate: null, note: 'Invite-only, rates not public',      affiliate: 'https://roobet.com/?ref=cryptocasinosorted' },
+      { name: 'Rollbit',  color: '#ef4444', baseRate: 0.05, maxRate: 0.50, note: '5% base + boost events up to 50%',  rewardUrl: 'https://rollbit.com/rewards', rewardCta: 'Rewards' },
+      { name: 'Rainbet',  color: '#f59e0b', baseRate: 0.10, maxRate: 0.28, note: '10% base, up to 25-30% VIP',         rewardUrl: 'https://rainbet.com/vip', rewardCta: 'VIP' },
+      { name: 'Gamdom',   color: '#8b5cf6', baseRate: 0.05, maxRate: 0.15, note: 'Up to 15% instant rakeback',         rewardUrl: 'https://gamdom.com/promotions/rakeback', rewardCta: 'Rakeback' },
+      { name: 'Duelbits', color: '#06b6d4', baseRate: 0.05, maxRate: 0.125, note: "5-12.5% via Ace's Rewards",        rewardUrl: 'https://duelbits.com/promotions/rakeback', rewardCta: 'Rakeback' },
+      { name: 'Stake',    color: '#10b981', baseRate: 0.05, maxRate: 0.15, note: '5% base, higher VIP invite-only',   rewardUrl: 'https://stake.com/vip-club', rewardCta: 'VIP Club' },
+      { name: 'BC.Game',  color: '#f97316', baseRate: 0.002, maxRate: 0.0024, note: 'Wager x 1% x VIP% (0.2-0.24%)', rewardUrl: 'https://bc.game/vip', rewardCta: 'VIP' },
+      { name: 'Roobet',   color: '#e879f9', baseRate: null, maxRate: null, note: 'Invite-only, rates not public',      rewardUrl: 'https://roobet.com/vip', rewardCta: 'VIP' },
     ];
 
     function fmt(n) {
@@ -388,11 +413,11 @@ h1 {
       document.getElementById('calcResults').innerHTML = results.map(c => {
         const isBest = best && c.name === best.name;
         const earnStr = c.earn !== null ? fmt(c.earn) : '—';
-        return `<a class="result-chip${isBest ? ' best' : ''}" href="${c.affiliate}" target="_blank" rel="nofollow noopener" style="text-decoration:none;display:block;cursor:pointer;">
+        return `<a class="result-chip${isBest ? ' best' : ''}" href="${c.rewardUrl}" target="_blank" rel="nofollow noopener" style="text-decoration:none;display:block;cursor:pointer;">
           <div class="casino-name" style="color:${c.color};">${c.name}${isBest ? '<span class="best-badge">BEST</span>' : ''}</div>
           <div class="earn-val" style="${c.earn === null ? 'color:#64748b;font-size:1rem;' : ''}">${earnStr}</div>
           <div class="rate-info">${c.note}</div>
-          <div style="font-size:0.7rem;color:#475569;margin-top:6px;font-weight:600;">Claim rakeback →</div>
+          <div style="font-size:0.7rem;color:#ff9d00;margin-top:6px;font-weight:800;">${c.rewardCta} -></div>
         </a>`;
       }).join('');
     }
