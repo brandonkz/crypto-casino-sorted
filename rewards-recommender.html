@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Casino Rewards Recommender 2026 | CryptoCasinoSorted</title>
+  <meta name="description" content="Answer a few questions and find the crypto casino rewards program that best fits your wagering style, rakeback needs, VIP status, and withdrawal risk tolerance.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/rewards-recommender.html">
+  <link rel="stylesheet" href="/terminal-theme.css">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    :root {
+      --navy: #06152f;
+      --navy-2: #0b2148;
+      --navy-3: #102c5f;
+      --ink: #f7fbff;
+      --muted: #9fb1d1;
+      --orange: #ff6a00;
+      --orange-2: #ff9d00;
+      --cyan: #29d3ff;
+      --lime: #66f06f;
+      --pink: #ff4fa3;
+      --line: rgba(255, 255, 255, 0.14);
+      --panel: rgba(9, 30, 67, 0.88);
+      --panel-2: rgba(14, 43, 92, 0.92);
+    }
+
+    body {
+      background:
+        linear-gradient(135deg, rgba(255, 106, 0, 0.18) 0 14%, transparent 14% 100%),
+        linear-gradient(215deg, rgba(41, 211, 255, 0.12) 0 18%, transparent 18% 100%),
+        var(--navy);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 70%);
+    }
+
+    .page { max-width: 1280px; margin: 0 auto; padding: 34px 16px 72px; position: relative; z-index: 1; }
+    .t-nav {
+      background: rgba(4, 16, 38, 0.94);
+      border-bottom: 1px solid var(--line);
+      height: 48px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    }
+    .t-nav-logo { color: var(--orange-2); font-size: 13px; }
+    .t-nav-logo .sub { color: var(--muted); }
+    .t-nav-links a { color: var(--muted); font-size: 10px; }
+    .t-nav-links a:hover,
+    .t-nav-links a.active,
+    .t-nav-links a.t-nav-primary { color: var(--orange-2); }
+    .t-badge {
+      border-radius: 999px;
+      font-family: Inter, system-ui, sans-serif;
+      letter-spacing: 0.06em;
+      font-size: 9px;
+      padding: 4px 8px;
+    }
+    .t-badge-green {
+      background: rgba(255, 106, 0, 0.18);
+      border: 1px solid rgba(255, 157, 0, 0.5);
+      color: var(--orange-2);
+    }
+    .t-badge-blue {
+      background: rgba(41, 211, 255, 0.14);
+      border: 1px solid rgba(41, 211, 255, 0.36);
+      color: var(--cyan);
+    }
+    .t-badge-amber {
+      background: rgba(255, 157, 0, 0.16);
+      border: 1px solid rgba(255, 157, 0, 0.42);
+      color: var(--orange-2);
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 16px;
+      align-items: stretch;
+      margin-bottom: 16px;
+    }
+    .hero-main,
+    .hero-side,
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.22);
+    }
+    .hero-main {
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+    }
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      right: -94px;
+      bottom: -116px;
+      width: 310px;
+      height: 210px;
+      background:
+        linear-gradient(135deg, transparent 0 38%, rgba(255,255,255,0.14) 38% 42%, transparent 42% 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.22) 0 4px, transparent 4px 12px),
+        linear-gradient(135deg, var(--orange), var(--orange-2));
+      border: 1px solid rgba(255,255,255,0.2);
+      transform: rotate(-12deg);
+      opacity: 0.62;
+      z-index: 0;
+    }
+    .hero-kicker {
+      color: var(--orange-2);
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 3rem;
+      line-height: 0.98;
+      max-width: 840px;
+      margin: 0 0 12px;
+      letter-spacing: 0;
+      color: var(--ink);
+      position: relative;
+      z-index: 1;
+    }
+    .hero-copy {
+      color: var(--muted);
+      max-width: 680px;
+      font-size: 1.02rem;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-side {
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      background: linear-gradient(180deg, rgba(255,106,0,0.16), transparent 46%), var(--panel);
+    }
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--line);
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 11px;
+    }
+    .metric-row:last-child { border-bottom: 0; padding-bottom: 0; }
+    .metric-row span:first-child { color: var(--muted); }
+    .metric-row span:last-child { color: var(--ink); font-weight: 800; text-align: right; }
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(300px, 390px) minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .panel { overflow: hidden; background: var(--panel); }
+    .panel-header {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 106, 0, 0.12);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+    .panel-title {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--orange-2);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .panel-body { padding: 16px; }
+    .control-group { margin-bottom: 18px; }
+    .control-group:last-child { margin-bottom: 0; }
+    .label-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      margin-bottom: 8px;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 800;
+    }
+    .label-value { color: var(--orange-2); white-space: nowrap; }
+    .input-row { display: grid; grid-template-columns: 1fr 94px; gap: 10px; align-items: center; }
+    input[type="range"] { width: 100%; accent-color: var(--orange); }
+    .number-input,
+    select {
+      width: 100%;
+      background: rgba(4, 16, 38, 0.74);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      border-radius: 7px;
+      padding: 10px 11px;
+      font-family: Inter, system-ui, sans-serif;
+      font-weight: 800;
+      outline: none;
+    }
+    .number-input:focus,
+    select:focus { border-color: var(--orange); }
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .segmented.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .choice {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      border-radius: 7px;
+      padding: 10px 8px;
+      cursor: pointer;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      min-height: 42px;
+    }
+    .choice:hover { border-color: rgba(255, 157, 0, 0.55); color: var(--ink); }
+    .choice.active {
+      color: #06152f;
+      border-color: rgba(255, 157, 0, 0.9);
+      background: linear-gradient(135deg, var(--orange), var(--orange-2));
+      box-shadow: 0 10px 24px rgba(255, 106, 0, 0.24);
+    }
+    .toggle-row {
+      display: grid;
+      gap: 8px;
+    }
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-size: 0.83rem;
+      cursor: pointer;
+    }
+    .toggle input { accent-color: var(--orange); width: 16px; height: 16px; }
+    .results-stack { display: grid; gap: 10px; }
+    .result-card {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .result-card.best { border-color: rgba(255, 157, 0, 0.7); box-shadow: 0 24px 50px rgba(255, 106, 0, 0.12); }
+    .result-top {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 14px;
+      background: linear-gradient(90deg, rgba(255, 106, 0, 0.18), rgba(41, 211, 255, 0.07));
+      border-bottom: 1px solid var(--line);
+    }
+    .rank {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(255, 157, 0, 0.55);
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      color: var(--orange-2);
+      font-family: Inter, system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+    }
+    .op-name {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      font-weight: 900;
+      font-size: 1rem;
+    }
+    .op-sub {
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-top: 2px;
+    }
+    .score-box { text-align: right; font-family: Inter, system-ui, sans-serif; }
+    .score {
+      color: var(--orange-2);
+      font-size: 1.35rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .score-label {
+      color: var(--muted);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+    .result-body { padding: 14px; }
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .offer-strip {
+      display: grid;
+      grid-template-columns: minmax(150px, 0.9fr) minmax(0, 1.6fr);
+      gap: 12px;
+      align-items: stretch;
+      margin-bottom: 12px;
+    }
+    .offer-value,
+    .offer-copy {
+      border: 1px solid rgba(255, 157, 0, 0.36);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255, 106, 0, 0.19), transparent 52%),
+        rgba(4, 16, 38, 0.62);
+      padding: 12px;
+    }
+    .offer-label {
+      color: var(--orange-2);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 5px;
+    }
+    .offer-money {
+      color: var(--lime);
+      font-size: 1.55rem;
+      font-weight: 950;
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+    .offer-sub {
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.35;
+    }
+    .offer-copy-text {
+      color: var(--ink);
+      font-size: 0.9rem;
+      font-weight: 750;
+      line-height: 1.45;
+    }
+    .mini-stat {
+      border: 1px solid var(--line);
+      background: rgba(4, 16, 38, 0.58);
+      border-radius: 7px;
+      padding: 10px;
+      min-height: 74px;
+    }
+    .mini-label {
+      color: var(--muted);
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .mini-value {
+      color: var(--ink);
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+    .mini-value.green { color: var(--lime); }
+    .mini-value.amber { color: var(--orange-2); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 13px; }
+    .tag {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .tag.green { color: var(--lime); border-color: rgba(102, 240, 111, 0.35); background: rgba(102, 240, 111, 0.09); }
+    .tag.amber { color: var(--orange-2); border-color: rgba(255, 157, 0, 0.42); background: rgba(255, 157, 0, 0.11); }
+    .tag.red { color: #ff6f8f; border-color: rgba(255, 111, 143, 0.38); background: rgba(255, 111, 143, 0.1); }
+    .why {
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .bar-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .bar-row {
+      display: grid;
+      gap: 7px;
+      align-content: space-between;
+      min-height: 82px;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255, 106, 0, 0.15), transparent 42%),
+        rgba(4, 16, 38, 0.58);
+      font-family: Inter, system-ui, sans-serif;
+    }
+    .bar-row.score-green {
+      border-color: rgba(102, 240, 111, 0.34);
+      background:
+        linear-gradient(135deg, rgba(102, 240, 111, 0.16), transparent 52%),
+        rgba(4, 16, 38, 0.58);
+    }
+    .bar-row.score-amber {
+      border-color: rgba(255, 157, 0, 0.42);
+      background:
+        linear-gradient(135deg, rgba(255, 157, 0, 0.18), transparent 52%),
+        rgba(4, 16, 38, 0.58);
+    }
+    .bar-row.score-red {
+      border-color: rgba(255, 79, 98, 0.38);
+      background:
+        linear-gradient(135deg, rgba(255, 79, 98, 0.17), transparent 52%),
+        rgba(4, 16, 38, 0.58);
+    }
+    .bar-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+    .bar-label {
+      color: var(--ink);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 900;
+    }
+    .bar-score {
+      color: var(--orange-2);
+      font-size: 1.08rem;
+      line-height: 1;
+      font-weight: 950;
+    }
+    .score-green .bar-score { color: var(--lime); }
+    .score-amber .bar-score { color: var(--orange-2); }
+    .score-red .bar-score { color: #ff6378; }
+    .bar-caption {
+      color: var(--muted);
+      font-size: 0.68rem;
+      line-height: 1.25;
+      min-height: 26px;
+    }
+    .bar-track { height: 9px; background: rgba(4, 16, 38, 0.75); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, var(--orange), var(--orange-2), var(--lime)); width: 0; }
+    .score-green .bar-fill { background: linear-gradient(90deg, #22c55e, var(--lime)); }
+    .score-amber .bar-fill { background: linear-gradient(90deg, var(--orange), var(--orange-2)); }
+    .score-red .bar-fill { background: linear-gradient(90deg, #ff3358, #ff7a8f); }
+    .method {
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.65;
+    }
+    .method strong { color: var(--ink); }
+    .empty {
+      padding: 24px;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+    }
+    @media (max-width: 940px) {
+      .hero,
+      .grid { grid-template-columns: 1fr; }
+      .result-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      .hero h1 { font-size: 1.45rem; }
+      .hero-main { padding: 28px 22px 38px; }
+      .hero-main::after {
+        right: -108px;
+        bottom: -126px;
+        width: 260px;
+        height: 178px;
+        opacity: 0.48;
+      }
+      .bar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .offer-strip { grid-template-columns: 1fr; }
+      .segmented,
+      .segmented.three,
+      .result-grid { grid-template-columns: 1fr; }
+      .input-row { grid-template-columns: 1fr; }
+      .result-top { grid-template-columns: auto 1fr; }
+      .score-box { grid-column: 1 / -1; text-align: left; display: flex; align-items: baseline; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="t-nav">
+    <a href="/" class="t-nav-logo">CCT <span class="sub">CryptoCasinoSorted</span></a>
+    <div class="t-nav-links">
+      <a href="/rewards-recommender.html" class="active t-nav-primary">Rewards</a>
+      <a href="/rakeback-comparison.html">Rakeback</a>
+      <a href="/bonus-calculator.html">Bonus Calc</a>
+      <a href="/blog/">Guides</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-main">
+        <div class="hero-kicker">Rewards Matchmaker · June 2026 Dataset</div>
+        <h1>Stop chasing fake rakeback. Find the casino that pays your style.</h1>
+        <p class="hero-copy">Punch in how you wager and the engine ranks the best loyalty fit across rakeback, VIP transfer, tier friction, token risk, transparency, and withdrawal trust.</p>
+      </div>
+      <aside class="hero-side">
+        <div class="metric-row"><span>Operators</span><span id="operatorCount">-</span></div>
+        <div class="metric-row"><span>Scored factors</span><span>Reward / trust / friction / depth</span></div>
+        <div class="metric-row"><span>Best use</span><span>Rakeback, VIP switch, low-friction play</span></div>
+        <div class="metric-row"><span>Source quality</span><span>XTP exact; competitors directional</span></div>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <form class="panel" id="quizForm">
+        <div class="panel-header">
+          <div class="panel-title">Player Inputs</div>
+          <span class="t-badge t-badge-green">Live Rank</span>
+        </div>
+        <div class="panel-body">
+          <div class="control-group">
+            <div class="label-line"><label for="wager">Monthly Wager</label><span class="label-value" id="wagerValue">$5,000</span></div>
+            <div class="input-row">
+              <input id="wager" type="range" min="100" max="100000" step="100" value="5000">
+              <input id="wagerNumber" class="number-input" type="number" min="100" max="1000000" step="100" value="5000">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="label-line"><label for="edge">Typical Game Mix</label><span class="label-value" id="edgeValue">4.0% edge</span></div>
+            <select id="edge">
+              <option value="0.012">Sports / low-edge table mix</option>
+              <option value="0.025">Crash / originals mix</option>
+              <option value="0.04" selected>Balanced casino mix</option>
+              <option value="0.06">Slots-heavy mix</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <div class="label-line">Main Goal</div>
+            <div class="segmented" data-field="priority">
+              <button class="choice active" type="button" data-value="balanced">Balanced</button>
+              <button class="choice" type="button" data-value="max_rewards">Max Rewards</button>
+              <button class="choice" type="button" data-value="low_friction">Low Friction</button>
+              <button class="choice" type="button" data-value="vip_switch">VIP Switch</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="label-line">Wager Profile</div>
+            <div class="segmented three" data-field="band">
+              <button class="choice active" type="button" data-value="low">Low</button>
+              <button class="choice" type="button" data-value="mid">Mid</button>
+              <button class="choice" type="button" data-value="high">High</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="label-line">Risk Tolerance</div>
+            <div class="segmented three" data-field="risk">
+              <button class="choice" type="button" data-value="conservative">Safe</button>
+              <button class="choice active" type="button" data-value="standard">Standard</button>
+              <button class="choice" type="button" data-value="aggressive">Aggressive</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="label-line">Filters</div>
+            <div class="toggle-row">
+              <label class="toggle"><input type="checkbox" id="needsTierMatch"> I already have VIP status somewhere else</label>
+              <label class="toggle"><input type="checkbox" id="avoidTokens" checked> Discount token/airdrop-heavy rewards</label>
+              <label class="toggle"><input type="checkbox" id="avoidOpaque"> Penalise undisclosed formulas harder</label>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="results-stack">
+        <section class="panel">
+          <div class="panel-header">
+            <div class="panel-title">Recommendations</div>
+            <span class="t-badge t-badge-blue" id="scenarioBadge">Balanced · Low</span>
+          </div>
+          <div class="panel-body">
+            <div id="results" class="results-stack">
+              <div class="empty">Loading operator dataset...</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div class="panel-title">Method</div>
+            <span class="t-badge t-badge-amber">Directional</span>
+          </div>
+          <div class="panel-body">
+            <p class="method"><strong>Reward estimate</strong> = monthly wager x selected game edge x normalised effective rate. The rank then blends estimated reward, formula transparency, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Competitor data should be re-verified before publication or affiliate claims.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const state = {
+      operators: [],
+      priority: 'balanced',
+      band: 'low',
+      risk: 'standard'
+    };
+
+    const fmtMoney = (value) => {
+      if (!Number.isFinite(value)) return '-';
+      if (value >= 1000000) return '$' + (value / 1000000).toFixed(2) + 'm';
+      if (value >= 1000) return '$' + Math.round(value).toLocaleString();
+      return '$' + value.toFixed(2);
+    };
+
+    const clamp = (value, min = 0, max = 100) => Math.max(min, Math.min(max, value));
+
+    const weightsByPriority = {
+      balanced: { reward: 24, trust: 18, transparency: 18, friction: 16, depth: 12, tierMatch: 6, gamification: 6 },
+      max_rewards: { reward: 38, trust: 10, transparency: 14, friction: 12, depth: 12, tierMatch: 6, gamification: 8 },
+      low_friction: { reward: 18, trust: 16, transparency: 18, friction: 32, depth: 6, tierMatch: 4, gamification: 6 },
+      vip_switch: { reward: 22, trust: 10, transparency: 12, friction: 14, depth: 18, tierMatch: 20, gamification: 4 }
+    };
+
+    function getInputs() {
+      return {
+        wager: Number(document.getElementById('wagerNumber').value) || 0,
+        edge: Number(document.getElementById('edge').value) || 0.04,
+        needsTierMatch: document.getElementById('needsTierMatch').checked,
+        avoidTokens: document.getElementById('avoidTokens').checked,
+        avoidOpaque: document.getElementById('avoidOpaque').checked,
+        priority: state.priority,
+        band: state.band,
+        risk: state.risk
+      };
+    }
+
+    function scoreOperators() {
+      const inputs = getInputs();
+      const estimates = state.operators.map((op) => ({
+        ...op,
+        estimatedReward: inputs.wager * inputs.edge * (op.effective_rate || 0)
+      }));
+      const maxReward = Math.max(...estimates.map((op) => op.estimatedReward), 1);
+      const weights = weightsByPriority[inputs.priority];
+
+      return estimates.map((op) => {
+        const reward = clamp((op.estimatedReward / maxReward) * 100);
+        const bandFit = op.best_for.includes(inputs.band) ? 10 : -6;
+        const tierMatch = op.tier_match ? 100 : 0;
+        const tokenPenalty = inputs.avoidTokens && (op.native_token || /airdrop/i.test(op.token_name || '')) ? 9 : 0;
+        const opacityPenalty = inputs.avoidOpaque && !op.published_formula ? 9 : 0;
+        const tierRequirementPenalty = inputs.needsTierMatch && !op.tier_match ? 18 : 0;
+        const betaPenalty = /beta/i.test(op.licence || '') ? 8 : 0;
+        const conservativePenalty = inputs.risk === 'conservative'
+          ? ((100 - op.trust) * 0.18) + ((100 - op.transparency) * 0.12) + tokenPenalty + betaPenalty
+          : inputs.risk === 'aggressive'
+            ? Math.max(0, tokenPenalty - 5) + betaPenalty * 0.35
+            : tokenPenalty + betaPenalty * 0.5;
+
+        const weighted =
+          reward * (weights.reward / 100) +
+          op.trust * (weights.trust / 100) +
+          op.transparency * (weights.transparency / 100) +
+          op.friction * (weights.friction / 100) +
+          op.depth * (weights.depth / 100) +
+          tierMatch * (weights.tierMatch / 100) +
+          op.gamification * (weights.gamification / 100);
+
+        const score = clamp(weighted + bandFit - tokenPenalty - opacityPenalty - tierRequirementPenalty - conservativePenalty);
+        return { ...op, rewardScore: reward, totalScore: score };
+      }).sort((a, b) => b.totalScore - a.totalScore);
+    }
+
+    function makeTags(op) {
+      const tags = [];
+      tags.push(`<span class="tag ${op.published_formula ? 'green' : 'amber'}">${op.published_formula ? 'Formula public' : 'Formula undisclosed'}</span>`);
+      tags.push(`<span class="tag ${op.tier_match ? 'green' : ''}">${op.tier_match ? 'Tier match' : 'No tier match'}</span>`);
+      tags.push(`<span class="tag ${op.native_token ? 'amber' : 'green'}">${op.native_token ? 'Token-linked' : 'Cash-first'}</span>`);
+      tags.push(`<span class="tag">${op.confidence}</span>`);
+      if (/beta/i.test(op.licence || '')) tags.push('<span class="tag red">Beta risk</span>');
+      return tags.join('');
+    }
+
+    function whyText(op) {
+      const strengths = [];
+      if (op.rewardScore >= 80) strengths.push('strong normalised reward value');
+      if (op.friction >= 85) strengths.push('low entry friction');
+      if (op.transparency >= 80) strengths.push('clear reward mechanics');
+      if (op.depth >= 88) strengths.push('deep long-term VIP ladder');
+      if (op.tier_match) strengths.push('VIP transfer potential');
+      if (op.trust >= 80) strengths.push('stronger market trust');
+      const fit = strengths.length ? strengths.slice(0, 3).join(', ') : 'a reasonable overall fit';
+      return `${op.name} ranks here because of ${fit}. Watch-out: ${op.watch_out}`;
+    }
+
+    function rateLabel(op) {
+      if (op.rate_min && op.rate_max && op.rate_min !== op.rate_max) {
+        return `${Math.round(op.rate_min * 100)}-${Math.round(op.rate_max * 100)}% ${op.rakeback_form}`;
+      }
+      if (op.rate_max && !op.rate_min) {
+        return `up to ${Math.round(op.rate_max * 100)}% ${op.rakeback_form}`;
+      }
+      if (op.rate_min) {
+        return `${Math.round(op.rate_min * 100)}% ${op.rakeback_form}`;
+      }
+      return `${Math.round((op.effective_rate || 0) * 1000) / 10}% normalised`;
+    }
+
+    function offerSubtext(op, inputs) {
+      const expectedLoss = inputs.wager * inputs.edge;
+      return `At ${fmtMoney(inputs.wager)} wagered and ${(inputs.edge * 100).toFixed(1)}% game edge, estimated house-edge loss is ${fmtMoney(expectedLoss)}. We apply a ${Math.round((op.effective_rate || 0) * 1000) / 10}% normalised giveback rate.`;
+    }
+
+    function scoreCaption(label) {
+      return {
+        Reward: 'cash value',
+        Trust: 'payout confidence',
+        Clear: 'formula visibility',
+        Friction: 'easy to earn',
+        Depth: 'VIP runway'
+      }[label] || 'score';
+    }
+
+    function scoreTone(value) {
+      if (value >= 80) return 'score-green';
+      if (value >= 60) return 'score-amber';
+      return 'score-red';
+    }
+
+    function renderBar(label, value) {
+      const rounded = Math.round(clamp(value));
+      return `
+        <div class="bar-row ${scoreTone(rounded)}">
+          <div class="bar-head">
+            <span class="bar-label">${label}</span>
+            <span class="bar-score">${rounded}</span>
+          </div>
+          <div class="bar-caption">${scoreCaption(label)}</div>
+          <span class="bar-track"><span class="bar-fill" style="width:${rounded}%"></span></span>
+        </div>
+      `;
+    }
+
+    function render() {
+      if (!state.operators.length) return;
+      const inputs = getInputs();
+      const ranked = scoreOperators();
+      document.getElementById('scenarioBadge').textContent = `${inputs.priority.replace('_', ' ')} · ${inputs.band}`;
+      document.getElementById('results').innerHTML = ranked.map((op, index) => `
+        <article class="result-card ${index === 0 ? 'best' : ''}">
+          <div class="result-top">
+            <div class="rank">${index + 1}</div>
+            <div>
+              <div class="op-name">${op.name}</div>
+              <div class="op-sub">${op.positioning}</div>
+            </div>
+            <div class="score-box">
+              <div class="score">${Math.round(op.totalScore)}</div>
+              <div class="score-label">fit score</div>
+            </div>
+          </div>
+          <div class="result-body">
+            <div class="offer-strip">
+              <div class="offer-value">
+                <div class="offer-label">If You Wager ${fmtMoney(inputs.wager)}</div>
+                <div class="offer-money">${fmtMoney(op.estimatedReward)}</div>
+                <div class="offer-sub">${rateLabel(op)} · ${op.rakeback_basis.replace('_', ' ')}</div>
+              </div>
+              <div class="offer-copy">
+                <div class="offer-label">What You Get</div>
+                <div class="offer-copy-text">${op.offer_summary}</div>
+                <div class="offer-sub" style="margin-top:7px;">${offerSubtext(op, inputs)}</div>
+              </div>
+            </div>
+            <div class="result-grid">
+              <div class="mini-stat">
+                <div class="mini-label">Est. Monthly Value</div>
+                <div class="mini-value green">${fmtMoney(op.estimatedReward)}</div>
+              </div>
+              <div class="mini-stat">
+                <div class="mini-label">Normalised Rate</div>
+                <div class="mini-value">${Math.round((op.effective_rate || 0) * 1000) / 10}%</div>
+              </div>
+              <div class="mini-stat">
+                <div class="mini-label">Settlement</div>
+                <div class="mini-value">${op.settlement}</div>
+              </div>
+              <div class="mini-stat">
+                <div class="mini-label">VIP Fit</div>
+                <div class="mini-value amber">${op.best_for.join(' / ')}</div>
+              </div>
+            </div>
+            <div class="tags">${makeTags(op)}</div>
+            <p class="why">${whyText(op)}</p>
+            <div class="bar-grid">
+              ${renderBar('Reward', op.rewardScore)}
+              ${renderBar('Trust', op.trust)}
+              ${renderBar('Clear', op.transparency)}
+              ${renderBar('Friction', op.friction)}
+              ${renderBar('Depth', op.depth)}
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function wireControls() {
+      const wager = document.getElementById('wager');
+      const wagerNumber = document.getElementById('wagerNumber');
+      const wagerValue = document.getElementById('wagerValue');
+      const edge = document.getElementById('edge');
+      const edgeValue = document.getElementById('edgeValue');
+
+      function syncWager(value, source) {
+        const n = clamp(Number(value) || 0, 100, 1000000);
+        if (source !== 'range') wager.value = Math.min(n, 100000);
+        if (source !== 'number') wagerNumber.value = n;
+        wagerValue.textContent = fmtMoney(n);
+        render();
+      }
+
+      wager.addEventListener('input', (event) => syncWager(event.target.value, 'range'));
+      wagerNumber.addEventListener('input', (event) => syncWager(event.target.value, 'number'));
+      edge.addEventListener('change', () => {
+        edgeValue.textContent = (Number(edge.value) * 100).toFixed(1) + '% edge';
+        render();
+      });
+
+      document.querySelectorAll('.segmented').forEach((group) => {
+        group.addEventListener('click', (event) => {
+          const button = event.target.closest('.choice');
+          if (!button) return;
+          group.querySelectorAll('.choice').forEach((item) => item.classList.remove('active'));
+          button.classList.add('active');
+          state[group.dataset.field] = button.dataset.value;
+          render();
+        });
+      });
+
+      ['needsTierMatch', 'avoidTokens', 'avoidOpaque'].forEach((id) => {
+        document.getElementById(id).addEventListener('change', render);
+      });
+    }
+
+    async function init() {
+      wireControls();
+      try {
+        const response = await fetch('/data/operators.json');
+        if (!response.ok) throw new Error('Operator data failed to load');
+        const data = await response.json();
+        state.operators = data.operators;
+        document.getElementById('operatorCount').textContent = String(state.operators.length);
+        render();
+      } catch (error) {
+        document.getElementById('results').innerHTML = `<div class="empty">${error.message}</div>`;
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
