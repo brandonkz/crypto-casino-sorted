@@ -7,18 +7,18 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  --t-bg: #08090d;
-  --t-bg2: #0c0d14;
-  --t-bg3: #10111a;
-  --t-bg4: #151722;
-  --t-border: #1a1d2e;
-  --t-border2: #252840;
-  --t-text: #d4d8e8;
-  --t-dim: #5a6080;
-  --t-muted: #3a3f58;
-  --t-green: #00e676;
-  --t-green-bg: rgba(0,230,118,0.08);
-  --t-green-b: rgba(0,230,118,0.25);
+  --t-bg: #06152f;
+  --t-bg2: #091e43;
+  --t-bg3: #0e2b5c;
+  --t-bg4: #12356f;
+  --t-border: rgba(255, 255, 255, 0.14);
+  --t-border2: rgba(255, 157, 0, 0.42);
+  --t-text: #f7fbff;
+  --t-dim: #9fb1d1;
+  --t-muted: #6f83aa;
+  --t-green: #ff9d00;
+  --t-green-bg: rgba(255,157,0,0.14);
+  --t-green-b: rgba(255,157,0,0.42);
   --t-red: #ff5252;
   --t-red-bg: rgba(255,82,82,0.08);
   --t-red-b: rgba(255,82,82,0.25);
@@ -61,7 +61,7 @@ a:hover { color: #69f0ae; }
 
 /* === TERMINAL NAV === */
 .t-nav {
-  background: #050508;
+  background: rgba(4, 16, 38, 0.94);
   border-bottom: 1px solid var(--t-border);
   padding: 0 16px;
   height: 36px;
@@ -101,12 +101,12 @@ a:hover { color: #69f0ae; }
 .t-nav-links a:hover { color: var(--t-green); }
 .t-nav-links a.active { color: var(--t-green); }
 .t-nav-links a.t-nav-primary {
-  color: #ffc400;
+  color: #ff9d00;
   font-weight: 800;
   font-size: 11px;
   letter-spacing: 0.08em;
 }
-.t-nav-links a.t-nav-primary:hover { color: #ffe082; }
+.t-nav-links a.t-nav-primary:hover { color: #ffc164; }
 .t-nav-live {
   display: flex;
   align-items: center;
