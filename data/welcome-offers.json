@@ -126,6 +126,15 @@
         "3rd deposit: 80% up to $2,000 + 35 free spins",
         "4th deposit: 60% up to $2,500 + 40 free spins"
       ],
+      "calculator": {
+        "deposit": 100,
+        "bonusPercent": 120,
+        "bonusCap": 1000,
+        "wagerMultiple": 35,
+        "wagerBase": "bonus",
+        "maxBet": null,
+        "gameType": "96.0"
+      },
       "sourceChecked": "2026-06-25"
     }
   ]

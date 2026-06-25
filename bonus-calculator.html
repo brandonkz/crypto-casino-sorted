@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casino Bonus ROI Calculator - True Expected Value with Wagering Requirements</title>
-  <meta name="description" content="Calculate the true expected value of casino bonuses. Most bonuses are -EV traps. See the real math behind wagering requirements, house edge, and RTP.">
+  <meta name="description" content="Compare tracked crypto casino welcome offers and calculate their true expected value after wagering requirements, house edge, and bonus restrictions.">
   <link rel="canonical" href="https://cryptocasinosorted.com/bonus-calculator.html">
   <link rel="stylesheet" href="terminal-theme.css">
   <style>
@@ -142,6 +142,22 @@
       border-color: var(--accent);
       background: rgba(46, 234, 122, 0.05);
     }
+    .preset-btn.active {
+      border-color: var(--accent);
+      background: rgba(46, 234, 122, 0.1);
+      color: var(--accent);
+    }
+    .offer-context {
+      display: none;
+      background: rgba(249, 115, 22, 0.08);
+      border: 1px solid #f97316;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .offer-context a { color: #fb923c; font-weight: 700; }
     @media (max-width: 768px) {
       .calc-row {
         grid-template-columns: 1fr;
@@ -165,15 +181,13 @@
     </div>
 
     <p style="color: var(--muted); margin-bottom: 24px; font-size: 14px;">
-      Most casino bonuses are -EV traps. This calculator shows you the true expected value accounting for wagering requirements, house edge, max bet limits, and game restrictions.
+      Choose an offer from our shared tracker, then test its real value after wagering requirements and house edge. Always verify live terms before depositing.
     </p>
 
-    <div class="presets">
-      <button class="preset-btn" onclick="loadPreset('stake100')">Stake: $100 Deposit Bonus</button>
-      <button class="preset-btn" onclick="loadPreset('rollbit200')">Rollbit: 200% Bonus</button>
-      <button class="preset-btn" onclick="loadPreset('bcgame300')">BC.Game: 300% Welcome</button>
-      <button class="preset-btn" onclick="loadPreset('trap')">Classic -EV Trap</button>
+    <div class="presets" id="offerPresets">
+      <span style="color:var(--muted);font-size:12px;">Loading tracked offers…</span>
     </div>
+    <div class="offer-context" id="offerContext"></div>
 
     <div class="calc-section">
       <h3 style="margin-top: 0; font-size: 16px; margin-bottom: 20px;">Bonus Terms</h3>
@@ -371,63 +385,80 @@
       }
     }
 
-    function loadPreset(preset) {
-      const presets = {
-        stake100: {
-          deposit: 100,
-          bonusPercent: 100,
-          bonusCap: 1000,
-          wagerMultiple: 40,
-          wagerBase: 'both',
-          maxBet: 5,
-          gameType: '96.0'
-        },
-        rollbit200: {
-          deposit: 100,
-          bonusPercent: 200,
-          bonusCap: 5000,
-          wagerMultiple: 40,
-          wagerBase: 'both',
-          maxBet: 10,
-          gameType: '96.0'
-        },
-        bcgame300: {
-          deposit: 100,
-          bonusPercent: 300,
-          bonusCap: 20000,
-          wagerMultiple: 50,
-          wagerBase: 'both',
-          maxBet: 5,
-          gameType: '94.0'
-        },
-        trap: {
-          deposit: 50,
-          bonusPercent: 500,
-          bonusCap: 1000,
-          wagerMultiple: 60,
-          wagerBase: 'both',
-          maxBet: 2,
-          gameType: '92.1'
-        }
+    let trackedOffers = [];
+
+    function parseHeadlineOffer(item) {
+      if (item.calculator) return item.calculator;
+      const percentMatch = item.offer.match(/(\d+(?:\.\d+)?)%/);
+      const capMatch = item.offer.match(/up to \$([\d,]+)/i);
+      if (!percentMatch || !capMatch) return null;
+      return {
+        deposit: 100,
+        bonusPercent: Number(percentMatch[1]),
+        bonusCap: Number(capMatch[1].replace(/,/g, '')),
+        wagerMultiple: null,
+        wagerBase: 'bonus',
+        maxBet: 5,
+        gameType: '96.0'
       };
-
-      const p = presets[preset];
-      if (!p) return;
-
-      document.getElementById('deposit').value = p.deposit;
-      document.getElementById('bonusPercent').value = p.bonusPercent;
-      document.getElementById('bonusCap').value = p.bonusCap;
-      document.getElementById('wagerMultiple').value = p.wagerMultiple;
-      document.getElementById('wagerBase').value = p.wagerBase;
-      document.getElementById('maxBet').value = p.maxBet;
-      document.getElementById('gameType').value = p.gameType;
-
-      updateRTP();
-      calculate();
     }
 
-    // Initial calculation
-    calculate();
+    function renderOfferPresets() {
+      const eligible = trackedOffers
+        .map((item, index) => ({ item, index, calc: parseHeadlineOffer(item) }))
+        .filter(({ calc }) => calc);
+      document.getElementById('offerPresets').innerHTML = eligible.map(({ item, index }) =>
+        `<button class="preset-btn" data-offer-index="${index}" onclick="loadTrackedOffer(${index}, this)">${item.casino}: ${item.offer}</button>`
+      ).join('');
+    }
+
+    function loadTrackedOffer(index, button) {
+      const item = trackedOffers[index];
+      const preset = parseHeadlineOffer(item);
+      if (!preset) return;
+
+      document.querySelectorAll('.preset-btn').forEach((el) => el.classList.remove('active'));
+      if (button) button.classList.add('active');
+
+      document.getElementById('deposit').value = preset.deposit || 100;
+      document.getElementById('bonusPercent').value = preset.bonusPercent;
+      document.getElementById('bonusCap').value = preset.bonusCap;
+      document.getElementById('wagerMultiple').value = preset.wagerMultiple || 40;
+      document.getElementById('wagerBase').value = preset.wagerBase || 'bonus';
+      document.getElementById('maxBet').value = preset.maxBet || 5;
+      document.getElementById('gameType').value = preset.gameType || '96.0';
+
+      const assumedTerms = preset.wagerMultiple
+        ? `Loaded tracked wagering requirement: ${preset.wagerMultiple}x ${preset.wagerBase === 'bonus' ? 'bonus' : 'deposit + bonus'}.`
+        : 'The tracker does not have a verified numeric wagering requirement for this offer, so the calculator is using a 40x bonus-only placeholder. Replace it with the live term before relying on the result.';
+      const breakdown = item.breakdown ? `<br>${item.breakdown.join('<br>')}` : '';
+      const context = document.getElementById('offerContext');
+      context.style.display = 'block';
+      context.innerHTML = `<strong>${item.casino}: ${item.offer}</strong><br>${item.wagering}<br>${assumedTerms}${breakdown}<br><a href="${item.url}" target="_blank" rel="nofollow noopener">Verify official offer →</a>`;
+
+      updateRTP();
+    }
+
+    async function loadOffers() {
+      try {
+        const response = await fetch('/data/welcome-offers.json');
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        trackedOffers = data.items;
+        renderOfferPresets();
+        const twentyOneIndex = trackedOffers.findIndex((item) => item.casino === '21.com');
+        const defaultIndex = twentyOneIndex >= 0 ? twentyOneIndex : 0;
+        const defaultButton = document.querySelector(`[data-offer-index="${defaultIndex}"]`);
+        if (defaultButton) loadTrackedOffer(defaultIndex, defaultButton);
+        else calculate();
+      } catch (error) {
+        document.getElementById('offerPresets').innerHTML = '<span style="color:#ef4444;font-size:12px;">Could not load tracked offers. You can still enter terms manually.</span>';
+        calculate();
+        console.error('Unable to load welcome offers:', error);
+      }
+    }
+
+    loadOffers();
 
     // Load nav
     fetch('shared-nav.html')
