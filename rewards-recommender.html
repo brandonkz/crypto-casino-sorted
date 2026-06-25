@@ -667,7 +667,7 @@
             <span class="t-badge t-badge-amber">Directional</span>
           </div>
           <div class="panel-body">
-            <p class="method"><strong>Reward estimate</strong> = monthly wager x selected game edge x normalised effective rate. The rank then blends estimated reward, formula transparency, source-verification status, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
+            <p class="method"><strong>Reward / edge-value estimate</strong> = monthly wager x selected game edge x normalised effective rate. For zero-edge operators, this is modeled avoided house-edge loss on eligible games, not a cash rebate. The rank then blends estimated value, formula transparency, source-verification status, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
           </div>
         </section>
       </div>
@@ -797,6 +797,17 @@
       return `At ${fmtMoney(inputs.wager)} wagered and ${(inputs.edge * 100).toFixed(1)}% game edge, estimated house-edge loss is ${fmtMoney(expectedLoss)}. We apply a ${Math.round((op.effective_rate || 0) * 1000) / 10}% normalised giveback rate.`;
     }
 
+    function valueLabel(op, inputs) {
+      if (op.rakeback_form === 'zero_edge') {
+        return `Avoided House-Edge Loss on ${fmtMoney(inputs.wager)}`;
+      }
+      return `If You Wager ${fmtMoney(inputs.wager)}`;
+    }
+
+    function metricLabel(op) {
+      return op.rakeback_form === 'zero_edge' ? 'Avoided Loss Value' : 'Est. Monthly Value';
+    }
+
     function scoreCaption(label) {
       return {
         Reward: 'cash value',
@@ -854,7 +865,7 @@
           <div class="result-body">
             <div class="offer-strip">
               <div class="offer-value">
-                <div class="offer-label">If You Wager ${fmtMoney(inputs.wager)}</div>
+                <div class="offer-label">${valueLabel(op, inputs)}</div>
                 <div class="offer-money">${fmtMoney(op.estimatedReward)}</div>
                 <div class="offer-sub">${rateLabel(op)} · ${op.rakeback_basis.replace('_', ' ')}</div>
               </div>
@@ -867,7 +878,7 @@
             </div>
             <div class="result-grid">
               <div class="mini-stat">
-                <div class="mini-label">Est. Monthly Value</div>
+                <div class="mini-label">${metricLabel(op)}</div>
                 <div class="mini-value green">${fmtMoney(op.estimatedReward)}</div>
               </div>
               <div class="mini-stat">
