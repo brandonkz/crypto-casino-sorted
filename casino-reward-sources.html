@@ -87,6 +87,26 @@
       word-break: break-word;
     }
     .source-card a:hover { text-decoration: underline; }
+    .source-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .source-meta span {
+      border: 1px solid var(--t-border);
+      color: var(--t-muted);
+      border-radius: 999px;
+      padding: 3px 7px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .source-meta .verified {
+      border-color: rgba(46, 234, 122, 0.5);
+      color: var(--t-green);
+    }
     .empty {
       color: var(--t-muted);
       font-size: 0.78rem;
@@ -157,7 +177,9 @@
             name: item.casino,
             label: `${item.casino} welcome offer`,
             url: item.source_url,
-            description: item.offer
+            description: item.offer,
+            checked: item.source_last_checked,
+            status: item.source_status
           }));
         const rewardSources = operators
           .filter((operator) => operator.reward_page_url)
@@ -166,7 +188,9 @@
             name: operator.name,
             label: operator.reward_page_label || `${operator.name} rewards page`,
             url: operator.reward_page_url,
-            description: operator.offer_summary
+            description: operator.offer_summary,
+            checked: operator.source_last_checked,
+            status: operator.source_status
           }));
         const sources = [...rewardSources, ...offerSources];
         target.innerHTML = sources.length ? sources.map((source) => `
@@ -177,6 +201,10 @@
             </div>
             <p>${source.description || 'Official reward reference page.'}</p>
             <a href="${source.url}" target="_blank" rel="nofollow noopener">${source.label} → <span class="empty">${hostname(source.url)}</span></a>
+            <div class="source-meta">
+              <span class="${source.status === 'verified' ? 'verified' : ''}">${source.status === 'verified' ? 'Verified' : 'Manual review'}</span>
+              <span>${source.checked ? `Checked ${source.checked}` : 'Not checked yet'}</span>
+            </div>
           </article>
         `).join('') : '<div class="source-card">No source links are currently published.</div>';
       } catch (error) {

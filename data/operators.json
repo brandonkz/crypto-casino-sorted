@@ -16,7 +16,10 @@
       "licence": "Licensed",
       "confidence": "handbook",
       "positioning": "Transparent, cash-first loyalty; everyone is valued from the $25 regular to the whale.",
-      "best_for": ["low", "mid"],
+      "best_for": [
+        "low",
+        "mid"
+      ],
       "native_token": false,
       "tier_match": true,
       "tier_match_terms": "Tier Transfer maps proof of external status to an XTP tier plus sized reload.",
@@ -48,7 +51,9 @@
       "licence": "Curacao and local licensed brands in some markets",
       "confidence": "public",
       "positioning": "Market leader; casino and sportsbook at massive scale.",
-      "best_for": ["high"],
+      "best_for": [
+        "high"
+      ],
       "native_token": false,
       "tier_match": false,
       "entry_threshold": 10000,
@@ -79,7 +84,9 @@
       "licence": "Curacao",
       "confidence": "public",
       "positioning": "GambleFi: casino, sportsbook and leveraged crypto futures.",
-      "best_for": ["high"],
+      "best_for": [
+        "high"
+      ],
       "native_token": true,
       "token_name": "RLB",
       "tier_match": false,
@@ -111,7 +118,10 @@
       "licence": "Curacao",
       "confidence": "public",
       "positioning": "Established crypto casino and sportsbook with a deep no-reset ladder.",
-      "best_for": ["mid", "high"],
+      "best_for": [
+        "mid",
+        "high"
+      ],
       "native_token": false,
       "tier_match": false,
       "entry_threshold": null,
@@ -133,7 +143,11 @@
       "trust": 74,
       "depth": 95,
       "gamification": 88,
-      "watch_out": "Some long-term high-rollers report benefits being trimmed; thresholds not published."
+      "watch_out": "Some long-term high-rollers report benefits being trimmed; thresholds not published.",
+      "source_url": "https://roobet.com/vip",
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "905d829180cace85",
+      "source_status": "verified"
     },
     {
       "id": "bcgame",
@@ -142,7 +156,9 @@
       "licence": "Curacao",
       "confidence": "public",
       "positioning": "Crypto-native, 100+ coins, deep XP ladder.",
-      "best_for": ["mid"],
+      "best_for": [
+        "mid"
+      ],
       "native_token": true,
       "token_name": "BCD",
       "tier_match": false,
@@ -150,7 +166,7 @@
       "published_formula": false,
       "rakeback_form": "token",
       "rakeback_basis": "house_edge",
-      "rate_min": 0.20,
+      "rate_min": 0.2,
       "rate_max": 0.24,
       "effective_rate": 0.115,
       "settlement": "Ongoing by level, paid in BCD.",
@@ -165,7 +181,11 @@
       "trust": 58,
       "depth": 91,
       "gamification": 94,
-      "watch_out": "Headline rate is high but paid in BCD; discount versus pure cash and account for withdrawal complaints."
+      "watch_out": "Headline rate is high but paid in BCD; discount versus pure cash and account for withdrawal complaints.",
+      "source_url": "https://bc.game/vip",
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "7c92257b063d0cfb",
+      "source_status": "verified"
     },
     {
       "id": "thrill",
@@ -174,7 +194,10 @@
       "licence": "Anjouan",
       "confidence": "directional",
       "positioning": "Rakeback-first challenger with the highest advertised rates.",
-      "best_for": ["mid", "high"],
+      "best_for": [
+        "mid",
+        "high"
+      ],
       "native_token": false,
       "tier_match": true,
       "tier_match_terms": "Import VIP status with proof of prior status.",
@@ -183,7 +206,7 @@
       "rakeback_form": "cash",
       "rakeback_basis": "undisclosed",
       "rate_min": null,
-      "rate_max": 0.70,
+      "rate_max": 0.7,
       "effective_rate": 0.105,
       "settlement": "Weekly.",
       "reward_page_url": "https://thrill.com/vip",
@@ -197,7 +220,11 @@
       "trust": 48,
       "depth": 68,
       "gamification": 78,
-      "watch_out": "Headline 70% is not normalised; formula is opaque and responsible-gambling tooling is reported thin."
+      "watch_out": "Headline 70% is not normalised; formula is opaque and responsible-gambling tooling is reported thin.",
+      "source_url": "https://thrill.com/vip",
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "01b534d2ef90863a",
+      "source_status": "verified"
     },
     {
       "id": "yeet",
@@ -206,7 +233,10 @@
       "licence": "Anjouan",
       "confidence": "directional",
       "positioning": "VC-backed challenger with a deep, low-friction ladder.",
-      "best_for": ["low", "mid"],
+      "best_for": [
+        "low",
+        "mid"
+      ],
       "native_token": false,
       "token_name": "Airdrop points hinted",
       "tier_match": true,
@@ -230,7 +260,11 @@
       "trust": 62,
       "depth": 82,
       "gamification": 86,
-      "watch_out": "Token or airdrop value is unproven; very low entry dilutes status signal."
+      "watch_out": "Token or airdrop value is unproven; very low entry dilutes status signal.",
+      "source_url": "https://yeet.com/rewards",
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "2b0c646cbd8cd046",
+      "source_status": "verified"
     },
     {
       "id": "dicey",
@@ -239,7 +273,9 @@
       "licence": "Beta",
       "confidence": "directional",
       "positioning": "Magic Eden-backed beta with tight reward loops.",
-      "best_for": ["mid"],
+      "best_for": [
+        "mid"
+      ],
       "native_token": false,
       "tier_match": true,
       "tier_match_terms": "VIP Transfer.",
@@ -262,7 +298,11 @@
       "trust": 46,
       "depth": 60,
       "gamification": 92,
-      "watch_out": "Still in beta; responsible-gambling tooling minimal and unproven at scale."
+      "watch_out": "Still in beta; responsible-gambling tooling minimal and unproven at scale.",
+      "source_url": "https://dicey.com/casino",
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "c53da74579f582ec",
+      "source_status": "verified"
     },
     {
       "id": "21com",
@@ -271,7 +311,10 @@
       "licence": "Anjouan",
       "confidence": "official",
       "positioning": "Large four-deposit welcome package backed by an instant-rakeback VIP club.",
-      "best_for": ["low", "mid"],
+      "best_for": [
+        "low",
+        "mid"
+      ],
       "native_token": false,
       "tier_match": false,
       "entry_threshold": 5,
@@ -293,7 +336,16 @@
       "trust": 66,
       "depth": 82,
       "gamification": 80,
-      "watch_out": "The welcome bonus carries 35x bonus wagering within 7 days and a 10x maximum-return cap. South Africa, the US, UK and several other markets are blocked."
+      "watch_out": "The welcome bonus carries 35x bonus wagering within 7 days and a 10x maximum-return cap. South Africa, the US, UK and several other markets are blocked.",
+      "source_url": "https://21.com/vip",
+      "source_terms": [
+        "Elite Club",
+        "Instant Rakeback",
+        "VIP Host"
+      ],
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "0e7130c33eacb008",
+      "source_status": "verified"
     }
   ]
 }

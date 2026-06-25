@@ -133,6 +133,10 @@
       "url": "https://prod.trk21.com/click?offer=FFHCFKXMZW2H&uid=fN3MmG6q",
       "isAffiliate": true,
       "source_url": "https://21.com/promotions/welcome-offer",
+      "source_terms": [
+        "Up to $7,000",
+        "130 Free Spins"
+      ],
       "breakdown": [
         "1st deposit: 120% up to $1,000 + 25 free spins",
         "2nd deposit: 100% up to $1,500 + 30 free spins",
@@ -148,7 +152,10 @@
         "maxBet": null,
         "gameType": "96.0"
       },
-      "sourceChecked": "2026-06-25"
+      "sourceChecked": "2026-06-25",
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "9c41deaf00fef84c",
+      "source_status": "verified"
     }
   ]
 }
