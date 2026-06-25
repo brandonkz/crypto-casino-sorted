@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Casino Rakeback Comparison 2026 | Calculator + Rates | CryptoCasinoSorted</title>
-  <meta name="description" content="Compare rakeback rates across 7 top crypto casinos. Enter your monthly wager and see exactly how much you earn back at Stake, Rollbit, BC.Game, Duelbits, Gamdom, Roobet, and Rainbet.">
+  <meta name="description" content="Compare effective rakeback across the same crypto casinos included in the CryptoCasinoSorted rewards finder. Enter your monthly wager to estimate cash value.">
   <link rel="canonical" href="https://cryptocasinosorted.com/rakeback-comparison.html">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="terminal-theme.css">
@@ -262,7 +262,7 @@ h1 {
 
   <main class="page">
     <h1>💰 Crypto Casino Rakeback Comparison 2026</h1>
-    <p class="subtitle">Enter your monthly wager to see exactly how much each casino gives back. Rates researched across Stake, Rollbit, BC.Game, Duelbits, Gamdom, Roobet, and Rainbet.</p>
+    <p class="subtitle">Enter your monthly wager to compare the estimated cash value of every casino in our main rewards finder. Headline rates are normalised where rewards use tokens or opaque formulas.</p>
 
     <!-- Calculator -->
     <div class="calc-card">
@@ -270,7 +270,12 @@ h1 {
       <div class="calc-row">
         <span class="calc-label">Monthly wager ($)</span>
         <input class="calc-input" type="number" id="wagerInput" value="1000" min="0" max="10000000" oninput="calcAll()">
-        <span class="calc-label" style="color:#64748b;">per month</span>
+        <span class="calc-label">Average game edge</span>
+        <select class="calc-input" id="edgeInput" onchange="calcAll()">
+          <option value="0.01">1% — low-edge games</option>
+          <option value="0.03" selected>3% — mixed play</option>
+          <option value="0.05">5% — higher-edge games</option>
+        </select>
       </div>
       <div class="calc-results" id="calcResults"></div>
     </div>
@@ -289,87 +294,13 @@ h1 {
           <th>Reward Page</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td><div class="casino-cell"><div class="casino-dot" style="background:#10b981;"></div><div><div class="name">Stake</div><div class="tag">stake.com</div></div></div></td>
-          <td><span class="rate-med">5%</span></td>
-          <td><span class="rate-high">~15%+</span></td>
-          <td><span class="pill pill-blue">Tiered + Weekly/Monthly</span></td>
-          <td><span class="pill pill-yellow">Invite-only upper</span></td>
-          <td><a class="reward-page-link" href="https://stake.com/vip-club" target="_blank" rel="nofollow noopener">VIP Club</a></td>
-        </tr>
-        <tr>
-          <td><div class="casino-cell"><div class="casino-dot" style="background:#ef4444;"></div><div><div class="name">Rollbit</div><div class="tag">rollbit.com</div></div></div></td>
-          <td><span class="rate-med">5%</span></td>
-          <td><span class="rate-high">up to 50%</span></td>
-          <td><span class="pill pill-blue">Base + Boost events</span></td>
-          <td><span class="pill pill-green">Open to all</span></td>
-          <td><a class="reward-page-link" href="https://rollbit.com/rewards" target="_blank" rel="nofollow noopener">Rewards</a></td>
-        </tr>
-        <tr>
-          <td><div class="casino-cell"><div class="casino-dot" style="background:#f59e0b;"></div><div><div class="name">Rainbet</div><div class="tag">rainbet.com</div></div></div></td>
-          <td><span class="rate-med">10%</span></td>
-          <td><span class="rate-high">25–30%</span></td>
-          <td><span class="pill pill-blue">Tiered VIP</span></td>
-          <td><span class="pill pill-green">Open to all</span></td>
-          <td><a class="reward-page-link" href="https://rainbet.com/vip" target="_blank" rel="nofollow noopener">VIP</a></td>
-        </tr>
-        <tr>
-          <td><div class="casino-cell"><div class="casino-dot" style="background:#8b5cf6;"></div><div><div class="name">Gamdom</div><div class="tag">gamdom.com</div></div></div></td>
-          <td><span class="rate-med">5%</span></td>
-          <td><span class="rate-high">up to 15%</span></td>
-          <td><span class="pill pill-blue">Instant rakeback</span></td>
-          <td><span class="pill pill-green">Open to all</span></td>
-          <td><a class="reward-page-link" href="https://gamdom.com/promotions/rakeback" target="_blank" rel="nofollow noopener">Rakeback</a></td>
-        </tr>
-        <tr>
-          <td><div class="casino-cell"><div class="casino-dot" style="background:#06b6d4;"></div><div><div class="name">Duelbits</div><div class="tag">duelbits.com</div></div></div></td>
-          <td><span class="rate-med">5%</span></td>
-          <td><span class="rate-high">12.5%</span></td>
-          <td><span class="pill pill-blue">Ace's Rewards tiers</span></td>
-          <td><span class="pill pill-green">Auto-enrolled</span></td>
-          <td><a class="reward-page-link" href="https://duelbits.com/promotions/rakeback" target="_blank" rel="nofollow noopener">Rakeback</a></td>
-        </tr>
-        <tr>
-          <td><div class="casino-cell"><div class="casino-dot" style="background:#f97316;"></div><div><div class="name">BC.Game</div><div class="tag">bc.game</div></div></div></td>
-          <td><span class="rate-low">~0.2%</span></td>
-          <td><span class="rate-med">~0.24% (unlock)</span></td>
-          <td><span class="pill pill-yellow">Wager × 1% × VIP%</span></td>
-          <td><span class="pill pill-green">Open to all</span></td>
-          <td><a class="reward-page-link" href="https://bc.game/vip" target="_blank" rel="nofollow noopener">VIP</a></td>
-        </tr>
-        <tr>
-          <td><div class="casino-cell"><div class="casino-dot" style="background:#e879f9;"></div><div><div class="name">Roobet</div><div class="tag">roobet.com</div></div></div></td>
-          <td><span class="rate-low">Not public</span></td>
-          <td><span class="rate-med">Invite-only rates</span></td>
-          <td><span class="pill pill-gray">4-type system</span></td>
-          <td><span class="pill pill-yellow">Invite-only</span></td>
-          <td><a class="reward-page-link" href="https://roobet.com/vip" target="_blank" rel="nofollow noopener">VIP</a></td>
-        </tr>
-      </tbody>
+      <tbody id="comparisonBody"></tbody>
     </table>
     </div>
 
     <!-- Notes -->
     <div class="section-label">What the Numbers Actually Mean</div>
-    <div class="notes-grid">
-      <div class="note-card">
-        <div class="nc-title">🎰 Rollbit — Best for high volume</div>
-        <div class="nc-text">5% base but regularly runs 50% rakeback boost events. If you time your sessions around these, the EV is best-in-class. Also boosted up to 25% if you hold Rollbot NFTs. Claimable every 30 minutes.</div>
-      </div>
-      <div class="note-card">
-        <div class="nc-title">🌧️ Rainbet — Best base rate</div>
-        <div class="nc-text">10% from day one, climbing to 25–30% at higher VIP levels. No invite required. One of the few casinos that openly publishes its rakeback structure with no hidden thresholds.</div>
-      </div>
-      <div class="note-card">
-        <div class="nc-title">⚡ Stake — Most popular, not most generous</div>
-        <div class="nc-text">5% base is below average. Upper VIP tiers with better rates are invite-only — Stake decides who gets them. If you're not a whale, you're getting 5%. The brand name premium is real but the rakeback isn't.</div>
-      </div>
-      <div class="note-card">
-        <div class="nc-title">🎮 BC.Game — Confusing structure</div>
-        <div class="nc-text">Their "up to 24% rakeback" is actually Wagered × 1% × 24% = 0.24% effective. Far lower than competitors. Their rakeback works differently — BCD tokens you can unlock gradually, not cash back directly.</div>
-      </div>
-    </div>
+    <div class="notes-grid" id="notesGrid"></div>
 
     <!-- Rewards CTA -->
     <div class="cta-strip">
@@ -378,22 +309,61 @@ h1 {
     </div>
 
     <div class="disclaimer">
-      Rakeback rates sourced from casino VIP pages, affiliate disclosures, and community reports (Feb 2026). Rates may vary by VIP tier, promo code, and region. Always verify current rates on the casino's official VIP page before wagering.
+      Comparison data is shared with the main rewards finder and was last reviewed in June 2026. Effective rates are directional estimates, not guaranteed payouts. Actual rewards vary by game edge, VIP tier, recent activity, token value, region, and account eligibility. Always verify current terms before wagering.
       18+ only. Gamble responsibly.
     </div>
   </main>
 
   <script>
-    // Casino rakeback data
-    const casinos = [
-      { name: 'Rollbit',  color: '#ef4444', baseRate: 0.05, maxRate: 0.50, note: '5% base + boost events up to 50%',  rewardUrl: 'https://rollbit.com/rewards', rewardCta: 'Rewards' },
-      { name: 'Rainbet',  color: '#f59e0b', baseRate: 0.10, maxRate: 0.28, note: '10% base, up to 25-30% VIP',         rewardUrl: 'https://rainbet.com/vip', rewardCta: 'VIP' },
-      { name: 'Gamdom',   color: '#8b5cf6', baseRate: 0.05, maxRate: 0.15, note: 'Up to 15% instant rakeback',         rewardUrl: 'https://gamdom.com/promotions/rakeback', rewardCta: 'Rakeback' },
-      { name: 'Duelbits', color: '#06b6d4', baseRate: 0.05, maxRate: 0.125, note: "5-12.5% via Ace's Rewards",        rewardUrl: 'https://duelbits.com/promotions/rakeback', rewardCta: 'Rakeback' },
-      { name: 'Stake',    color: '#10b981', baseRate: 0.05, maxRate: 0.15, note: '5% base, higher VIP invite-only',   rewardUrl: 'https://stake.com/vip-club', rewardCta: 'VIP Club' },
-      { name: 'BC.Game',  color: '#f97316', baseRate: 0.002, maxRate: 0.0024, note: 'Wager x 1% x VIP% (0.2-0.24%)', rewardUrl: 'https://bc.game/vip', rewardCta: 'VIP' },
-      { name: 'Roobet',   color: '#e879f9', baseRate: null, maxRate: null, note: 'Invite-only, rates not public',      rewardUrl: 'https://roobet.com/vip', rewardCta: 'VIP' },
-    ];
+    const palette = ['#ff7a18', '#10b981', '#ef4444', '#e879f9', '#f97316', '#8b5cf6', '#06b6d4', '#f59e0b', '#38bdf8'];
+    let casinos = [];
+
+    function pct(rate) {
+      if (rate === null || rate === undefined) return 'Not public';
+      return `${(rate * 100).toFixed(rate * 100 < 1 ? 2 : 1).replace(/\.0$/, '')}%`;
+    }
+
+    function rateClass(rate) {
+      if (rate === null || rate === undefined) return 'rate-low';
+      if (rate >= 0.1) return 'rate-high';
+      if (rate >= 0.05) return 'rate-med';
+      return 'rate-low';
+    }
+
+    function domainFor(op) {
+      if (!op.reward_page_url) return 'Official page pending';
+      try { return new URL(op.reward_page_url).hostname.replace(/^www\./, ''); }
+      catch { return 'Official rewards page'; }
+    }
+
+    function renderTable() {
+      document.getElementById('comparisonBody').innerHTML = casinos.map(c => {
+        const max = c.rate_max === null ? 'Not public' : pct(c.rate_max);
+        const structure = `${c.rakeback_form} · ${c.rakeback_basis.replace('_', ' ')}`;
+        const access = c.tier_match ? 'Tier match available' : (c.entry_threshold ? `From $${c.entry_threshold} wagered` : 'Terms vary');
+        const link = c.reward_page_url
+          ? `<a class="reward-page-link" href="${c.reward_page_url}" target="_blank" rel="nofollow noopener">${c.reward_page_label}</a>`
+          : '<span class="pill pill-gray">Coming soon</span>';
+        return `<tr>
+          <td><div class="casino-cell"><div class="casino-dot" style="background:${c.color};"></div><div><div class="name">${c.name}</div><div class="tag">${domainFor(c)}</div></div></div></td>
+          <td><span class="${rateClass(c.rate_min)}">${pct(c.rate_min)}</span></td>
+          <td><span class="${rateClass(c.rate_max)}">${max}</span></td>
+          <td><span class="pill pill-blue">${structure}</span></td>
+          <td><span class="pill ${c.tier_match ? 'pill-green' : 'pill-yellow'}">${access}</span></td>
+          <td>${link}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    function renderNotes() {
+      const ranked = [...casinos].sort((a, b) => b.effective_rate - a.effective_rate).slice(0, 4);
+      document.getElementById('notesGrid').innerHTML = ranked.map((c, index) => `
+        <div class="note-card">
+          <div class="nc-title">${index === 0 ? '🏆' : '🎰'} ${c.name} — ${pct(c.effective_rate)} estimated effective value</div>
+          <div class="nc-text">${c.offer_summary}<br><strong>Watch out:</strong> ${c.watch_out}</div>
+        </div>
+      `).join('');
+    }
 
     function fmt(n) {
       if (n >= 1000) return '$' + (n/1000).toFixed(1) + 'k';
@@ -402,8 +372,9 @@ h1 {
 
     function calcAll() {
       const wager = parseFloat(document.getElementById('wagerInput').value) || 0;
+      const edge = parseFloat(document.getElementById('edgeInput').value) || 0.03;
       const results = casinos.map(c => {
-        const earn = c.baseRate ? wager * c.baseRate : null;
+        const earn = c.effective_rate !== null ? wager * edge * c.effective_rate : null;
         return { ...c, earn };
       });
 
@@ -413,16 +384,32 @@ h1 {
       document.getElementById('calcResults').innerHTML = results.map(c => {
         const isBest = best && c.name === best.name;
         const earnStr = c.earn !== null ? fmt(c.earn) : '—';
-        return `<a class="result-chip${isBest ? ' best' : ''}" href="${c.rewardUrl}" target="_blank" rel="nofollow noopener" style="text-decoration:none;display:block;cursor:pointer;">
+        const destination = c.reward_page_url || '/rewards-recommender.html';
+        return `<a class="result-chip${isBest ? ' best' : ''}" href="${destination}" ${c.reward_page_url ? 'target="_blank" rel="nofollow noopener"' : ''} style="text-decoration:none;display:block;cursor:pointer;">
           <div class="casino-name" style="color:${c.color};">${c.name}${isBest ? '<span class="best-badge">BEST</span>' : ''}</div>
           <div class="earn-val" style="${c.earn === null ? 'color:#64748b;font-size:1rem;' : ''}">${earnStr}</div>
-          <div class="rate-info">${c.note}</div>
-          <div style="font-size:0.7rem;color:#ff9d00;margin-top:6px;font-weight:800;">${c.rewardCta} -></div>
+          <div class="rate-info">${pct(c.effective_rate)} of estimated house-edge loss</div>
+          <div style="font-size:0.7rem;color:#ff9d00;margin-top:6px;font-weight:800;">${c.reward_page_label} →</div>
         </a>`;
       }).join('');
     }
 
-    calcAll();
+    async function init() {
+      try {
+        const response = await fetch('/data/operators.json');
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        casinos = data.operators.map((operator, index) => ({ ...operator, color: palette[index % palette.length] }));
+        renderTable();
+        renderNotes();
+        calcAll();
+      } catch (error) {
+        document.getElementById('calcResults').innerHTML = '<div class="note-card">Could not load the shared rewards dataset. Please refresh the page.</div>';
+        console.error('Unable to load operator comparison data:', error);
+      }
+    }
+
+    init();
   </script>
   <footer class="t-footer">
   <div class="t-container">
