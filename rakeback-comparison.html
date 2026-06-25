@@ -272,7 +272,7 @@ h1 {
     <div class="calc-card">
       <h2>🧮 Rakeback Calculator</h2>
       <div class="calc-row">
-        <span class="calc-label">Monthly wager ($)</span>
+        <span class="calc-label">Estimated monthly wager ($)</span>
         <input class="calc-input" type="number" id="wagerInput" value="1000" min="0" max="10000000" oninput="calcAll()">
         <span class="calc-label">Average game edge</span>
         <select class="calc-input" id="edgeInput" onchange="applyWagerEstimate()">
@@ -282,9 +282,9 @@ h1 {
         </select>
       </div>
       <div class="calc-row">
-        <span class="calc-label">Or estimate from monthly deposit</span>
+        <span class="calc-label">What deposit value do you normally do?</span>
         <input class="calc-input" type="number" id="depositInput" value="500" min="10" max="1000000" step="10" oninput="applyWagerEstimate()">
-        <span class="calc-label">Minutes/day</span>
+        <span class="calc-label">How many minutes per day do you play?</span>
         <input class="calc-input" type="number" id="minutesInput" value="30" min="1" max="1440" step="5" oninput="applyWagerEstimate()">
         <span class="calc-label">Pace</span>
         <select class="calc-input" id="paceInput" onchange="applyWagerEstimate()">
@@ -295,9 +295,9 @@ h1 {
       </div>
       <label class="calc-label" style="display:flex;align-items:center;gap:8px;margin:-4px 0 12px;">
         <input type="checkbox" id="includeBonusWagering" onchange="calcAll()">
-        Include welcome bonus wagering (verified terms, otherwise 30x fallback)
+        Add welcome-bonus playthrough to the wager estimate (verified terms, otherwise 30x fallback)
       </label>
-      <p class="subtitle" id="wagerEstimateNote" style="font-size:0.72rem;margin:0 0 14px;">Estimated monthly wager: $16.7k/mo. Uses the lower of time-based volume and deposit ÷ game edge.</p>
+      <p class="subtitle" id="wagerEstimateNote" style="font-size:0.72rem;margin:0 0 14px;">Estimated monthly wager: $16.7k/mo. Based on your normal deposit value and minutes played per day, capped by deposit ÷ game edge.</p>
       <div class="calc-results" id="calcResults"></div>
     </div>
 
@@ -475,7 +475,7 @@ h1 {
       const pace = parseFloat(document.getElementById('paceInput').value) || 6;
       const estimate = estimateWagerFromDeposit(deposit, minutes, edge, pace);
       document.getElementById('wagerInput').value = estimate;
-      document.getElementById('wagerEstimateNote').textContent = `Estimated monthly wager: ${fmt(estimate)}/mo. Uses the lower of time-based volume and deposit ÷ game edge.`;
+      document.getElementById('wagerEstimateNote').textContent = `Estimated monthly wager: ${fmt(estimate)}/mo. Based on your normal deposit value and minutes played per day, capped by deposit ÷ game edge.`;
       calcAll();
     }
 

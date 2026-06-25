@@ -592,28 +592,30 @@
         </div>
         <div class="panel-body">
           <div class="control-group">
-            <div class="label-line"><label for="wager">Monthly Wager</label><span class="label-value" id="wagerValue">$5,000</span></div>
+            <div class="label-line"><label for="wager">Estimated Monthly Wager</label><span class="label-value" id="wagerValue">$5,000</span></div>
             <div class="input-row">
               <input id="wager" type="range" min="100" max="100000" step="100" value="5000">
               <input id="wagerNumber" class="number-input" type="number" min="100" max="1000000" step="100" value="5000">
             </div>
+            <p class="offer-sub">You can edit this directly, or let the questions below estimate it from your normal deposits and play time.</p>
           </div>
 
           <div class="control-group">
-            <div class="label-line"><label for="monthlyDeposit">Estimate Wager From Deposits</label><span class="label-value" id="estimateValue">$12,500/mo</span></div>
+            <div class="label-line"><label for="monthlyDeposit">What deposit value do you normally do?</label><span class="label-value" id="estimateValue">$12,500/mo</span></div>
             <div class="input-row">
-              <input id="monthlyDeposit" class="number-input" type="number" min="10" max="1000000" step="10" value="500" aria-label="Monthly deposit budget">
-              <input id="minutesPerDay" class="number-input" type="number" min="1" max="1440" step="5" value="30" aria-label="Minutes played per day">
+              <input id="monthlyDeposit" class="number-input" type="number" min="10" max="1000000" step="10" value="500" aria-label="Normal monthly deposit value">
             </div>
+            <div class="label-line" style="margin-top:12px;"><label for="minutesPerDay">How many minutes per day do you play?</label></div>
             <div class="input-row">
+              <input id="minutesPerDay" class="number-input" type="number" min="1" max="1440" step="5" value="30" aria-label="Minutes played per day">
               <select id="playPace">
                 <option value="2">Slow play · 2 bets/min</option>
                 <option value="6" selected>Mixed casino · 6 bets/min</option>
                 <option value="10">Fast originals/slots · 10 bets/min</option>
               </select>
             </div>
-            <p class="offer-sub">Estimator uses the lower of time-based volume and deposit ÷ game edge, so small deposits do not create unrealistic wager totals.</p>
-            <label class="toggle" style="margin-top:10px;"><input type="checkbox" id="includeBonusWagering"> Include welcome bonus wagering (verified terms, otherwise 30x fallback)</label>
+            <p class="offer-sub">We estimate monthly wagering from your normal deposit value, minutes played per day, game pace, and game edge. To keep it realistic, the model caps volume by your deposit loss budget.</p>
+            <label class="toggle" style="margin-top:10px;"><input type="checkbox" id="includeBonusWagering"> Add welcome-bonus playthrough to the wager estimate (verified terms, otherwise 30x fallback)</label>
           </div>
 
           <div class="control-group">
@@ -684,7 +686,7 @@
             <span class="t-badge t-badge-amber">Directional</span>
           </div>
           <div class="panel-body">
-            <p class="method"><strong>Reward / edge-value estimate</strong> = modeled wager x selected game edge x normalised effective rate. By default, modeled wager is normal monthly play estimated from deposit budget and time played. If the welcome-bonus toggle is enabled, verified bonus playthrough is added where available; unclear terms use a clearly labeled 30x fallback. For zero-edge operators, this is modeled avoided house-edge loss on eligible games, not a cash rebate. The rank then blends estimated value, formula transparency, source-verification status, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
+            <p class="method"><strong>Reward / edge-value estimate</strong> = modeled wager x selected game edge x normalised effective rate. By default, modeled wager is normal monthly play estimated from the player’s usual deposit value and minutes played per day. If the welcome-bonus toggle is enabled, verified bonus playthrough is added where available; unclear terms use a clearly labeled 30x fallback. For zero-edge operators, this is modeled avoided house-edge loss on eligible games, not a cash rebate. The rank then blends estimated value, formula transparency, source-verification status, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
           </div>
         </section>
       </div>
