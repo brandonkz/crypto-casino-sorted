@@ -952,9 +952,10 @@
     }
 
     function rewardLink(op) {
-      return op.affiliate_url
-        ? `<a class="reward-link affiliate" href="${op.affiliate_url}" target="_blank" rel="sponsored nofollow noopener">Join ${op.name} →</a>`
-        : '<span class="reward-link disabled">Affiliate link needed</span>';
+      const url = op.affiliate_url || op.official_url || op.source_url || op.reward_page_url;
+      if (!url) return '';
+      const rel = op.affiliate_url ? 'sponsored nofollow noopener' : 'nofollow noopener';
+      return `<a class="reward-link affiliate" href="${url}" target="_blank" rel="${rel}">Visit ${op.name} →</a>`;
     }
 
     function render() {

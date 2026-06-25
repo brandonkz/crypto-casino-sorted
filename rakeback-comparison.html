@@ -353,11 +353,16 @@ h1 {
     }
 
     function domainFor(op) {
-      if (op.affiliate_url) {
-        try { return new URL(op.affiliate_url).hostname.replace(/^www\./, ''); }
-        catch { return 'Affiliate link ready'; }
+      const url = op.affiliate_url || op.official_url || op.source_url || op.reward_page_url;
+      if (url) {
+        try { return new URL(url).hostname.replace(/^www\./, ''); }
+        catch { return 'Casino link'; }
       }
-      return 'Affiliate link pending';
+      return 'Casino';
+    }
+
+    function casinoLink(op) {
+      return op.affiliate_url || op.official_url || op.source_url || op.reward_page_url || null;
     }
 
     function renderTable() {
@@ -366,9 +371,11 @@ h1 {
         const max = c.rate_max === null ? 'Not public' : pct(c.rate_max);
         const structure = `${c.rakeback_form} · ${c.rakeback_basis.replace('_', ' ')}`;
         const access = c.tier_match ? 'Tier match available' : (c.entry_threshold ? `From $${c.entry_threshold} wagered` : 'Terms vary');
-        const joinLink = c.affiliate_url
-          ? `<a class="reward-page-link join" href="${c.affiliate_url}" target="_blank" rel="sponsored nofollow noopener">Join</a>`
-          : '<span class="reward-page-link missing">Affiliate needed</span>';
+        const url = casinoLink(c);
+        const rel = c.affiliate_url ? 'sponsored nofollow noopener' : 'nofollow noopener';
+        const joinLink = url
+          ? `<a class="reward-page-link join" href="${url}" target="_blank" rel="${rel}">Visit</a>`
+          : '';
         const links = `<div class="link-stack">${joinLink}</div>`;
         return `<tr>
           <td><div class="casino-cell"><div class="casino-dot" style="background:${c.color};"></div><div><div class="name">${c.name}</div><div class="tag">${domainFor(c)}</div></div></div></td>
@@ -504,13 +511,15 @@ h1 {
           ? `Bonus-assisted wager: ${fmt(c.modeledWager)} (${c.bonusEstimate.terms.fallback ? `${c.bonusEstimate.terms.wagerMultiple}x fallback` : `${c.bonusEstimate.terms.wagerMultiple}x verified`})`
           : '';
         const valueLabel = bonusLabel ? `${baseValueLabel}<br>${bonusLabel}` : baseValueLabel;
-        const cardTag = c.affiliate_url ? 'a' : 'div';
-        const href = c.affiliate_url ? ` href="${c.affiliate_url}" target="_blank" rel="sponsored nofollow noopener"` : '';
-        return `<${cardTag} class="result-chip${isBest ? ' best' : ''}"${href} style="text-decoration:none;display:block;${c.affiliate_url ? 'cursor:pointer;' : ''}">
+        const url = casinoLink(c);
+        const cardTag = url ? 'a' : 'div';
+        const rel = c.affiliate_url ? 'sponsored nofollow noopener' : 'nofollow noopener';
+        const href = url ? ` href="${url}" target="_blank" rel="${rel}"` : '';
+        return `<${cardTag} class="result-chip${isBest ? ' best' : ''}"${href} style="text-decoration:none;display:block;${url ? 'cursor:pointer;' : ''}">
           <div class="casino-name" style="color:${c.color};">${c.name}${isBest ? `<span class="best-badge">${isZeroEdge ? 'EDGE VALUE' : 'BEST'}</span>` : ''}</div>
           <div class="earn-val" style="${c.earn === null ? 'color:#64748b;font-size:1rem;' : ''}">${earnStr}</div>
           <div class="rate-info">${valueLabel}</div>
-          <div style="font-size:0.7rem;color:#ff9d00;margin-top:6px;font-weight:800;">${c.affiliate_url ? `Join ${c.name}` : 'Affiliate link needed'} →</div>
+          <div style="font-size:0.7rem;color:#ff9d00;margin-top:6px;font-weight:800;">${url ? `Visit ${c.name} →` : ''}</div>
         </${cardTag}>`;
       }).join('');
     }
