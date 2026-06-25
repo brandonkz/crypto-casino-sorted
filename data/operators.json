@@ -5,7 +5,7 @@
     "critical_notes": [
       "Rakeback headline rates are not comparable like-for-like. Normalise to effective cash value before scoring.",
       "Where a competitor does not publish tier thresholds, use null/undisclosed and score transparency accordingly.",
-      "Only XTP figures are exact. Competitor figures are directional and change frequently."
+      "Some figures are verified from source documents or official pages; unpublished formulas remain directional and should be labelled as such."
     ]
   },
   "operators": [
@@ -14,8 +14,8 @@
       "name": "XTP",
       "type": "licensed_operator",
       "licence": "Licensed",
-      "confidence": "handbook",
-      "positioning": "Transparent, cash-first loyalty; everyone is valued from the $25 regular to the whale.",
+      "confidence": "internal handbook",
+      "positioning": "Cash-first loyalty program with low entry friction and tier-transfer mechanics.",
       "best_for": [
         "low",
         "mid"
@@ -34,15 +34,15 @@
       "reward_page_url": null,
       "reward_page_label": "XTP rewards page coming soon",
       "affiliate_url": "https://xtp.com/signup?utm_campaign=Durinsbane_New&utm_source=p2p_affiliate&utm_medium=referral",
-      "offer_summary": "5-15% cash rakeback on house edge, plus Silver weekly coin cashback, Gold monthly cash cashback, and first 30 days earning one tier above your own.",
+      "offer_summary": "5-15% cash rakeback on house edge, plus Silver weekly coin cashback, Gold monthly cash cashback, and first 30 days earning one tier above your own. Treat as internally sourced until a public rewards page is live.",
       "reset_behaviour": "Lifetime weighted XP never decreases; top two tiers need trailing activity to hold.",
       "vip_host_entry": "Host chat at Silver; dedicated host at Gold.",
-      "transparency": 95,
-      "friction": 92,
-      "trust": 78,
-      "depth": 78,
-      "gamification": 88,
-      "watch_out": "Newer program; economics should be re-run on real cohort data once live."
+      "transparency": 58,
+      "friction": 84,
+      "trust": 66,
+      "depth": 72,
+      "gamification": 78,
+      "watch_out": "Public rewards page is not live yet; treat terms as internally sourced and re-run economics on real cohort data once live."
     },
     {
       "id": "stake",
