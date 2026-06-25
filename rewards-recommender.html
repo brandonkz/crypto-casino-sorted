@@ -613,6 +613,7 @@
               </select>
             </div>
             <p class="offer-sub">Estimator uses the lower of time-based volume and deposit ÷ game edge, so small deposits do not create unrealistic wager totals.</p>
+            <label class="toggle" style="margin-top:10px;"><input type="checkbox" id="includeBonusWagering"> Include welcome bonus wagering (verified terms, otherwise 30x fallback)</label>
           </div>
 
           <div class="control-group">
@@ -683,7 +684,7 @@
             <span class="t-badge t-badge-amber">Directional</span>
           </div>
           <div class="panel-body">
-            <p class="method"><strong>Reward / edge-value estimate</strong> = monthly wager x selected game edge x normalised effective rate. For zero-edge operators, this is modeled avoided house-edge loss on eligible games, not a cash rebate. The rank then blends estimated value, formula transparency, source-verification status, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
+            <p class="method"><strong>Reward / edge-value estimate</strong> = modeled wager x selected game edge x normalised effective rate. By default, modeled wager is normal monthly play estimated from deposit budget and time played. If the welcome-bonus toggle is enabled, verified bonus playthrough is added where available; unclear terms use a clearly labeled 30x fallback. For zero-edge operators, this is modeled avoided house-edge loss on eligible games, not a cash rebate. The rank then blends estimated value, formula transparency, source-verification status, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
           </div>
         </section>
       </div>
@@ -693,6 +694,7 @@
   <script>
     const state = {
       operators: [],
+      welcomeOffers: [],
       priority: 'balanced',
       band: 'low',
       risk: 'standard'
@@ -716,6 +718,72 @@
       return clamp(Math.round(Math.min(timeBasedWager, lossBudgetCap) / 100) * 100, 100, 1000000);
     }
 
+    function normaliseName(value) {
+      return String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    }
+
+    function findWelcomeOffer(name) {
+      const wanted = normaliseName(name);
+      return state.welcomeOffers.find((item) => {
+        const casino = normaliseName(item.casino);
+        if (casino === wanted) return true;
+        return wanted.length > 5 && casino.length > 5 && (wanted.includes(casino) || casino.includes(wanted));
+      }) || null;
+    }
+
+    function parseDollarCap(text) {
+      const match = String(text || '').match(/\$\s*([\d,]+(?:\.\d+)?)/);
+      return match ? Number(match[1].replace(/,/g, '')) : null;
+    }
+
+    function parsePercent(text) {
+      const match = String(text || '').match(/(\d+(?:\.\d+)?)\s*%/);
+      return match ? Number(match[1]) : null;
+    }
+
+    function parseWagerMultiple(text) {
+      const match = String(text || '').match(/(\d+(?:\.\d+)?)\s*x/i);
+      return match ? Number(match[1]) : null;
+    }
+
+    function bonusTermsForOffer(item) {
+      if (!item) return null;
+      if (item.calculator && Number(item.calculator.bonusPercent)) {
+        return {
+          bonusPercent: Number(item.calculator.bonusPercent),
+          bonusCap: Number(item.calculator.bonusCap) || null,
+          wagerMultiple: Number(item.calculator.wagerMultiple) || 30,
+          wagerBase: item.calculator.wagerBase || 'bonus',
+          fallback: !Number(item.calculator.wagerMultiple),
+          verified: Boolean(item.source_url || item.source_status === 'verified')
+        };
+      }
+      const bonusPercent = parsePercent(item.offer);
+      if (!bonusPercent) return null;
+      const parsedMultiple = parseWagerMultiple(item.wagering);
+      return {
+        bonusPercent,
+        bonusCap: parseDollarCap(item.offer),
+        wagerMultiple: parsedMultiple || 30,
+        wagerBase: 'bonus',
+        fallback: !parsedMultiple,
+        verified: Boolean(item.source_url && parsedMultiple)
+      };
+    }
+
+    function bonusAssistedWagerFor(op, inputs) {
+      const offer = findWelcomeOffer(op.name);
+      const terms = bonusTermsForOffer(offer);
+      if (!offer || !terms || !inputs.deposit) return null;
+      const rawBonus = inputs.deposit * (terms.bonusPercent / 100);
+      const bonusAmount = Math.max(0, Math.min(rawBonus, terms.bonusCap || rawBonus));
+      if (!bonusAmount) return null;
+      const wagerBaseAmount = terms.wagerBase === 'deposit_bonus' ? inputs.deposit + bonusAmount : bonusAmount;
+      const requiredWager = Math.round(wagerBaseAmount * terms.wagerMultiple);
+      const modeledWager = Math.max(inputs.wager, requiredWager);
+      return { offer, terms, bonusAmount, requiredWager, modeledWager };
+    }
+
     const weightsByPriority = {
       balanced: { reward: 24, trust: 18, transparency: 18, friction: 16, depth: 12, tierMatch: 6, gamification: 6 },
       max_rewards: { reward: 38, trust: 10, transparency: 14, friction: 12, depth: 12, tierMatch: 6, gamification: 8 },
@@ -730,6 +798,8 @@
         needsTierMatch: document.getElementById('needsTierMatch').checked,
         avoidTokens: document.getElementById('avoidTokens').checked,
         avoidOpaque: document.getElementById('avoidOpaque').checked,
+        includeBonusWagering: document.getElementById('includeBonusWagering').checked,
+        deposit: Number(document.getElementById('monthlyDeposit').value) || 0,
         priority: state.priority,
         band: state.band,
         risk: state.risk
@@ -738,10 +808,17 @@
 
     function scoreOperators() {
       const inputs = getInputs();
-      const estimates = state.operators.map((op) => ({
-        ...op,
-        estimatedReward: inputs.wager * inputs.edge * (op.effective_rate || 0)
-      }));
+      const estimates = state.operators.map((op) => {
+        const bonusEstimate = inputs.includeBonusWagering ? bonusAssistedWagerFor(op, inputs) : null;
+        const modeledWager = bonusEstimate ? bonusEstimate.modeledWager : inputs.wager;
+        return {
+          ...op,
+          baseWager: inputs.wager,
+          modeledWager,
+          bonusEstimate,
+          estimatedReward: modeledWager * inputs.edge * (op.effective_rate || 0)
+        };
+      });
       const maxReward = Math.max(...estimates.map((op) => op.estimatedReward), 1);
       const weights = weightsByPriority[inputs.priority];
 
@@ -815,18 +892,28 @@
     }
 
     function offerSubtext(op, inputs) {
-      const expectedLoss = inputs.wager * inputs.edge;
+      const wager = op.modeledWager || inputs.wager;
+      const expectedLoss = wager * inputs.edge;
       if (op.rakeback_form === 'zero_edge') {
-        return `At ${fmtMoney(inputs.wager)} wagered and ${(inputs.edge * 100).toFixed(1)}% game edge, the modeled value is avoided house-edge loss on eligible zero-edge games, not a cash rebate.`;
+        return `At ${fmtMoney(wager)} modeled wager and ${(inputs.edge * 100).toFixed(1)}% game edge, the modeled value is avoided house-edge loss on eligible zero-edge games, not a cash rebate.`;
       }
-      return `At ${fmtMoney(inputs.wager)} wagered and ${(inputs.edge * 100).toFixed(1)}% game edge, estimated house-edge loss is ${fmtMoney(expectedLoss)}. We apply a ${Math.round((op.effective_rate || 0) * 1000) / 10}% normalised giveback rate.`;
+      return `At ${fmtMoney(wager)} modeled wager and ${(inputs.edge * 100).toFixed(1)}% game edge, estimated house-edge loss is ${fmtMoney(expectedLoss)}. We apply a ${Math.round((op.effective_rate || 0) * 1000) / 10}% normalised giveback rate.`;
     }
 
     function valueLabel(op, inputs) {
+      const wager = op.modeledWager || inputs.wager;
       if (op.rakeback_form === 'zero_edge') {
-        return `Avoided House-Edge Loss on ${fmtMoney(inputs.wager)}`;
+        return `Avoided House-Edge Loss on ${fmtMoney(wager)}`;
       }
-      return `If You Wager ${fmtMoney(inputs.wager)}`;
+      return `If You Wager ${fmtMoney(wager)}`;
+    }
+
+    function bonusSubtext(op) {
+      if (!op.bonusEstimate) return '';
+      const { offer, terms, bonusAmount, requiredWager, modeledWager } = op.bonusEstimate;
+      const baseLabel = terms.wagerBase === 'deposit_bonus' ? 'deposit + bonus' : 'bonus';
+      const sourceLabel = terms.fallback ? '30x fallback' : `${terms.wagerMultiple}x verified playthrough`;
+      return `<div class="offer-sub" style="margin-top:7px;"><strong>Bonus-assisted wager:</strong> ${offer.offer} adds about ${fmtMoney(bonusAmount)} bonus and ${fmtMoney(requiredWager)} required wagering (${sourceLabel} on ${baseLabel}), so this card uses ${fmtMoney(modeledWager)} modeled wager.</div>`;
     }
 
     function metricLabel(op) {
@@ -898,6 +985,7 @@
                 <div class="offer-label">What You Get</div>
                 <div class="offer-copy-text">${op.offer_summary}</div>
                 <div class="offer-sub" style="margin-top:7px;">${offerSubtext(op, inputs)}</div>
+                ${bonusSubtext(op)}
                 ${rewardLink(op)}
               </div>
             </div>
@@ -982,7 +1070,7 @@
         });
       });
 
-      ['needsTierMatch', 'avoidTokens', 'avoidOpaque'].forEach((id) => {
+      ['needsTierMatch', 'avoidTokens', 'avoidOpaque', 'includeBonusWagering'].forEach((id) => {
         document.getElementById(id).addEventListener('change', render);
       });
 
@@ -992,10 +1080,15 @@
     async function init() {
       wireControls();
       try {
-        const response = await fetch('/data/operators.json');
-        if (!response.ok) throw new Error('Operator data failed to load');
-        const data = await response.json();
+        const [operatorsResponse, offersResponse] = await Promise.all([
+          fetch('/data/operators.json'),
+          fetch('/data/welcome-offers.json').catch(() => null)
+        ]);
+        if (!operatorsResponse.ok) throw new Error('Operator data failed to load');
+        const data = await operatorsResponse.json();
+        const offers = offersResponse && offersResponse.ok ? await offersResponse.json() : { items: [] };
         state.operators = data.operators;
+        state.welcomeOffers = offers.items || [];
         document.getElementById('operatorCount').textContent = String(state.operators.length);
         render();
       } catch (error) {

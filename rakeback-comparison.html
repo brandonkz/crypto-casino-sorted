@@ -293,6 +293,10 @@ h1 {
           <option value="10">Fast · 10 bets/min</option>
         </select>
       </div>
+      <label class="calc-label" style="display:flex;align-items:center;gap:8px;margin:-4px 0 12px;">
+        <input type="checkbox" id="includeBonusWagering" onchange="calcAll()">
+        Include welcome bonus wagering (verified terms, otherwise 30x fallback)
+      </label>
       <p class="subtitle" id="wagerEstimateNote" style="font-size:0.72rem;margin:0 0 14px;">Estimated monthly wager: $16.7k/mo. Uses the lower of time-based volume and deposit ÷ game edge.</p>
       <div class="calc-results" id="calcResults"></div>
     </div>
@@ -334,6 +338,7 @@ h1 {
   <script>
     const palette = ['#ff7a18', '#10b981', '#ef4444', '#e879f9', '#f97316', '#8b5cf6', '#06b6d4', '#f59e0b', '#38bdf8'];
     let casinos = [];
+    let welcomeOffers = [];
 
     function pct(rate) {
       if (rate === null || rate === undefined) return 'Not public';
@@ -399,6 +404,70 @@ h1 {
       return Math.max(100, Math.min(1000000, Math.round(Math.min(timeBasedWager, lossBudgetCap) / 100) * 100));
     }
 
+    function normaliseName(value) {
+      return String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    }
+
+    function findWelcomeOffer(name) {
+      const wanted = normaliseName(name);
+      return welcomeOffers.find((item) => {
+        const casino = normaliseName(item.casino);
+        if (casino === wanted) return true;
+        return wanted.length > 5 && casino.length > 5 && (wanted.includes(casino) || casino.includes(wanted));
+      }) || null;
+    }
+
+    function parseDollarCap(text) {
+      const match = String(text || '').match(/\$\s*([\d,]+(?:\.\d+)?)/);
+      return match ? Number(match[1].replace(/,/g, '')) : null;
+    }
+
+    function parsePercent(text) {
+      const match = String(text || '').match(/(\d+(?:\.\d+)?)\s*%/);
+      return match ? Number(match[1]) : null;
+    }
+
+    function parseWagerMultiple(text) {
+      const match = String(text || '').match(/(\d+(?:\.\d+)?)\s*x/i);
+      return match ? Number(match[1]) : null;
+    }
+
+    function bonusTermsForOffer(item) {
+      if (!item) return null;
+      if (item.calculator && Number(item.calculator.bonusPercent)) {
+        return {
+          bonusPercent: Number(item.calculator.bonusPercent),
+          bonusCap: Number(item.calculator.bonusCap) || null,
+          wagerMultiple: Number(item.calculator.wagerMultiple) || 30,
+          wagerBase: item.calculator.wagerBase || 'bonus',
+          fallback: !Number(item.calculator.wagerMultiple)
+        };
+      }
+      const bonusPercent = parsePercent(item.offer);
+      if (!bonusPercent) return null;
+      const parsedMultiple = parseWagerMultiple(item.wagering);
+      return {
+        bonusPercent,
+        bonusCap: parseDollarCap(item.offer),
+        wagerMultiple: parsedMultiple || 30,
+        wagerBase: 'bonus',
+        fallback: !parsedMultiple
+      };
+    }
+
+    function bonusAssistedWagerFor(casino, wager, deposit) {
+      const offer = findWelcomeOffer(casino.name);
+      const terms = bonusTermsForOffer(offer);
+      if (!offer || !terms || !deposit) return null;
+      const rawBonus = deposit * (terms.bonusPercent / 100);
+      const bonusAmount = Math.max(0, Math.min(rawBonus, terms.bonusCap || rawBonus));
+      if (!bonusAmount) return null;
+      const wagerBaseAmount = terms.wagerBase === 'deposit_bonus' ? deposit + bonusAmount : bonusAmount;
+      const requiredWager = Math.round(wagerBaseAmount * terms.wagerMultiple);
+      const modeledWager = Math.max(wager, requiredWager);
+      return { offer, terms, bonusAmount, requiredWager, modeledWager };
+    }
+
     function applyWagerEstimate() {
       const deposit = parseFloat(document.getElementById('depositInput').value) || 0;
       const minutes = parseFloat(document.getElementById('minutesInput').value) || 0;
@@ -413,9 +482,13 @@ h1 {
     function calcAll() {
       const wager = parseFloat(document.getElementById('wagerInput').value) || 0;
       const edge = parseFloat(document.getElementById('edgeInput').value) || 0.03;
+      const deposit = parseFloat(document.getElementById('depositInput').value) || 0;
+      const includeBonusWagering = document.getElementById('includeBonusWagering').checked;
       const results = casinos.map(c => {
-        const earn = c.effective_rate !== null ? wager * edge * c.effective_rate : null;
-        return { ...c, earn };
+        const bonusEstimate = includeBonusWagering ? bonusAssistedWagerFor(c, wager, deposit) : null;
+        const modeledWager = bonusEstimate ? bonusEstimate.modeledWager : wager;
+        const earn = c.effective_rate !== null ? modeledWager * edge * c.effective_rate : null;
+        return { ...c, earn, modeledWager, bonusEstimate };
       });
 
       // Find best
@@ -425,7 +498,11 @@ h1 {
         const isBest = best && c.name === best.name;
         const earnStr = c.earn !== null ? fmt(c.earn) : '—';
         const isZeroEdge = c.rakeback_form === 'zero_edge';
-        const valueLabel = isZeroEdge ? 'Estimated avoided house-edge loss on eligible 100% RTP games' : `${pct(c.effective_rate)} of estimated house-edge loss`;
+        const baseValueLabel = isZeroEdge ? 'Estimated avoided house-edge loss on eligible 100% RTP games' : `${pct(c.effective_rate)} of estimated house-edge loss`;
+        const bonusLabel = c.bonusEstimate
+          ? `Bonus-assisted wager: ${fmt(c.modeledWager)} (${c.bonusEstimate.terms.fallback ? '30x fallback' : `${c.bonusEstimate.terms.wagerMultiple}x verified`})`
+          : '';
+        const valueLabel = bonusLabel ? `${baseValueLabel}<br>${bonusLabel}` : baseValueLabel;
         const cardTag = c.affiliate_url ? 'a' : 'div';
         const href = c.affiliate_url ? ` href="${c.affiliate_url}" target="_blank" rel="sponsored nofollow noopener"` : '';
         return `<${cardTag} class="result-chip${isBest ? ' best' : ''}"${href} style="text-decoration:none;display:block;${c.affiliate_url ? 'cursor:pointer;' : ''}">
@@ -439,10 +516,15 @@ h1 {
 
     async function init() {
       try {
-        const response = await fetch('/data/operators.json');
+        const [response, offersResponse] = await Promise.all([
+          fetch('/data/operators.json'),
+          fetch('/data/welcome-offers.json').catch(() => null)
+        ]);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
+        const offersData = offersResponse && offersResponse.ok ? await offersResponse.json() : { items: [] };
         casinos = data.operators.map((operator, index) => ({ ...operator, color: palette[index % palette.length] }));
+        welcomeOffers = offersData.items || [];
         renderTable();
         renderNotes();
         applyWagerEstimate();
