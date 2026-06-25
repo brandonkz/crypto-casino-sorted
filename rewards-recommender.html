@@ -389,6 +389,13 @@
       text-decoration: none;
     }
     .reward-link:hover { border-color: rgba(102, 240, 111, 0.78); color: var(--lime); }
+    .reward-link.affiliate {
+      border-color: rgba(255, 157, 0, 0.5);
+      background: rgba(255, 106, 0, 0.16);
+      color: var(--orange-2);
+      margin-right: 7px;
+    }
+    .reward-link.affiliate:hover { border-color: var(--orange-2); color: #fff; }
     .reward-link.disabled {
       border-color: rgba(255, 255, 255, 0.12);
       background: rgba(255, 255, 255, 0.05);
@@ -557,6 +564,7 @@
       <a href="/rewards-recommender.html" class="active t-nav-primary">Rewards</a>
       <a href="/rakeback-comparison.html">Rakeback</a>
       <a href="/bonus-calculator.html">Bonus Calc</a>
+      <a href="/casino-reward-sources.html">Sources</a>
       <a href="/blog/">Guides</a>
     </div>
   </nav>
@@ -572,7 +580,7 @@
         <div class="metric-row"><span>Operators</span><span id="operatorCount">-</span></div>
         <div class="metric-row"><span>Scored factors</span><span>Reward / trust / friction / depth</span></div>
         <div class="metric-row"><span>Best use</span><span>Rakeback, VIP switch, low-friction play</span></div>
-        <div class="metric-row"><span>Source quality</span><span>XTP exact; competitors directional</span></div>
+        <div class="metric-row"><span>Ranking policy</span><span>Affiliate status is not a scoring input</span></div>
       </aside>
     </section>
 
@@ -659,7 +667,7 @@
             <span class="t-badge t-badge-amber">Directional</span>
           </div>
           <div class="panel-body">
-            <p class="method"><strong>Reward estimate</strong> = monthly wager x selected game edge x normalised effective rate. The rank then blends estimated reward, formula transparency, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Competitor data should be re-verified before publication or affiliate claims.</p>
+            <p class="method"><strong>Reward estimate</strong> = monthly wager x selected game edge x normalised effective rate. The rank then blends estimated reward, formula transparency, source-verification status, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
           </div>
         </section>
       </div>
@@ -719,6 +727,8 @@
         const tokenPenalty = inputs.avoidTokens && (op.native_token || /airdrop/i.test(op.token_name || '')) ? 9 : 0;
         const opacityPenalty = inputs.avoidOpaque && !op.published_formula ? 9 : 0;
         const tierRequirementPenalty = inputs.needsTierMatch && !op.tier_match ? 18 : 0;
+        const hasVerifiedSource = ['verified', 'manual_verified'].includes(op.source_status);
+        const sourcePenalty = hasVerifiedSource ? 0 : 12;
         const betaPenalty = /beta/i.test(op.licence || '') ? 8 : 0;
         const conservativePenalty = inputs.risk === 'conservative'
           ? ((100 - op.trust) * 0.18) + ((100 - op.transparency) * 0.12) + tokenPenalty + betaPenalty
@@ -735,7 +745,7 @@
           tierMatch * (weights.tierMatch / 100) +
           op.gamification * (weights.gamification / 100);
 
-        const score = clamp(weighted + bandFit - tokenPenalty - opacityPenalty - tierRequirementPenalty - conservativePenalty);
+        const score = clamp(weighted + bandFit - tokenPenalty - opacityPenalty - tierRequirementPenalty - sourcePenalty - conservativePenalty);
         return { ...op, rewardScore: reward, totalScore: score };
       }).sort((a, b) => b.totalScore - a.totalScore);
     }
@@ -745,6 +755,7 @@
       tags.push(`<span class="tag ${op.published_formula ? 'green' : 'amber'}">${op.published_formula ? 'Formula public' : 'Formula undisclosed'}</span>`);
       tags.push(`<span class="tag ${op.tier_match ? 'green' : ''}">${op.tier_match ? 'Tier match' : 'No tier match'}</span>`);
       tags.push(`<span class="tag ${op.native_token ? 'amber' : 'green'}">${op.native_token ? 'Token-linked' : 'Cash-first'}</span>`);
+      tags.push(`<span class="tag ${['verified', 'manual_verified'].includes(op.source_status) ? 'green' : 'amber'}">${op.source_status === 'manual_verified' ? 'Manual source' : op.source_status === 'verified' ? 'Source verified' : 'Source review'}</span>`);
       tags.push(`<span class="tag">${op.confidence}</span>`);
       if (/beta/i.test(op.licence || '')) tags.push('<span class="tag red">Beta risk</span>');
       return tags.join('');
@@ -763,6 +774,9 @@
     }
 
     function rateLabel(op) {
+      if (op.rakeback_form === 'zero_edge') {
+        return '100% RTP on eligible games';
+      }
       if (op.rate_min && op.rate_max && op.rate_min !== op.rate_max) {
         return `${Math.round(op.rate_min * 100)}-${Math.round(op.rate_max * 100)}% ${op.rakeback_form}`;
       }
@@ -777,6 +791,9 @@
 
     function offerSubtext(op, inputs) {
       const expectedLoss = inputs.wager * inputs.edge;
+      if (op.rakeback_form === 'zero_edge') {
+        return `At ${fmtMoney(inputs.wager)} wagered and ${(inputs.edge * 100).toFixed(1)}% game edge, the modeled value is avoided house-edge loss on eligible zero-edge games, not a cash rebate.`;
+      }
       return `At ${fmtMoney(inputs.wager)} wagered and ${(inputs.edge * 100).toFixed(1)}% game edge, estimated house-edge loss is ${fmtMoney(expectedLoss)}. We apply a ${Math.round((op.effective_rate || 0) * 1000) / 10}% normalised giveback rate.`;
     }
 
@@ -811,11 +828,9 @@
     }
 
     function rewardLink(op) {
-      const label = op.reward_page_label || 'Official Rewards Page';
-      if (!op.reward_page_url) {
-        return `<span class="reward-link disabled">${label}</span>`;
-      }
-      return `<a class="reward-link" href="${op.reward_page_url}" target="_blank" rel="nofollow noopener">${label} -></a>`;
+      return op.affiliate_url
+        ? `<a class="reward-link affiliate" href="${op.affiliate_url}" target="_blank" rel="sponsored nofollow noopener">Join ${op.name} →</a>`
+        : '<span class="reward-link disabled">Affiliate link needed</span>';
     }
 
     function render() {

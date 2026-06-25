@@ -1,11 +1,11 @@
 {
   "_meta": {
     "purpose": "Operator + tier dataset for a neutral crypto-casino comparison engine. Input: user wager band. Output: ranked recommendations.",
-    "as_of": "2026-06",
+    "as_of": "2026-06-25",
     "critical_notes": [
       "Rakeback headline rates are not comparable like-for-like. Normalise to effective cash value before scoring.",
       "Where a competitor does not publish tier thresholds, use null/undisclosed and score transparency accordingly.",
-      "Only XTP figures are exact. Competitor figures are directional and change frequently."
+      "Some figures are verified from source documents or official pages; unpublished formulas remain directional and should be labelled as such."
     ]
   },
   "operators": [
@@ -14,9 +14,12 @@
       "name": "XTP",
       "type": "licensed_operator",
       "licence": "Licensed",
-      "confidence": "handbook",
-      "positioning": "Transparent, cash-first loyalty; everyone is valued from the $25 regular to the whale.",
-      "best_for": ["low", "mid"],
+      "confidence": "internal handbook",
+      "positioning": "Cash-first loyalty program with low entry friction and tier-transfer mechanics.",
+      "best_for": [
+        "low",
+        "mid"
+      ],
       "native_token": false,
       "tier_match": true,
       "tier_match_terms": "Tier Transfer maps proof of external status to an XTP tier plus sized reload.",
@@ -30,15 +33,16 @@
       "settlement": "Weekly from Bronze-Gold; daily option from Platinum; daily from Diamond.",
       "reward_page_url": null,
       "reward_page_label": "XTP rewards page coming soon",
-      "offer_summary": "5-15% cash rakeback on house edge, plus Silver weekly coin cashback, Gold monthly cash cashback, and first 30 days earning one tier above your own.",
+      "affiliate_url": "https://xtp.com/signup?utm_campaign=Durinsbane_New&utm_source=p2p_affiliate&utm_medium=referral",
+      "offer_summary": "5-15% cash rakeback on house edge, plus Silver weekly coin cashback, Gold monthly cash cashback, and first 30 days earning one tier above your own. Treat as internally sourced until a public rewards page is live.",
       "reset_behaviour": "Lifetime weighted XP never decreases; top two tiers need trailing activity to hold.",
       "vip_host_entry": "Host chat at Silver; dedicated host at Gold.",
-      "transparency": 95,
-      "friction": 92,
-      "trust": 78,
-      "depth": 78,
-      "gamification": 88,
-      "watch_out": "Newer program; economics should be re-run on real cohort data once live."
+      "transparency": 58,
+      "friction": 84,
+      "trust": 66,
+      "depth": 72,
+      "gamification": 78,
+      "watch_out": "Public rewards page is not live yet; treat terms as internally sourced and re-run economics on real cohort data once live."
     },
     {
       "id": "stake",
@@ -47,7 +51,9 @@
       "licence": "Curacao and local licensed brands in some markets",
       "confidence": "public",
       "positioning": "Market leader; casino and sportsbook at massive scale.",
-      "best_for": ["high"],
+      "best_for": [
+        "high"
+      ],
       "native_token": false,
       "tier_match": false,
       "entry_threshold": 10000,
@@ -60,6 +66,7 @@
       "settlement": "Weekly and monthly rewards tied to recent volume.",
       "reward_page_url": "https://stake.com/vip-club",
       "reward_page_label": "Stake VIP Club",
+      "affiliate_url": "https://stake.com/?c=OYTAREab",
       "offer_summary": "Around 5% rakeback from Bronze, with weekly and monthly bonuses at higher tiers. Higher-tier rates and thresholds are not fully published.",
       "reset_behaviour": "Tiers held; upper-tier reloads tied to recent activity.",
       "vip_host_entry": "From Platinum IV.",
@@ -77,7 +84,9 @@
       "licence": "Curacao",
       "confidence": "public",
       "positioning": "GambleFi: casino, sportsbook and leveraged crypto futures.",
-      "best_for": ["high"],
+      "best_for": [
+        "high"
+      ],
       "native_token": true,
       "token_name": "RLB",
       "tier_match": false,
@@ -91,6 +100,7 @@
       "settlement": "Ongoing multiplier-based rewards.",
       "reward_page_url": "https://rollbit.com/rewards",
       "reward_page_label": "Rollbit Rewards",
+      "affiliate_url": "https://rollbit.com/referral/brandonkz",
       "offer_summary": "Multiplier-based rakeback linked to RLB/Rollbot mechanics, with token/NFT upside but less clean cash value.",
       "reset_behaviour": "Rakeback multipliers tied to RLB and Rollbot holdings.",
       "vip_host_entry": "Holder/community driven.",
@@ -108,7 +118,10 @@
       "licence": "Curacao",
       "confidence": "public",
       "positioning": "Established crypto casino and sportsbook with a deep no-reset ladder.",
-      "best_for": ["mid", "high"],
+      "best_for": [
+        "mid",
+        "high"
+      ],
       "native_token": false,
       "tier_match": false,
       "entry_threshold": null,
@@ -121,6 +134,7 @@
       "settlement": "Instant, daily, weekly, monthly, plus Vault claims.",
       "reward_page_url": "https://roobet.com/vip",
       "reward_page_label": "Roobet VIP",
+      "affiliate_url": "https://roobet.com/?ref=brandonkz",
       "offer_summary": "Instant rakeback every 30 minutes, daily/weekly/monthly reward cadence, and Vault claims. Exact rates are not publicly disclosed.",
       "reset_behaviour": "Lifetime-based, never resets.",
       "vip_host_entry": "Invite-only VIP club; personal manager at upper tiers.",
@@ -129,7 +143,11 @@
       "trust": 74,
       "depth": 95,
       "gamification": 88,
-      "watch_out": "Some long-term high-rollers report benefits being trimmed; thresholds not published."
+      "watch_out": "Some long-term high-rollers report benefits being trimmed; thresholds not published.",
+      "source_url": "https://roobet.com/vip",
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "905d829180cace85",
+      "source_status": "verified"
     },
     {
       "id": "bcgame",
@@ -138,7 +156,9 @@
       "licence": "Curacao",
       "confidence": "public",
       "positioning": "Crypto-native, 100+ coins, deep XP ladder.",
-      "best_for": ["mid"],
+      "best_for": [
+        "mid"
+      ],
       "native_token": true,
       "token_name": "BCD",
       "tier_match": false,
@@ -146,12 +166,13 @@
       "published_formula": false,
       "rakeback_form": "token",
       "rakeback_basis": "house_edge",
-      "rate_min": 0.20,
+      "rate_min": 0.2,
       "rate_max": 0.24,
       "effective_rate": 0.115,
       "settlement": "Ongoing by level, paid in BCD.",
       "reward_page_url": "https://bc.game/vip",
       "reward_page_label": "BC.Game VIP",
+      "affiliate_url": "https://bc.game/i-4bau8curc-n/",
       "offer_summary": "Advertised 20-24% rakeback paid in BCD token, plus weekly/monthly token bonuses. Discount versus clean cash for comparison.",
       "reset_behaviour": "XP-based levels, no reset.",
       "vip_host_entry": "Upper tiers; personal manager.",
@@ -160,7 +181,11 @@
       "trust": 58,
       "depth": 91,
       "gamification": 94,
-      "watch_out": "Headline rate is high but paid in BCD; discount versus pure cash and account for withdrawal complaints."
+      "watch_out": "Headline rate is high but paid in BCD; discount versus pure cash and account for withdrawal complaints.",
+      "source_url": "https://bc.game/vip",
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "7c92257b063d0cfb",
+      "source_status": "verified"
     },
     {
       "id": "thrill",
@@ -169,7 +194,10 @@
       "licence": "Anjouan",
       "confidence": "directional",
       "positioning": "Rakeback-first challenger with the highest advertised rates.",
-      "best_for": ["mid", "high"],
+      "best_for": [
+        "mid",
+        "high"
+      ],
       "native_token": false,
       "tier_match": true,
       "tier_match_terms": "Import VIP status with proof of prior status.",
@@ -178,11 +206,12 @@
       "rakeback_form": "cash",
       "rakeback_basis": "undisclosed",
       "rate_min": null,
-      "rate_max": 0.70,
+      "rate_max": 0.7,
       "effective_rate": 0.105,
       "settlement": "Weekly.",
       "reward_page_url": "https://thrill.com/vip",
       "reward_page_label": "Thrill VIP",
+      "affiliate_url": "https://thrillcasino.io/tppmkpu0r",
       "offer_summary": "Advertises up to 70% rakeback and up to 10% weekly lossback, but the rakeback formula is opaque and should not be taken at face value.",
       "reset_behaviour": "XP-based ladder.",
       "vip_host_entry": "From Ignite tier.",
@@ -191,7 +220,11 @@
       "trust": 48,
       "depth": 68,
       "gamification": 78,
-      "watch_out": "Headline 70% is not normalised; formula is opaque and responsible-gambling tooling is reported thin."
+      "watch_out": "Headline 70% is not normalised; formula is opaque and responsible-gambling tooling is reported thin.",
+      "source_url": "https://thrill.com/vip",
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "01b534d2ef90863a",
+      "source_status": "verified"
     },
     {
       "id": "yeet",
@@ -200,7 +233,10 @@
       "licence": "Anjouan",
       "confidence": "directional",
       "positioning": "VC-backed challenger with a deep, low-friction ladder.",
-      "best_for": ["low", "mid"],
+      "best_for": [
+        "low",
+        "mid"
+      ],
       "native_token": false,
       "token_name": "Airdrop points hinted",
       "tier_match": true,
@@ -215,6 +251,7 @@
       "settlement": "Instant from tier one.",
       "reward_page_url": "https://yeet.com/rewards",
       "reward_page_label": "Yeet Rewards",
+      "affiliate_url": "https://yeet.com/register?aff=YeetCasino",
       "offer_summary": "Instant rakeback from the first tier, $100 wagered entry, weekly/monthly bonuses, and VIP Tier Match for players switching from rivals.",
       "reset_behaviour": "Tiered, low entry.",
       "vip_host_entry": "From Diamond; concierge at top tiers.",
@@ -223,7 +260,54 @@
       "trust": 62,
       "depth": 82,
       "gamification": 86,
-      "watch_out": "Token or airdrop value is unproven; very low entry dilutes status signal."
+      "watch_out": "Token or airdrop value is unproven; very low entry dilutes status signal.",
+      "source_url": "https://yeet.com/rewards",
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "2b0c646cbd8cd046",
+      "source_status": "verified"
+    },
+    {
+      "id": "duel",
+      "name": "Duel",
+      "type": "challenger",
+      "licence": "Anjouan",
+      "confidence": "official manual",
+      "positioning": "Zero-edge / 100% RTP challenger for selected in-house games.",
+      "best_for": [
+        "low",
+        "mid",
+        "high"
+      ],
+      "native_token": false,
+      "tier_match": false,
+      "entry_threshold": 0,
+      "published_formula": true,
+      "rakeback_form": "zero_edge",
+      "rakeback_basis": "selected_originals",
+      "rate_min": 1,
+      "rate_max": 1,
+      "effective_rate": 1,
+      "settlement": "Value comes from zero house edge / 100% RTP on eligible Duel games rather than a traditional rebate.",
+      "reward_page_url": "https://duel.com/about/zero-edge",
+      "reward_page_label": "Duel Zero Edge",
+      "affiliate_url": null,
+      "offer_summary": "Duel advertises zero house edge on selected games, effectively 100% RTP where eligible. This is not normal rakeback and does not apply to every casino game.",
+      "reset_behaviour": "No traditional tier reset; value depends on playing eligible zero-edge games.",
+      "vip_host_entry": "Not publicly specified.",
+      "transparency": 72,
+      "friction": 88,
+      "trust": 54,
+      "depth": 42,
+      "gamification": 70,
+      "watch_out": "100% RTP applies to selected Duel games, not necessarily slots, live casino, sportsbook, or third-party content. Verify game eligibility before treating it as equivalent to rakeback.",
+      "source_url": "https://duel.com/about/zero-edge",
+      "source_terms": [
+        "Zero house edge",
+        "When the house edge is zero"
+      ],
+      "source_monitor": "manual",
+      "source_last_checked": "2026-06-25",
+      "source_status": "manual_verified"
     },
     {
       "id": "dicey",
@@ -232,7 +316,9 @@
       "licence": "Beta",
       "confidence": "directional",
       "positioning": "Magic Eden-backed beta with tight reward loops.",
-      "best_for": ["mid"],
+      "best_for": [
+        "mid"
+      ],
       "native_token": false,
       "tier_match": true,
       "tier_match_terms": "VIP Transfer.",
@@ -246,6 +332,7 @@
       "settlement": "Claimable every 15 minutes.",
       "reward_page_url": "https://dicey.com/casino",
       "reward_page_label": "Dicey official site",
+      "affiliate_url": null,
       "offer_summary": "Rakeback on house edge claimable every 15 minutes, daily bonus, and +15% Rakeboost for 60 minutes after claiming.",
       "reset_behaviour": "Activity-points based.",
       "vip_host_entry": "High-volume accounts; bespoke offers.",
@@ -254,7 +341,54 @@
       "trust": 46,
       "depth": 60,
       "gamification": 92,
-      "watch_out": "Still in beta; responsible-gambling tooling minimal and unproven at scale."
+      "watch_out": "Still in beta; responsible-gambling tooling minimal and unproven at scale.",
+      "source_url": "https://dicey.com/casino",
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "c53da74579f582ec",
+      "source_status": "verified"
+    },
+    {
+      "id": "21com",
+      "name": "21.com",
+      "type": "challenger",
+      "licence": "Anjouan",
+      "confidence": "official",
+      "positioning": "Large four-deposit welcome package backed by an instant-rakeback VIP club.",
+      "best_for": [
+        "low",
+        "mid"
+      ],
+      "native_token": false,
+      "tier_match": false,
+      "entry_threshold": 5,
+      "published_formula": false,
+      "rakeback_form": "cash",
+      "rakeback_basis": "undisclosed",
+      "rate_min": 0.05,
+      "rate_max": 0.25,
+      "effective_rate": 0.08,
+      "settlement": "Instant rakeback, with weekly and monthly rewards shown in the Rewards Hub.",
+      "reward_page_url": "https://21.com/vip",
+      "reward_page_label": "21 Elite Club",
+      "affiliate_url": "https://prod.trk21.com/click?offer=FFHCFKXMZW2H&uid=fN3MmG6q",
+      "offer_summary": "Up to $7,000 in matched bonuses plus 130 free spins across the first four deposits, alongside an Elite Club advertising instant rakeback and VIP-host support.",
+      "reset_behaviour": "VIP points and downgrade rules are not clearly published on the public page.",
+      "vip_host_entry": "VIP Host advertised for Elite Club members; entry level not disclosed.",
+      "transparency": 62,
+      "friction": 70,
+      "trust": 66,
+      "depth": 82,
+      "gamification": 80,
+      "watch_out": "The welcome bonus carries 35x bonus wagering within 7 days and a 10x maximum-return cap. South Africa, the US, UK and several other markets are blocked.",
+      "source_url": "https://21.com/vip",
+      "source_terms": [
+        "Elite Club",
+        "Instant Rakeback",
+        "VIP Host"
+      ],
+      "source_last_checked": "2026-06-25",
+      "source_terms_hash": "0e7130c33eacb008",
+      "source_status": "verified"
     }
   ]
 }

@@ -1,0 +1,64 @@
+name: Verify reward offer sources
+
+on:
+  schedule:
+    - cron: '15 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  verify-offers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify offer source pages
+        id: verify
+        continue-on-error: true
+        run: node verify-offers.js --report=offer-verification-report.md
+
+      - name: Open or update review issue
+        if: steps.verify.outcome != 'success'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('offer-verification-report.md', 'utf8');
+            const title = '[Offer verification] Reward source review needed';
+            const { owner, repo } = context.repo;
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              state: 'open',
+              per_page: 100
+            });
+            const existing = issues.find((issue) => issue.title === title && !issue.pull_request);
+            const body = `${report}\n\nWorkflow run: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: existing.number,
+                body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title,
+                body
+              });
+            }
+
+      - name: Fail workflow when review is needed
+        if: steps.verify.outcome != 'success'
+        run: exit 1

@@ -5,7 +5,9 @@
   "main": "fetch-wallet-data.js",
   "scripts": {
     "fetch": "node fetch-wallet-data.js",
-    "update": "node fetch-wallet-data.js && git add gambling-data.json && git commit -m 'Update wallet data' && git push"
+    "update": "node fetch-wallet-data.js && git add gambling-data.json && git commit -m 'Update wallet data' && git push",
+    "verify:offers": "node verify-offers.js",
+    "verify:offers:update": "node verify-offers.js --update-baseline"
   },
   "dependencies": {
     "agent-base": "^8.0.0",
