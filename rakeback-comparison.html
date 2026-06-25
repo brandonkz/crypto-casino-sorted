@@ -275,12 +275,25 @@ h1 {
         <span class="calc-label">Monthly wager ($)</span>
         <input class="calc-input" type="number" id="wagerInput" value="1000" min="0" max="10000000" oninput="calcAll()">
         <span class="calc-label">Average game edge</span>
-        <select class="calc-input" id="edgeInput" onchange="calcAll()">
+        <select class="calc-input" id="edgeInput" onchange="applyWagerEstimate()">
           <option value="0.01">1% — low-edge games</option>
           <option value="0.03" selected>3% — mixed play</option>
           <option value="0.05">5% — higher-edge games</option>
         </select>
       </div>
+      <div class="calc-row">
+        <span class="calc-label">Or estimate from monthly deposit</span>
+        <input class="calc-input" type="number" id="depositInput" value="500" min="10" max="1000000" step="10" oninput="applyWagerEstimate()">
+        <span class="calc-label">Minutes/day</span>
+        <input class="calc-input" type="number" id="minutesInput" value="30" min="1" max="1440" step="5" oninput="applyWagerEstimate()">
+        <span class="calc-label">Pace</span>
+        <select class="calc-input" id="paceInput" onchange="applyWagerEstimate()">
+          <option value="2">Slow · 2 bets/min</option>
+          <option value="6" selected>Mixed · 6 bets/min</option>
+          <option value="10">Fast · 10 bets/min</option>
+        </select>
+      </div>
+      <p class="subtitle" id="wagerEstimateNote" style="font-size:0.72rem;margin:0 0 14px;">Estimated monthly wager: $16.7k/mo. Uses the lower of time-based volume and deposit ÷ game edge.</p>
       <div class="calc-results" id="calcResults"></div>
     </div>
 
@@ -377,6 +390,26 @@ h1 {
       return '$' + n.toFixed(2);
     }
 
+    function estimateWagerFromDeposit(deposit, minutesPerDay, edge, betsPerMinute) {
+      if (!deposit || !minutesPerDay || !edge || !betsPerMinute) return 100;
+      const daysPerMonth = 30;
+      const assumedBetSize = Math.max(0.25, deposit * 0.01);
+      const timeBasedWager = assumedBetSize * betsPerMinute * minutesPerDay * daysPerMonth;
+      const lossBudgetCap = deposit / edge;
+      return Math.max(100, Math.min(1000000, Math.round(Math.min(timeBasedWager, lossBudgetCap) / 100) * 100));
+    }
+
+    function applyWagerEstimate() {
+      const deposit = parseFloat(document.getElementById('depositInput').value) || 0;
+      const minutes = parseFloat(document.getElementById('minutesInput').value) || 0;
+      const edge = parseFloat(document.getElementById('edgeInput').value) || 0.03;
+      const pace = parseFloat(document.getElementById('paceInput').value) || 6;
+      const estimate = estimateWagerFromDeposit(deposit, minutes, edge, pace);
+      document.getElementById('wagerInput').value = estimate;
+      document.getElementById('wagerEstimateNote').textContent = `Estimated monthly wager: ${fmt(estimate)}/mo. Uses the lower of time-based volume and deposit ÷ game edge.`;
+      calcAll();
+    }
+
     function calcAll() {
       const wager = parseFloat(document.getElementById('wagerInput').value) || 0;
       const edge = parseFloat(document.getElementById('edgeInput').value) || 0.03;
@@ -412,7 +445,7 @@ h1 {
         casinos = data.operators.map((operator, index) => ({ ...operator, color: palette[index % palette.length] }));
         renderTable();
         renderNotes();
-        calcAll();
+        applyWagerEstimate();
       } catch (error) {
         document.getElementById('calcResults').innerHTML = '<div class="note-card">Could not load the shared rewards dataset. Please refresh the page.</div>';
         console.error('Unable to load operator comparison data:', error);

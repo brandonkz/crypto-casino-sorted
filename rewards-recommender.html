@@ -600,6 +600,22 @@
           </div>
 
           <div class="control-group">
+            <div class="label-line"><label for="monthlyDeposit">Estimate Wager From Deposits</label><span class="label-value" id="estimateValue">$12,500/mo</span></div>
+            <div class="input-row">
+              <input id="monthlyDeposit" class="number-input" type="number" min="10" max="1000000" step="10" value="500" aria-label="Monthly deposit budget">
+              <input id="minutesPerDay" class="number-input" type="number" min="1" max="1440" step="5" value="30" aria-label="Minutes played per day">
+            </div>
+            <div class="input-row">
+              <select id="playPace">
+                <option value="2">Slow play · 2 bets/min</option>
+                <option value="6" selected>Mixed casino · 6 bets/min</option>
+                <option value="10">Fast originals/slots · 10 bets/min</option>
+              </select>
+            </div>
+            <p class="offer-sub">Estimator uses the lower of time-based volume and deposit ÷ game edge, so small deposits do not create unrealistic wager totals.</p>
+          </div>
+
+          <div class="control-group">
             <div class="label-line"><label for="edge">Typical Game Mix</label><span class="label-value" id="edgeValue">4.0% edge</span></div>
             <select id="edge">
               <option value="0.012">Sports / low-edge table mix</option>
@@ -690,6 +706,15 @@
     };
 
     const clamp = (value, min = 0, max = 100) => Math.max(min, Math.min(max, value));
+
+    function estimateWagerFromDeposit(deposit, minutesPerDay, edge, betsPerMinute) {
+      if (!deposit || !minutesPerDay || !edge || !betsPerMinute) return 100;
+      const daysPerMonth = 30;
+      const assumedBetSize = Math.max(0.25, deposit * 0.01);
+      const timeBasedWager = assumedBetSize * betsPerMinute * minutesPerDay * daysPerMonth;
+      const lossBudgetCap = deposit / edge;
+      return clamp(Math.round(Math.min(timeBasedWager, lossBudgetCap) / 100) * 100, 100, 1000000);
+    }
 
     const weightsByPriority = {
       balanced: { reward: 24, trust: 18, transparency: 18, friction: 16, depth: 12, tierMatch: 6, gamification: 6 },
@@ -914,6 +939,10 @@
       const wagerValue = document.getElementById('wagerValue');
       const edge = document.getElementById('edge');
       const edgeValue = document.getElementById('edgeValue');
+      const monthlyDeposit = document.getElementById('monthlyDeposit');
+      const minutesPerDay = document.getElementById('minutesPerDay');
+      const playPace = document.getElementById('playPace');
+      const estimateValue = document.getElementById('estimateValue');
 
       function syncWager(value, source) {
         const n = clamp(Number(value) || 0, 100, 1000000);
@@ -923,12 +952,24 @@
         render();
       }
 
+      function syncEstimate() {
+        const estimated = estimateWagerFromDeposit(
+          Number(monthlyDeposit.value) || 0,
+          Number(minutesPerDay.value) || 0,
+          Number(edge.value) || 0.04,
+          Number(playPace.value) || 6
+        );
+        estimateValue.textContent = `${fmtMoney(estimated)}/mo`;
+        syncWager(estimated, 'estimate');
+      }
+
       wager.addEventListener('input', (event) => syncWager(event.target.value, 'range'));
       wagerNumber.addEventListener('input', (event) => syncWager(event.target.value, 'number'));
       edge.addEventListener('change', () => {
         edgeValue.textContent = (Number(edge.value) * 100).toFixed(1) + '% edge';
-        render();
+        syncEstimate();
       });
+      [monthlyDeposit, minutesPerDay, playPace].forEach((input) => input.addEventListener('input', syncEstimate));
 
       document.querySelectorAll('.segmented').forEach((group) => {
         group.addEventListener('click', (event) => {
@@ -944,6 +985,8 @@
       ['needsTierMatch', 'avoidTokens', 'avoidOpaque'].forEach((id) => {
         document.getElementById(id).addEventListener('change', render);
       });
+
+      syncEstimate();
     }
 
     async function init() {
