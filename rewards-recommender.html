@@ -389,6 +389,13 @@
       text-decoration: none;
     }
     .reward-link:hover { border-color: rgba(102, 240, 111, 0.78); color: var(--lime); }
+    .reward-link.affiliate {
+      border-color: rgba(255, 157, 0, 0.5);
+      background: rgba(255, 106, 0, 0.16);
+      color: var(--orange-2);
+      margin-right: 7px;
+    }
+    .reward-link.affiliate:hover { border-color: var(--orange-2); color: #fff; }
     .reward-link.disabled {
       border-color: rgba(255, 255, 255, 0.12);
       background: rgba(255, 255, 255, 0.05);
@@ -812,10 +819,13 @@
 
     function rewardLink(op) {
       const label = op.reward_page_label || 'Official Rewards Page';
-      if (!op.reward_page_url) {
-        return `<span class="reward-link disabled">${label}</span>`;
-      }
-      return `<a class="reward-link" href="${op.reward_page_url}" target="_blank" rel="nofollow noopener">${label} -></a>`;
+      const affiliate = op.affiliate_url
+        ? `<a class="reward-link affiliate" href="${op.affiliate_url}" target="_blank" rel="sponsored nofollow noopener">Join ${op.name} →</a>`
+        : '<span class="reward-link disabled">Affiliate link needed</span>';
+      const rewards = op.reward_page_url
+        ? `<a class="reward-link" href="${op.reward_page_url}" target="_blank" rel="nofollow noopener">${label} →</a>`
+        : `<span class="reward-link disabled">${label}</span>`;
+      return `${affiliate}${rewards}`;
     }
 
     function render() {

@@ -178,6 +178,9 @@ h1 {
 }
 
 .reward-page-link:hover { border-color: var(--t-amber); color: var(--t-text); }
+.reward-page-link.join { border-color: var(--t-green-b); background: var(--t-green-bg); color: var(--t-green); }
+.reward-page-link.missing { border-color: var(--t-border); background: var(--t-bg3); color: var(--t-muted); pointer-events: none; }
+.link-stack { display: flex; justify-content: center; flex-wrap: wrap; gap: 5px; }
 
 .rate-high { color: var(--t-green); font-weight: 800; }
 
@@ -341,16 +344,20 @@ h1 {
         const max = c.rate_max === null ? 'Not public' : pct(c.rate_max);
         const structure = `${c.rakeback_form} · ${c.rakeback_basis.replace('_', ' ')}`;
         const access = c.tier_match ? 'Tier match available' : (c.entry_threshold ? `From $${c.entry_threshold} wagered` : 'Terms vary');
-        const link = c.reward_page_url
+        const joinLink = c.affiliate_url
+          ? `<a class="reward-page-link join" href="${c.affiliate_url}" target="_blank" rel="sponsored nofollow noopener">Join</a>`
+          : '<span class="reward-page-link missing">Affiliate needed</span>';
+        const rewardLink = c.reward_page_url
           ? `<a class="reward-page-link" href="${c.reward_page_url}" target="_blank" rel="nofollow noopener">${c.reward_page_label}</a>`
-          : '<span class="pill pill-gray">Coming soon</span>';
+          : '<span class="pill pill-gray">Rewards pending</span>';
+        const links = `<div class="link-stack">${joinLink}${rewardLink}</div>`;
         return `<tr>
           <td><div class="casino-cell"><div class="casino-dot" style="background:${c.color};"></div><div><div class="name">${c.name}</div><div class="tag">${domainFor(c)}</div></div></div></td>
           <td><span class="${rateClass(c.rate_min)}">${pct(c.rate_min)}</span></td>
           <td><span class="${rateClass(c.rate_max)}">${max}</span></td>
           <td><span class="pill pill-blue">${structure}</span></td>
           <td><span class="pill ${c.tier_match ? 'pill-green' : 'pill-yellow'}">${access}</span></td>
-          <td>${link}</td>
+          <td>${links}</td>
         </tr>`;
       }).join('');
     }
@@ -384,12 +391,14 @@ h1 {
       document.getElementById('calcResults').innerHTML = results.map(c => {
         const isBest = best && c.name === best.name;
         const earnStr = c.earn !== null ? fmt(c.earn) : '—';
-        const destination = c.reward_page_url || '/rewards-recommender.html';
-        return `<a class="result-chip${isBest ? ' best' : ''}" href="${destination}" ${c.reward_page_url ? 'target="_blank" rel="nofollow noopener"' : ''} style="text-decoration:none;display:block;cursor:pointer;">
+        const destination = c.affiliate_url || c.reward_page_url || '/rewards-recommender.html';
+        const external = c.affiliate_url || c.reward_page_url;
+        const rel = c.affiliate_url ? 'sponsored nofollow noopener' : 'nofollow noopener';
+        return `<a class="result-chip${isBest ? ' best' : ''}" href="${destination}" ${external ? `target="_blank" rel="${rel}"` : ''} style="text-decoration:none;display:block;cursor:pointer;">
           <div class="casino-name" style="color:${c.color};">${c.name}${isBest ? '<span class="best-badge">BEST</span>' : ''}</div>
           <div class="earn-val" style="${c.earn === null ? 'color:#64748b;font-size:1rem;' : ''}">${earnStr}</div>
           <div class="rate-info">${pct(c.effective_rate)} of estimated house-edge loss</div>
-          <div style="font-size:0.7rem;color:#ff9d00;margin-top:6px;font-weight:800;">${c.reward_page_label} →</div>
+          <div style="font-size:0.7rem;color:#ff9d00;margin-top:6px;font-weight:800;">${c.affiliate_url ? `Join ${c.name}` : 'Affiliate link needed'} →</div>
         </a>`;
       }).join('');
     }

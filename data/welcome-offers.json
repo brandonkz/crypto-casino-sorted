@@ -9,7 +9,8 @@
       "kyc": "Low / no KYC for standard crypto play",
       "geo": "VPN-friendly, but geo blocks still apply",
       "angle": "Biggest mainstream crypto casino brand",
-      "url": "https://stake.com/?c=OYTAREab"
+      "url": "https://stake.com/?c=OYTAREab",
+      "isAffiliate": true
     },
     {
       "casino": "BC.Game",
@@ -19,7 +20,8 @@
       "kyc": "Usually low KYC, larger withdrawals can trigger checks",
       "geo": "VPN-friendly in many markets",
       "angle": "Largest headline welcome package in current tracker",
-      "url": "https://bc.game/i-4bau8curc-n/"
+      "url": "https://bc.game/i-4bau8curc-n/",
+      "isAffiliate": true
     },
     {
       "casino": "Shuffle",
@@ -29,7 +31,8 @@
       "kyc": "No KYC",
       "geo": "VPN-friendly",
       "angle": "Clean UX and instant-withdrawal challenger",
-      "url": "https://shuffle.com?r=cl46Ld1iQb"
+      "url": "https://shuffle.com?r=cl46Ld1iQb",
+      "isAffiliate": true
     },
     {
       "casino": "Rollbit",
@@ -39,7 +42,8 @@
       "kyc": "KYC more common than before",
       "geo": "Geo-restricted in some markets",
       "angle": "High-volume sportsbook + rewards ecosystem",
-      "url": "https://rollbit.com/referral/brandonkz"
+      "url": "https://rollbit.com/referral/brandonkz",
+      "isAffiliate": true
     },
     {
       "casino": "Roobet",
@@ -49,7 +53,8 @@
       "kyc": "KYC required / common",
       "geo": "Stricter geo restrictions than Stake / Shuffle",
       "angle": "Strong brand and polished UX",
-      "url": "https://roobet.com/?ref=brandonkz"
+      "url": "https://roobet.com/?ref=brandonkz",
+      "isAffiliate": true
     },
     {
       "casino": "Duelbits",
@@ -59,7 +64,8 @@
       "kyc": "No KYC",
       "geo": "VPN-friendly",
       "angle": "Best tracked esports + originals angle",
-      "url": "https://duelbits.io/?a=sorted"
+      "url": "https://duelbits.io/?a=sorted",
+      "isAffiliate": true
     },
     {
       "casino": "Yeet",
@@ -69,7 +75,8 @@
       "kyc": "No KYC up to threshold",
       "geo": "VPN-friendly in many markets",
       "angle": "Influencer-backed challenger with VIP match hook",
-      "url": "https://yeet.com/register?aff=YeetCasino"
+      "url": "https://yeet.com/register?aff=YeetCasino",
+      "isAffiliate": true
     },
     {
       "casino": "BitStarz",
@@ -79,7 +86,8 @@
       "kyc": "Verification can be required",
       "geo": "Restricted in some markets",
       "angle": "Best spins package in the current set",
-      "url": "https://bzstarz1.com/bh0uaimdh"
+      "url": "https://bzstarz1.com/bh0uaimdh",
+      "isAffiliate": true
     },
     {
       "casino": "Cloudbet",
@@ -89,7 +97,8 @@
       "kyc": "Low-KYC feel, but verification can still happen",
       "geo": "VPN-friendly in many markets",
       "angle": "Big BTC-denominated offer, sportsbook-first brand",
-      "url": "https://cloudbet.com"
+      "url": "https://cloudbet.com",
+      "isAffiliate": false
     },
     {
       "casino": "TrustDice",
@@ -99,7 +108,8 @@
       "kyc": "No KYC",
       "geo": "VPN-friendly",
       "angle": "Best anonymity / Web3-native pitch",
-      "url": "https://trustdice.win/?ref=u_cryptocasinosorted"
+      "url": "https://trustdice.win/?ref=u_cryptocasinosorted",
+      "isAffiliate": true
     },
     {
       "casino": "Thunderpick",
@@ -109,7 +119,8 @@
       "kyc": "Optional KYC",
       "geo": "VPN-friendly in many markets",
       "angle": "Best esports-led offer for CS2 / Dota / Valorant audiences",
-      "url": "https://thunderpick.io/?ref=cryptocasinosorted"
+      "url": "https://thunderpick.io/?ref=cryptocasinosorted",
+      "isAffiliate": true
     },
     {
       "casino": "21.com",
@@ -120,6 +131,7 @@
       "geo": "South Africa, US, UK and several other markets are blocked",
       "angle": "Largest tracked multi-deposit package, but with substantial rollover and a maximum-return cap",
       "url": "https://21.com/promotions/welcome-offer",
+      "isAffiliate": false,
       "breakdown": [
         "1st deposit: 120% up to $1,000 + 25 free spins",
         "2nd deposit: 100% up to $1,500 + 30 free spins",
