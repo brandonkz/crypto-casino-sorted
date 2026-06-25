@@ -564,6 +564,7 @@
       <a href="/rewards-recommender.html" class="active t-nav-primary">Rewards</a>
       <a href="/rakeback-comparison.html">Rakeback</a>
       <a href="/bonus-calculator.html">Bonus Calc</a>
+      <a href="/casino-reward-sources.html">Sources</a>
       <a href="/blog/">Guides</a>
     </div>
   </nav>
@@ -666,7 +667,7 @@
             <span class="t-badge t-badge-amber">Directional</span>
           </div>
           <div class="panel-body">
-            <p class="method"><strong>Reward estimate</strong> = monthly wager x selected game edge x normalised effective rate. The rank then blends estimated reward, formula transparency, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Competitor data should be re-verified before publication or affiliate claims.</p>
+            <p class="method"><strong>Reward estimate</strong> = monthly wager x selected game edge x normalised effective rate. The rank then blends estimated reward, formula transparency, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
           </div>
         </section>
       </div>
@@ -818,14 +819,9 @@
     }
 
     function rewardLink(op) {
-      const label = op.reward_page_label || 'Official Rewards Page';
-      const affiliate = op.affiliate_url
+      return op.affiliate_url
         ? `<a class="reward-link affiliate" href="${op.affiliate_url}" target="_blank" rel="sponsored nofollow noopener">Join ${op.name} →</a>`
         : '<span class="reward-link disabled">Affiliate link needed</span>';
-      const rewards = op.reward_page_url
-        ? `<a class="reward-link" href="${op.reward_page_url}" target="_blank" rel="nofollow noopener">${label} →</a>`
-        : `<span class="reward-link disabled">${label}</span>`;
-      return `${affiliate}${rewards}`;
     }
 
     function render() {

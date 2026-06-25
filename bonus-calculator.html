@@ -434,9 +434,10 @@
       const breakdown = item.breakdown ? `<br>${item.breakdown.join('<br>')}` : '';
       const context = document.getElementById('offerContext');
       context.style.display = 'block';
-      const linkLabel = item.isAffiliate ? `Claim ${item.casino} offer via our link →` : `Official offer — affiliate link needed →`;
-      const linkRel = item.isAffiliate ? 'sponsored nofollow noopener' : 'nofollow noopener';
-      context.innerHTML = `<strong>${item.casino}: ${item.offer}</strong><br>${item.wagering}<br>${assumedTerms}${breakdown}<br><a href="${item.url}" target="_blank" rel="${linkRel}">${linkLabel}</a>`;
+      const offerLink = item.isAffiliate
+        ? `<a href="${item.url}" target="_blank" rel="sponsored nofollow noopener">Claim ${item.casino} offer via our link →</a>`
+        : `<span style="color:var(--muted);font-weight:700;">Affiliate link needed — official sources are in the <a href="/casino-reward-sources.html">source archive</a>.</span>`;
+      context.innerHTML = `<strong>${item.casino}: ${item.offer}</strong><br>${item.wagering}<br>${assumedTerms}${breakdown}<br>${offerLink}`;
 
       updateRTP();
     }

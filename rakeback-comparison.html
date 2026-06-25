@@ -259,6 +259,7 @@ h1 {
     <a href="/rewards-recommender.html" class="t-nav-primary">Rewards</a>
     <a href="/rakeback-comparison.html" class="active">Rakeback</a>
     <a href="/bonus-calculator.html">Bonus Calc</a>
+    <a href="/casino-reward-sources.html">Sources</a>
     <a href="/blog/">Guides</a>
   </div>
 </nav>
@@ -334,9 +335,11 @@ h1 {
     }
 
     function domainFor(op) {
-      if (!op.reward_page_url) return 'Official page pending';
-      try { return new URL(op.reward_page_url).hostname.replace(/^www\./, ''); }
-      catch { return 'Official rewards page'; }
+      if (op.affiliate_url) {
+        try { return new URL(op.affiliate_url).hostname.replace(/^www\./, ''); }
+        catch { return 'Affiliate link ready'; }
+      }
+      return 'Affiliate link pending';
     }
 
     function renderTable() {
@@ -347,10 +350,7 @@ h1 {
         const joinLink = c.affiliate_url
           ? `<a class="reward-page-link join" href="${c.affiliate_url}" target="_blank" rel="sponsored nofollow noopener">Join</a>`
           : '<span class="reward-page-link missing">Affiliate needed</span>';
-        const rewardLink = c.reward_page_url
-          ? `<a class="reward-page-link" href="${c.reward_page_url}" target="_blank" rel="nofollow noopener">${c.reward_page_label}</a>`
-          : '<span class="pill pill-gray">Rewards pending</span>';
-        const links = `<div class="link-stack">${joinLink}${rewardLink}</div>`;
+        const links = `<div class="link-stack">${joinLink}</div>`;
         return `<tr>
           <td><div class="casino-cell"><div class="casino-dot" style="background:${c.color};"></div><div><div class="name">${c.name}</div><div class="tag">${domainFor(c)}</div></div></div></td>
           <td><span class="${rateClass(c.rate_min)}">${pct(c.rate_min)}</span></td>
@@ -391,15 +391,14 @@ h1 {
       document.getElementById('calcResults').innerHTML = results.map(c => {
         const isBest = best && c.name === best.name;
         const earnStr = c.earn !== null ? fmt(c.earn) : '—';
-        const destination = c.affiliate_url || c.reward_page_url || '/rewards-recommender.html';
-        const external = c.affiliate_url || c.reward_page_url;
-        const rel = c.affiliate_url ? 'sponsored nofollow noopener' : 'nofollow noopener';
-        return `<a class="result-chip${isBest ? ' best' : ''}" href="${destination}" ${external ? `target="_blank" rel="${rel}"` : ''} style="text-decoration:none;display:block;cursor:pointer;">
+        const cardTag = c.affiliate_url ? 'a' : 'div';
+        const href = c.affiliate_url ? ` href="${c.affiliate_url}" target="_blank" rel="sponsored nofollow noopener"` : '';
+        return `<${cardTag} class="result-chip${isBest ? ' best' : ''}"${href} style="text-decoration:none;display:block;${c.affiliate_url ? 'cursor:pointer;' : ''}">
           <div class="casino-name" style="color:${c.color};">${c.name}${isBest ? '<span class="best-badge">BEST</span>' : ''}</div>
           <div class="earn-val" style="${c.earn === null ? 'color:#64748b;font-size:1rem;' : ''}">${earnStr}</div>
           <div class="rate-info">${pct(c.effective_rate)} of estimated house-edge loss</div>
           <div style="font-size:0.7rem;color:#ff9d00;margin-top:6px;font-weight:800;">${c.affiliate_url ? `Join ${c.name}` : 'Affiliate link needed'} →</div>
-        </a>`;
+        </${cardTag}>`;
       }).join('');
     }
 
@@ -423,7 +422,7 @@ h1 {
   <footer class="t-footer">
   <div class="t-container">
     <p>CCT — CryptoCasinoSorted · <a href="/">Rewards Home</a></p>
-    <p><a href="/rewards-recommender.html">Rewards Quiz</a> · <a href="/rakeback-comparison.html">Rakeback</a> · <a href="/bonus-calculator.html">Bonus Calc</a> · <a href="/blog/index.html">Guides</a></p>
+    <p><a href="/rewards-recommender.html">Rewards Quiz</a> · <a href="/rakeback-comparison.html">Rakeback</a> · <a href="/bonus-calculator.html">Bonus Calc</a> · <a href="/casino-reward-sources.html">Reward Sources</a> · <a href="/blog/index.html">Guides</a></p>
   </div>
 </footer>
 </body>
