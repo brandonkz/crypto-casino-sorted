@@ -87,6 +87,28 @@
       word-break: break-word;
     }
     .source-card a:hover { text-decoration: underline; }
+    .source-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .source-link-row {
+      border-top: 1px solid var(--t-border);
+      padding-top: 10px;
+    }
+    .source-link-row:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+    .source-link-kind {
+      display: block;
+      color: var(--t-muted);
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+    }
     .source-meta {
       display: flex;
       flex-wrap: wrap;
@@ -159,6 +181,21 @@
       catch { return url; }
     }
 
+    function slug(value) {
+      return String(value || 'source')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+
+    function statusText(status) {
+      return status === 'manual_verified' ? 'Manual verified' : status === 'verified' ? 'Verified' : 'Manual review';
+    }
+
+    function statusClass(status) {
+      return ['verified', 'manual_verified'].includes(status) ? 'verified' : '';
+    }
+
     async function loadSources() {
       const target = document.getElementById('sources');
       try {
@@ -175,6 +212,7 @@
           .map((item) => ({
             id: `welcome-${item.casino}`,
             name: item.casino,
+            kind: 'Welcome offer source',
             label: `${item.casino} welcome offer`,
             url: item.source_url,
             description: item.offer,
@@ -186,24 +224,47 @@
           .map((operator) => ({
             id: operator.id,
             name: operator.name,
+            kind: operator.rakeback_form === 'zero_edge' ? 'Zero-edge rewards source' : 'Rewards / VIP source',
             label: operator.reward_page_label || `${operator.name} rewards page`,
             url: operator.reward_page_url,
             description: operator.offer_summary,
             checked: operator.source_last_checked,
             status: operator.source_status
           }));
-        const sources = [...rewardSources, ...offerSources];
+        const grouped = [...rewardSources, ...offerSources].reduce((map, item) => {
+          const key = item.name.toLowerCase();
+          const source = map.get(key) || {
+            id: slug(item.name),
+            name: item.name,
+            descriptions: [],
+            links: []
+          };
+          if (item.description && !source.descriptions.includes(item.description)) {
+            source.descriptions.push(item.description);
+          }
+          source.links.push(item);
+          map.set(key, source);
+          return map;
+        }, new Map());
+        const sources = [...grouped.values()].sort((a, b) => a.name.localeCompare(b.name));
         target.innerHTML = sources.length ? sources.map((source) => `
           <article class="source-card" id="${source.id}">
             <div class="source-top">
               <div class="source-name">${source.name}</div>
-              <div class="source-type">Official source</div>
+              <div class="source-type">${source.links.length > 1 ? `${source.links.length} official sources` : 'Official source'}</div>
             </div>
-            <p>${source.description || 'Official reward reference page.'}</p>
-            <a href="${source.url}" target="_blank" rel="nofollow noopener">${source.label} → <span class="empty">${hostname(source.url)}</span></a>
-            <div class="source-meta">
-              <span class="${['verified', 'manual_verified'].includes(source.status) ? 'verified' : ''}">${source.status === 'manual_verified' ? 'Manual verified' : source.status === 'verified' ? 'Verified' : 'Manual review'}</span>
-              <span>${source.checked ? `Checked ${source.checked}` : 'Not checked yet'}</span>
+            <p>${source.descriptions[0] || 'Official reward reference page.'}</p>
+            <div class="source-links">
+              ${source.links.map((link) => `
+                <div class="source-link-row">
+                  <span class="source-link-kind">${link.kind}</span>
+                  <a href="${link.url}" target="_blank" rel="nofollow noopener">${link.label} → <span class="empty">${hostname(link.url)}</span></a>
+                  <div class="source-meta">
+                    <span class="${statusClass(link.status)}">${statusText(link.status)}</span>
+                    <span>${link.checked ? `Checked ${link.checked}` : 'Not checked yet'}</span>
+                  </div>
+                </div>
+              `).join('')}
             </div>
           </article>
         `).join('') : '<div class="source-card">No source links are currently published.</div>';

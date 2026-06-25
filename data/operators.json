@@ -14,8 +14,8 @@
       "name": "XTP",
       "type": "licensed_operator",
       "licence": "Licensed",
-      "confidence": "internal handbook",
-      "positioning": "Cash-first loyalty program with low entry friction and tier-transfer mechanics.",
+      "confidence": "current mailer",
+      "positioning": "Cash-first cashback program with low entry friction and tier-transfer mechanics.",
       "best_for": [
         "low",
         "mid"
@@ -27,14 +27,14 @@
       "published_formula": true,
       "rakeback_form": "cash",
       "rakeback_basis": "house_edge",
-      "rate_min": 0.05,
-      "rate_max": 0.15,
-      "effective_rate": 0.105,
-      "settlement": "Weekly from Bronze-Gold; daily option from Platinum; daily from Diamond.",
+      "rate_min": 0.2,
+      "rate_max": 0.2,
+      "effective_rate": 0.2,
+      "settlement": "Ongoing cashback credited via cashback mailer/reminder.",
       "reward_page_url": null,
       "reward_page_label": "XTP rewards page coming soon",
       "affiliate_url": "https://xtp.com/signup?utm_campaign=Durinsbane_New&utm_source=p2p_affiliate&utm_medium=referral",
-      "offer_summary": "5-15% cash rakeback on house edge, plus Silver weekly coin cashback, Gold monthly cash cashback, and first 30 days earning one tier above your own. Treat as internally sourced until a public rewards page is live.",
+      "offer_summary": "20% ongoing cash cashback, credited via cashback mailer/reminder. Welcome choice can add 5% rakeback for 14 days, 1,000 free spins on a $200 deposit, or a 100% deposit match up to $1,000 in the first 14 days.",
       "reset_behaviour": "Lifetime weighted XP never decreases; top two tiers need trailing activity to hold.",
       "vip_host_entry": "Host chat at Silver; dedicated host at Gold.",
       "transparency": 58,
@@ -42,7 +42,7 @@
       "trust": 66,
       "depth": 72,
       "gamification": 78,
-      "watch_out": "Public rewards page is not live yet; treat terms as internally sourced and re-run economics on real cohort data once live."
+      "watch_out": "Confirm your selected welcome choice and playthrough before claiming; cashback eligibility and timing can vary by account and campaign."
     },
     {
       "id": "stake",
@@ -290,7 +290,7 @@
       "settlement": "Value comes from zero house edge / 100% RTP on eligible Duel games rather than a traditional rebate.",
       "reward_page_url": "https://duel.com/about/zero-edge",
       "reward_page_label": "Duel Zero Edge",
-      "affiliate_url": null,
+      "affiliate_url": "https://duel.com/r/alphaxasset",
       "offer_summary": "Duel advertises zero house edge on selected games, effectively 100% RTP where eligible. This is not normal rakeback and does not apply to every casino game.",
       "reset_behaviour": "No traditional tier reset; value depends on playing eligible zero-edge games.",
       "vip_host_entry": "Not publicly specified.",

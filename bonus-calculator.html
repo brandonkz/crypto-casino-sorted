@@ -428,15 +428,17 @@
       document.getElementById('maxBet').value = preset.maxBet || 5;
       document.getElementById('gameType').value = preset.gameType || '96.0';
 
-      const assumedTerms = preset.wagerMultiple
+      const assumedTerms = preset.assumedWagering
+        ? `Using a ${preset.wagerMultiple}x ${preset.wagerBase === 'bonus' ? 'bonus' : 'deposit + bonus'} playthrough assumption for modeling. Confirm the exact live term before claiming.`
+        : preset.wagerMultiple
         ? `Loaded tracked wagering requirement: ${preset.wagerMultiple}x ${preset.wagerBase === 'bonus' ? 'bonus' : 'deposit + bonus'}.`
         : 'The tracker does not have a verified numeric wagering requirement for this offer, so the calculator is using a 40x bonus-only placeholder. Replace it with the live term before relying on the result.';
       const breakdown = item.breakdown ? `<br>${item.breakdown.join('<br>')}` : '';
       const context = document.getElementById('offerContext');
       context.style.display = 'block';
-      const offerLink = item.isAffiliate
-        ? `<a href="${item.url}" target="_blank" rel="sponsored nofollow noopener">Claim ${item.casino} offer via our link →</a>`
-        : `<span style="color:var(--muted);font-weight:700;">Affiliate link needed — official sources are in the <a href="/casino-reward-sources.html">source archive</a>.</span>`;
+      const offerLink = item.url
+        ? `<a href="${item.url}" target="_blank" rel="${item.isAffiliate ? 'sponsored nofollow noopener' : 'nofollow noopener'}">${item.isAffiliate ? `Claim ${item.casino} offer` : `Visit ${item.casino}`} →</a>`
+        : '';
       context.innerHTML = `<strong>${item.casino}: ${item.offer}</strong><br>${item.wagering}<br>${assumedTerms}${breakdown}<br>${offerLink}`;
 
       updateRTP();
