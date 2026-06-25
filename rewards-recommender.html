@@ -851,7 +851,7 @@
 
         const score = clamp(weighted + bandFit - tokenPenalty - opacityPenalty - tierRequirementPenalty - sourcePenalty - conservativePenalty);
         return { ...op, rewardScore: reward, totalScore: score };
-      }).sort((a, b) => (b.estimatedReward - a.estimatedReward) || (b.totalScore - a.totalScore));
+      }).sort((a, b) => b.estimatedReward - a.estimatedReward);
     }
 
     function makeTags(op) {
@@ -865,16 +865,15 @@
       return tags.join('');
     }
 
-    function whyText(op) {
+    function whyText(op, index) {
       const strengths = [];
-      if (op.rewardScore >= 80) strengths.push('strong normalised reward value');
       if (op.friction >= 85) strengths.push('low entry friction');
       if (op.transparency >= 80) strengths.push('clear reward mechanics');
       if (op.depth >= 88) strengths.push('deep long-term VIP ladder');
       if (op.tier_match) strengths.push('VIP transfer potential');
       if (op.trust >= 80) strengths.push('stronger market trust');
-      const fit = strengths.length ? strengths.slice(0, 3).join(', ') : 'a reasonable overall fit';
-      return `${op.name} ranks here because of ${fit}. Watch-out: ${op.watch_out}`;
+      const context = strengths.length ? strengths.slice(0, 3).join(', ') : 'review the detailed context scores below';
+      return `${op.name} is ranked #${index + 1} because its estimated value is ${fmtMoney(op.estimatedReward)} for these inputs. Context: ${context}. Watch-out: ${op.watch_out}`;
     }
 
     function rateLabel(op) {
@@ -972,8 +971,8 @@
               <div class="op-sub">${op.positioning}</div>
             </div>
             <div class="score-box">
-              <div class="score">${Math.round(op.totalScore)}</div>
-              <div class="score-label">context score</div>
+              <div class="score">#${index + 1}</div>
+              <div class="score-label">value rank</div>
             </div>
           </div>
           <div class="result-body">
@@ -1010,7 +1009,7 @@
               </div>
             </div>
             <div class="tags">${makeTags(op)}</div>
-            <p class="why">${whyText(op)}</p>
+            <p class="why">${whyText(op, index)}</p>
             <div class="bar-grid">
               ${renderBar('Reward', op.rewardScore)}
               ${renderBar('Trust', op.trust)}
