@@ -361,7 +361,8 @@ h1 {
     }
 
     function renderTable() {
-      document.getElementById('comparisonBody').innerHTML = casinos.map(c => {
+      const rankedCasinos = [...casinos].sort((a, b) => (b.effective_rate ?? -1) - (a.effective_rate ?? -1));
+      document.getElementById('comparisonBody').innerHTML = rankedCasinos.map(c => {
         const max = c.rate_max === null ? 'Not public' : pct(c.rate_max);
         const structure = `${c.rakeback_form} · ${c.rakeback_basis.replace('_', ' ')}`;
         const access = c.tier_match ? 'Tier match available' : (c.entry_threshold ? `From $${c.entry_threshold} wagered` : 'Terms vary');
@@ -489,7 +490,7 @@ h1 {
         const modeledWager = bonusEstimate ? bonusEstimate.modeledWager : wager;
         const earn = c.effective_rate !== null ? modeledWager * edge * c.effective_rate : null;
         return { ...c, earn, modeledWager, bonusEstimate };
-      });
+      }).sort((a, b) => (b.earn ?? -Infinity) - (a.earn ?? -Infinity));
 
       // Find best
       const best = results.filter(r => r.earn !== null).sort((a,b) => b.earn - a.earn)[0];
@@ -500,7 +501,7 @@ h1 {
         const isZeroEdge = c.rakeback_form === 'zero_edge';
         const baseValueLabel = isZeroEdge ? 'Estimated avoided house-edge loss on eligible 100% RTP games' : `${pct(c.effective_rate)} of estimated house-edge loss`;
         const bonusLabel = c.bonusEstimate
-          ? `Bonus-assisted wager: ${fmt(c.modeledWager)} (${c.bonusEstimate.terms.fallback ? '30x fallback' : `${c.bonusEstimate.terms.wagerMultiple}x verified`})`
+          ? `Bonus-assisted wager: ${fmt(c.modeledWager)} (${c.bonusEstimate.terms.fallback ? `${c.bonusEstimate.terms.wagerMultiple}x fallback` : `${c.bonusEstimate.terms.wagerMultiple}x verified`})`
           : '';
         const valueLabel = bonusLabel ? `${baseValueLabel}<br>${bonusLabel}` : baseValueLabel;
         const cardTag = c.affiliate_url ? 'a' : 'div';

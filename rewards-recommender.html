@@ -686,7 +686,7 @@
             <span class="t-badge t-badge-amber">Directional</span>
           </div>
           <div class="panel-body">
-            <p class="method"><strong>Reward / edge-value estimate</strong> = modeled wager x selected game edge x normalised effective rate. By default, modeled wager is normal monthly play estimated from the player’s usual deposit value and minutes played per day. If the welcome-bonus toggle is enabled, verified bonus playthrough is added where available; unclear terms use a clearly labeled 30x fallback. For zero-edge operators, this is modeled avoided house-edge loss on eligible games, not a cash rebate. The rank then blends estimated value, formula transparency, source-verification status, entry friction, VIP depth, tier-match value, trust risk, and token/airdrop discounts. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
+            <p class="method"><strong>Reward / edge-value estimate</strong> = modeled wager x selected game edge x normalised effective rate. By default, modeled wager is normal monthly play estimated from the player’s usual deposit value and minutes played per day. If the welcome-bonus toggle is enabled, verified bonus playthrough is added where available; unclear terms use a clearly labeled 30x fallback. For zero-edge operators, this is modeled avoided house-edge loss on eligible games, not a cash rebate. Casino order is based purely on estimated dollar value back / avoided loss. Trust, transparency, source status, friction, VIP depth, tier-match, and token risk are shown as context only, not ranking inputs. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
           </div>
         </section>
       </div>
@@ -851,7 +851,7 @@
 
         const score = clamp(weighted + bandFit - tokenPenalty - opacityPenalty - tierRequirementPenalty - sourcePenalty - conservativePenalty);
         return { ...op, rewardScore: reward, totalScore: score };
-      }).sort((a, b) => b.totalScore - a.totalScore);
+      }).sort((a, b) => (b.estimatedReward - a.estimatedReward) || (b.totalScore - a.totalScore));
     }
 
     function makeTags(op) {
@@ -914,7 +914,7 @@
       if (!op.bonusEstimate) return '';
       const { offer, terms, bonusAmount, requiredWager, modeledWager } = op.bonusEstimate;
       const baseLabel = terms.wagerBase === 'deposit_bonus' ? 'deposit + bonus' : 'bonus';
-      const sourceLabel = terms.fallback ? '30x fallback' : `${terms.wagerMultiple}x verified playthrough`;
+      const sourceLabel = terms.fallback ? `${terms.wagerMultiple}x fallback` : `${terms.wagerMultiple}x verified playthrough`;
       return `<div class="offer-sub" style="margin-top:7px;"><strong>Bonus-assisted wager:</strong> ${offer.offer} adds about ${fmtMoney(bonusAmount)} bonus and ${fmtMoney(requiredWager)} required wagering (${sourceLabel} on ${baseLabel}), so this card uses ${fmtMoney(modeledWager)} modeled wager.</div>`;
     }
 
@@ -962,7 +962,7 @@
       if (!state.operators.length) return;
       const inputs = getInputs();
       const ranked = scoreOperators();
-      document.getElementById('scenarioBadge').textContent = `${inputs.priority.replace('_', ' ')} · ${inputs.band}`;
+      document.getElementById('scenarioBadge').textContent = 'Ranked by value';
       document.getElementById('results').innerHTML = ranked.map((op, index) => `
         <article class="result-card ${index === 0 ? 'best' : ''}">
           <div class="result-top">
@@ -973,7 +973,7 @@
             </div>
             <div class="score-box">
               <div class="score">${Math.round(op.totalScore)}</div>
-              <div class="score-label">fit score</div>
+              <div class="score-label">context score</div>
             </div>
           </div>
           <div class="result-body">
