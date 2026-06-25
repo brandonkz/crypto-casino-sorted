@@ -100,6 +100,7 @@ function sourceEntries(operatorsData, offersData) {
         object: operator,
         expected: operator.offer_summary || operator.reward_page_label || '',
         requiredTerms: operator.source_terms || [],
+        monitor: operator.source_monitor || 'auto',
       });
       continue;
     }
@@ -112,6 +113,7 @@ function sourceEntries(operatorsData, offersData) {
       object: operator,
       expected: operator.offer_summary || operator.reward_page_label || '',
       requiredTerms: operator.source_terms || [],
+      monitor: operator.source_monitor || 'auto',
     });
   }
 
@@ -125,6 +127,7 @@ function sourceEntries(operatorsData, offersData) {
         object: offer,
         expected: offer.offer || '',
         requiredTerms: offer.source_terms || [],
+        monitor: offer.source_monitor || 'auto',
       });
       continue;
     }
@@ -137,6 +140,7 @@ function sourceEntries(operatorsData, offersData) {
       object: offer,
       expected: offer.offer || '',
       requiredTerms: offer.source_terms || [],
+      monitor: offer.source_monitor || 'auto',
     });
   }
 
@@ -205,6 +209,7 @@ function markdownReport(results) {
     const notes = [
       item.httpStatus ? `HTTP ${item.httpStatus}` : null,
       item.age === Infinity ? 'no last_checked' : `age ${item.age}d`,
+      item.manual ? 'manual browser verification' : null,
       item.hashChanged ? `hash ${item.previousHash || 'none'} → ${item.hash}` : null,
       item.error ? item.error.replace(/\|/g, '/') : null,
       item.missingTerms && item.missingTerms.length ? `missing terms: ${item.missingTerms.join(', ')}` : null,
@@ -234,6 +239,13 @@ async function main() {
 
     if (!entry.url) {
       result.status = 'missing_source';
+      results.push(result);
+      continue;
+    }
+
+    if (entry.monitor === 'manual') {
+      result.status = ageDays(entry.object.source_last_checked) > maxAgeDays ? 'stale' : 'ok';
+      result.manual = true;
       results.push(result);
       continue;
     }

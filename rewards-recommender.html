@@ -727,7 +727,8 @@
         const tokenPenalty = inputs.avoidTokens && (op.native_token || /airdrop/i.test(op.token_name || '')) ? 9 : 0;
         const opacityPenalty = inputs.avoidOpaque && !op.published_formula ? 9 : 0;
         const tierRequirementPenalty = inputs.needsTierMatch && !op.tier_match ? 18 : 0;
-        const sourcePenalty = op.source_status === 'verified' ? 0 : 12;
+        const hasVerifiedSource = ['verified', 'manual_verified'].includes(op.source_status);
+        const sourcePenalty = hasVerifiedSource ? 0 : 12;
         const betaPenalty = /beta/i.test(op.licence || '') ? 8 : 0;
         const conservativePenalty = inputs.risk === 'conservative'
           ? ((100 - op.trust) * 0.18) + ((100 - op.transparency) * 0.12) + tokenPenalty + betaPenalty
@@ -754,7 +755,7 @@
       tags.push(`<span class="tag ${op.published_formula ? 'green' : 'amber'}">${op.published_formula ? 'Formula public' : 'Formula undisclosed'}</span>`);
       tags.push(`<span class="tag ${op.tier_match ? 'green' : ''}">${op.tier_match ? 'Tier match' : 'No tier match'}</span>`);
       tags.push(`<span class="tag ${op.native_token ? 'amber' : 'green'}">${op.native_token ? 'Token-linked' : 'Cash-first'}</span>`);
-      tags.push(`<span class="tag ${op.source_status === 'verified' ? 'green' : 'amber'}">${op.source_status === 'verified' ? 'Source verified' : 'Source review'}</span>`);
+      tags.push(`<span class="tag ${['verified', 'manual_verified'].includes(op.source_status) ? 'green' : 'amber'}">${op.source_status === 'manual_verified' ? 'Manual source' : op.source_status === 'verified' ? 'Source verified' : 'Source review'}</span>`);
       tags.push(`<span class="tag">${op.confidence}</span>`);
       if (/beta/i.test(op.licence || '')) tags.push('<span class="tag red">Beta risk</span>');
       return tags.join('');
@@ -773,6 +774,9 @@
     }
 
     function rateLabel(op) {
+      if (op.rakeback_form === 'zero_edge') {
+        return '100% RTP on eligible games';
+      }
       if (op.rate_min && op.rate_max && op.rate_min !== op.rate_max) {
         return `${Math.round(op.rate_min * 100)}-${Math.round(op.rate_max * 100)}% ${op.rakeback_form}`;
       }
@@ -787,6 +791,9 @@
 
     function offerSubtext(op, inputs) {
       const expectedLoss = inputs.wager * inputs.edge;
+      if (op.rakeback_form === 'zero_edge') {
+        return `At ${fmtMoney(inputs.wager)} wagered and ${(inputs.edge * 100).toFixed(1)}% game edge, the modeled value is avoided house-edge loss on eligible zero-edge games, not a cash rebate.`;
+      }
       return `At ${fmtMoney(inputs.wager)} wagered and ${(inputs.edge * 100).toFixed(1)}% game edge, estimated house-edge loss is ${fmtMoney(expectedLoss)}. We apply a ${Math.round((op.effective_rate || 0) * 1000) / 10}% normalised giveback rate.`;
     }
 

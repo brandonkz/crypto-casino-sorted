@@ -202,7 +202,7 @@
             <p>${source.description || 'Official reward reference page.'}</p>
             <a href="${source.url}" target="_blank" rel="nofollow noopener">${source.label} → <span class="empty">${hostname(source.url)}</span></a>
             <div class="source-meta">
-              <span class="${source.status === 'verified' ? 'verified' : ''}">${source.status === 'verified' ? 'Verified' : 'Manual review'}</span>
+              <span class="${['verified', 'manual_verified'].includes(source.status) ? 'verified' : ''}">${source.status === 'manual_verified' ? 'Manual verified' : source.status === 'verified' ? 'Verified' : 'Manual review'}</span>
               <span>${source.checked ? `Checked ${source.checked}` : 'Not checked yet'}</span>
             </div>
           </article>
