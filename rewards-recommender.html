@@ -756,7 +756,7 @@
           bonusCap: Number(item.calculator.bonusCap) || null,
           wagerMultiple: Number(item.calculator.wagerMultiple) || 30,
           wagerBase: item.calculator.wagerBase || 'bonus',
-          fallback: !Number(item.calculator.wagerMultiple),
+          fallback: Boolean(item.calculator.assumedWagering) || !Number(item.calculator.wagerMultiple),
           verified: Boolean(item.source_url || item.source_status === 'verified')
         };
       }
