@@ -8,14 +8,14 @@
   <link rel="canonical" href="https://cryptocasinosorted.com/casino-wallet-addresses.html">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#8b5cf6">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="terminal-theme.css">
-  
+
   <style>
 .addresses-hero {
   background: var(--t-bg2);
@@ -219,6 +219,24 @@
 .warning-box p { color: var(--t-dim); font-size: 0.85rem; line-height: 1.6; }
 
   </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
 </head>
 <body>
   <!-- Header -->
@@ -280,7 +298,7 @@
   <div class="t-container">
     <p>CCT — Crypto Casino Terminal · <a href="/">CryptoCasinoSorted</a></p>
     <p><a href="/terminal.html">Terminal</a>
-      <a href="/events-terminal.html">Events</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/index.html">Blog</a></p>
+      <a href="/events-terminal.html">Events</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/">Blog</a></p>
   </div>
 </footer>
 
@@ -492,14 +510,14 @@
 
       Object.entries(casinoWallets).forEach(([id, casino]) => {
         // Filter by chain if not "all"
-        const filteredAddresses = currentChain === 'all' 
-          ? casino.addresses 
+        const filteredAddresses = currentChain === 'all'
+          ? casino.addresses
           : casino.addresses.filter(addr => addr.chain === currentChain);
 
         if (filteredAddresses.length === 0) return;
 
         const chains = [...new Set(casino.addresses.map(a => a.chain))];
-        
+
         const card = document.createElement('div');
         card.className = 'casino-address-card';
         card.innerHTML = `
@@ -550,7 +568,7 @@
             </div>
           `).join('')}
         `;
-        
+
         container.appendChild(card);
       });
 
@@ -572,5 +590,19 @@
     // Initial render
     renderAddresses();
   </script>
+
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
 </body>
 </html>

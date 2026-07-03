@@ -117,6 +117,25 @@
             }
         }
     </style>
+  <link rel="canonical" href="https://cryptocasinosorted.com/dashboard-simple.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
 </head>
 <body>
     <div class="container">
@@ -181,13 +200,13 @@
         function parseCSV(text) {
             const lines = text.trim().split('\n');
             const rows = [];
-            
+
             for (let i = 1; i < lines.length; i++) {
                 const line = lines[i];
                 const values = [];
                 let current = '';
                 let inQuotes = false;
-                
+
                 for (let j = 0; j < line.length; j++) {
                     const char = line[j];
                     if (char === '"') {
@@ -217,75 +236,75 @@
             .then(response => response.text())
             .then(text => {
                 const rows = parseCSV(text);
-                
+
                 // Find date range
                 let minDate = null;
                 let maxDate = null;
-                
+
                 rows.forEach(row => {
                     const date = new Date(row[0]); // Date column
                     if (!minDate || date < minDate) minDate = date;
                     if (!maxDate || date > maxDate) maxDate = date;
                 });
-                
+
                 // Calculate days
                 const daysDiff = Math.ceil((maxDate - minDate) / (1000 * 60 * 60 * 24)) + 1;
-                
+
                 // Format dates
                 const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                
+
                 // Update header and stats
                 document.getElementById('headerSubtext').textContent = `${formatDate(minDate)} – ${formatDate(maxDate)} (${daysDiff} day${daysDiff > 1 ? 's' : ''})`;
                 document.getElementById('timePeriod').textContent = daysDiff + ' day' + (daysDiff > 1 ? 's' : '');
                 document.getElementById('dateRange').textContent = `${formatDate(minDate)} – ${formatDate(maxDate)}`;
-                
+
                 // Aggregate by casino
                 const casinoData = {};
                 let totalVolume = 0;
                 let biggestDeposit = { value: 0, casino: '' };
-                
+
                 rows.forEach(row => {
                     const casino = normalizeCasino(row[3]); // Casino column
-                    
+
                     // Current format (8 cols): Date,Time,DateTime,Casino,Wallet Address,Amount,Token,USD Value
                     const usdValue = parseFloat(row[7]) || 0;
-                    
+
                     if (!casinoData[casino]) {
                         casinoData[casino] = { volume: 0, count: 0 };
                     }
-                    
+
                     casinoData[casino].volume += usdValue;
                     casinoData[casino].count += 1;
                     totalVolume += usdValue;
-                    
+
                     if (usdValue > biggestDeposit.value) {
                         biggestDeposit = { value: usdValue, casino };
                     }
                 });
-                
+
                 const totalDeposits = rows.length;
                 const avgDeposit = totalVolume / totalDeposits;
-                
+
                 // Update stats
                 document.getElementById('totalVolume').textContent = '$' + (totalVolume / 1000000).toFixed(2) + 'M';
                 document.getElementById('totalDeposits').textContent = totalDeposits.toLocaleString() + ' deposits';
                 document.getElementById('avgDeposit').textContent = '$' + avgDeposit.toFixed(0);
                 document.getElementById('biggestDeposit').textContent = '$' + biggestDeposit.value.toLocaleString(undefined, { maximumFractionDigits: 0 });
                 document.getElementById('biggestCasino').textContent = biggestDeposit.casino;
-                
+
                 // Update chart titles with period
                 const periodText = daysDiff === 1 ? '24h' : `${daysDiff} days`;
                 document.getElementById('volumeTitle').textContent = `Volume by Casino (${periodText})`;
                 document.getElementById('depositsTitle').textContent = `Number of Deposits (${periodText})`;
                 document.getElementById('comparisonTitle').textContent = `Casino Comparison (${periodText})`;
-                
+
                 // Sort casinos by volume
                 const casinos = Object.keys(casinoData).sort((a, b) => casinoData[b].volume - casinoData[a].volume);
                 const volumes = casinos.map(c => casinoData[c].volume);
                 const counts = casinos.map(c => casinoData[c].count);
-                
+
                 const colors = ['#8b5cf6', '#ec4899', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#6366f1'];
-                
+
                 // Volume chart (bar)
                 new Chart(document.getElementById('volumeChart'), {
                     type: 'bar',
@@ -319,7 +338,7 @@
                         }
                     }
                 });
-                
+
                 // Deposits chart (bar)
                 new Chart(document.getElementById('depositsChart'), {
                     type: 'bar',
@@ -343,7 +362,7 @@
                         }
                     }
                 });
-                
+
                 // Comparison chart (grouped bar)
                 new Chart(document.getElementById('comparisonChart'), {
                     type: 'bar',
@@ -400,5 +419,19 @@
                 document.getElementById('totalVolume').textContent = 'Error';
             });
     </script>
+
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
 </body>
 </html>

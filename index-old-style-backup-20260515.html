@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Best crypto casinos in 2026. Real player reviews of Stake, Rollbit, Shuffle, BC.Game. Instant withdrawals, provably fair games, no KYC. Track live deposits.">
-  <link rel="canonical" href="https://cryptocasinosorted.com/index.html">
+  <link rel="canonical" href="https://cryptocasinosorted.com/index-old-style-backup-20260515.html">
   <meta name="keywords" content="crypto casino, bitcoin casino, best crypto casino, provably fair casino, no kyc casino, stake vs rollbit, instant withdrawals">
   <meta name="author" content="CryptoCasinoSorted">
   <meta name="robots" content="index, follow">
@@ -25,14 +25,14 @@
   <meta property="og:description" content="Compare 10+ crypto casinos. Instant withdrawals, provably fair games, no KYC. Real player reviews and live deposit tracking.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cryptocasinosorted.com">
-  <meta property="og:image" content="https://cryptocasinosorted.com/favicon.svg">
+
   <meta property="og:site_name" content="CryptoCasinoSorted">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Best Crypto Casinos 2026 - Instant Withdrawals, No KYC | CryptoCasinoSorted">
   <meta name="twitter:description" content="Compare 10+ crypto casinos. Instant withdrawals, provably fair games, no KYC. Real player reviews and live deposit tracking.">
-  <meta name="twitter:image" content="https://cryptocasinosorted.com/favicon.svg">
+
 
   <!-- Organization Schema -->
   <script type="application/ld+json">
@@ -105,6 +105,24 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
   <link rel="stylesheet" href="terminal-theme.css">
   <link rel="stylesheet" href="style.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/favicon.svg">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/favicon.svg">
 </head>
 <body>
   <!-- News Ticker -->
@@ -1528,16 +1546,16 @@
     function parseCSV(text) {
       const lines = text.split('\n');
       const result = [];
-      
+
       for (let i = 1; i < lines.length; i++) {
         const line = lines[i].trim();
         if (!line) continue;
-        
+
         // Split by comma but respect quotes
         const cols = [];
         let current = '';
         let inQuotes = false;
-        
+
         for (let j = 0; j < line.length; j++) {
           const char = line[j];
           if (char === '"') {
@@ -1550,11 +1568,11 @@
           }
         }
         cols.push(current);
-        
+
         // Parse deposit data
         const usdValue = parseFloat(cols[8]);
         if (isNaN(usdValue)) continue; // Skip invalid rows
-        
+
         result.push({
           date: cols[0],
           time: cols[1],
@@ -1563,7 +1581,7 @@
           usd: usdValue
         });
       }
-      
+
       return result;
     }
 
@@ -1869,5 +1887,19 @@
       }
     })();
   </script>
+
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
 </body>
 </html>

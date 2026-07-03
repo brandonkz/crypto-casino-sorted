@@ -6,11 +6,11 @@
   <title>Dashboard - On-Chain Intelligence | CryptoCasinoSorted</title>
   <meta name="description" content="Live crypto casino dashboard. Track $83M+ in verified deposits, monitor whale activity, and analyze market trends across 20 casinos.">
   <link rel="canonical" href="https://cryptocasinosorted.com/dashboard.html">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-  
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
@@ -37,7 +37,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: 
+      background-image:
         repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px),
         repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
       pointer-events: none;
@@ -424,6 +424,24 @@
       }
     }
   </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
 </head>
 <body>
   <div class="container">
@@ -444,7 +462,7 @@
       <div class="page-header-bg"></div>
       <h1 class="page-title">ON-CHAIN DASHBOARD</h1>
       <p class="page-subtitle">
-        Real-time crypto casino intelligence. Track verified deposits, monitor whale activity, 
+        Real-time crypto casino intelligence. Track verified deposits, monitor whale activity,
         and analyze market trends across 20 casinos.
       </p>
     </section>
@@ -588,11 +606,11 @@
         // Load all deposits CSV
         const response = await fetch('./data/deposits-all.csv');
         const csvText = await response.text();
-        
+
         // Parse CSV
         const lines = csvText.trim().split('\n');
         const headers = lines[0].split(',');
-        
+
         depositData = lines.slice(1).map(line => {
           const values = line.split(',');
           return {
@@ -731,7 +749,7 @@
       document.getElementById('totalVolume').textContent = '$' + (totalVolume / 1000000).toFixed(1) + 'M+';
       document.getElementById('monthVolume').textContent = '$' + (totalVolume / 1000000 / 2).toFixed(1) + 'M';
       document.getElementById('casinoCount').textContent = uniqueCasinos;
-      
+
       const lastDate = depositData[depositData.length - 1]?.date;
       if (lastDate) {
         document.getElementById('lastUpdate').textContent = new Date(lastDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -742,5 +760,19 @@
     loadData();
   </script>
 
+
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
 </body>
 </html>

@@ -664,35 +664,35 @@ body {
     font-size: 2.5rem;
     font-weight: 900;
   }
-  
+
   .hero-subtitle {
     font-size: 1.1rem;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .casino-name {
     font-size: 1.75rem;
   }
-  
+
   .stat-number {
     font-size: 2.5rem;
   }
-  
+
   .stats {
     grid-template-columns: 1fr;
   }
-  
+
   .casino-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .pros-cons {
     grid-template-columns: 1fr;
   }
-  
+
   .casino-card {
     padding: 1.5rem;
   }

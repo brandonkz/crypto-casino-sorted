@@ -171,6 +171,24 @@
       }
     }
   </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
 </head>
 <body>
   <div id="nav-placeholder"></div>
@@ -253,7 +271,7 @@
     <div class="result-panel" id="resultPanel">
       <div class="result-label">Expected Value (EV)</div>
       <div class="result-value" id="evValue">$0.00</div>
-      
+
       <div id="verdict" class="verdict"></div>
 
       <div class="breakdown">
@@ -302,13 +320,13 @@
     function updateRTP() {
       const gameType = document.getElementById('gameType').value;
       const customRow = document.getElementById('customRTPRow');
-      
+
       if (gameType === 'custom') {
         customRow.style.display = 'grid';
       } else {
         customRow.style.display = 'none';
       }
-      
+
       calculate();
     }
 
@@ -319,7 +337,7 @@
       const wagerMultiple = parseFloat(document.getElementById('wagerMultiple').value) || 0;
       const wagerBase = document.getElementById('wagerBase').value;
       const maxBet = parseFloat(document.getElementById('maxBet').value) || 0;
-      
+
       let rtp;
       const gameType = document.getElementById('gameType').value;
       if (gameType === 'custom') {
@@ -327,12 +345,12 @@
       } else {
         rtp = parseFloat(gameType);
       }
-      
+
       const houseEdge = 100 - rtp;
-      
+
       // Calculate bonus amount (capped)
       const bonusAmount = Math.min((deposit * bonusPercent) / 100, bonusCap);
-      
+
       // Calculate total wagering requirement
       let totalWager;
       if (wagerBase === 'bonus') {
@@ -340,36 +358,36 @@
       } else {
         totalWager = (deposit + bonusAmount) * wagerMultiple;
       }
-      
+
       // Expected loss from wagering
       const expectedLoss = (totalWager * houseEdge) / 100;
-      
+
       // Expected Value
       const ev = bonusAmount - expectedLoss;
-      
+
       // ROI
       const roi = (ev / deposit) * 100;
-      
+
       // Time estimate (assuming $50/hour average bet throughput with max bet limits)
       const betsNeeded = totalWager / Math.min(maxBet, 10); // Conservative estimate
       const timeHours = (betsNeeded * 0.5) / 60; // ~30 seconds per bet average
-      
+
       // Update UI
       document.getElementById('bonusAmount').textContent = `$${bonusAmount.toFixed(2)}`;
       document.getElementById('totalWager').textContent = `$${totalWager.toFixed(0)}`;
       document.getElementById('expectedLoss').textContent = `$${expectedLoss.toFixed(2)}`;
       document.getElementById('houseEdge').textContent = `${houseEdge.toFixed(2)}%`;
       document.getElementById('roi').textContent = `${roi.toFixed(1)}%`;
-      document.getElementById('timeEstimate').textContent = timeHours >= 1 
+      document.getElementById('timeEstimate').textContent = timeHours >= 1
         ? `${timeHours.toFixed(1)} hours`
         : `${(timeHours * 60).toFixed(0)} min`;
-      
+
       const evValue = document.getElementById('evValue');
       const resultPanel = document.getElementById('resultPanel');
       const verdict = document.getElementById('verdict');
-      
+
       evValue.textContent = ev >= 0 ? `+$${ev.toFixed(2)}` : `-$${Math.abs(ev).toFixed(2)}`;
-      
+
       if (ev > 0) {
         evValue.className = 'result-value positive';
         resultPanel.className = 'result-panel positive';
@@ -472,5 +490,19 @@
         document.getElementById('nav-placeholder').innerHTML = html;
       });
   </script>
+
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
 </body>
 </html>

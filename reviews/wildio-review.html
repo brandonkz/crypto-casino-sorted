@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../terminal-theme.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%238b5cf6' width='100' height='100' rx='20'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>🎲</text></svg>">
-  
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
   <script>
@@ -87,6 +87,24 @@ body { background: #08090d; color: #d4d8e8; }
 .review-card strong { color: #d4d8e8 !important; }
 .review-grid { gap: 20px !important; }
   </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
 </head>
 <body>
 
@@ -105,7 +123,7 @@ body { background: #08090d; color: #d4d8e8; }
 
   <article class="review-page t-article">
     <div class="container" style="max-width: 900px; padding: 60px 20px;">
-      
+
       <!-- Review Header -->
       <div style="background: linear-gradient(135deg, #0f1923 0%, #1a2e3e 100%); color: white; padding: 48px; border-radius: 16px; margin-bottom: 48px;">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
@@ -166,7 +184,7 @@ body { background: #08090d; color: #d4d8e8; }
 
       <!-- Pros & Cons -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 32px;">
-        
+
         <!-- Pros -->
         <div style="background: #ecfdf5; padding: 32px; border-radius: 12px; border: 2px solid #10b981;">
           <h3 style="display: flex; align-items: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: #065f46;">
@@ -322,7 +340,7 @@ body { background: #08090d; color: #d4d8e8; }
       <!-- FAQ Section -->
       <section style="background: white; padding: 40px; border-radius: 12px; margin-bottom: 32px;">
         <h2 style="font-size: 1.875rem; font-weight: 700; margin-bottom: 24px; color: #111827;">Frequently Asked Questions</h2>
-        
+
         <div style="margin-bottom: 24px;">
           <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; color: #111827;">Is Wild.io safe to use?</h3>
           <p style="line-height: 1.75; color: #4b5563;">
@@ -366,7 +384,7 @@ body { background: #08090d; color: #d4d8e8; }
   <div class="t-container">
     <p>CCT — Crypto Casino Terminal · <a href="/">CryptoCasinoSorted</a></p>
     <p><a href="/terminal.html">Terminal</a>
-      <a href="/events-terminal.html">Events</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/index.html">Blog</a></p>
+      <a href="/events-terminal.html">Events</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/">Blog</a></p>
   </div>
 </footer>
 
@@ -382,16 +400,16 @@ body { background: #08090d; color: #d4d8e8; }
 
       function initTracking() {
         const externalLinks = document.querySelectorAll('a[href^="http"]');
-        
+
         externalLinks.forEach(link => {
           const href = link.href;
           const hostname = new URL(href).hostname;
           const currentHostname = window.location.hostname;
-          
+
           if (hostname === currentHostname || hostname.includes('sorted')) {
             return;
           }
-          
+
           link.addEventListener('click', function(e) {
             if (typeof gtag !== 'undefined') {
               gtag('event', 'affiliate_click', {
@@ -402,7 +420,7 @@ body { background: #08090d; color: #d4d8e8; }
                 'page_title': document.title
               });
             }
-            
+
             if (!e.ctrlKey && !e.metaKey && !e.shiftKey) {
               e.preventDefault();
               setTimeout(() => {
@@ -415,5 +433,19 @@ body { background: #08090d; color: #d4d8e8; }
     })();
   </script>
 
+
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
 </body>
 </html>

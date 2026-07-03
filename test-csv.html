@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head><title>CSV Debug</title></head>
+<head><title>CSV Debug</title>  <link rel="canonical" href="https://cryptocasinosorted.com/test-csv.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
+</head>
 <body>
 <pre id="output"></pre>
 <script>
 function parseCSV(text) {
     const lines = text.trim().split('\n');
     const rows = [];
-    
+
     for (let i = 1; i < Math.min(lines.length, 6); i++) {
         const line = lines[i];
         const values = [];
         let current = '';
         let inQuotes = false;
-        
+
         for (let j = 0; j < line.length; j++) {
             const char = line[j];
             if (char === '"') {
@@ -36,19 +55,33 @@ fetch('./data/deposits-all.csv')
     .then(text => {
         const rows = parseCSV(text);
         let output = 'First 5 rows parsed:\n\n';
-        
+
         rows.forEach((row, i) => {
             output += `Row ${i+1} (${row.length} columns):\n`;
             row.forEach((val, j) => {
                 output += `  [${j}] = "${val}"\n`;
             });
-            
+
             const usdValue = row.length === 9 ? parseFloat(row[7]) : parseFloat(row[6]) || 0;
             output += `  USD Value: ${usdValue}\n\n`;
         });
-        
+
         document.getElementById('output').textContent = output;
     });
 </script>
+
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
 </body>
 </html>

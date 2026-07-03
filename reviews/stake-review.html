@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../terminal-theme.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%238b5cf6' width='100' height='100' rx='20'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>🎲</text></svg>">
-  
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
   <script>
@@ -87,6 +87,24 @@ body { background: #08090d; color: #d4d8e8; }
 .review-card strong { color: #d4d8e8 !important; }
 .review-grid { gap: 20px !important; }
   </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
 </head>
 <body>
 
@@ -105,7 +123,7 @@ body { background: #08090d; color: #d4d8e8; }
 
   <article class="review-page t-article">
     <div class="container" style="max-width: 900px; padding: 60px 20px;">
-      
+
       <!-- Review Header -->
       <div style="background: linear-gradient(135deg, #0f1923 0%, #1a2e3e 100%); color: white; padding: 48px; border-radius: 16px; margin-bottom: 48px;">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
@@ -144,15 +162,15 @@ body { background: #08090d; color: #d4d8e8; }
 
       <!-- Content -->
       <div class="review-content" style="line-height: 1.8; color: #333;">
-        
+
         <h2 style="margin: 48px 0 24px;">Overview: The Biggest Name in Crypto Casinos</h2>
-        
+
         <p>Stake is the 800-pound gorilla of crypto gambling. Drake promotes it, UFC has their logo everywhere, and they've processed over $2 billion in wagers since launching in 2017. But size doesn't always equal quality. After three months of testing (and way too much late-night blackjack), here's what I actually found.</p>
 
         <p><strong>The Bottom Line Up Front:</strong> Stake is solid for high-volume players who value instant withdrawals and massive game selection. It's not perfect - bonuses are stingy and the VIP program is hard to access - but it's reliable, fast, and provably fair where it matters.</p>
 
         <h2 style="margin: 48px 0 24px;">💬 What Reddit Actually Says About Stake</h2>
-        
+
         <div style="background: #f8f9fa; border-left: 4px solid #8b5cf6; padding: 24px; margin-bottom: 32px; border-radius: 8px;">
           <p style="font-style: italic; margin-bottom: 16px;">"Stake.com and Shuffle.com is all I play and had zero issues with both."</p>
           <p style="font-size: 0.875rem; color: #666;">— r/gambling user</p>
@@ -357,7 +375,7 @@ body { background: #08090d; color: #d4d8e8; }
   <div class="t-container">
     <p>CCT — Crypto Casino Terminal · <a href="/">CryptoCasinoSorted</a></p>
     <p><a href="/terminal.html">Terminal</a>
-      <a href="/events-terminal.html">Events</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/index.html">Blog</a></p>
+      <a href="/events-terminal.html">Events</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/">Blog</a></p>
   </div>
 </footer>
 
@@ -373,16 +391,16 @@ body { background: #08090d; color: #d4d8e8; }
 
       function initTracking() {
         const externalLinks = document.querySelectorAll('a[href^="http"]');
-        
+
         externalLinks.forEach(link => {
           const href = link.href;
           const hostname = new URL(href).hostname;
           const currentHostname = window.location.hostname;
-          
+
           if (hostname === currentHostname || hostname.includes('sorted')) {
             return;
           }
-          
+
           link.addEventListener('click', function(e) {
             if (typeof gtag !== 'undefined') {
               gtag('event', 'affiliate_click', {
@@ -393,7 +411,7 @@ body { background: #08090d; color: #d4d8e8; }
                 'page_title': document.title
               });
             }
-            
+
             if (!e.ctrlKey && !e.metaKey && !e.shiftKey) {
               e.preventDefault();
               setTimeout(() => {
@@ -406,5 +424,19 @@ body { background: #08090d; color: #d4d8e8; }
     })();
   </script>
 
+
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
 </body>
 </html>

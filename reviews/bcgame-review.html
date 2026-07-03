@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../terminal-theme.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%238b5cf6' width='100' height='100' rx='20'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>🎲</text></svg>">
-  
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
   <script>
@@ -87,6 +87,24 @@ body { background: #08090d; color: #d4d8e8; }
 .review-card strong { color: #d4d8e8 !important; }
 .review-grid { gap: 20px !important; }
   </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
 </head>
 <body>
 
@@ -105,7 +123,7 @@ body { background: #08090d; color: #d4d8e8; }
 
   <article class="review-page t-article">
     <div class="container" style="max-width: 900px; padding: 60px 20px;">
-      
+
       <!-- Review Header -->
       <div style="background: linear-gradient(135deg, #1a1464 0%, #2d1f7b 100%); color: white; padding: 48px; border-radius: 16px; margin-bottom: 48px;">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
@@ -144,15 +162,15 @@ body { background: #08090d; color: #d4d8e8; }
 
       <!-- Content -->
       <div class="review-content" style="line-height: 1.8; color: #333;">
-        
+
         <h2 style="margin: 48px 0 24px;">Overview: The Community-First Crypto Casino</h2>
-        
+
         <p>BC.Game is what happens when a crypto casino actually gets crypto culture. While Stake chases mainstream appeal with UFC sponsorships, BC.Game embraces the weird: They accept 150+ cryptocurrencies (including obscure altcoins), run a community Rainbot that throws free money at chat users, and build quirky provably fair games that feel like early Bitcoin forums.</p>
 
         <p><strong>The Bottom Line Up Front:</strong> BC.Game is the best crypto casino for mid-tier players and altcoin enthusiasts. Lower wagering requirements (30x vs 40x), better community features, and actually fun original games. It's less polished than Stake but more rewarding.</p>
 
         <h2 style="margin: 48px 0 24px;">💬 What Reddit Actually Says About BC.Game</h2>
-        
+
         <div style="background: #f8f9fa; border-left: 4px solid #8b5cf6; padding: 24px; margin-bottom: 32px; border-radius: 8px;">
           <p style="font-style: italic; margin-bottom: 16px;">"BC Game is pretty good"</p>
           <p style="font-size: 0.875rem; color: #666;">— r/gambling user</p>
@@ -435,7 +453,7 @@ body { background: #08090d; color: #d4d8e8; }
   <div class="t-container">
     <p>CCT — Crypto Casino Terminal · <a href="/">CryptoCasinoSorted</a></p>
     <p><a href="/terminal.html">Terminal</a>
-      <a href="/events-terminal.html">Events</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/index.html">Blog</a></p>
+      <a href="/events-terminal.html">Events</a> · <a href="/calculators.html">Tools</a> · <a href="/blog/">Blog</a></p>
   </div>
 </footer>
 
@@ -451,16 +469,16 @@ body { background: #08090d; color: #d4d8e8; }
 
       function initTracking() {
         const externalLinks = document.querySelectorAll('a[href^="http"]');
-        
+
         externalLinks.forEach(link => {
           const href = link.href;
           const hostname = new URL(href).hostname;
           const currentHostname = window.location.hostname;
-          
+
           if (hostname === currentHostname || hostname.includes('sorted')) {
             return;
           }
-          
+
           link.addEventListener('click', function(e) {
             if (typeof gtag !== 'undefined') {
               gtag('event', 'affiliate_click', {
@@ -471,7 +489,7 @@ body { background: #08090d; color: #d4d8e8; }
                 'page_title': document.title
               });
             }
-            
+
             if (!e.ctrlKey && !e.metaKey && !e.shiftKey) {
               e.preventDefault();
               setTimeout(() => {
@@ -484,5 +502,19 @@ body { background: #08090d; color: #d4d8e8; }
     })();
   </script>
 
+
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
 </body>
 </html>

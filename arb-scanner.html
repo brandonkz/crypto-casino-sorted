@@ -126,6 +126,25 @@
       }
     }
   </style>
+  <link rel="canonical" href="https://cryptocasinosorted.com/arb-scanner.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
 </head>
 <body>
   <div id="nav-placeholder"></div>
@@ -137,7 +156,7 @@
     </div>
 
     <div class="refresh-status">
-      Last updated: <span id="last-update">--:--:--</span> • 
+      Last updated: <span id="last-update">--:--:--</span> •
       Next refresh in: <span class="refresh-timer" id="countdown">30</span>s
     </div>
 
@@ -188,17 +207,17 @@
     function renderOpportunity(opp) {
       const arb = opp.arbitrage;
       const isHot = arb.profit_pct > 2;
-      
+
       // Determine which side to take based on strategy
       let polyAction, kalshiAction;
       const strategy = arb.strategy || 'poly_yes_kalshi_no';
-      
+
       if (strategy.includes('poly_yes')) {
         polyAction = { side: 'YES', odds: opp.polymarket.yes };
       } else {
         polyAction = { side: 'NO', odds: opp.polymarket.no };
       }
-      
+
       if (strategy.includes('kalshi_yes')) {
         kalshiAction = { side: 'YES', odds: opp.kalshi.yes };
       } else {
@@ -241,14 +260,14 @@
 
     async function renderOpportunities() {
       const grid = document.getElementById('arb-grid');
-      
+
       // Fetch latest data
       if (opportunities.length === 0) {
         opportunities = await fetchOpportunities();
       }
-      
+
       let filtered = opportunities;
-      
+
       if (currentFilter === 'hot') {
         filtered = filtered.filter(opp => opp.arbitrage.profit_pct > 2);
       } else if (currentFilter !== 'all') {
@@ -273,7 +292,7 @@
       countdownInterval = setInterval(() => {
         secondsLeft--;
         document.getElementById('countdown').textContent = secondsLeft;
-        
+
         if (secondsLeft <= 0) {
           renderOpportunities();
           secondsLeft = 30;
@@ -302,5 +321,19 @@
         document.getElementById('nav-placeholder').innerHTML = html;
       });
   </script>
+
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
 </body>
 </html>

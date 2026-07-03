@@ -15,14 +15,14 @@
   <meta property="og:description" content="Track your bitcoin betting South Africa deposits and withdrawals. Paste a wallet to see net profit and compare crypto casino South Africa activity in seconds.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cryptocasinosorted.com/deposit-tracker.html">
-  <meta property="og:image" content="https://cryptocasinosorted.com/favicon.svg">
+
   <meta property="og:site_name" content="CryptoCasinoSorted">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Bitcoin Betting South Africa Deposit Tracker | CryptoCasinoSorted">
   <meta name="twitter:description" content="Track your bitcoin betting South Africa deposits and withdrawals. Paste a wallet to see net profit and compare crypto casino South Africa activity in seconds.">
-  <meta name="twitter:image" content="https://cryptocasinosorted.com/favicon.svg">
+
 
   <!-- Organization + LocalBusiness Schema -->
   <script type="application/ld+json">
@@ -571,6 +571,24 @@
       }
     }
   </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/favicon.svg">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/favicon.svg">
 </head>
 <body>
   <header class="header">
@@ -788,7 +806,7 @@
                 </div>
                 <div><strong>BC.Game</strong></div>
                 <div class="affiliate-bonus">🎁 Bonus</div>
-                <a class="affiliate-btn" href="https://bc.game/i-4bau8curc-n/" target="_blank" rel="noopener">Start Playing →</a>
+                <a class="affiliate-btn" href="https://bc.game/i-4bau8curc-n/" target="_blank" rel="noopener nofollow sponsored">Start Playing →</a>
               </div>
               <div class="affiliate-card">
                 <div class="affiliate-header">
@@ -797,7 +815,7 @@
                 </div>
                 <div><strong>Shuffle</strong></div>
                 <div class="affiliate-bonus">🎁 Bonus</div>
-                <a class="affiliate-btn" href="#" target="_blank" rel="noopener">Start Playing →</a>
+                <a class="affiliate-btn" href="#" target="_blank" rel="noopener nofollow sponsored">Start Playing →</a>
               </div>
               <div class="affiliate-card">
                 <div class="affiliate-header">
@@ -806,7 +824,7 @@
                 </div>
                 <div><strong>Rollbit</strong></div>
                 <div class="affiliate-bonus">🎁 Bonus</div>
-                <a class="affiliate-btn" href="#" target="_blank" rel="noopener">Start Playing →</a>
+                <a class="affiliate-btn" href="#" target="_blank" rel="noopener nofollow sponsored">Start Playing →</a>
               </div>
             </div>
           </div>
@@ -880,7 +898,7 @@
             'Bitcasino': ['0x5bcbdfb6cc624b959c39a2d16110d1f2d9204f72'],
             'Gamdom': ['0xd5fbda4c79f38920159fe5f22df9655fde292d47']
         };
-        
+
         const ETHERSCAN_API_KEY = '4B1J3D8BDUYVWTGYX3NNUFQCPJD6KG38CF';
         const ETH_PRICE_API = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd';
         const ETH_PRICE_CACHE_KEY = 'ccs_eth_price_cache';
@@ -888,12 +906,12 @@
         const ETH_REQUEST_TIMEOUT = 6000;
         const ETHERSCAN_REQUEST_TIMEOUT = 8000;
         const MIN_TX_ETH = 0.001;
-        
+
         let ethPrice = 3000; // Default fallback
-        
+
         const formatUSD0 = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
         const formatInt = new Intl.NumberFormat('en-US');
-        
+
         const elements = {
             walletAddress: document.getElementById('walletAddress'),
             scanBtn: document.getElementById('scanBtn'),
@@ -936,7 +954,7 @@
             shareModalDownload: document.getElementById('shareModalDownload'),
             shareModalClose: document.getElementById('shareModalClose')
         };
-        
+
         const CASINO_ADDRESS_MAP = (() => {
             const addresses = new Map();
             for (const [casino, wallets] of Object.entries(CASINOS)) {
@@ -946,7 +964,7 @@
             }
             return addresses;
         })();
-        
+
         // Fetch current ETH price (cached)
         async function getEthPrice() {
             const cached = sessionStorage.getItem(ETH_PRICE_CACHE_KEY);
@@ -961,10 +979,10 @@
                     console.warn('Failed to read ETH cache:', error);
                 }
             }
-            
+
             const controller = new AbortController();
             const timeout = setTimeout(() => controller.abort(), ETH_REQUEST_TIMEOUT);
-            
+
             try {
                 const response = await fetch(ETH_PRICE_API, { signal: controller.signal, cache: 'no-store' });
                 const data = await response.json();
@@ -977,19 +995,19 @@
             } finally {
                 clearTimeout(timeout);
             }
-            
+
             return ethPrice;
         }
-        
+
         // Scan wallet for deposits and withdrawals
         async function scanWallet(walletAddress) {
             const deposits = [];
             const withdrawals = [];
             const userWallet = walletAddress.toLowerCase();
-            
+
             try {
                 const transactions = await fetchEtherscanTxList(walletAddress);
-                
+
                 // Filter for transactions with casino addresses
                 for (let i = 0; i < transactions.length; i++) {
                     const tx = transactions[i];
@@ -998,9 +1016,9 @@
                     const isFailedTx = tx.isError === '1' || tx.txreceipt_status === '0';
                     if (isFailedTx) continue;
                     const valueEth = parseFloat(tx.value) / 1e18;
-                    
+
                     if (valueEth < MIN_TX_ETH) continue; // Filter out dust transactions
-                    
+
                     // Deposits: from user to casino
                     if (fromAddress === userWallet && CASINO_ADDRESS_MAP.has(toAddress)) {
                         deposits.push({
@@ -1012,7 +1030,7 @@
                             type: 'deposit'
                         });
                     }
-                    
+
                     // Withdrawals: from casino to user
                     if (toAddress === userWallet && CASINO_ADDRESS_MAP.has(fromAddress)) {
                         withdrawals.push({
@@ -1025,9 +1043,9 @@
                         });
                     }
                 }
-                
+
                 return { deposits, withdrawals };
-                
+
             } catch (error) {
                 console.error('Error scanning wallet:', error);
                 throw error;
@@ -1040,33 +1058,33 @@
                 `https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${encodedAddress}&startblock=0&endblock=99999999&page=1&offset=10000&sort=asc&apikey=${ETHERSCAN_API_KEY}`,
                 `https://api.etherscan.io/api?module=account&action=txlist&address=${encodedAddress}&startblock=0&endblock=99999999&page=1&offset=10000&sort=asc&apikey=${ETHERSCAN_API_KEY}`
             ];
-            
+
             let lastError = null;
-            
+
             for (let i = 0; i < endpoints.length; i++) {
                 const controller = new AbortController();
                 const timeout = setTimeout(() => controller.abort(), ETHERSCAN_REQUEST_TIMEOUT);
-                
+
                 try {
                     const response = await fetch(endpoints[i], { signal: controller.signal, cache: 'no-store' });
                     if (!response.ok) {
                         throw new Error(`Etherscan request failed (${response.status})`);
                     }
-                    
+
                     const data = await response.json();
                     const status = String(data.status || '');
                     const message = String(data.message || '');
-                    
+
                     if (status === '1' && Array.isArray(data.result)) {
                         return data.result;
                     }
-                    
+
                     const resultText = typeof data.result === 'string' ? data.result : '';
                     const noTx = message.toLowerCase().includes('no transactions') || resultText.toLowerCase().includes('no transactions');
                     if (status === '0' && noTx) {
                         return [];
                     }
-                    
+
                     throw new Error(resultText || message || 'Failed to fetch transactions');
                 } catch (error) {
                     lastError = error;
@@ -1074,42 +1092,42 @@
                     clearTimeout(timeout);
                 }
             }
-            
+
             throw lastError || new Error('Failed to fetch transactions');
         }
-        
+
         // Calculate statistics
         function calculateStats(deposits, withdrawals) {
             if (deposits.length === 0 && withdrawals.length === 0) {
                 return null;
             }
-            
+
             let totalDeposited = 0;
             let totalWithdrawn = 0;
             let biggestDeposit = 0;
             let biggestWithdrawal = 0;
-            
+
             for (let i = 0; i < deposits.length; i++) {
                 const value = deposits[i].valueUsd;
                 totalDeposited += value;
                 if (value > biggestDeposit) biggestDeposit = value;
             }
-            
+
             for (let i = 0; i < withdrawals.length; i++) {
                 const value = withdrawals[i].valueUsd;
                 totalWithdrawn += value;
                 if (value > biggestWithdrawal) biggestWithdrawal = value;
             }
             const netPosition = totalWithdrawn - totalDeposited; // Positive = profit, Negative = loss
-            
+
             const depositCount = deposits.length;
             const withdrawalCount = withdrawals.length;
             const avgDeposit = depositCount > 0 ? totalDeposited / depositCount : 0;
             const avgWithdrawal = withdrawalCount > 0 ? totalWithdrawn / withdrawalCount : 0;
-            
+
             // Breakdown by casino (deposits and withdrawals)
             const byCasino = {};
-            
+
             for (let i = 0; i < deposits.length; i++) {
                 const d = deposits[i];
                 if (!byCasino[d.casino]) {
@@ -1118,7 +1136,7 @@
                 byCasino[d.casino].deposited += d.valueUsd;
                 byCasino[d.casino].depositCount++;
             }
-            
+
             for (let i = 0; i < withdrawals.length; i++) {
                 const w = withdrawals[i];
                 if (!byCasino[w.casino]) {
@@ -1127,7 +1145,7 @@
                 byCasino[w.casino].withdrawn += w.valueUsd;
                 byCasino[w.casino].withdrawalCount++;
             }
-            
+
             // Sort casinos by total activity (deposits + withdrawals)
             const casinoBreakdown = Object.entries(byCasino)
                 .map(([casino, data]) => ({
@@ -1139,7 +1157,7 @@
                     withdrawalCount: data.withdrawalCount
                 }))
                 .sort((a, b) => (b.deposited + b.withdrawn) - (a.deposited + a.withdrawn));
-            
+
             return {
                 totalDeposited,
                 totalWithdrawn,
@@ -1154,7 +1172,7 @@
                 casinoBreakdown
             };
         }
-        
+
         // Display results
         function displayResults(stats) {
             if (!stats) {
@@ -1174,10 +1192,10 @@
             if (elements.shareCta) elements.shareCta.classList.remove('is-hidden');
             if (elements.downloadShareCard) elements.downloadShareCard.disabled = false;
             if (elements.shareCard) elements.shareCard.classList.remove('is-hidden');
-            
+
             // Update net position (headline)
             const absNet = Math.abs(stats.netPosition);
-            
+
             if (stats.netPosition > 0) {
                 elements.netPosition.textContent = `+$${formatUSD0.format(absNet)}`;
                 elements.netPosition.style.color = '#22c55e';
@@ -1194,7 +1212,7 @@
                 elements.netLabel.textContent = 'Break Even';
                 elements.shareNetValue.style.color = '#8b5cf6';
             }
-            
+
             // Update stats boxes
             elements.totalDeposited.textContent = `$${formatUSD0.format(stats.totalDeposited)}`;
             elements.totalWithdrawn.textContent = `$${formatUSD0.format(stats.totalWithdrawn)}`;
@@ -1216,7 +1234,7 @@
                 : '$0';
             elements.shareTopCasino.textContent = topCasino;
             elements.shareTopCasinoSub.textContent = `Net: ${topCasinoNet}`;
-            
+
             // Casino breakdown
             const casinoItems = new Array(stats.casinoBreakdown.length);
             for (let i = 0; i < stats.casinoBreakdown.length; i++) {
@@ -1229,7 +1247,7 @@
                         <div class="casino-details">
                             <span class="net-amount ${netClass}">${netSign}$${formatUSD0.format(Math.abs(item.net))}</span>
                             <span class="breakdown">
-                                <span class="deposit">-$${formatUSD0.format(item.deposited)}</span> / 
+                                <span class="deposit">-$${formatUSD0.format(item.deposited)}</span> /
                                 <span class="withdrawal">+$${formatUSD0.format(item.withdrawn)}</span>
                             </span>
                         </div>
@@ -1237,10 +1255,10 @@
                 `;
             }
             elements.casinoList.innerHTML = casinoItems.join('');
-            
+
             // Generate engaging subtext based on net position
             let subtextMessage = '';
-            
+
             if (stats.netPosition > 10000) {
                 subtextMessage = '🤑 You\'re crushing it!';
             } else if (stats.netPosition > 1000) {
@@ -1254,16 +1272,16 @@
             } else {
                 subtextMessage = '🐋 Whale-sized losses';
             }
-            
+
             elements.subtextMessage.textContent = subtextMessage;
-            
+
             // Setup share buttons with viral copy
             const netFormatted = formatUSD0.format(absNet);
             const depositedFormatted = formatUSD0.format(stats.totalDeposited);
             const withdrawnFormatted = formatUSD0.format(stats.totalWithdrawn);
             const topCasino = stats.casinoBreakdown[0].casino;
             const topCasinoNet = formatUSD0.format(Math.abs(stats.casinoBreakdown[0].net));
-            
+
             // Twitter - shocking revelation style
             let twitterText;
             if (stats.netPosition > 1000) {
@@ -1273,29 +1291,29 @@
             } else {
                 twitterText = `Tracked my crypto casino activity:\n\nDeposited: $${depositedFormatted}\nWithdrawn: $${withdrawnFormatted}\n\nNearly break even!\n\nCheck yours: cryptocasinosorted.com/deposit-tracker.html`;
             }
-            
+
             // Reddit - discussion starter
             const redditTitle = stats.netPosition > 1000
                 ? `I'm actually up $${netFormatted} at crypto casinos - tracked my deposits vs withdrawals`
                 : stats.netPosition < -5000
                 ? `Tracked my crypto casino deposits - I'm down $${netFormatted} 😬`
                 : `Tracked my crypto casino deposits vs withdrawals`;
-                
-            const netDescription = stats.netPosition >= 0 
-                ? `up $${netFormatted}` 
+
+            const netDescription = stats.netPosition >= 0
+                ? `up $${netFormatted}`
                 : `down $${netFormatted}`;
-                
+
             const redditText = `Used CryptoCasinoSorted's deposit tracker and I'm ${netDescription}.\n\nTotal deposited: $${depositedFormatted}\nTotal withdrawn: $${withdrawnFormatted}\n\nBiggest casino: ${topCasino} (${stats.casinoBreakdown[0].net >= 0 ? '+' : '-'}$${topCasinoNet})\n\nYou can check yours at cryptocasinosorted.com/deposit-tracker.html - tracks deposits and withdrawals from your ETH wallet.`;
-            
+
             elements.shareTwitter.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterText)}`;
             elements.shareReddit.href = `https://reddit.com/submit?title=${encodeURIComponent(redditTitle)}&text=${encodeURIComponent(redditText)}`;
-            
+
             // Setup copy button
             elements.copyResults.onclick = () => {
                 const netSign = stats.netPosition >= 0 ? '+' : '-';
                 const netEmoji = stats.netPosition >= 0 ? '🤑' : '😬';
                 const copyText = `${netEmoji} My Crypto Casino Results\n\nNet Position: ${netSign}$${netFormatted}\n\nDeposited: $${depositedFormatted} (${stats.depositCount} transactions)\nWithdrawn: $${withdrawnFormatted} (${stats.withdrawalCount} transactions)\n\nBiggest casino: ${topCasino} (${stats.casinoBreakdown[0].net >= 0 ? '+' : '-'}$${topCasinoNet})\n\nTrack yours: cryptocasinosorted.com/deposit-tracker.html`;
-                
+
                 navigator.clipboard.writeText(copyText).then(() => {
                     showToast(elements.copiedToast, '✅ Copied to clipboard!');
                 });
@@ -1303,39 +1321,39 @@
 
             elements.results.classList.add('active');
         }
-        
+
         // Main scan function
         async function performScan() {
             const walletAddress = elements.walletAddress.value.trim();
-            
+
             // Validate address
             if (!walletAddress || !walletAddress.match(/^0x[a-fA-F0-9]{40}$/)) {
                 showError('Please enter a valid Ethereum wallet address');
                 return;
             }
-            
+
             // Hide previous results/errors
             elements.results.classList.remove('active');
             elements.error.classList.remove('active');
             if (elements.downloadShareCard) elements.downloadShareCard.disabled = true;
-            
+
             // Show loading
             elements.loading.classList.add('active');
             elements.scanBtn.disabled = true;
-            
+
             try {
                 // Get current ETH price
                 await getEthPrice();
-                
+
                 // Scan wallet
                 const { deposits, withdrawals } = await scanWallet(walletAddress);
-                
+
                 // Calculate stats
                 const stats = calculateStats(deposits, withdrawals);
-                
+
                 // Display results
                 displayResults(stats);
-                
+
             } catch (error) {
                 showError(error.message || 'Failed to scan wallet. Please try again.');
             } finally {
@@ -1343,7 +1361,7 @@
                 elements.scanBtn.disabled = false;
             }
         }
-        
+
         // Show error
         function showError(message) {
             elements.errorMessage.textContent = message;
@@ -1481,7 +1499,7 @@
             URL.revokeObjectURL(url);
             showToast(elements.downloadToast, '✅ Image downloaded!');
         }
-        
+
         // Event listeners
         elements.scanBtn.addEventListener('click', performScan);
         elements.walletAddress.addEventListener('keypress', (e) => {
@@ -1511,7 +1529,7 @@
                 closeShareModal();
             }
         });
-        
+
         // Initialize ETH price on page load
         getEthPrice();
 
@@ -1521,5 +1539,19 @@
             elements.shareQr.src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(shareUrl)}`;
         }
     </script>
+
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
 </body>
 </html>
