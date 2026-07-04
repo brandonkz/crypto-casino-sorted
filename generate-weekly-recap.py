@@ -63,14 +63,14 @@ def main():
       <a href=\"/terminal.html\">Terminal</a>
       <a href=\"/analytics.html\">Live Data</a>
       <a href=\"/calculators.html\">Tools</a>
-      <a href=\"/blog/index.html\">Blog</a>
+      <a href=\"/blog/\">Blog</a>
       <a href=\"/reviews/index.html\" class=\"t-nav-hide-mobile\">Reviews</a>
     </div>
   </nav>
 
   <article class=\"t-article\">
     <header class=\"t-article-header\">
-      <div class=\"breadcrumb\"><a href=\"/blog/index.html\">Blog</a> / Weekly Recap</div>
+      <div class=\"breadcrumb\"><a href=\"/blog/\">Blog</a> / Weekly Recap</div>
       <h1>{title}</h1>
       <p class=\"subtitle\">Data-driven summary of crypto casino activity, whale deposits, and market shifts.</p>
       <div class=\"post-meta\">
@@ -113,7 +113,7 @@ def main():
   <footer class=\"t-footer\">
     <div class=\"t-container\">
       <p>CCT — Crypto Casino Terminal · <a href=\"/\">CryptoCasinoSorted</a></p>
-      <p><a href=\"/terminal.html\">Terminal</a> · <a href=\"/calculators.html\">Tools</a> · <a href=\"/blog/index.html\">Blog</a></p>
+      <p><a href=\"/terminal.html\">Terminal</a> · <a href=\"/calculators.html\">Tools</a> · <a href=\"/blog/\">Blog</a></p>
     </div>
   </footer>
 </body>

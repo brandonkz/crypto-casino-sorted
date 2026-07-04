@@ -143,7 +143,7 @@ def main():
                     {
                         "source": "CryptoCasinoSorted",
                         "title": "Weekly iGaming recap is live — biggest deposit spikes + VIP shifts",
-                        "url": "/blog/index.html",
+                        "url": "/blog/",
                         "tag": "RECAP",
                         "time": "This week"
                     },
