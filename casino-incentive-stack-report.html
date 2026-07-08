@@ -350,12 +350,40 @@
 }
 @keyframes t-pulse { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
 
+/* Hamburger (mobile only) */
+.t-nav-toggle { display: none; }
+.t-nav-burger { display: none; }
+
 @media (max-width: 768px) {
-  .t-nav { padding: 0 12px; height: 40px; overflow: hidden; }
+  .t-nav { padding: 0 12px; height: 44px; position: relative; overflow: visible; }
   .t-nav-logo .sub { display: none; }
-  .t-nav-links { gap: 10px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
-  .t-nav-links::-webkit-scrollbar { display: none; }
-  .t-nav-links a { font-size: 9px; }
+  .t-nav-burger {
+    display: flex; flex-direction: column; justify-content: center; gap: 5px;
+    width: 28px; height: 28px; cursor: pointer; margin-left: auto;
+  }
+  .t-nav-burger span {
+    display: block; width: 22px; height: 2px; border-radius: 2px;
+    background: var(--t-green); transition: transform .25s, opacity .2s;
+  }
+  .t-nav-links {
+    display: none;
+    position: absolute; top: 44px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: rgba(4, 16, 38, 0.98);
+    border-bottom: 1px solid var(--t-border);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    padding: 6px 16px 12px;
+  }
+  .t-nav-links a {
+    font-size: 13px; padding: 12px 2px; width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .t-nav-links a.t-nav-primary { font-size: 13px; }
+  .t-nav-links a:last-child { border-bottom: none; }
+  .t-nav-toggle:checked ~ .t-nav-links { display: flex; }
+  .t-nav-toggle:checked ~ .t-nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .t-nav-toggle:checked ~ .t-nav-burger span:nth-child(2) { opacity: 0; }
+  .t-nav-toggle:checked ~ .t-nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .t-nav-hide-mobile { display: none; }
 }
 
@@ -382,6 +410,8 @@
 <body>
   <nav class="t-nav">
     <a href="/" class="t-nav-logo">CryptoCasinoSorted</a>
+    <input type="checkbox" id="t-nav-toggle" class="t-nav-toggle" aria-label="Toggle navigation menu">
+    <label for="t-nav-toggle" class="t-nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
     <div class="t-nav-links">
       <a href="/rewards-recommender.html" class="t-nav-primary">Rewards</a>
       <a href="/rakeback-comparison.html">Rakeback</a>
