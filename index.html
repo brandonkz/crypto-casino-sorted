@@ -385,7 +385,85 @@
       .score-row { grid-template-columns: 1fr; }
       .guide-link { grid-template-columns: 1fr; }
     }
-  </style>
+  
+/* Standard nav */
+/* === TERMINAL NAV === */
+.t-nav {
+  background: rgba(4, 16, 38, 0.94);
+  border-bottom: 1px solid var(--t-border);
+  padding: 0 16px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.t-nav-logo {
+  font-family: var(--t-mono);
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--t-green);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.t-nav-logo .sub { color: var(--t-dim); font-weight: 400; font-size: 10px; }
+.t-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.t-nav-links a {
+  color: var(--t-dim);
+  font-family: var(--t-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.t-nav-links a:hover { color: var(--t-green); }
+.t-nav-links a.active { color: var(--t-green); }
+.t-nav-links a.t-nav-primary {
+  color: #ff9d00;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+.t-nav-links a.t-nav-primary:hover { color: #ffc164; }
+.t-nav-live {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--t-green);
+  font-family: var(--t-mono);
+  font-size: 10px;
+  font-weight: 600;
+}
+.t-nav-live::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--t-green);
+  border-radius: 50%;
+  animation: t-pulse 2s infinite;
+}
+@keyframes t-pulse { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+
+@media (max-width: 768px) {
+  .t-nav { padding: 0 12px; height: 40px; overflow: hidden; }
+  .t-nav-logo .sub { display: none; }
+  .t-nav-links { gap: 10px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .t-nav-links::-webkit-scrollbar { display: none; }
+  .t-nav-links a { font-size: 9px; }
+  .t-nav-hide-mobile { display: none; }
+}
+
+</style>
 
 
 
@@ -405,12 +483,14 @@
 </script>
 </head>
 <body>
-  <nav class="nav">
-    <a class="brand" href="/">CCT <span>CryptoCasinoSorted</span></a>
-    <div class="nav-links">
-      <a class="active" href="/rewards-recommender.html">Rewards</a>
+  <nav class="t-nav">
+    <a href="/" class="t-nav-logo">CCT <span class="sub">CryptoCasinoSorted</span></a>
+    <div class="t-nav-links">
+      <a href="/rewards-recommender.html" class="t-nav-primary">Rewards</a>
       <a href="/rakeback-comparison.html">Rakeback</a>
       <a href="/bonus-calculator.html">Bonus Calc</a>
+      <a href="/casino-reward-sources.html">Sources</a>
+      <a href="/reviews/">Reviews</a>
       <a href="/blog/">Guides</a>
     </div>
   </nav>
