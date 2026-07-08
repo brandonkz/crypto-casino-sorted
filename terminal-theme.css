@@ -658,9 +658,9 @@ h5, h6 {
   border-radius: var(--t-radius);
   padding: 18px 20px;
 }
-.blog-card h3 { line-height: 1.45; margin-bottom: 8px; }
-.blog-card h3 a { color: var(--t-text); }
-.blog-card h3 a:hover { color: var(--t-green); }
+.blog-card h2, .blog-card h3 { font-size: 1.02rem; line-height: 1.45; margin-bottom: 8px; }
+.blog-card h2 a, .blog-card h3 a { color: var(--t-text); }
+.blog-card h2 a:hover, .blog-card h3 a:hover { color: var(--t-green); }
 .blog-card p { line-height: 1.6; color: #9aa3bb; }
 
 /* Blog index card extras */
