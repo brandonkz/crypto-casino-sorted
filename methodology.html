@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How CryptoCasinoSorted models expected reward value: house edge assumptions, the losses-converge-to-theo assumption, the bonus haircut, how withdrawal tests are run, and last-verified dates.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/methodology.html">
+  <title>How We Calculate Crypto Casino Reward Value (Methodology)</title>
+  <meta property="og:title" content="How We Calculate Crypto Casino Reward Value (Methodology)">
+  <meta property="og:description" content="How CryptoCasinoSorted models expected reward value: house edge assumptions, the losses-converge-to-theo assumption, the bonus haircut, how withdrawal tests are run, and last-verified dates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cryptocasinosorted.com/methodology.html">
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How We Calculate Crypto Casino Reward Value (Methodology)">
+  <meta name="twitter:description" content="How CryptoCasinoSorted models expected reward value: house edge assumptions, the losses-converge-to-theo assumption, the bonus haircut, how withdrawal tests are run, and last-verified dates.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/terminal-theme.css">
+  <link rel="stylesheet" href="/redesign.css">
+  <link rel="icon" href="/favicon.ico">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0L3N9F43ED');</script>
+  
+</head>
+<body class="audit">
+<nav class="t-nav">
+    <a href="/" class="t-nav-logo">CryptoCasinoSorted</a>
+    <input type="checkbox" id="t-nav-toggle" class="t-nav-toggle" aria-label="Toggle navigation menu">
+    <label for="t-nav-toggle" class="t-nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+    <div class="t-nav-links">
+      <a href="/rewards-recommender.html" class="t-nav-primary">Rewards</a>
+      <a href="/rakeback-comparison.html">Rakeback</a>
+      <a href="/bonus-calculator.html">Bonus Calc</a>
+      <a href="/casino-reward-sources.html">Sources</a>
+      <a href="/reviews/">Reviews</a>
+      <a href="/blog/">Guides</a>
+    </div>
+  </nav>
+<main><div class="wrap narrow">
+  <p class="eyebrow">Methodology</p>
+  <h1>How we calculate reward value</h1>
+  <p class="verified-line">Last verified <span class="num">2026-07-09</span>.</p>
+
+  <p>This page explains the numbers behind the <a href="/">Rewards Finder</a> and the volume bracket pages. Read it before you trust any figure. The numbers are modeled long-run estimates. They are not guarantees, and your own results will vary.</p>
+
+  <h2>The core idea: theoretical loss</h2>
+  <p>Every reward is measured against your theoretical loss, or theo. Theo is what the house expects to win from you over time. It is your monthly wager times the house edge for the game you play.</p>
+  <p>We use four house edge assumptions by game type: slots <span class="num">4%</span>, originals like dice, crash and plinko <span class="num">1%</span>, live casino and tables <span class="num">1.5%</span>, sports <span class="num">5%</span>. You pick the game type in the finder. Slots is the default.</p>
+
+  <h2>Expected reward value</h2>
+  <p>We add up three things. Rakeback, using one of two models per casino. An edge-based model pays wager times house edge times the rakeback rate. A wager-based model pays wager times the rakeback rate. Cashback on losses, modeled as theo times the cashback rate. And flat recurring bonuses at face value, or at half value if they carry wagering requirements.</p>
+  <p>Cashback usually pays on realised losses. Over many sessions, realised losses converge to theo, so we model cashback on theo. This is a long-run average. In a winning month, cashback pays zero. The tool models the average, not any single month.</p>
+
+  <h2>Return rate</h2>
+  <p>Return rate is expected reward value divided by theo, shown as the percent of your expected losses that comes back. We rank by return rate. If a promo returns more than <span class="num">100%</span> of expected losses at a given volume, we cap the display at <span class="num">&gt;100%</span> and flag it, because that usually means a short-term promo with terms to read. We never present gambling as profitable. The house edge is real and you should expect to lose money over time.</p>
+
+  <h2>Tiers</h2>
+  <p>We apply the steady-state VIP tier your entered volume sustains in a month. We do not model mid-month tier jumps. Important: no casino publishes its tier thresholds, so the thresholds we use are modeled estimates, flagged in our data file.</p>
+
+  <h2>Worked example</h2>
+  <p>Stake, edge-based, at <span class="num">$2,500</span> a month on slots. Theo is <span class="num">$2,500</span> times <span class="num">4%</span> equals <span class="num">$100</span>. The modeled tier at this volume applies to that theo.</p>
+  <p class="result-math">$2,500 wagered x 4% edge x 5% rakeback = $5.00/mo. Return rate 5% of expected losses.</p>
+
+  <h2>How withdrawal tests work</h2>
+  <p>A withdrawal test means we fund an account, play a little, and request a payout, then record how long it took. The withdrawal time shown comes from these checks. Note plainly: the date on each Tested stamp right now is our last data-verification date, <span class="num">2026-07-09</span>, not a fresh per-transaction test for every casino. Where we have a dated transaction test, we will show that date instead.</p>
+  <table class="cmp"><thead><tr><th>Casino</th><th>Withdrawal time</th><th>Verified</th></tr></thead><tbody><tr><td class="casino">Stake</td><td><span class="num">Instant</span></td><td><span class="num">2026-07-09</span></td></tr>
+<tr><td class="casino">BC.Game</td><td><span class="num">Instant</span></td><td><span class="num">2026-07-09</span></td></tr>
+<tr><td class="casino">Roobet</td><td><span class="num">&lt;1 hour</span></td><td><span class="num">2026-07-09</span></td></tr>
+<tr><td class="casino">Shuffle</td><td><span class="num">Instant</span></td><td><span class="num">2026-07-09</span></td></tr>
+<tr><td class="casino">Duelbits</td><td><span class="num">&lt;1 hour</span></td><td><span class="num">2026-07-09</span></td></tr>
+<tr><td class="casino">mBit</td><td><span class="num">&lt;1 hour (crypto)</span></td><td><span class="num">2026-07-09</span></td></tr>
+<tr><td class="casino">XTP</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td class="casino">Thrill</td><td>&mdash;</td><td>&mdash;</td></tr></tbody></table>
+
+  <h2>Update cadence</h2>
+  <p>We re-check reward terms and withdrawal behaviour on a rolling basis and bump the last-verified date when the data changes. If you spot a number that looks wrong, tell us on the <a href="/contact.html">contact page</a>.</p>
+  <p><a class="btn-primary" href="/">Back to the Rewards Finder</a></p>
+</div></main>
+<footer class="ccs-trust-footer" aria-label="Site trust links">
+  <div class="ccs-trust-footer-inner">
+    <strong>CryptoCasinoSorted</strong>
+    <nav>
+      <a href="/about.html">About</a>
+      <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/methodology.html">Methodology</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <span>18+ only. Gamble responsibly.</span>
+  </div>
+</footer>
+</body></html>

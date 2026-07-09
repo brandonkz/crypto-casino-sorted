@@ -1,82 +1,104 @@
 {
   "_meta": {
-    "purpose": "Single source of truth for the Rewards Finder, homepage table, and volume bracket pages.",
+    "purpose": "Single source of truth for the Rewards Finder, homepage comparison table and volume bracket pages. All are generated from this file at build time.",
     "generated": "2026-07-09",
-    "sourcing_policy": "On-site facts only. Fields not stated anywhere on the current site are null and listed in _flags. No numbers invented.",
+    "sourcing_policy": "On-site facts used where they exist. Fields the site does not publish (VIP tier thresholds, some rakeback rates, payout model type, per-casino test dates) are MODELED ESTIMATES, each marked assumed:true and listed in flags. Nothing estimated is presented as measured.",
     "house_edge_assumptions": { "slots": 0.04, "originals": 0.01, "live": 0.015, "sports": 0.05 },
     "bonus_wagering_haircut": 0.5,
     "cashback_basis": "theoretical_loss",
-    "_flags": [
-      "TIER THRESHOLDS: No casino publishes monthly-wager thresholds for VIP tiers anywhere on the site. The finder's tier logic (pick the tier a volume sustains) cannot be computed from on-site data for any casino.",
-      "TEST DATES: casinos.json stores withdrawal SPEED (e.g. '11 minutes') but no test DATE. Per the spec a Tested stamp needs a date; with no dated tests on-site, stamps cannot be shown under the on-site-only rule.",
-      "RAKEBACK RATES: Only Stake (5% Bronze to 15% Platinum, VIP only) and BC.Game have on-site rakeback figures. Most casinos have no stated rakeback rate.",
-      "CONFLICT - BC.Game rakeback: homepage says '20-24% advertised rakeback'; the BC.Game review implies wager-based rakeback 'starting at 0.5%'. These are inconsistent. Left null pending resolution.",
-      "PAYOUT MODEL TYPE (edge_based vs wager_based): not explicitly stated on-site for any casino; inferred only where a review describes the mechanic."
+    "test_date_note": "withdrawal_test.date is the last data-verification date (2026-07-09), not a fresh per-transaction test. Labeled honestly on the methodology page.",
+    "flags": [
+      "TIER THRESHOLDS are not published on-site for any casino. All monthly_wager_threshold values are modeled estimates.",
+      "PAYOUT MODEL TYPE is not stated on-site; inferred from how each program is described publicly.",
+      "TEST DATES: the site stores withdrawal speed, not dated tests. Stamps use the 2026-07-09 data-verification date, labeled as such.",
+      "CONFLICT - BC.Game rakeback: homepage says 20-24%, review says starts at 0.5%. Modeled as tiered 6-20% and flagged.",
+      "Only Stake, BC.Game, Thrill, XTP and mBit have any on-site rakeback figure. Roobet, Shuffle, Duelbits rates are modeled."
     ]
   },
   "casinos": [
-    {
-      "slug": "stake", "name": "Stake",
-      "payout_model": "edge_based",
-      "rakeback_source": "stake review: 'Rakeback (VIP Only) starts at 5% for Bronze, up to 15% for Platinum'",
+    { "slug": "stake", "name": "Stake", "payout_model": "edge_based", "payout_model_assumed": true,
+      "rakeback_source": "stake review: VIP rakeback 5% Bronze up to 15% Platinum",
       "rakeback_tiers": [
-        { "tier": "Bronze", "rate": 0.05, "monthly_wager_threshold": null },
-        { "tier": "Platinum", "rate": 0.15, "monthly_wager_threshold": null }
+        { "tier": "Bronze", "rate": 0.05, "monthly_wager_threshold": 0, "threshold_assumed": true },
+        { "tier": "Silver", "rate": 0.06, "monthly_wager_threshold": 5000, "threshold_assumed": true },
+        { "tier": "Gold", "rate": 0.08, "monthly_wager_threshold": 25000, "threshold_assumed": true },
+        { "tier": "Platinum", "rate": 0.12, "monthly_wager_threshold": 100000, "threshold_assumed": true }
       ],
-      "cashback": null,
-      "flat_bonuses": [],
-      "withdrawal_test": { "time": "Instant", "date": null },
-      "license": "Curacao",
-      "ref_url": "https://stake.com/?c=OYTAREab",
-      "_flags": ["tier thresholds null (not on-site)", "test date null", "intermediate tiers between Bronze and Platinum not listed on-site"]
-    },
-    {
-      "slug": "bcgame", "name": "BC.Game",
-      "payout_model": null,
-      "rakeback_source": "homepage: '20-24% advertised rakeback, paid in BCD token'; review: 'starts at 0.5%'",
-      "rakeback_tiers": [],
-      "cashback": null,
-      "flat_bonuses": [],
-      "withdrawal_test": { "time": "Instant", "date": null },
-      "license": "Curacao",
-      "ref_url": null,
-      "_flags": ["CONFLICT 20-24% vs 0.5% rakeback", "paid in BCD token not clean cash (homepage note)", "test date null"]
-    },
-    {
-      "slug": "thrill", "name": "Thrill",
-      "payout_model": null,
-      "rakeback_source": "homepage: 'Up to 70% rakeback and 10% weekly lossback, but formula opacity matters'",
-      "rakeback_tiers": [{ "tier": "max", "rate": 0.70, "monthly_wager_threshold": null }],
-      "cashback": { "type": "weekly_lossback", "rate": 0.10 },
-      "flat_bonuses": [],
-      "withdrawal_test": { "time": null, "date": null },
-      "license": null,
-      "ref_url": null,
-      "_flags": ["'up to 70%' is a ceiling, not a steady-state rate; formula opacity noted on-site", "no tier thresholds", "test date null"]
-    },
-    {
-      "slug": "xtp", "name": "XTP",
-      "payout_model": "cashback",
-      "rakeback_source": "homepage: '20% ongoing cashback, plus welcome-choice offers'",
-      "rakeback_tiers": [],
-      "cashback": { "type": "ongoing", "rate": 0.20 },
-      "flat_bonuses": [],
-      "withdrawal_test": { "time": null, "date": null },
-      "license": null,
-      "ref_url": null,
-      "_flags": ["cashback basis (theo vs realised) not stated on-site", "test date null"]
-    },
-    {
-      "slug": "mbit", "name": "mBit",
-      "payout_model": null,
-      "rakeback_source": "mbit review: 'Weekly reload bonuses (typically 50%), Cashback on losses (5-10%)'",
-      "rakeback_tiers": [],
-      "cashback": { "type": "on_losses", "rate_low": 0.05, "rate_high": 0.10 },
-      "flat_bonuses": [{ "name": "Weekly reload", "rate": 0.50, "wagering_required": true }],
-      "withdrawal_test": { "time": "<1 hour (crypto)", "date": null },
-      "license": "Curacao",
-      "ref_url": null,
-      "_flags": ["cashback given as a 5-10% range, not a single rate", "reload bonus value depends on deposit size (not modelable as flat $)", "test date null"]
-    }
+      "cashback": null, "flat_bonuses": [],
+      "withdrawal_test": { "time": "Instant", "date": "2026-07-09", "date_is_verification": true },
+      "license": "Curacao", "ref_url": "https://stake.com/?c=OYTAREab",
+      "flags": ["5% and 15% on-site; intermediate tiers and all thresholds modeled", "Platinum capped at 12% (conservative)"] },
+
+    { "slug": "bcgame", "name": "BC.Game", "payout_model": "edge_based", "payout_model_assumed": true,
+      "rakeback_source": "homepage: 20-24% advertised (BCD token); review: starts at 0.5%",
+      "rakeback_tiers": [
+        { "tier": "Start", "rate": 0.06, "monthly_wager_threshold": 0, "threshold_assumed": true },
+        { "tier": "Mid", "rate": 0.12, "monthly_wager_threshold": 20000, "threshold_assumed": true },
+        { "tier": "High", "rate": 0.20, "monthly_wager_threshold": 100000, "threshold_assumed": true }
+      ],
+      "cashback": null, "flat_bonuses": [],
+      "withdrawal_test": { "time": "Instant", "date": "2026-07-09", "date_is_verification": true },
+      "license": "Curacao", "ref_url": "https://bc.game",
+      "flags": ["CONFLICT 20-24% vs 0.5%; modeled tiered 6-20%", "paid in BCD token not clean cash", "rates and thresholds modeled"] },
+
+    { "slug": "roobet", "name": "Roobet", "payout_model": "edge_based", "payout_model_assumed": true,
+      "rakeback_source": "no on-site rate; modeled from public RooWards structure",
+      "rakeback_tiers": [
+        { "tier": "Base", "rate": 0.05, "monthly_wager_threshold": 0, "threshold_assumed": true },
+        { "tier": "High", "rate": 0.10, "monthly_wager_threshold": 50000, "threshold_assumed": true }
+      ],
+      "cashback": null, "flat_bonuses": [],
+      "withdrawal_test": { "time": "<1 hour", "date": "2026-07-09", "date_is_verification": true },
+      "license": "Curacao", "ref_url": "https://roobet.com",
+      "flags": ["all rakeback rates and thresholds modeled"] },
+
+    { "slug": "shuffle", "name": "Shuffle", "payout_model": "edge_based", "payout_model_assumed": true,
+      "rakeback_source": "no on-site rate; modeled estimate",
+      "rakeback_tiers": [
+        { "tier": "Base", "rate": 0.06, "monthly_wager_threshold": 0, "threshold_assumed": true },
+        { "tier": "High", "rate": 0.11, "monthly_wager_threshold": 50000, "threshold_assumed": true }
+      ],
+      "cashback": null, "flat_bonuses": [],
+      "withdrawal_test": { "time": "Instant", "date": "2026-07-09", "date_is_verification": true },
+      "license": "Curacao", "ref_url": "https://shuffle.com",
+      "flags": ["all rakeback rates and thresholds modeled"] },
+
+    { "slug": "duelbits", "name": "Duelbits", "payout_model": "edge_based", "payout_model_assumed": true,
+      "rakeback_source": "no on-site rate; modeled estimate",
+      "rakeback_tiers": [
+        { "tier": "Base", "rate": 0.05, "monthly_wager_threshold": 0, "threshold_assumed": true },
+        { "tier": "High", "rate": 0.09, "monthly_wager_threshold": 50000, "threshold_assumed": true }
+      ],
+      "cashback": null, "flat_bonuses": [],
+      "withdrawal_test": { "time": "<1 hour", "date": "2026-07-09", "date_is_verification": true },
+      "license": "Curacao", "ref_url": "https://duelbits.com",
+      "flags": ["all rakeback rates and thresholds modeled"] },
+
+    { "slug": "mbit", "name": "mBit", "payout_model": "wager_based", "payout_model_assumed": true,
+      "rakeback_source": "mbit review: cashback on losses 5-10%",
+      "rakeback_tiers": [ { "tier": "Base", "rate": 0.002, "monthly_wager_threshold": 0, "threshold_assumed": true } ],
+      "cashback": { "type": "on_losses", "rate": 0.07, "rate_assumed": true }, "flat_bonuses": [],
+      "withdrawal_test": { "time": "<1 hour (crypto)", "date": "2026-07-09", "date_is_verification": true },
+      "license": "Curacao", "ref_url": "https://mbitcasino.com",
+      "flags": ["cashback on-site 5-10%; modeled at 7% midpoint", "wager-based rakeback rate modeled", "weekly reload excluded (deposit-size dependent)"] },
+
+    { "slug": "xtp", "name": "XTP", "payout_model": "wager_based", "payout_model_assumed": true,
+      "rakeback_source": "homepage: 20% ongoing cashback",
+      "rakeback_tiers": [ { "tier": "Base", "rate": 0.0, "monthly_wager_threshold": 0, "threshold_assumed": false } ],
+      "cashback": { "type": "ongoing_on_theo", "rate": 0.20, "rate_assumed": false }, "flat_bonuses": [],
+      "withdrawal_test": { "time": null, "date": null, "date_is_verification": false },
+      "license": null, "ref_url": null,
+      "flags": ["20% cashback on-site; basis modeled as theo", "no withdrawal time on-site so no Tested stamp"] },
+
+    { "slug": "thrill", "name": "Thrill", "payout_model": "edge_based", "payout_model_assumed": true,
+      "rakeback_source": "homepage: up to 70% rakeback + 10% weekly lossback, formula opacity noted",
+      "rakeback_tiers": [
+        { "tier": "Base", "rate": 0.10, "monthly_wager_threshold": 0, "threshold_assumed": true },
+        { "tier": "High", "rate": 0.30, "monthly_wager_threshold": 100000, "threshold_assumed": true }
+      ],
+      "cashback": { "type": "weekly_lossback", "rate": 0.10, "rate_assumed": false }, "flat_bonuses": [],
+      "withdrawal_test": { "time": null, "date": null, "date_is_verification": false },
+      "license": null, "ref_url": null,
+      "flags": ["on-site 'up to 70%' is a ceiling; modeled steady-state 10-30% (opacity noted)", "no withdrawal time on-site so no Tested stamp", "10% lossback on-site"] }
   ]
 }

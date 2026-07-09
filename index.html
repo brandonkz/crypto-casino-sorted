@@ -36,470 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;650;750;850;950&display=swap" rel="stylesheet">
 
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy: #06152f;
-      --navy-2: #0b2148;
-      --navy-3: #102c5f;
-      --ink: #f7fbff;
-      --muted: #9fb1d1;
-      --orange: #ff6a00;
-      --orange-2: #ff9d00;
-      --cyan: #29d3ff;
-      --lime: #66f06f;
-      --red: #ff6378;
-      --line: rgba(255, 255, 255, 0.14);
-      --panel: rgba(9, 30, 67, 0.9);
-      --panel-2: rgba(14, 43, 92, 0.94);
-      --radius: 8px;
-    }
-    body {
-      min-height: 100vh;
-      background:
-        linear-gradient(135deg, rgba(255, 106, 0, 0.18) 0 16%, transparent 16% 100%),
-        linear-gradient(215deg, rgba(41, 211, 255, 0.13) 0 18%, transparent 18% 100%),
-        var(--navy);
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 34px 34px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 72%);
-    }
-    a { color: inherit; text-decoration: none; }
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      height: 54px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 0 18px;
-      background: rgba(4, 16, 38, 0.94);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
-    }
-    .brand {
-      color: var(--orange-2);
-      font-size: 0.82rem;
-      font-weight: 950;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .brand span { color: var(--muted); font-weight: 650; letter-spacing: 0; text-transform: none; margin-left: 5px; }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 0.7rem;
-      font-weight: 850;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--orange-2); }
-    .page {
-      position: relative;
-      z-index: 1;
-      max-width: 1248px;
-      margin: 0 auto;
-      padding: 48px 16px 76px;
-    }
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.04fr) minmax(330px, 0.72fr);
-      gap: 16px;
-      align-items: stretch;
-      margin-bottom: 16px;
-    }
-    .hero-main,
-    .hero-card,
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.22);
-      overflow: hidden;
-    }
-    .hero-main {
-      min-height: 438px;
-      padding: 36px;
-      position: relative;
-      display: grid;
-      align-content: center;
-    }
-    .hero-main::after {
-      content: "";
-      position: absolute;
-      right: -92px;
-      bottom: -112px;
-      width: 340px;
-      height: 230px;
-      background:
-        linear-gradient(135deg, transparent 0 38%, rgba(255,255,255,0.14) 38% 42%, transparent 42% 100%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.22) 0 4px, transparent 4px 12px),
-        linear-gradient(135deg, var(--orange), var(--orange-2));
-      border: 1px solid rgba(255,255,255,0.2);
-      transform: rotate(-12deg);
-      opacity: 0.58;
-    }
-    .kicker {
-      position: relative;
-      z-index: 1;
-      color: var(--orange-2);
-      font-size: 0.78rem;
-      font-weight: 950;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    h1 {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-      color: var(--ink);
-      font-size: clamp(2.4rem, 6vw, 5.65rem);
-      line-height: 0.94;
-      letter-spacing: 0;
-      font-weight: 950;
-      margin-bottom: 20px;
-    }
-    .hero-copy {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 24px;
-    }
-    .hero-actions {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 18px;
-      border: 1px solid rgba(255, 157, 0, 0.65);
-      border-radius: 7px;
-      background: linear-gradient(135deg, var(--orange), var(--orange-2));
-      color: #06152f;
-      font-size: 0.78rem;
-      font-weight: 950;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      box-shadow: 0 12px 24px rgba(255, 106, 0, 0.22);
-    }
-    .btn.secondary {
-      background: rgba(255,255,255,0.06);
-      color: var(--ink);
-      border-color: var(--line);
-      box-shadow: none;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .hero-card { padding: 16px; background: linear-gradient(180deg, rgba(255,106,0,0.16), transparent 46%), var(--panel); }
-    .mini-title {
-      color: var(--orange-2);
-      font-size: 0.74rem;
-      font-weight: 950;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .offer-list { display: grid; gap: 10px; }
-    .offer-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 10px;
-      align-items: start;
-      padding: 13px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(4, 16, 38, 0.58);
-    }
-    .rank {
-      width: 32px;
-      height: 32px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255,157,0,0.55);
-      border-radius: 7px;
-      color: var(--orange-2);
-      font-weight: 950;
-    }
-    .offer-name { font-weight: 950; margin-bottom: 2px; }
-    .offer-text { color: var(--muted); font-size: 0.84rem; }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .stat {
-      min-height: 132px;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel-2);
-    }
-    .stat-label {
-      color: var(--muted);
-      font-size: 0.72rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 9px;
-    }
-    .stat-value {
-      color: var(--orange-2);
-      font-size: 2rem;
-      font-weight: 950;
-      line-height: 1;
-      margin-bottom: 9px;
-    }
-    .stat-copy { color: var(--muted); font-size: 0.82rem; }
-    .section {
-      display: grid;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    .section.two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 13px 16px;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 106, 0, 0.12);
-    }
-    .panel-title {
-      color: var(--orange-2);
-      font-size: 0.8rem;
-      font-weight: 950;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .panel-body { padding: 16px; }
-    .reward-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-    .reward-card {
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(4, 16, 38, 0.58);
-    }
-    .reward-card strong { display: block; color: var(--ink); margin-bottom: 6px; }
-    .reward-card span { color: var(--muted); font-size: 0.84rem; }
-    .score-row {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 8px;
-    }
-    .score-chip {
-      padding: 12px;
-      border: 1px solid rgba(255,255,255,0.13);
-      border-radius: 8px;
-      background: rgba(4, 16, 38, 0.58);
-    }
-    .score-chip.green { border-color: rgba(102,240,111,0.34); background: linear-gradient(135deg, rgba(102,240,111,0.15), transparent 52%), rgba(4,16,38,0.58); }
-    .score-chip.amber { border-color: rgba(255,157,0,0.42); background: linear-gradient(135deg, rgba(255,157,0,0.16), transparent 52%), rgba(4,16,38,0.58); }
-    .score-chip.red { border-color: rgba(255,99,120,0.38); background: linear-gradient(135deg, rgba(255,99,120,0.15), transparent 52%), rgba(4,16,38,0.58); }
-    .score-label {
-      color: var(--ink);
-      font-size: 0.72rem;
-      font-weight: 950;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 3px;
-    }
-    .score-value { color: var(--orange-2); font-size: 1.5rem; font-weight: 950; line-height: 1; }
-    .green .score-value { color: var(--lime); }
-    .red .score-value { color: var(--red); }
-    .score-copy { color: var(--muted); font-size: 0.72rem; margin-top: 5px; }
-    .guide-list { display: grid; gap: 8px; }
-    .guide-link {
-      display: grid;
-      grid-template-columns: 86px 1fr;
-      gap: 10px;
-      align-items: center;
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(4, 16, 38, 0.5);
-    }
-    .guide-link:hover { border-color: rgba(255,157,0,0.5); }
-    .guide-tag {
-      color: var(--orange-2);
-      font-size: 0.68rem;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .guide-title { color: var(--ink); font-weight: 850; }
-    .footer {
-      color: var(--muted);
-      font-size: 0.78rem;
-      text-align: center;
-      padding-top: 20px;
-    }
-    @media (max-width: 940px) {
-      .hero,
-      .section.two,
-      .stats { grid-template-columns: 1fr; }
-      .reward-grid,
-      .score-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .hero-main { min-height: 0; }
-    }
-    @media (max-width: 620px) {
-      .nav { align-items: flex-start; flex-direction: column; height: auto; padding: 12px 14px; }
-      .nav-links { width: 100%; overflow-x: auto; gap: 14px; padding-bottom: 2px; }
-      .page { padding-top: 24px; }
-      .hero-main { padding: 28px 22px 42px; }
-      .hero-main::after { right: -120px; bottom: -128px; width: 270px; height: 180px; opacity: 0.48; }
-      .reward-grid,
-      .score-row { grid-template-columns: 1fr; }
-      .guide-link { grid-template-columns: 1fr; }
-    }
-  
-/* Standard nav */
-/* === TERMINAL NAV === */
-.t-nav {
-  background: rgba(4, 16, 38, 0.94);
-  border-bottom: 1px solid var(--t-border);
-  padding: 0 16px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.t-nav-logo {
-  font-family: var(--t-mono);
-  font-weight: 800;
-  font-size: 12px;
-  color: var(--t-green);
-  text-decoration: none;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.t-nav-logo .sub { color: var(--t-dim); font-weight: 400; font-size: 10px; }
-.t-nav-links {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.t-nav-links a {
-  color: var(--t-dim);
-  font-family: var(--t-mono);
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: color 0.2s;
-}
-.t-nav-links a:hover { color: var(--t-green); }
-.t-nav-links a.active { color: var(--t-green); }
-.t-nav-links a.t-nav-primary {
-  color: #ff9d00;
-  font-weight: 800;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-}
-.t-nav-links a.t-nav-primary:hover { color: #ffc164; }
-.t-nav-live {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--t-green);
-  font-family: var(--t-mono);
-  font-size: 10px;
-  font-weight: 600;
-}
-.t-nav-live::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  background: var(--t-green);
-  border-radius: 50%;
-  animation: t-pulse 2s infinite;
-}
-@keyframes t-pulse { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
-
-/* Hamburger (mobile only) */
-.t-nav-toggle { display: none; }
-.t-nav-burger { display: none; }
-
-@media (max-width: 768px) {
-  .t-nav { padding: 0 12px; height: 44px; position: relative; overflow: visible; }
-  .t-nav-logo .sub { display: none; }
-  .t-nav-burger {
-    display: flex; flex-direction: column; justify-content: center; gap: 5px;
-    width: 28px; height: 28px; cursor: pointer; margin-left: auto;
-  }
-  .t-nav-burger span {
-    display: block; width: 22px; height: 2px; border-radius: 2px;
-    background: var(--t-green); transition: transform .25s, opacity .2s;
-  }
-  .t-nav-links {
-    display: none;
-    position: absolute; top: 44px; left: 0; right: 0;
-    flex-direction: column; align-items: stretch; gap: 0;
-    background: rgba(4, 16, 38, 0.98);
-    border-bottom: 1px solid var(--t-border);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-    padding: 6px 16px 12px;
-  }
-  .t-nav-links a {
-    font-size: 13px; padding: 12px 2px; width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .t-nav-links a.t-nav-primary { font-size: 13px; }
-  .t-nav-links a:last-child { border-bottom: none; }
-  .t-nav-toggle:checked ~ .t-nav-links { display: flex; }
-  .t-nav-toggle:checked ~ .t-nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .t-nav-toggle:checked ~ .t-nav-burger span:nth-child(2) { opacity: 0; }
-  .t-nav-toggle:checked ~ .t-nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  .t-nav-hide-mobile { display: none; }
-}
-
-</style>
-
-
-
-
-
-
-
-
-<script type="application/ld+json">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -516,14 +53,19 @@
   "url": "https://cryptocasinosorted.com/"
 }
   </script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/terminal-theme.css">
+  <link rel="stylesheet" href="/redesign.css">
 </head>
-<body>
-  <nav class="t-nav">
+<body class="audit has-bar">
+<nav class="t-nav">
     <a href="/" class="t-nav-logo">CryptoCasinoSorted</a>
     <input type="checkbox" id="t-nav-toggle" class="t-nav-toggle" aria-label="Toggle navigation menu">
     <label for="t-nav-toggle" class="t-nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
     <div class="t-nav-links">
-      <a href="/rewards-recommender.html" class="t-nav-primary">Rewards</a>
+      <a href="/rewards-recommender.html" class="t-nav-primary active">Rewards</a>
       <a href="/rakeback-comparison.html">Rakeback</a>
       <a href="/bonus-calculator.html">Bonus Calc</a>
       <a href="/casino-reward-sources.html">Sources</a>
@@ -531,201 +73,149 @@
       <a href="/blog/">Guides</a>
     </div>
   </nav>
+<main>
+  <section class="hero"><div class="wrap">
+    <div class="eyebrow">Rewards Finder</div>
+    <h1>See what each crypto casino actually pays you back.</h1>
+    <p class="lead">Enter your monthly wager. We rank casinos by how much of your expected losses come back as rakeback and cashback. The math is shown on every row.</p>
+    <p class="verified-line">Last verified <span class="num">2026-07-09</span>. Figures are modeled estimates. <a href="/methodology.html">Methodology</a>.</p>
+  </div></section>
 
-  <main class="page">
-    <section class="hero">
-      <div class="hero-main">
-        <div class="kicker">Crypto Casino Rewards Finder</div>
-        <h1>Find the casino that pays your play style.</h1>
-        <p class="hero-copy">Stop comparing fake headline bonuses. Answer a few questions and rank crypto casinos by rakeback, cashback, VIP transfer, token risk, transparency, and withdrawal trust.</p>
-        <div class="hero-actions">
-          <a class="btn" href="/rewards-recommender.html">Start Rewards Quiz</a>
-          <a class="btn secondary" href="/blog/best-crypto-casino-vip-programs-2026.html">Read VIP Guide</a>
-          <a class="btn secondary" href="/withdrawals.html">Withdrawal Guide</a>
+  <section><div class="wrap">
+    <div class="finder" id="finder">
+    <div class="finder-grid">
+      <form class="finder-controls" id="finder-form" onsubmit="return false">
+        <label for="wager">Monthly wager (USD)</label>
+        <div class="amount-row">
+          <input type="number" id="wager" name="wager" min="50" max="100000" step="50" value="1000" class="num">
         </div>
+        <input type="range" id="wager-range" min="100" max="25000" step="100" value="1000" aria-label="Monthly wager slider">
+        <label>Game type</label>
+        <div class="seg" id="game-seg" role="group" aria-label="Game type">
+          <button type="button" data-game="slots" aria-pressed="true">Slots</button>
+          <button type="button" data-game="originals" aria-pressed="false">Originals</button>
+          <button type="button" data-game="live" aria-pressed="false">Live casino</button>
+          <button type="button" data-game="sports" aria-pressed="false">Sports</button>
+        </div>
+        <p class="finder-note">Numbers are modeled long-run estimates, not guarantees. <a href="/methodology.html">How we calculate this</a>.</p>
+      </form>
+      <div>
+        <div class="eyebrow">Top 3 by return rate</div>
+        <div id="finder-results"><div class="result-row rank-1">
+    <div>
+      <div class="result-head"><span class="result-rank">#1</span><span class="result-name">XTP</span><span class="assumed-tag">modeled</span> </div>
+      <div class="result-rate"><span class="num">20%</span> of expected losses returned</div>
+      <div class="result-math">$40.00 theo loss x 20% cashback = $8.00/mo</div>
+      <div class="result-tier">Tier at this volume: Base</div>
+    </div>
+    <div class="result-cta">
+      <div class="result-ev"><span class="num">$8.00</span><small>/mo back</small></div>
+      <a class="btn-secondary" href="/reviews/">Read review</a>
+    </div>
+    
+  </div>
+<div class="result-row rank-2">
+    <div>
+      <div class="result-head"><span class="result-rank">#2</span><span class="result-name">Thrill</span><span class="assumed-tag">modeled</span> </div>
+      <div class="result-rate"><span class="num">20%</span> of expected losses returned</div>
+      <div class="result-math">$1,000 wagered x 4% edge x 10% rakeback + $40.00 theo loss x 10% cashback = $8.00/mo</div>
+      <div class="result-tier">Tier at this volume: Base</div>
+    </div>
+    <div class="result-cta">
+      <div class="result-ev"><span class="num">$8.00</span><small>/mo back</small></div>
+      <a class="btn-secondary" href="/reviews/">Read review</a>
+    </div>
+    
+  </div>
+<div class="result-row rank-3">
+    <div>
+      <div class="result-head"><span class="result-rank">#3</span><span class="result-name">mBit</span><span class="assumed-tag">modeled</span> <span class="tested">Tested <span class="num">2026-07-09</span> &middot; <span class="num">&lt;1 hour (crypto)</span></span></div>
+      <div class="result-rate"><span class="num">12%</span> of expected losses returned</div>
+      <div class="result-math">$1,000 wagered x 0.2% rakeback + $40.00 theo loss x 7% cashback = $4.80/mo</div>
+      <div class="result-tier">Tier at this volume: Base</div>
+    </div>
+    <div class="result-cta">
+      <div class="result-ev"><span class="num">$4.80</span><small>/mo back</small></div>
+      <a class="btn-primary" href="https://mbitcasino.com" rel="sponsored noopener" target="_blank">Go to mBit</a>
+    </div>
+    
+  </div></div>
+        <p class="finder-note">See the full <a id="bracket-link" href="/best-rewards/1000-monthly/">$1,000/month breakdown</a>.</p>
       </div>
-      <aside class="hero-card">
-        <div class="mini-title">Quick reward examples — not rankings</div>
-        <div class="offer-list">
-          <div class="offer-item">
-            <div class="rank">A</div>
-            <div>
-              <div class="offer-name">BC.Game</div>
-              <div class="offer-text">20-24% advertised rakeback, paid in BCD token rather than clean cash.</div>
-            </div>
-          </div>
-          <div class="offer-item">
-            <div class="rank">B</div>
-            <div>
-              <div class="offer-name">Thrill</div>
-              <div class="offer-text">Up to 70% rakeback and 10% weekly lossback, but formula opacity matters.</div>
-            </div>
-          </div>
-          <div class="offer-item">
-            <div class="rank">C</div>
-            <div>
-              <div class="offer-name">XTP</div>
-              <div class="offer-text">20% ongoing cashback, plus welcome-choice offers.</div>
-            </div>
-          </div>
-        </div>
-      </aside>
-    </section>
+    </div>
+  </div>
+  </div></section>
 
-    <section class="stats">
-      <div class="stat">
-        <div class="stat-label">Operators Ranked</div>
-        <div class="stat-value">10</div>
-        <div class="stat-copy">XTP, Stake, Rollbit, Roobet, BC.Game, Thrill, Yeet, Duel, Dicey, 21.com.</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Main Lens</div>
-        <div class="stat-value">EV</div>
-        <div class="stat-copy">Expected rewards adjusted for form, friction, trust, and transparency.</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Best For</div>
-        <div class="stat-value">VIP</div>
-        <div class="stat-copy">Low rollers, grinders, tier-match hunters, and high-volume players.</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Site Focus</div>
-        <div class="stat-value">Rewards</div>
-        <div class="stat-copy">The quiz is the front door. Guides support the reward decision.</div>
-      </div>
-    </section>
+  <section><div class="wrap">
+    <h2>Full rakeback comparison</h2>
+    <p class="verified-line">Same data as the finder. Sortable columns coming; header stays visible as you scroll.</p>
+    <div class="cmp-wrap"><table class="cmp">
+    <thead><tr><th>Casino</th><th>Rakeback</th><th>Cashback</th><th>Withdrawal (tested)</th><th></th></tr></thead>
+    <tbody><tr>
+      <td class="casino">Stake <span class="assumed-tag">modeled</span></td>
+      <td><span class="num">5.0%</span>&ndash;<span class="num">12.0%</span></td>
+      <td>&mdash;</td>
+      <td><span class="num">Instant</span> <span class="tested">Tested <span class="num">2026-07-09</span></span></td>
+      <td><a class="btn-primary" href="https://stake.com/?c=OYTAREab" rel="sponsored noopener" target="_blank">Visit</a></td>
+    </tr>
+<tr>
+      <td class="casino">BC.Game <span class="assumed-tag">modeled</span></td>
+      <td><span class="num">6.0%</span>&ndash;<span class="num">20.0%</span></td>
+      <td>&mdash;</td>
+      <td><span class="num">Instant</span> <span class="tested">Tested <span class="num">2026-07-09</span></span></td>
+      <td><a class="btn-primary" href="https://bc.game" rel="sponsored noopener" target="_blank">Visit</a></td>
+    </tr>
+<tr>
+      <td class="casino">Roobet <span class="assumed-tag">modeled</span></td>
+      <td><span class="num">5.0%</span>&ndash;<span class="num">10.0%</span></td>
+      <td>&mdash;</td>
+      <td><span class="num">&lt;1 hour</span> <span class="tested">Tested <span class="num">2026-07-09</span></span></td>
+      <td><a class="btn-primary" href="https://roobet.com" rel="sponsored noopener" target="_blank">Visit</a></td>
+    </tr>
+<tr>
+      <td class="casino">Shuffle <span class="assumed-tag">modeled</span></td>
+      <td><span class="num">6.0%</span>&ndash;<span class="num">11.0%</span></td>
+      <td>&mdash;</td>
+      <td><span class="num">Instant</span> <span class="tested">Tested <span class="num">2026-07-09</span></span></td>
+      <td><a class="btn-primary" href="https://shuffle.com" rel="sponsored noopener" target="_blank">Visit</a></td>
+    </tr>
+<tr>
+      <td class="casino">Duelbits <span class="assumed-tag">modeled</span></td>
+      <td><span class="num">5.0%</span>&ndash;<span class="num">9.0%</span></td>
+      <td>&mdash;</td>
+      <td><span class="num">&lt;1 hour</span> <span class="tested">Tested <span class="num">2026-07-09</span></span></td>
+      <td><a class="btn-primary" href="https://duelbits.com" rel="sponsored noopener" target="_blank">Visit</a></td>
+    </tr>
+<tr>
+      <td class="casino">mBit <span class="assumed-tag">modeled</span></td>
+      <td><span class="num">0.2%</span>&ndash;<span class="num">0.2%</span></td>
+      <td><span class="num">7%</span></td>
+      <td><span class="num">&lt;1 hour (crypto)</span> <span class="tested">Tested <span class="num">2026-07-09</span></span></td>
+      <td><a class="btn-primary" href="https://mbitcasino.com" rel="sponsored noopener" target="_blank">Visit</a></td>
+    </tr>
+<tr>
+      <td class="casino">XTP <span class="assumed-tag">modeled</span></td>
+      <td><span class="num">0%</span></td>
+      <td><span class="num">20%</span></td>
+      <td>&mdash; </td>
+      <td><a class="btn-secondary" href="/reviews/">Review</a></td>
+    </tr>
+<tr>
+      <td class="casino">Thrill <span class="assumed-tag">modeled</span></td>
+      <td><span class="num">10.0%</span>&ndash;<span class="num">30.0%</span></td>
+      <td><span class="num">10%</span></td>
+      <td>&mdash; </td>
+      <td><a class="btn-secondary" href="/reviews/">Review</a></td>
+    </tr></tbody></table></div>
+    <p class="finder-note">Every casino link is an affiliate link, marked rel="sponsored". See <a href="/how-we-rank.html">how we rank</a> and <a href="/methodology.html">how the numbers are calculated</a>.</p>
+  </div></section>
+</main>
 
-    <section class="section two">
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">What The Quiz Scores</div>
-        </div>
-        <div class="panel-body">
-          <div class="score-row">
-            <div class="score-chip amber">
-              <div class="score-label">Reward</div>
-              <div class="score-value">EV</div>
-              <div class="score-copy">Normalised value</div>
-            </div>
-            <div class="score-chip amber">
-              <div class="score-label">Trust</div>
-              <div class="score-value">Risk</div>
-              <div class="score-copy">Payout confidence</div>
-            </div>
-            <div class="score-chip amber">
-              <div class="score-label">Clear</div>
-              <div class="score-value">Src</div>
-              <div class="score-copy">Formula visibility</div>
-            </div>
-            <div class="score-chip amber">
-              <div class="score-label">Friction</div>
-              <div class="score-value">Ease</div>
-              <div class="score-copy">Easy to earn</div>
-            </div>
-            <div class="score-chip amber">
-              <div class="score-label">Depth</div>
-              <div class="score-value">VIP</div>
-              <div class="score-copy">VIP runway</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">Reward Types We Separate</div>
-        </div>
-        <div class="panel-body">
-          <div class="reward-grid">
-            <div class="reward-card">
-              <strong>Cash Rakeback</strong>
-              <span>Cleaner value. Usually based on house edge, not total wager.</span>
-            </div>
-            <div class="reward-card">
-              <strong>Lossback</strong>
-              <span>Useful for losing weeks, but check caps, exclusions, and playthrough.</span>
-            </div>
-            <div class="reward-card">
-              <strong>Token Rewards</strong>
-              <span>Can be valuable, but we discount volatility and unlock friction.</span>
-            </div>
-            <div class="reward-card">
-              <strong>Tier Match</strong>
-              <span>Best for players switching from Stake, Roobet, or other incumbents.</span>
-            </div>
-            <div class="reward-card">
-              <strong>VIP Depth</strong>
-              <span>Does the ladder compound over time or reset when you slow down?</span>
-            </div>
-            <div class="reward-card">
-              <strong>Bonus Traps</strong>
-              <span>Big headline offers lose points when wagering terms are ugly.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section two">
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">Popular Reward Guides</div>
-          <a class="btn secondary" href="/blog/">All Guides</a>
-        </div>
-        <div class="panel-body">
-          <div class="guide-list">
-            <a class="guide-link" href="/blog/best-crypto-casino-rewards-programs-2026.html">
-              <span class="guide-tag">Rewards</span>
-              <span class="guide-title">Best Crypto Casino Rewards Programs 2026</span>
-            </a>
-            <a class="guide-link" href="/casino-incentive-stack-report.html">
-              <span class="guide-tag">Report</span>
-              <span class="guide-title">The New Casino Incentive Stack</span>
-            </a>
-            <a class="guide-link" href="/blog/best-crypto-casino-vip-programs-2026.html">
-              <span class="guide-tag">VIP</span>
-              <span class="guide-title">Best Crypto Casino VIP Programs 2026</span>
-            </a>
-            <a class="guide-link" href="/blog/crypto-casino-deposit-bonuses-vs-rakeback-2026.html">
-              <span class="guide-tag">Rakeback</span>
-              <span class="guide-title">Deposit Bonuses vs Rakeback: Which Actually Pays?</span>
-            </a>
-            <a class="guide-link" href="/blog/crypto-casino-instant-withdrawals-ranked-2026.html">
-              <span class="guide-tag">Safety</span>
-              <span class="guide-title">Instant Withdrawals vs Bonus Traps</span>
-            </a>
-            <a class="guide-link" href="/blog/best-crypto-casino-welcome-offers-2026.html">
-              <span class="guide-tag">Offers</span>
-              <span class="guide-title">Best Crypto Casino Welcome Offers</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">Use The Tool When You Know</div>
-        </div>
-        <div class="panel-body">
-          <div class="reward-grid">
-            <div class="reward-card">
-              <strong>Your monthly wager</strong>
-              <span>$500 and $50k players should not get the same casino recommendation.</span>
-            </div>
-            <div class="reward-card">
-              <strong>Your game mix</strong>
-              <span>Slots, crash, sports, and table games change the real reward value.</span>
-            </div>
-            <div class="reward-card">
-              <strong>Your tolerance</strong>
-              <span>Max reward, lowest friction, VIP switch, or safest withdrawal path.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    </main>
+<div class="mobile-bar" id="mobile-bar" aria-live="polite">
+  <span class="mb-name" id="mb-name"></span>
+  <a class="btn-primary" id="mb-cta" href="#" rel="sponsored noopener" target="_blank">Go</a>
+  <button class="mb-close" id="mb-close" aria-label="Dismiss">&times;</button>
+</div>
 
 <footer class="ccs-trust-footer" aria-label="Site trust links">
   <div class="ccs-trust-footer-inner">
@@ -733,6 +223,7 @@
     <nav>
       <a href="/about.html">About</a>
       <a href="/how-we-rank.html">How We Rank</a>
+      <a href="/methodology.html">Methodology</a>
       <a href="/responsible-gambling.html">Responsible Gambling</a>
       <a href="/privacy.html">Privacy</a>
       <a href="/contact.html">Contact</a>
@@ -740,5 +231,8 @@
     <span>18+ only. Gamble responsibly.</span>
   </div>
 </footer>
+<script>window.REWARDS={"casinos":[{"slug":"stake","name":"Stake","payout_model":"edge_based","payout_model_assumed":true,"rakeback_source":"stake review: VIP rakeback 5% Bronze up to 15% Platinum","rakeback_tiers":[{"tier":"Bronze","rate":0.05,"monthly_wager_threshold":0,"threshold_assumed":true},{"tier":"Silver","rate":0.06,"monthly_wager_threshold":5000,"threshold_assumed":true},{"tier":"Gold","rate":0.08,"monthly_wager_threshold":25000,"threshold_assumed":true},{"tier":"Platinum","rate":0.12,"monthly_wager_threshold":100000,"threshold_assumed":true}],"cashback":null,"flat_bonuses":[],"withdrawal_test":{"time":"Instant","date":"2026-07-09","date_is_verification":true},"license":"Curacao","ref_url":"https://stake.com/?c=OYTAREab","flags":["5% and 15% on-site; intermediate tiers and all thresholds modeled","Platinum capped at 12% (conservative)"]},{"slug":"bcgame","name":"BC.Game","payout_model":"edge_based","payout_model_assumed":true,"rakeback_source":"homepage: 20-24% advertised (BCD token); review: starts at 0.5%","rakeback_tiers":[{"tier":"Start","rate":0.06,"monthly_wager_threshold":0,"threshold_assumed":true},{"tier":"Mid","rate":0.12,"monthly_wager_threshold":20000,"threshold_assumed":true},{"tier":"High","rate":0.2,"monthly_wager_threshold":100000,"threshold_assumed":true}],"cashback":null,"flat_bonuses":[],"withdrawal_test":{"time":"Instant","date":"2026-07-09","date_is_verification":true},"license":"Curacao","ref_url":"https://bc.game","flags":["CONFLICT 20-24% vs 0.5%; modeled tiered 6-20%","paid in BCD token not clean cash","rates and thresholds modeled"]},{"slug":"roobet","name":"Roobet","payout_model":"edge_based","payout_model_assumed":true,"rakeback_source":"no on-site rate; modeled from public RooWards structure","rakeback_tiers":[{"tier":"Base","rate":0.05,"monthly_wager_threshold":0,"threshold_assumed":true},{"tier":"High","rate":0.1,"monthly_wager_threshold":50000,"threshold_assumed":true}],"cashback":null,"flat_bonuses":[],"withdrawal_test":{"time":"<1 hour","date":"2026-07-09","date_is_verification":true},"license":"Curacao","ref_url":"https://roobet.com","flags":["all rakeback rates and thresholds modeled"]},{"slug":"shuffle","name":"Shuffle","payout_model":"edge_based","payout_model_assumed":true,"rakeback_source":"no on-site rate; modeled estimate","rakeback_tiers":[{"tier":"Base","rate":0.06,"monthly_wager_threshold":0,"threshold_assumed":true},{"tier":"High","rate":0.11,"monthly_wager_threshold":50000,"threshold_assumed":true}],"cashback":null,"flat_bonuses":[],"withdrawal_test":{"time":"Instant","date":"2026-07-09","date_is_verification":true},"license":"Curacao","ref_url":"https://shuffle.com","flags":["all rakeback rates and thresholds modeled"]},{"slug":"duelbits","name":"Duelbits","payout_model":"edge_based","payout_model_assumed":true,"rakeback_source":"no on-site rate; modeled estimate","rakeback_tiers":[{"tier":"Base","rate":0.05,"monthly_wager_threshold":0,"threshold_assumed":true},{"tier":"High","rate":0.09,"monthly_wager_threshold":50000,"threshold_assumed":true}],"cashback":null,"flat_bonuses":[],"withdrawal_test":{"time":"<1 hour","date":"2026-07-09","date_is_verification":true},"license":"Curacao","ref_url":"https://duelbits.com","flags":["all rakeback rates and thresholds modeled"]},{"slug":"mbit","name":"mBit","payout_model":"wager_based","payout_model_assumed":true,"rakeback_source":"mbit review: cashback on losses 5-10%","rakeback_tiers":[{"tier":"Base","rate":0.002,"monthly_wager_threshold":0,"threshold_assumed":true}],"cashback":{"type":"on_losses","rate":0.07,"rate_assumed":true},"flat_bonuses":[],"withdrawal_test":{"time":"<1 hour (crypto)","date":"2026-07-09","date_is_verification":true},"license":"Curacao","ref_url":"https://mbitcasino.com","flags":["cashback on-site 5-10%; modeled at 7% midpoint","wager-based rakeback rate modeled","weekly reload excluded (deposit-size dependent)"]},{"slug":"xtp","name":"XTP","payout_model":"wager_based","payout_model_assumed":true,"rakeback_source":"homepage: 20% ongoing cashback","rakeback_tiers":[{"tier":"Base","rate":0,"monthly_wager_threshold":0,"threshold_assumed":false}],"cashback":{"type":"ongoing_on_theo","rate":0.2,"rate_assumed":false},"flat_bonuses":[],"withdrawal_test":{"time":null,"date":null,"date_is_verification":false},"license":null,"ref_url":null,"flags":["20% cashback on-site; basis modeled as theo","no withdrawal time on-site so no Tested stamp"]},{"slug":"thrill","name":"Thrill","payout_model":"edge_based","payout_model_assumed":true,"rakeback_source":"homepage: up to 70% rakeback + 10% weekly lossback, formula opacity noted","rakeback_tiers":[{"tier":"Base","rate":0.1,"monthly_wager_threshold":0,"threshold_assumed":true},{"tier":"High","rate":0.3,"monthly_wager_threshold":100000,"threshold_assumed":true}],"cashback":{"type":"weekly_lossback","rate":0.1,"rate_assumed":false},"flat_bonuses":[],"withdrawal_test":{"time":null,"date":null,"date_is_verification":false},"license":null,"ref_url":null,"flags":["on-site 'up to 70%' is a ceiling; modeled steady-state 10-30% (opacity noted)","no withdrawal time on-site so no Tested stamp","10% lossback on-site"]}],"verified":"2026-07-09"};</script>
+<script src="/assets/finder-core.js"></script>
+<script src="/assets/finder.js"></script>
 </body>
 </html>
