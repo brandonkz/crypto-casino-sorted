@@ -1,0 +1,82 @@
+{
+  "_meta": {
+    "purpose": "Single source of truth for the Rewards Finder, homepage table, and volume bracket pages.",
+    "generated": "2026-07-09",
+    "sourcing_policy": "On-site facts only. Fields not stated anywhere on the current site are null and listed in _flags. No numbers invented.",
+    "house_edge_assumptions": { "slots": 0.04, "originals": 0.01, "live": 0.015, "sports": 0.05 },
+    "bonus_wagering_haircut": 0.5,
+    "cashback_basis": "theoretical_loss",
+    "_flags": [
+      "TIER THRESHOLDS: No casino publishes monthly-wager thresholds for VIP tiers anywhere on the site. The finder's tier logic (pick the tier a volume sustains) cannot be computed from on-site data for any casino.",
+      "TEST DATES: casinos.json stores withdrawal SPEED (e.g. '11 minutes') but no test DATE. Per the spec a Tested stamp needs a date; with no dated tests on-site, stamps cannot be shown under the on-site-only rule.",
+      "RAKEBACK RATES: Only Stake (5% Bronze to 15% Platinum, VIP only) and BC.Game have on-site rakeback figures. Most casinos have no stated rakeback rate.",
+      "CONFLICT - BC.Game rakeback: homepage says '20-24% advertised rakeback'; the BC.Game review implies wager-based rakeback 'starting at 0.5%'. These are inconsistent. Left null pending resolution.",
+      "PAYOUT MODEL TYPE (edge_based vs wager_based): not explicitly stated on-site for any casino; inferred only where a review describes the mechanic."
+    ]
+  },
+  "casinos": [
+    {
+      "slug": "stake", "name": "Stake",
+      "payout_model": "edge_based",
+      "rakeback_source": "stake review: 'Rakeback (VIP Only) starts at 5% for Bronze, up to 15% for Platinum'",
+      "rakeback_tiers": [
+        { "tier": "Bronze", "rate": 0.05, "monthly_wager_threshold": null },
+        { "tier": "Platinum", "rate": 0.15, "monthly_wager_threshold": null }
+      ],
+      "cashback": null,
+      "flat_bonuses": [],
+      "withdrawal_test": { "time": "Instant", "date": null },
+      "license": "Curacao",
+      "ref_url": "https://stake.com/?c=OYTAREab",
+      "_flags": ["tier thresholds null (not on-site)", "test date null", "intermediate tiers between Bronze and Platinum not listed on-site"]
+    },
+    {
+      "slug": "bcgame", "name": "BC.Game",
+      "payout_model": null,
+      "rakeback_source": "homepage: '20-24% advertised rakeback, paid in BCD token'; review: 'starts at 0.5%'",
+      "rakeback_tiers": [],
+      "cashback": null,
+      "flat_bonuses": [],
+      "withdrawal_test": { "time": "Instant", "date": null },
+      "license": "Curacao",
+      "ref_url": null,
+      "_flags": ["CONFLICT 20-24% vs 0.5% rakeback", "paid in BCD token not clean cash (homepage note)", "test date null"]
+    },
+    {
+      "slug": "thrill", "name": "Thrill",
+      "payout_model": null,
+      "rakeback_source": "homepage: 'Up to 70% rakeback and 10% weekly lossback, but formula opacity matters'",
+      "rakeback_tiers": [{ "tier": "max", "rate": 0.70, "monthly_wager_threshold": null }],
+      "cashback": { "type": "weekly_lossback", "rate": 0.10 },
+      "flat_bonuses": [],
+      "withdrawal_test": { "time": null, "date": null },
+      "license": null,
+      "ref_url": null,
+      "_flags": ["'up to 70%' is a ceiling, not a steady-state rate; formula opacity noted on-site", "no tier thresholds", "test date null"]
+    },
+    {
+      "slug": "xtp", "name": "XTP",
+      "payout_model": "cashback",
+      "rakeback_source": "homepage: '20% ongoing cashback, plus welcome-choice offers'",
+      "rakeback_tiers": [],
+      "cashback": { "type": "ongoing", "rate": 0.20 },
+      "flat_bonuses": [],
+      "withdrawal_test": { "time": null, "date": null },
+      "license": null,
+      "ref_url": null,
+      "_flags": ["cashback basis (theo vs realised) not stated on-site", "test date null"]
+    },
+    {
+      "slug": "mbit", "name": "mBit",
+      "payout_model": null,
+      "rakeback_source": "mbit review: 'Weekly reload bonuses (typically 50%), Cashback on losses (5-10%)'",
+      "rakeback_tiers": [],
+      "cashback": { "type": "on_losses", "rate_low": 0.05, "rate_high": 0.10 },
+      "flat_bonuses": [{ "name": "Weekly reload", "rate": 0.50, "wagering_required": true }],
+      "withdrawal_test": { "time": "<1 hour (crypto)", "date": null },
+      "license": "Curacao",
+      "ref_url": null,
+      "_flags": ["cashback given as a 5-10% range, not a single rate", "reload bonus value depends on deposit size (not modelable as flat $)", "test date null"]
+    }
+  ]
+}
