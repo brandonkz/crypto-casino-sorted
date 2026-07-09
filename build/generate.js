@@ -96,7 +96,7 @@ function comparisonTable(){
     </tr>`;
   }).join('\n');
   return `<div class="cmp-wrap"><table class="cmp">
-    <thead><tr><th>Casino</th><th>Rakeback</th><th>Cashback</th><th>Withdrawal (tested)</th><th></th></tr></thead>
+    <thead><tr><th scope="col">Casino</th><th scope="col">Rakeback</th><th scope="col">Cashback</th><th scope="col">Withdrawal (tested)</th><th scope="col"><span class="visually-hidden">Visit</span></th></tr></thead>
     <tbody>${rows}</tbody></table></div>`;
 }
 
@@ -308,7 +308,7 @@ ${nav()}
 
   <h2>How withdrawal tests work</h2>
   <p>A withdrawal test means we fund an account, play a little, and request a payout, then record how long it took. The withdrawal time shown comes from these checks. Note plainly: the date on each Tested stamp right now is our last data-verification date, <span class="num">${VERIFIED}</span>, not a fresh per-transaction test for every casino. Where we have a dated transaction test, we will show that date instead.</p>
-  <table class="cmp"><thead><tr><th>Casino</th><th>Withdrawal time</th><th>Verified</th></tr></thead><tbody>${rowsVerified}</tbody></table>
+  <table class="cmp"><thead><tr><th scope="col">Casino</th><th scope="col">Withdrawal time</th><th scope="col">Verified</th></tr></thead><tbody>${rowsVerified}</tbody></table>
 
   <h2>Update cadence</h2>
   <p>We re-check reward terms and withdrawal behaviour on a rolling basis and bump the last-verified date when the data changes. If you spot a number that looks wrong, tell us on the <a href="/contact.html">contact page</a>.</p>

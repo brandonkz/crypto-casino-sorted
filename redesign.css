@@ -112,7 +112,7 @@
 /* ============ STATIC COMPARISON TABLE ============ */
 .audit .cmp-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: #fff; }
 .audit table.cmp { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px; }
-.audit table.cmp thead th { position: sticky; top: 0; background: #f0f0ec; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.audit table.cmp thead th { position: sticky; top: 0; background: #e7e7e0; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: #33372f; padding: 10px 14px; border-bottom: 1px solid var(--border); }
 .audit table.cmp td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
 .audit table.cmp td .num { font-size: 14px; }
 .audit table.cmp tr:last-child td { border-bottom: 0; }
@@ -134,3 +134,12 @@
 .audit .hero .lead { font-size: 1.05rem; color: var(--muted); max-width: 640px; }
 .audit .foot { border-top: 1px solid var(--border); margin-top: 40px; }
 .audit .ccs-trust-footer { background: #fff; color: var(--muted); }
+
+/* a11y: inline links not by colour alone */
+.audit p a, .audit li a, .audit .finder-note a, .audit .verified-line a, .audit .result-math a { text-decoration: underline; }
+.audit .btn-primary, .audit .btn-secondary, .audit .t-nav a, .audit .ccs-trust-footer a { text-decoration: none; }
+
+/* a11y: footer contrast */
+.audit .ccs-trust-footer, .audit .ccs-trust-footer strong { color: var(--ink); }
+.audit .ccs-trust-footer a { color: var(--primary); text-decoration: none; }
+.audit .visually-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
