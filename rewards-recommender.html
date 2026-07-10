@@ -555,6 +555,12 @@
       .result-top { grid-template-columns: auto 1fr; }
       .score-box { grid-column: 1 / -1; text-align: left; display: flex; align-items: baseline; gap: 8px; }
     }
+  
+    .category-divider { margin: 28px 0 8px; padding: 16px 18px; border-top: 2px solid #252840; }
+    .category-divider h2 { font-size: 1.05rem; color: #cfd6ea; margin: 0 0 6px; }
+    .category-divider p { font-size: 0.85rem; color: #8890a8; margin: 0; line-height: 1.6; }
+    .zero-edge-card { opacity: 0.96; border-style: dashed !important; }
+    .zero-edge-card .rank { color: #5a6080; }
   </style>
 
 
@@ -987,22 +993,22 @@
       return `<a class="reward-link affiliate" href="${url}" target="_blank" rel="${rel}">Visit ${op.name} →</a>`;
     }
 
-    function render() {
-      if (!state.operators.length) return;
-      const inputs = getInputs();
-      const ranked = scoreOperators();
-      document.getElementById('scenarioBadge').textContent = 'Ranked by value';
-      document.getElementById('results').innerHTML = ranked.map((op, index) => `
-        <article class="result-card ${index === 0 ? 'best' : ''}">
+    function zeroWhy(op) {
+      return `${op.name} uses a zero-edge model on eligible games. The value shown is modeled avoided house-edge loss, not a cash rebate, so we list it in a separate category and do not rank it against the rakeback casinos above. Watch-out: ${op.watch_out}`;
+    }
+
+    function resultCard(op, index, inputs, zero) {
+      return `
+        <article class="result-card ${(!zero && index === 0) ? 'best' : ''} ${zero ? 'zero-edge-card' : ''}">
           <div class="result-top">
-            <div class="rank">${index + 1}</div>
+            <div class="rank">${zero ? '~' : (index + 1)}</div>
             <div>
               <div class="op-name">${op.name}</div>
               <div class="op-sub">${op.positioning}</div>
             </div>
             <div class="score-box">
-              <div class="score">#${index + 1}</div>
-              <div class="score-label">value rank</div>
+              <div class="score">${zero ? 'ZE' : '#' + (index + 1)}</div>
+              <div class="score-label">${zero ? 'different model' : 'value rank'}</div>
             </div>
           </div>
           <div class="result-body">
@@ -1039,7 +1045,7 @@
               </div>
             </div>
             <div class="tags">${makeTags(op)}</div>
-            <p class="why">${whyText(op, index)}</p>
+            <p class="why">${zero ? zeroWhy(op) : whyText(op, index)}</p>
             <div class="bar-grid">
               ${renderBar('Reward', op.rewardScore)}
               ${renderBar('Trust', op.trust)}
@@ -1048,8 +1054,27 @@
               ${renderBar('Depth', op.depth)}
             </div>
           </div>
-        </article>
-      `).join('');
+        </article>`;
+    }
+
+    function render() {
+      if (!state.operators.length) return;
+      const inputs = getInputs();
+      const rankedAll = scoreOperators();
+      const main = rankedAll.filter((op) => op.rakeback_form !== 'zero_edge');
+      const zeroEdge = rankedAll.filter((op) => op.rakeback_form === 'zero_edge');
+      document.getElementById('scenarioBadge').textContent = 'Ranked by value';
+
+      let html = main.map((op, index) => resultCard(op, index, inputs, false)).join('');
+      if (zeroEdge.length) {
+        html += `
+          <div class="category-divider">
+            <h2>Zero-edge casinos, a different model</h2>
+            <p>These sites remove the house edge on eligible games instead of paying rakeback. The value shown is modeled avoided loss, not a cash rebate, so they sit in their own category and are not ranked against the rakeback casinos above.</p>
+          </div>`;
+        html += zeroEdge.map((op) => resultCard(op, 0, inputs, true)).join('');
+      }
+      document.getElementById('results').innerHTML = html;
     }
 
     function wireControls() {
