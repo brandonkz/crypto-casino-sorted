@@ -715,7 +715,7 @@
             <span class="t-badge t-badge-amber">Directional</span>
           </div>
           <div class="panel-body">
-            <p class="method"><strong>Reward / edge-value estimate</strong> = modeled wager x selected game edge x normalised effective rate. By default, modeled wager is normal monthly play estimated from the player’s usual deposit value and minutes played per day. If the welcome-bonus toggle is enabled, verified bonus playthrough is added where available; unclear terms use a clearly labeled 30x fallback. For zero-edge operators, this is modeled avoided house-edge loss on eligible games, not a cash rebate. Casino order is based purely on estimated dollar value back / avoided loss. Trust, transparency, source status, friction, VIP depth, tier-match, and token risk are shown as context only, not ranking inputs. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
+            <p class="method"><strong>Reward / edge-value estimate</strong> = modeled wager x selected game edge x effective reward rate (the real rate after we adjust token payouts and unclear terms so casinos compare fairly). By default, modeled wager is normal monthly play estimated from the player’s usual deposit value and minutes played per day. If the welcome-bonus toggle is enabled, verified bonus playthrough is added where available; unclear terms use a clearly labeled 30x fallback. For zero-edge operators, this is modeled avoided house-edge loss on eligible games, not a cash rebate. Casino order is based purely on estimated dollar value back / avoided loss. Trust, transparency, source status, friction, VIP depth, tier-match, and token risk are shown as context only, not ranking inputs. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
           </div>
         </section>
       </div>
@@ -918,7 +918,7 @@
       if (op.rate_min) {
         return `${Math.round(op.rate_min * 100)}% ${op.rakeback_form}`;
       }
-      return `${Math.round((op.effective_rate || 0) * 1000) / 10}% normalised`;
+      return `${Math.round((op.effective_rate || 0) * 1000) / 10}% effective`;
     }
 
     function offerSubtext(op, inputs) {
@@ -927,7 +927,7 @@
       if (op.rakeback_form === 'zero_edge') {
         return `At ${fmtMoney(wager)} modeled wager and ${(inputs.edge * 100).toFixed(1)}% game edge, the modeled value is avoided house-edge loss on eligible zero-edge games, not a cash rebate.`;
       }
-      return `At ${fmtMoney(wager)} modeled wager and ${(inputs.edge * 100).toFixed(1)}% game edge, estimated house-edge loss is ${fmtMoney(expectedLoss)}. We apply a ${Math.round((op.effective_rate || 0) * 1000) / 10}% normalised giveback rate.`;
+      return `At ${fmtMoney(wager)} modeled wager and ${(inputs.edge * 100).toFixed(1)}% game edge, estimated house-edge loss is ${fmtMoney(expectedLoss)}. We apply a ${Math.round((op.effective_rate || 0) * 1000) / 10}% effective rate (adjusted for token payouts and unclear terms so casinos compare fairly).`;
     }
 
     function valueLabel(op, inputs) {
@@ -1026,7 +1026,7 @@
                 <div class="mini-value green">${fmtMoney(op.estimatedReward)}</div>
               </div>
               <div class="mini-stat">
-                <div class="mini-label">Normalised Rate</div>
+                <div class="mini-label" title="The reward rate after we adjust for token payouts and unclear terms, so every casino compares fairly.">Effective rate</div>
                 <div class="mini-value">${Math.round((op.effective_rate || 0) * 1000) / 10}%</div>
               </div>
               <div class="mini-stat">
