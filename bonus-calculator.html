@@ -212,7 +212,6 @@
       <a href="/blog/">Guides</a>
     </div>
   </nav>
-  <div id="nav-placeholder"></div>
 
   <div class="container calc-container">
     <div class="terminal-header" style="margin-bottom: 24px;">
@@ -490,8 +489,9 @@
         const data = await response.json();
         trackedOffers = data.items;
         renderOfferPresets();
-        const twentyOneIndex = trackedOffers.findIndex((item) => item.casino === '21.com');
-        const defaultIndex = twentyOneIndex >= 0 ? twentyOneIndex : 0;
+        const preferred = ['Stake','BC.Game','Rollbit'];
+        let defaultIndex = trackedOffers.findIndex((item) => preferred.includes(item.casino));
+        if (defaultIndex < 0) defaultIndex = 0;
         const defaultButton = document.querySelector(`[data-offer-index="${defaultIndex}"]`);
         if (defaultButton) loadTrackedOffer(defaultIndex, defaultButton);
         else calculate();
@@ -504,12 +504,6 @@
 
     loadOffers();
 
-    // Load nav
-    fetch('shared-nav.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('nav-placeholder').innerHTML = html;
-      });
   </script>
 
 <footer class="ccs-trust-footer" aria-label="Site trust links">
