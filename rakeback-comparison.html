@@ -250,6 +250,9 @@ h1 {
   .compare-table th, .compare-table td { padding: 8px 8px; }
 }
 
+  
+    .cat-row td { background:#0f1320; color:#8890a8; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; padding:10px 14px; border-top:2px solid #252840; }
+    .cat-divider { grid-column:1/-1; margin:14px 0 4px; padding-top:12px; border-top:2px solid #252840; color:#8890a8; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
   </style>
 
 
@@ -394,9 +397,7 @@ h1 {
       return op.affiliate_url || op.official_url || op.source_url || op.reward_page_url || null;
     }
 
-    function renderTable() {
-      const rankedCasinos = [...casinos].sort((a, b) => (b.effective_rate ?? -1) - (a.effective_rate ?? -1));
-      document.getElementById('comparisonBody').innerHTML = rankedCasinos.map(c => {
+    function rowFor(c) {
         const max = c.rate_max === null ? 'Not public' : pct(c.rate_max);
         const structure = `${c.rakeback_form} · ${c.rakeback_basis.replace('_', ' ')}`;
         const access = c.tier_match ? 'Tier match available' : (c.entry_threshold ? `From $${c.entry_threshold} wagered` : 'Terms vary');
@@ -414,11 +415,23 @@ h1 {
           <td><span class="pill ${c.tier_match ? 'pill-green' : 'pill-yellow'}">${access}</span></td>
           <td>${links}</td>
         </tr>`;
-      }).join('');
+    }
+
+    function renderTable() {
+      const main = casinos.filter(c => c.rakeback_form !== 'zero_edge')
+        .sort((a, b) => (b.effective_rate ?? -1) - (a.effective_rate ?? -1));
+      const zero = casinos.filter(c => c.rakeback_form === 'zero_edge');
+      let rows = main.map(rowFor).join('');
+      if (zero.length) {
+        rows += `<tr class="cat-row"><td colspan="6">Zero-edge casinos, a different model (avoided loss, not cash rakeback)</td></tr>`;
+        rows += zero.map(rowFor).join('');
+      }
+      document.getElementById('comparisonBody').innerHTML = rows;
     }
 
     function renderNotes() {
-      const ranked = [...casinos].sort((a, b) => b.effective_rate - a.effective_rate).slice(0, 4);
+      const ranked = casinos.filter(c => c.rakeback_form !== 'zero_edge')
+        .sort((a, b) => b.effective_rate - a.effective_rate).slice(0, 4);
       document.getElementById('notesGrid').innerHTML = ranked.map((c, index) => `
         <div class="note-card">
           <div class="nc-title">${index === 0 ? '🏆' : '🎰'} ${c.name} — ${pct(c.effective_rate)} estimated effective value</div>
@@ -528,10 +541,12 @@ h1 {
         return { ...c, earn, modeledWager, bonusEstimate };
       }).sort((a, b) => (b.earn ?? -Infinity) - (a.earn ?? -Infinity));
 
-      // Find best
-      const best = results.filter(r => r.earn !== null).sort((a,b) => b.earn - a.earn)[0];
+      const mainResults = results.filter(r => r.rakeback_form !== 'zero_edge');
+      const zeroResults = results.filter(r => r.rakeback_form === 'zero_edge');
+      // Best is chosen among rakeback casinos only; zero-edge is a separate model
+      const best = mainResults.filter(r => r.earn !== null).sort((a,b) => b.earn - a.earn)[0];
 
-      document.getElementById('calcResults').innerHTML = results.map(c => {
+      const chipFor = (c) => {
         const isBest = best && c.name === best.name;
         const earnStr = c.earn !== null ? fmt(c.earn) : '—';
         const isZeroEdge = c.rakeback_form === 'zero_edge';
@@ -550,7 +565,13 @@ h1 {
           <div class="rate-info">${valueLabel}</div>
           <div style="font-size:0.7rem;color:#ff9d00;margin-top:6px;font-weight:800;">${url ? `Visit ${c.name} →` : ''}</div>
         </${cardTag}>`;
-      }).join('');
+      };
+      let out = mainResults.map(chipFor).join('');
+      if (zeroResults.length) {
+        out += `<div class="cat-divider">Zero-edge casinos, a different model (avoided loss, not cash rakeback)</div>`;
+        out += zeroResults.map(chipFor).join('');
+      }
+      document.getElementById('calcResults').innerHTML = out;
     }
 
     async function init() {
