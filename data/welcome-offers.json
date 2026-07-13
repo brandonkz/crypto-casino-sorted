@@ -28,8 +28,10 @@
         "assumedWagering": true
       },
       "sourceChecked": "2026-06-25",
-      "source_last_checked": "2026-06-25",
-      "source_status": "manual_review"
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_url": "https://xtp.com/",
+      "source_monitor": "manual"
     },
     {
       "casino": "Stake",
@@ -40,7 +42,11 @@
       "geo": "VPN-friendly, but geo blocks still apply",
       "angle": "Biggest mainstream crypto casino brand",
       "url": "https://stake.com/?c=OYTAREab",
-      "isAffiliate": true
+      "isAffiliate": true,
+      "source_url": "https://stake.com/promotions",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "casino": "BC.Game",
@@ -51,7 +57,11 @@
       "geo": "VPN-friendly in many markets",
       "angle": "Largest headline welcome package in current tracker",
       "url": "https://bc.game/i-4bau8curc-n/",
-      "isAffiliate": true
+      "isAffiliate": true,
+      "source_url": "https://bc.game/promotions",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "casino": "Shuffle",
@@ -62,7 +72,11 @@
       "geo": "VPN-friendly",
       "angle": "Clean UX and instant-withdrawal challenger",
       "url": "https://shuffle.com?r=cl46Ld1iQb",
-      "isAffiliate": true
+      "isAffiliate": true,
+      "source_url": "https://shuffle.com/promotions",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "casino": "Rollbit",
@@ -73,7 +87,11 @@
       "geo": "Geo-restricted in some markets",
       "angle": "High-volume sportsbook + rewards ecosystem",
       "url": "https://rollbit.com/referral/brandonkz",
-      "isAffiliate": true
+      "isAffiliate": true,
+      "source_url": "https://rollbit.com/promotions",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "casino": "Roobet",
@@ -84,7 +102,11 @@
       "geo": "Stricter geo restrictions than Stake / Shuffle",
       "angle": "Strong brand and polished UX",
       "url": "https://roobet.com/?ref=brandonkz",
-      "isAffiliate": true
+      "isAffiliate": true,
+      "source_url": "https://roobet.com/promotions",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "casino": "Duelbits",
@@ -95,7 +117,11 @@
       "geo": "VPN-friendly",
       "angle": "Best tracked esports + originals angle",
       "url": "https://duelbits.io/?a=sorted",
-      "isAffiliate": true
+      "isAffiliate": true,
+      "source_url": "https://duelbits.com/en/promotions",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "casino": "Yeet",
@@ -106,7 +132,11 @@
       "geo": "VPN-friendly in many markets",
       "angle": "Influencer-backed challenger with VIP match hook",
       "url": "https://yeet.com/register?aff=betsorted",
-      "isAffiliate": true
+      "isAffiliate": true,
+      "source_url": "https://yeet.com/rewards",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "casino": "BitStarz",
@@ -117,7 +147,11 @@
       "geo": "Restricted in some markets",
       "angle": "Best spins package in the current set",
       "url": "https://bzstarz1.com/bh0uaimdh",
-      "isAffiliate": true
+      "isAffiliate": true,
+      "source_url": "https://www.bitstarz.com/bonuses",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "casino": "Cloudbet",
@@ -128,7 +162,11 @@
       "geo": "VPN-friendly in many markets",
       "angle": "Big BTC-denominated offer, sportsbook-first brand",
       "url": "https://cldbt.cloud/go/en/auth/sign-up?af_token=810fa4bbfb1f586ef13289043992558c&aftm_campaign=cryptocasino",
-      "isAffiliate": false
+      "isAffiliate": false,
+      "source_url": "https://www.cloudbet.com/en/promotions",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "casino": "TrustDice",
@@ -139,7 +177,11 @@
       "geo": "VPN-friendly",
       "angle": "Best anonymity / Web3-native pitch",
       "url": "https://trustdice.win/?ref=u_cryptocasinosorted",
-      "isAffiliate": true
+      "isAffiliate": true,
+      "source_url": "https://trustdice.win/promotions",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "casino": "Thunderpick",
@@ -150,7 +192,11 @@
       "geo": "VPN-friendly in many markets",
       "angle": "Best esports-led offer for CS2 / Dota / Valorant audiences",
       "url": "https://thunderpick.io/?ref=cryptocasinosorted",
-      "isAffiliate": true
+      "isAffiliate": true,
+      "source_url": "https://thunderpick.io/promotions",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "casino": "21.com",
@@ -183,7 +229,7 @@
         "gameType": "96.0"
       },
       "sourceChecked": "2026-06-25",
-      "source_last_checked": "2026-06-25",
+      "source_last_checked": "2026-07-13",
       "source_terms_hash": "9c41deaf00fef84c",
       "source_status": "verified"
     }

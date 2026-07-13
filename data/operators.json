@@ -42,7 +42,11 @@
       "trust": 66,
       "depth": 72,
       "gamification": 78,
-      "watch_out": "Confirm your selected welcome choice and playthrough before claiming; cashback eligibility and timing can vary by account and campaign."
+      "watch_out": "Confirm your selected welcome choice and playthrough before claiming; cashback eligibility and timing can vary by account and campaign.",
+      "source_url": "https://xtp.com/",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "id": "stake",
@@ -75,7 +79,11 @@
       "trust": 86,
       "depth": 93,
       "gamification": 82,
-      "watch_out": "Scale means low-tier players get a less personal experience; thresholds above Bronze are not published."
+      "watch_out": "Scale means low-tier players get a less personal experience; thresholds above Bronze are not published.",
+      "source_url": "https://stake.com/vip-club",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_verified",
+      "source_monitor": "manual"
     },
     {
       "id": "rollbit",
@@ -109,7 +117,11 @@
       "trust": 76,
       "depth": 88,
       "gamification": 90,
-      "watch_out": "Rewards are entangled with RLB token price; volatility can erode realised value."
+      "watch_out": "Rewards are entangled with RLB token price; volatility can erode realised value.",
+      "source_url": "https://rollbit.com/rewards",
+      "source_last_checked": "2026-07-13",
+      "source_status": "manual_verified",
+      "source_monitor": "manual"
     },
     {
       "id": "roobet",
@@ -145,7 +157,7 @@
       "gamification": 88,
       "watch_out": "Some long-term high-rollers report benefits being trimmed; thresholds not published.",
       "source_url": "https://roobet.com/vip",
-      "source_last_checked": "2026-06-25",
+      "source_last_checked": "2026-07-13",
       "source_terms_hash": "905d829180cace85",
       "source_status": "verified"
     },
@@ -183,7 +195,7 @@
       "gamification": 94,
       "watch_out": "Headline rate is high but paid in BCD; discount versus pure cash and account for withdrawal complaints.",
       "source_url": "https://bc.game/vip",
-      "source_last_checked": "2026-06-25",
+      "source_last_checked": "2026-07-13",
       "source_terms_hash": "7c92257b063d0cfb",
       "source_status": "verified"
     },
@@ -222,9 +234,10 @@
       "gamification": 78,
       "watch_out": "Headline 70% is not normalised; formula is opaque and responsible-gambling tooling is reported thin.",
       "source_url": "https://thrill.com/vip",
-      "source_last_checked": "2026-06-25",
+      "source_last_checked": "2026-07-13",
       "source_terms_hash": "01b534d2ef90863a",
-      "source_status": "verified"
+      "source_status": "manual_verified",
+      "source_monitor": "manual"
     },
     {
       "id": "yeet",
@@ -262,7 +275,7 @@
       "gamification": 86,
       "watch_out": "Token or airdrop value is unproven; very low entry dilutes status signal.",
       "source_url": "https://yeet.com/rewards",
-      "source_last_checked": "2026-06-25",
+      "source_last_checked": "2026-07-13",
       "source_terms_hash": "2b0c646cbd8cd046",
       "source_status": "verified"
     },
@@ -343,7 +356,7 @@
       "gamification": 92,
       "watch_out": "Still in beta; responsible-gambling tooling minimal and unproven at scale.",
       "source_url": "https://dicey.com/casino",
-      "source_last_checked": "2026-06-25",
+      "source_last_checked": "2026-07-13",
       "source_terms_hash": "c53da74579f582ec",
       "source_status": "verified"
     },
@@ -386,7 +399,7 @@
         "Instant Rakeback",
         "VIP Host"
       ],
-      "source_last_checked": "2026-06-25",
+      "source_last_checked": "2026-07-13",
       "source_terms_hash": "0e7130c33eacb008",
       "source_status": "verified"
     },
@@ -427,7 +440,8 @@
       "watch_out": "Instant rakeback is 5% OF the edge (~0.05-0.25% of wager) — easily confused with wager-basis headlines. Weekly/monthly bonus math is a black box. Casino Guru Safety Index 4.8 (Low) with a heavy pattern of withdrawals stuck 'under review' and KYC demands at cashout; Trustpilot score currently withheld. Welcome bonuses are code-dependent with 35-40x wagering and 10% max-bet rule.",
       "source_url": "https://help.shuffle.com/en/articles/10020509-how-does-rakeback-work",
       "source_last_checked": "2026-07-13",
-      "source_status": "verified"
+      "source_status": "verified",
+      "source_terms_hash": "753d0f4b9a7de21f"
     },
     {
       "id": "gamdom",
@@ -464,7 +478,8 @@
       "watch_out": "Affiliate 'up to 60%' claims are not official — rates, thresholds, and formula are all explicitly undisclosed and dynamic. The 6-hour activation window on the new-account boost is easy to miss. Strong aggregate trust (Casino Guru 9.8) but documented KYC escalation and multi-week holds after big wins.",
       "source_url": "https://help.gamdom.com/en/articles/10290516-gamdom-rewards",
       "source_last_checked": "2026-07-13",
-      "source_status": "verified"
+      "source_status": "verified",
+      "source_terms_hash": "3951f73409e13660"
     },
     {
       "id": "duelbits",
@@ -502,7 +517,8 @@
       "watch_out": "Third-party 'up to 50%' is affiliate inflation — official copy tops out at 47.5% and is internally inconsistent. Per-level thresholds and VIP Club entry criteria are unpublished. Welcome free-spin stages expire 24h after crediting. Heavy KYC reported after large wins (one disputed $253k case).",
       "source_url": "https://duelbits.com/blog/guide/how-does-duelbits-rakeback-work/",
       "source_last_checked": "2026-07-13",
-      "source_status": "verified"
+      "source_status": "manual_verified",
+      "source_monitor": "manual"
     },
     {
       "id": "cloudbet",
@@ -539,7 +555,8 @@
       "watch_out": "Headline 25% requires Blue Diamond plus an active 20-90 minute TURBO — realistic base is 5% for the first six tiers. 12-hour claim windows forfeit unclaimed rewards. Regular rakeback only starts after the 30-day welcome flow completes. Reports of accounts frozen for 'betting integrity review' after large wins.",
       "source_url": "https://www.cloudbet.com/en/support/articles/163516-how-to-earn-rakeback",
       "source_last_checked": "2026-07-13",
-      "source_status": "verified"
+      "source_status": "verified",
+      "source_terms_hash": "53d35e494576d599"
     },
     {
       "id": "metaspins",
@@ -577,7 +594,8 @@
       "watch_out": "The 'up to 120%' headline requires level 1000+ AND three consecutive coin-flip wins (12.5% chance); a single loss wipes the accumulated rebate. 7-day rakeback expiry. Welcome bonus is 40x wagering in 7 days. Trustpilot ~2.0 with confiscation complaints ($29k, $9k) despite Casino Guru 8.5 — fast small withdrawals, friction on large ones.",
       "source_url": "https://metaspins.com/level-up/",
       "source_last_checked": "2026-07-13",
-      "source_status": "verified"
+      "source_status": "verified",
+      "source_terms_hash": "91e5801ace2c6f55"
     }
   ]
 }
