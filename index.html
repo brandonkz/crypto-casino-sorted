@@ -499,109 +499,73 @@
       .ccs-footer-contact { width: 100%; justify-content: space-between; }
     }
   
-/* Standard nav */
-/* === TERMINAL NAV === */
 .t-nav {
-  background: rgba(4, 16, 38, 0.94);
-  border-bottom: 1px solid var(--t-border);
-  padding: 0 16px;
-  height: 36px;
+  min-height: 54px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 18px;
+  padding: 0 18px;
+  background: rgba(4, 16, 38, 0.94);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 .t-nav-logo {
-  font-family: var(--t-mono);
-  font-weight: 800;
-  font-size: 12px;
-  color: var(--t-green);
+  color: var(--orange-2);
+  font-size: 0.82rem;
+  font-weight: 950;
   text-decoration: none;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
-.t-nav-logo .sub { color: var(--t-dim); font-weight: 400; font-size: 10px; }
+.t-nav-logo .sub { color: var(--muted); font-weight: 650; letter-spacing: 0; text-transform: none; margin-left: 5px; }
 .t-nav-links {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 .t-nav-links a {
-  color: var(--t-dim);
-  font-family: var(--t-mono);
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: inherit;
   transition: color 0.2s;
 }
-.t-nav-links a:hover { color: var(--t-green); }
-.t-nav-links a.active { color: var(--t-green); }
+.t-nav-links a:hover,
+.t-nav-links a.active { color: var(--orange-2); }
 .t-nav-links a.t-nav-primary {
   color: #ff9d00;
-  font-weight: 800;
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-weight: 950;
 }
 .t-nav-links a.t-nav-primary:hover { color: #ffc164; }
-.t-nav-live {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--t-green);
-  font-family: var(--t-mono);
-  font-size: 10px;
-  font-weight: 600;
-}
-.t-nav-live::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  background: var(--t-green);
-  border-radius: 50%;
-  animation: t-pulse 2s infinite;
-}
-@keyframes t-pulse { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
-
-/* Hamburger (mobile only) */
 .t-nav-toggle { display: none; }
 .t-nav-burger { display: none; }
 
 @media (max-width: 768px) {
-  .t-nav { padding: 0 12px; height: 44px; position: relative; overflow: visible; }
+  .t-nav { align-items: flex-start; flex-direction: column; min-height: 54px; padding: 12px; }
   .t-nav-logo .sub { display: none; }
-  .t-nav-burger {
-    display: flex; flex-direction: column; justify-content: center; gap: 5px;
-    width: 28px; height: 28px; cursor: pointer; margin-left: auto;
-  }
-  .t-nav-burger span {
-    display: block; width: 22px; height: 2px; border-radius: 2px;
-    background: var(--t-green); transition: transform .25s, opacity .2s;
-  }
   .t-nav-links {
-    display: none;
-    position: absolute; top: 44px; left: 0; right: 0;
-    flex-direction: column; align-items: stretch; gap: 0;
-    background: rgba(4, 16, 38, 0.98);
-    border-bottom: 1px solid var(--t-border);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-    padding: 6px 16px 12px;
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    gap: 14px;
+    padding-bottom: 2px;
   }
   .t-nav-links a {
-    font-size: 13px; padding: 12px 2px; width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    flex: 0 0 auto;
+    font-size: 0.72rem;
+    padding: 0;
+    width: auto;
+    border-bottom: none;
   }
-  .t-nav-links a.t-nav-primary { font-size: 13px; }
-  .t-nav-links a:last-child { border-bottom: none; }
-  .t-nav-toggle:checked ~ .t-nav-links { display: flex; }
-  .t-nav-toggle:checked ~ .t-nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .t-nav-toggle:checked ~ .t-nav-burger span:nth-child(2) { opacity: 0; }
-  .t-nav-toggle:checked ~ .t-nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  .t-nav-hide-mobile { display: none; }
 }
 
 </style>
