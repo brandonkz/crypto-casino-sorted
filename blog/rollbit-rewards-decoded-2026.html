@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollbit Rewards Decoded 2026: Rakeback Math, Rank-Up Bonuses & RLB Boosts | CryptoCasinoSorted</title>
+  <meta name="description" content="Honest breakdown of Rollbit's rewards system in 2026: 5% base rakeback, daily/weekly cashback math, 27-level VIP tiers, RLB token boosts, Rank-Up bonuses, and what 'up to 70%' actually means.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/blog/rollbit-rewards-decoded-2026.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../terminal-theme.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://cryptocasinosorted.com/blog/rollbit-rewards-decoded-2026.html">
+  <meta property="og:title" content="Rollbit Rewards Decoded 2026: Rakeback Math, Rank-Up Bonuses & RLB Boosts">
+  <meta property="og:description" content="Rollbit claims 'Crypto's Most Rewarding Casino.' We break down every layer: 5% base rakeback, daily cashback, Rank-Up bonuses, RLB token boosts, Rollback NFT perks and honest tier math.">
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Rollbit Rewards Decoded 2026: Real Rakeback Math">
+  <meta property="twitter:description" content="5% base rakeback, daily cashback up to 50% of house edge, RLB boosts, 27 levels from Bronze to Vibranium — what it all actually means.">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23000000' width='100' height='100' rx='20'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>🎲</text></svg>">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0L3N9F43ED');</script>
+
+  <style>
+body { background: #08090d; color: #d4d8e8; }
+.blog-post { background: transparent; }
+
+.math-box {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-left: 3px solid #4ade80;
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-family: monospace;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+.math-box .label {
+  color: #7dd3fc;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.warning-box {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-left: 3px solid #ef4444;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #fca5a5;
+}
+
+.tip-box {
+  background: rgba(74, 222, 128, 0.06);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-left: 3px solid #4ade80;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #bbf7d0;
+}
+
+.info-box {
+  background: rgba(99, 102, 241, 0.07);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-left: 3px solid #818cf8;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #c7d2fe;
+}
+
+.tier-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 4px;
+}
+.tier-unranked { background: #1e293b; color: #64748b; }
+.tier-bronze   { background: #451a03; color: #fb923c; }
+.tier-silver   { background: #1e293b; color: #94a3b8; }
+.tier-gold     { background: #422006; color: #fbbf24; }
+.tier-plat     { background: #1e1b4b; color: #a5b4fc; }
+.tier-diamond  { background: #0c4a6e; color: #38bdf8; }
+.tier-blood    { background: #3b0000; color: #f87171; border: 1px solid #ef4444; }
+.tier-vib      { background: #0f0f0f; color: #e879f9; border: 1px solid #7c3aed; }
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.88rem;
+}
+.compare-table th {
+  background: #0f1117;
+  color: #94a3b8;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #1e293b;
+}
+.compare-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #1e293b;
+  vertical-align: top;
+}
+.compare-table tr:last-child td {
+  border-bottom: none;
+}
+.compare-table tr:hover td {
+  background: rgba(255,255,255,0.025);
+}
+
+.winner { color: #4ade80; font-weight: 600; }
+.caution { color: #fbbf24; }
+.concern { color: #f87171; }
+
+.internal-links {
+  background: rgba(14, 43, 92, 0.7);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin: 28px 0;
+}
+.internal-links h4 {
+  margin: 0 0 10px;
+  color: #818cf8;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.internal-links ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.internal-links li {
+  margin-bottom: 5px;
+  font-size: 0.88rem;
+}
+.internal-links a {
+  color: #7dd3fc;
+}
+.internal-links a:hover {
+  color: #bae6fd;
+}
+
+.toc {
+  background: #0d1117;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin: 24px 0 32px;
+}
+.toc h4 {
+  margin: 0 0 10px;
+  color: #94a3b8;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.toc ol {
+  margin: 0;
+  padding-left: 20px;
+}
+.toc li {
+  margin-bottom: 4px;
+  font-size: 0.88rem;
+}
+.toc a {
+  color: #7dd3fc;
+  text-decoration: none;
+}
+.toc a:hover {
+  text-decoration: underline;
+}
+
+.article-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 20px 72px;
+}
+.back-link {
+  display: inline-block;
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+.back-link:hover { color: #94a3b8; }
+
+h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: #f0f4ff;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin: 36px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1e293b;
+}
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin: 24px 0 10px;
+}
+p { margin: 0 0 16px; line-height: 1.75; }
+a { color: #7dd3fc; }
+a:hover { color: #bae6fd; }
+
+.article-meta {
+  color: #64748b;
+  font-size: 0.82rem;
+  margin-bottom: 24px;
+}
+
+.ccs-author-byline {
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 16px 0 20px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+.ccs-author-byline strong {
+  color: #cbd5e1;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.verdict-box {
+  background: rgba(74, 222, 128, 0.05);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 28px 0;
+}
+.verdict-box h3 {
+  color: #4ade80;
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.rlb-boost-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.87rem;
+}
+.rlb-boost-table th {
+  background: #0d1117;
+  color: #94a3b8;
+  padding: 8px 14px;
+  text-align: left;
+  font-size: 0.77rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #1e293b;
+}
+.rlb-boost-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid #1e293b;
+}
+.rlb-boost-table tr:last-child td { border-bottom: none; }
+.rlb-boost-table .highlight { color: #4ade80; font-weight: 600; }
+
+.faq-section {
+  margin-top: 36px;
+}
+.faq-section h2 {
+  color: #e2e8f0;
+}
+.faq-item {
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.faq-q {
+  background: #0d1117;
+  padding: 14px 18px;
+  font-weight: 600;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+.faq-a {
+  padding: 14px 18px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #94a3b8;
+}
+  </style>
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Rollbit Rewards Decoded 2026: Rakeback Math, Rank-Up Bonuses & RLB Boosts",
+  "description": "Honest breakdown of Rollbit's rewards system in 2026: 5% base rakeback, daily cashback math, 27-level VIP tiers, RLB token boosts, Rank-Up bonuses, and what the headline numbers actually mean for real players.",
+  "author": {
+    "@type": "Organization",
+    "name": "CryptoCasinoSorted",
+    "url": "https://cryptocasinosorted.com/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CryptoCasinoSorted",
+    "url": "https://cryptocasinosorted.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cryptocasinosorted.com/og-image.png"
+    }
+  },
+  "datePublished": "2026-07-14",
+  "dateModified": "2026-07-14",
+  "mainEntityOfPage": "https://cryptocasinosorted.com/blog/rollbit-rewards-decoded-2026.html",
+  "image": "https://cryptocasinosorted.com/og-image.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cryptocasinosorted.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://cryptocasinosorted.com/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "Rollbit Rewards Decoded 2026", "item": "https://cryptocasinosorted.com/blog/rollbit-rewards-decoded-2026.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Rollbit's base rakeback rate in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rollbit's base rakeback is 5% of the house edge on every bet, available to all players from their very first wager with no sign-up requirements or promo codes needed. This 5% is of the house edge — not 5% of your bet amount. On a $100 bet with a 3% house edge, the house edge is $3, so 5% rakeback returns $0.15."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Rollbit rakeback have wagering requirements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Rollbit rakeback — including the base 5%, daily cashback, weekly cashback, monthly cashback, and Rank-Up bonuses — carries no wagering requirements. Once credited or claimed, the balance is freely withdrawable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Rollbit's daily cashback work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rollbit's daily cashback can be claimed once every 24 hours and is worth up to 50% of the house edge on all wagers placed in the preceding 24-hour period. It must be manually claimed in the Rewards section before the window expires and resets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Rollbit Rank-Up bonuses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you advance through Rollbit's 27-level tier system, you receive a one-time Rank-Up bonus equal to up to 20% of the house edge on all your wagers since your last rank-up. This is a lump-sum cash credit with no wagering requirements, paid directly to your balance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does holding RLB tokens increase rakeback at Rollbit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Holding RLB tokens in your on-site balance adds up to 10% additional rakeback. Holding $100 worth of RLB adds +1%, scaling up to +10% for $500,000+ in RLB held. Combined with the base 5%, this gives up to 15% rakeback — but RLB is a volatile token so the USD value of your holdings can change rapidly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Rollbot Rollback?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rollback is an additional rakeback boost for holders of Rollbit's V1 Rollbot NFTs. The bonus ranges from 2.5% to 25% depending on the body trait rarity of the NFT. These NFTs trade on the secondary market, so the cost of acquiring this boost varies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many levels does Rollbit's VIP system have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rollbit has 27 VIP levels across 7 tiers: Bronze (5 levels, $10K–$30K wagered), Silver (5 levels, $50K–$150K), Gold (5 levels, $200K–$600K), Platinum (5 levels, $750K–$5M), Diamond (5 levels, $10M–$250M), Blood Diamond ($500M), and Vibranium ($1B)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you get lossback at Rollbit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Rollbit offers lossback bonuses through their 24/7 live support for players who are overall down. After an initial loyalty bonus (one-time), players can request a lossback bonus approximately every 7 days via support chat. Amounts and eligibility criteria are not publicly documented and vary by account."
+      }
+    }
+  ]
+}
+</script>
+
+</head>
+<body>
+
+<nav class="t-nav">
+  <a href="/" class="t-nav-logo">🎰 CCT <span class="sub">CryptoCasinoSorted</span></a>
+  <div class="t-nav-links">
+    <a href="/reviews/" class="t-nav-primary">⭐ Reviews</a>
+    <a href="/analytics.html">📊 Dashboard</a>
+    <a href="/rakeback-comparison.html">📈 Rakeback</a>
+    <a href="/rewards-recommender.html">🎁 Rewards</a>
+    <a href="/blog/">📖 Guides</a>
+    <a href="/bonus-calculator.html" class="t-nav-hide-mobile">🧮 Bonus Calc</a>
+  </div>
+</nav>
+
+<main class="article-container">
+  <a href="/blog/" class="back-link">← Back to Blog</a>
+
+  <h1>Rollbit Rewards Decoded 2026: Rakeback Math, Rank-Up Bonuses &amp; RLB Boosts</h1>
+
+  <section class="ccs-author-byline" aria-label="Author">
+    <strong>By CryptoCasinoSorted Editorial Team</strong>
+    <p>CryptoCasinoSorted reviews crypto casinos using public terms, player-friction checks, withdrawal signals and bonus-value math. Sources for this article are Rollbit's official whitepaper, official blog posts, and third-party affiliate review sites. We have no commercial relationship with Rollbit. Read more on our <a href="/about.html">About page</a>.</p>
+  </section>
+
+  <div class="article-meta">📅 July 14, 2026 • ⏱️ 12 min read • 🎰 Rewards Deep Dive • 18+ Gambling Risk Warning</div>
+
+  <div class="warning-box">
+    <strong>⚠️ Gambling Warning:</strong> This guide covers a gambling platform. All casino play carries financial risk. Never gamble money you cannot afford to lose. 18+ only. Rakeback and cashback reduce effective house edge but do not eliminate it — they cannot make gambling profitable long-term. If gambling is affecting your wellbeing, contact <a href="https://www.begambleaware.org" rel="nofollow">BeGambleAware.org</a> or <a href="https://www.gamblinghelpline.co.nz" rel="nofollow">Gambling Help Online</a>.
+  </div>
+
+  <p>Rollbit markets itself as "Crypto's Most Rewarding Casino." That's a strong claim in a crowded market where Stake, BC.Game, Gamdom, and Thrill all make similar pitches. But Rollbit's rewards stack is genuinely multi-layered and unusually transparent in some respects — particularly the publicly-documented RLB token boost table and the openly-stated Rank-Up bonus mechanics.</p>
+
+  <p>This guide strips away the marketing and works through each layer of the Rollbit rewards program with real math: what the 5% base rakeback actually returns per dollar wagered, how the daily cashback functions and what it's realistically worth, what the 27-level tier system means in practice, and whether the RLB token boost is a smart value play or a token speculation trap.</p>
+
+  <div class="toc">
+    <h4>📋 In this guide</h4>
+    <ol>
+      <li><a href="#rewards-overview">What Rollbit's rewards stack actually consists of</a></li>
+      <li><a href="#rakeback-reality">The "rakeback" clarification: 5% of what exactly?</a></li>
+      <li><a href="#daily-cashback">Daily, weekly &amp; monthly cashback — what's claimable and when</a></li>
+      <li><a href="#rankup-bonuses">Rank-Up bonuses: the transparent lump-sum layer</a></li>
+      <li><a href="#vip-tiers">27 levels, 7 tiers: Bronze to Vibranium — the full tier table</a></li>
+      <li><a href="#rlb-boost">RLB token boost: +1% to +10% extra rakeback — and the token risk</a></li>
+      <li><a href="#rollback">Rollback: the NFT-gated rakeback boost</a></li>
+      <li><a href="#lossback">Lossback &amp; loyalty bonuses via support</a></li>
+      <li><a href="#combined-math">Combined math: what does a $10K/month player actually get back?</a></li>
+      <li><a href="#withdrawal">Withdrawal friction: is rakeback actually freely withdrawable?</a></li>
+      <li><a href="#who-for">Who Rollbit's rewards program is actually for</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <h2 id="rewards-overview">1. What Rollbit's Rewards Stack Consists Of</h2>
+
+  <p>Unlike the majority of crypto casinos that funnel reward value into a single opaque "VIP bonus" system, Rollbit operates several distinct reward mechanisms simultaneously. The advantage of this approach is that lower-volume players receive genuine instant rakeback without hitting a minimum threshold. The complication is that the full picture takes some unpicking.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Reward Layer</th>
+        <th>What You Get</th>
+        <th>Wagering Req?</th>
+        <th>Manual Claim?</th>
+        <th>Transparency</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Base Rakeback</strong></td>
+        <td>5% of house edge on every bet</td>
+        <td class="winner">None</td>
+        <td>Yes — Rewards tab</td>
+        <td class="winner">Published</td>
+      </tr>
+      <tr>
+        <td><strong>Daily Cashback</strong></td>
+        <td>Up to 50% of house edge on 24h wagers</td>
+        <td class="winner">None</td>
+        <td>Yes — must claim</td>
+        <td class="caution">Percentage undisclosed per player</td>
+      </tr>
+      <tr>
+        <td><strong>Weekly Cashback</strong></td>
+        <td>% of house edge on weekly wagers</td>
+        <td class="winner">None</td>
+        <td>Yes</td>
+        <td class="caution">Formula not published</td>
+      </tr>
+      <tr>
+        <td><strong>Monthly Cashback</strong></td>
+        <td>% of house edge on monthly wagers</td>
+        <td class="winner">None</td>
+        <td>Yes</td>
+        <td class="caution">Formula not published</td>
+      </tr>
+      <tr>
+        <td><strong>Rank-Up Bonus</strong></td>
+        <td>Up to 20% of house edge since last rank-up</td>
+        <td class="winner">None</td>
+        <td>Yes — on level-up</td>
+        <td class="winner">Mechanism documented</td>
+      </tr>
+      <tr>
+        <td><strong>RLB Token Boost</strong></td>
+        <td>+1% to +10% additional rakeback</td>
+        <td class="winner">None</td>
+        <td>Auto-applied</td>
+        <td class="winner">Full table published</td>
+      </tr>
+      <tr>
+        <td><strong>Rollback (NFT)</strong></td>
+        <td>2.5%–25% extra rakeback for V1 Rollbot holders</td>
+        <td class="winner">None</td>
+        <td>Auto-applied</td>
+        <td class="winner">Table published by rarity</td>
+      </tr>
+      <tr>
+        <td><strong>Lossback / Loyalty</strong></td>
+        <td>One-time loyalty + recurring lossback via support</td>
+        <td class="caution">Unclear per T&amp;Cs</td>
+        <td>Via support chat</td>
+        <td class="concern">Criteria not published</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <strong>📌 No promo code required:</strong> Every layer above (except lossback, which is discretionary) applies to all users with no promo code, referral requirement, or minimum deposit. You begin earning 5% base rakeback from your first cent wagered.
+  </div>
+
+  <div class="internal-links">
+    <h4>🔗 Compare with other operators</h4>
+    <ul>
+      <li><a href="/rakeback-comparison.html">Rakeback comparison tool — Rollbit, Stake, BC.Game, Gamdom, Duelbits side by side</a></li>
+      <li><a href="/rewards-recommender.html">Rewards recommender — which program fits your volume and play style</a></li>
+      <li><a href="/bonus-calculator.html">Bonus calculator — convert rakeback percentage to dollar value at your wager level</a></li>
+      <li><a href="/blog/best-crypto-casino-rewards-programs-2026.html">Best crypto casino rewards programs 2026 — full industry comparison</a></li>
+    </ul>
+  </div>
+
+  <h2 id="rakeback-reality">2. The "Rakeback" Clarification: 5% of What, Exactly?</h2>
+
+  <p>This distinction matters more than any other in this guide, and most sites gloss over it. Rollbit's rakeback is calculated as a percentage of the <strong>house edge on your bet</strong> — not a percentage of your bet amount, and not a percentage of your session loss.</p>
+
+  <div class="math-box">
+    <div class="label">Example — $100 bet on a dice game with 1% house edge</div>
+    House edge on bet = $100 × 1% = <strong>$1.00</strong><br>
+    5% base rakeback = $1.00 × 5% = <strong>$0.05 returned</strong><br>
+    Effective house edge after rakeback = 1% × (1 − 5%) = <strong>0.95%</strong><br><br>
+    <span style="color:#94a3b8;">You bet $100. You get $0.05 back. Not $5.</span>
+  </div>
+
+  <div class="math-box">
+    <div class="label">Example — $100 bet on a slot with 4% house edge</div>
+    House edge on bet = $100 × 4% = <strong>$4.00</strong><br>
+    5% base rakeback = $4.00 × 5% = <strong>$0.20 returned</strong><br>
+    Effective house edge after rakeback = 4% × (1 − 5%) = <strong>3.8%</strong>
+  </div>
+
+  <p>Across $10,000 in total wagering on a 4% house-edge game: the casino's expected take is $400. The 5% rakeback returns $20 of that $400 back to you. Not $500. The house still has a large edge — rakeback makes the game cheaper over time, but it does not make it profitable.</p>
+
+  <div class="warning-box">
+    <strong>What "5% rakeback" is not:</strong> It is not a 5% rebate on your deposit. It is not 5% of your losses returned. It is 5% of the mathematical house advantage on each individual bet. On low-edge provably fair games (e.g. 1% Dice), the absolute dollar return per bet is very small. On high-edge slots (some run 4-8% RTP gaps), the absolute return is larger, but so is your expected loss.
+  </div>
+
+  <h2 id="daily-cashback">3. Daily, Weekly &amp; Monthly Cashback: What's Claimable and When</h2>
+
+  <h3>Daily Cashback</h3>
+
+  <p>Rollbit's daily cashback is claimable once every 24 hours. The publicly documented ceiling is <strong>50% of the house edge on all wagers placed in the preceding 24 hours</strong>. This is the single most valuable regular claim available at Rollbit for active daily players.</p>
+
+  <div class="math-box">
+    <div class="label">Daily cashback — active player scenario</div>
+    Total wagered in 24h: <strong>$5,000</strong><br>
+    Average house edge: <strong>3%</strong><br>
+    Total house edge generated: $5,000 × 3% = <strong>$150</strong><br>
+    Daily cashback at 50% ceiling: $150 × 50% = <strong>$75 potential claim</strong><br><br>
+    <span style="color:#fbbf24;">Caveat: the 50% figure is the stated ceiling — your actual % depends on your tier and account standing. Not every player receives 50%.</span>
+  </div>
+
+  <div class="warning-box">
+    <strong>Must be claimed manually or it expires:</strong> Daily cashback does not auto-apply to your balance. You must navigate to the Rewards section and claim it within the 24-hour window before it resets. Unclaimed daily cashback is forfeited. Set a reminder if you're relying on this.
+  </div>
+
+  <h3>Weekly and Monthly Cashback</h3>
+
+  <p>Rollbit also runs weekly and monthly cashback cycles on a similar mechanism to the daily claim — a percentage of house edge generated over the period is returned to your rewards balance. The exact formula for weekly and monthly cashback is not publicly documented. Based on third-party affiliate disclosures, the weekly and monthly rates appear to scale with your VIP tier, but Rollbit has not published the per-tier percentages for these cycles.</p>
+
+  <div class="tip-box">
+    <strong>💡 Practical tip:</strong> Build a habit of checking your Rewards tab daily before the reset. The daily cashback is the most concrete and regular claim. If you're not logging in daily, you're leaving value on the table — unclaimed cashback does not roll over.
+  </div>
+
+  <h2 id="rankup-bonuses">4. Rank-Up Bonuses: The Transparent Lump-Sum Layer</h2>
+
+  <p>Each time you advance to a new level in Rollbit's 27-level system, you receive a one-time <strong>Rank-Up bonus</strong>: up to 20% of the house edge generated on your wagers since your previous rank-up. This is paid as an instant cash credit to your balance — no wagering requirement, no time limit.</p>
+
+  <div class="math-box">
+    <div class="label">Rank-Up bonus example — Bronze 1 → Bronze 2</div>
+    Wagers since last rank-up: <strong>$5,000</strong><br>
+    Average house edge: <strong>3%</strong><br>
+    Total house edge generated: <strong>$150</strong><br>
+    Rank-Up bonus at 20%: $150 × 20% = <strong>$30 credited to balance</strong><br><br>
+    <span style="color:#94a3b8;">At higher tiers, wager requirements between ranks are significantly larger, so Rank-Up bonuses scale accordingly.</span>
+  </div>
+
+  <p>The Rank-Up bonus is arguably the most honest piece of the Rollbit rewards system because the mechanic is clearly documented and mathematically predictable: more wagering between rank-ups → larger rank-up bonus. There is no discretionary element — it is automatic on level completion.</p>
+
+  <div class="info-box">
+    <strong>Strategy note:</strong> The Rank-Up bonus provides a small but real incentive to focus volume at Rollbit rather than splitting wagers across multiple platforms. A player who splits $50K equally between Rollbit and another casino delays their rank-up twice as long, receiving smaller individual Rank-Up bonuses at each casino compared to concentrating volume at one.
+  </div>
+
+  <h2 id="vip-tiers">5. The 27-Level VIP System: Bronze to Vibranium</h2>
+
+  <p>Rollbit's VIP progression system has 7 tiers containing 27 total levels. Advancement is based on cumulative lifetime wagering — there is no reset, no inactivity penalty, and no application process. You start at Unranked and climb by playing.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Tier</th>
+        <th>Levels</th>
+        <th>Approx. Wagered Required</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tier-badge tier-unranked">Unranked</span></td>
+        <td>1</td>
+        <td>$0</td>
+        <td>Starting tier; all users begin here</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tier-bronze">Bronze</span></td>
+        <td>5 levels</td>
+        <td>$10,000 → $30,000</td>
+        <td>Entry VIP; accessible for casual-regular players</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tier-silver">Silver</span></td>
+        <td>5 levels</td>
+        <td>$50,000 → $150,000</td>
+        <td>Mid-tier; dedicated player required</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tier-gold">Gold</span></td>
+        <td>5 levels</td>
+        <td>$200,000 → $600,000</td>
+        <td>High-volume; most regular players plateau here</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tier-plat">Platinum</span></td>
+        <td>5 levels</td>
+        <td>$750,000 → $5,000,000</td>
+        <td>High-roller territory; per-bet stakes need to be substantial</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tier-diamond">Diamond</span></td>
+        <td>5 levels</td>
+        <td>$10,000,000 → $250,000,000</td>
+        <td>Elite; extremely rare; dedicated VIP hosts</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tier-blood">Blood Diamond</span></td>
+        <td>1</td>
+        <td>~$500,000,000</td>
+        <td>Ultra-elite; publicly documented by NodeGamble</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tier-vib">Vibranium</span></td>
+        <td>1</td>
+        <td>~$1,000,000,000</td>
+        <td>Theoretical ceiling; $1B lifetime wagered</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="warning-box">
+    <strong>Reality check on top tiers:</strong> Vibranium at $1 billion wagered and Blood Diamond at $500 million are not realistic targets for any normal player. These exist primarily as marketing anchors. Even Platinum ($750K to $5M wagered) requires either very high per-bet stakes or an extremely long time horizon. For most players who bet $10-$50 per round, Gold is a realistic multi-year target.
+  </div>
+
+  <h3>How Long Does It Take to Reach Bronze?</h3>
+
+  <div class="math-box">
+    <div class="label">Time to Bronze 1 — $10,000 wagered required</div>
+    Player betting $20 per round, 200 bets/session, 3 sessions/week:<br>
+    Weekly wager = $20 × 200 × 3 = <strong>$12,000/week</strong><br>
+    Time to Bronze 1 = $10,000 ÷ $12,000 ≈ <strong>less than 1 week</strong><br><br>
+    Player betting $5 per round, 100 bets/session, 2 sessions/week:<br>
+    Weekly wager = $5 × 100 × 2 = <strong>$1,000/week</strong><br>
+    Time to Bronze 1 = $10,000 ÷ $1,000 = <strong>10 weeks</strong>
+  </div>
+
+  <p>Bronze is reachable for most regular players. Silver ($50K) starts to require meaningful volume. Gold ($200K+) separates the casual from the serious. The Rank-Up bonuses you earn climbing Bronze and Silver are genuinely useful; the per-level bonus amounts don't plateau dramatically in early tiers.</p>
+
+  <h2 id="rlb-boost">6. The RLB Token Boost: +1% to +10% Extra Rakeback — And the Token Risk</h2>
+
+  <p>Rollbit launched a mechanism in July 2023 allowing players to boost their base rakeback by holding RLB tokens in their on-site balance. The boost is linear: the more RLB you hold by USD value, the higher your additional rakeback percentage. Rolled on top of the 5% base, the maximum achievable is 15% rakeback without any NFTs.</p>
+
+  <table class="rlb-boost-table">
+    <thead>
+      <tr>
+        <th>RLB Holdings (USD Value)</th>
+        <th>Additional Rakeback</th>
+        <th>Total Rakeback (Base + Boost)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>$100</td>
+        <td>+1%</td>
+        <td>6%</td>
+      </tr>
+      <tr>
+        <td>$1,000</td>
+        <td>+2%</td>
+        <td>7%</td>
+      </tr>
+      <tr>
+        <td>$2,500</td>
+        <td>+3%</td>
+        <td>8%</td>
+      </tr>
+      <tr>
+        <td>$5,000</td>
+        <td>+4%</td>
+        <td>9%</td>
+      </tr>
+      <tr>
+        <td>$10,000</td>
+        <td>+5%</td>
+        <td>10%</td>
+      </tr>
+      <tr>
+        <td>$25,000</td>
+        <td>+6%</td>
+        <td>11%</td>
+      </tr>
+      <tr>
+        <td>$50,000</td>
+        <td>+7%</td>
+        <td>12%</td>
+      </tr>
+      <tr>
+        <td>$100,000</td>
+        <td>+8%</td>
+        <td>13%</td>
+      </tr>
+      <tr>
+        <td>$250,000</td>
+        <td>+9%</td>
+        <td>14%</td>
+      </tr>
+      <tr>
+        <td class="highlight">$500,000</td>
+        <td class="highlight">+10%</td>
+        <td class="highlight">15%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Source: Rollbit official whitepaper (whitepaper.rollbot.com), July 2023 announcement.</p>
+
+  <div class="warning-box">
+    <strong>⚠️ The RLB token risk — read this before buying:</strong> The RLB token is a speculative cryptocurrency. Its USD value fluctuates with market conditions. Holding $10,000 worth of RLB today for a +5% rakeback boost does not mean you'll have $10,000 in RLB next month. If the token loses 40% of its value, your holdings drop to $6,000 — reducing your boost from +5% to +4% — and you've absorbed a $4,000 mark-to-market loss in the process.<br><br>
+    <strong>The rakeback boost is only "free" if RLB holds its value.</strong> Do not treat buying RLB purely as a rakeback strategy. It is also a token investment with full downside risk.
+  </div>
+
+  <div class="math-box">
+    <div class="label">RLB boost payback period — $1,000 held for +2% rakeback</div>
+    Additional rakeback rate: +2% of house edge<br>
+    Assume $10,000/month wagered at 3% average house edge<br>
+    Monthly house edge: $10,000 × 3% = $300<br>
+    Monthly boost value: $300 × 2% = <strong>$6/month extra</strong><br>
+    Payback on $1,000 RLB: $1,000 ÷ $6 = <strong>167 months (13+ years)</strong><br><br>
+    <span style="color:#fbbf24;">The rakeback boost from RLB is mathematically modest at typical player volumes. At $100K+/month wagered, it becomes more meaningful — but that requires serious volume.</span>
+  </div>
+
+  <h2 id="rollback">7. Rollback: The NFT-Gated Rakeback Boost</h2>
+
+  <p>Rollbit's <strong>Rollback</strong> mechanic is an additional rakeback layer available exclusively to holders of V1 Rollbot NFTs. The bonus percentage depends on the rarity of the NFT's "body" trait:</p>
+
+  <ul>
+    <li><strong>Common body:</strong> 2.5% additional rakeback</li>
+    <li><strong>Uncommon body:</strong> ~5% additional rakeback</li>
+    <li><strong>Rare body:</strong> ~10% additional rakeback</li>
+    <li><strong>Epic / Legendary body:</strong> Up to 25% additional rakeback</li>
+    <li><strong>All V1 Specials:</strong> Maximum Rollback rate</li>
+  </ul>
+
+  <p>The full rarity breakdown is documented at Rollbit's whitepaper. V1 Rollbot NFTs trade on the secondary market (Rollbit's own NFT marketplace and OpenSea), so the cost of acquiring a given Rollback tier varies with market demand.</p>
+
+  <div class="info-box">
+    <strong>Rollback + RLB stacking:</strong> The Rollback boost and the RLB token boost stack on top of the 5% base. In theory, a player with a high-rarity V1 Rollbot, holding $500K in RLB, receives 5% (base) + 25% (Rollback) + 10% (RLB) = <strong>40% of house edge back on every bet</strong>. In practice, players at this level are high rollers with significant capital tied up in NFTs and tokens — not a retail player setup.
+  </div>
+
+  <div class="warning-box">
+    <strong>NFT and token risk applies equally here:</strong> V1 Rollbot NFTs are speculative digital assets. Their value fluctuates. If you buy a Rollbot primarily for the Rollback, you are also exposed to NFT price risk. This is not a criticism of the mechanic — it's a disclosure you should factor into any decision.
+  </div>
+
+  <h2 id="lossback">8. Lossback &amp; Loyalty Bonuses via Support</h2>
+
+  <p>Rollbit operates a more traditional support-based lossback and loyalty system behind the scenes. Per Rollbit's own 2022 blog announcement:</p>
+
+  <ul>
+    <li><strong>Loyalty Bonus:</strong> A one-time bonus for new players who are overall down on Rollbit. Must be requested via 24/7 live support. Awarded based on overall PnL and other undisclosed criteria.</li>
+    <li><strong>Lossback Bonus:</strong> Recurring — can be requested approximately every 7 days through support chat for players who have already received the loyalty bonus. Amount and eligibility are discretionary and not published.</li>
+  </ul>
+
+  <div class="warning-box">
+    <strong>No public documentation on amounts:</strong> Rollbit explicitly states it cannot publish lossback eligibility criteria "to help prevent bonus abuse." This means you cannot calculate what you might receive in advance. Community reports suggest lossback amounts vary significantly by account volume and activity level. Treat this as a nice surprise when it appears rather than a calculable part of your rewards stack.
+  </div>
+
+  <div class="tip-box">
+    <strong>💡 How to request lossback:</strong> Open a support chat with Rollbit when you're overall negative on the platform. Be polite, state your approximate total losses, and ask for a lossback bonus. If you're eligible, the support team will issue it directly to your balance. After receiving the loyalty bonus the first time, you can repeat this process approximately weekly.
+  </div>
+
+  <h2 id="combined-math">9. Combined Math: What Does a $10K/Month Player Actually Get Back?</h2>
+
+  <p>Let's run a realistic scenario for a mid-volume player who wagers $10,000 per month at Rollbit, playing a mix of slots and dice at an effective average house edge of 3%.</p>
+
+  <div class="math-box">
+    <div class="label">$10K/month scenario — no RLB, no NFT, no lossback</div>
+    Monthly wager: <strong>$10,000</strong><br>
+    Average house edge: <strong>3%</strong><br>
+    Monthly house edge generated: $10,000 × 3% = <strong>$300</strong><br><br>
+    Base rakeback (5% of HE): $300 × 5% = <strong>$15/month</strong><br>
+    Daily cashback (assume 20% average, claimed daily 25/30 days): $300 × 20% × (25/30) ≈ <strong>$50/month</strong><br>
+    Weekly/monthly cashback (estimated 10% of HE): $300 × 10% = <strong>$30/month</strong><br>
+    Rank-Up bonus (amortized, ~20% at Bronze/Silver rate): ~<strong>$5-10/month</strong><br><br>
+    <strong>Total estimated monthly return: ~$100–$105</strong><br>
+    Effective return as % of house edge: ~33–35%<br>
+    Effective house edge after rewards: ~2% (down from 3%)
+  </div>
+
+  <div class="math-box">
+    <div class="label">$10K/month scenario — with $10K RLB held (+5% boost)</div>
+    Total rakeback (base 5% + RLB 5%): 10% of HE<br>
+    Base + RLB rakeback: $300 × 10% = <strong>$30/month</strong><br>
+    Daily cashback (boosted, assume 25%): $300 × 25% × (25/30) ≈ <strong>$63/month</strong><br>
+    Weekly/monthly (estimated 12%): $300 × 12% = <strong>$36/month</strong><br>
+    Rank-Up bonus: ~<strong>$8/month</strong><br><br>
+    <strong>Total estimated: ~$137/month</strong><br>
+    Effective return: ~46% of house edge<br>
+    <span style="color:#fbbf24;">But: $10K in RLB is speculative capital at token price risk.</span>
+  </div>
+
+  <p>Across both scenarios, the majority of value comes from the <strong>daily cashback</strong> — provided you actually claim it every day. Base rakeback alone ($15/month on $10K wagered) is modest. The program rewards active, daily players who remember to claim consistently more than casual players who play and forget.</p>
+
+  <h2 id="withdrawal">10. Withdrawal Friction: Is Rakeback Actually Freely Withdrawable?</h2>
+
+  <p>Based on publicly available information from affiliate reviews and Rollbit's own documentation, all rakeback, cashback, and Rank-Up bonuses at Rollbit carry <strong>no wagering requirements</strong> and can be withdrawn immediately after being claimed or credited. This is a genuine differentiator from many traditional casino cashback programs that apply 1x or 3x playthrough to reward credits.</p>
+
+  <div class="tip-box">
+    <strong>✅ No wagering requirement confirmed:</strong> Multiple third-party reviews (Nostrabet, VIP-Grinders, Bitcoinchaser) independently confirm that Rollbit rewards are withdrawable without playthrough. We have not independently verified this via a live withdrawal, but the claim is consistent across sources and Rollbit's own marketing. Always verify current terms directly on-site before depositing.
+  </div>
+
+  <div class="warning-box">
+    <strong>Lossback caveat:</strong> Terms for support-issued lossback/loyalty bonuses may differ from the standard reward stack. If in doubt, ask the support team whether a specific bonus has wagering requirements before accepting it.
+  </div>
+
+  <h2 id="who-for">11. Who Rollbit's Rewards Program Is Actually Good For</h2>
+
+  <div class="verdict-box">
+    <h3>✅ Rollbit rewards work well for:</h3>
+    <ul>
+      <li><strong>Active daily players</strong> who will consistently claim the daily cashback. This is where most of the return lives — passive players leave significant value unclaimed.</li>
+      <li><strong>Mid-to-high volume players</strong> building toward Rank-Up bonuses. The cumulative effect of no-wagering-requirement lump sums at level milestones is real and tax-efficient.</li>
+      <li><strong>Players who want rakeback from bet one</strong>, with no minimum wager threshold or application process. Rollbit's "everyone gets 5% immediately" approach is genuinely player-friendly at entry.</li>
+      <li><strong>Players consolidating volume</strong> who want Rank-Up bonuses to accumulate faster rather than spreading play across casinos.</li>
+    </ul>
+  </div>
+
+  <div class="warning-box">
+    <strong>Rollbit rewards are less suitable for:</strong>
+    <ul>
+      <li><strong>Casual weekly players</strong> who won't remember to claim daily cashback — the base rakeback alone ($15/month on $10K wagered) is comparable to or less than what competitors like Gamdom or BC.Game offer at similar volumes.</li>
+      <li><strong>Players drawn in purely by the RLB token boost</strong> — the dollar-per-month value of the boost at typical retail volumes is low relative to the token price risk.</li>
+      <li><strong>Players relying on lossback</strong> as a calculated part of their reward stack — it's discretionary and not a reliable financial figure to include in expected value calculations.</li>
+    </ul>
+  </div>
+
+  <div class="internal-links">
+    <h4>🔗 Next steps</h4>
+    <ul>
+      <li><a href="/rakeback-comparison.html">Compare Rollbit vs Stake vs BC.Game vs Gamdom rakeback side by side →</a></li>
+      <li><a href="/bonus-calculator.html">Calculate your monthly expected rakeback value at your wager level →</a></li>
+      <li><a href="/rewards-recommender.html">Find which rewards program fits your volume and play style →</a></li>
+      <li><a href="/blog/best-crypto-casino-vip-programs-2026.html">Best crypto casino VIP programs 2026 — full comparison →</a></li>
+      <li><a href="/blog/best-crypto-casino-rewards-programs-2026.html">Best crypto casino rewards programs 2026 — rakeback, cashback and bonus value →</a></li>
+    </ul>
+  </div>
+
+  <section class="faq-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What is Rollbit's base rakeback rate in 2026?</div>
+      <div class="faq-a">5% of the house edge on every bet, applied automatically from your first wager with no promo code or minimum deposit required. Note: this is 5% of the <em>house edge</em> on your bet, not 5% of your bet amount. On a $100 bet with a 3% house edge, you receive $0.15 in rakeback, not $5.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Does Rollbit rakeback have wagering requirements?</div>
+      <div class="faq-a">No. Base rakeback, daily/weekly/monthly cashback, and Rank-Up bonuses all carry no wagering requirements and are freely withdrawable once claimed. Support-issued lossback/loyalty bonuses may have different terms — confirm with support before accepting.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How does Rollbit's daily cashback work?</div>
+      <div class="faq-a">The daily cashback is claimable once every 24 hours and is worth up to 50% of the house edge on all wagers in the preceding 24-hour period. You must manually claim it in the Rewards section. Unclaimed cashback is forfeited when the 24-hour window resets.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What are Rollbit Rank-Up bonuses?</div>
+      <div class="faq-a">Each time you advance a level in Rollbit's 27-level system, you receive a one-time cash credit worth up to 20% of the house edge generated on your wagers since your previous level-up. No wagering requirement — it goes straight to your withdrawable balance.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How does holding RLB tokens boost rakeback?</div>
+      <div class="faq-a">Holding RLB on-site adds +1% to +10% additional rakeback depending on USD value held — from $100 (for +1%) up to $500,000 (for +10%). Combined with the 5% base, maximum is 15% rakeback. RLB is a volatile token: its value can fall, reducing your effective boost and creating mark-to-market losses.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is Rollbot Rollback?</div>
+      <div class="faq-a">An additional rakeback boost for V1 Rollbot NFT holders, ranging from 2.5% (common body) to 25% (rarest body traits and Specials). These NFTs are purchased on the secondary market. The Rollback stacks with base rakeback and the RLB boost.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How many VIP levels does Rollbit have?</div>
+      <div class="faq-a">27 levels across 7 tiers: Bronze (5 levels, ~$10K–$30K), Silver (5 levels, ~$50K–$150K), Gold (5 levels, ~$200K–$600K), Platinum (5 levels, ~$750K–$5M), Diamond (5 levels, ~$10M–$250M), Blood Diamond (~$500M), and Vibranium (~$1B). Progression is by lifetime wagers — no resets or inactivity penalties.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can you get lossback at Rollbit?</div>
+      <div class="faq-a">Yes, via 24/7 support chat. Players overall down on the platform can request a one-time loyalty bonus, then approximately weekly lossback bonuses through the same support channel. Amounts and eligibility criteria are discretionary and not publicly documented.</div>
+    </div>
+  </section>
+
+  <div class="warning-box" style="margin-top: 36px;">
+    <strong>18+ | Gambling Warning:</strong> Always gamble responsibly. Set deposit limits. Rakeback and cashback programs reduce effective cost of play but do not eliminate house edge or guarantee returns. This guide is for informational purposes only and does not constitute financial advice. Information is sourced from publicly available Rollbit documentation and third-party affiliate reviews — verify current terms directly at rollbit.com before depositing.
+  </div>
+
+</main>
+
+</body>
+</html>
