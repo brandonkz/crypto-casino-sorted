@@ -9,7 +9,7 @@
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#06152f">
   <meta property="og:title" content="Crypto Casino Gold VIP Tier Calculator">
-  <meta property="og:description" content="Enter your daily wager and estimate how long Gold or the closest public VIP milestone takes at Stake, Rollbit, BC.Game, Shuffle and more.">
+  <meta property="og:description" content="Enter your daily wager and estimate how long Gold or the closest public VIP milestone takes at Stake, Rollbit, BC.Game, Shuffle, Cloudbet and more.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cryptocasinosorted.com/vip-gold-calculator.html">
   <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
@@ -167,6 +167,7 @@
     <a href="/" class="t-nav-logo">CCT <span class="sub">CryptoCasinoSorted</span></a>
     <div class="t-nav-links">
       <a href="/rewards-recommender.html" class="t-nav-primary">Rewards</a>
+      <a href="/rewards/">Reward Book</a>
       <a href="/rakeback-comparison.html">Rakeback</a>
       <a href="/vip-gold-calculator.html" class="active">VIP Calc</a>
       <a href="/bonus-calculator.html">Bonus Calc</a>
@@ -179,7 +180,7 @@
     <section class="hero">
       <div class="kicker">VIP Tier Calculator</div>
       <h1>How long until Gold at each crypto casino?</h1>
-      <p class="hero-copy">Enter your average daily wager and compare how many days it takes to reach Gold, or the closest public Gold-style VIP milestone, using the tier thresholds we could verify from our rewards research.</p>
+      <p class="hero-copy">Enter your average daily wager and compare how many days it takes to reach Gold, or the closest useful published VIP milestone, using the tier thresholds we could verify from our rewards research.</p>
     </section>
 
     <section class="grid">
@@ -229,7 +230,7 @@
               <tbody id="results"></tbody>
             </table>
           </div>
-          <p class="note">This is a planning calculator, not a guarantee. Casinos can weight games differently, exclude bonus play, reset monthly progress, change VIP terms, or request KYC before paying higher-tier rewards. Where a casino does not publish thresholds, we do not estimate it.</p>
+          <p class="note">This is a planning calculator, not a guarantee. Casinos can weight games differently, exclude bonus play, reset monthly progress, change VIP terms, or request KYC before paying higher-tier rewards. Where a casino publishes tier names or rates but not thresholds, we show that distinction instead of estimating it.</p>
         </div>
       </div>
     </section>
@@ -291,14 +292,23 @@
         reset: 'Directional public range',
         note: 'Exact Gold label is not public; early paid milestones are published around the 10k-100k XP range.'
       },
+      {
+        casino: 'Cloudbet',
+        target: 'Blue Diamond',
+        threshold: 1000000000,
+        basis: 'lifetime turnover',
+        casinoMultiplier: 1,
+        sportsMultiplier: 1,
+        reset: 'Permanent lifetime tier',
+        note: 'Cloudbet publishes lifetime-turnover tiers; Blue Diamond is the top public threshold tied to TURBO upside.'
+      },
       { casino: 'XTP', target: 'Gold', threshold: null, basis: 'Tier Transfer / internal XP', reset: 'Not public', note: 'Gold exists in the positioning, but public thresholds are not available.' },
       { casino: 'Duelbits', target: 'Gold VIP Club', threshold: null, basis: 'VIP Club / milestones', reset: 'Not public', note: 'Duelbits publishes a 31-level lounge, but Gold VIP Club entry criteria are not public.' },
-      { casino: 'Yeet', target: 'Gold', threshold: null, basis: 'Wager activity', reset: 'Not public', note: 'Gold tier exists, but wager thresholds are not publicly disclosed.' },
-      { casino: 'Dicey', target: 'Gold I', threshold: null, basis: 'XP', reset: 'Not public', note: 'Gold exists in the rank structure, but XP thresholds are not public yet.' },
+      { casino: 'Yeet', target: 'Gold', threshold: null, basis: 'Wager activity', reset: 'Tier public, threshold not public', note: 'Yeet publishes Copper through Chairman and Gold at 12% rakeback, but not the wager needed to reach it.' },
+      { casino: 'Dicey', target: 'Gold I', threshold: null, basis: 'XP', reset: 'Tier public, threshold not public', note: 'Dicey publishes Bronze/Silver/Gold/Platinum/Diamond ranks, but not the XP thresholds yet.' },
       { casino: 'Roobet', target: 'VIP / Gold equivalent', threshold: null, basis: 'Invite only', reset: 'Invite only', note: 'Roobet does not publish a public Gold ladder.' },
       { casino: 'Gamdom', target: 'Gold equivalent', threshold: null, basis: 'Personalised rewards', reset: 'Not public', note: 'Gamdom says rewards are personalised and does not publish thresholds.' },
       { casino: '21.com', target: 'Elite Club', threshold: null, basis: 'VIP points', reset: 'Not public', note: 'Elite Club is advertised, but public entry levels are not disclosed.' },
-      { casino: 'Cloudbet', target: 'Gold equivalent', threshold: null, basis: 'Published tiers, no Gold label', reset: 'Lifetime tiers', note: 'Cloudbet publishes lifetime tiers, but not a Gold-named target in our current dataset.' },
       { casino: 'Metaspins', target: 'Gold equivalent', threshold: null, basis: 'Level ladder', reset: 'Not public', note: 'Level names/thresholds are not public enough to model a Gold equivalent.' },
       { casino: 'Duel', target: 'Gold equivalent', threshold: null, basis: 'Zero-edge model', reset: 'Not applicable', note: 'Duel is a zero-edge model, not a normal Gold VIP ladder.' }
     ];
@@ -352,7 +362,7 @@
               <td><div class="casino-name">${target.casino}</div><span class="sub">${target.note}</span></td>
               <td>${target.target}</td>
               <td><span class="pill off">Not public</span></td>
-              <td><span class="unknown">Cannot model honestly</span></td>
+              <td><span class="unknown">Cannot model threshold</span></td>
               <td>${target.reset}</td>
             </tr>
           `;
