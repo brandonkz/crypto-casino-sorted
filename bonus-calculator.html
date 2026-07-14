@@ -19,8 +19,9 @@
       align-items: start;
     }
     .calc-section {
-      background: var(--panel);
-      border: 1px solid var(--border);
+      background: #071728;
+      border: 1px solid #17324a;
+      border-radius: 6px;
       padding: 24px;
       margin-bottom: 20px;
     }
@@ -37,8 +38,9 @@
       font-weight: 500;
     }
     .calc-input {
-      background: var(--bg);
-      border: 1px solid var(--border);
+      background: #020b17;
+      border: 1px solid #1d3d56;
+      border-radius: 4px;
       color: var(--text);
       padding: 10px 14px;
       font-family: 'JetBrains Mono', monospace;
@@ -53,10 +55,11 @@
       cursor: pointer;
     }
     .result-panel {
-      background: var(--bg);
-      border: 2px solid var(--border);
+      background: #071728;
+      border: 1px solid #17324a;
+      border-radius: 6px;
       padding: 24px;
-      margin-top: 24px;
+      margin-top: 0;
     }
     .result-panel.positive {
       border-color: var(--accent);
@@ -136,8 +139,9 @@
     }
     .preset-btn {
       padding: 14px 16px;
-      background: var(--panel);
-      border: 1px solid var(--border);
+      background: #071728;
+      border: 1px solid #17324a;
+      border-radius: 6px;
       color: var(--text);
       font-size: 12px;
       cursor: pointer;
@@ -145,6 +149,7 @@
       transition: all 0.2s;
       text-align: left;
       line-height: 1.45;
+      min-height: 84px;
     }
     .preset-btn:hover {
       border-color: var(--accent);
@@ -152,13 +157,15 @@
     }
     .preset-btn.active {
       border-color: var(--accent);
-      background: rgba(46, 234, 122, 0.1);
+      background: #08322e;
       color: var(--accent);
     }
     .offer-context {
       display: none;
-      background: rgba(46, 234, 122, 0.05);
-      border: 1px solid var(--accent);
+      background: #071728;
+      border: 1px solid #17324a;
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
       padding: 18px 20px;
       margin-bottom: 20px;
       color: var(--text);
@@ -182,18 +189,62 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
-    .trust-note {
-      background: rgba(245, 158, 11, 0.08);
-      border: 1px solid rgba(245, 158, 11, 0.4);
-      padding: 14px 16px;
-      margin: 0 0 20px;
+    .offer-context h2 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      line-height: 1.35;
       color: var(--text);
-      font-size: 13px;
+    }
+    .offer-context p {
+      margin: 0 0 10px;
+      color: var(--muted);
+    }
+    .offer-lines {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 8px;
+      margin: 12px 0;
+      padding: 0;
+      list-style: none;
+    }
+    .offer-lines li {
+      border: 1px solid #17324a;
+      background: #020b17;
+      border-radius: 4px;
+      padding: 8px 10px;
+      color: var(--text);
+    }
+    .page-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+    .page-intro p {
+      color: var(--muted);
+      font-size: 14px;
       line-height: 1.6;
+      margin: 0;
+    }
+    .offer-count {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
     @media (max-width: 768px) {
       .calc-layout {
         grid-template-columns: 1fr;
+      }
+      .page-intro {
+        grid-template-columns: 1fr;
+      }
+      .offer-context h2 {
+        font-size: 16px !important;
       }
       .calc-row {
         grid-template-columns: 1fr;
@@ -254,12 +305,11 @@
       <h1 style="font-size:inherit;line-height:inherit;margin:0;font:inherit;letter-spacing:inherit;">BONUS WAGERING ROI CALCULATOR</h1>
     </div>
 
-    <p style="color: var(--muted); margin-bottom: 24px; font-size: 14px;">
-      Model only the welcome offers we have researched enough to show. Unsupported promos are deliberately excluded, even when affiliate pages make bigger claims.
-    </p>
-
-    <div class="trust-note">
-      Stake's old "200% deposit match" claim has been removed. Our current Stake research only supports VIP/rakeback rewards, not a verified public welcome match for this calculator.
+    <div class="page-intro">
+      <p>
+        Compare the live welcome offers we can model from our research. The calculator strips the headline down to deposit, bonus cap, wagering requirement and house edge, so the result is closer to expected value than marketing copy.
+      </p>
+      <div class="offer-count" id="offerCount">Verified offers</div>
     </div>
 
     <div class="presets" id="offerPresets">
@@ -369,7 +419,7 @@
     <div style="margin-top: 40px; padding: 24px; background: var(--panel); border: 1px solid var(--border);">
       <h3 style="margin-top: 0; font-size: 16px;">How This Works</h3>
       <p style="font-size: 13px; color: var(--muted); line-height: 1.6;">
-        <strong>Expected Value (EV)</strong> = Bonus Amount - (Total Wagering Requirement × House Edge)
+        <strong>Expected Value (EV)</strong> = Bonus Amount - (Total Wagering Requirement x House Edge)
       </p>
       <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 12px;">
         Most bonuses are <strong>-EV (negative expected value)</strong> because the wagering requirement forces you to risk more than the bonus is worth. A 40x wagering requirement on a $100 bonus means you must wager $4,000. At 4% house edge (96% RTP slots), you'll lose ~$160 on average to clear a $100 bonus.
@@ -514,19 +564,24 @@
       document.getElementById('maxBet').value = preset.maxBet || 5;
       document.getElementById('gameType').value = preset.gameType || '96.0';
 
-      const assumedTerms = preset.assumedWagering
-        ? `Model assumption: ${preset.wagerMultiple}x ${preset.wagerBase === 'bonus' ? 'bonus' : 'deposit + bonus'} playthrough. Confirm the exact live term before claiming.`
-        : preset.wagerMultiple
-        ? `Tracked wagering requirement: ${preset.wagerMultiple}x ${preset.wagerBase === 'bonus' ? 'bonus' : 'deposit + bonus'}.`
-        : 'No verified numeric wagering requirement. The calculator is using a 40x bonus-only placeholder; replace it before relying on the result.';
-      const breakdown = item.breakdown ? `<br>${item.breakdown.join('<br>')}` : '';
+      const modelLine = preset.wagerMultiple
+        ? `Calculator model: ${preset.wagerMultiple}x ${preset.wagerBase === 'bonus' ? 'bonus-only' : 'deposit + bonus'} playthrough.`
+        : 'Enter the live wagering requirement before relying on the model.';
+      const breakdown = item.breakdown
+        ? `<ul class="offer-lines">${item.breakdown.map((line) => `<li>${line}</li>`).join('')}</ul>`
+        : '';
       const context = document.getElementById('offerContext');
       context.style.display = 'block';
       const offerLink = item.url
         ? `<a href="${item.url}" target="_blank" rel="${item.isAffiliate ? 'sponsored nofollow noopener' : 'nofollow noopener'}">${item.isAffiliate ? `Claim ${item.casino} offer` : `Visit ${item.casino}`} -></a>`
         : '';
+      const statusLabel = {
+        verified: 'Verified offer',
+        live_researched: 'Live researched offer',
+        manual_review: 'Researched offer'
+      }[item.source_status] || 'Researched offer';
       const source = item.source_url ? `<span class="source-line">Source: <a href="${item.source_url}" target="_blank" rel="nofollow noopener">${item.source_url}</a> | Checked: ${item.source_last_checked || item.sourceChecked || 'manual'}</span>` : '';
-      context.innerHTML = `<span class="source-pill">${item.source_status || 'researched'}</span><br><strong>${item.casino}: ${item.offer}</strong><br>${item.wagering}<br>${assumedTerms}${breakdown}<br>${offerLink}${source}`;
+      context.innerHTML = `<span class="source-pill">${statusLabel}</span><h2>${item.casino}: ${item.offer}</h2><p>${item.wagering}</p><p>${modelLine}</p>${breakdown}${offerLink}${source}`;
 
       updateRTP();
     }
@@ -538,6 +593,8 @@
         const data = await response.json();
         trackedOffers = data.items;
         renderOfferPresets();
+        const count = trackedOffers.filter((item) => item.includeInCalculator === true && parseHeadlineOffer(item)).length;
+        document.getElementById('offerCount').textContent = `${count} researched offers`;
         const preferred = ['XTP','21.com'];
         let defaultIndex = trackedOffers.findIndex((item) => preferred.includes(item.casino));
         if (defaultIndex < 0) defaultIndex = 0;

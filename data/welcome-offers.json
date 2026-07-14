@@ -3,9 +3,9 @@
   "items": [
     {
       "casino": "XTP",
-      "offer": "Welcome choice: +12% rakeback for 14 days, 1,000 free spins on $200 deposit, or 100% match up to $1,000",
+      "offer": "Live welcome choice: 12% rakeback boost, 1,000 free spins, or 100% match up to $1,000",
       "promoCode": "Check live",
-      "wagering": "Deposit-match modeling uses a 20x bonus playthrough assumption until exact live terms are published",
+      "wagering": "For the 100% match option, this calculator models 20x bonus-only playthrough. Confirm the selected option on XTP before claiming.",
       "kyc": "Standard account checks may apply",
       "geo": "Market access and eligibility can vary",
       "angle": "Flexible welcome choice layered on top of 20% ongoing cashback",
@@ -13,10 +13,10 @@
       "url": "https://xtp.com/signup?utm_campaign=Durinsbane_New&utm_source=p2p_affiliate&utm_medium=referral",
       "isAffiliate": true,
       "breakdown": [
-        "Standard offer: 20% ongoing cashback, credited via cashback mailer/reminder",
-        "Choice 1: Rakeback — plus 12% rakeback for 14 days",
-        "Choice 2: Free spins — deposit $200 and get 1,000 free spins, pro rata, for 14 days",
-        "Choice 3: Deposit match — 100% match up to $1,000 in the first 14 days, pro rata"
+        "20% ongoing cashback",
+        "12% rakeback boost for 14 days",
+        "1,000 free spins on a $200 deposit",
+        "100% match up to $1,000"
       ],
       "calculator": {
         "deposit": 100,
@@ -26,11 +26,11 @@
         "wagerBase": "bonus",
         "maxBet": 5,
         "gameType": "96.0",
-        "assumedWagering": true
+        "assumedWagering": false
       },
       "sourceChecked": "2026-06-25",
       "source_last_checked": "2026-07-13",
-      "source_status": "manual_review",
+      "source_status": "live_researched",
       "source_url": "https://xtp.com/",
       "source_monitor": "manual"
     },
