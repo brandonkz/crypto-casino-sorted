@@ -9,8 +9,14 @@
   <link rel="stylesheet" href="terminal-theme.css">
   <style>
     .calc-container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
+    }
+    .calc-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 20px;
+      align-items: start;
     }
     .calc-section {
       background: var(--panel);
@@ -123,13 +129,13 @@
       border-left: 3px solid var(--accent);
     }
     .presets {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
       margin-bottom: 20px;
     }
     .preset-btn {
-      padding: 8px 16px;
+      padding: 14px 16px;
       background: var(--panel);
       border: 1px solid var(--border);
       color: var(--text);
@@ -137,6 +143,8 @@
       cursor: pointer;
       font-family: 'JetBrains Mono', monospace;
       transition: all 0.2s;
+      text-align: left;
+      line-height: 1.45;
     }
     .preset-btn:hover {
       border-color: var(--accent);
@@ -149,16 +157,44 @@
     }
     .offer-context {
       display: none;
-      background: rgba(249, 115, 22, 0.08);
-      border: 1px solid #f97316;
-      padding: 14px 16px;
+      background: rgba(46, 234, 122, 0.05);
+      border: 1px solid var(--accent);
+      padding: 18px 20px;
       margin-bottom: 20px;
       color: var(--text);
       font-size: 13px;
       line-height: 1.55;
     }
-    .offer-context a { color: #fb923c; font-weight: 700; }
+    .offer-context a { color: var(--accent); font-weight: 700; }
+    .offer-context .source-line {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .source-pill {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 3px 8px;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .trust-note {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 14px 16px;
+      margin: 0 0 20px;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.6;
+    }
     @media (max-width: 768px) {
+      .calc-layout {
+        grid-template-columns: 1fr;
+      }
       .calc-row {
         grid-template-columns: 1fr;
         gap: 8px;
@@ -219,117 +255,113 @@
     </div>
 
     <p style="color: var(--muted); margin-bottom: 24px; font-size: 14px;">
-      Choose an offer from our shared tracker, then test its real value after wagering requirements and house edge. Always verify live terms before depositing.
+      Model only the welcome offers we have researched enough to show. Unsupported promos are deliberately excluded, even when affiliate pages make bigger claims.
     </p>
 
+    <div class="trust-note">
+      Stake's old "200% deposit match" claim has been removed. Our current Stake research only supports VIP/rakeback rewards, not a verified public welcome match for this calculator.
+    </div>
+
     <div class="presets" id="offerPresets">
-      <span class="preset-btn">XTP: Welcome choice: +5% rakeback for 14 days, 1,000 free spins on $200 deposit, or 100% match up to $1,000</span>
-      <span class="preset-btn">Stake: 200% up to $1,000</span>
-      <span class="preset-btn">BC.Game: 300% up to $20,000</span>
-      <span class="preset-btn">Shuffle: 200% up to $500</span>
-      <span class="preset-btn">Rollbit: 150% up to $2,500</span>
-      <span class="preset-btn">Roobet: 100% up to $200</span>
-      <span class="preset-btn">Duelbits: 100% up to $500 + 100 free spins</span>
-      <span class="preset-btn">Yeet: Welcome bonus + VIP tier matching</span>
-      <span class="preset-btn">BitStarz: 100% up to 1 BTC + 180 free spins + 20 no-deposit spins</span>
-      <span class="preset-btn">Cloudbet: 100% up to 5 BTC</span>
-      <span class="preset-btn">TrustDice: 3 BTC + 25 free spins</span>
-      <span class="preset-btn">Thunderpick: 500% up to $2,000</span>
-      <span class="preset-btn">21.com: Up to $7,000 + 130 free spins across 4 deposits</span>
+      <span style="color:var(--muted);font-size:12px;">Loading researched offers...</span>
     </div>
     <div class="offer-context" id="offerContext"></div>
 
-    <div class="calc-section">
-      <h3 style="margin-top: 0; font-size: 16px; margin-bottom: 20px;">Bonus Terms</h3>
+    <div class="calc-layout">
+      <div>
+        <div class="calc-section">
+          <h3 style="margin-top: 0; font-size: 16px; margin-bottom: 20px;">Bonus Terms</h3>
 
-      <div class="calc-row">
-        <label class="calc-label">Your Deposit ($)</label>
-        <input type="number" class="calc-input" id="deposit" value="100" oninput="calculate()">
-      </div>
+          <div class="calc-row">
+            <label class="calc-label">Your Deposit ($)</label>
+            <input type="number" class="calc-input" id="deposit" value="100" oninput="calculate()">
+          </div>
 
-      <div class="calc-row">
-        <label class="calc-label">Bonus % (e.g., 100)</label>
-        <input type="number" class="calc-input" id="bonusPercent" value="100" oninput="calculate()">
-      </div>
+          <div class="calc-row">
+            <label class="calc-label">Bonus %</label>
+            <input type="number" class="calc-input" id="bonusPercent" value="100" oninput="calculate()">
+          </div>
 
-      <div class="calc-row">
-        <label class="calc-label">Max Bonus Cap ($)</label>
-        <input type="number" class="calc-input" id="bonusCap" value="1000" oninput="calculate()">
-      </div>
+          <div class="calc-row">
+            <label class="calc-label">Max Bonus Cap ($)</label>
+            <input type="number" class="calc-input" id="bonusCap" value="1000" oninput="calculate()">
+          </div>
 
-      <div class="calc-row">
-        <label class="calc-label">Wagering Requirement (x)</label>
-        <input type="number" class="calc-input" id="wagerMultiple" value="40" oninput="calculate()">
-      </div>
+          <div class="calc-row">
+            <label class="calc-label">Wagering Requirement (x)</label>
+            <input type="number" class="calc-input" id="wagerMultiple" value="40" oninput="calculate()">
+          </div>
 
-      <div class="calc-row">
-        <label class="calc-label">WR applies to</label>
-        <select class="calc-input" id="wagerBase" onchange="calculate()">
-          <option value="bonus">Bonus only</option>
-          <option value="both" selected>Deposit + Bonus</option>
-        </select>
-      </div>
+          <div class="calc-row">
+            <label class="calc-label">WR applies to</label>
+            <select class="calc-input" id="wagerBase" onchange="calculate()">
+              <option value="bonus">Bonus only</option>
+              <option value="both" selected>Deposit + Bonus</option>
+            </select>
+          </div>
 
-      <div class="calc-row">
-        <label class="calc-label">Max Bet Limit ($)</label>
-        <input type="number" class="calc-input" id="maxBet" value="5" oninput="calculate()">
-      </div>
-    </div>
-
-    <div class="calc-section">
-      <h3 style="margin-top: 0; font-size: 16px; margin-bottom: 20px;">Game Selection</h3>
-
-      <div class="calc-row">
-        <label class="calc-label">Game Type</label>
-        <select class="calc-input" id="gameType" onchange="updateRTP()">
-          <option value="98.5">Blackjack (optimal) - 98.5% RTP</option>
-          <option value="98.9">Baccarat (banker) - 98.9% RTP</option>
-          <option value="99.0">Craps (pass/don't pass) - 99.0% RTP</option>
-          <option value="96.0" selected>Slots (average) - 96.0% RTP</option>
-          <option value="97.0">Slots (high RTP) - 97.0% RTP</option>
-          <option value="94.0">Slots (low RTP) - 94.0% RTP</option>
-          <option value="97.3">Roulette (European) - 97.3% RTP</option>
-          <option value="92.1">Roulette (American) - 92.1% RTP</option>
-          <option value="custom">Custom RTP</option>
-        </select>
-      </div>
-
-      <div class="calc-row" id="customRTPRow" style="display: none;">
-        <label class="calc-label">Custom RTP (%)</label>
-        <input type="number" class="calc-input" id="customRTP" value="96" step="0.1" oninput="calculate()">
-      </div>
-    </div>
-
-    <div class="result-panel" id="resultPanel">
-      <div class="result-label">Expected Value (EV)</div>
-      <div class="result-value" id="evValue">$0.00</div>
-
-      <div id="verdict" class="verdict"></div>
-
-      <div class="breakdown">
-        <div class="breakdown-item">
-          <div class="breakdown-label">Bonus Amount</div>
-          <div class="breakdown-value" id="bonusAmount">$0</div>
+          <div class="calc-row">
+            <label class="calc-label">Max Bet Limit ($)</label>
+            <input type="number" class="calc-input" id="maxBet" value="5" oninput="calculate()">
+          </div>
         </div>
-        <div class="breakdown-item">
-          <div class="breakdown-label">Total to Wager</div>
-          <div class="breakdown-value" id="totalWager">$0</div>
+
+        <div class="calc-section">
+          <h3 style="margin-top: 0; font-size: 16px; margin-bottom: 20px;">Game Selection</h3>
+
+          <div class="calc-row">
+            <label class="calc-label">Game Type</label>
+            <select class="calc-input" id="gameType" onchange="updateRTP()">
+              <option value="98.5">Blackjack (optimal) - 98.5% RTP</option>
+              <option value="98.9">Baccarat (banker) - 98.9% RTP</option>
+              <option value="99.0">Craps (pass/don't pass) - 99.0% RTP</option>
+              <option value="96.0" selected>Slots (average) - 96.0% RTP</option>
+              <option value="97.0">Slots (high RTP) - 97.0% RTP</option>
+              <option value="94.0">Slots (low RTP) - 94.0% RTP</option>
+              <option value="97.3">Roulette (European) - 97.3% RTP</option>
+              <option value="92.1">Roulette (American) - 92.1% RTP</option>
+              <option value="custom">Custom RTP</option>
+            </select>
+          </div>
+
+          <div class="calc-row" id="customRTPRow" style="display: none;">
+            <label class="calc-label">Custom RTP (%)</label>
+            <input type="number" class="calc-input" id="customRTP" value="96" step="0.1" oninput="calculate()">
+          </div>
         </div>
-        <div class="breakdown-item">
-          <div class="breakdown-label">Expected Loss</div>
-          <div class="breakdown-value" id="expectedLoss">$0</div>
-        </div>
-        <div class="breakdown-item">
-          <div class="breakdown-label">House Edge</div>
-          <div class="breakdown-value" id="houseEdge">0%</div>
-        </div>
-        <div class="breakdown-item">
-          <div class="breakdown-label">Effective ROI</div>
-          <div class="breakdown-value" id="roi">0%</div>
-        </div>
-        <div class="breakdown-item">
-          <div class="breakdown-label">Time to Clear (est.)</div>
-          <div class="breakdown-value" id="timeEstimate">0 hours</div>
+      </div>
+
+      <div class="result-panel" id="resultPanel">
+        <div class="result-label">Expected Value (EV)</div>
+        <div class="result-value" id="evValue">$0.00</div>
+
+        <div id="verdict" class="verdict"></div>
+
+        <div class="breakdown">
+          <div class="breakdown-item">
+            <div class="breakdown-label">Bonus Amount</div>
+            <div class="breakdown-value" id="bonusAmount">$0</div>
+          </div>
+          <div class="breakdown-item">
+            <div class="breakdown-label">Total to Wager</div>
+            <div class="breakdown-value" id="totalWager">$0</div>
+          </div>
+          <div class="breakdown-item">
+            <div class="breakdown-label">Expected Loss</div>
+            <div class="breakdown-value" id="expectedLoss">$0</div>
+          </div>
+          <div class="breakdown-item">
+            <div class="breakdown-label">House Edge</div>
+            <div class="breakdown-value" id="houseEdge">0%</div>
+          </div>
+          <div class="breakdown-item">
+            <div class="breakdown-label">Effective ROI</div>
+            <div class="breakdown-value" id="roi">0%</div>
+          </div>
+          <div class="breakdown-item">
+            <div class="breakdown-label">Time to Clear (est.)</div>
+            <div class="breakdown-value" id="timeEstimate">0 hours</div>
+          </div>
         </div>
       </div>
     </div>
@@ -423,15 +455,15 @@
       if (ev > 0) {
         evValue.className = 'result-value positive';
         resultPanel.className = 'result-panel positive';
-        verdict.innerHTML = `✅ <strong>+EV Bonus</strong> — Take it. You'll profit $${ev.toFixed(2)} on average after clearing wagering.`;
+        verdict.innerHTML = `<strong>Positive model</strong> - The bonus shows +$${ev.toFixed(2)} EV before volatility, eligibility limits, max cashout rules, and KYC friction.`;
       } else if (ev > -5) {
         evValue.className = 'result-value';
         resultPanel.className = 'result-panel';
-        verdict.innerHTML = `⚠️ <strong>Near Breakeven</strong> — Small edge either way. Consider if you were going to play anyway.`;
+        verdict.innerHTML = `<strong>Near breakeven</strong> - Small edge either way. Only claim if you were already going to play and the terms are easy to meet.`;
       } else {
         evValue.className = 'result-value negative';
         resultPanel.className = 'result-panel negative';
-        verdict.innerHTML = `🚫 <strong>-EV Trap</strong> — Skip it. You'll lose $${Math.abs(ev).toFixed(2)} on average. Better to play without the bonus.`;
+        verdict.innerHTML = `<strong>Negative model</strong> - Expected loss is $${Math.abs(ev).toFixed(2)} higher than the bonus value. Playing without the bonus is usually cleaner.`;
       }
     }
 
@@ -456,9 +488,13 @@
     function renderOfferPresets() {
       const eligible = trackedOffers
         .map((item, index) => ({ item, index, calc: parseHeadlineOffer(item) }))
-        .filter(({ calc }) => calc);
+        .filter(({ item, calc }) => calc && item.includeInCalculator === true);
+      if (!eligible.length) {
+        document.getElementById('offerPresets').innerHTML = '<span style="color:#ef4444;font-size:12px;">No researched calculator offers found. You can still enter terms manually.</span>';
+        return;
+      }
       document.getElementById('offerPresets').innerHTML = eligible.map(({ item, index }) =>
-        `<button class="preset-btn" data-offer-index="${index}" onclick="loadTrackedOffer(${index}, this)">${item.casino}: ${item.offer}</button>`
+        `<button class="preset-btn" data-offer-index="${index}" onclick="loadTrackedOffer(${index}, this)"><strong>${item.casino}</strong><br>${item.offer}</button>`
       ).join('');
     }
 
@@ -479,17 +515,18 @@
       document.getElementById('gameType').value = preset.gameType || '96.0';
 
       const assumedTerms = preset.assumedWagering
-        ? `Using a ${preset.wagerMultiple}x ${preset.wagerBase === 'bonus' ? 'bonus' : 'deposit + bonus'} playthrough assumption for modeling. Confirm the exact live term before claiming.`
+        ? `Model assumption: ${preset.wagerMultiple}x ${preset.wagerBase === 'bonus' ? 'bonus' : 'deposit + bonus'} playthrough. Confirm the exact live term before claiming.`
         : preset.wagerMultiple
-        ? `Loaded tracked wagering requirement: ${preset.wagerMultiple}x ${preset.wagerBase === 'bonus' ? 'bonus' : 'deposit + bonus'}.`
-        : 'The tracker does not have a verified numeric wagering requirement for this offer, so the calculator is using a 40x bonus-only placeholder. Replace it with the live term before relying on the result.';
+        ? `Tracked wagering requirement: ${preset.wagerMultiple}x ${preset.wagerBase === 'bonus' ? 'bonus' : 'deposit + bonus'}.`
+        : 'No verified numeric wagering requirement. The calculator is using a 40x bonus-only placeholder; replace it before relying on the result.';
       const breakdown = item.breakdown ? `<br>${item.breakdown.join('<br>')}` : '';
       const context = document.getElementById('offerContext');
       context.style.display = 'block';
       const offerLink = item.url
-        ? `<a href="${item.url}" target="_blank" rel="${item.isAffiliate ? 'sponsored nofollow noopener' : 'nofollow noopener'}">${item.isAffiliate ? `Claim ${item.casino} offer` : `Visit ${item.casino}`} →</a>`
+        ? `<a href="${item.url}" target="_blank" rel="${item.isAffiliate ? 'sponsored nofollow noopener' : 'nofollow noopener'}">${item.isAffiliate ? `Claim ${item.casino} offer` : `Visit ${item.casino}`} -></a>`
         : '';
-      context.innerHTML = `<strong>${item.casino}: ${item.offer}</strong><br>${item.wagering}<br>${assumedTerms}${breakdown}<br>${offerLink}`;
+      const source = item.source_url ? `<span class="source-line">Source: <a href="${item.source_url}" target="_blank" rel="nofollow noopener">${item.source_url}</a> | Checked: ${item.source_last_checked || item.sourceChecked || 'manual'}</span>` : '';
+      context.innerHTML = `<span class="source-pill">${item.source_status || 'researched'}</span><br><strong>${item.casino}: ${item.offer}</strong><br>${item.wagering}<br>${assumedTerms}${breakdown}<br>${offerLink}${source}`;
 
       updateRTP();
     }
@@ -501,7 +538,7 @@
         const data = await response.json();
         trackedOffers = data.items;
         renderOfferPresets();
-        const preferred = ['Stake','BC.Game','Rollbit'];
+        const preferred = ['XTP','21.com'];
         let defaultIndex = trackedOffers.findIndex((item) => preferred.includes(item.casino));
         if (defaultIndex < 0) defaultIndex = 0;
         const defaultButton = document.querySelector(`[data-offer-index="${defaultIndex}"]`);

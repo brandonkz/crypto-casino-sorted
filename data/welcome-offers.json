@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-25",
+  "updated": "2026-07-14",
   "items": [
     {
       "casino": "XTP",
@@ -9,6 +9,7 @@
       "kyc": "Standard account checks may apply",
       "geo": "Market access and eligibility can vary",
       "angle": "Flexible welcome choice layered on top of 20% ongoing cashback",
+      "includeInCalculator": true,
       "url": "https://xtp.com/signup?utm_campaign=Durinsbane_New&utm_source=p2p_affiliate&utm_medium=referral",
       "isAffiliate": true,
       "breakdown": [
@@ -31,21 +32,6 @@
       "source_last_checked": "2026-07-13",
       "source_status": "manual_review",
       "source_url": "https://xtp.com/",
-      "source_monitor": "manual"
-    },
-    {
-      "casino": "Stake",
-      "offer": "200% up to $1,000",
-      "promoCode": "CRYPTO200",
-      "wagering": "Check live terms on deposit screen",
-      "kyc": "Low / no KYC for standard crypto play",
-      "geo": "VPN-friendly, but geo blocks still apply",
-      "angle": "Biggest mainstream crypto casino brand",
-      "url": "https://stake.com/?c=OYTAREab",
-      "isAffiliate": true,
-      "source_url": "https://stake.com/promotions",
-      "source_last_checked": "2026-07-13",
-      "source_status": "manual_review",
       "source_monitor": "manual"
     },
     {
@@ -206,6 +192,7 @@
       "kyc": "Email or mobile verification required for the promotion; further verification may apply",
       "geo": "South Africa, US, UK and several other markets are blocked",
       "angle": "Largest tracked multi-deposit package, but with substantial rollover and a maximum-return cap",
+      "includeInCalculator": true,
       "url": "https://prod.trk21.com/click?offer=FFHCFKXMZW2H&uid=fN3MmG6q",
       "isAffiliate": true,
       "source_url": "https://21.com/promotions/welcome-offer",
