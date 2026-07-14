@@ -577,8 +577,7 @@
         : '';
       const statusLabel = {
         verified: 'Verified offer',
-        live_researched: 'Live researched offer',
-        manual_review: 'Researched offer'
+        live_researched: 'Live researched offer'
       }[item.source_status] || 'Researched offer';
       const source = item.source_url ? `<span class="source-line">Source: <a href="${item.source_url}" target="_blank" rel="nofollow noopener">${item.source_url}</a> | Checked: ${item.source_last_checked || item.sourceChecked || 'manual'}</span>` : '';
       context.innerHTML = `<span class="source-pill">${statusLabel}</span><h2>${item.casino}: ${item.offer}</h2><p>${item.wagering}</p><p>${modelLine}</p>${breakdown}${offerLink}${source}`;
