@@ -164,6 +164,53 @@ body {
   box-shadow: 0 14px 28px rgba(34, 158, 217, 0.35);
 }
 
+.ccs-trust-footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.14);
+  background: rgba(4, 16, 38, 0.96);
+  color: #9fb1d1;
+  padding: 18px 16px;
+  font-family: var(--t-sans, Inter, system-ui, sans-serif);
+}
+.ccs-trust-footer-inner {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+}
+.ccs-trust-footer strong { color: #f7fbff; }
+.ccs-trust-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.ccs-footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 157, 0, 0.28);
+  background: rgba(255, 157, 0, 0.08);
+  border-radius: 4px;
+}
+.ccs-footer-contact span {
+  color: #9fb1d1;
+  font-family: var(--t-mono, 'JetBrains Mono', monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ccs-footer-contact a {
+  color: #ff9d00;
+  font-weight: 800;
+}
+
 .badge {
   display: inline-block;
   background: rgba(255, 255, 255, 0.04);

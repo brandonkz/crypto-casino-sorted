@@ -14,7 +14,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #448aff 0%, #b388ff 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -303,7 +303,7 @@
                 const volumes = casinos.map(c => casinoData[c].volume);
                 const counts = casinos.map(c => casinoData[c].count);
 
-                const colors = ['#8b5cf6', '#ec4899', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#6366f1'];
+                const colors = ['#ff9d00', '#ffc400', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#6366f1'];
 
                 // Volume chart (bar)
                 new Chart(document.getElementById('volumeChart'), {
@@ -372,14 +372,14 @@
                             {
                                 label: 'Volume ($M)',
                                 data: volumes.map(v => v / 1000000),
-                                backgroundColor: '#8b5cf6',
+                                backgroundColor: '#ff9d00',
                                 borderRadius: 8,
                                 yAxisID: 'y'
                             },
                             {
                                 label: 'Deposits (hundreds)',
                                 data: counts.map(c => c / 100),
-                                backgroundColor: '#ec4899',
+                                backgroundColor: '#ffc400',
                                 borderRadius: 8,
                                 yAxisID: 'y1'
                             }
@@ -430,6 +430,10 @@
       <a href="/privacy.html">Privacy</a>
       <a href="/contact.html">Contact</a>
     </nav>
+    <div class="ccs-footer-contact">
+      <span>Contact us</span>
+      <a href="https://t.me/brandonkz" target="_blank" rel="nofollow noopener">@brandonkz on Telegram</a>
+    </div>
     <span>18+ only. Gamble responsibly.</span>
   </div>
 </footer>

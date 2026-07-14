@@ -32,7 +32,7 @@
       --bg:#08090d;--bg2:#0c0d14;--bg3:#10111a;--bg4:#151722;
       --border:#1a1d2e;--border2:#252840;
       --text:#d4d8e8;--dim:#5a6080;--muted:#3a3f58;
-      --green:#00e676;--green2:#00c853;--green-bg:rgba(0,230,118,0.08);--green-b:rgba(0,230,118,0.25);
+      --green:#ff9d00;--green2:#ff9100;--green-bg:rgba(0,230,118,0.08);--green-b:rgba(0,230,118,0.25);
       --red:#ff5252;--red-bg:rgba(255,82,82,0.08);--red-b:rgba(255,82,82,0.25);
       --blue:#448aff;--blue-bg:rgba(68,138,255,0.08);
       --amber:#ffc400;--amber-bg:rgba(255,196,0,0.08);--amber-b:rgba(255,196,0,0.25);
@@ -899,10 +899,10 @@
 <script>
 const CC={
   'Roobet':'#ff9100','Stake':'#448aff','Duelbits':'#b388ff',
-  'Rollbit':'#18ffff','Rainbet':'#00e676','Bitcasino':'#ffc400',
+  'Rollbit':'#18ffff','Rainbet':'#ff9d00','Bitcasino':'#ffc400',
   'Shuffle':'#ff4081','BetFury':'#ff5252','Rollbit Tokens':'#84ffff'
 };
-const CA=['#ff9100','#448aff','#b388ff','#18ffff','#00e676','#ffc400','#ff4081','#ff5252','#82b1ff','#ffe57f','#84ffff'];
+const CA=['#ff9100','#448aff','#b388ff','#18ffff','#ff9d00','#ffc400','#ff4081','#ff5252','#82b1ff','#ffe57f','#84ffff'];
 
 
 function fmt(n){if(n>=1e9)return'$'+(n/1e9).toFixed(1)+'B';if(n>=1e6)return'$'+(n/1e6).toFixed(1)+'M';if(n>=1e3)return'$'+(n/1e3).toFixed(1)+'K';return'$'+n.toFixed(0);}
@@ -913,7 +913,7 @@ function uc(){document.getElementById('clock').textContent=new Date().toUTCStrin
 setInterval(uc,1000);uc();
 
 // Chart defaults (improved readability)
-Chart.defaults.color='#cbd5e1';
+Chart.defaults.color='#9fb1d1';
 Chart.defaults.borderColor='rgba(255,255,255,0.08)';
 Chart.defaults.font.family="'JetBrains Mono',monospace";
 Chart.defaults.font.size=10;
@@ -1053,15 +1053,15 @@ function render(D){
       datasets:[{
         data:dailyVols,
         backgroundColor:dailyVols.map((v,i)=>i>0&&v>=dailyVols[i-1]?'rgba(0,230,118,0.5)':'rgba(255,82,82,0.5)'),
-        borderColor:dailyVols.map((v,i)=>i>0&&v>=dailyVols[i-1]?'#00e676':'#ff5252'),
+        borderColor:dailyVols.map((v,i)=>i>0&&v>=dailyVols[i-1]?'#ff9d00':'#ff5252'),
         borderWidth:1,borderRadius:2,
       }]
     },
     options:{
       responsive:true,maintainAspectRatio:false,
       scales:{
-        y:{ticks:{callback:v=>fmt(v),color:'#cbd5e1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
-        x:{grid:{display:false},ticks:{maxRotation:0,color:'#cbd5e1',font:{size:9}}}
+        y:{ticks:{callback:v=>fmt(v),color:'#9fb1d1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
+        x:{grid:{display:false},ticks:{maxRotation:0,color:'#9fb1d1',font:{size:9}}}
       },
       plugins:{tooltip:{callbacks:{label:c=>'$'+c.raw.toLocaleString('en',{maximumFractionDigits:0})}}}
     }
@@ -1073,15 +1073,15 @@ function render(D){
     data:{
       labels:dates.map(d=>d.slice(5)),
       datasets:[{
-        data:dailyCounts,borderColor:'#00e676',backgroundColor:'rgba(0,230,118,0.08)',
-        fill:true,tension:0.3,pointRadius:2,pointBackgroundColor:'#00e676',borderWidth:1.5,
+        data:dailyCounts,borderColor:'#ff9d00',backgroundColor:'rgba(0,230,118,0.08)',
+        fill:true,tension:0.3,pointRadius:2,pointBackgroundColor:'#ff9d00',borderWidth:1.5,
       }]
     },
     options:{
       responsive:true,maintainAspectRatio:false,
       scales:{
-        y:{ticks:{color:'#cbd5e1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
-        x:{grid:{display:false},ticks:{maxRotation:0,color:'#cbd5e1',font:{size:9}}}
+        y:{ticks:{color:'#9fb1d1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
+        x:{grid:{display:false},ticks:{maxRotation:0,color:'#9fb1d1',font:{size:9}}}
       },
       plugins:{tooltip:{callbacks:{label:c=>c.raw.toLocaleString()+' deposits'}}}
     }
@@ -1102,11 +1102,11 @@ function render(D){
     options:{
       responsive:true,maintainAspectRatio:false,
       scales:{
-        y:{stacked:true,ticks:{callback:v=>fmt(v),color:'#cbd5e1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
-        x:{grid:{display:false},ticks:{maxRotation:0,color:'#cbd5e1',font:{size:9}}}
+        y:{stacked:true,ticks:{callback:v=>fmt(v),color:'#9fb1d1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
+        x:{grid:{display:false},ticks:{maxRotation:0,color:'#9fb1d1',font:{size:9}}}
       },
       plugins:{
-        legend:{display:true,position:'bottom',labels:{usePointStyle:true,pointStyle:'circle',padding:8,font:{size:9},color:'#cbd5e1'}},
+        legend:{display:true,position:'bottom',labels:{usePointStyle:true,pointStyle:'circle',padding:8,font:{size:9},color:'#9fb1d1'}},
         tooltip:{mode:'index',callbacks:{label:c=>`${c.dataset.label}: ${fmt(c.raw)}`}}
       }
     }
@@ -1195,7 +1195,7 @@ function render(D){
   // === DISTRIBUTION ===
   const distEl=document.getElementById('distribution');
   const distData=[
-    {l:'< $100',k:'under_100',color:'#00e676'},
+    {l:'< $100',k:'under_100',color:'#ff9d00'},
     {l:'$100-500',k:'100_500',color:'#448aff'},
     {l:'$500-1K',k:'500_1000',color:'#b388ff'},
     {l:'$1K-5K',k:'1000_5000',color:'#ff9100'},
@@ -1371,12 +1371,12 @@ function render(D){
       options:{
         responsive:true,maintainAspectRatio:false,
         scales:{
-          y:{position:'left',ticks:{callback:v=>fmt(v),color:'#cbd5e1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
-          y1:{position:'right',ticks:{color:'#cbd5e1',font:{size:10}},grid:{display:false}},
-          x:{grid:{display:false},ticks:{maxRotation:0,color:'#cbd5e1',font:{size:9}}}
+          y:{position:'left',ticks:{callback:v=>fmt(v),color:'#9fb1d1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'}},
+          y1:{position:'right',ticks:{color:'#9fb1d1',font:{size:10}},grid:{display:false}},
+          x:{grid:{display:false},ticks:{maxRotation:0,color:'#9fb1d1',font:{size:9}}}
         },
         plugins:{
-          legend:{display:true,position:'bottom',labels:{usePointStyle:true,padding:10,font:{size:9},color:'#cbd5e1'}},
+          legend:{display:true,position:'bottom',labels:{usePointStyle:true,padding:10,font:{size:9},color:'#9fb1d1'}},
           tooltip:{callbacks:{label:c=>c.datasetIndex===0?'Vol: '+fmt(c.raw):'Count: '+c.raw}}
         }
       }
@@ -1403,8 +1403,8 @@ function render(D){
         responsive:true,maintainAspectRatio:false,
         indexAxis:'y',
         scales:{
-          x:{ticks:{callback:v=>v+'%',color:'#cbd5e1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'},max:100},
-          y:{grid:{display:false},ticks:{color:'#cbd5e1',font:{size:9}}}
+          x:{ticks:{callback:v=>v+'%',color:'#9fb1d1',font:{size:10}},grid:{color:'rgba(255,255,255,0.08)'},max:100},
+          y:{grid:{display:false},ticks:{color:'#9fb1d1',font:{size:9}}}
         },
         plugins:{
           tooltip:{callbacks:{label:c=>{
@@ -1519,6 +1519,10 @@ function render(D){
       <a href="/privacy.html">Privacy</a>
       <a href="/contact.html">Contact</a>
     </nav>
+    <div class="ccs-footer-contact">
+      <span>Contact us</span>
+      <a href="https://t.me/brandonkz" target="_blank" rel="nofollow noopener">@brandonkz on Telegram</a>
+    </div>
     <span>18+ only. Gamble responsibly.</span>
   </div>
 </footer>
