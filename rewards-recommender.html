@@ -1249,7 +1249,7 @@
               </div>
               <div class="mini-stat">
                 <div class="mini-label" title="The reward rate after we adjust for token payouts and unclear terms, so every casino compares fairly.">Effective rate</div>
-                <div class="mini-value">${Math.round((op.activeEffectiveRate ?? op.effective_rate || 0) * 1000) / 10}%</div>
+                <div class="mini-value">${Math.round(((op.activeEffectiveRate ?? op.effective_rate) || 0) * 1000) / 10}%</div>
               </div>
               <div class="mini-stat">
                 <div class="mini-label">Settlement</div>
