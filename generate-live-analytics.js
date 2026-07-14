@@ -57,6 +57,9 @@ let totalVolume = 0;
 let biggest = { value: 0, casino: '' };
 
 data.forEach(d => {
+    // Skip rows with missing casino data
+    if (!d.casino) return;
+    
     const casino = d.casino.includes('Stake') ? 'Stake' : 
                    d.casino.includes('Rollbit') ? 'Rollbit' : d.casino;
     
