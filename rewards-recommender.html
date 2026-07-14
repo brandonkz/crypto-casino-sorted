@@ -754,7 +754,7 @@
                 <div class="result-top">
                   <div class="rank">4</div>
                   <div>
-                    <h3 class="op-name">Thrill — 10.5% effective</h3>
+                    <h3 class="op-name">Thrill — 10.5%-70% by volume</h3>
                     <div class="op-sub">Rakeback-first challenger with the highest advertised rates.</div>
                   </div>
                 </div>
@@ -916,7 +916,7 @@
             <span class="t-badge t-badge-amber">Directional</span>
           </div>
           <div class="panel-body">
-            <p class="method"><strong>Reward / edge-value estimate</strong> = modeled wager x selected game edge x effective reward rate (the real rate after we adjust token payouts and unclear terms so casinos compare fairly). By default, modeled wager is normal monthly play estimated from the player’s usual deposit value and minutes played per day. If the welcome-bonus toggle is enabled, verified bonus playthrough is added where available; unclear terms use a clearly labeled 30x fallback. For zero-edge operators, this is modeled avoided house-edge loss on eligible games, not a cash rebate. Casino order is based purely on estimated dollar value back / avoided loss. Trust, transparency, source status, friction, VIP depth, tier-match, and token risk are shown as context only, not ranking inputs. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
+            <p class="method"><strong>Reward / edge-value estimate</strong> = modeled wager x selected game edge x active effective reward rate. The active rate starts with our conservative effective rate, then scales toward the published max rate as monthly wager rises for high-volume ladders such as Thrill, Duelbits and Cloudbet. By default, modeled wager is normal monthly play estimated from the player’s usual deposit value and minutes played per day. If the welcome-bonus toggle is enabled, verified bonus playthrough is added where available; unclear terms use a clearly labeled 30x fallback. For zero-edge operators, this is modeled avoided house-edge loss on eligible games, not a cash rebate. Casino order is based purely on estimated dollar value back / avoided loss. Trust, transparency, source status, friction, VIP depth, tier-match, and token risk are shown as context only, not ranking inputs. Affiliate status is not used in scoring. Official source links are kept separately in the <a href="/casino-reward-sources.html">rewards source archive</a>.</p>
           </div>
         </section>
       </div>
@@ -1023,6 +1023,18 @@
       vip_switch: { reward: 22, trust: 10, transparency: 12, friction: 14, depth: 18, tierMatch: 20, gamification: 4 }
     };
 
+    function effectiveRateForWager(op, wager) {
+      const baseRate = Number(op.effective_rate) || 0;
+      const maxRate = Number(op.rate_max) || 0;
+      if (!maxRate || maxRate <= baseRate || op.rakeback_form === 'zero_edge') return baseRate;
+      const start = 5000;
+      const maxed = 100000;
+      if (wager <= start) return baseRate;
+      if (wager >= maxed) return maxRate;
+      const progress = (wager - start) / (maxed - start);
+      return baseRate + (maxRate - baseRate) * progress;
+    }
+
     function getInputs() {
       return {
         wager: Number(document.getElementById('wagerNumber').value) || 0,
@@ -1043,12 +1055,14 @@
       const estimates = state.operators.map((op) => {
         const bonusEstimate = inputs.includeBonusWagering ? bonusAssistedWagerFor(op, inputs) : null;
         const modeledWager = bonusEstimate ? bonusEstimate.modeledWager : inputs.wager;
+        const activeEffectiveRate = effectiveRateForWager(op, modeledWager);
         return {
           ...op,
           baseWager: inputs.wager,
           modeledWager,
           bonusEstimate,
-          estimatedReward: modeledWager * inputs.edge * (op.effective_rate || 0)
+          activeEffectiveRate,
+          estimatedReward: modeledWager * inputs.edge * activeEffectiveRate
         };
       });
       const maxReward = Math.max(...estimates.map((op) => op.estimatedReward), 1);
@@ -1128,7 +1142,12 @@
       if (op.rakeback_form === 'zero_edge') {
         return `At ${fmtMoney(wager)} modeled wager and ${(inputs.edge * 100).toFixed(1)}% game edge, the modeled value is avoided house-edge loss on eligible zero-edge games, not a cash rebate.`;
       }
-      return `At ${fmtMoney(wager)} modeled wager and ${(inputs.edge * 100).toFixed(1)}% game edge, estimated house-edge loss is ${fmtMoney(expectedLoss)}. We apply a ${Math.round((op.effective_rate || 0) * 1000) / 10}% effective rate (adjusted for token payouts and unclear terms so casinos compare fairly).`;
+      const activeRate = op.activeEffectiveRate ?? effectiveRateForWager(op, wager);
+      const maxRate = Number(op.rate_max) || 0;
+      const volumeNote = maxRate > (Number(op.effective_rate) || 0)
+        ? ` The active rate scales from ${Math.round((op.effective_rate || 0) * 1000) / 10}% toward ${Math.round(maxRate * 1000) / 10}% as monthly volume rises.`
+        : '';
+      return `At ${fmtMoney(wager)} modeled wager and ${(inputs.edge * 100).toFixed(1)}% game edge, estimated house-edge loss is ${fmtMoney(expectedLoss)}. We apply a ${Math.round(activeRate * 1000) / 10}% effective rate for this wager size.${volumeNote}`;
     }
 
     function valueLabel(op, inputs) {
@@ -1228,7 +1247,7 @@
               </div>
               <div class="mini-stat">
                 <div class="mini-label" title="The reward rate after we adjust for token payouts and unclear terms, so every casino compares fairly.">Effective rate</div>
-                <div class="mini-value">${Math.round((op.effective_rate || 0) * 1000) / 10}%</div>
+                <div class="mini-value">${Math.round((op.activeEffectiveRate ?? op.effective_rate || 0) * 1000) / 10}%</div>
               </div>
               <div class="mini-stat">
                 <div class="mini-label">Settlement</div>
