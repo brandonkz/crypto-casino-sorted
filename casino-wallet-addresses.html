@@ -13,7 +13,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%238b5cf6;stop-opacity:1'/><stop offset='100%' style='stop-color:%236d28d9;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><g fill='white'><rect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='white' stroke-width='3'/><circle cx='35' cy='35' r='4'/><circle cx='50' cy='50' r='4'/><circle cx='65' cy='65' r='4'/><circle cx='35' cy='65' r='4'/><circle cx='65' cy='35' r='4'/></g></svg>">
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="terminal-theme.css">
 
   <style>
@@ -268,7 +267,7 @@
     <div class="warning-box">
       <h3>⚠️ Important Security Notice</h3>
       <p><strong>Always double-check addresses before depositing.</strong> Scammers create fake casino sites with different wallet addresses. These addresses are verified via blockchain explorers, but you should always:</p>
-      <ul style="margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.875rem;">
+      <ul style="margin-top: 0.5rem; color: var(--t-dim); font-size: 0.875rem;">
         <li>Copy the address from the casino's official website</li>
         <li>Verify it matches what we show here</li>
         <li>Check the address on a blockchain explorer (Etherscan, BSCScan, etc.)</li>
@@ -518,7 +517,7 @@
               <div class="casino-icon">${casino.icon}</div>
               <div>
                 <div class="casino-name">${casino.name}</div>
-                <a href="${casino.website}" target="_blank" rel="noopener" style="font-size: 0.875rem; color: var(--primary);">
+                <a href="${casino.website}" target="_blank" rel="noopener" style="font-size: 0.875rem; color: var(--t-text);">
                   ${casino.website.replace('https://', '')} →
                 </a>
               </div>
@@ -532,7 +531,7 @@
             <div class="wallet-address-item">
               <div class="wallet-chain">
                 ${chainConfig[addr.chain].icon} ${chainConfig[addr.chain].name}
-                ${addr.note ? `<span style="color: var(--text-secondary); font-weight: 400;">• ${addr.note}</span>` : ''}
+                ${addr.note ? `<span style="color: var(--t-dim); font-weight: 400;">• ${addr.note}</span>` : ''}
               </div>
               <div class="address-display">
                 <div class="address-text">${addr.address}</div>
@@ -565,7 +564,7 @@
       });
 
       if (container.children.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">No addresses found for this chain.</p>';
+        container.innerHTML = '<p style="text-align: center; color: var(--t-dim); padding: 3rem;">No addresses found for this chain.</p>';
       }
     }
 
