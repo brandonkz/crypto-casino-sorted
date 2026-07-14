@@ -960,6 +960,27 @@ footer a {
   flex-wrap: wrap;
   gap: 12px;
 }
+.ccs-footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 157, 0, 0.28);
+  background: rgba(255, 157, 0, 0.08);
+  border-radius: 4px;
+}
+.ccs-footer-contact span {
+  color: var(--t-dim, #9fb1d1);
+  font-family: var(--t-mono, 'JetBrains Mono', monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ccs-footer-contact a {
+  color: var(--t-green, #ff9d00);
+  font-weight: 800;
+}
 .ccs-author-byline,
 .ccs-related-guides {
   max-width: 780px;
@@ -1012,4 +1033,5 @@ footer a {
 }
 @media (max-width: 720px) {
   .ccs-trust-footer-inner { align-items: flex-start; flex-direction: column; }
+  .ccs-footer-contact { width: 100%; justify-content: space-between; }
 }
