@@ -478,6 +478,80 @@
       color: var(--orange-2);
       font-weight: 850;
     }
+    /* Reviews-style visual alignment */
+    body {
+      background: #08090d;
+      color: #d4d8e8;
+    }
+    body::before {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    }
+    .hero-main,
+    .hero-card,
+    .panel,
+    .stat,
+    .reward-card,
+    .score-chip,
+    .guide-link {
+      background: #0c0d14;
+      border-color: #1a1d2e;
+      border-radius: 4px;
+      box-shadow: none;
+    }
+    .hero-main {
+      background: linear-gradient(135deg, #08090d 0%, #1a0d3d 50%, #08090d 100%);
+    }
+    .hero-main::after { display: none; }
+    .panel-header,
+    .comparison-table th {
+      background: #10111a;
+      border-color: #1a1d2e;
+    }
+    .comparison-wrap {
+      background: #0c0d14;
+      border-color: #1a1d2e;
+      border-radius: 4px;
+    }
+    .comparison-table td {
+      border-color: #1a1d2e;
+    }
+    .score-chip.amber {
+      background: #08090d;
+      border-color: #252840;
+    }
+    .btn {
+      background: #00e676;
+      border-color: #00e676;
+      color: #08090d;
+      border-radius: 4px;
+      box-shadow: none;
+    }
+    .btn.secondary {
+      background: rgba(255,255,255,0.05);
+      color: #d4d8e8;
+      border-color: #252840;
+    }
+    .score-pill {
+      background: rgba(0,230,118,0.08);
+      border-color: rgba(0,230,118,0.28);
+      color: #00e676;
+      border-radius: 4px;
+    }
+    .kicker,
+    .panel-title,
+    .stat-value,
+    .score-value,
+    .guide-tag,
+    .comparison-table th,
+    .ccs-footer-contact a {
+      color: #ffc400;
+    }
+    .ccs-trust-footer {
+      background: #08090d;
+      border-color: #1a1d2e;
+    }
     @media (max-width: 940px) {
       .hero,
       .section.two,
@@ -698,7 +772,7 @@
                   <td>20% ongoing cashback, with the welcome rakeback boost available as an option.</td>
                   <td>Tier transfer mechanics and host access from higher tiers.</td>
                   <td>Confirm selected welcome option and current playthrough before claiming.</td>
-                  <td><span class="score-pill">Strong</span></td>
+                  <td><span class="score-pill">4.3/5</span></td>
                 </tr>
                 <tr>
                   <td class="casino-cell"><a href="https://bc.game/i-4bau8curc-n/" target="_blank" rel="sponsored nofollow noopener">BC.Game</a><span>Best gamified ladder</span></td>
@@ -707,7 +781,7 @@
                   <td>Advertised 20-24% rakeback paid in BCD token.</td>
                   <td>Very deep level system with strong gamification.</td>
                   <td>Token value is not the same as clean cash; withdrawal complaints matter.</td>
-                  <td><span class="score-pill">Strong</span></td>
+                  <td><span class="score-pill">4.4/5</span></td>
                 </tr>
                 <tr>
                   <td class="casino-cell"><a href="https://stake.com/?c=OYTAREab" target="_blank" rel="sponsored nofollow noopener">Stake</a><span>Best mature VIP ecosystem</span></td>
@@ -716,7 +790,7 @@
                   <td>Around 5% rakeback from Bronze, with weekly and monthly rewards.</td>
                   <td>Excellent at high tiers; host access from Platinum IV.</td>
                   <td>Higher-tier formulas are opaque and low-tier players get less attention.</td>
-                  <td><span class="score-pill">Strong</span></td>
+                  <td><span class="score-pill">4.2/5</span></td>
                 </tr>
                 <tr>
                   <td class="casino-cell"><a href="https://roobet.com/?ref=brandonkz" target="_blank" rel="sponsored nofollow noopener">Roobet</a><span>Best reward cadence</span></td>
@@ -725,7 +799,7 @@
                   <td>Rakeback and Vault claims, exact public rate not fully disclosed.</td>
                   <td>Deep no-reset ladder with invite-only upper VIP club.</td>
                   <td>Exact thresholds and rates are less transparent than we want.</td>
-                  <td><span class="score-pill">Good</span></td>
+                  <td><span class="score-pill">Tracked</span></td>
                 </tr>
                 <tr>
                   <td class="casino-cell"><a href="https://rollbit.com/referral/brandonkz" target="_blank" rel="sponsored nofollow noopener">Rollbit</a><span>Best GambleFi rewards</span></td>
@@ -734,7 +808,7 @@
                   <td>Multiplier-based rewards tied to Rollbit mechanics.</td>
                   <td>Deep for crypto-native high-volume players.</td>
                   <td>Token/NFT exposure adds volatility and friction to realised value.</td>
-                  <td><span class="score-pill">Good</span></td>
+                  <td><span class="score-pill">Tracked</span></td>
                 </tr>
                 <tr>
                   <td class="casino-cell"><a href="https://yeet.com/register?aff=betsorted" target="_blank" rel="sponsored nofollow noopener">Yeet</a><span>Best tier-match challenger</span></td>
@@ -743,7 +817,7 @@
                   <td>Instant rakeback from the first tier, plus weekly and monthly bonuses.</td>
                   <td>Strong for low-to-mid players; concierge at top tiers.</td>
                   <td>Token or airdrop value is unproven; verify current terms.</td>
-                  <td><span class="score-pill">Good</span></td>
+                  <td><span class="score-pill">4.5/5</span></td>
                 </tr>
                 <tr>
                   <td class="casino-cell"><a href="https://duel.com/r/alphaxasset" target="_blank" rel="sponsored nofollow noopener">Duel</a><span>Best zero-edge angle</span></td>
@@ -761,7 +835,7 @@
                   <td>Official combined rakeback claim up to 47.5%, cash with no wagering.</td>
                   <td>31 levels plus Bronze/Silver/Gold VIP Club overlay.</td>
                   <td>Some thresholds are unpublished; large-win KYC complaints exist.</td>
-                  <td><span class="score-pill">Strong</span></td>
+                  <td><span class="score-pill">Tracked</span></td>
                 </tr>
                 <tr>
                   <td class="casino-cell"><a href="https://cldbt.cloud/go/en/auth/sign-up?af_token=810fa4bbfb1f586ef13289043992558c&amp;aftm_campaign=cryptocasino" target="_blank" rel="sponsored nofollow noopener">Cloudbet</a><span>Best permanent tiers</span></td>
@@ -770,7 +844,7 @@
                   <td>Base 5-10% of house edge; temporary boosts can go higher.</td>
                   <td>Upper-tier VIP hosts; Blue Diamond is invitation-only.</td>
                   <td>Headline boost rates are temporary and high-turnover only.</td>
-                  <td><span class="score-pill">Good</span></td>
+                  <td><span class="score-pill">Tracked</span></td>
                 </tr>
                 <tr>
                   <td class="casino-cell"><a href="https://shuffle.com?r=cl46Ld1iQb" target="_blank" rel="sponsored nofollow noopener">Shuffle</a><span>Best transparent XP tiers</span></td>
@@ -779,7 +853,7 @@
                   <td>Published 5% of house edge instant cash rakeback for casino play.</td>
                   <td>50+ levels across 13 tiers; event invites from Ruby.</td>
                   <td>Bonus codes and wagering rules matter; withdrawals can face review.</td>
-                  <td><span class="score-pill">Good</span></td>
+                  <td><span class="score-pill">Tracked</span></td>
                 </tr>
                 <tr>
                   <td class="casino-cell"><strong>Gamdom</strong><span>Best social rewards</span></td>
@@ -788,7 +862,7 @@
                   <td>Instant, weekly and monthly rakeback; formula is personalised.</td>
                   <td>Invite-only VIP Club with dedicated team and fee-free withdrawals.</td>
                   <td>Official formula and thresholds are undisclosed; no affiliate link on file.</td>
-                  <td><span class="score-pill">Good</span></td>
+                  <td><span class="score-pill">Tracked</span></td>
                 </tr>
                 <tr>
                   <td class="casino-cell"><a href="https://prod.trk21.com/click?offer=FFHCFKXMZW2H&amp;uid=fN3MmG6q" target="_blank" rel="sponsored nofollow noopener">21.com</a><span>Best multi-deposit bonus</span></td>
