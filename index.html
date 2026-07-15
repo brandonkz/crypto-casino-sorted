@@ -711,7 +711,7 @@
           <div class="quick-calc" aria-label="Quick reward estimate calculator">
             <div>
               <div class="quick-calc-title">Quick Incentive Estimate</div>
-              <div class="quick-calc-copy">Pick a player profile to estimate average monthly value back. Assumes casino play at a 3% house edge; private VIP bonuses and gated formulas stay marked as opaque.</div>
+              <div class="quick-calc-copy">Pick a player profile to estimate average monthly value back and reorder the table live. Assumes casino play at a 3% house edge; private VIP bonuses and gated formulas stay marked as opaque.</div>
             </div>
             <div class="quick-calc-controls">
               <button class="profile-btn active" type="button" data-profile="low" data-wager="2000">Low Volume</button>
@@ -730,12 +730,12 @@
                   <th>Your Avg Back</th>
                   <th>VIP Strength</th>
                   <th>Wagering / Catches</th>
-                  <th>Rank</th>
+                  <th>Live Rank</th>
                 </tr>
               </thead>
               <tbody>
 
-                <tr data-incentive-rate="0.015" data-incentive-note="50% non-original rakeback; originals save ~0.10%.">
+                <tr data-incentive-low-rate="0.015" data-incentive-high-rate="0.015" data-incentive-note="50% non-original rakeback; originals save ~0.10%.">
                   <td class="casino-cell"><a href="https://duel.com/r/durinsbane" target="_blank" rel="sponsored nofollow noopener">Duel</a><span>Best zero-edge angle</span></td>
                   <td>Zero-edge selected originals plus high instant rakeback on third-party casino games.</td>
                   <td>Not a normal welcome-bonus-led offer in our rewards data.</td>
@@ -746,7 +746,7 @@
                   <td><span class="score-pill">#1</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.006" data-incentive-note="20% cashback modeled against expected house edge.">
+                <tr data-incentive-low-rate="0.006" data-incentive-high-rate="0.006" data-incentive-note="20% cashback modeled against expected house edge.">
                   <td class="casino-cell"><a href="https://xtp.com/signup?utm_campaign=Durinsbane_New&amp;utm_source=p2p_affiliate&amp;utm_medium=referral" target="_blank" rel="sponsored nofollow noopener">XTP</a><span>Best live welcome choice</span></td>
                   <td>Flexible intro rewards layered on top of ongoing cash cashback.</td>
                   <td>Choose 12% rakeback boost, 1,000 free spins, or 100% match up to $1,000.</td>
@@ -757,7 +757,7 @@
                   <td><span class="score-pill">#2</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.021" data-incentive-note="Top-tier headline modeled; starting value is lower.">
+                <tr data-incentive-low-rate="0.003" data-incentive-high-rate="0.021" data-incentive-note="Low-volume model is conservative; high-volume uses top-tier headline.">
                   <td class="casino-cell"><a href="https://thrillcasino.io/td4msjnft" target="_blank" rel="sponsored nofollow noopener">Thrill</a><span>Best max-rakeback casino</span></td>
                   <td>Rewards-first casino built around recurring rakeback, lossback and XP race value.</td>
                   <td>No welcome bonus by design.</td>
@@ -779,7 +779,7 @@
                   <td><span class="score-pill">#4</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.0015" data-incentive-note="5% of theoretical house edge; Chairman can double.">
+                <tr data-incentive-low-rate="0.0015" data-incentive-high-rate="0.0015" data-incentive-note="5% of theoretical house edge; Chairman can double.">
                   <td class="casino-cell"><a href="https://yeet.com/register?aff=betsorted" target="_blank" rel="sponsored nofollow noopener">Yeet</a><span>Best tier-match challenger</span></td>
                   <td>Public wager-volume ladder with VIP Tier Match for players switching from rivals.</td>
                   <td>Code-based first-deposit match exists in the app, but no live public code is modeled here.</td>
@@ -790,7 +790,7 @@
                   <td><span class="score-pill">#5</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.00345" data-incentive-note="Token value discounted versus clean cash.">
+                <tr data-incentive-low-rate="0.00345" data-incentive-high-rate="0.00345" data-incentive-note="Token value discounted versus clean cash.">
                   <td class="casino-cell"><a href="https://bc.game/i-4bau8curc-n/" target="_blank" rel="sponsored nofollow noopener">BC Game</a><span>Best gamified ladder</span></td>
                   <td>Huge XP ecosystem with token rewards, levels, bonuses and broad coin support.</td>
                   <td>Tracked offer: 300% up to $20,000, manual-review status.</td>
@@ -801,7 +801,7 @@
                   <td><span class="score-pill">#6</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.0015" data-incentive-note="Bronze-style rakeback estimate only.">
+                <tr data-incentive-low-rate="0.0015" data-incentive-high-rate="0.0015" data-incentive-note="Bronze-style rakeback estimate only.">
                   <td class="casino-cell"><a href="https://stake.com/?c=OYTAREab" target="_blank" rel="sponsored nofollow noopener">Stake</a><span>Best mature VIP ecosystem</span></td>
                   <td>Market-leading VIP depth for high-volume players.</td>
                   <td>No verified public welcome match in our current calculator data.</td>
@@ -812,7 +812,7 @@
                   <td><span class="score-pill">#7</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.0072" data-incentive-note="Effective published house-edge rakeback model.">
+                <tr data-incentive-low-rate="0.0072" data-incentive-high-rate="0.0072" data-incentive-note="Effective published house-edge rakeback model.">
                   <td class="casino-cell"><a href="https://duelbits.io/?a=sorted" target="_blank" rel="sponsored nofollow noopener">Duelbits</a><span>Best published rakeback math</span></td>
                   <td>Published house-edge rakeback formula with worked examples.</td>
                   <td>Tracked offer: 100% up to $500 + 100 free spins, manual-review status.</td>
@@ -823,7 +823,7 @@
                   <td><span class="score-pill">#8</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.0018" data-incentive-note="Realistic base/average, not turbo headline.">
+                <tr data-incentive-low-rate="0.0018" data-incentive-high-rate="0.0018" data-incentive-note="Realistic base/average, not turbo headline.">
                   <td class="casino-cell"><a href="https://cldbt.cloud/go/en/auth/sign-up?af_token=810fa4bbfb1f586ef13289043992558c&amp;aftm_campaign=cryptocasino" target="_blank" rel="sponsored nofollow noopener">Cloudbet</a><span>Best permanent tiers</span></td>
                   <td>Published lifetime-turnover tiers with permanent status.</td>
                   <td>Tracked offer: 100% up to 5 BTC, manual-review status.</td>
@@ -834,7 +834,7 @@
                   <td><span class="score-pill">#9</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.00255" data-incentive-note="Personalised formula, modeled directionally.">
+                <tr data-incentive-low-rate="0.00255" data-incentive-high-rate="0.00255" data-incentive-note="Personalised formula, modeled directionally.">
                   <td class="casino-cell"><strong>Gamdom</strong><span>Best social rewards</span></td>
                   <td>Three-layer cash rakeback across the Royalty Up ladder.</td>
                   <td>New-account instant-rakeback boost if activated quickly.</td>
@@ -845,7 +845,7 @@
                   <td><span class="score-pill">#10</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.0012" data-incentive-note="Mixed/token-linked reward value.">
+                <tr data-incentive-low-rate="0.0012" data-incentive-high-rate="0.0012" data-incentive-note="Mixed/token-linked reward value.">
                   <td class="casino-cell"><a href="https://rollbit.com/referral/brandonkz" target="_blank" rel="sponsored nofollow noopener">Rollbit</a><span>Best GambleFi rewards</span></td>
                   <td>Casino, sportsbook and RLB-linked reward mechanics.</td>
                   <td>Tracked offer: 150% up to $2,500, manual-review status.</td>
@@ -856,7 +856,7 @@
                   <td><span class="score-pill">#11</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.00165" data-incentive-note="Exact public rate is not fully disclosed.">
+                <tr data-incentive-low-rate="0.00165" data-incentive-high-rate="0.00165" data-incentive-note="Exact public rate is not fully disclosed.">
                   <td class="casino-cell"><a href="https://roobet.com/?ref=brandonkz" target="_blank" rel="sponsored nofollow noopener">Roobet</a><span>Best reward cadence</span></td>
                   <td>Instant, daily, weekly and monthly reward rhythm for regular players.</td>
                   <td>Tracked offer: 100% up to $200, manual-review status.</td>
@@ -867,7 +867,7 @@
                   <td><span class="score-pill">#12</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.0033" data-incentive-note="VIP rakeback range modeled from public ladder.">
+                <tr data-incentive-low-rate="0.0033" data-incentive-high-rate="0.0033" data-incentive-note="VIP rakeback range modeled from public ladder.">
                   <td class="casino-cell"><a href="https://prod.trk21.com/click?offer=FFHCFKXMZW2H&amp;uid=fN3MmG6q" target="_blank" rel="sponsored nofollow noopener">21.com</a><span>Best multi-deposit bonus</span></td>
                   <td>Staged welcome package plus published Elite Club rewards.</td>
                   <td>Up to $5,000 + 100 free spins across four deposits.</td>
@@ -878,7 +878,7 @@
                   <td><span class="score-pill">#13</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.00165" data-incentive-note="Instant cash rakeback plus opaque bonuses.">
+                <tr data-incentive-low-rate="0.00165" data-incentive-high-rate="0.00165" data-incentive-note="Instant cash rakeback plus opaque bonuses.">
                   <td class="casino-cell"><a href="https://shuffle.com?r=cl46Ld1iQb" target="_blank" rel="sponsored nofollow noopener">Shuffle</a><span>Best transparent XP tiers</span></td>
                   <td>Published XP thresholds across a clean tier ladder.</td>
                   <td>Tracked offer: 200% up to $500, manual-review status.</td>
@@ -889,7 +889,7 @@
                   <td><span class="score-pill">#14</span></td>
                 </tr>
 
-                <tr data-incentive-rate="0.0018" data-incentive-note="Level-up rate modeled before coin-flip risk.">
+                <tr data-incentive-low-rate="0.0018" data-incentive-high-rate="0.0018" data-incentive-note="Level-up rate modeled before coin-flip risk.">
                   <td class="casino-cell"><strong>Metaspins</strong><span>Best high-risk headline</span></td>
                   <td>High headline upside through level-based rakeback and optional gamble mechanic.</td>
                   <td>Welcome bonus is 40x wagering in 7 days.</td>
@@ -902,7 +902,7 @@
               </tbody>
             </table>
           </div>
-          <p class="table-note">Ranked for practical reward value, not just one-time welcome bonuses. Quick estimates convert published or modeled incentive rates into approximate monthly value using the selected wager profile and a 3% casino house-edge assumption. They are planning estimates, not guaranteed payouts. Reward terms change often; verify current terms before depositing.</p>
+          <p class="table-note">Rows reorder live by the calculated monthly incentive value for the selected profile. Quick estimates convert published or modeled incentive rates into approximate monthly value using the selected wager profile and a 3% casino house-edge assumption. They are planning estimates, not guaranteed payouts. Reward terms change often; verify current terms before depositing.</p>
         </div>
       </div>
     </section>
@@ -1092,7 +1092,7 @@
   (function () {
     const wagerInput = document.getElementById('monthlyWager');
     const profileButtons = Array.from(document.querySelectorAll('.profile-btn'));
-    const incentiveRows = Array.from(document.querySelectorAll('[data-incentive-rate], [data-incentive-opaque]'));
+    const incentiveRows = Array.from(document.querySelectorAll('[data-incentive-low-rate], [data-incentive-opaque]'));
 
     if (!wagerInput || !incentiveRows.length) return;
 
@@ -1108,25 +1108,46 @@
       return percent >= 1 ? percent.toFixed(2).replace(/\.00$/, '') + '%' : percent.toFixed(2) + '%';
     };
 
+    function activeProfile(monthlyWager) {
+      const activeButton = profileButtons.find((button) => button.classList.contains('active'));
+      if (activeButton) return activeButton.dataset.profile === 'high' ? 'high' : 'low';
+      return monthlyWager >= 100000 ? 'high' : 'low';
+    }
+
     function renderIncentives() {
       const monthlyWager = Math.max(0, Number(wagerInput.value) || 0);
+      const profile = activeProfile(monthlyWager);
+      const tableBody = incentiveRows[0].parentElement;
+      const rankedRows = incentiveRows.map((row, index) => {
+        const isOpaque = row.dataset.incentiveOpaque === 'true';
+        const rate = isOpaque ? null : Number(profile === 'high' ? row.dataset.incentiveHighRate : row.dataset.incentiveLowRate);
+        const estimatedValue = Number.isFinite(rate) ? monthlyWager * rate : -1;
+        return { row, index, isOpaque, rate, estimatedValue };
+      }).sort((a, b) => {
+        if (a.isOpaque !== b.isOpaque) return a.isOpaque ? 1 : -1;
+        if (b.estimatedValue !== a.estimatedValue) return b.estimatedValue - a.estimatedValue;
+        return a.index - b.index;
+      });
 
-      incentiveRows.forEach((row) => {
+      rankedRows.forEach(({ row, isOpaque, rate, estimatedValue }, index) => {
         const cell = row.querySelector('.incentive-cell');
+        const rank = row.querySelector('.score-pill');
         if (!cell) return;
 
         const note = row.dataset.incentiveNote || 'Estimate only.';
 
-        if (row.dataset.incentiveOpaque === 'true') {
+        if (isOpaque) {
           cell.classList.add('is-opaque');
           cell.innerHTML = '<strong>Not public</strong><span>' + note + '</span>';
+          if (rank) rank.textContent = 'N/A';
+          tableBody.appendChild(row);
           return;
         }
 
-        const rate = Number(row.dataset.incentiveRate);
-        const estimatedValue = monthlyWager * rate;
         cell.classList.remove('is-opaque');
         cell.innerHTML = '<strong>' + formatMoney(estimatedValue) + '/mo</strong><span>' + formatRate(rate) + ' of wager · ' + note + '</span>';
+        if (rank) rank.textContent = '#' + (index + 1);
+        tableBody.appendChild(row);
       });
     }
 
