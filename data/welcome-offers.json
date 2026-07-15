@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-14",
+  "updated": "2026-07-15",
   "items": [
     {
       "casino": "XTP",
@@ -111,17 +111,17 @@
     },
     {
       "casino": "Yeet",
-      "offer": "Welcome bonus + VIP tier matching",
+      "offer": "Code-based first deposit match + VIP tier matching",
       "promoCode": "Check live",
-      "wagering": "VIP match terms matter more than raw headline offer",
+      "wagering": "First-deposit match terms are code-dependent; VIP tier-match progress uses Wager x (House Edge / 4%), capped at 100% contribution",
       "kyc": "No KYC up to threshold",
       "geo": "VPN-friendly in many markets",
-      "angle": "Influencer-backed challenger with VIP match hook",
+      "angle": "Public $50k Gold ladder plus VIP match hook for players with $1M+ wagered elsewhere",
       "url": "https://yeet.com/register?aff=betsorted",
       "isAffiliate": true,
       "source_url": "https://yeet.com/rewards",
-      "source_last_checked": "2026-07-13",
-      "source_status": "manual_review",
+      "source_last_checked": "2026-07-15",
+      "source_status": "verified",
       "source_monitor": "manual"
     },
     {
@@ -186,38 +186,40 @@
     },
     {
       "casino": "21.com",
-      "offer": "Up to $7,000 + 130 free spins across 4 deposits",
+      "offer": "Up to $5,000 + 100 free spins across 4 deposits",
       "promoCode": "No code shown",
-      "wagering": "35x bonus within 7 days; maximum return capped at 10x the bonus",
+      "wagering": "40x bonus within 7 days; maximum return capped at 10x the bonus",
       "kyc": "Email or mobile verification required for the promotion; further verification may apply",
       "geo": "South Africa, US, UK and several other markets are blocked",
-      "angle": "Largest tracked multi-deposit package, but with substantial rollover and a maximum-return cap",
+      "angle": "Verified multi-deposit package with substantial rollover and a maximum-return cap",
       "includeInCalculator": true,
       "url": "https://prod.trk21.com/click?offer=FFHCFKXMZW2H&uid=fN3MmG6q",
       "isAffiliate": true,
       "source_url": "https://21.com/promotions/welcome-offer",
       "source_terms": [
-        "Up to $7,000",
-        "130 Free Spins"
+        "Up to $5,000",
+        "100 Free Spins",
+        "40x bonus wagering",
+        "10x maximum return cap"
       ],
       "breakdown": [
-        "1st deposit: 120% up to $1,000 + 25 free spins",
-        "2nd deposit: 100% up to $1,500 + 30 free spins",
-        "3rd deposit: 80% up to $2,000 + 35 free spins",
-        "4th deposit: 60% up to $2,500 + 40 free spins"
+        "1st deposit: 100% up to $600 + 10 free spins; $5 min deposit",
+        "2nd deposit: 75% up to $1,000 + 15 free spins; $5 min deposit",
+        "3rd deposit: 50% up to $1,400 + 35 free spins; $10 min deposit",
+        "4th deposit: 75% up to $2,000 + 40 free spins; $10 min deposit"
       ],
       "calculator": {
         "deposit": 100,
-        "bonusPercent": 120,
-        "bonusCap": 1000,
-        "wagerMultiple": 35,
+        "bonusPercent": 100,
+        "bonusCap": 600,
+        "wagerMultiple": 40,
         "wagerBase": "bonus",
         "maxBet": null,
         "gameType": "96.0"
       },
       "sourceChecked": "2026-06-25",
-      "source_last_checked": "2026-07-13",
-      "source_terms_hash": "9c41deaf00fef84c",
+      "source_last_checked": "2026-07-15",
+      "source_terms_hash": "a6724dd8414ce9b4",
       "source_status": "verified"
     }
   ]
