@@ -184,6 +184,8 @@
         <a href="#shuffle">Shuffle</a>
         <a href="#yeet">Yeet</a>
         <a href="#xtp">XTP</a>
+        <a href="#rainbet">Rainbet</a>
+        <a href="#betfury">BetFury</a>
         <a href="#metaspins">Metaspins</a>
         <a href="#gamdom">Gamdom</a>
         <a href="#dicey">Dicey</a>
@@ -196,7 +198,7 @@
       <div class="content">
         <section class="quick-grid" id="overview" aria-label="Reward program summary">
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
-          <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">15</div></div>
+          <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">17</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
           <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">15 Jul</div></div>
         </section>
@@ -330,6 +332,51 @@
           </div>
         </section>
 
+        <section class="chapter" id="rainbet">
+          <div class="chapter-head"><h2>Rainbet Rewards</h2><p class="chapter-sub">Layered challenger program with a visible reward stack, but public rate and threshold math is still blocked in this session.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Official Reward Stack</span><strong>Rakeback, daily, weekly, pre-monthly, monthly</strong></div>
+              <div class="fact"><span>Claim Cadence Shown</span><strong>Rakeback every 15 minutes</strong></div>
+              <div class="fact"><span>Current Limitation</span><strong>Exact rates/tiers blocked by Cloudflare</strong></div>
+            </div>
+            <p class="copy"><strong>What we can verify:</strong> official Rainbet snippets point to a real multi-layer rewards stack rather than a simple one-bonus program. The public rewards route and help-center snippet expose rakeback, three Daily Reloads, a Daily Bonus, Weekly Bonus, Pre-Monthly Bonus, Monthly Bonus, ranks, rank-up style bonuses, races, RakeBoosts and keys.</p>
+            <table class="mini-table">
+              <tr><th>Official clue</th><th>What was visible</th></tr>
+              <tr><td>Rewards route snippet</td><td>Daily, Weekly, Pre-Monthly, Monthly, Rakeback, Ranks, Keys Opened and Other Bonuses were visible in the indexed rewards navigation.</td></tr>
+              <tr><td>Homepage snippet</td><td>Rainbet says rakeback is claimable every 15 minutes and also references three Daily Reloads, Daily Bonus, Weekly Bonus, Pre-Monthly Bonus, Monthly Bonus, Weekly and Monthly Races, rank-up bonuses and RakeBoosts.</td></tr>
+              <tr><td>Help-center snippet</td><td>The Rewards Overview article references three Daily Reloads, a Pre-Monthly Bonus and reward boosts based on recent wagering activity and results.</td></tr>
+            </table>
+            <div class="pill-row"><span class="pill good">Official reward stack confirmed</span><span class="pill warn">Thresholds not public here</span><span class="pill warn">Exact percentages not public here</span><span class="pill off">Cloudflare challenge on rewards/help pages</span></div>
+            <p class="note">Caution: in this session both `rainbet.com/rewards` and the official Rainbet help article returned a Cloudflare `Checking your browser...` challenge instead of readable terms. That means we can verify the reward categories from official search snippets, but we cannot honestly model exact rates, tiers, or wagering thresholds yet.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="betfury">
+          <div class="chapter-head"><h2>BetFury Rank System + VIP Club</h2><p class="chapter-sub">One of the clearest public ladders in the new queue: 20 wager-based ranks, rising cashback, rank-up bonuses, and a VIP overlay.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Ranks</span><strong>20 public levels</strong></div>
+              <div class="fact"><span>Cashback Range</span><strong>5% to 25%</strong></div>
+              <div class="fact"><span>Super VIP Unlock</span><strong>Rank 15</strong></div>
+            </div>
+            <p class="copy"><strong>How it works:</strong> BetFury ties progression directly to total wagered amount. The official Rank System page starts every account at Newcomer, then steps through Gambler, Bet Maker, Game Master, High Roller, Betfurian Pro, BF Hero and BF Legend. Cashback rises with rank, each level carries a rank-up bonus, and the broader bonus cabinet adds rakeback, weekly and monthly rewards on top.</p>
+            <table class="mini-table">
+              <tr><th>Milestone</th><th>Public wager threshold</th><th>Cashback / perk</th></tr>
+              <tr><td>Newcomer</td><td>0 USDT</td><td>5% cashback.</td></tr>
+              <tr><td>Bet Maker II</td><td>100,000 USDT</td><td>6% cashback.</td></tr>
+              <tr><td>Game Master III</td><td>1,000,000 USDT</td><td>10% cashback.</td></tr>
+              <tr><td>High Roller III</td><td>10,000,000 USDT</td><td>16% cashback.</td></tr>
+              <tr><td>Betfurian Pro III</td><td>100,000,000 USDT</td><td>21% cashback.</td></tr>
+              <tr><td>BF Hero III</td><td>650,000,000 USDT</td><td>24% cashback.</td></tr>
+              <tr><td>BF Legend</td><td>1,000,000,000 USDT</td><td>25% cashback and the top public rank bonus.</td></tr>
+            </table>
+            <p class="copy"><strong>Bonus stack around the ladder:</strong> the official bonus cabinet says players get rakeback every 20 minutes, weekly bonuses, monthly bonuses, weekly sport bonuses, and a free Fury Wheel from Rank 1. The VIP Club page adds premium benefits from Rank 10, while Rank 15 unlocks Super VIP perks such as instant bonuses, concierge help and a requestable rakeback booster. Sports wagering is called out separately on the rank page with an `x1` coefficient.</p>
+            <div class="pill-row"><span class="pill good">Public thresholds</span><span class="pill good">Public cashback ladder</span><span class="pill good">VIP overlay visible</span><span class="pill warn">Rakeback formula not fully published</span></div>
+            <p class="note">Caution: BetFury's public pages are strong on rank thresholds and cashback, but weaker on exact rakeback math and how the different bonus buckets interact. Do not treat the 25% top cashback as a casual-player baseline. It belongs to the `BF Legend` threshold at $1 billion wagered.</p>
+          </div>
+        </section>
+
         <section class="chapter" id="metaspins">
           <div class="chapter-head"><h2>Metaspins Level Up</h2><p class="chapter-sub">1,000+ level grind ladder with published per-level rates and a risky multiplier mechanic.</p></div>
           <div class="chapter-body">
@@ -432,12 +479,10 @@
         <section class="chapter" id="coverage-queue">
           <div class="chapter-head"><h2>Coverage Expansion Queue</h2><p class="chapter-sub">The missing casinos from our current operator screenshot, tracked before they graduate into full reward chapters.</p></div>
           <div class="chapter-body">
-            <div class="fact-grid"><div class="fact"><span>New Names Added</span><strong>17</strong></div><div class="fact"><span>Research Priority</span><strong>Rainbet, BetFury, Goated, Whale.io</strong></div><div class="fact"><span>Modeling Rule</span><strong>No exact rates until official terms are confirmed</strong></div></div>
+            <div class="fact-grid"><div class="fact"><span>Queued Names Left</span><strong>15</strong></div><div class="fact"><span>Research Priority</span><strong>Goated, Whale.io, Acebet, Solcasino</strong></div><div class="fact"><span>Modeling Rule</span><strong>No exact rates until official terms are confirmed</strong></div></div>
             <p class="copy">This queue is how CryptoCasinoSorted stops missing important operators while still keeping the Reward Book honest. A casino can be tracked here with a source link and reward angle before it has enough public data for the homepage calculator, VIP Gold calculator or a full review.</p>
             <table class="mini-table coverage-table">
               <tr><th>Casino</th><th>Reward angle found</th><th>Source status</th><th>Next action</th></tr>
-              <tr><td>Rainbet</td><td>Rewards page and help-center snippets show rakeback plus daily, weekly, pre-monthly and monthly bonuses.</td><td><a href="https://rainbet.com/rewards" target="_blank" rel="nofollow noopener">Official rewards route</a></td><td class="priority">Full chapter next</td></tr>
-              <tr><td>BetFury</td><td>VIP Club, rank system, cashback, rakeback, weekly/monthly bonuses and VIP-only bonuses. Public material says rakeback can be claimed every 20 minutes.</td><td><a href="https://betfury.io/vip-club" target="_blank" rel="nofollow noopener">Official VIP Club</a></td><td class="priority">Full chapter next</td></tr>
               <tr><td>Goated</td><td>Standalone rewards hub lists instant rakeback, level-up bonuses, weekly/monthly bonuses, lossback and VIP host access from Sapphire.</td><td><a href="https://goatedrewards.com/" target="_blank" rel="nofollow noopener">Official rewards hub</a></td><td class="priority">Full chapter next</td></tr>
               <tr><td>Whale.io</td><td>Official site found; reward and cashback terms need direct page capture before we model rates.</td><td><a href="https://whale.io/" target="_blank" rel="nofollow noopener">Official site</a></td><td class="priority">Verify cashback terms</td></tr>
               <tr><td>Acebet</td><td>Public rewards route says rakeback, cashback, daily rewards and VIP perks.</td><td><a href="https://acebet.co/rewards" target="_blank" rel="nofollow noopener">Official rewards page</a></td><td>Extract rates and thresholds</td></tr>
