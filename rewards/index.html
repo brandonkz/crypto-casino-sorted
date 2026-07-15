@@ -342,10 +342,14 @@
         </section>
 
         <section class="chapter" id="dicey">
-          <div class="chapter-head"><h2>Dicey Rewards</h2><p class="chapter-sub">Magic Eden-backed 25-rank system with public tier names but unpublished XP thresholds.</p></div>
+          <div class="chapter-head"><h2>Dicey Rewards</h2><p class="chapter-sub">Magic Eden-backed reward loop with frequent claims, public tier labels and gated economics.</p></div>
           <div class="chapter-body">
-            <div class="fact-grid"><div class="fact"><span>Ranks</span><strong>Bronze I-V through Diamond I-V</strong></div><div class="fact"><span>Rakeboost</span><strong>+15% for 60 minutes</strong></div><div class="fact"><span>Gold Threshold</span><strong>Not public</strong></div></div>
-            <p class="note">Caution: useful public structure, not enough public XP math yet. Keep it out of exact time-to-Gold estimates until Dicey publishes thresholds.</p>
+            <div class="fact-grid"><div class="fact"><span>Claim Cadence</span><strong>15-minute rakeback cooldown</strong></div><div class="fact"><span>Public Tiers</span><strong>Bronze, Silver, Gold, Sapphire, Emerald, Diamond, Holo</strong></div><div class="fact"><span>Exact Rates</span><strong>Not public while logged out</strong></div></div>
+            <p class="copy"><strong>How it works:</strong> Dicey is not a simple one-rate rakeback casino. Its public app bundle exposes a reward stack built around instant rakeback, daily bonus, free spins, rakeboost, weekly bonus, monthly bonus, rank-up bonus, VIP host access and concierge service. The casino page itself verifies the active product mix: Dicey Originals such as Dice, Plinko, Mines, Limbo, Keno, Coinflip, Blackjack, Dig Dig and Throne Tower sit alongside slots, live casino, game shows, roulette and card games.</p>
+            <table class="mini-table"><tr><th>Tier band</th><th>Publicly visible perks</th></tr><tr><td>Bronze</td><td>Instant rakeback, daily bonus, free spins and rakeboost.</td></tr><tr><td>Silver</td><td>Bronze perks plus weekly bonus.</td></tr><tr><td>Gold</td><td>Silver perks plus monthly bonus and rank-up bonus.</td></tr><tr><td>Sapphire / Emerald</td><td>Gold perks plus VIP host, with Emerald adding exclusive physical events.</td></tr><tr><td>Diamond / Holo</td><td>Highest visible bands add concierge-style service on top of the main reward stack.</td></tr></table>
+            <p class="copy"><strong>What we can model:</strong> the structure, claim cadence and tier labels are public. The exact rakeback percentage, XP thresholds, bonus values and expiry windows are account-state dependent or gated behind login. For comparison tools, Dicey should be treated as a high-gamification, medium-confidence rewards program rather than a fully published formula like Duelbits or 21.com.</p>
+            <div class="pill-row"><span class="pill good">Official app bundle verified</span><span class="pill good">15-minute claim loop</span><span class="pill warn">Rates not public</span><span class="pill warn">Thresholds gated</span></div>
+            <p class="note">Caution: the public `/rewards` route redirects to `/casino` when logged out. Keep Dicey out of exact time-to-Gold estimates until logged-in/public terms expose thresholds and rates.</p>
           </div>
         </section>
 
