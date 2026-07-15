@@ -284,15 +284,54 @@
       white-space: nowrap;
     }
     .comparison-table tr:last-child td { border-bottom: 0; }
+    .comparison-table tbody tr {
+      transition: background 0.18s ease, box-shadow 0.18s ease;
+    }
+    .comparison-table tbody tr.is-clickable-row {
+      cursor: pointer;
+    }
+    .comparison-table tbody tr.is-clickable-row:hover {
+      background: rgba(255, 157, 0, 0.08);
+      box-shadow: inset 3px 0 0 var(--orange-2);
+    }
     .casino-cell a,
     .casino-cell strong {
-      display: block;
       color: var(--ink);
       font-size: 0.98rem;
       font-weight: 950;
       margin-bottom: 3px;
     }
+    .casino-cell a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .casino-cell strong { display: block; }
+    .casino-cell a::after {
+      content: "Play now";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border: 1px solid rgba(255, 157, 0, 0.72);
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-2));
+      color: var(--navy);
+      font-size: 0.62rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 18px rgba(255, 106, 0, 0.18);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
     .casino-cell a:hover { color: var(--orange-2); }
+    .comparison-table tbody tr.is-clickable-row:hover .casino-cell a::after,
+    .casino-cell a:hover::after {
+      transform: translateX(2px);
+      box-shadow: 0 10px 22px rgba(255, 106, 0, 0.26);
+    }
     .casino-cell span,
     .comparison-table small {
       color: var(--muted);
@@ -1093,8 +1132,20 @@
     const wagerInput = document.getElementById('monthlyWager');
     const profileButtons = Array.from(document.querySelectorAll('.profile-btn'));
     const incentiveRows = Array.from(document.querySelectorAll('[data-incentive-low-rate], [data-incentive-opaque]'));
+    const affiliateRows = Array.from(document.querySelectorAll('.comparison-table tbody tr')).filter((row) => row.querySelector('.casino-cell a'));
 
     if (!wagerInput || !incentiveRows.length) return;
+
+    affiliateRows.forEach((row) => {
+      row.classList.add('is-clickable-row');
+      row.addEventListener('click', (event) => {
+        if (event.target.closest('a, button, input, select, textarea')) return;
+        const link = row.querySelector('.casino-cell a');
+        if (!link) return;
+        const opened = window.open(link.href, '_blank', 'noopener,noreferrer');
+        if (opened) opened.opener = null;
+      });
+    });
 
     const formatMoney = (value) => {
       if (!Number.isFinite(value)) return '$0';
