@@ -35,11 +35,17 @@
   </script>
 
   <style>
-    body { background: #08090d; color: #d4d8e8; }
+    body {
+      background:
+        linear-gradient(135deg, rgba(255, 106, 0, 0.16) 0 14%, transparent 14% 100%),
+        linear-gradient(215deg, rgba(41, 211, 255, 0.12) 0 18%, transparent 18% 100%),
+        var(--t-bg);
+      color: var(--t-text);
+    }
 
     .reviews-hero {
-      background: linear-gradient(135deg, #08090d 0%, #1a0d3d 50%, #08090d 100%);
-      border-bottom: 1px solid #1a1d2e;
+      background: linear-gradient(135deg, rgba(9, 30, 67, 0.94), rgba(14, 43, 92, 0.92));
+      border-bottom: 1px solid var(--t-border);
       padding: 60px 20px 40px;
       text-align: center;
     }
@@ -47,13 +53,13 @@
       font-family: 'Inter', sans-serif;
       font-size: 2.5rem;
       font-weight: 900;
-      color: #fff;
+      color: var(--t-text);
       margin-bottom: 16px;
     }
-    .reviews-hero h1 span { color: #ffc400; }
+    .reviews-hero h1 span { color: var(--t-green); }
     .reviews-hero p {
       font-size: 1.1rem;
-      color: #8890a8;
+      color: var(--t-dim);
       max-width: 650px;
       margin: 0 auto 24px;
       line-height: 1.7;
@@ -65,12 +71,12 @@
       flex-wrap: wrap;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #5a6080;
+      color: var(--t-dim);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
     .reviews-hero .trust-badges span { display: flex; align-items: center; gap: 6px; }
-    .reviews-hero .trust-badges .dot { width: 6px; height: 6px; border-radius: 50%; background: #00e676; }
+    .reviews-hero .trust-badges .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--t-green); }
 
     /* Quick Compare Table */
     .quick-compare {
@@ -81,43 +87,43 @@
     .quick-compare table {
       width: 100%;
       border-collapse: collapse;
-      background: #0c0d14;
-      border: 1px solid #1a1d2e;
+      background: var(--t-bg2);
+      border: 1px solid var(--t-border);
       border-radius: 4px;
       overflow: hidden;
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
     }
     .quick-compare th {
-      background: #10111a;
-      color: #5a6080;
+      background: rgba(255, 106, 0, 0.1);
+      color: var(--t-green);
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       padding: 10px 14px;
       text-align: left;
-      border-bottom: 1px solid #1a1d2e;
+      border-bottom: 1px solid var(--t-border);
     }
     .quick-compare td {
       padding: 12px 14px;
-      border-bottom: 1px solid #1a1d2e;
-      color: #d4d8e8;
+      border-bottom: 1px solid var(--t-border);
+      color: var(--t-text);
     }
     .quick-compare tr:last-child td { border-bottom: none; }
-    .quick-compare tr:hover td { background: rgba(0,230,118,0.03); }
-    .quick-compare .casino-name { font-weight: 700; color: #fff; }
-    .quick-compare .rating { color: #ffc400; font-weight: 700; }
-    .quick-compare .tag-green { color: #00e676; }
-    .quick-compare .tag-amber { color: #ffc400; }
-    .quick-compare .tag-red { color: #ff5252; }
+    .quick-compare tr:hover td { background: var(--t-bg3); }
+    .quick-compare .casino-name { font-weight: 700; color: var(--t-text); }
+    .quick-compare .rating { color: var(--t-green); font-weight: 700; }
+    .quick-compare .tag-green { color: var(--t-green); }
+    .quick-compare .tag-amber { color: var(--t-amber); }
+    .quick-compare .tag-red { color: var(--t-red); }
     .quick-compare .review-link {
-      color: #00e676;
+      color: var(--t-green);
       text-decoration: none;
       font-weight: 600;
       font-size: 11px;
     }
-    .quick-compare .review-link:hover { color: #69f0ae; }
+    .quick-compare .review-link:hover { color: #ffc164; }
 
     /* Review Cards */
     .review-grid {
@@ -129,29 +135,31 @@
       padding: 0 16px 60px;
     }
     .review-card {
-      background: #0c0d14;
-      border: 1px solid #1a1d2e;
+      background: var(--t-bg2);
+      border: 1px solid var(--t-border);
       border-radius: 4px;
       overflow: hidden;
       transition: border-color 0.2s;
     }
-    .review-card:hover { border-color: #252840; }
+    .review-card:hover { border-color: var(--t-border2); }
     .review-card-header {
       padding: 28px 24px;
       text-align: center;
       position: relative;
+      background: linear-gradient(135deg, rgba(255, 106, 0, 0.14), rgba(14, 43, 92, 0.94));
+      border-bottom: 1px solid var(--t-border);
     }
     .review-card-header h2 {
       font-size: 1.5rem;
-      color: #fff;
+      color: var(--t-text);
       margin-bottom: 8px;
     }
-    .review-card-stars { color: #ffc400; font-size: 1.1rem; margin-bottom: 4px; }
-    .review-card-score { color: #8890a8; font-size: 0.95rem; }
+    .review-card-stars { color: var(--t-green); font-size: 1.1rem; margin-bottom: 4px; }
+    .review-card-score { color: var(--t-dim); font-size: 0.95rem; }
     .review-card-badge {
       display: inline-block;
-      background: rgba(255,196,0,0.15);
-      color: #ffc400;
+      background: var(--t-green-bg);
+      color: var(--t-green);
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
       font-weight: 700;
@@ -167,12 +175,12 @@
       justify-content: space-between;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #5a6080;
+      color: var(--t-dim);
       margin-bottom: 16px;
       padding-bottom: 16px;
-      border-bottom: 1px solid #1a1d2e;
+      border-bottom: 1px solid var(--t-border);
     }
-    .review-card-desc { color: #8890a8; font-size: 0.9rem; line-height: 1.7; margin-bottom: 20px; }
+    .review-card-desc { color: var(--t-dim); font-size: 0.9rem; line-height: 1.7; margin-bottom: 20px; }
     .review-card-pros, .review-card-cons { margin-bottom: 16px; }
     .review-card-pros h4, .review-card-cons h4 {
       font-family: 'JetBrains Mono', monospace;
@@ -181,24 +189,24 @@
       letter-spacing: 0.1em;
       margin-bottom: 8px;
     }
-    .review-card-pros h4 { color: #00e676; }
-    .review-card-cons h4 { color: #ff5252; }
+    .review-card-pros h4 { color: var(--t-green); }
+    .review-card-cons h4 { color: var(--t-red); }
     .review-card-pros li, .review-card-cons li {
-      color: #8890a8;
+      color: var(--t-dim);
       font-size: 0.85rem;
       margin-bottom: 4px;
       list-style: none;
       padding-left: 16px;
       position: relative;
     }
-    .review-card-pros li::before { content: "+"; position: absolute; left: 0; color: #00e676; font-weight: 700; }
-    .review-card-cons li::before { content: "−"; position: absolute; left: 0; color: #ff5252; font-weight: 700; }
+    .review-card-pros li::before { content: "+"; position: absolute; left: 0; color: var(--t-green); font-weight: 700; }
+    .review-card-cons li::before { content: "−"; position: absolute; left: 0; color: var(--t-red); font-weight: 700; }
     .review-card-cta {
       display: block;
       text-align: center;
-      background: rgba(0,230,118,0.08);
-      border: 1px solid rgba(0,230,118,0.2);
-      color: #00e676;
+      background: var(--t-green-bg);
+      border: 1px solid var(--t-green-b);
+      color: var(--t-green);
       padding: 12px;
       font-weight: 700;
       font-family: 'JetBrains Mono', monospace;
@@ -208,12 +216,12 @@
       letter-spacing: 0.05em;
       transition: all 0.2s;
     }
-    .review-card-cta:hover { background: rgba(0,230,118,0.15); color: #69f0ae; }
+    .review-card-cta:hover { background: rgba(255, 157, 0, 0.2); color: #ffc164; }
 
     /* How We Review */
     .review-criteria {
-      background: #0c0d14;
-      border: 1px solid #1a1d2e;
+      background: var(--t-bg2);
+      border: 1px solid var(--t-border);
       border-radius: 4px;
       padding: 48px 40px;
       max-width: 1100px;
@@ -222,7 +230,7 @@
     .review-criteria h2 {
       text-align: center;
       font-size: 1.5rem;
-      color: #fff;
+      color: var(--t-text);
       margin-bottom: 32px;
     }
     .criteria-grid {
@@ -232,12 +240,12 @@
     }
     .criteria-item { text-align: center; }
     .criteria-item .icon { font-size: 1.5rem; margin-bottom: 8px; }
-    .criteria-item h3 { color: #d4d8e8; font-size: 0.95rem; margin-bottom: 6px; }
-    .criteria-item p { color: #5a6080; font-size: 0.8rem; line-height: 1.6; }
+    .criteria-item h3 { color: var(--t-text); font-size: 0.95rem; margin-bottom: 6px; }
+    .criteria-item p { color: var(--t-dim); font-size: 0.8rem; line-height: 1.6; }
 
     /* Coming Soon */
     .coming-soon {
-      border: 1px dashed #252840;
+      border: 1px dashed var(--t-border);
       background: transparent;
       display: flex;
       flex-direction: column;
@@ -246,18 +254,18 @@
       padding: 48px 32px;
       text-align: center;
     }
-    .coming-soon h3 { color: #5a6080; font-size: 1.1rem; margin: 12px 0 8px; }
-    .coming-soon p { color: #3a3f58; font-size: 0.85rem; }
+    .coming-soon h3 { color: var(--t-dim); font-size: 1.1rem; margin: 12px 0 8px; }
+    .coming-soon p { color: var(--t-muted); font-size: 0.85rem; }
 
     /* CTA */
     .review-cta-section {
-      background: rgba(0,230,118,0.04);
-      border-top: 1px solid rgba(0,230,118,0.15);
+      background: rgba(255, 106, 0, 0.08);
+      border-top: 1px solid var(--t-border);
       padding: 60px 20px;
       text-align: center;
     }
-    .review-cta-section h2 { color: #fff; font-size: 1.5rem; margin-bottom: 16px; }
-    .review-cta-section p { color: #8890a8; margin-bottom: 24px; font-size: 1rem; }
+    .review-cta-section h2 { color: var(--t-text); font-size: 1.5rem; margin-bottom: 16px; }
+    .review-cta-section p { color: var(--t-dim); margin-bottom: 24px; font-size: 1rem; }
     .review-cta-section .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .review-cta-section .cta-buttons a {
       display: inline-block;
@@ -271,10 +279,10 @@
       letter-spacing: 0.05em;
       font-size: 12px;
     }
-    .cta-primary { background: #00e676; color: #08090d !important; }
-    .cta-primary:hover { background: #69f0ae; }
-    .cta-secondary { background: rgba(255,255,255,0.05); color: #d4d8e8 !important; border: 1px solid #252840; }
-    .cta-secondary:hover { border-color: #3a3f58; }
+    .cta-primary { background: var(--t-green); color: #06152f !important; }
+    .cta-primary:hover { background: #ffc164; }
+    .cta-secondary { background: rgba(255,255,255,0.05); color: var(--t-text) !important; border: 1px solid var(--t-border); }
+    .cta-secondary:hover { border-color: var(--t-border2); }
 
     @media (max-width: 768px) {
       .reviews-hero h1 { font-size: 1.8rem; }
@@ -446,8 +454,8 @@
       <tr>
         <td class="casino-name">Stake</td>
         <td class="rating"><span class="num">4.2 / 5</span></td>
-        <td>200% up to $1,000</td>
-        <td>VIP rakeback 5-15%</td>
+        <td>No verified public welcome match in current tracker</td>
+        <td>VIP rakeback from Bronze + weekly/monthly rewards</td>
         <td class="tag-green">Instant</td>
         <td><a href="stake-review.html" class="review-link">Read →</a></td>
       </tr>
@@ -604,7 +612,7 @@
 
   <!-- Yeet Casino -->
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #2d1a6e 0%, #4c1d95 100%);">
+    <div class="review-card-header">
       <h2>Yeet Casino</h2>
       <div class="review-card-stars">⭐⭐⭐⭐½</div>
       <div class="review-card-score">4.5 / 5.0</div>
@@ -638,7 +646,7 @@
 
   <!-- XTP Casino -->
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #1a1f2e 0%, #2a3142 100%);">
+    <div class="review-card-header">
       <h2>XTP Casino</h2>
       <div class="review-card-stars">⭐⭐⭐⭐</div>
       <div class="review-card-score">4.3 / 5.0</div>
@@ -672,7 +680,7 @@
 
   <!-- Thrill Casino -->
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #123016 0%, #0f5132 100%);">
+    <div class="review-card-header">
       <h2>Thrill Casino</h2>
       <div class="review-card-stars">⭐⭐⭐⭐½</div>
       <div class="review-card-score">4.4 / 5.0</div>
@@ -706,7 +714,7 @@
 
   <!-- BC.Game -->
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #1a1464 0%, #2d1f7b 100%);">
+    <div class="review-card-header">
       <h2>BC.Game</h2>
       <div class="review-card-stars">⭐⭐⭐⭐½</div>
       <div class="review-card-score">4.4 / 5.0</div>
@@ -739,7 +747,7 @@
 
   <!-- Stake -->
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #0f1923 0%, #1a2e3e 100%);">
+    <div class="review-card-header">
       <h2>Stake.com</h2>
       <div class="review-card-stars">⭐⭐⭐⭐</div>
       <div class="review-card-score">4.2 / 5.0</div>
@@ -773,7 +781,7 @@
 
   <!-- mBit -->
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);">
+    <div class="review-card-header">
       <h2>mBit Casino</h2>
       <div class="review-card-stars">⭐⭐⭐⭐½</div>
       <div class="review-card-score">4.4 / 5.0</div>
@@ -806,7 +814,7 @@
 
   <!-- Wild.io -->
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);">
+    <div class="review-card-header">
       <h2>Wild.io</h2>
       <div class="review-card-stars">⭐⭐⭐⭐</div>
       <div class="review-card-score">4.2 / 5.0</div>
@@ -837,7 +845,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>BitStarz</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -857,7 +865,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>Ignition</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -877,7 +885,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>Jackbit</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -897,7 +905,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>Roobet</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -917,7 +925,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>TrustDice</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -937,7 +945,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>7bit</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -957,7 +965,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>Bitsler</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -977,7 +985,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>Rollbit</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -997,7 +1005,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>Shuffle</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -1017,7 +1025,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>Thunderpick</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -1037,7 +1045,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>BetFury</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -1057,7 +1065,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>Cloudbet</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -1077,7 +1085,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>Duelbits</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -1097,7 +1105,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>Gamdom</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -1117,7 +1125,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>CoinDepo</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -1137,7 +1145,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>FortuneJack</h2>
       <div class="review-card-score">Full review coming</div>
     </div>
@@ -1157,7 +1165,7 @@
     </div>
   </article>
   <article class="review-card">
-    <div class="review-card-header" style="background: linear-gradient(135deg, #171a2b 0%, #232842 100%);">
+    <div class="review-card-header">
       <h2>Wolf.bet</h2>
       <div class="review-card-score">Full review coming</div>
     </div>

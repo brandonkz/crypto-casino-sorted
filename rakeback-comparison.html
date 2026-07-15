@@ -288,7 +288,9 @@ h1 {
     <label for="t-nav-toggle" class="t-nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
     <div class="t-nav-links">
       <a href="/rewards-recommender.html" class="t-nav-primary">Rewards</a>
+      <a href="/rewards/">Reward Book</a>
       <a href="/rakeback-comparison.html" class="active">Rakeback</a>
+      <a href="/vip-gold-calculator.html">VIP Calc</a>
       <a href="/bonus-calculator.html">Bonus Calc</a>
       <a href="/casino-reward-sources.html">Sources</a>
       <a href="/reviews/">Reviews</a>
@@ -421,7 +423,7 @@ h1 {
           <td><a class="reward-page-link" href="https://dicey.com/casino" target="_blank" rel="nofollow noopener">Dicey official site</a></td>
         </tr>
         <tr>
-          <td>21.com</td>
+          <td><a class="reward-page-link" href="https://prod.trk21.com/click?offer=FFHCFKXMZW2H&amp;uid=fN3MmG6q" target="_blank" rel="sponsored nofollow noopener">21.com</a></td>
           <td>5%</td>
           <td>25%</td>
           <td>Cash + Undisclosed</td>
@@ -483,7 +485,7 @@ h1 {
     </div>
 
     <div class="disclaimer">
-      Comparison data is shared with the main rewards finder and was last reviewed in July 2026. Effective rates are directional estimates, not guaranteed payouts. Actual rewards vary by game edge, VIP tier, recent activity, token value, region, and account eligibility. Always verify current terms before wagering.
+      Comparison data is shared with the main rewards finder and was last reviewed in July 2026. Effective rates are directional estimates, not guaranteed payouts. For operators with published high-volume ceilings, the calculator scales the active rate toward the max as monthly wager rises. Actual rewards vary by game edge, VIP tier, recent activity, token value, region, and account eligibility. Always verify current terms before wagering.
       18+ only. Gamble responsibly.
     </div>
   </main>
@@ -639,6 +641,18 @@ h1 {
       return { offer, terms, bonusAmount, requiredWager, modeledWager };
     }
 
+    function effectiveRateForWager(casino, wager) {
+      const baseRate = Number(casino.effective_rate) || 0;
+      const maxRate = Number(casino.rate_max) || 0;
+      if (!maxRate || maxRate <= baseRate || casino.rakeback_form === 'zero_edge') return baseRate;
+      const start = 5000;
+      const maxed = 100000;
+      if (wager <= start) return baseRate;
+      if (wager >= maxed) return maxRate;
+      const progress = (wager - start) / (maxed - start);
+      return baseRate + (maxRate - baseRate) * progress;
+    }
+
     function applyWagerEstimate() {
       const deposit = parseFloat(document.getElementById('depositInput').value) || 0;
       const minutes = parseFloat(document.getElementById('minutesInput').value) || 0;
@@ -658,8 +672,9 @@ h1 {
       const results = casinos.map(c => {
         const bonusEstimate = includeBonusWagering ? bonusAssistedWagerFor(c, wager, deposit) : null;
         const modeledWager = bonusEstimate ? bonusEstimate.modeledWager : wager;
-        const earn = c.effective_rate !== null ? modeledWager * edge * c.effective_rate : null;
-        return { ...c, earn, modeledWager, bonusEstimate };
+        const activeEffectiveRate = effectiveRateForWager(c, modeledWager);
+        const earn = c.effective_rate !== null ? modeledWager * edge * activeEffectiveRate : null;
+        return { ...c, earn, modeledWager, bonusEstimate, activeEffectiveRate };
       }).sort((a, b) => (b.earn ?? -Infinity) - (a.earn ?? -Infinity));
 
       const mainResults = results.filter(r => r.rakeback_form !== 'zero_edge');
@@ -671,7 +686,8 @@ h1 {
         const isBest = best && c.name === best.name;
         const earnStr = c.earn !== null ? fmt(c.earn) : '—';
         const isZeroEdge = c.rakeback_form === 'zero_edge';
-        const baseValueLabel = isZeroEdge ? 'Estimated avoided house-edge loss on eligible 100% RTP games' : `${pct(c.effective_rate)} of estimated house-edge loss`;
+        const activeRate = c.activeEffectiveRate ?? c.effective_rate;
+        const baseValueLabel = isZeroEdge ? 'Estimated avoided house-edge loss on eligible 100% RTP games' : `${pct(activeRate)} of estimated house-edge loss`;
         const bonusLabel = c.bonusEstimate
           ? `Bonus-assisted wager: ${fmt(c.modeledWager)} (${c.bonusEstimate.terms.fallback ? `${c.bonusEstimate.terms.wagerMultiple}x fallback` : `${c.bonusEstimate.terms.wagerMultiple}x verified`})`
           : '';

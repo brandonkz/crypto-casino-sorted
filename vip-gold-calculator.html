@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate how long it takes to reach Gold or the closest published VIP tier at crypto casinos based on your daily wager.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/vip-gold-calculator.html">
+  <meta name="author" content="CryptoCasinoSorted">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#06152f">
+  <meta property="og:title" content="Crypto Casino Gold VIP Tier Calculator">
+  <meta property="og:description" content="Enter your daily wager and estimate how long Gold or the closest public VIP milestone takes at Stake, Rollbit, BC.Game, Shuffle, Cloudbet and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cryptocasinosorted.com/vip-gold-calculator.html">
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta property="og:site_name" content="CryptoCasinoSorted">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crypto Casino Gold VIP Tier Calculator">
+  <meta name="twitter:description" content="Estimate how many days of wagering it takes to reach Gold or the closest public VIP milestone.">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
+  <title>Crypto Casino Gold VIP Tier Calculator | CryptoCasinoSorted</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;650;750;850;950&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #06152f;
+      --navy-2: #0b2148;
+      --ink: #f7fbff;
+      --muted: #9fb1d1;
+      --orange: #ff6a00;
+      --orange-2: #ff9d00;
+      --cyan: #29d3ff;
+      --lime: #66f06f;
+      --line: rgba(255,255,255,0.14);
+      --panel: rgba(9, 30, 67, 0.92);
+      --panel-2: rgba(14, 43, 92, 0.94);
+      --radius: 8px;
+    }
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(255,106,0,0.18) 0 16%, transparent 16% 100%),
+        linear-gradient(215deg, rgba(41,211,255,0.13) 0 18%, transparent 18% 100%),
+        var(--navy);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 72%);
+    }
+    a { color: inherit; text-decoration: none; }
+    .t-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 18px;
+      background: rgba(4, 16, 38, 0.94);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    }
+    .t-nav-logo {
+      color: var(--orange-2);
+      font-size: 0.82rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .t-nav-logo .sub { color: var(--muted); font-weight: 650; letter-spacing: 0; text-transform: none; margin-left: 5px; }
+    .t-nav-links { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 0.7rem; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+    .t-nav-links a:hover,
+    .t-nav-links a.active,
+    .t-nav-links a.t-nav-primary { color: var(--orange-2); }
+    .page { position: relative; z-index: 1; max-width: 1248px; margin: 0 auto; padding: 48px 16px 76px; }
+    .hero,
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 22px 60px rgba(0,0,0,0.22);
+      overflow: hidden;
+    }
+    .hero { padding: 36px; margin-bottom: 16px; position: relative; }
+    .kicker { color: var(--orange-2); font-size: 0.78rem; font-weight: 950; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    h1 { max-width: 900px; font-size: clamp(2.2rem, 5vw, 4.9rem); line-height: 0.96; font-weight: 950; letter-spacing: 0; margin-bottom: 18px; }
+    .hero-copy { max-width: 780px; color: var(--muted); font-size: 1.02rem; }
+    .grid { display: grid; grid-template-columns: minmax(280px, 0.42fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+    .panel-header { display: flex; justify-content: space-between; gap: 14px; align-items: center; padding: 16px 18px; border-bottom: 1px solid var(--line); background: rgba(4,16,38,0.42); }
+    .panel-title { color: var(--ink); font-size: 0.85rem; font-weight: 950; letter-spacing: 0.08em; text-transform: uppercase; }
+    .panel-body { padding: 18px; }
+    .input-stack { display: grid; gap: 14px; }
+    label { display: grid; gap: 7px; color: var(--muted); font-size: 0.78rem; font-weight: 850; letter-spacing: 0.06em; text-transform: uppercase; }
+    input,
+    select {
+      min-height: 46px;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: rgba(4,16,38,0.72);
+      color: var(--ink);
+      padding: 0 12px;
+      font: inherit;
+      font-weight: 750;
+    }
+    input:focus,
+    select:focus { outline: none; border-color: rgba(255,157,0,0.72); box-shadow: 0 0 0 3px rgba(255,157,0,0.14); }
+    .hint { color: var(--muted); font-size: 0.78rem; line-height: 1.55; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .summary-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(4,16,38,0.48);
+      padding: 13px;
+    }
+    .summary-label { color: var(--muted); font-size: 0.68rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+    .summary-value { color: var(--orange-2); font-size: 1.35rem; font-weight: 950; line-height: 1.1; margin-top: 4px; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; min-width: 820px; }
+    th,
+    td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--orange-2); font-size: 0.68rem; font-weight: 950; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(4,16,38,0.62); }
+    td { color: var(--ink); font-size: 0.88rem; }
+    tbody tr:last-child td { border-bottom: 0; }
+    .casino-name { font-weight: 950; }
+    .sub { display: block; color: var(--muted); font-size: 0.75rem; margin-top: 2px; }
+    .pill { display: inline-flex; align-items: center; min-height: 28px; padding: 0 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 0.72rem; font-weight: 900; white-space: nowrap; }
+    .pill.good { color: var(--lime); border-color: rgba(102,240,111,0.38); background: rgba(102,240,111,0.1); }
+    .pill.warn { color: var(--orange-2); border-color: rgba(255,157,0,0.42); background: rgba(255,157,0,0.1); }
+    .pill.off { color: #ff9bad; border-color: rgba(255,99,120,0.38); background: rgba(255,99,120,0.1); }
+    .days { color: var(--lime); font-weight: 950; font-size: 1rem; white-space: nowrap; }
+    .unknown { color: var(--muted); font-weight: 850; }
+    .note { margin-top: 14px; color: var(--muted); font-size: 0.8rem; line-height: 1.65; }
+    .footer { margin-top: 18px; color: var(--muted); font-size: 0.78rem; text-align: center; }
+    @media (max-width: 820px) {
+      .t-nav { align-items: flex-start; height: auto; min-height: 54px; flex-direction: column; padding: 12px; }
+      .t-nav-links { width: 100%; overflow-x: auto; gap: 14px; padding-bottom: 2px; }
+      .page { padding-top: 24px; }
+      .hero { padding: 28px 22px; }
+      .grid { grid-template-columns: 1fr; }
+      .summary { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="t-nav">
+    <a href="/" class="t-nav-logo">CCT <span class="sub">CryptoCasinoSorted</span></a>
+    <div class="t-nav-links">
+      <a href="/rewards-recommender.html" class="t-nav-primary">Rewards</a>
+      <a href="/rewards/">Reward Book</a>
+      <a href="/rakeback-comparison.html">Rakeback</a>
+      <a href="/vip-gold-calculator.html" class="active">VIP Calc</a>
+      <a href="/bonus-calculator.html">Bonus Calc</a>
+      <a href="/casino-reward-sources.html">Sources</a>
+      <a href="/blog/">Guides</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section class="hero">
+      <div class="kicker">VIP Tier Calculator</div>
+      <h1>How long until Gold at each crypto casino?</h1>
+      <p class="hero-copy">Enter your average daily wager and compare how many days it takes to reach Gold, or the closest useful published VIP milestone, using the tier thresholds we could verify from our rewards research.</p>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">Your Wager</div>
+        </div>
+        <div class="panel-body">
+          <div class="input-stack">
+            <label>
+              Daily wager
+              <input id="dailyWager" type="number" min="0" step="100" value="1000">
+            </label>
+            <label>
+              Current progress already wagered
+              <input id="currentProgress" type="number" min="0" step="100" value="0">
+            </label>
+            <label>
+              Main wager type
+              <select id="wagerType">
+                <option value="casino">Casino / slots / originals</option>
+                <option value="sports">Sportsbook where multiplier is public</option>
+              </select>
+            </label>
+            <p class="hint">Sports multipliers are only applied where our research found a public multiplier. For example, BC.Game sports earns 2x XP and Shuffle sports/esports earns 3x XP. Unknown programs stay unknown.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">Gold Progress Estimates</div>
+        </div>
+        <div class="panel-body">
+          <div class="summary" id="summary"></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Casino</th>
+                  <th>Target</th>
+                  <th>Public Threshold</th>
+                  <th>Estimated Time</th>
+                  <th>Reset / Catch</th>
+                </tr>
+              </thead>
+              <tbody id="results"></tbody>
+            </table>
+          </div>
+          <p class="note">This is a planning calculator, not a guarantee. Casinos can weight games differently, exclude bonus play, reset monthly progress, change VIP terms, or request KYC before paying higher-tier rewards. Where a casino publishes tier names or rates but not thresholds, we show that distinction instead of estimating it.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      CryptoCasinoSorted compares public reward terms and directional VIP data. Always verify current casino terms before wagering. 18+ only.
+    </footer>
+  </main>
+
+  <script>
+    const targets = [
+      {
+        casino: 'Rollbit',
+        target: 'Gold',
+        threshold: 50000,
+        basis: 'monthly wager volume',
+        casinoMultiplier: 1,
+        sportsMultiplier: 1,
+        reset: 'Monthly volume target',
+        note: 'Gold starts around $50k monthly volume in our tier research.'
+      },
+      {
+        casino: 'BC.Game',
+        target: 'Gold',
+        threshold: 50000,
+        basis: 'XP',
+        casinoMultiplier: 1,
+        sportsMultiplier: 2,
+        reset: 'XP ladder, no reset found',
+        note: 'Casino earns about 1 XP per $1 wagered; sports earns 2x XP.'
+      },
+      {
+        casino: 'Stake',
+        target: 'Gold',
+        threshold: 100000,
+        basis: 'lifetime wager',
+        casinoMultiplier: 1,
+        sportsMultiplier: 3,
+        reset: 'Lifetime progress',
+        note: 'Stake Gold is listed around $100k lifetime wager; sports may progress faster.'
+      },
+      {
+        casino: 'Shuffle',
+        target: 'Gold I',
+        threshold: 100000,
+        basis: 'XP',
+        casinoMultiplier: 1,
+        sportsMultiplier: 3,
+        reset: 'Lifetime XP, no reset found',
+        note: 'Gold starts around 100k XP; sports/esports earns 3x XP.'
+      },
+      {
+        casino: 'Thrill',
+        target: 'Upper early reward milestone',
+        threshold: 100000,
+        basis: 'XP / wagered volume',
+        casinoMultiplier: 1,
+        sportsMultiplier: 1,
+        reset: 'Directional public range',
+        note: 'Exact Gold label is not public; early paid milestones are published around the 10k-100k XP range.'
+      },
+      {
+        casino: 'Cloudbet',
+        target: 'Blue Diamond',
+        threshold: 1000000000,
+        basis: 'lifetime turnover',
+        casinoMultiplier: 1,
+        sportsMultiplier: 1,
+        reset: 'Permanent lifetime tier',
+        note: 'Cloudbet publishes lifetime-turnover tiers; Blue Diamond is the top public threshold tied to TURBO upside.'
+      },
+      { casino: 'XTP', target: 'Gold', threshold: null, basis: 'Tier Transfer / internal XP', reset: 'Not public', note: 'Gold exists in the positioning, but public thresholds are not available.' },
+      { casino: 'Duelbits', target: 'Gold VIP Club', threshold: null, basis: 'VIP Club / milestones', reset: 'Not public', note: 'Duelbits publishes a 31-level lounge, but Gold VIP Club entry criteria are not public.' },
+      { casino: 'Yeet', target: 'Gold', threshold: null, basis: 'Wager activity', reset: 'Tier public, threshold not public', note: 'Yeet publishes Copper through Chairman and Gold at 12% rakeback, but not the wager needed to reach it.' },
+      { casino: 'Dicey', target: 'Gold I', threshold: null, basis: 'XP', reset: 'Tier public, threshold not public', note: 'Dicey publishes Bronze/Silver/Gold/Platinum/Diamond ranks, but not the XP thresholds yet.' },
+      { casino: 'Roobet', target: 'VIP / Gold equivalent', threshold: null, basis: 'Invite only', reset: 'Invite only', note: 'Roobet does not publish a public Gold ladder.' },
+      { casino: 'Gamdom', target: 'Gold equivalent', threshold: null, basis: 'Personalised rewards', reset: 'Not public', note: 'Gamdom says rewards are personalised and does not publish thresholds.' },
+      { casino: '21.com', target: 'Elite Club', threshold: null, basis: 'VIP points', reset: 'Not public', note: 'Elite Club is advertised, but public entry levels are not disclosed.' },
+      { casino: 'Metaspins', target: 'Gold equivalent', threshold: null, basis: 'Level ladder', reset: 'Not public', note: 'Level names/thresholds are not public enough to model a Gold equivalent.' },
+      { casino: 'Duel', target: 'Gold equivalent', threshold: null, basis: 'Zero-edge model', reset: 'Not applicable', note: 'Duel is a zero-edge model, not a normal Gold VIP ladder.' }
+    ];
+
+    const money = (value) => {
+      if (!Number.isFinite(value)) return '-';
+      if (value >= 1000000) return '$' + (value / 1000000).toFixed(2).replace(/\.00$/, '') + 'm';
+      return '$' + Math.round(value).toLocaleString();
+    };
+
+    const daysLabel = (days) => {
+      if (!Number.isFinite(days)) return '-';
+      if (days <= 1) return '1 day';
+      if (days < 45) return `${Math.ceil(days)} days`;
+      if (days < 365) return `${Math.ceil(days)} days (${(days / 30).toFixed(1)} months)`;
+      return `${Math.ceil(days)} days (${(days / 365).toFixed(1)} years)`;
+    };
+
+    function estimate(target, dailyWager, currentProgress, wagerType) {
+      if (!target.threshold) return { known: false };
+      const multiplier = wagerType === 'sports' ? target.sportsMultiplier : target.casinoMultiplier;
+      const dailyProgress = dailyWager * multiplier;
+      const remaining = Math.max(0, target.threshold - currentProgress);
+      const days = dailyProgress > 0 ? Math.ceil(remaining / dailyProgress) : Infinity;
+      const monthlyReachable = target.reset.toLowerCase().includes('monthly')
+        ? dailyProgress * 30 >= remaining
+        : true;
+      return { known: true, dailyProgress, remaining, days, monthlyReachable };
+    }
+
+    function render() {
+      const dailyWager = Math.max(0, Number(document.getElementById('dailyWager').value) || 0);
+      const currentProgress = Math.max(0, Number(document.getElementById('currentProgress').value) || 0);
+      const wagerType = document.getElementById('wagerType').value;
+      const rows = targets.map((target) => ({ target, estimate: estimate(target, dailyWager, currentProgress, wagerType) }));
+      const known = rows.filter((row) => row.estimate.known).sort((a, b) => a.estimate.days - b.estimate.days);
+      const unknown = rows.filter((row) => !row.estimate.known);
+      const fastest = known[0];
+      const reachableInMonth = known.filter((row) => row.estimate.days <= 30).length;
+
+      document.getElementById('summary').innerHTML = `
+        <div class="summary-card"><div class="summary-label">Daily Progress</div><div class="summary-value">${money(dailyWager)}</div></div>
+        <div class="summary-card"><div class="summary-label">Fastest Known</div><div class="summary-value">${fastest ? fastest.target.casino : '-'}</div></div>
+        <div class="summary-card"><div class="summary-label">Reachable In 30 Days</div><div class="summary-value">${reachableInMonth}</div></div>
+      `;
+
+      document.getElementById('results').innerHTML = [...known, ...unknown].map(({ target, estimate }) => {
+        if (!estimate.known) {
+          return `
+            <tr>
+              <td><div class="casino-name">${target.casino}</div><span class="sub">${target.note}</span></td>
+              <td>${target.target}</td>
+              <td><span class="pill off">Not public</span></td>
+              <td><span class="unknown">Cannot model threshold</span></td>
+              <td>${target.reset}</td>
+            </tr>
+          `;
+        }
+        const resetClass = estimate.monthlyReachable ? 'good' : 'warn';
+        const resetText = estimate.monthlyReachable
+          ? target.reset
+          : `Needs ${money(Math.ceil(estimate.remaining / 30))}/day within monthly reset`;
+        return `
+          <tr>
+            <td><div class="casino-name">${target.casino}</div><span class="sub">${target.note}</span></td>
+            <td>${target.target}</td>
+            <td>${money(target.threshold)} <span class="sub">${target.basis}</span></td>
+            <td><span class="days">${daysLabel(estimate.days)}</span><span class="sub">${money(estimate.dailyProgress)}/day progress after multiplier</span></td>
+            <td><span class="pill ${resetClass}">${resetText}</span></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    ['dailyWager', 'currentProgress', 'wagerType'].forEach((id) => {
+      document.getElementById(id).addEventListener('input', render);
+      document.getElementById(id).addEventListener('change', render);
+    });
+
+    render();
+  </script>
+</body>
+</html>

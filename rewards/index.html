@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Crypto casino reward programs explained like a handbook: rakeback, VIP tiers, XP, Gold thresholds, lossback, host access and catches across major crypto casinos.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/rewards/">
+  <meta name="author" content="CryptoCasinoSorted">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#06152f">
+  <meta property="og:title" content="Crypto Casino Reward Programs Handbook">
+  <meta property="og:description" content="A GitBook-style guide to crypto casino VIP programs, rakeback, Gold thresholds, XP systems and reward catches.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cryptocasinosorted.com/rewards/">
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta property="og:site_name" content="CryptoCasinoSorted">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crypto Casino Reward Programs Handbook">
+  <meta name="twitter:description" content="Compare crypto casino VIP programs, rakeback, Gold thresholds, XP systems and reward catches.">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
+  <title>Crypto Casino Reward Programs Handbook | CryptoCasinoSorted</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;650;750;850;950&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #06152f;
+      --navy-2: #0b2148;
+      --ink: #f7fbff;
+      --muted: #9fb1d1;
+      --orange: #ff6a00;
+      --orange-2: #ff9d00;
+      --cyan: #29d3ff;
+      --lime: #66f06f;
+      --line: rgba(255,255,255,0.14);
+      --panel: rgba(9, 30, 67, 0.92);
+      --radius: 8px;
+    }
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(255,106,0,0.16) 0 15%, transparent 15% 100%),
+        linear-gradient(215deg, rgba(41,211,255,0.12) 0 18%, transparent 18% 100%),
+        var(--navy);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent 72%);
+    }
+    a { color: inherit; text-decoration: none; }
+    .t-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 18px;
+      background: rgba(4, 16, 38, 0.94);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    }
+    .t-nav-logo { color: var(--orange-2); font-size: 0.82rem; font-weight: 950; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+    .t-nav-logo .sub { color: var(--muted); font-weight: 650; letter-spacing: 0; text-transform: none; margin-left: 5px; }
+    .t-nav-links { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 0.7rem; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+    .t-nav-links a:hover,
+    .t-nav-links a.active,
+    .t-nav-links a.t-nav-primary { color: var(--orange-2); }
+    .shell { position: relative; z-index: 1; max-width: 1320px; margin: 0 auto; padding: 34px 16px 76px; }
+    .hero {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      padding: 34px;
+      margin-bottom: 16px;
+      box-shadow: 0 22px 60px rgba(0,0,0,0.22);
+    }
+    .kicker { color: var(--orange-2); font-size: 0.76rem; font-weight: 950; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    h1 { max-width: 980px; font-size: clamp(2.25rem, 5vw, 4.8rem); line-height: 0.96; font-weight: 950; letter-spacing: 0; margin-bottom: 18px; }
+    .hero p { max-width: 850px; color: var(--muted); font-size: 1rem; }
+    .book { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 16px; align-items: start; }
+    .sidebar,
+    .chapter,
+    .summary-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+    }
+    .sidebar { position: sticky; top: 70px; padding: 14px; }
+    .sidebar-title { color: var(--orange-2); font-size: 0.72rem; font-weight: 950; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+    .sidebar a { display: block; color: var(--muted); font-size: 0.82rem; font-weight: 750; padding: 7px 8px; border-radius: 7px; }
+    .sidebar a:hover { color: var(--ink); background: rgba(255,255,255,0.06); }
+    .content { display: grid; gap: 16px; }
+    .quick-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .summary-card { padding: 15px; }
+    .summary-label { color: var(--muted); font-size: 0.68rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+    .summary-value { color: var(--orange-2); font-size: 1.45rem; font-weight: 950; line-height: 1.1; margin-top: 4px; }
+    .chapter { overflow: hidden; }
+    .chapter-head { padding: 18px 20px; border-bottom: 1px solid var(--line); background: rgba(4,16,38,0.42); }
+    .chapter h2 { font-size: 1.55rem; line-height: 1.15; letter-spacing: 0; margin-bottom: 6px; }
+    .chapter-sub { color: var(--muted); font-size: 0.88rem; }
+    .chapter-body { padding: 18px 20px 20px; display: grid; gap: 16px; }
+    .fact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .fact { border: 1px solid var(--line); border-radius: 8px; background: rgba(4,16,38,0.48); padding: 12px; }
+    .fact span { display: block; color: var(--muted); font-size: 0.66rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+    .fact strong { color: var(--ink); font-size: 0.9rem; }
+    .section-title { color: var(--orange-2); font-size: 0.74rem; font-weight: 950; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 7px; }
+    .copy { color: var(--muted); font-size: 0.92rem; }
+    .copy strong { color: var(--ink); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { display: inline-flex; align-items: center; min-height: 28px; padding: 0 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 0.72rem; font-weight: 900; }
+    .pill.good { color: var(--lime); border-color: rgba(102,240,111,0.38); background: rgba(102,240,111,0.1); }
+    .pill.warn { color: var(--orange-2); border-color: rgba(255,157,0,0.42); background: rgba(255,157,0,0.1); }
+    .pill.off { color: #ff9bad; border-color: rgba(255,99,120,0.38); background: rgba(255,99,120,0.1); }
+    .mini-table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .mini-table th,
+    .mini-table td { padding: 10px 11px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 0.82rem; }
+    .mini-table th { color: var(--orange-2); background: rgba(4,16,38,0.62); font-size: 0.66rem; font-weight: 950; letter-spacing: 0.08em; text-transform: uppercase; }
+    .mini-table tr:last-child td { border-bottom: 0; }
+    .chapter-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 13px; border-radius: 7px; background: linear-gradient(135deg, var(--orange), var(--orange-2)); color: #130a00; font-size: 0.78rem; font-weight: 950; }
+    .btn.secondary { color: var(--ink); background: rgba(255,255,255,0.07); border: 1px solid var(--line); }
+    .note { color: var(--muted); font-size: 0.8rem; line-height: 1.65; }
+    @media (max-width: 980px) {
+      .t-nav { align-items: flex-start; flex-direction: column; padding: 12px; }
+      .t-nav-links { width: 100%; overflow-x: auto; gap: 14px; padding-bottom: 2px; }
+      .book { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .quick-grid,
+      .fact-grid { grid-template-columns: 1fr; }
+      .hero { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="t-nav">
+    <a href="/" class="t-nav-logo">CCT <span class="sub">CryptoCasinoSorted</span></a>
+    <div class="t-nav-links">
+      <a href="/rewards/" class="active t-nav-primary">Reward Book</a>
+      <a href="/rewards-recommender.html">Rewards</a>
+      <a href="/rakeback-comparison.html">Rakeback</a>
+      <a href="/vip-gold-calculator.html">VIP Calc</a>
+      <a href="/bonus-calculator.html">Bonus Calc</a>
+      <a href="/blog/">Guides</a>
+    </div>
+  </nav>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="kicker">Crypto Casino Reward Programs</div>
+      <h1>The reward-program handbook for crypto casinos</h1>
+      <p>A GitBook-style reference for VIP tiers, rakeback, XP, Gold thresholds, lossback, reloads, host access and the catches we found in our research. The rule: if a threshold is not public, we say so.</p>
+    </section>
+
+    <section class="book">
+      <aside class="sidebar">
+        <div class="sidebar-title">Contents</div>
+        <a href="#overview">Overview</a>
+        <a href="#thrill">Thrill</a>
+        <a href="#duelbits">Duelbits</a>
+        <a href="#cloudbet">Cloudbet</a>
+        <a href="#stake">Stake</a>
+        <a href="#bcgame">BC.Game</a>
+        <a href="#rollbit">Rollbit</a>
+        <a href="#shuffle">Shuffle</a>
+        <a href="#yeet">Yeet</a>
+        <a href="#xtp">XTP</a>
+        <a href="#metaspins">Metaspins</a>
+        <a href="#gamdom">Gamdom</a>
+        <a href="#dicey">Dicey</a>
+        <a href="#roobet">Roobet</a>
+        <a href="#21com">21.com</a>
+        <a href="#duel">Duel</a>
+      </aside>
+
+      <div class="content">
+        <section class="quick-grid" id="overview" aria-label="Reward program summary">
+          <div class="summary-card"><div class="summary-label">Programs Covered</div><div class="summary-value">15</div></div>
+          <div class="summary-card"><div class="summary-label">Public Gold Thresholds</div><div class="summary-value">4</div></div>
+          <div class="summary-card"><div class="summary-label">Highest Published Rakeback</div><div class="summary-value">70%</div></div>
+          <div class="summary-card"><div class="summary-label">Best Tool</div><div class="summary-value">VIP Calc</div></div>
+        </section>
+
+        <section class="chapter" id="thrill">
+          <div class="chapter-head"><h2>Thrill Rewards</h2><p class="chapter-sub">Rewards-first challenger built around rakeback, lossback and XP races.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Rakeback</span><strong>Up to 70% of house edge</strong></div>
+              <div class="fact"><span>Lossback</span><strong>Up to 10% weekly</strong></div>
+              <div class="fact"><span>Threshold Visibility</span><strong>Partial public XP ranges</strong></div>
+            </div>
+            <p class="copy"><strong>How it works:</strong> Thrill puts the reward program ahead of the welcome bonus. Rakeback accrues on play, higher tiers unlock better rates, and the program also uses daily, weekly and monthly bonuses plus a $75,000 weekly XP race.</p>
+            <div>
+              <div class="section-title">Known Public Data</div>
+              <table class="mini-table"><tr><th>Item</th><th>What We Know</th></tr><tr><td>Headline rakeback</td><td>Up to 70%, calculated on house edge rather than total wager.</td></tr><tr><td>Early paid milestones</td><td>Published tier information puts early paid tiers around the 10,000-100,000 XP range.</td></tr><tr><td>VIP host</td><td>From Ignite tier in our dataset.</td></tr></table>
+            </div>
+            <p class="note">Caution: the 70% rate is top-tier territory, not the normal casual-player rate. The exact formula is less transparent than the headline.</p>
+            <div class="chapter-actions"><a class="btn" href="https://thrillcasino.io/td4msjnft" target="_blank" rel="nofollow sponsored noopener">Play at Thrill</a><a class="btn secondary" href="/reviews/thrill-review.html">Read Review</a></div>
+          </div>
+        </section>
+
+        <section class="chapter" id="duelbits">
+          <div class="chapter-head"><h2>Duelbits Ace's VIP Lounge</h2><p class="chapter-sub">One of the clearest cash-rakeback formulas, with an unpublished Gold Club entry line.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Published Rakeback</span><strong>25% combined house-edge rakeback</strong></div>
+              <div class="fact"><span>Ceiling Claim</span><strong>Up to 47.5% with milestones</strong></div>
+              <div class="fact"><span>Gold Threshold</span><strong>Not public</strong></div>
+            </div>
+            <p class="copy"><strong>How it works:</strong> Duelbits splits rewards into instant, daily, weekly and monthly Bits. The standard path starts at 5% and rises by level, while VIP Club benefits are handled separately.</p>
+            <table class="mini-table"><tr><th>Bucket</th><th>Rate</th></tr><tr><td>Instant Bits</td><td>10% of house edge</td></tr><tr><td>Daily Bits</td><td>5% of house edge</td></tr><tr><td>Weekly Bits</td><td>5% of house edge</td></tr><tr><td>Monthly Bits</td><td>5% of house edge</td></tr></table>
+            <p class="note">Caution: per-level thresholds and VIP Club Gold entry criteria are not public. That keeps it out of exact Gold-time modeling.</p>
+            <div class="chapter-actions"><a class="btn" href="https://duelbits.io/?a=sorted" target="_blank" rel="nofollow sponsored noopener">Play at Duelbits</a></div>
+          </div>
+        </section>
+
+        <section class="chapter" id="cloudbet">
+          <div class="chapter-head"><h2>Cloudbet Loyalty Club</h2><p class="chapter-sub">Older crypto sportsbook with public lifetime tiers and published rate tables.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Base Rakeback</span><strong>5% of house edge</strong></div>
+              <div class="fact"><span>Top Public Tier</span><strong>Blue Diamond at $1B+ turnover</strong></div>
+              <div class="fact"><span>Reset</span><strong>Permanent lifetime tier</strong></div>
+            </div>
+            <p class="copy"><strong>How it works:</strong> Cloudbet uses lifetime turnover tiers. Most tiers earn a 5% house-edge rakeback rate, Diamond+ can reach 10%, and temporary TURBO boosts can push the headline to 25% at the very top.</p>
+            <div class="pill-row"><span class="pill good">Fully published tier structure</span><span class="pill warn">Casino bets only for normal rakeback</span><span class="pill warn">12-hour claim windows</span></div>
+            <p class="note">Caution: the 25% headline requires Blue Diamond plus an active short TURBO window. Treat 5%-10% as the normal published range.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="stake">
+          <div class="chapter-head"><h2>Stake VIP Club</h2><p class="chapter-sub">The benchmark crypto casino VIP ladder, but upper-tier formulas are opaque.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Bronze</span><strong>10,000 points</strong></div>
+              <div class="fact"><span>Gold</span><strong>100,000 points</strong></div>
+              <div class="fact"><span>Sports Progress</span><strong>About 3x faster</strong></div>
+            </div>
+            <table class="mini-table"><tr><th>Tier</th><th>Approx. Wager</th></tr><tr><td>Bronze</td><td>$10,000</td></tr><tr><td>Silver</td><td>$50,000</td></tr><tr><td>Gold</td><td>$100,000</td></tr><tr><td>Platinum I</td><td>$250,000</td></tr><tr><td>Obsidian</td><td>$1B+ / invite-only</td></tr></table>
+            <p class="note">Caution: Stake's public VIP page is strong on structure, but not on exact upper-tier reward formulas. No verified public welcome match is used in our calculator data.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="bcgame">
+          <div class="chapter-head"><h2>BC.Game VIP</h2><p class="chapter-sub">XP-based program with public Gold threshold and sports XP multiplier.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Gold</span><strong>50,000 XP</strong></div>
+              <div class="fact"><span>Sports</span><strong>2x XP</strong></div>
+              <div class="fact"><span>Max Cashback</span><strong>Advertised up to 15%-24%</strong></div>
+            </div>
+            <table class="mini-table"><tr><th>Tier</th><th>Required XP</th></tr><tr><td>Bronze</td><td>1,000</td></tr><tr><td>Silver</td><td>10,000</td></tr><tr><td>Gold</td><td>50,000</td></tr><tr><td>Platinum</td><td>200,000</td></tr><tr><td>Diamond</td><td>500,000+</td></tr></table>
+            <p class="note">Caution: headline rewards are often paid in BCD token or depend on loss/cashback logic, so compare against clean cash carefully.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="rollbit">
+          <div class="chapter-head"><h2>Rollbit Rewards</h2><p class="chapter-sub">Simple monthly volume ladder mixed with RLB and Rollbot mechanics.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Entry</span><strong>5% from sign-up</strong></div>
+              <div class="fact"><span>Gold</span><strong>$50,000 monthly wager</strong></div>
+              <div class="fact"><span>Platinum</span><strong>$200,000 monthly wager</strong></div>
+            </div>
+            <table class="mini-table"><tr><th>Tier</th><th>Monthly Wager</th><th>Rate</th></tr><tr><td>Bronze</td><td>$0-$9,999</td><td>5%</td></tr><tr><td>Silver</td><td>$10,000+</td><td>10%</td></tr><tr><td>Gold</td><td>$50,000+</td><td>15%</td></tr><tr><td>Platinum</td><td>$200,000+</td><td>20%</td></tr></table>
+            <p class="note">Caution: monthly reset matters. A $1,000/day player is active, but still short of the $50,000 Gold monthly target.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="shuffle">
+          <div class="chapter-head"><h2>Shuffle VIP Program</h2><p class="chapter-sub">Deep lifetime XP ladder with the strongest public sports multiplier.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Gold</span><strong>100,000 XP</strong></div>
+              <div class="fact"><span>Sports/Esports</span><strong>3x XP</strong></div>
+              <div class="fact"><span>VIP Host</span><strong>Sapphire+</strong></div>
+            </div>
+            <table class="mini-table"><tr><th>Tier</th><th>XP Range</th></tr><tr><td>Wood</td><td>500</td></tr><tr><td>Bronze</td><td>1,000-5,000</td></tr><tr><td>Silver</td><td>10,000-50,000</td></tr><tr><td>Gold</td><td>100,000-300,000</td></tr><tr><td>Sapphire</td><td>2.3M-4.3M</td></tr></table>
+            <p class="note">Caution: instant rakeback is 5% of the house edge, not 5% of wager. Weekly/monthly formulas are proprietary.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="yeet">
+          <div class="chapter-head"><h2>Yeet Rewards</h2><p class="chapter-sub">Public tier names and rates, but private wager thresholds.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Gold Rate</span><strong>12%</strong></div>
+              <div class="fact"><span>Top Rate</span><strong>25% Chairman</strong></div>
+              <div class="fact"><span>Thresholds</span><strong>Not public</strong></div>
+            </div>
+            <table class="mini-table"><tr><th>Tier</th><th>Rakeback Rate</th></tr><tr><td>Copper</td><td>5%</td></tr><tr><td>Bronze</td><td>7%</td></tr><tr><td>Silver</td><td>10%</td></tr><tr><td>Gold</td><td>12%</td></tr><tr><td>Chairman</td><td>25%</td></tr></table>
+            <p class="note">Caution: good public rate table, weak public threshold table. It belongs in the reward book but not as an exact Gold-time estimate.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="xtp">
+          <div class="chapter-head"><h2>XTP Rewards</h2><p class="chapter-sub">Cashback-first program with tier transfer and account-level campaign mechanics.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Core Value</span><strong>20% ongoing cash cashback</strong></div>
+              <div class="fact"><span>Tier Transfer</span><strong>Yes</strong></div>
+              <div class="fact"><span>Gold Threshold</span><strong>Not public</strong></div>
+            </div>
+            <p class="copy"><strong>How it works:</strong> XTP is best treated as a cashback and tier-transfer offer, not a public XP ladder. The live researched offer includes ongoing cash cashback and welcome choices that can add a short-term rakeback boost, spins or a match.</p>
+            <p class="note">Caution: confirm the selected welcome choice and account eligibility before playing. Public threshold data is not enough for the Gold calculator yet.</p>
+            <div class="chapter-actions"><a class="btn" href="https://xtp.com/signup?utm_campaign=Durinsbane_New&utm_source=p2p_affiliate&utm_medium=referral" target="_blank" rel="nofollow sponsored noopener">Try XTP</a></div>
+          </div>
+        </section>
+
+        <section class="chapter" id="metaspins">
+          <div class="chapter-head"><h2>Metaspins Level Up</h2><p class="chapter-sub">1,000+ level grind ladder with published per-level rates and a risky multiplier mechanic.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Standard Rate</span><strong>3%-15%</strong></div>
+              <div class="fact"><span>Point Basis</span><strong>$1 wagered = 1 VIP point</strong></div>
+              <div class="fact"><span>Gamble Feature</span><strong>Up to 120%, with forfeiture risk</strong></div>
+            </div>
+            <p class="note">Caution: the 120% headline requires successful coin-flip gambles; a losing flip forfeits the accumulated claim. Level names and Gold-equivalent thresholds are not clean enough for exact modeling.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="gamdom">
+          <div class="chapter-head"><h2>Gamdom Rewards</h2><p class="chapter-sub">Three-layer cash rakeback, but formulas and thresholds are explicitly personalised.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid"><div class="fact"><span>Layers</span><strong>Instant, weekly, monthly</strong></div><div class="fact"><span>Ladder</span><strong>24 levels, 8 tiers</strong></div><div class="fact"><span>Formula</span><strong>Not public</strong></div></div>
+            <p class="note">Caution: affiliate claims around high maximum rates are not official enough for modeling. Treat Gamdom as a known rewards program with unpublished economics.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="dicey">
+          <div class="chapter-head"><h2>Dicey Rewards</h2><p class="chapter-sub">Magic Eden-backed 25-rank system with public tier names but unpublished XP thresholds.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid"><div class="fact"><span>Ranks</span><strong>Bronze I-V through Diamond I-V</strong></div><div class="fact"><span>Rakeboost</span><strong>+15% for 60 minutes</strong></div><div class="fact"><span>Gold Threshold</span><strong>Not public</strong></div></div>
+            <p class="note">Caution: useful public structure, not enough public XP math yet. Keep it out of exact time-to-Gold estimates until Dicey publishes thresholds.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="roobet">
+          <div class="chapter-head"><h2>Roobet VIP</h2><p class="chapter-sub">Invite-only VIP club with no public ladder.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid"><div class="fact"><span>Progress Bar</span><strong>None public</strong></div><div class="fact"><span>VIP Host</span><strong>Invite-only</strong></div><div class="fact"><span>Thresholds</span><strong>Not public</strong></div></div>
+            <p class="note">Caution: Roobet may reward loyal players, but the public path is opaque. It should not be used in a time-to-Gold calculator.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="21com">
+          <div class="chapter-head"><h2>21.com Elite Club</h2><p class="chapter-sub">Welcome-package-heavy casino with advertised VIP perks but unpublished entry levels.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid"><div class="fact"><span>Instant Rakeback</span><strong>Advertised</strong></div><div class="fact"><span>VIP Host</span><strong>Advertised</strong></div><div class="fact"><span>Entry Levels</span><strong>Not public</strong></div></div>
+            <p class="note">Caution: strong bonus headline, but 35x bonus wagering and region blocks matter. VIP threshold data is not public enough for modeling.</p>
+            <div class="chapter-actions"><a class="btn" href="https://prod.trk21.com/click?offer=FFHCFKXMZW2H&amp;uid=fN3MmG6q" target="_blank" rel="nofollow sponsored noopener">Try 21.com</a></div>
+          </div>
+        </section>
+
+        <section class="chapter" id="duel">
+          <div class="chapter-head"><h2>Duel Zero-Edge Model</h2><p class="chapter-sub">A special-case rewards model, not a standard VIP ladder.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid"><div class="fact"><span>Core Offer</span><strong>100% RTP on selected games</strong></div><div class="fact"><span>VIP Ladder</span><strong>Not normal</strong></div><div class="fact"><span>Calculator Fit</span><strong>Exclude</strong></div></div>
+            <p class="note">Caution: zero edge on selected games can be valuable, but it is not the same as casino-wide rakeback, Gold status or VIP progression.</p>
+          </div>
+        </section>
+
+        <p class="note">Sources include local operator data, the rewards source archive, and our June/July 2026 loyalty research. This page intentionally separates public thresholds from public tier names, because those are not the same thing.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
