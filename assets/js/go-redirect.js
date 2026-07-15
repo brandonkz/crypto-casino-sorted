@@ -74,7 +74,7 @@
     const title = document.getElementById('redirect-title');
     const copy = document.getElementById('redirect-copy');
     if (title) title.textContent = 'Opening ' + operator.name;
-    if (copy) copy.textContent = 'We are recording the click, then sending you to the casino.';
+    if (copy) copy.textContent = 'Loading the best deal for you.';
 
     let redirected = false;
     const go = () => {
