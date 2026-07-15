@@ -841,14 +841,14 @@
                   <td><span class="score-pill">#3</span></td>
                 </tr>
 
-                <tr data-incentive-opaque="true" data-incentive-note="Rates and thresholds are gated while logged out.">
+                <tr data-incentive-opaque="true" data-incentive-note="Dicey rates are available inside logged-in accounts; we are still researching the exact public comparison inputs.">
                   <td class="casino-cell"><strong>Dicey</strong><span>Best beta rewards test</span></td>
                   <td class="incentive-cell"></td>
                   <td>Frequent reward-loop casino for players comfortable with newer, gamified platforms.</td>
                   <td>No verified welcome package in the homepage table.</td>
                   <td>Public app data shows instant rakeback, daily bonus, free spins, rakeboost, weekly/monthly bonuses and rank-up bonuses.</td>
                   <td>15-minute rakeback claim cooldown; higher tiers add VIP host and concierge-style perks.</td>
-                  <td>Exact rates and XP thresholds are not public while logged out; no affiliate link is on file.</td>
+                  <td>Dicey rates are available when logged in; we are still researching the exact XP thresholds, rates and affiliate route for comparison.</td>
                   <td><span class="score-pill">#4</span></td>
                 </tr>
 
@@ -1223,7 +1223,7 @@
 
         if (isOpaque) {
           cell.classList.add('is-opaque');
-          cell.innerHTML = '<strong>Not public</strong><span>' + note + '</span>';
+          cell.innerHTML = '<strong>Still researching</strong><span>' + note + '</span>';
           if (rank) rank.textContent = 'N/A';
           tableBody.appendChild(row);
           return;

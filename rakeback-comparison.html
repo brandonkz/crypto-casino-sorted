@@ -418,10 +418,10 @@ h1 {
         </tr>
         <tr>
           <td>Dicey</td>
-          <td>Undisclosed</td>
-          <td>Undisclosed</td>
+          <td>Still researching</td>
+          <td>Still researching</td>
           <td>Cash + House Edge</td>
-          <td>15-minute rakeback claim cooldown; higher tiers add VIP host/concierge-style perks, but rates and XP thresholds are gated.</td>
+          <td>15-minute rakeback claim cooldown; higher tiers add VIP host/concierge-style perks. Rates are available when logged in, and we are still researching exact XP thresholds for comparison.</td>
           <td><a class="reward-page-link" href="https://dicey.com/casino" target="_blank" rel="nofollow noopener">Dicey official site</a></td>
         </tr>
         <tr>
@@ -498,7 +498,7 @@ h1 {
     let welcomeOffers = [];
 
     function pct(rate) {
-      if (rate === null || rate === undefined) return 'Not public';
+      if (rate === null || rate === undefined) return 'Still researching';
       return `${(rate * 100).toFixed(rate * 100 < 1 ? 2 : 1).replace(/\.0$/, '')}%`;
     }
 
@@ -523,7 +523,7 @@ h1 {
     }
 
     function rowFor(c) {
-        const max = c.rate_max === null ? 'Not public' : pct(c.rate_max);
+        const max = c.rate_max === null ? 'Still researching' : pct(c.rate_max);
         const structure = `${c.rakeback_form} · ${c.rakeback_basis.replace('_', ' ')}`;
         const access = c.tier_match ? 'Tier match available' : (c.entry_threshold ? `From $${c.entry_threshold} wagered` : 'Terms vary');
         const url = casinoLink(c);
