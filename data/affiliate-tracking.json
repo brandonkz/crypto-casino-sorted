@@ -1,0 +1,268 @@
+{
+  "version": "2026-07-15",
+  "gaMeasurementId": "G-0L3N9F43ED",
+  "defaultSubIdParam": "subid",
+  "subIdPrefix": "ccs",
+  "operators": [
+    {
+      "slug": "21com",
+      "name": "21.com",
+      "affiliateUrl": "https://prod.trk21.com/click?offer=FFHCFKXMZW2H&uid=fN3MmG6q",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "prod.trk21.com",
+        "www.prod.trk21.com",
+        "21.com",
+        "www.21.com"
+      ]
+    },
+    {
+      "slug": "7bit",
+      "name": "7bit",
+      "affiliateUrl": "https://7bitcasino.com",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "7bitcasino.com",
+        "www.7bitcasino.com"
+      ]
+    },
+    {
+      "slug": "bcgame",
+      "name": "BC.Game",
+      "affiliateUrl": "https://bc.game/i-4bau8curc-n/",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "bc.game",
+        "www.bc.game"
+      ]
+    },
+    {
+      "slug": "betfury",
+      "name": "BetFury",
+      "affiliateUrl": "https://betfury.com",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "betfury.com",
+        "www.betfury.com"
+      ]
+    },
+    {
+      "slug": "bitsler",
+      "name": "Bitsler",
+      "affiliateUrl": "https://bitsler.com/?ref=cryptosorted",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "bitsler.com",
+        "www.bitsler.com"
+      ]
+    },
+    {
+      "slug": "bitstarz",
+      "name": "BitStarz",
+      "affiliateUrl": "https://bzstarz1.com/byfqnneyj",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "bzstarz1.com",
+        "www.bzstarz1.com",
+        "bitstarz.com",
+        "www.bitstarz.com"
+      ]
+    },
+    {
+      "slug": "cloudbet",
+      "name": "Cloudbet",
+      "affiliateUrl": "https://cldbt.cloud/go/en/auth/sign-up?af_token=810fa4bbfb1f586ef13289043992558c&aftm_campaign=cryptocasino",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "cldbt.cloud",
+        "www.cldbt.cloud",
+        "cloudbet.com",
+        "www.cloudbet.com"
+      ]
+    },
+    {
+      "slug": "coindepo",
+      "name": "CoinDepo",
+      "affiliateUrl": "https://coindepo.com",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "coindepo.com",
+        "www.coindepo.com"
+      ]
+    },
+    {
+      "slug": "duel",
+      "name": "Duel",
+      "affiliateUrl": "https://duel.com/r/durinsbane",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "duel.com",
+        "www.duel.com"
+      ]
+    },
+    {
+      "slug": "duelbits",
+      "name": "Duelbits",
+      "affiliateUrl": "https://duelbits.io/?a=sorted",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "duelbits.io",
+        "www.duelbits.io",
+        "duelbits.com",
+        "www.duelbits.com"
+      ]
+    },
+    {
+      "slug": "fortunejack",
+      "name": "FortuneJack",
+      "affiliateUrl": "https://fortunejack.com",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "fortunejack.com",
+        "www.fortunejack.com"
+      ]
+    },
+    {
+      "slug": "ignition",
+      "name": "Ignition",
+      "affiliateUrl": "https://ignitioncasino.eu",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "ignitioncasino.eu",
+        "www.ignitioncasino.eu"
+      ]
+    },
+    {
+      "slug": "jackbit",
+      "name": "Jackbit",
+      "affiliateUrl": "https://jackbit.com",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "jackbit.com",
+        "www.jackbit.com"
+      ]
+    },
+    {
+      "slug": "mbit",
+      "name": "mBit Casino",
+      "affiliateUrl": "https://mbitcasino.com",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "mbitcasino.com",
+        "www.mbitcasino.com"
+      ]
+    },
+    {
+      "slug": "rollbit",
+      "name": "Rollbit",
+      "affiliateUrl": "https://rollbit.com/referral/brandonkz",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "rollbit.com",
+        "www.rollbit.com"
+      ]
+    },
+    {
+      "slug": "roobet",
+      "name": "Roobet",
+      "affiliateUrl": "https://roobet.com/?ref=brandonkz",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "roobet.com",
+        "www.roobet.com"
+      ]
+    },
+    {
+      "slug": "shuffle",
+      "name": "Shuffle",
+      "affiliateUrl": "https://shuffle.com?r=cl46Ld1iQb",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "shuffle.com",
+        "www.shuffle.com"
+      ]
+    },
+    {
+      "slug": "stake",
+      "name": "Stake",
+      "affiliateUrl": "https://stake.com/?c=OYTAREab",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "stake.com",
+        "www.stake.com"
+      ]
+    },
+    {
+      "slug": "thrill",
+      "name": "Thrill",
+      "affiliateUrl": "https://thrillcasino.io/td4msjnft",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "thrillcasino.io",
+        "www.thrillcasino.io",
+        "thrill.com",
+        "www.thrill.com"
+      ]
+    },
+    {
+      "slug": "thunderpick",
+      "name": "Thunderpick",
+      "affiliateUrl": "https://thunderpick.io/?ref=cryptocasinosorted",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "thunderpick.io",
+        "www.thunderpick.io"
+      ]
+    },
+    {
+      "slug": "trustdice",
+      "name": "TrustDice",
+      "affiliateUrl": "https://trustdice.win/?ref=u_cryptocasinosorted",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "trustdice.win",
+        "www.trustdice.win"
+      ]
+    },
+    {
+      "slug": "wild-io",
+      "name": "Wild.io",
+      "affiliateUrl": "https://wild.io",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "wild.io",
+        "www.wild.io"
+      ]
+    },
+    {
+      "slug": "wolf-bet",
+      "name": "Wolf.bet",
+      "affiliateUrl": "https://wolf.bet",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "wolf.bet",
+        "www.wolf.bet"
+      ]
+    },
+    {
+      "slug": "xtp",
+      "name": "XTP",
+      "affiliateUrl": "https://xtp.com/signup?utm_campaign=Durinsbane_New&utm_source=p2p_affiliate&utm_medium=referral",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "xtp.com",
+        "www.xtp.com"
+      ]
+    },
+    {
+      "slug": "yeet",
+      "name": "Yeet",
+      "affiliateUrl": "https://yeet.com/register?aff=betsorted",
+      "subIdParam": "subid",
+      "allowedHosts": [
+        "yeet.com",
+        "www.yeet.com"
+      ]
+    }
+  ]
+}

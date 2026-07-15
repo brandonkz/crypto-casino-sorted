@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Affiliate Analytics | CryptoCasinoSorted</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L3N9F43ED"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0L3N9F43ED');</script>
+  <style>
+    :root{color-scheme:dark;--bg:#070b12;--panel:#0d1420;--line:#1c2b3e;--text:#f6f8fb;--muted:#a9b3c4;--green:#38e6a3;--yellow:#ffd166}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}main{width:min(1180px,calc(100% - 32px));margin:32px auto 80px}h1{font-size:36px;margin:0 0 8px}h2{font-size:20px;margin:0 0 14px}.muted{color:var(--muted);line-height:1.55}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0}.card{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:18px}.metric{font-size:32px;font-weight:900;color:var(--green)}table{width:100%;border-collapse:collapse;margin-top:12px;border:1px solid var(--line)}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}th{color:#dfe7f2;background:#101a29}code{color:var(--yellow)}a{color:var(--green);font-weight:800}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--muted);font-size:12px}@media(max-width:850px){.grid{grid-template-columns:1fr}table{display:block;overflow-x:auto}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Affiliate Analytics</h1>
+  <p class="muted">This page documents the click-tracking layer now running on CryptoCasinoSorted. Aggregated numbers live in GA4; this page also shows recent clicks stored in this browser for quick QA.</p>
+  <section class="grid">
+    <div class="card"><div class="metric" id="operator-count">-</div><div class="muted">tracked casino destinations</div></div>
+    <div class="card"><div class="metric">affiliate_click</div><div class="muted">primary on-site click event</div></div>
+    <div class="card"><div class="metric">affiliate_redirect</div><div class="muted">/go redirect confirmation event</div></div>
+  </section>
+  <section class="card">
+    <h2>What GA4 Receives</h2>
+    <p class="muted">Use GA4 Explore with event name <code>affiliate_click</code> or <code>affiliate_redirect</code>. Useful dimensions: <code>casino</code>, <code>operator</code>, <code>placement</code>, <code>page_path</code>, <code>live_rank</code>, <code>reward_estimate</code>, <code>wager_profile</code>, <code>monthly_wager</code>, <code>click_subid</code>, <code>link_domain</code>.</p>
+  </section>
+  <section class="card">
+    <h2>Tracked Operators</h2>
+    <table id="operator-table"><thead><tr><th>Casino</th><th>/go link</th><th>Destination host</th><th>Sub ID param</th></tr></thead><tbody></tbody></table>
+  </section>
+  <section class="card">
+    <h2>Recent Clicks In This Browser</h2>
+    <p class="muted">This is QA-only local browser history, not the sitewide report. Sitewide numbers are in GA4.</p>
+    <table id="recent-table"><thead><tr><th>Time</th><th>Casino</th><th>Placement</th><th>Page</th><th>Rank / Estimate</th></tr></thead><tbody></tbody></table>
+  </section>
+</main>
+<script>
+(function(){
+  const tbody = document.querySelector('#operator-table tbody');
+  fetch('/data/affiliate-tracking.json',{cache:'no-store'}).then(r=>r.json()).then(config=>{
+    document.getElementById('operator-count').textContent = config.operators.length;
+    tbody.innerHTML = config.operators.map(op => {
+      let host = '';
+      try { host = new URL(op.affiliateUrl).hostname; } catch(e) {}
+      return '<tr><td><strong>'+op.name+'</strong><br><span class="pill">'+op.slug+'</span></td><td><a href="/go/'+op.slug+'/">/go/'+op.slug+'/</a></td><td>'+host+'</td><td><code>'+(op.subIdParam || config.defaultSubIdParam || 'subid')+'</code></td></tr>';
+    }).join('');
+  });
+  const recent = JSON.parse(localStorage.getItem('ccs_affiliate_clicks') || '[]');
+  const recentBody = document.querySelector('#recent-table tbody');
+  recentBody.innerHTML = recent.length ? recent.map(click => '<tr><td>'+click.clicked_at+'</td><td>'+click.casino+'</td><td>'+click.placement+'</td><td>'+click.page_path+'</td><td>'+(click.live_rank || '-')+'<br>'+(click.reward_estimate || '-')+'</td></tr>').join('') : '<tr><td colspan="5" class="muted">No clicks recorded in this browser yet.</td></tr>';
+})();
+</script>
+<script src="/assets/js/affiliate-tracking.js" defer></script>
+</body>
+</html>
