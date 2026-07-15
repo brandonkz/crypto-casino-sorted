@@ -304,7 +304,16 @@
       },
       { casino: 'XTP', target: 'Gold', threshold: null, basis: 'Tier Transfer / internal XP', reset: 'Not public', note: 'Gold exists in the positioning, but public thresholds are not available.' },
       { casino: 'Duelbits', target: 'Gold VIP Club', threshold: null, basis: 'VIP Club / milestones', reset: 'Not public', note: 'Duelbits publishes a 31-level lounge, but Gold VIP Club entry criteria are not public.' },
-      { casino: 'Yeet', target: 'Gold', threshold: null, basis: 'Wager activity', reset: 'Tier public, threshold not public', note: 'Yeet publishes Copper through Chairman and Gold at 12% rakeback, but not the wager needed to reach it.' },
+      {
+        casino: 'Yeet',
+        target: 'Gold I',
+        threshold: 50000,
+        basis: 'Wager volume',
+        casinoMultiplier: 1,
+        sportsMultiplier: 1,
+        reset: 'Public wager-volume ladder',
+        note: 'Yeet live rewards API shows Gold I at $50k wagered; VIP tier match may shortcut status for players with $1M+ wagered elsewhere.'
+      },
       { casino: 'Dicey', target: 'Gold I', threshold: null, basis: 'XP / activity', reset: 'Tier public, threshold not public', note: 'Dicey public app data shows Bronze/Silver/Gold/Sapphire/Emerald/Diamond/Holo-style tiers, but not the XP thresholds needed to model Gold.' },
       { casino: 'Roobet', target: 'VIP / Gold equivalent', threshold: null, basis: 'Invite only', reset: 'Invite only', note: 'Roobet does not publish a public Gold ladder.' },
       { casino: 'Gamdom', target: 'Gold equivalent', threshold: null, basis: 'Personalised rewards', reset: 'Not public', note: 'Gamdom says rewards are personalised and does not publish thresholds.' },
