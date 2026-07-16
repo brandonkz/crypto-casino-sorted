@@ -1,0 +1,93 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #06152f;
+  --panel: rgba(9, 30, 67, 0.92);
+  --panel-2: rgba(14, 43, 92, 0.94);
+  --text: #f7fbff;
+  --muted: #9fb1d1;
+  --line: rgba(255, 255, 255, 0.14);
+  --orange: #ff9d00;
+  --green: #66f06f;
+  --red: #ff6378;
+}
+body {
+  margin: 0;
+  background:
+    linear-gradient(135deg, rgba(255, 106, 0, 0.16) 0 15%, transparent 15% 100%),
+    linear-gradient(215deg, rgba(41, 211, 255, 0.12) 0 18%, transparent 18% 100%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+a { color: inherit; }
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 18px;
+  background: rgba(4, 16, 38, 0.95);
+  border-bottom: 1px solid var(--line);
+}
+.brand { color: var(--orange); font-weight: 950; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
+.nav-links { display: flex; gap: 16px; align-items: center; color: var(--muted); font-size: 0.74rem; font-weight: 850; letter-spacing: 0.07em; text-transform: uppercase; overflow-x: auto; }
+.nav-links a { text-decoration: none; white-space: nowrap; }
+.nav-links a:hover, .nav-links a.active { color: var(--orange); }
+.page { max-width: 1160px; margin: 0 auto; padding: 44px 16px 72px; }
+.hero, .panel, .card, .note {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.2);
+}
+.hero { padding: 34px; margin-bottom: 18px; }
+.kicker { color: var(--orange); font-size: 0.78rem; font-weight: 950; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+h1 { max-width: 900px; margin: 0 0 18px; font-size: clamp(2.1rem, 5.6vw, 4.8rem); line-height: 0.98; letter-spacing: 0; }
+.lede { max-width: 760px; color: var(--muted); font-size: 1.04rem; margin: 0 0 22px; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 157, 0, 0.65);
+  background: linear-gradient(135deg, #ff6a00, var(--orange));
+  color: #06152f;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.btn.secondary { background: rgba(255,255,255,0.06); color: var(--text); }
+.panel { padding: 24px; margin: 18px 0; }
+.panel h2 { margin: 0 0 14px; font-size: 1.35rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.card { padding: 18px; box-shadow: none; background: var(--panel-2); }
+.card h3 { margin: 0 0 8px; color: var(--orange); font-size: 1rem; }
+.card p { margin: 0; color: var(--muted); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+table { width: 100%; min-width: 760px; border-collapse: collapse; background: rgba(6, 21, 47, 0.68); }
+th, td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+th { color: var(--orange); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; }
+td { color: var(--muted); font-size: 0.9rem; }
+td strong { color: var(--text); }
+tr:last-child td { border-bottom: 0; }
+.pill { display: inline-block; border: 1px solid rgba(102,240,111,0.32); color: var(--green); border-radius: 999px; padding: 4px 8px; font-size: 0.72rem; font-weight: 850; white-space: nowrap; text-decoration: none; }
+.pill.warn { color: var(--orange); border-color: rgba(255,157,0,0.38); }
+.pill.red { color: var(--red); border-color: rgba(255,99,120,0.38); }
+.note { padding: 16px; color: var(--muted); box-shadow: none; }
+.note strong { color: var(--text); }
+.footer { max-width: 1160px; margin: 0 auto; padding: 24px 16px 44px; color: var(--muted); font-size: 0.86rem; border-top: 1px solid var(--line); }
+.footer a { color: var(--orange); text-decoration: none; margin-right: 12px; }
+@media (max-width: 720px) {
+  .nav { align-items: flex-start; flex-direction: column; padding: 12px 14px; }
+  .hero, .panel { padding: 20px; }
+}
