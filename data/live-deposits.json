@@ -1,812 +1,812 @@
 {
-  "lastUpdate": 1784084419103,
+  "lastUpdate": 1784170816149,
   "timeRange": "24 hours",
   "blockRange": {
-    "start": 25528022,
-    "end": 25535222
+    "start": 25535196,
+    "end": 25542396
   },
-  "totalDeposits": 1508,
-  "totalVolumeETH": "199.6157",
+  "totalDeposits": 1456,
+  "totalVolumeETH": "253.3894",
   "deposits": [
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0567",
+      "amount": "0.1029",
       "token": "ETH",
-      "timestamp": 1784084351000,
-      "block": 25535217
+      "timestamp": 1784170715000,
+      "block": 25542389
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1061",
+      "amount": "0.3010",
       "token": "ETH",
-      "timestamp": 1784084279000,
-      "block": 25535211
+      "timestamp": 1784170655000,
+      "block": 25542384
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0248",
+      "amount": "0.0316",
       "token": "ETH",
-      "timestamp": 1784084135000,
-      "block": 25535199
+      "timestamp": 1784170559000,
+      "block": 25542376
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0040",
+      "token": "ETH",
+      "timestamp": 1784170547000,
+      "block": 25542375
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0176",
+      "token": "ETH",
+      "timestamp": 1784170415000,
+      "block": 25542364
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0077",
+      "token": "ETH",
+      "timestamp": 1784170367000,
+      "block": 25542360
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0241",
+      "token": "ETH",
+      "timestamp": 1784170331000,
+      "block": 25542357
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0466",
+      "token": "ETH",
+      "timestamp": 1784170331000,
+      "block": 25542357
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.4894",
+      "token": "ETH",
+      "timestamp": 1784170271000,
+      "block": 25542352
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0387",
+      "token": "ETH",
+      "timestamp": 1784170187000,
+      "block": 25542345
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0102",
+      "token": "ETH",
+      "timestamp": 1784170115000,
+      "block": 25542339
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0008",
+      "token": "ETH",
+      "timestamp": 1784170019000,
+      "block": 25542331
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0300",
+      "token": "ETH",
+      "timestamp": 1784170007000,
+      "block": 25542330
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.9696",
+      "token": "ETH",
+      "timestamp": 1784169983000,
+      "block": 25542328
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0233",
+      "token": "ETH",
+      "timestamp": 1784169935000,
+      "block": 25542324
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0006",
+      "token": "ETH",
+      "timestamp": 1784169755000,
+      "block": 25542309
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.3510",
+      "token": "ETH",
+      "timestamp": 1784169755000,
+      "block": 25542309
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.2190",
+      "token": "ETH",
+      "timestamp": 1784169599000,
+      "block": 25542296
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.2285",
+      "amount": "1.9480",
       "token": "ETH",
-      "timestamp": 1784084111000,
-      "block": 25535197
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0283",
-      "token": "ETH",
-      "timestamp": 1784083907000,
-      "block": 25535180
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1051",
-      "token": "ETH",
-      "timestamp": 1784083871000,
-      "block": 25535177
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0770",
-      "token": "ETH",
-      "timestamp": 1784083763000,
-      "block": 25535168
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0045",
-      "token": "ETH",
-      "timestamp": 1784083715000,
-      "block": 25535164
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0360",
-      "token": "ETH",
-      "timestamp": 1784083547000,
-      "block": 25535150
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0918",
-      "token": "ETH",
-      "timestamp": 1784083511000,
-      "block": 25535147
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.2420",
-      "token": "ETH",
-      "timestamp": 1784083103000,
-      "block": 25535113
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.2229",
-      "token": "ETH",
-      "timestamp": 1784083031000,
-      "block": 25535107
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0306",
-      "token": "ETH",
-      "timestamp": 1784083031000,
-      "block": 25535107
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0129",
-      "token": "ETH",
-      "timestamp": 1784083031000,
-      "block": 25535107
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0212",
-      "token": "ETH",
-      "timestamp": 1784083031000,
-      "block": 25535107
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0973",
-      "token": "ETH",
-      "timestamp": 1784082959000,
-      "block": 25535101
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1500",
-      "token": "ETH",
-      "timestamp": 1784082851000,
-      "block": 25535092
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0875",
-      "token": "ETH",
-      "timestamp": 1784082731000,
-      "block": 25535082
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.1675",
-      "token": "ETH",
-      "timestamp": 1784082719000,
-      "block": 25535081
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.4126",
-      "token": "ETH",
-      "timestamp": 1784082719000,
-      "block": 25535081
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.1288",
-      "token": "ETH",
-      "timestamp": 1784082719000,
-      "block": 25535081
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0032",
-      "token": "ETH",
-      "timestamp": 1784082719000,
-      "block": 25535081
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0916",
-      "token": "ETH",
-      "timestamp": 1784082719000,
-      "block": 25535081
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0723",
-      "token": "ETH",
-      "timestamp": 1784082719000,
-      "block": 25535081
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.1681",
-      "token": "ETH",
-      "timestamp": 1784082719000,
-      "block": 25535081
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0117",
-      "token": "ETH",
-      "timestamp": 1784082719000,
-      "block": 25535081
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0934",
-      "token": "ETH",
-      "timestamp": 1784082719000,
-      "block": 25535081
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0650",
-      "token": "ETH",
-      "timestamp": 1784082575000,
-      "block": 25535069
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0600",
-      "token": "ETH",
-      "timestamp": 1784082563000,
-      "block": 25535068
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0141",
-      "token": "ETH",
-      "timestamp": 1784082359000,
-      "block": 25535051
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.3474",
-      "token": "ETH",
-      "timestamp": 1784082311000,
-      "block": 25535047
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0706",
-      "token": "ETH",
-      "timestamp": 1784082311000,
-      "block": 25535047
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0555",
-      "token": "ETH",
-      "timestamp": 1784082311000,
-      "block": 25535047
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0168",
-      "token": "ETH",
-      "timestamp": 1784082311000,
-      "block": 25535047
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0311",
-      "token": "ETH",
-      "timestamp": 1784082311000,
-      "block": 25535047
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0004",
-      "token": "ETH",
-      "timestamp": 1784082143000,
-      "block": 25535033
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0535",
-      "token": "ETH",
-      "timestamp": 1784082047000,
-      "block": 25535025
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0893",
-      "token": "ETH",
-      "timestamp": 1784081939000,
-      "block": 25535016
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0568",
-      "token": "ETH",
-      "timestamp": 1784081831000,
-      "block": 25535007
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0314",
-      "token": "ETH",
-      "timestamp": 1784081711000,
-      "block": 25534997
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0709",
-      "token": "ETH",
-      "timestamp": 1784081711000,
-      "block": 25534997
+      "timestamp": 1784169503000,
+      "block": 25542288
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
       "amount": "0.0005",
       "token": "ETH",
-      "timestamp": 1784081711000,
-      "block": 25534997
+      "timestamp": 1784169359000,
+      "block": 25542276
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0276",
+      "amount": "0.2146",
       "token": "ETH",
-      "timestamp": 1784081663000,
-      "block": 25534994
+      "timestamp": 1784169287000,
+      "block": 25542270
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0722",
+      "amount": "0.0255",
       "token": "ETH",
-      "timestamp": 1784081579000,
-      "block": 25534987
+      "timestamp": 1784169191000,
+      "block": 25542262
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0092",
+      "amount": "0.3000",
       "token": "ETH",
-      "timestamp": 1784081459000,
-      "block": 25534977
+      "timestamp": 1784168987000,
+      "block": 25542245
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0506",
+      "amount": "0.2352",
       "token": "ETH",
-      "timestamp": 1784081435000,
-      "block": 25534975
+      "timestamp": 1784168975000,
+      "block": 25542244
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0428",
+      "amount": "0.0521",
       "token": "ETH",
-      "timestamp": 1784081399000,
-      "block": 25534972
+      "timestamp": 1784168879000,
+      "block": 25542236
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0003",
+      "amount": "0.1057",
       "token": "ETH",
-      "timestamp": 1784081387000,
-      "block": 25534971
+      "timestamp": 1784168843000,
+      "block": 25542233
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1125",
+      "amount": "0.0533",
       "token": "ETH",
-      "timestamp": 1784081339000,
-      "block": 25534967
+      "timestamp": 1784168819000,
+      "block": 25542231
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0003",
+      "amount": "0.0005",
       "token": "ETH",
-      "timestamp": 1784081339000,
-      "block": 25534967
+      "timestamp": 1784168783000,
+      "block": 25542228
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0554",
+      "amount": "0.2500",
       "token": "ETH",
-      "timestamp": 1784081279000,
-      "block": 25534963
+      "timestamp": 1784168699000,
+      "block": 25542221
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.4333",
+      "token": "ETH",
+      "timestamp": 1784168675000,
+      "block": 25542219
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0040",
+      "token": "ETH",
+      "timestamp": 1784168675000,
+      "block": 25542219
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0113",
+      "amount": "0.0505",
       "token": "ETH",
-      "timestamp": 1784081231000,
-      "block": 25534959
+      "timestamp": 1784168471000,
+      "block": 25542202
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0172",
+      "amount": "0.0076",
       "token": "ETH",
-      "timestamp": 1784081159000,
-      "block": 25534953
+      "timestamp": 1784168459000,
+      "block": 25542201
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0540",
+      "amount": "0.1116",
       "token": "ETH",
-      "timestamp": 1784081111000,
-      "block": 25534949
+      "timestamp": 1784168435000,
+      "block": 25542199
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0627",
+      "amount": "0.0999",
       "token": "ETH",
-      "timestamp": 1784080991000,
-      "block": 25534939
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1439",
-      "token": "ETH",
-      "timestamp": 1784080967000,
-      "block": 25534937
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0267",
-      "token": "ETH",
-      "timestamp": 1784080835000,
-      "block": 25534926
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0003",
-      "token": "ETH",
-      "timestamp": 1784080655000,
-      "block": 25534911
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0003",
-      "token": "ETH",
-      "timestamp": 1784080571000,
-      "block": 25534904
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1124",
-      "token": "ETH",
-      "timestamp": 1784080451000,
-      "block": 25534894
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1780",
-      "token": "ETH",
-      "timestamp": 1784080427000,
-      "block": 25534892
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0003",
-      "token": "ETH",
-      "timestamp": 1784080307000,
-      "block": 25534882
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1384",
-      "token": "ETH",
-      "timestamp": 1784080163000,
-      "block": 25534870
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0544",
-      "token": "ETH",
-      "timestamp": 1784080151000,
-      "block": 25534869
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0004",
-      "token": "ETH",
-      "timestamp": 1784080127000,
-      "block": 25534867
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0313",
-      "token": "ETH",
-      "timestamp": 1784080091000,
-      "block": 25534864
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0203",
-      "token": "ETH",
-      "timestamp": 1784079983000,
-      "block": 25534855
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0399",
-      "token": "ETH",
-      "timestamp": 1784079923000,
-      "block": 25534850
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0529",
-      "token": "ETH",
-      "timestamp": 1784079875000,
-      "block": 25534846
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0177",
-      "token": "ETH",
-      "timestamp": 1784079875000,
-      "block": 25534846
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0531",
-      "token": "ETH",
-      "timestamp": 1784079731000,
-      "block": 25534834
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0537",
-      "token": "ETH",
-      "timestamp": 1784079731000,
-      "block": 25534834
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.2776",
-      "token": "ETH",
-      "timestamp": 1784079599000,
-      "block": 25534823
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0004",
-      "token": "ETH",
-      "timestamp": 1784079551000,
-      "block": 25534819
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0350",
-      "token": "ETH",
-      "timestamp": 1784079419000,
-      "block": 25534808
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0400",
-      "token": "ETH",
-      "timestamp": 1784079359000,
-      "block": 25534803
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1849",
-      "token": "ETH",
-      "timestamp": 1784079227000,
-      "block": 25534792
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0160",
-      "token": "ETH",
-      "timestamp": 1784079179000,
-      "block": 25534788
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1120",
-      "token": "ETH",
-      "timestamp": 1784079083000,
-      "block": 25534780
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0111",
-      "token": "ETH",
-      "timestamp": 1784079023000,
-      "block": 25534775
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0500",
-      "token": "ETH",
-      "timestamp": 1784078939000,
-      "block": 25534768
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0506",
-      "token": "ETH",
-      "timestamp": 1784078867000,
-      "block": 25534762
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0217",
-      "token": "ETH",
-      "timestamp": 1784078771000,
-      "block": 25534754
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0837",
-      "token": "ETH",
-      "timestamp": 1784078747000,
-      "block": 25534752
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0230",
-      "token": "ETH",
-      "timestamp": 1784078723000,
-      "block": 25534750
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0175",
-      "token": "ETH",
-      "timestamp": 1784078675000,
-      "block": 25534746
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0495",
-      "token": "ETH",
-      "timestamp": 1784078663000,
-      "block": 25534745
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.3950",
-      "token": "ETH",
-      "timestamp": 1784078639000,
-      "block": 25534743
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0529",
-      "token": "ETH",
-      "timestamp": 1784078567000,
-      "block": 25534737
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0487",
-      "token": "ETH",
-      "timestamp": 1784078567000,
-      "block": 25534737
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0200",
-      "token": "ETH",
-      "timestamp": 1784078471000,
-      "block": 25534729
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0222",
-      "token": "ETH",
-      "timestamp": 1784078279000,
-      "block": 25534714
-    },
-    {
-      "casino": "Rollbit",
-      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1868",
-      "token": "ETH",
-      "timestamp": 1784078171000,
-      "block": 25534705
+      "timestamp": 1784168387000,
+      "block": 25542195
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
       "amount": "0.0187",
       "token": "ETH",
-      "timestamp": 1784078111000,
-      "block": 25534700
+      "timestamp": 1784168375000,
+      "block": 25542194
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0200",
+      "amount": "0.0241",
       "token": "ETH",
-      "timestamp": 1784078027000,
-      "block": 25534693
+      "timestamp": 1784168375000,
+      "block": 25542194
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0630",
+      "amount": "0.1482",
       "token": "ETH",
-      "timestamp": 1784077883000,
-      "block": 25534681
+      "timestamp": 1784168327000,
+      "block": 25542190
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0256",
+      "amount": "0.3872",
       "token": "ETH",
-      "timestamp": 1784077871000,
-      "block": 25534680
+      "timestamp": 1784168315000,
+      "block": 25542189
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.0693",
+      "amount": "0.0484",
       "token": "ETH",
-      "timestamp": 1784077715000,
-      "block": 25534667
+      "timestamp": 1784168279000,
+      "block": 25542186
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.2175",
+      "token": "ETH",
+      "timestamp": 1784168279000,
+      "block": 25542186
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.4450",
+      "token": "ETH",
+      "timestamp": 1784168027000,
+      "block": 25542165
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0525",
+      "token": "ETH",
+      "timestamp": 1784168027000,
+      "block": 25542165
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0109",
+      "token": "ETH",
+      "timestamp": 1784167895000,
+      "block": 25542154
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.3500",
+      "token": "ETH",
+      "timestamp": 1784167739000,
+      "block": 25542141
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0345",
+      "token": "ETH",
+      "timestamp": 1784167727000,
+      "block": 25542140
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.7087",
+      "token": "ETH",
+      "timestamp": 1784167607000,
+      "block": 25542130
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0244",
+      "token": "ETH",
+      "timestamp": 1784167607000,
+      "block": 25542130
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0314",
+      "token": "ETH",
+      "timestamp": 1784167547000,
+      "block": 25542125
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0484",
+      "token": "ETH",
+      "timestamp": 1784167487000,
+      "block": 25542120
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
       "amount": "0.0005",
       "token": "ETH",
-      "timestamp": 1784077679000,
-      "block": 25534664
+      "timestamp": 1784167475000,
+      "block": 25542119
     },
     {
       "casino": "Rollbit",
       "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "amount": "0.1034",
+      "amount": "0.2079",
       "token": "ETH",
-      "timestamp": 1784077643000,
-      "block": 25534661
+      "timestamp": 1784167475000,
+      "block": 25542119
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0241",
+      "token": "ETH",
+      "timestamp": 1784167403000,
+      "block": 25542113
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0173",
+      "token": "ETH",
+      "timestamp": 1784167367000,
+      "block": 25542110
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0312",
+      "token": "ETH",
+      "timestamp": 1784167223000,
+      "block": 25542098
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.2230",
+      "token": "ETH",
+      "timestamp": 1784167211000,
+      "block": 25542097
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0383",
+      "token": "ETH",
+      "timestamp": 1784167067000,
+      "block": 25542086
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "2.6439",
+      "token": "ETH",
+      "timestamp": 1784167043000,
+      "block": 25542084
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0484",
+      "token": "ETH",
+      "timestamp": 1784167007000,
+      "block": 25542081
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0074",
+      "token": "ETH",
+      "timestamp": 1784166983000,
+      "block": 25542079
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.7895",
+      "token": "ETH",
+      "timestamp": 1784166947000,
+      "block": 25542076
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0007",
+      "token": "ETH",
+      "timestamp": 1784166935000,
+      "block": 25542075
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0007",
+      "token": "ETH",
+      "timestamp": 1784166935000,
+      "block": 25542075
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0571",
+      "token": "ETH",
+      "timestamp": 1784166911000,
+      "block": 25542073
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0517",
+      "token": "ETH",
+      "timestamp": 1784166839000,
+      "block": 25542067
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.7800",
+      "token": "ETH",
+      "timestamp": 1784166791000,
+      "block": 25542063
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0745",
+      "token": "ETH",
+      "timestamp": 1784166779000,
+      "block": 25542062
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.2665",
+      "token": "ETH",
+      "timestamp": 1784166731000,
+      "block": 25542058
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0005",
+      "token": "ETH",
+      "timestamp": 1784166635000,
+      "block": 25542050
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0999",
+      "token": "ETH",
+      "timestamp": 1784166575000,
+      "block": 25542045
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0060",
+      "token": "ETH",
+      "timestamp": 1784166551000,
+      "block": 25542043
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0242",
+      "token": "ETH",
+      "timestamp": 1784166491000,
+      "block": 25542038
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0259",
+      "token": "ETH",
+      "timestamp": 1784166491000,
+      "block": 25542038
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.3711",
+      "token": "ETH",
+      "timestamp": 1784166431000,
+      "block": 25542033
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0173",
+      "token": "ETH",
+      "timestamp": 1784166407000,
+      "block": 25542031
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0005",
+      "token": "ETH",
+      "timestamp": 1784166395000,
+      "block": 25542030
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.8089",
+      "token": "ETH",
+      "timestamp": 1784166371000,
+      "block": 25542028
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0190",
+      "token": "ETH",
+      "timestamp": 1784166299000,
+      "block": 25542022
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.1159",
+      "token": "ETH",
+      "timestamp": 1784166299000,
+      "block": 25542022
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0568",
+      "token": "ETH",
+      "timestamp": 1784166299000,
+      "block": 25542022
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0583",
+      "token": "ETH",
+      "timestamp": 1784166287000,
+      "block": 25542021
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0005",
+      "token": "ETH",
+      "timestamp": 1784166227000,
+      "block": 25542016
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0105",
+      "token": "ETH",
+      "timestamp": 1784166215000,
+      "block": 25542015
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0272",
+      "token": "ETH",
+      "timestamp": 1784166167000,
+      "block": 25542011
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.1197",
+      "token": "ETH",
+      "timestamp": 1784166155000,
+      "block": 25542010
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0005",
+      "token": "ETH",
+      "timestamp": 1784166143000,
+      "block": 25542009
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0099",
+      "token": "ETH",
+      "timestamp": 1784166083000,
+      "block": 25542004
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.3320",
+      "token": "ETH",
+      "timestamp": 1784166059000,
+      "block": 25542002
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0196",
+      "token": "ETH",
+      "timestamp": 1784165963000,
+      "block": 25541994
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0522",
+      "token": "ETH",
+      "timestamp": 1784165939000,
+      "block": 25541992
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0125",
+      "token": "ETH",
+      "timestamp": 1784165903000,
+      "block": 25541989
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.1000",
+      "token": "ETH",
+      "timestamp": 1784165819000,
+      "block": 25541982
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.2087",
+      "token": "ETH",
+      "timestamp": 1784165735000,
+      "block": 25541975
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.1557",
+      "token": "ETH",
+      "timestamp": 1784165735000,
+      "block": 25541975
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.1998",
+      "token": "ETH",
+      "timestamp": 1784165663000,
+      "block": 25541969
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0978",
+      "token": "ETH",
+      "timestamp": 1784165531000,
+      "block": 25541958
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.0005",
+      "token": "ETH",
+      "timestamp": 1784165531000,
+      "block": 25541958
+    },
+    {
+      "casino": "Rollbit",
+      "walletAddress": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
+      "amount": "0.1799",
+      "token": "ETH",
+      "timestamp": 1784165519000,
+      "block": 25541957
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0202",
+      "token": "ETH",
+      "timestamp": 1784165495000,
+      "block": 25541955
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.8258",
+      "token": "ETH",
+      "timestamp": 1784165495000,
+      "block": 25541955
     }
   ],
   "note": "Transaction hashes removed for user privacy"
