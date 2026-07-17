@@ -364,6 +364,10 @@
       color: var(--muted);
       font-size: 0.76rem;
     }
+    .casino-cell > span {
+      display: block;
+      margin-top: 5px;
+    }
     .casino-cell a .casino-link-text {
       color: var(--ink);
       font-size: 0.98rem;
@@ -385,6 +389,71 @@
       color: var(--lime);
       font-weight: 950;
       white-space: nowrap;
+    }
+    .sponsored-feature-row td {
+      background: linear-gradient(135deg, rgba(255, 157, 0, 0.14), rgba(41, 211, 255, 0.07)), rgba(4, 16, 38, 0.66);
+      border-top: 1px solid rgba(255, 157, 0, 0.45);
+      border-bottom: 1px solid rgba(255, 157, 0, 0.34);
+    }
+    .sponsored-feature-row td:first-child {
+      box-shadow: inset 4px 0 0 var(--orange-2);
+    }
+    .featured-casino-cell {
+      min-width: 210px;
+    }
+    .sponsor-badge,
+    .affiliate-code,
+    .sponsored-review-link {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 6px;
+      font-size: 0.62rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 6px;
+    }
+    .sponsor-badge {
+      border: 1px solid rgba(255, 157, 0, 0.58);
+      background: rgba(255, 157, 0, 0.12);
+      color: var(--orange-2);
+    }
+    .casino-cell > .sponsor-badge {
+      display: inline-flex;
+      margin: 0 0 7px;
+    }
+    .affiliate-code {
+      border: 1px solid rgba(102, 240, 111, 0.36);
+      background: rgba(102, 240, 111, 0.1);
+      color: var(--lime);
+      margin-top: 6px;
+    }
+    .casino-cell > .affiliate-code {
+      display: inline-flex;
+      margin-top: 8px;
+    }
+    .sponsored-review-link {
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: rgba(255,255,255,0.06);
+      margin-top: 2px;
+    }
+    .casino-cell .sponsor-badge,
+    .casino-cell .affiliate-code,
+    .casino-cell .sponsored-review-link {
+      font-size: 0.62rem;
+    }
+    .casino-cell .sponsored-review-link::after {
+      content: none;
+      display: none;
+    }
+    .sponsored-rank {
+      border-color: rgba(255, 157, 0, 0.48);
+      background: rgba(255, 157, 0, 0.12);
+      color: var(--orange-2);
     }
     .quick-calc {
       display: grid;
@@ -462,110 +531,6 @@
       color: var(--muted);
       font-size: 0.78rem;
       margin-top: 10px;
-    }
-    .home-feature {
-      border: 1px solid rgba(255, 157, 0, 0.48);
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, rgba(255, 106, 0, 0.18), rgba(41, 211, 255, 0.08)), var(--panel);
-      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.24);
-      overflow: hidden;
-      margin-bottom: 16px;
-    }
-    .home-feature-head {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 16px 18px;
-      border-bottom: 1px solid var(--line);
-      background: rgba(4, 16, 38, 0.5);
-    }
-    .home-feature-title {
-      color: var(--ink);
-      font-size: clamp(1.55rem, 3vw, 2.45rem);
-      line-height: 1.05;
-      font-weight: 950;
-      letter-spacing: 0;
-      margin-top: 4px;
-    }
-    .home-feature-badge {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 0 9px;
-      border: 1px solid rgba(255, 157, 0, 0.55);
-      border-radius: 999px;
-      color: var(--orange-2);
-      font-size: 0.68rem;
-      font-weight: 950;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: rgba(255, 157, 0, 0.1);
-    }
-    .home-feature-body {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.62fr);
-      gap: 16px;
-      padding: 18px;
-      align-items: start;
-    }
-    .home-feature-copy {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-    .home-feature-copy strong { color: var(--ink); }
-    .home-feature-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .home-feature-code {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      min-height: 34px;
-      padding: 0 11px;
-      border: 1px solid rgba(102, 240, 111, 0.36);
-      border-radius: 7px;
-      background: rgba(102, 240, 111, 0.1);
-      color: var(--lime);
-      font-size: 0.84rem;
-      font-weight: 950;
-      letter-spacing: 0.04em;
-      margin-top: 12px;
-    }
-    .home-feature-note {
-      color: var(--muted);
-      font-size: 0.78rem;
-      line-height: 1.55;
-      margin-top: 10px;
-    }
-    .home-feature-metrics {
-      display: grid;
-      gap: 10px;
-    }
-    .home-feature-metric {
-      min-height: 86px;
-      padding: 13px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(4, 16, 38, 0.58);
-    }
-    .home-feature-metric span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.66rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-    .home-feature-metric strong {
-      color: var(--ink);
-      font-size: 0.98rem;
-      line-height: 1.25;
     }
     .stats {
       display: grid;
@@ -732,7 +697,6 @@
       .hero,
       .section.two,
       .stats { grid-template-columns: 1fr; }
-      .home-feature-body { grid-template-columns: 1fr; }
       .reward-grid,
       .score-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .quick-calc { grid-template-columns: 1fr; }
@@ -883,32 +847,6 @@
       </div>
     </section>
 
-    <section class="home-feature" id="featured-thrill" aria-label="Featured casino">
-      <div class="home-feature-head">
-        <div>
-          <div class="kicker">Featured Casino</div>
-          <div class="home-feature-title">Thrill Casino rewards-first pick</div>
-        </div>
-        <span class="home-feature-badge">Sponsored feature</span>
-      </div>
-      <div class="home-feature-body">
-        <div>
-          <span class="home-feature-code">Code/link: td4msjnft</span>
-          <div class="home-feature-actions">
-            <a class="btn" href="/go/thrill/" rel="nofollow sponsored">Play at Thrill</a>
-            <a class="btn secondary" href="/reviews/thrill-review.html">Read our Thrill review</a>
-            <a class="btn secondary" href="#rewards-table">Compare rewards</a>
-          </div>
-          <p class="home-feature-note">Featured placement is commercial. Reward caveats still apply: the 70% rakeback headline is top-tier, and players should verify current Thrill terms before depositing.</p>
-        </div>
-        <div class="home-feature-metrics" aria-label="Thrill reward highlights">
-          <div class="home-feature-metric"><span>Top Rakeback</span><strong>Up to 70% of house edge</strong></div>
-          <div class="home-feature-metric"><span>Lossback</span><strong>Up to 10% weekly</strong></div>
-          <div class="home-feature-metric"><span>Weekly Race</span><strong>$75K prize pool</strong></div>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="rewards-table">
       <div class="panel">
         <div class="panel-header">
@@ -965,15 +903,21 @@
                   <td><span class="score-pill">#2</span></td>
                 </tr>
 
-                <tr data-incentive-low-rate="0.003" data-incentive-high-rate="0.021" data-incentive-note="Low-volume model is conservative; high-volume uses top-tier headline.">
-                  <td class="casino-cell"><a href="/go/thrill/" rel="sponsored nofollow">Thrill</a><span>Best max-rakeback casino</span></td>
+                <tr class="sponsored-feature-row" data-featured-placement="true" data-incentive-low-rate="0.003" data-incentive-high-rate="0.021" data-incentive-note="Low-volume model is conservative; high-volume uses top-tier headline.">
+                  <td class="casino-cell featured-casino-cell">
+                    <span class="sponsor-badge">Sponsored feature</span>
+                    <a class="has-visible-cta" href="/go/thrill/" rel="sponsored nofollow"><span class="casino-link-text">Thrill</span><span class="cta-pill">Play now</span></a>
+                    <span>Best max-rakeback casino</span>
+                    <span class="affiliate-code">Code: td4msjnft</span>
+                    <a class="sponsored-review-link" href="/reviews/thrill-review.html">Read review</a>
+                  </td>
                   <td class="incentive-cell"></td>
                   <td>Rewards-first casino built around recurring rakeback, lossback and XP race value.</td>
                   <td>No welcome bonus by design.</td>
                   <td>Modelled at the top published tier: up to 70% rakeback on house edge plus up to 10% weekly lossback.</td>
                   <td>Deep XP ladder; top tiers are built for serious volume players.</td>
                   <td>70% is a high-roller/top-tier rate, not a starting rate; KYC can still trigger.</td>
-                  <td><span class="score-pill">#3</span></td>
+                  <td><span class="score-pill sponsored-rank">Featured</span></td>
                 </tr>
 
                 <tr data-incentive-opaque="true" data-incentive-note="Official help confirms the reward structure, but exact rates and XP thresholds are still being researched.">
@@ -1427,17 +1371,20 @@
       const profile = activeProfile(monthlyWager);
       const tableBody = incentiveRows[0].parentElement;
       const rankedRows = incentiveRows.map((row, index) => {
+        const isFeatured = row.dataset.featuredPlacement === 'true';
         const isOpaque = row.dataset.incentiveOpaque === 'true';
         const rate = isOpaque ? null : Number(profile === 'high' ? row.dataset.incentiveHighRate : row.dataset.incentiveLowRate);
         const estimatedValue = Number.isFinite(rate) ? monthlyWager * rate : -1;
-        return { row, index, isOpaque, rate, estimatedValue };
+        return { row, index, isFeatured, isOpaque, rate, estimatedValue };
       }).sort((a, b) => {
+        if (a.isFeatured !== b.isFeatured) return a.isFeatured ? -1 : 1;
         if (a.isOpaque !== b.isOpaque) return a.isOpaque ? 1 : -1;
         if (b.estimatedValue !== a.estimatedValue) return b.estimatedValue - a.estimatedValue;
         return a.index - b.index;
       });
 
-      rankedRows.forEach(({ row, isOpaque, rate, estimatedValue }, index) => {
+      let organicRank = 1;
+      rankedRows.forEach(({ row, isFeatured, isOpaque, rate, estimatedValue }) => {
         const cell = row.querySelector('.incentive-cell');
         const rank = row.querySelector('.score-pill');
         if (!cell) return;
@@ -1454,7 +1401,7 @@
 
         cell.classList.remove('is-opaque');
         cell.innerHTML = '<strong>' + formatMoney(estimatedValue) + '/mo</strong><span>' + formatRate(rate) + ' of wager · ' + note + '</span>';
-        if (rank) rank.textContent = '#' + (index + 1);
+        if (rank) rank.textContent = isFeatured ? 'Featured' : '#' + organicRank++;
         tableBody.appendChild(row);
       });
     }
