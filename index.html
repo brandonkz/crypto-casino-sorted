@@ -426,6 +426,9 @@
     .featured-action-row .featured-play-link {
       margin: 0;
     }
+    .is-organic-featured-row .feature-badge {
+      display: none;
+    }
     .casino-cell .featured-play-link {
       gap: 0;
     }
@@ -1375,6 +1378,7 @@
       const profile = activeProfile(monthlyWager);
       const tableBody = incentiveRows[0].parentElement;
       tableBody.querySelectorAll('.featured-placement-clone').forEach((row) => row.remove());
+      incentiveRows.forEach((row) => row.classList.remove('is-organic-featured-row'));
       const rankedRows = incentiveRows.map((row, index) => {
         const isOpaque = row.dataset.incentiveOpaque === 'true';
         const rate = isOpaque ? null : Number(profile === 'high' ? row.dataset.incentiveHighRate : row.dataset.incentiveLowRate);
@@ -1412,6 +1416,7 @@
           const clone = row.cloneNode(true);
           clone.classList.add('featured-placement-clone');
           tableBody.appendChild(clone);
+          row.classList.add('is-organic-featured-row');
         });
 
       rankedRows.forEach(({ row }) => tableBody.appendChild(row));
