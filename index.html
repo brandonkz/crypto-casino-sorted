@@ -463,6 +463,110 @@
       font-size: 0.78rem;
       margin-top: 10px;
     }
+    .home-feature {
+      border: 1px solid rgba(255, 157, 0, 0.48);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(255, 106, 0, 0.18), rgba(41, 211, 255, 0.08)), var(--panel);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.24);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .home-feature-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(4, 16, 38, 0.5);
+    }
+    .home-feature-title {
+      color: var(--ink);
+      font-size: clamp(1.55rem, 3vw, 2.45rem);
+      line-height: 1.05;
+      font-weight: 950;
+      letter-spacing: 0;
+      margin-top: 4px;
+    }
+    .home-feature-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 9px;
+      border: 1px solid rgba(255, 157, 0, 0.55);
+      border-radius: 999px;
+      color: var(--orange-2);
+      font-size: 0.68rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 157, 0, 0.1);
+    }
+    .home-feature-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.62fr);
+      gap: 16px;
+      padding: 18px;
+      align-items: start;
+    }
+    .home-feature-copy {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .home-feature-copy strong { color: var(--ink); }
+    .home-feature-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .home-feature-code {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 34px;
+      padding: 0 11px;
+      border: 1px solid rgba(102, 240, 111, 0.36);
+      border-radius: 7px;
+      background: rgba(102, 240, 111, 0.1);
+      color: var(--lime);
+      font-size: 0.84rem;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      margin-top: 12px;
+    }
+    .home-feature-note {
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.55;
+      margin-top: 10px;
+    }
+    .home-feature-metrics {
+      display: grid;
+      gap: 10px;
+    }
+    .home-feature-metric {
+      min-height: 86px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(4, 16, 38, 0.58);
+    }
+    .home-feature-metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.66rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .home-feature-metric strong {
+      color: var(--ink);
+      font-size: 0.98rem;
+      line-height: 1.25;
+    }
     .stats {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -628,6 +732,7 @@
       .hero,
       .section.two,
       .stats { grid-template-columns: 1fr; }
+      .home-feature-body { grid-template-columns: 1fr; }
       .reward-grid,
       .score-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .quick-calc { grid-template-columns: 1fr; }
@@ -774,6 +879,33 @@
           <a class="btn" href="#rewards-table">Compare Rewards</a>
           <a class="btn secondary" href="/rewards-recommender.html">Use Rewards Quiz</a>
           <a class="btn secondary" href="/bonus-calculator.html">Bonus Calculator</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-feature" id="featured-thrill" aria-label="Featured casino">
+      <div class="home-feature-head">
+        <div>
+          <div class="kicker">Featured Casino</div>
+          <div class="home-feature-title">Thrill Casino rewards-first pick</div>
+        </div>
+        <span class="home-feature-badge">Sponsored feature</span>
+      </div>
+      <div class="home-feature-body">
+        <div>
+          <p class="home-feature-copy"><strong>Why featured:</strong> Thrill paid for homepage featured placement, and it fits the rewards-first angle: ongoing rakeback, lossback, recurring bonuses and a weekly XP race instead of a standard welcome-bonus funnel.</p>
+          <span class="home-feature-code">Code/link: td4msjnft</span>
+          <div class="home-feature-actions">
+            <a class="btn" href="/go/thrill/" rel="nofollow sponsored">Play at Thrill</a>
+            <a class="btn secondary" href="/reviews/thrill-review.html">Read our Thrill review</a>
+            <a class="btn secondary" href="#rewards-table">Compare rewards</a>
+          </div>
+          <p class="home-feature-note">Featured placement is commercial. Reward caveats still apply: the 70% rakeback headline is top-tier, and players should verify current Thrill terms before depositing.</p>
+        </div>
+        <div class="home-feature-metrics" aria-label="Thrill reward highlights">
+          <div class="home-feature-metric"><span>Top Rakeback</span><strong>Up to 70% of house edge</strong></div>
+          <div class="home-feature-metric"><span>Lossback</span><strong>Up to 10% weekly</strong></div>
+          <div class="home-feature-metric"><span>Weekly Race</span><strong>$75K prize pool</strong></div>
         </div>
       </div>
     </section>
