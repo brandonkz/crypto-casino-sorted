@@ -1374,6 +1374,7 @@
       const monthlyWager = Math.max(0, Number(wagerInput.value) || 0);
       const profile = activeProfile(monthlyWager);
       const tableBody = incentiveRows[0].parentElement;
+      tableBody.querySelectorAll('.featured-placement-clone').forEach((row) => row.remove());
       const rankedRows = incentiveRows.map((row, index) => {
         const isOpaque = row.dataset.incentiveOpaque === 'true';
         const rate = isOpaque ? null : Number(profile === 'high' ? row.dataset.incentiveHighRate : row.dataset.incentiveLowRate);
@@ -1407,11 +1408,13 @@
 
       rankedRows
         .filter(({ row }) => row.dataset.featuredPlacement === 'true')
-        .forEach(({ row }) => tableBody.appendChild(row));
+        .forEach(({ row }) => {
+          const clone = row.cloneNode(true);
+          clone.classList.add('featured-placement-clone');
+          tableBody.appendChild(clone);
+        });
 
-      rankedRows
-        .filter(({ row }) => row.dataset.featuredPlacement !== 'true')
-        .forEach(({ row }) => tableBody.appendChild(row));
+      rankedRows.forEach(({ row }) => tableBody.appendChild(row));
     }
 
     profileButtons.forEach((button) => {
