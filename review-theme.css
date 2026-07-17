@@ -118,6 +118,10 @@ a,
   margin-bottom: 18px !important;
 }
 
+.reviews-hero h1 span {
+  display: block;
+}
+
 .reviews-hero h1 span,
 .eyebrow,
 .review-stars,
@@ -144,6 +148,15 @@ a,
 
 .reviews-hero .trust-badges .dot {
   background: var(--orange-2) !important;
+}
+
+.reviews-hero .trust-badges {
+  row-gap: 12px !important;
+}
+
+.quick-compare {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .quick-compare,
@@ -321,7 +334,12 @@ a,
     align-items: flex-start;
     flex-direction: column;
     min-height: 54px;
-    padding: 12px;
+    gap: 9px;
+    padding: 10px 12px;
+  }
+
+  .t-nav-logo {
+    font-size: 0.76rem;
   }
 
   .t-nav-links {
@@ -330,13 +348,19 @@ a,
     align-items: center !important;
     width: 100%;
     overflow-x: auto;
-    gap: 14px;
-    padding-bottom: 2px;
+    gap: 13px;
+    padding: 0 0 4px;
+    scrollbar-width: none;
+  }
+
+  .t-nav-links::-webkit-scrollbar {
+    display: none;
   }
 
   .t-nav-links a {
     flex: 0 0 auto;
-    font-size: 0.72rem;
+    font-size: 0.66rem;
+    line-height: 1;
     width: auto;
     padding: 0;
     border-bottom: none;
@@ -345,15 +369,61 @@ a,
   .reviews-hero,
   .review-hero,
   .hero {
-    padding: 28px 22px !important;
-    margin-top: 24px !important;
+    padding: 24px 20px !important;
+    margin: 18px 12px 12px !important;
   }
 
   .reviews-hero h1,
   .review-hero h1,
   .hero h1,
   .review-page h1 {
-    font-size: clamp(2rem, 12vw, 3rem) !important;
+    font-size: clamp(2rem, 10vw, 2.55rem) !important;
+    line-height: 1 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .reviews-hero p,
+  .review-lede,
+  .hero p {
+    font-size: 0.94rem !important;
+    line-height: 1.58 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .reviews-hero .trust-badges {
+    justify-content: flex-start !important;
+    gap: 10px 14px !important;
+    font-size: 0.63rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .reviews-hero .trust-badges > span {
+    flex: 0 1 calc(50% - 7px);
+    min-width: 132px;
+  }
+
+  .quick-compare {
+    margin-bottom: 14px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .quick-compare table {
+    min-width: 560px !important;
+    font-size: 0.68rem !important;
+  }
+
+  .quick-compare th,
+  .quick-compare td {
+    padding: 10px 11px !important;
+  }
+
+  .review-card-body,
+  .review-card-header,
+  .review-article,
+  .panel,
+  .side-card {
+    padding: 16px !important;
   }
 
   .review-grid,
