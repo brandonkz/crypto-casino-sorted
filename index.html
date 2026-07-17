@@ -401,6 +401,13 @@
     .featured-casino-cell {
       min-width: 210px;
     }
+    .featured-action-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 10px;
+    }
     .feature-badge,
     .featured-review-link {
       display: inline-flex;
@@ -414,6 +421,13 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       margin: 0 0 6px;
+    }
+    .featured-action-row .feature-badge,
+    .featured-action-row .featured-play-link {
+      margin: 0;
+    }
+    .casino-cell .featured-play-link {
+      gap: 0;
     }
     .feature-badge {
       border: 1px solid rgba(255, 157, 0, 0.58);
@@ -893,8 +907,11 @@
 
                 <tr class="featured-table-row" data-featured-placement="true" data-incentive-low-rate="0.003" data-incentive-high-rate="0.021" data-incentive-note="Low-volume model is conservative; high-volume uses top-tier headline.">
                   <td class="casino-cell featured-casino-cell">
-                    <span class="feature-badge">Featured</span>
-                    <a class="has-visible-cta" href="/go/thrill/" rel="sponsored nofollow"><span class="casino-link-text">Thrill</span><span class="cta-pill">Play now</span></a>
+                    <div class="featured-action-row">
+                      <span class="feature-badge">Featured</span>
+                      <a class="has-visible-cta featured-play-link" href="/go/thrill/" rel="sponsored nofollow"><span class="cta-pill">Play now</span></a>
+                    </div>
+                    <strong>Thrill</strong>
                     <span>Best max-rakeback casino</span>
                     <a class="featured-review-link" href="/reviews/thrill-review.html">Read review</a>
                   </td>
