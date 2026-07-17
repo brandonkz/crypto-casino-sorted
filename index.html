@@ -390,20 +390,19 @@
       font-weight: 950;
       white-space: nowrap;
     }
-    .sponsored-feature-row td {
+    .featured-table-row td {
       background: linear-gradient(135deg, rgba(255, 157, 0, 0.14), rgba(41, 211, 255, 0.07)), rgba(4, 16, 38, 0.66);
       border-top: 1px solid rgba(255, 157, 0, 0.45);
       border-bottom: 1px solid rgba(255, 157, 0, 0.34);
     }
-    .sponsored-feature-row td:first-child {
+    .featured-table-row td:first-child {
       box-shadow: inset 4px 0 0 var(--orange-2);
     }
     .featured-casino-cell {
       min-width: 210px;
     }
-    .sponsor-badge,
-    .affiliate-code,
-    .sponsored-review-link {
+    .feature-badge,
+    .featured-review-link {
       display: inline-flex;
       align-items: center;
       width: fit-content;
@@ -416,41 +415,30 @@
       text-transform: uppercase;
       margin: 0 0 6px;
     }
-    .sponsor-badge {
+    .feature-badge {
       border: 1px solid rgba(255, 157, 0, 0.58);
       background: rgba(255, 157, 0, 0.12);
       color: var(--orange-2);
     }
-    .casino-cell > .sponsor-badge {
+    .casino-cell > .feature-badge {
       display: inline-flex;
       margin: 0 0 7px;
     }
-    .affiliate-code {
-      border: 1px solid rgba(102, 240, 111, 0.36);
-      background: rgba(102, 240, 111, 0.1);
-      color: var(--lime);
-      margin-top: 6px;
-    }
-    .casino-cell > .affiliate-code {
-      display: inline-flex;
-      margin-top: 8px;
-    }
-    .sponsored-review-link {
+    .featured-review-link {
       border: 1px solid var(--line);
       color: var(--ink);
       background: rgba(255,255,255,0.06);
       margin-top: 2px;
     }
-    .casino-cell .sponsor-badge,
-    .casino-cell .affiliate-code,
-    .casino-cell .sponsored-review-link {
+    .casino-cell .feature-badge,
+    .casino-cell .featured-review-link {
       font-size: 0.62rem;
     }
-    .casino-cell .sponsored-review-link::after {
+    .casino-cell .featured-review-link::after {
       content: none;
       display: none;
     }
-    .sponsored-rank {
+    .featured-rank {
       border-color: rgba(255, 157, 0, 0.48);
       background: rgba(255, 157, 0, 0.12);
       color: var(--orange-2);
@@ -903,13 +891,12 @@
                   <td><span class="score-pill">#2</span></td>
                 </tr>
 
-                <tr class="sponsored-feature-row" data-featured-placement="true" data-incentive-low-rate="0.003" data-incentive-high-rate="0.021" data-incentive-note="Low-volume model is conservative; high-volume uses top-tier headline.">
+                <tr class="featured-table-row" data-featured-placement="true" data-incentive-low-rate="0.003" data-incentive-high-rate="0.021" data-incentive-note="Low-volume model is conservative; high-volume uses top-tier headline.">
                   <td class="casino-cell featured-casino-cell">
-                    <span class="sponsor-badge">Sponsored feature</span>
+                    <span class="feature-badge">Featured</span>
                     <a class="has-visible-cta" href="/go/thrill/" rel="sponsored nofollow"><span class="casino-link-text">Thrill</span><span class="cta-pill">Play now</span></a>
                     <span>Best max-rakeback casino</span>
-                    <span class="affiliate-code">Code: td4msjnft</span>
-                    <a class="sponsored-review-link" href="/reviews/thrill-review.html">Read review</a>
+                    <a class="featured-review-link" href="/reviews/thrill-review.html">Read review</a>
                   </td>
                   <td class="incentive-cell"></td>
                   <td>Rewards-first casino built around recurring rakeback, lossback and XP race value.</td>
@@ -917,7 +904,7 @@
                   <td>Modelled at the top published tier: up to 70% rakeback on house edge plus up to 10% weekly lossback.</td>
                   <td>Deep XP ladder; top tiers are built for serious volume players.</td>
                   <td>70% is a high-roller/top-tier rate, not a starting rate; KYC can still trigger.</td>
-                  <td><span class="score-pill sponsored-rank">Featured</span></td>
+                  <td><span class="score-pill featured-rank">Featured</span></td>
                 </tr>
 
                 <tr data-incentive-opaque="true" data-incentive-note="Official help confirms the reward structure, but exact rates and XP thresholds are still being researched.">
