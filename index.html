@@ -1397,15 +1397,21 @@
           cell.classList.add('is-opaque');
           cell.innerHTML = '<strong>Still researching</strong><span>' + note + '</span>';
           if (rank) rank.textContent = 'N/A';
-          tableBody.appendChild(row);
           return;
         }
 
         cell.classList.remove('is-opaque');
         cell.innerHTML = '<strong>' + formatMoney(estimatedValue) + '/mo</strong><span>' + formatRate(rate) + ' of wager · ' + note + '</span>';
         if (rank) rank.textContent = '#' + organicRank++;
-        tableBody.appendChild(row);
       });
+
+      rankedRows
+        .filter(({ row }) => row.dataset.featuredPlacement === 'true')
+        .forEach(({ row }) => tableBody.appendChild(row));
+
+      rankedRows
+        .filter(({ row }) => row.dataset.featuredPlacement !== 'true')
+        .forEach(({ row }) => tableBody.appendChild(row));
     }
 
     profileButtons.forEach((button) => {
