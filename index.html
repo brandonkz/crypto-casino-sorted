@@ -904,7 +904,7 @@
                   <td>Modelled at the top published tier: up to 70% rakeback on house edge plus up to 10% weekly lossback.</td>
                   <td>Deep XP ladder; top tiers are built for serious volume players.</td>
                   <td>70% is a high-roller/top-tier rate, not a starting rate; KYC can still trigger.</td>
-                  <td><span class="score-pill featured-rank">Featured</span></td>
+                  <td><span class="score-pill featured-rank">#6</span></td>
                 </tr>
 
                 <tr data-incentive-opaque="true" data-incentive-note="Official help confirms the reward structure, but exact rates and XP thresholds are still being researched.">
@@ -1358,20 +1358,18 @@
       const profile = activeProfile(monthlyWager);
       const tableBody = incentiveRows[0].parentElement;
       const rankedRows = incentiveRows.map((row, index) => {
-        const isFeatured = row.dataset.featuredPlacement === 'true';
         const isOpaque = row.dataset.incentiveOpaque === 'true';
         const rate = isOpaque ? null : Number(profile === 'high' ? row.dataset.incentiveHighRate : row.dataset.incentiveLowRate);
         const estimatedValue = Number.isFinite(rate) ? monthlyWager * rate : -1;
-        return { row, index, isFeatured, isOpaque, rate, estimatedValue };
+        return { row, index, isOpaque, rate, estimatedValue };
       }).sort((a, b) => {
-        if (a.isFeatured !== b.isFeatured) return a.isFeatured ? -1 : 1;
         if (a.isOpaque !== b.isOpaque) return a.isOpaque ? 1 : -1;
         if (b.estimatedValue !== a.estimatedValue) return b.estimatedValue - a.estimatedValue;
         return a.index - b.index;
       });
 
       let organicRank = 1;
-      rankedRows.forEach(({ row, isFeatured, isOpaque, rate, estimatedValue }) => {
+      rankedRows.forEach(({ row, isOpaque, rate, estimatedValue }) => {
         const cell = row.querySelector('.incentive-cell');
         const rank = row.querySelector('.score-pill');
         if (!cell) return;
@@ -1388,7 +1386,7 @@
 
         cell.classList.remove('is-opaque');
         cell.innerHTML = '<strong>' + formatMoney(estimatedValue) + '/mo</strong><span>' + formatRate(rate) + ' of wager · ' + note + '</span>';
-        if (rank) rank.textContent = isFeatured ? 'Featured' : '#' + organicRank++;
+        if (rank) rank.textContent = '#' + organicRank++;
         tableBody.appendChild(row);
       });
     }
