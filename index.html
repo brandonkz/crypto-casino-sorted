@@ -364,6 +364,10 @@
       color: var(--muted);
       font-size: 0.76rem;
     }
+    .casino-cell > span {
+      display: block;
+      margin-top: 5px;
+    }
     .casino-cell a .casino-link-text {
       color: var(--ink);
       font-size: 0.98rem;
@@ -385,6 +389,84 @@
       color: var(--lime);
       font-weight: 950;
       white-space: nowrap;
+    }
+    .featured-table-row td {
+      background: linear-gradient(135deg, rgba(255, 157, 0, 0.14), rgba(41, 211, 255, 0.07)), rgba(4, 16, 38, 0.66);
+      border-top: 1px solid rgba(255, 157, 0, 0.45);
+      border-bottom: 1px solid rgba(255, 157, 0, 0.34);
+    }
+    .featured-table-row td:first-child {
+      box-shadow: inset 4px 0 0 var(--orange-2);
+    }
+    .featured-casino-cell {
+      min-width: 210px;
+    }
+    .featured-action-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 10px;
+    }
+    .feature-badge,
+    .featured-review-link {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 6px;
+      font-size: 0.62rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 6px;
+    }
+    .featured-action-row .feature-badge,
+    .featured-action-row .featured-play-link {
+      margin: 0;
+    }
+    .is-organic-featured-row .feature-badge {
+      display: none;
+    }
+    .comparison-table tbody tr.is-organic-featured-row td {
+      background: transparent;
+      border-top: 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .comparison-table tbody tr.is-organic-featured-row td:first-child {
+      box-shadow: none;
+    }
+    .casino-cell .featured-play-link {
+      gap: 0;
+    }
+    .feature-badge {
+      border: 1px solid rgba(255, 157, 0, 0.58);
+      background: rgba(255, 157, 0, 0.12);
+      color: var(--orange-2);
+    }
+    .casino-cell > .feature-badge {
+      display: inline-flex;
+      margin: 0 0 7px;
+    }
+    .featured-review-link {
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: rgba(255,255,255,0.06);
+      margin-top: 2px;
+    }
+    .casino-cell .feature-badge,
+    .casino-cell .featured-review-link {
+      font-size: 0.62rem;
+    }
+    .casino-cell .featured-review-link::after {
+      content: none;
+      display: none;
+    }
+    .featured-rank {
+      border-color: rgba(255, 157, 0, 0.48);
+      background: rgba(255, 157, 0, 0.12);
+      color: var(--orange-2);
     }
     .quick-calc {
       display: grid;
@@ -791,9 +873,9 @@
               <div class="quick-calc-copy">Pick a player profile to estimate average monthly value back and reorder the table live. Assumes casino play at a 3% house edge; private VIP bonuses and gated formulas stay marked as opaque.</div>
             </div>
             <div class="quick-calc-controls">
-              <button class="profile-btn active" type="button" data-profile="low" data-wager="2000">Low Volume</button>
-              <button class="profile-btn" type="button" data-profile="high" data-wager="250000">High Volume</button>
-              <input class="wager-input" id="monthlyWager" type="number" min="0" step="100" value="2000" aria-label="Monthly wager amount">
+              <button class="profile-btn" type="button" data-profile="low" data-wager="2000">Low Volume</button>
+              <button class="profile-btn active" type="button" data-profile="high" data-wager="250000">High Volume</button>
+              <input class="wager-input" id="monthlyWager" type="number" min="0" step="100" value="250000" aria-label="Monthly wager amount">
             </div>
           </div>
           <div class="comparison-wrap">
@@ -834,15 +916,23 @@
                   <td><span class="score-pill">#2</span></td>
                 </tr>
 
-                <tr data-incentive-low-rate="0.003" data-incentive-high-rate="0.021" data-incentive-note="Low-volume model is conservative; high-volume uses top-tier headline.">
-                  <td class="casino-cell"><a href="https://thrillcasino.io/td4msjnft" target="_blank" rel="sponsored nofollow noopener">Thrill</a><span>Best max-rakeback casino</span></td>
+                <tr class="featured-table-row" data-featured-placement="true" data-incentive-low-rate="0.003" data-incentive-high-rate="0.021" data-incentive-note="Low-volume model is conservative; high-volume uses top-tier headline.">
+                  <td class="casino-cell featured-casino-cell">
+                    <div class="featured-action-row">
+                      <span class="feature-badge">Featured</span>
+                      <a class="has-visible-cta featured-play-link" href="/go/thrill/" rel="sponsored nofollow"><span class="cta-pill">Play now</span></a>
+                    </div>
+                    <strong>Thrill</strong>
+                    <span>Best max-rakeback casino</span>
+                    <a class="featured-review-link" href="/reviews/thrill-review.html">Read review</a>
+                  </td>
                   <td class="incentive-cell"></td>
                   <td>Rewards-first casino built around recurring rakeback, lossback and XP race value.</td>
                   <td>No welcome bonus by design.</td>
                   <td>Modelled at the top published tier: up to 70% rakeback on house edge plus up to 10% weekly lossback.</td>
                   <td>Deep XP ladder; top tiers are built for serious volume players.</td>
                   <td>70% is a high-roller/top-tier rate, not a starting rate; KYC can still trigger.</td>
-                  <td><span class="score-pill">#3</span></td>
+                  <td><span class="score-pill featured-rank">#6</span></td>
                 </tr>
 
                 <tr data-incentive-opaque="true" data-incentive-note="Official help confirms the reward structure, but exact rates and XP thresholds are still being researched.">
@@ -931,6 +1021,17 @@
                   <td>80-level EXP ladder; weekly and monthly bonuses unlock from Level 15.</td>
                   <td>Daily, weekly, monthly and level-up bonus values still depend on play mix, games and PnL.</td>
                   <td><span class="score-pill">#11</span></td>
+                </tr>
+
+                <tr data-incentive-opaque="true" data-incentive-note="Whale publishes formulas, but daily cashback is net-loss based and level percentages depend on the player account.">
+                  <td class="casino-cell"><strong>Whale.io</strong><span>Best official formula upgrade</span></td>
+                  <td class="incentive-cell"></td>
+                  <td>Permanent 25-level loyalty program across Bronze, Silver, Gold, Platinum, Diamond, Emerald and Whale ranks.</td>
+                  <td>Official FAQ says 200% welcome bonus on first deposit from a $10 minimum.</td>
+                  <td>Daily cashback ranges from 1% to 25% on qualifying net losses; weekly and monthly bonuses use house-margin formulas.</td>
+                  <td>Weekly bonus = total wager x house margin x 2%; monthly bonus = total wager x house margin x 1.5%.</td>
+                  <td>Level thresholds and exact current cashback percentage are shown in the platform interface, so hard calculator sorting waits.</td>
+                  <td><span class="score-pill">N/A</span></td>
                 </tr>
 
                 <tr data-incentive-opaque="true" data-incentive-note="BetFury publishes a rank ladder, but the full reward interaction still needs exact modeling.">
@@ -1064,8 +1165,8 @@
     <section class="stats">
       <div class="stat">
         <div class="stat-label">Operators Ranked</div>
-        <div class="stat-value">22</div>
-        <div class="stat-copy">Duel, XTP, Thrill, Dicey, Yeet, BC Game, Stake, Duelbits, Cloudbet, Gamdom, Solcasino, BetFury, Rainbet, Goated, Winna, Acebet, Gamba, Rollbit, Roobet, 21.com, Shuffle, Metaspins.</div>
+        <div class="stat-value">23</div>
+        <div class="stat-copy">Duel, XTP, Thrill, Dicey, Yeet, BC Game, Stake, Duelbits, Cloudbet, Gamdom, Solcasino, Whale.io, BetFury, Rainbet, Goated, Winna, Acebet, Gamba, Rollbit, Roobet, 21.com, Shuffle, Metaspins.</div>
       </div>
       <div class="stat">
         <div class="stat-label">Main Lens</div>
@@ -1284,6 +1385,8 @@
       const monthlyWager = Math.max(0, Number(wagerInput.value) || 0);
       const profile = activeProfile(monthlyWager);
       const tableBody = incentiveRows[0].parentElement;
+      tableBody.querySelectorAll('.featured-placement-clone').forEach((row) => row.remove());
+      incentiveRows.forEach((row) => row.classList.remove('is-organic-featured-row'));
       const rankedRows = incentiveRows.map((row, index) => {
         const isOpaque = row.dataset.incentiveOpaque === 'true';
         const rate = isOpaque ? null : Number(profile === 'high' ? row.dataset.incentiveHighRate : row.dataset.incentiveLowRate);
@@ -1295,7 +1398,8 @@
         return a.index - b.index;
       });
 
-      rankedRows.forEach(({ row, isOpaque, rate, estimatedValue }, index) => {
+      let organicRank = 1;
+      rankedRows.forEach(({ row, isOpaque, rate, estimatedValue }) => {
         const cell = row.querySelector('.incentive-cell');
         const rank = row.querySelector('.score-pill');
         if (!cell) return;
@@ -1306,15 +1410,24 @@
           cell.classList.add('is-opaque');
           cell.innerHTML = '<strong>Still researching</strong><span>' + note + '</span>';
           if (rank) rank.textContent = 'N/A';
-          tableBody.appendChild(row);
           return;
         }
 
         cell.classList.remove('is-opaque');
         cell.innerHTML = '<strong>' + formatMoney(estimatedValue) + '/mo</strong><span>' + formatRate(rate) + ' of wager · ' + note + '</span>';
-        if (rank) rank.textContent = '#' + (index + 1);
-        tableBody.appendChild(row);
+        if (rank) rank.textContent = '#' + organicRank++;
       });
+
+      rankedRows
+        .filter(({ row }) => row.dataset.featuredPlacement === 'true')
+        .forEach(({ row }) => {
+          const clone = row.cloneNode(true);
+          clone.classList.add('featured-placement-clone');
+          tableBody.appendChild(clone);
+          row.classList.add('is-organic-featured-row');
+        });
+
+      rankedRows.forEach(({ row }) => tableBody.appendChild(row));
     }
 
     profileButtons.forEach((button) => {
