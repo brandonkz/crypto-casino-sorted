@@ -7,6 +7,7 @@
     "fetch": "node fetch-wallet-data.js",
     "update": "node fetch-wallet-data.js && git add gambling-data.json && git commit -m 'Update wallet data' && git push",
     "verify:offers": "node verify-offers.js",
+    "seo:coverage": "python3 tools/seo_coverage_fix.py",
     "verify:offers:update": "node verify-offers.js --update-baseline"
   },
   "dependencies": {
