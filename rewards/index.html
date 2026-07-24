@@ -124,6 +124,8 @@
     .section-title { color: var(--orange-2); font-size: 0.74rem; font-weight: 950; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 7px; }
     .copy { color: var(--muted); font-size: 0.92rem; }
     .copy strong { color: var(--ink); }
+    .copy a,
+    .note a { color: var(--cyan); font-weight: 850; text-decoration: underline; text-decoration-color: rgba(41,211,255,0.35); text-underline-offset: 3px; }
     .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
     .pill { display: inline-flex; align-items: center; min-height: 28px; padding: 0 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 0.72rem; font-weight: 900; }
     .pill.good { color: var(--lime); border-color: rgba(102,240,111,0.38); background: rgba(102,240,111,0.1); }
@@ -213,7 +215,7 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">27</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">23 Jul</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">24 Jul</div></div>
         </section>
 
         <section class="chapter" id="thrill">
@@ -670,35 +672,54 @@
               <div class="fact"><span>Slots / Live Casino</span><strong>50% instant rakeback</strong></div>
               <div class="fact"><span>Reward Style</span><strong>Rakeback, races, leaderboards</strong></div>
             </div>
-            <p class="copy"><strong>How it works:</strong> Duel is not a normal VIP ladder. Its strongest reward is mathematical: eligible Duel Originals have a 0.1% base house edge, but Duel credits that edge back on the first $50,000 wagered each day. Within that daily allowance, the effective house edge is 0%. Above the cap, the underlying 0.1% edge applies.</p>
+            <p class="copy"><strong>How it works:</strong> Duel is not a normal VIP ladder. Its strongest reward is mathematical: eligible Duel Originals have a 0.1% base house edge, but Duel credits that edge back while the player is inside the zero-edge allowance. Within the first $50,000 of eligible daily wagering, the effective house edge is 0%. After the allowance is used, the official Zero Edge text says the 0.1% instant rebate stops until the next daily reset.</p>
             <div>
-              <div class="section-title">Reward Mechanics</div>
+              <div class="section-title">Zero-Edge Economics</div>
               <table class="mini-table">
-                <tr><th>Product</th><th>Player Value</th></tr>
-                <tr><td>Eligible Duel Originals</td><td>Effective 0% house edge on the first $50,000 wagered each day.</td></tr>
-                <tr><td>Originals above daily cap</td><td>Base 0.1% edge applies after the daily allowance is used.</td></tr>
-                <tr><td>Third-party slots</td><td>50% instant rakeback on relevant casino revenue.</td></tr>
-                <tr><td>Live casino</td><td>50% instant rakeback, but provider house edge still exists.</td></tr>
-                <tr><td>Races and leaderboards</td><td>Extra upside for active players, not guaranteed cashback.</td></tr>
+                <tr><th>Rule</th><th>Public source-backed detail</th><th>Handbook read</th></tr>
+                <tr><td>Daily allowance</td><td>Up to $50,000 per day in zero-edge mode on eligible originals.</td><td>This is a daily value cap, not unlimited 0% wagering.</td></tr>
+                <tr><td>Bet sizing</td><td>Official app text references a $1,000 maximum bet for zero-edge mode.</td><td>Large single bets may fall outside the simple 0% treatment.</td></tr>
+                <tr><td>After the allowance</td><td>Official text says a 0.1% house edge applies after the zero-edge limit is used; some game text also references scaling edge for larger bets.</td><td>Check the displayed effective edge before every high-value session.</td></tr>
+                <tr><td>Slots and live casino</td><td>Duel describes 50% instant rakeback on the house edge for slots and live games.</td><td>This reduces cost, but it does not turn third-party games into zero-edge products.</td></tr>
+                <tr><td>Races and leaderboards</td><td>Leaderboards are public reward surfaces with prizes for active players.</td><td>Keep contest prizes separate from guaranteed rakeback in EV comparisons.</td></tr>
+              </table>
+            </div>
+            <div>
+              <div class="section-title">Source Transparency</div>
+              <table class="mini-table">
+                <tr><th>Source</th><th>Use It For</th><th>Do Not Use It For</th></tr>
+                <tr><td>Official Duel Zero Edge page/app text</td><td>0% mode wording, daily allowance, $1,000 zero-edge bet-limit wording, 0.1% after-limit wording, and 50% instant-rakeback positioning.</td><td>Conventional VIP tier thresholds, VIP host rules, withdrawal certainty, or KYC outcomes.</td></tr>
+                <tr><td>FairGambling Duel profile and analysis</td><td>Independent reward economics, 100% house-game RTP checks, live profile data and the 18 July 2025 to 1 May 2026 performance sample.</td><td>Binding casino terms or official eligibility rules.</td></tr>
+                <tr><td><a href="/reviews/duel-review.html">CryptoCasinoSorted Duel review</a></td><td>Plain-English player-fit context and a longer zero-edge explanation.</td><td>New thresholds not backed by official or trusted source data.</td></tr>
               </table>
             </div>
             <div>
               <div class="section-title">Public Data Snapshot</div>
               <table class="mini-table">
-                <tr><th>Metric</th><th>Approximate Figure</th></tr>
-                <tr><td>Period studied</td><td>18 July 2025 to 1 May 2026, about 287 days.</td></tr>
-                <tr><td>Total wagering</td><td>$11.65 billion.</td></tr>
-                <tr><td>Gross gaming revenue</td><td>$135.1 million.</td></tr>
-                <tr><td>Returned through rakeback</td><td>$66 million.</td></tr>
-                <tr><td>Race and leaderboard prizes</td><td>$24 million.</td></tr>
-                <tr><td>Net gaming revenue</td><td>$44.89 million, implying an estimated 0.385% effective edge before affiliate costs and expenses.</td></tr>
+                <tr><th>Metric</th><th>Approximate Figure</th><th>Why It Matters</th></tr>
+                <tr><td>Period studied</td><td>18 July 2025 to 1 May 2026, about 287 days.</td><td>Long enough to evaluate reward economics, but still a historical sample.</td></tr>
+                <tr><td>Total wagering</td><td>$11.65 billion.</td><td>Shows the model was tested at scale.</td></tr>
+                <tr><td>Gross gaming revenue</td><td>$135.1 million.</td><td>The pot from which rewards, races and operating margin are funded.</td></tr>
+                <tr><td>Returned through rakeback</td><td>$66 million.</td><td>Large direct-reward outflow, but not evenly distributed to every player.</td></tr>
+                <tr><td>Race and leaderboard prizes</td><td>$24 million.</td><td>Competition upside, not guaranteed cashback.</td></tr>
+                <tr><td>Net gaming revenue</td><td>$44.89 million, implying an estimated 0.385% effective edge before affiliate costs and expenses.</td><td>Much lower than a typical high-edge casino mix, while still casino-positive overall.</td></tr>
+              </table>
+            </div>
+            <div>
+              <div class="section-title">Player Fit</div>
+              <table class="mini-table">
+                <tr><th>Player Type</th><th>Fit</th><th>Reason</th></tr>
+                <tr><td>Originals-focused grinder</td><td>Strong fit</td><td>The core value is easiest to capture when most volume stays on eligible originals and inside the daily allowance.</td></tr>
+                <tr><td>Slots or live-casino player</td><td>Conditional fit</td><td>50% instant rakeback is meaningful, but provider house edge remains. Compare the net edge against cleaner programs in the <a href="/rakeback-comparison.html">rakeback comparison</a>.</td></tr>
+                <tr><td>VIP ladder optimizer</td><td>Weak fit for threshold modeling</td><td>Duel's official zero-edge material is not a conventional public VIP ladder. Keep it out of the <a href="/vip-gold-calculator.html">VIP Gold calculator</a> threshold logic unless official thresholds are published.</td></tr>
+                <tr><td>Bonus hunter</td><td>Weak fit</td><td>The main attraction is lower playing cost, not a large deposit match.</td></tr>
               </table>
             </div>
             <div>
               <div class="section-title">Best Fit</div>
               <div class="pill-row"><span class="pill good">Originals players</span><span class="pill good">High-volume grinders</span><span class="pill good">Transparency-focused players</span><span class="pill warn">Not a deposit-bonus hunter pick</span><span class="pill warn">Not zero-edge on every game</span></div>
             </div>
-            <p class="note">Caution: low-edge gambling is still gambling. The FairGambling sample still showed roughly 70% of tracked players finishing down, because variance, bet sizing, chasing losses and higher-edge games still matter. Confirm current game eligibility, regional availability, KYC requirements and promotional terms before depositing.</p>
+            <p class="note">Caution: low-edge gambling is still gambling. The FairGambling sample still showed roughly 70% of tracked players finishing down, because variance, bet sizing, chasing losses and higher-edge games still matter. Confirm current game eligibility, regional availability, verification requirements and promotional terms before depositing. Source links are tracked in the <a href="/casino-reward-sources.html#duel">reward source archive</a>.</p>
             <div class="chapter-actions"><a class="btn" href="https://duel.com/r/durinsbane" target="_blank" rel="nofollow sponsored noopener">Play at Duel</a><a class="btn secondary" href="/reviews/duel-review.html">Read Duel Review</a></div>
           </div>
         </section>
