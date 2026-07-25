@@ -124,6 +124,8 @@
     .section-title { color: var(--orange-2); font-size: 0.74rem; font-weight: 950; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 7px; }
     .copy { color: var(--muted); font-size: 0.92rem; }
     .copy strong { color: var(--ink); }
+    .copy a,
+    .note a { color: var(--cyan); font-weight: 850; text-decoration: underline; text-decoration-color: rgba(41,211,255,0.35); text-underline-offset: 3px; }
     .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
     .pill { display: inline-flex; align-items: center; min-height: 28px; padding: 0 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 0.72rem; font-weight: 900; }
     .pill.good { color: var(--lime); border-color: rgba(102,240,111,0.38); background: rgba(102,240,111,0.1); }
@@ -203,17 +205,19 @@
         <a href="#roobet">Roobet</a>
         <a href="#21com">21.com</a>
         <a href="#duel">Duel</a>
+        <a href="#wagercom">Wagercom</a>
         <a href="#razed">Razed</a>
         <a href="#shock">Shock</a>
+        <a href="#500casino">500 Casino</a>
         <a href="#coverage-queue">Expansion Queue</a>
       </aside>
 
       <div class="content">
         <section class="quick-grid" id="overview" aria-label="Reward program summary">
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
-          <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">27</div></div>
+          <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">28</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">23 Jul</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">25 Jul</div></div>
         </section>
 
         <section class="chapter" id="thrill">
@@ -670,36 +674,77 @@
               <div class="fact"><span>Slots / Live Casino</span><strong>50% instant rakeback</strong></div>
               <div class="fact"><span>Reward Style</span><strong>Rakeback, races, leaderboards</strong></div>
             </div>
-            <p class="copy"><strong>How it works:</strong> Duel is not a normal VIP ladder. Its strongest reward is mathematical: eligible Duel Originals have a 0.1% base house edge, but Duel credits that edge back on the first $50,000 wagered each day. Within that daily allowance, the effective house edge is 0%. Above the cap, the underlying 0.1% edge applies.</p>
+            <p class="copy"><strong>How it works:</strong> Duel is not a normal VIP ladder. Its strongest reward is mathematical: eligible Duel Originals have a 0.1% base house edge, but Duel credits that edge back while the player is inside the zero-edge allowance. Within the first $50,000 of eligible daily wagering, the effective house edge is 0%. After the allowance is used, the official Zero Edge text says the 0.1% instant rebate stops until the next daily reset.</p>
             <div>
-              <div class="section-title">Reward Mechanics</div>
+              <div class="section-title">Zero-Edge Economics</div>
               <table class="mini-table">
-                <tr><th>Product</th><th>Player Value</th></tr>
-                <tr><td>Eligible Duel Originals</td><td>Effective 0% house edge on the first $50,000 wagered each day.</td></tr>
-                <tr><td>Originals above daily cap</td><td>Base 0.1% edge applies after the daily allowance is used.</td></tr>
-                <tr><td>Third-party slots</td><td>50% instant rakeback on relevant casino revenue.</td></tr>
-                <tr><td>Live casino</td><td>50% instant rakeback, but provider house edge still exists.</td></tr>
-                <tr><td>Races and leaderboards</td><td>Extra upside for active players, not guaranteed cashback.</td></tr>
+                <tr><th>Rule</th><th>Public source-backed detail</th><th>Handbook read</th></tr>
+                <tr><td>Daily allowance</td><td>Up to $50,000 per day in zero-edge mode on eligible originals.</td><td>This is a daily value cap, not unlimited 0% wagering.</td></tr>
+                <tr><td>Bet sizing</td><td>Official app text references a $1,000 maximum bet for zero-edge mode.</td><td>Large single bets may fall outside the simple 0% treatment.</td></tr>
+                <tr><td>After the allowance</td><td>Official text says a 0.1% house edge applies after the zero-edge limit is used; some game text also references scaling edge for larger bets.</td><td>Check the displayed effective edge before every high-value session.</td></tr>
+                <tr><td>Slots and live casino</td><td>Duel describes 50% instant rakeback on the house edge for slots and live games.</td><td>This reduces cost, but it does not turn third-party games into zero-edge products.</td></tr>
+                <tr><td>Races and leaderboards</td><td>Leaderboards are public reward surfaces with prizes for active players.</td><td>Keep contest prizes separate from guaranteed rakeback in EV comparisons.</td></tr>
+              </table>
+            </div>
+            <div>
+              <div class="section-title">Source Transparency</div>
+              <table class="mini-table">
+                <tr><th>Source</th><th>Use It For</th><th>Do Not Use It For</th></tr>
+                <tr><td>Official Duel Zero Edge page/app text</td><td>0% mode wording, daily allowance, $1,000 zero-edge bet-limit wording, 0.1% after-limit wording, and 50% instant-rakeback positioning.</td><td>Conventional VIP tier thresholds, VIP host rules, withdrawal certainty, or KYC outcomes.</td></tr>
+                <tr><td>FairGambling Duel profile and analysis</td><td>Independent reward economics, 100% house-game RTP checks, live profile data and the 18 July 2025 to 1 May 2026 performance sample.</td><td>Binding casino terms or official eligibility rules.</td></tr>
+                <tr><td><a href="/reviews/duel-review.html">CryptoCasinoSorted Duel review</a></td><td>Plain-English player-fit context and a longer zero-edge explanation.</td><td>New thresholds not backed by official or trusted source data.</td></tr>
               </table>
             </div>
             <div>
               <div class="section-title">Public Data Snapshot</div>
               <table class="mini-table">
-                <tr><th>Metric</th><th>Approximate Figure</th></tr>
-                <tr><td>Period studied</td><td>18 July 2025 to 1 May 2026, about 287 days.</td></tr>
-                <tr><td>Total wagering</td><td>$11.65 billion.</td></tr>
-                <tr><td>Gross gaming revenue</td><td>$135.1 million.</td></tr>
-                <tr><td>Returned through rakeback</td><td>$66 million.</td></tr>
-                <tr><td>Race and leaderboard prizes</td><td>$24 million.</td></tr>
-                <tr><td>Net gaming revenue</td><td>$44.89 million, implying an estimated 0.385% effective edge before affiliate costs and expenses.</td></tr>
+                <tr><th>Metric</th><th>Approximate Figure</th><th>Why It Matters</th></tr>
+                <tr><td>Period studied</td><td>18 July 2025 to 1 May 2026, about 287 days.</td><td>Long enough to evaluate reward economics, but still a historical sample.</td></tr>
+                <tr><td>Total wagering</td><td>$11.65 billion.</td><td>Shows the model was tested at scale.</td></tr>
+                <tr><td>Gross gaming revenue</td><td>$135.1 million.</td><td>The pot from which rewards, races and operating margin are funded.</td></tr>
+                <tr><td>Returned through rakeback</td><td>$66 million.</td><td>Large direct-reward outflow, but not evenly distributed to every player.</td></tr>
+                <tr><td>Race and leaderboard prizes</td><td>$24 million.</td><td>Competition upside, not guaranteed cashback.</td></tr>
+                <tr><td>Net gaming revenue</td><td>$44.89 million, implying an estimated 0.385% effective edge before affiliate costs and expenses.</td><td>Much lower than a typical high-edge casino mix, while still casino-positive overall.</td></tr>
+              </table>
+            </div>
+            <div>
+              <div class="section-title">Player Fit</div>
+              <table class="mini-table">
+                <tr><th>Player Type</th><th>Fit</th><th>Reason</th></tr>
+                <tr><td>Originals-focused grinder</td><td>Strong fit</td><td>The core value is easiest to capture when most volume stays on eligible originals and inside the daily allowance.</td></tr>
+                <tr><td>Slots or live-casino player</td><td>Conditional fit</td><td>50% instant rakeback is meaningful, but provider house edge remains. Compare the net edge against cleaner programs in the <a href="/rakeback-comparison.html">rakeback comparison</a>.</td></tr>
+                <tr><td>VIP ladder optimizer</td><td>Weak fit for threshold modeling</td><td>Duel's official zero-edge material is not a conventional public VIP ladder. Keep it out of the <a href="/vip-gold-calculator.html">VIP Gold calculator</a> threshold logic unless official thresholds are published.</td></tr>
+                <tr><td>Bonus hunter</td><td>Weak fit</td><td>The main attraction is lower playing cost, not a large deposit match.</td></tr>
               </table>
             </div>
             <div>
               <div class="section-title">Best Fit</div>
               <div class="pill-row"><span class="pill good">Originals players</span><span class="pill good">High-volume grinders</span><span class="pill good">Transparency-focused players</span><span class="pill warn">Not a deposit-bonus hunter pick</span><span class="pill warn">Not zero-edge on every game</span></div>
             </div>
-            <p class="note">Caution: low-edge gambling is still gambling. The FairGambling sample still showed roughly 70% of tracked players finishing down, because variance, bet sizing, chasing losses and higher-edge games still matter. Confirm current game eligibility, regional availability, KYC requirements and promotional terms before depositing.</p>
+            <p class="note">Caution: low-edge gambling is still gambling. The FairGambling sample still showed roughly 70% of tracked players finishing down, because variance, bet sizing, chasing losses and higher-edge games still matter. Confirm current game eligibility, regional availability, verification requirements and promotional terms before depositing. Source links are tracked in the <a href="/casino-reward-sources.html#duel">reward source archive</a>.</p>
             <div class="chapter-actions"><a class="btn" href="https://duel.com/r/durinsbane" target="_blank" rel="nofollow sponsored noopener">Play at Duel</a><a class="btn secondary" href="/reviews/duel-review.html">Read Duel Review</a></div>
+          </div>
+        </section>
+
+        <section class="chapter" id="wagercom">
+          <div class="chapter-head"><h2>Wagercom Rewards</h2><p class="chapter-sub">A readable rewards shell now confirms daily rakeback, level-up bonuses, weekly/monthly rewards and VIP progress tracking.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Public Reward Buckets</span><strong>Daily, level-up, weekly, monthly</strong></div>
+              <div class="fact"><span>VIP Surface</span><strong>Progress tracking + transfer flow</strong></div>
+              <div class="fact"><span>Model Status</span><strong>Not rate-table ready</strong></div>
+            </div>
+            <p class="copy"><strong>What we verified:</strong> Wagercom's rewards page now returns a readable app shell with official page metadata. The page title is "Wager Rewards | Claim Bonuses &amp; Track VIP Progress" and the description says players can view and claim daily rakeback, level-up bonuses, weekly rewards, monthly rewards and track VIP progress in one place. That is enough to move Wagercom from a bare URL in the expansion queue into a proper Reward Book chapter, but not enough to assign exact percentages.</p>
+            <table class="mini-table">
+              <tr><th>Layer</th><th>Officially visible detail</th><th>Handbook read</th></tr>
+              <tr><td>Daily rakeback</td><td>The rewards-page metadata names daily rakeback as a claimable reward bucket.</td><td>Real enough to track; no public rate, basis, cap or reset cutoff was extracted.</td></tr>
+              <tr><td>Level-up bonuses</td><td>The same official metadata names level-up bonuses and VIP progress tracking.</td><td>Likely progression-based value, but public rank thresholds and reward amounts are still missing.</td></tr>
+              <tr><td>Weekly/monthly rewards</td><td>Weekly and monthly rewards are named directly in the official rewards-page description.</td><td>Treat as recurring loyalty buckets, not guaranteed cashback percentages.</td></tr>
+              <tr><td>VIP transfer</td><td>The rewards app shell loads a Wager VIP-transfer widget and the promotions page exposes a VIP Transfer card.</td><td>Useful for players migrating status from another casino; exact approval criteria and targets remain unpublished.</td></tr>
+            </table>
+            <p class="copy"><strong>Player fit:</strong> Wagercom is worth tracking for players who care about a modern consolidated rewards page rather than only headline deposit bonuses. The current public evidence points to a broad reward hub: daily rakeback, progression bonuses, recurring reward claims and VIP transfer. It is weaker for exact EV comparison because the public shell still hides the math needed by the <a href="/rakeback-comparison.html">rakeback calculator</a> and <a href="/vip-gold-calculator.html">VIP Gold calculator</a>.</p>
+            <div class="pill-row"><span class="pill good">Official rewards route readable</span><span class="pill good">Daily rakeback named</span><span class="pill good">VIP transfer surface visible</span><span class="pill warn">No public rates</span><span class="pill warn">No public tier thresholds</span><span class="pill warn">No formula/cap table</span></div>
+            <p class="note">Caution: do not turn Wagercom into a hard-number recommendation yet. The official source confirms reward categories and VIP-progress framing, but it does not publish rakeback basis, daily reset rules, level thresholds, weekly/monthly formulas, VIP-transfer qualification rules, KYC outcomes or withdrawal certainty. Source links are tracked in the <a href="/casino-reward-sources.html#wagercom">reward source archive</a>.</p>
           </div>
         </section>
 
@@ -751,21 +796,41 @@
           </div>
         </section>
 
+        <section class="chapter" id="500casino">
+          <div class="chapter-head"><h2>500 Casino Rewards Watch</h2><p class="chapter-sub">Official help-center snippets now expose reward buckets and one Daily Cases threshold, but the live pages still need readable-term confirmation.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Public Buckets</span><strong>Rakeback, level-up rewards, Daily Cases</strong></div>
+              <div class="fact"><span>Daily Cases Signal</span><strong>XP + lossback component</strong></div>
+              <div class="fact"><span>Source Status</span><strong>Official snippets, fetch blocked</strong></div>
+            </div>
+            <p class="copy"><strong>What changed:</strong> 500 Casino is no longer just a bare rewards-route entry in the queue. Official help-center search snippets now identify a broader reward stack: rakeback, level-up rewards and Daily Cases. The Daily Cases help snippet says the feature has an XP component and a lossback component, and that players who are in profit on their 30-day stats need 11.8M XP, approximately $7,000 wagered, to unlock Daily Cases.</p>
+            <table class="mini-table">
+              <tr><th>Reward layer</th><th>Official snippet-backed detail</th><th>Handbook read</th></tr>
+              <tr><td>Rakeback</td><td>The official "what kind of rewards" help snippet names rakeback as part of the rewards stack.</td><td>Track as a real layer, but do not publish a rate, basis, cap, claim cadence or eligible-game table yet.</td></tr>
+              <tr><td>Level-up rewards</td><td>The same official help snippet says level-up rewards sit on top of rakeback and that players level faster in the beginning.</td><td>Progression rewards exist; public rank thresholds and cash values still need full help-page extraction.</td></tr>
+              <tr><td>Daily Cases</td><td>The official Daily Cases snippet says the feature combines XP and lossback. For players in profit over the 30-day stats window, the snippet gives 11.8M XP, about $7,000 wagered, as the unlock line.</td><td>This is a conditional public threshold from an indexed official snippet, not a full Daily Cases formula.</td></tr>
+              <tr><td>Welcome package tie-in</td><td>An official help snippet says the welcome package can add a 300% rakeback reward as a rakeback boost that must be unlocked.</td><td>Keep acquisition-bonus boosts separate from recurring loyalty EV.</td></tr>
+            </table>
+            <p class="copy"><strong>Player fit:</strong> 500 Casino now looks worth deeper monitoring for players who like CS2-flavoured crypto casinos with multiple reward surfaces rather than one simple cashback number. It is still a poor fit for exact reward comparison because the readable public evidence does not expose VIP tier names, VIP thresholds, rakeback percentage tables, lossback formulas, expiry rules or caps.</p>
+            <div class="pill-row"><span class="pill good">Official help snippets found</span><span class="pill good">Daily Cases threshold signal</span><span class="pill warn">Exact rakeback rates not public</span><span class="pill warn">Full help fetch blocked</span><span class="pill warn">No VIP tier table extracted</span></div>
+            <p class="note">Caution: this chapter intentionally labels the evidence as official snippets rather than full rendered terms. Do not use the 11.8M XP Daily Cases line as a universal eligibility rule: the snippet frames it around players who are in profit according to 30-day stats, while the lossback side, account state, excluded games, reset timing and reward value formula still need direct readable confirmation. Source links are tracked in the <a href="/casino-reward-sources.html#500casino">reward source archive</a>.</p>
+          </div>
+        </section>
+
         <section class="chapter" id="coverage-queue">
           <div class="chapter-head"><h2>Coverage Expansion Queue</h2><p class="chapter-sub">The missing casinos from our current operator screenshot, tracked before they graduate into full reward chapters.</p></div>
           <div class="chapter-body">
-            <div class="fact-grid"><div class="fact"><span>Queued Names Left</span><strong>6</strong></div><div class="fact"><span>Research Priority</span><strong>500 Casino, Qzino, Toshi.bet</strong></div><div class="fact"><span>Modeling Rule</span><strong>No exact rates until official terms are readable</strong></div></div>
+            <div class="fact-grid"><div class="fact"><span>Queued Names Left</span><strong>4</strong></div><div class="fact"><span>Research Priority</span><strong>Toshi.bet, Qzino, CoinCasino</strong></div><div class="fact"><span>Modeling Rule</span><strong>No exact rates until official terms are readable</strong></div></div>
             <p class="copy">This queue is how CryptoCasinoSorted stops missing important operators while still keeping the Reward Book honest. A casino can be tracked here with a source link and reward angle before it has enough public data for the homepage calculator, VIP Gold calculator or a full review.</p>
             <table class="mini-table coverage-table">
               <tr><th>Casino</th><th>Reward angle found</th><th>Source status</th><th>Next action</th></tr>
-              <tr><td>Wagercom</td><td>Affiliate/referral rakeback content exists, but player-facing reward terms need official confirmation.</td><td><a href="https://wager.com/" target="_blank" rel="nofollow noopener">Official site to verify</a></td><td>Find official rewards page</td></tr>
               <tr><td>Qzino</td><td>Official indexed snippet says the bonuses page includes VIP rewards, money back twice a week, a bonus every 30 minutes and a Rakeback boost.</td><td><a href="https://qzino.ai/bonuses" target="_blank" rel="nofollow noopener">Official bonuses page</a> · direct fetch blocked by Cloudflare on 18 Jul</td><td>Verify readable terms before modeling any rate</td></tr>
               <tr><td>Toshi.bet</td><td>Screenshot label appears as Toshibet. Official site positions itself around crypto games and daily rewards, but exact VIP math still needs extraction.</td><td><a href="https://toshi.bet/" target="_blank" rel="nofollow noopener">Official site</a></td><td>Confirm reward system details</td></tr>
               <tr><td>Spartans</td><td>Official casino pages found, but reward mechanics were not visible enough for modeling in this pass.</td><td><a href="https://spartans.com/casino/category/new-games" target="_blank" rel="nofollow noopener">Official casino route</a></td><td>Find VIP/rewards source</td></tr>
               <tr><td>CoinCasino</td><td>Promotions page is official; VIP/cashback details need direct confirmation because richer rate claims came from third-party reviews.</td><td><a href="https://www.coincasino.com/en/promotions" target="_blank" rel="nofollow noopener">Official promotions page</a></td><td>Find official VIP terms</td></tr>
-              <tr><td>500 Casino</td><td>Official indexed snippet says the rewards route lets players claim rakeback, lossback, VIP and other rewards, including Daily Cases.</td><td><a href="https://500.casino/rewards" target="_blank" rel="nofollow noopener">Official rewards route</a> · direct fetch hit a Cloudflare challenge on 18 Jul</td><td>Extract exact perks and thresholds only after readable terms</td></tr>
             </table>
-            <p class="note">These operators are intentionally not added to the live incentive calculator yet. The calculator needs defensible reward math; this queue is the research backlog that turns "we should cover them" into source-backed chapters. For Qzino, 500 Casino and Toshi.bet, the current passes could verify official URLs or indexed snippets, but not enough readable terms for a full official help-page verification.</p>
+            <p class="note">These operators are intentionally not added to the live incentive calculator yet. The calculator needs defensible reward math; this queue is the research backlog that turns "we should cover them" into source-backed chapters. Wagercom and 500 Casino graduated into cautious chapters, but both still lack public tier/rate extraction. For Qzino and Toshi.bet, the current passes could verify official URLs or indexed snippets, but not enough readable terms for a full official help-page verification.</p>
           </div>
         </section>
 

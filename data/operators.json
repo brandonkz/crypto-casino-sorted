@@ -305,7 +305,7 @@
       "reward_page_url": "https://duel.com/about/zero-edge",
       "reward_page_label": "Duel Zero Edge",
       "affiliate_url": "https://duel.com/r/durinsbane",
-      "offer_summary": "Eligible Duel Originals effectively run at 0% house edge on the first $50,000 wagered each day. Third-party slots and live casino receive 50% instant rakeback, with extra value available through races and leaderboards.",
+      "offer_summary": "Eligible Duel Originals effectively run at 0% house edge on the first $50,000 wagered each day, with official text also referencing a $1,000 zero-edge bet limit and 0.1% edge after the allowance. Third-party slots and live casino receive 50% instant rakeback, with extra value available through races and leaderboards.",
       "reset_behaviour": "No traditional tier reset; the zero-edge allowance refreshes daily and value depends on playing eligible products.",
       "vip_host_entry": "Still researching.",
       "transparency": 86,
@@ -318,11 +318,13 @@
       "source_terms": [
         "Effective 0% house edge",
         "First $50,000 wagered daily",
+        "$1,000 zero-edge bet-limit wording in official app text",
+        "0.1% edge after zero-edge allowance is used",
         "50% instant rakeback",
         "FairGambling analysis 18 July 2025 to 1 May 2026"
       ],
       "source_monitor": "manual",
-      "source_last_checked": "2026-07-15",
+      "source_last_checked": "2026-07-24",
       "source_status": "manual_verified"
     },
     {
