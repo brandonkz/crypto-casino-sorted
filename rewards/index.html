@@ -181,6 +181,7 @@
       <aside class="sidebar">
         <div class="sidebar-title">Contents</div>
         <a href="#overview">Overview</a>
+        <a href="#rakeback-math">Rakeback Math</a>
         <a href="#thrill">Thrill</a>
         <a href="#duelbits">Duelbits</a>
         <a href="#cloudbet">Cloudbet</a>
@@ -217,7 +218,38 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">28</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">27 Jul</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">29 Jul</div></div>
+        </section>
+
+        <section class="chapter" id="rakeback-math">
+          <div class="chapter-head"><h2>Rakeback Math: Edge, Wager and Contest Value</h2><p class="chapter-sub">The quick conversion layer for comparing headline reward rates without confusing percent-of-edge with percent-of-wager.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Common Basis</span><strong>% of house edge</strong></div>
+              <div class="fact"><span>Cleanest Zero-Edge Case</span><strong>Duel eligible originals</strong></div>
+              <div class="fact"><span>Contest Value</span><strong>Not guaranteed rakeback</strong></div>
+            </div>
+            <p class="copy"><strong>Why this chapter exists:</strong> crypto casino reward pages often put a large percentage in the headline, but the percentage usually applies to theoretical house edge, net loss, XP, or a temporary boost rather than the whole wager. A 5% house-edge rakeback rate on a 2% edge game returns about 0.1% of wager. A 50% house-edge rakeback rate on a 4% edge game returns about 2% of wager. That difference decides whether a program belongs in an EV comparison or only in a perks comparison.</p>
+            <table class="mini-table">
+              <tr><th>Reward basis</th><th>How to convert it</th><th>Source-backed examples</th><th>Handbook caveat</th></tr>
+              <tr><td>Percentage of house edge</td><td>Wager x game house edge x published rakeback rate.</td><td>Shuffle publishes 5% casino rakeback and a 1,000 USDT / 2% edge example returning 1 USDT. Cloudbet publishes 5%-10% regular casino rakeback and a $1,000 / 4% edge example returning $4 at 10%.</td><td>Do not present these as 5% or 10% of wager. Sports may be excluded even when sports still count toward VIP progress.</td></tr>
+              <tr><td>Effective zero edge</td><td>Compare the reduced edge on eligible games against the normal house edge, then apply any daily cap or bet-size limit.</td><td>Duel's archived official/app evidence supports effective 0% edge on eligible originals inside the daily allowance, plus 50% instant rakeback on slots and live casino.</td><td>Zero-edge wording does not apply to every game, every bet size, sportsbook play, regional access, KYC outcomes or play after the allowance.</td></tr>
+              <tr><td>Temporary boosts</td><td>Model the standing rate first, then add boost value only for the eligible window actually claimed.</td><td>Cloudbet's regular rate is 5%-10% of house edge; TURBO can push higher during short windows after calendar claims.</td><td>A boosted ceiling is not the baseline rate for casual or passive players.</td></tr>
+              <tr><td>Races and leaderboards</td><td>Treat prizes as expected contest value only if the player can estimate field size, volume, prize distribution and required extra wagering.</td><td>Duel and Shock expose races/leaderboards as reward surfaces; MetaWin documents leaderboards and Reel Races.</td><td>Contest prizes are not guaranteed cashback. Do not add them to conservative rakeback unless the player is deliberately competing.</td></tr>
+              <tr><td>Lossback / cashback</td><td>Check whether the formula uses net losses, deposits minus withdrawals, ending balance, house margin or account-specific activity.</td><td>Whale publishes daily cashback tied to net loss and separate weekly/monthly formulas using wager x house margin.</td><td>Lossback can be valuable, but it is not the same as every-wager rakeback and may carry bonus-balance or claim-rule friction.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Player type</th><th>Best reward shape</th><th>What to avoid</th></tr>
+              <tr><td>Low-edge originals grinder</td><td>Duel-style zero-edge allowances or transparent house-edge rebates where the game edge is known before play.</td><td>High headline rakeback on games with hidden or high provider edge.</td></tr>
+              <tr><td>Slots / live-casino player</td><td>House-edge rakeback with clear eligible-game rules, because the underlying game edge is usually high enough for rebates to matter.</td><td>Assuming provider games become low-edge just because the rebate percentage is large.</td></tr>
+              <tr><td>Sports-first player</td><td>Programs that explicitly count sportsbook turnover toward VIP progress or publish sports-specific rewards.</td><td>Applying casino-only rakeback math to sportsbook bets; Shuffle and Cloudbet both need this separation.</td></tr>
+              <tr><td>Passive casual player</td><td>Always-on or claim-anytime rakeback with minimal expiry friction.</td><td>Calendar systems, 12-hour windows, reloads or races that require frequent claims to realise value.</td></tr>
+              <tr><td>VIP ladder optimizer</td><td>Public wager/XP thresholds with permanent progression and documented host gates.</td><td>Invitation-only clubs or programs that publish tier names but hide thresholds.</td></tr>
+            </table>
+            <p class="copy"><strong>Practical rule:</strong> when two casinos advertise similar headline rewards, normalize to expected rebate per $1,000 wagered on the same game edge. At 2% edge, 5% house-edge rakeback is about $1 back per $1,000 wagered; at 4% edge, 10% house-edge rakeback is about $4 back per $1,000 wagered. Then layer in claim windows, game exclusions, resets, boost timing and whether the value is cash, bonus balance, token, contest prize or host discretion.</p>
+            <div class="pill-row"><span class="pill good">Source-backed examples</span><span class="pill good">Internal calculator link</span><span class="pill good">Contest value separated</span><span class="pill warn">No invented formulas</span><span class="pill warn">KYC/cashout not implied</span></div>
+            <p class="note">Source status: Shuffle and Cloudbet official help pages were rechecked on 29 Jul 2026 and still exposed the key house-edge wording. Duel is kept as a manual/app-evidence case in the <a href="/casino-reward-sources.html#duel">reward source archive</a>, with detailed caveats in the <a href="#duel">Duel chapter</a>. Use the <a href="/rakeback-comparison.html">rakeback comparison</a> for normalized operator math, and re-check official terms before using any boost, contest, withdrawal or verification claim.</p>
+          </div>
         </section>
 
         <section class="chapter" id="thrill">
