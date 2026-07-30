@@ -157,9 +157,10 @@
       "gamification": 88,
       "watch_out": "Some long-term high-rollers report benefits being trimmed; thresholds not published.",
       "source_url": "https://roobet.com/vip",
-      "source_last_checked": "2026-07-13",
+      "source_last_checked": "2026-07-30",
       "source_terms_hash": "905d829180cace85",
-      "source_status": "verified"
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "id": "bcgame",
@@ -195,9 +196,10 @@
       "gamification": 94,
       "watch_out": "Headline rate is high but paid in BCD; discount versus pure cash and account for withdrawal complaints.",
       "source_url": "https://bc.game/vip",
-      "source_last_checked": "2026-07-13",
+      "source_last_checked": "2026-07-30",
       "source_terms_hash": "7c92257b063d0cfb",
-      "source_status": "verified"
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "id": "thrill",
@@ -403,14 +405,17 @@
       "source_terms": [
         "Elite Club",
         "Instant Rakeback",
-        "Bronze $25+",
-        "Gold $120,000+",
-        "VIP Host from Gold",
-        "Welcome Package up to $5,000 + 100 Free Spins"
+        "Bronze I - IV",
+        "$25+",
+        "Gold I - IV",
+        "$120,000+",
+        "Dedicated VIP Host",
+        "VIP Host Bonuses"
       ],
-      "source_last_checked": "2026-07-15",
+      "source_last_checked": "2026-07-30",
       "source_terms_hash": "e91a9ec7d13bc8fb",
-      "source_status": "verified"
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     },
     {
       "id": "betfury",
@@ -757,9 +762,9 @@
       "gamification": 82,
       "watch_out": "Affiliate 'up to 60%' claims are not official — rates, thresholds, and formula are all explicitly undisclosed and dynamic. The 6-hour activation window on the new-account boost is easy to miss. Strong aggregate trust (Casino Guru 9.8) but documented KYC escalation and multi-week holds after big wins.",
       "source_url": "https://help.gamdom.com/en/articles/10290516-gamdom-rewards",
-      "source_last_checked": "2026-07-16",
+      "source_last_checked": "2026-07-30",
       "source_status": "verified",
-      "source_terms_hash": "2c33766055532de6"
+      "source_terms_hash": "5a9241ba09de3e21"
     },
     {
       "id": "duelbits",
@@ -873,9 +878,9 @@
       "gamification": 92,
       "watch_out": "The 'up to 120%' headline requires level 1000+ AND three consecutive coin-flip wins (12.5% chance); a single loss wipes the accumulated rebate. 7-day rakeback expiry. Welcome bonus is 40x wagering in 7 days. Trustpilot ~2.0 with confiscation complaints ($29k, $9k) despite Casino Guru 8.5 — fast small withdrawals, friction on large ones.",
       "source_url": "https://metaspins.com/level-up/",
-      "source_last_checked": "2026-07-13",
+      "source_last_checked": "2026-07-30",
       "source_status": "verified",
-      "source_terms_hash": "91e5801ace2c6f55"
+      "source_terms_hash": "92eb0975224b479f"
     }
   ]
 }

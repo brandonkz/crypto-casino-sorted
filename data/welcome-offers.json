@@ -197,10 +197,11 @@
       "isAffiliate": true,
       "source_url": "https://21.com/promotions/welcome-offer",
       "source_terms": [
+        "Your Welcome Package",
         "Up to $5,000",
         "100 Free Spins",
-        "40x bonus wagering",
-        "10x maximum return cap"
+        "1st Deposit",
+        "4th Deposit"
       ],
       "breakdown": [
         "1st deposit: 100% up to $600 + 10 free spins; $5 min deposit",
@@ -218,9 +219,10 @@
         "gameType": "96.0"
       },
       "sourceChecked": "2026-06-25",
-      "source_last_checked": "2026-07-15",
+      "source_last_checked": "2026-07-30",
       "source_terms_hash": "a6724dd8414ce9b4",
-      "source_status": "verified"
+      "source_status": "manual_review",
+      "source_monitor": "manual"
     }
   ]
 }
