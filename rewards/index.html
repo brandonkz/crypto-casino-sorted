@@ -218,7 +218,7 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">28</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">29 Jul</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">31 Jul</div></div>
         </section>
 
         <section class="chapter" id="rakeback-math">
@@ -247,8 +247,14 @@
               <tr><td>VIP ladder optimizer</td><td>Public wager/XP thresholds with permanent progression and documented host gates.</td><td>Invitation-only clubs or programs that publish tier names but hide thresholds.</td></tr>
             </table>
             <p class="copy"><strong>Practical rule:</strong> when two casinos advertise similar headline rewards, normalize to expected rebate per $1,000 wagered on the same game edge. At 2% edge, 5% house-edge rakeback is about $1 back per $1,000 wagered; at 4% edge, 10% house-edge rakeback is about $4 back per $1,000 wagered. Then layer in claim windows, game exclusions, resets, boost timing and whether the value is cash, bonus balance, token, contest prize or host discretion.</p>
+            <table class="mini-table">
+              <tr><th>Same $1,000 casino wager</th><th>5% of house edge</th><th>10% of house edge</th><th>50% of house edge</th><th>How to read it</th></tr>
+              <tr><td>1% edge original</td><td>$0.50 back</td><td>$1 back</td><td>$5 back</td><td>Low-edge originals make percent-of-edge rebates look small in dollars, so zero-edge allowances can matter more than a normal VIP headline.</td></tr>
+              <tr><td>2% edge casino game</td><td>$1 back</td><td>$2 back</td><td>$10 back</td><td>This matches Shuffle's official 1,000 USDT / 2% edge example at the 5% rate.</td></tr>
+              <tr><td>4% edge casino game</td><td>$2 back</td><td>$4 back</td><td>$20 back</td><td>This matches Cloudbet's official $1,000 / 4% edge worked example at the 10% Diamond+ rate.</td></tr>
+            </table>
             <div class="pill-row"><span class="pill good">Source-backed examples</span><span class="pill good">Internal calculator link</span><span class="pill good">Contest value separated</span><span class="pill warn">No invented formulas</span><span class="pill warn">KYC/cashout not implied</span></div>
-            <p class="note">Source status: Shuffle and Cloudbet official help pages were rechecked on 29 Jul 2026 and still exposed the key house-edge wording. Duel is kept as a manual/app-evidence case in the <a href="/casino-reward-sources.html#duel">reward source archive</a>, with detailed caveats in the <a href="#duel">Duel chapter</a>. Use the <a href="/rakeback-comparison.html">rakeback comparison</a> for normalized operator math, and re-check official terms before using any boost, contest, withdrawal or verification claim.</p>
+            <p class="note">Source status: Shuffle and Cloudbet official help pages were rechecked on 31 Jul 2026 and still exposed the key house-edge wording. Duel is kept as a manual/app-evidence case in the <a href="/casino-reward-sources.html#duel">reward source archive</a>, with detailed caveats in the <a href="#duel">Duel chapter</a>. Use the <a href="/rakeback-comparison.html">rakeback comparison</a> for normalized operator math, and re-check official terms before using any boost, contest, withdrawal or verification claim.</p>
           </div>
         </section>
 
@@ -302,6 +308,13 @@
               <tr><td>Reward calendar</td><td>The public rewards page says calendar rewards unlock three times per day and must be claimed within 12 hours after unlock.</td><td>Missed claims can reduce realised value for low-maintenance players.</td></tr>
               <tr><td>TURBO boosts</td><td>The rewards page says TURBO starts when calendar rewards are claimed and temporarily boosts casino rakeback; VIP examples show up to 12.5% at Sapphire, 15% at Ruby, 20% at Diamond and 25% at Blue Diamond.</td><td>TURBO is session timing upside, not the standing rakeback rate.</td></tr>
               <tr><td>Welcome-package timing</td><td>The help article says regular Cloudbet Rewards rakeback starts once the Welcome Package ends.</td><td>Keep new-player welcome economics separate from ongoing loyalty EV.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Cloudbet scenario</th><th>Conservative model</th><th>Common mistake to avoid</th></tr>
+              <tr><td>Bronze-Ruby casino play</td><td>5% of house edge. A $1,000 wager on a 2% edge game is about $1 regular rakeback before calendar friction.</td><td>Calling it 5% cashback on the full wager.</td></tr>
+              <tr><td>Diamond / Blue Diamond casino play</td><td>10% of house edge. The official $1,000 / 4% example returns $4.</td><td>Treating the Diamond+ rate as available to every tier.</td></tr>
+              <tr><td>Claiming after a calendar unlock</td><td>Half-wallet / half-calendar collection can trigger TURBO windows, with public examples up to 25% at Blue Diamond.</td><td>Using the boosted TURBO ceiling as the always-on baseline.</td></tr>
+              <tr><td>Sportsbook volume</td><td>Track separately through cash-drop / reward-calendar mechanics where applicable.</td><td>Applying casino rakeback math to sports bets.</td></tr>
             </table>
             <p class="copy"><strong>Player fit:</strong> Cloudbet fits players who want a mature crypto sportsbook/casino account, cash rewards, and published house-edge math. It is especially useful for players willing to claim frequently and time casino sessions around TURBO windows. It is weaker for casual players who want passive rewards, because the calendar mechanic creates claim friction, and for sports-first players because normal rakeback does not apply to sports bets. Compare it against cleaner always-on programs in the <a href="/rakeback-comparison.html">rakeback comparison</a> and against high-volume VIP ladders in the <a href="/blog/best-crypto-casino-vip-programs-2026.html">VIP programs guide</a>.</p>
             <div class="pill-row"><span class="pill good">Official help source readable</span><span class="pill good">Published rate table</span><span class="pill good">Worked house-edge example</span><span class="pill warn">Casino bets only</span><span class="pill warn">12-hour claim windows</span><span class="pill warn">TURBO is temporary</span></div>
@@ -400,6 +413,13 @@
               <tr><td>Weekly/monthly rewards</td><td>The public VIP page describes weekly and monthly rakebacks as credited on their schedule and usable or withdrawable after crediting.</td><td>Exact formulas remain unpublished, so keep them out of hard-number modeling.</td></tr>
               <tr><td>Reloads</td><td>Public VIP FAQ says reloads are issued after reaching a new VIP rank, with support from the VIP team.</td><td>Good progression upside, but account-specific values are not public.</td></tr>
               <tr><td>VIP host</td><td>Public benefits table shows VIP Host from Sapphire; FAQ says hosts provide personalized support, bonuses and promotions.</td><td>Host quality and offer value are personalized, not a public rate table.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Shuffle scenario</th><th>Conservative model</th><th>Player-fit guidance</th></tr>
+              <tr><td>Casino-first player on known-edge games</td><td>Use 5% of house edge as the hard input, then calculate dollars back from the actual game edge.</td><td>Good fit if the player wants transparent cash rakeback and can compare edge before playing.</td></tr>
+              <tr><td>Sports or esports bettor</td><td>Do not model instant rakeback. The help article excludes sports bets from rakeback even though sports/esports can matter for VIP XP.</td><td>Better as a progression/VIP-perk play than an instant-rakeback pick for sports-only volume.</td></tr>
+              <tr><td>Sapphire-targeted VIP</td><td>Public benefits show VIP host access from Sapphire, but host offers are personalized.</td><td>Useful target for players who value host support; not enough for a guaranteed-bonus formula.</td></tr>
+              <tr><td>Weekly/monthly reward hunter</td><td>Track the buckets as real, but leave rates out of calculator ranking until Shuffle publishes formulas.</td><td>Good recurring upside, weaker than fixed-rate programs for exact EV planning.</td></tr>
             </table>
             <p class="copy"><strong>Player fit:</strong> Shuffle is strongest for casino-first players who understand house-edge math and want a modern Stake-style ladder with lifetime progression. It is weaker for sports-only grinders, because the official rakeback article excludes sports bets from rakeback even though the broader VIP system still markets casino and sportsbook activity. For matchup context, see <a href="/blog/stake-vs-shuffle-comparison-2026.html">Stake vs Shuffle</a>, <a href="/blog/duelbits-vs-shuffle-comparison-2026.html">Duelbits vs Shuffle</a>, and <a href="/blog/shuffle-vs-roobet-comparison-2026.html">Shuffle vs Roobet</a>.</p>
             <div class="pill-row"><span class="pill good">Official rakeback example</span><span class="pill good">Casino-only edge basis</span><span class="pill good">VIP host from Sapphire</span><span class="pill warn">Sports excluded from rakeback</span><span class="pill warn">Weekly/monthly formulas not public</span></div>
