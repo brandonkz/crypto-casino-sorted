@@ -182,6 +182,7 @@
         <div class="sidebar-title">Contents</div>
         <a href="#overview">Overview</a>
         <a href="#rakeback-math">Rakeback Math</a>
+        <a href="#threshold-transparency">Threshold Transparency</a>
         <a href="#thrill">Thrill</a>
         <a href="#duelbits">Duelbits</a>
         <a href="#cloudbet">Cloudbet</a>
@@ -216,9 +217,9 @@
       <div class="content">
         <section class="quick-grid" id="overview" aria-label="Reward program summary">
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
-          <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">28</div></div>
+          <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">29</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">1 Aug</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">2 Aug</div></div>
         </section>
 
         <section class="chapter" id="rakeback-math">
@@ -255,6 +256,39 @@
             </table>
             <div class="pill-row"><span class="pill good">Source-backed examples</span><span class="pill good">Internal calculator link</span><span class="pill good">Contest value separated</span><span class="pill warn">No invented formulas</span><span class="pill warn">KYC/cashout not implied</span></div>
             <p class="note">Source status: Shuffle and Cloudbet official help pages were rechecked on 31 Jul 2026 and still exposed the key house-edge wording. Duel is kept as a manual/app-evidence case in the <a href="/casino-reward-sources.html#duel">reward source archive</a>, with detailed caveats in the <a href="#duel">Duel chapter</a>. Use the <a href="/rakeback-comparison.html">rakeback comparison</a> for normalized operator math, and re-check official terms before using any boost, contest, withdrawal or verification claim.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="threshold-transparency">
+          <div class="chapter-head"><h2>Threshold Transparency: Names vs Public Entry Lines</h2><p class="chapter-sub">A source-status matrix for avoiding the classic mistake: treating a public tier name as a published wager threshold.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Best Public Ladders</span><strong>Razed, Winna, Yeet, 21.com</strong></div>
+              <div class="fact"><span>Names Only / Partial</span><strong>Stake, Gamdom, MetaWin</strong></div>
+              <div class="fact"><span>Modeling Rule</span><strong>Null until a threshold is public</strong></div>
+            </div>
+            <p class="copy"><strong>Why this matters:</strong> a casino can publish Bronze, Silver, Gold or Diamond branding without publishing the wager, XP or invite rule behind each status. The Reward Book keeps those separate. Public tier names are useful for navigation and player-fit guidance; public thresholds are the only inputs that belong in the <a href="/vip-gold-calculator.html">VIP Gold calculator</a> or any estimate of how long a player needs to grind.</p>
+            <table class="mini-table">
+              <tr><th>Operator</th><th>What is public</th><th>Threshold status</th><th>Handbook use</th></tr>
+              <tr><td>Razed</td><td>Official help docs publish Bronze I-III at $10,000-$30,000, Silver I-V at $50,000-$150,000, Gold I-V at $200,000-$600,000, Platinum I-VI at $750,000-$10M, plus Diamond through Onyx milestones.</td><td>Public wager ladder.</td><td>Strong for threshold modeling and host-gate context; exact rakeback and reload percentages remain unpublished.</td></tr>
+              <tr><td>Winna</td><td>Official help docs publish wager bands from Bronze 1 upward, including Silver 1 at $20,000, Gold 1 at $100,000, Platinum 1 at $500,000, Diamond 5 at $100M and Nebula 5 at $1B+.</td><td>Public wager ladder.</td><td>Strong for progression and perk-gate comparison; exact rakeback, boost, monthly and lossback formulas remain unpublished.</td></tr>
+              <tr><td>21.com</td><td>Public Elite Club material exposes Bronze from $25+, Silver from $6,000+, Gold from $120,000+, Platinum from $2.4M+, Diamond from $60M+ and invitation-only Elite.</td><td>Public wager-style ladder.</td><td>Usable for Gold-entry comparison, but welcome-bonus wagering and restricted-market caveats must stay separate.</td></tr>
+              <tr><td>Yeet</td><td>Archived source pass captures Copper at $100, Bronze at $1,000, Silver at $10,000, Gold at $50,000, Platinum at $250,000, Jade at $1M, Diamond at $5M, Aether at $10M, The Void at $50M and Eternal at $250M.</td><td>Public source pass, monitor for changes.</td><td>Useful as a clear public ladder example; keep edge-based rakeback math separate from tier-entry math.</td></tr>
+              <tr><td>Stake</td><td>Official routes and snippets confirm the VIP reward surfaces and Platinum IV+ host signal, while the readable source pass only keeps Bronze as the modeled public entry line.</td><td>Partial public threshold coverage.</td><td>Describe the ecosystem and reward buckets, but do not invent upper-tier thresholds, reload values, host exceptions or caps.</td></tr>
+              <tr><td>Gamdom</td><td>Official help confirms 24 Royalty Up levels across Bronze, Silver, Gold, Emerald, Sapphire, Ruby, Diamond and Opal.</td><td>Tier names public; thresholds not public.</td><td>Good for player-fit notes and opacity warnings; not a calculator threshold source.</td></tr>
+              <tr><td>MetaWin</td><td>Official help confirms Rank Up Points, rank-up rewards, Royal Reloads, Instant Bonus and WinBack mechanics.</td><td>Progression system public; tier thresholds not public in the help articles.</td><td>Useful for reward-layer explanation, but not for hard Gold-time modeling.</td></tr>
+              <tr><td>Duel</td><td>Official/app evidence supports the zero-edge allowance and third-party instant-rakeback positioning, not a conventional public VIP ladder.</td><td>No public VIP threshold ladder in current source pass.</td><td>Model as a zero-edge economics case, not as a tier-grind program.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>When a source only shows...</th><th>Write it as...</th><th>Do not write...</th></tr>
+              <tr><td>Tier names but no requirements.</td><td>"Tier names are public; thresholds are not public in the reviewed source."</td><td>"Gold starts at..." unless the wager, XP or deposit target is published.</td></tr>
+              <tr><td>A host benefit listed beside a tier.</td><td>"Host access is publicly shown at this tier, subject to account and regional terms."</td><td>"This guarantees faster withdrawals, waived KYC or fixed bonus treatment."</td></tr>
+              <tr><td>A VIP-transfer form or support route.</td><td>"VIP transfer is available or advertised, but approval criteria and boost targets are account-specific unless stated."</td><td>"Matched players receive the same economics as a native tier."</td></tr>
+              <tr><td>Rewards dashboard or app shell metadata.</td><td>"Reward buckets are visible, but rates, caps and reset rules need direct term extraction."</td><td>"The operator pays X% rakeback" from category labels alone.</td></tr>
+            </table>
+            <p class="copy"><strong>Player fit:</strong> threshold-transparent programs are best for grinders who want to plan a path to Gold, host access or scheduled perks before depositing. Opaque programs can still be worthwhile, especially when they have strong hosts or personalized rewards, but they should be compared as discretionary ecosystems rather than clean economic ladders.</p>
+            <div class="pill-row"><span class="pill good">Public thresholds separated</span><span class="pill good">Internal calculator guardrail</span><span class="pill warn">Host access is not cashout proof</span><span class="pill warn">Names are not thresholds</span></div>
+            <p class="note">Source status: Razed, Winna and Shuffle official help pages were rechecked on 2 Aug 2026 and remained readable enough to confirm the current source archive direction. Yeet's current route did not expose matching tier text through a simple fetch during this pass, so its ladder remains tied to the earlier archived source pass and should be monitored before adding new Yeet-only claims.</p>
           </div>
         </section>
 
