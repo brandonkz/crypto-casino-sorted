@@ -489,7 +489,6 @@
         const end = start + sliceDegrees;
         const center = start + sliceDegrees / 2;
         const labelPoint = pointAt(center, 108);
-        const labelRotation = center > 90 && center < 270 ? center + 180 : center;
 
         const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         path.setAttribute('class', 'wheel-slice');
@@ -501,7 +500,6 @@
         text.setAttribute('class', 'wheel-label');
         text.setAttribute('x', labelPoint.x.toFixed(3));
         text.setAttribute('y', labelPoint.y.toFixed(3));
-        text.setAttribute('transform', `rotate(${labelRotation} ${labelPoint.x.toFixed(3)} ${labelPoint.y.toFixed(3)})`);
         prize.label.split('\\n').forEach((line, lineIndex) => {
           const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
           tspan.setAttribute('x', labelPoint.x.toFixed(3));
