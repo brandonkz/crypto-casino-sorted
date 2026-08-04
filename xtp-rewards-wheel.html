@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choose 20% cashback, 15% rakeback, or spin for a chance at an XTP deposit match up to $1,000.">
+  <title>XTP Rewards Wheel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --xtp-dark: #041b29;
+      --xtp-deep: #001722;
+      --xtp-panel: #0e334a;
+      --xtp-blue: #177ebc;
+      --xtp-sky: #36b3ff;
+      --xtp-orange: #f79900;
+      --xtp-gold: #ffb92c;
+      --xtp-green: #4bff1e;
+      --xtp-red: #ff3f3f;
+      --text: #ffffff;
+      --muted: #b9d1df;
+      --line: rgba(255, 255, 255, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(247, 153, 0, 0.22), transparent 30%),
+        radial-gradient(circle at 84% 18%, rgba(54, 179, 255, 0.18), transparent 28%),
+        linear-gradient(145deg, var(--xtp-dark), var(--xtp-deep));
+      color: var(--text);
+      font-family: Saira, system-ui, sans-serif;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 54px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .brand span {
+      color: var(--xtp-orange);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border: 1px solid rgba(247, 153, 0, 0.42);
+      border-radius: 999px;
+      background: rgba(247, 153, 0, 0.12);
+      color: var(--xtp-gold);
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 420px;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .wheel-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(14, 51, 74, 0.72);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .hero-copy {
+      padding: clamp(24px, 5vw, 54px);
+      min-height: 580px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .kicker {
+      color: var(--xtp-orange);
+      font-size: 0.9rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      max-width: 720px;
+      font-size: clamp(3rem, 8vw, 6.2rem);
+      line-height: 0.9;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .lede {
+      max-width: 650px;
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 1.24rem;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .reward-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .choice {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      min-height: 146px;
+      padding: 18px;
+      color: var(--text);
+      background: rgba(0, 23, 34, 0.82);
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .choice:hover,
+    .choice.active {
+      transform: translateY(-2px);
+      border-color: var(--xtp-orange);
+      background: rgba(247, 153, 0, 0.12);
+    }
+
+    .choice strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .choice small {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .choice.cashback strong {
+      color: var(--xtp-orange);
+    }
+
+    .choice.rakeback strong {
+      color: var(--xtp-green);
+    }
+
+    .choice.none strong {
+      color: var(--xtp-sky);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+      min-width: 240px;
+      padding: 0 28px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--xtp-orange);
+      color: var(--xtp-dark);
+      font-family: inherit;
+      font-size: 1.14rem;
+      font-weight: 900;
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 14px 36px rgba(247, 153, 0, 0.28);
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .wheel-panel {
+      padding: 22px;
+      display: grid;
+      align-content: start;
+      gap: 16px;
+    }
+
+    .wheel-title {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .wheel-title span {
+      color: var(--xtp-green);
+    }
+
+    .wheel-wrap {
+      position: relative;
+      width: min(340px, 100%);
+      aspect-ratio: 1;
+      margin: 0 auto;
+    }
+
+    .pointer {
+      position: absolute;
+      left: 50%;
+      top: -6px;
+      z-index: 3;
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 34px solid var(--xtp-orange);
+      transform: translateX(-50%);
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+    }
+
+    .wheel {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      transform: rotate(var(--spin, 0deg));
+      transition: transform 4s cubic-bezier(0.13, 0.74, 0.16, 1);
+      filter: drop-shadow(0 24px 38px rgba(0, 0, 0, 0.34));
+    }
+
+    .wheel-rim {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.16);
+      stroke-width: 12;
+    }
+
+    .wheel-slice {
+      stroke: rgba(4, 27, 41, 0.72);
+      stroke-width: 2;
+    }
+
+    .wheel-label {
+      fill: var(--xtp-dark);
+      font-family: Saira, system-ui, sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      paint-order: stroke;
+      stroke: rgba(255, 255, 255, 0.3);
+      stroke-width: 1px;
+    }
+
+    .wheel-hub {
+      fill: var(--xtp-dark);
+      stroke: rgba(255, 255, 255, 0.22);
+      stroke-width: 3;
+    }
+
+    .wheel-hub-text {
+      fill: #ffffff;
+      font-family: Saira, system-ui, sans-serif;
+      font-size: 18px;
+      font-weight: 900;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .spin-button {
+      min-height: 56px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--xtp-green);
+      color: var(--xtp-dark);
+      font-family: inherit;
+      font-size: 1.08rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .spin-button:disabled {
+      cursor: wait;
+      opacity: 0.7;
+    }
+
+    .result {
+      min-height: 56px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(0, 23, 34, 0.64);
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .fine-print {
+      margin: 16px 0 0;
+      color: rgba(185, 209, 223, 0.82);
+      font-size: 0.84rem;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(100% - 24px, 1180px);
+        padding-top: 18px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .reward-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .choice {
+        min-height: 112px;
+      }
+
+      .cta {
+        width: 100%;
+      }
+
+      .wheel-panel {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">XTP<span>.</span></div>
+      <div class="pill">Rewards choice + spin wheel</div>
+    </header>
+
+    <section class="hero" aria-label="XTP reward picker">
+      <div class="hero-copy">
+        <div class="kicker">Pick your reward</div>
+        <h1>Cashback, rakeback, or spin.</h1>
+        <p class="lede">Choose 20% cashback, 15% rakeback, or skip the reward choice. Then spin the wheel for a chance at a deposit match up to $1,000.</p>
+
+        <div class="reward-grid" role="group" aria-label="Reward choices">
+          <button class="choice cashback active" type="button" data-choice="20% cashback">
+            <strong>20%</strong>
+            <small>Cashback for players who want a simple weekly give-back.</small>
+          </button>
+          <button class="choice rakeback" type="button" data-choice="15% rakeback">
+            <strong>15%</strong>
+            <small>Rakeback for players who prefer ongoing volume rewards.</small>
+          </button>
+          <button class="choice none" type="button" data-choice="nothing">
+            <strong>Nothing</strong>
+            <small>Skip the reward choice and continue straight to XTP.</small>
+          </button>
+        </div>
+
+        <div class="cta-row">
+          <a class="cta" id="continueLink" href="https://xtp.com">Continue to XTP</a>
+          <div class="status" id="choiceStatus">Selected: 20% cashback</div>
+        </div>
+
+        <p class="fine-print">Rewards, cashback, rakeback, deposit matches, and eligibility are subject to XTP terms, region, account status, and responsible play rules.</p>
+      </div>
+
+      <aside class="wheel-panel" aria-label="Spin wheel">
+        <h2 class="wheel-title">Spin for up to <span>$1k</span></h2>
+        <div class="wheel-wrap">
+          <div class="pointer" aria-hidden="true"></div>
+          <svg class="wheel" id="wheel" viewBox="0 0 360 360" aria-hidden="true">
+            <g id="wheelSlices"></g>
+            <circle class="wheel-rim" cx="180" cy="180" r="170"></circle>
+            <circle class="wheel-hub" cx="180" cy="180" r="54"></circle>
+            <text class="wheel-hub-text" x="180" y="180">SPIN</text>
+          </svg>
+        </div>
+        <button class="spin-button" id="spinButton" type="button">Spin wheel</button>
+        <div class="result" id="spinResult">Spin to reveal a bonus route.</div>
+        <a class="cta" href="https://xtp.com">Claim on XTP</a>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const XTP_URL = 'https://xtp.com';
+    const choices = document.querySelectorAll('.choice');
+    const choiceStatus = document.getElementById('choiceStatus');
+    const continueLink = document.getElementById('continueLink');
+    const wheel = document.getElementById('wheel');
+    const wheelSlices = document.getElementById('wheelSlices');
+    const spinButton = document.getElementById('spinButton');
+    const spinResult = document.getElementById('spinResult');
+
+    const prizes = [
+      { result: '$1,000 deposit match', label: '$1K\\nMATCH', color: '#f79900' },
+      { result: '$500 deposit match', label: '$500\\nMATCH', color: '#177ebc' },
+      { result: '20% cashback', label: '20%\\nCASH', color: '#4bff1e' },
+      { result: '15% rakeback', label: '15%\\nRAKE', color: '#ff3f3f' },
+      { result: '$100 bonus boost', label: '$100\\nBOOST', color: '#ffb92c' },
+      { result: 'Try again', label: 'TRY\\nAGAIN', color: '#36b3ff' }
+    ];
+
+    let selectedChoice = '20% cashback';
+    let currentRotation = 0;
+
+    function pointAt(angle, radius) {
+      const radians = angle * Math.PI / 180;
+      return {
+        x: 180 + Math.sin(radians) * radius,
+        y: 180 - Math.cos(radians) * radius
+      };
+    }
+
+    function slicePath(startAngle, endAngle) {
+      const outerStart = pointAt(startAngle, 164);
+      const outerEnd = pointAt(endAngle, 164);
+      const largeArc = endAngle - startAngle > 180 ? 1 : 0;
+      return [
+        'M 180 180',
+        `L ${outerStart.x.toFixed(3)} ${outerStart.y.toFixed(3)}`,
+        `A 164 164 0 ${largeArc} 1 ${outerEnd.x.toFixed(3)} ${outerEnd.y.toFixed(3)}`,
+        'Z'
+      ].join(' ');
+    }
+
+    function renderWheel() {
+      const sliceDegrees = 360 / prizes.length;
+      prizes.forEach((prize, index) => {
+        const start = index * sliceDegrees;
+        const end = start + sliceDegrees;
+        const center = start + sliceDegrees / 2;
+        const labelPoint = pointAt(center, 108);
+        const labelRotation = center > 90 && center < 270 ? center + 180 : center;
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('class', 'wheel-slice');
+        path.setAttribute('d', slicePath(start, end));
+        path.setAttribute('fill', prize.color);
+        wheelSlices.appendChild(path);
+
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('class', 'wheel-label');
+        text.setAttribute('x', labelPoint.x.toFixed(3));
+        text.setAttribute('y', labelPoint.y.toFixed(3));
+        text.setAttribute('transform', `rotate(${labelRotation} ${labelPoint.x.toFixed(3)} ${labelPoint.y.toFixed(3)})`);
+        prize.label.split('\\n').forEach((line, lineIndex) => {
+          const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+          tspan.setAttribute('x', labelPoint.x.toFixed(3));
+          tspan.setAttribute('dy', lineIndex === 0 ? '-0.25em' : '1.15em');
+          tspan.textContent = line;
+          text.appendChild(tspan);
+        });
+        wheelSlices.appendChild(text);
+      });
+    }
+
+    function updateLink() {
+      const params = new URLSearchParams();
+      params.set('reward', selectedChoice);
+      continueLink.href = `${XTP_URL}?${params.toString()}`;
+    }
+
+    choices.forEach((button) => {
+      button.addEventListener('click', () => {
+        choices.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        selectedChoice = button.dataset.choice;
+        choiceStatus.textContent = `Selected: ${selectedChoice}`;
+        updateLink();
+      });
+    });
+
+    spinButton.addEventListener('click', () => {
+      spinButton.disabled = true;
+      spinResult.textContent = 'Spinning...';
+
+      const winningIndex = Math.floor(Math.random() * prizes.length);
+      const sliceDegrees = 360 / prizes.length;
+      const targetCenter = winningIndex * sliceDegrees + sliceDegrees / 2;
+      const jitter = Math.random() * 18 - 9;
+      const desiredRotation = (360 - (targetCenter + jitter)) % 360;
+      const currentMod = ((currentRotation % 360) + 360) % 360;
+      const correction = (desiredRotation - currentMod + 360) % 360;
+      const extraTurns = 5 + Math.floor(Math.random() * 3);
+      currentRotation += extraTurns * 360 + correction;
+      wheel.style.setProperty('--spin', `${currentRotation}deg`);
+
+      window.setTimeout(() => {
+        const prize = prizes[winningIndex].result;
+        spinResult.textContent = `Result: ${prize}`;
+        const params = new URLSearchParams();
+        params.set('reward', selectedChoice);
+        params.set('wheel', prize);
+        continueLink.href = `${XTP_URL}?${params.toString()}`;
+        spinButton.disabled = false;
+      }, 4200);
+    });
+
+    renderWheel();
+    updateLink();
+  </script>
+</body>
+</html>
