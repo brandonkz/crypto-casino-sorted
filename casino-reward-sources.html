@@ -470,10 +470,14 @@
       <article class="source-card">
         <div class="source-top">
           <h3 class="source-name">CoinCasino</h3>
-          <div class="source-type">Coverage queue source</div>
+          <div class="source-type">Reward source watch</div>
         </div>
-        <p>Official promotions page found; VIP/cashback mechanics need official terms confirmation · discovered · 2026-07-15</p>
-        <a href="https://www.coincasino.com/en/promotions" target="_blank" rel="nofollow noopener">Source page</a>
+        <p>Official promotions/live-casino routes and app strings confirm cashback, loyalty XP, rank progress labels, casino cashback, sportsbook cashback, current-week progress, cap/rate labels, bonus-history surfaces and VIP snippet language around up to 25% weekly cashback, exclusive events and a VIP host. Exact tier thresholds, cashback/rakeback formulas, caps, reset rules and VIP entry gates remain unpublished in readable public terms · app_strings_plus_indexed_snippets · 2026-08-04</p>
+        <div class="source-links">
+          <div class="source-link-row"><span class="source-link-kind">Official promotions route</span><a href="https://www.coincasino.com/en/promotions" target="_blank" rel="nofollow noopener">CoinCasino Promotions</a></div>
+          <div class="source-link-row"><span class="source-link-kind">Official live-casino snippet source</span><a href="https://www.coincasino.com/en/live-casino" target="_blank" rel="nofollow noopener">CoinCasino Live Casino</a></div>
+          <div class="source-link-row"><span class="source-link-kind">Official casino snippet source</span><a href="https://www.coincasino.com/en/casino" target="_blank" rel="nofollow noopener">CoinCasino Casino</a></div>
+        </div>
       </article>
       <article class="source-card" id="500casino">
         <div class="source-top">
@@ -536,6 +540,36 @@
             checked: item.source_last_checked,
             status: item.source_status
           }));
+        const supplementalSources = [
+          {
+            id: 'coincasino',
+            name: 'CoinCasino',
+            descriptions: ['Official promotions/live-casino routes and app strings confirm cashback, loyalty XP, rank progress labels, casino cashback, sportsbook cashback, current-week progress, cap/rate labels, bonus-history surfaces and VIP snippet language around up to 25% weekly cashback, exclusive events and a VIP host. Exact tier thresholds, cashback/rakeback formulas, caps, reset rules and VIP entry gates remain unpublished in readable public terms.'],
+            links: [
+              {
+                kind: 'Official promotions route',
+                label: 'CoinCasino Promotions',
+                url: 'https://www.coincasino.com/en/promotions',
+                checked: '2026-08-04',
+                status: 'manual_review'
+              },
+              {
+                kind: 'Official live-casino snippet source',
+                label: 'CoinCasino Live Casino',
+                url: 'https://www.coincasino.com/en/live-casino',
+                checked: '2026-08-04',
+                status: 'manual_review'
+              },
+              {
+                kind: 'Official casino snippet source',
+                label: 'CoinCasino Casino',
+                url: 'https://www.coincasino.com/en/casino',
+                checked: '2026-08-04',
+                status: 'manual_review'
+              }
+            ]
+          }
+        ];
         const rewardSources = operators
           .filter((operator) => operator.reward_page_url)
           .map((operator) => ({
@@ -563,6 +597,9 @@
           map.set(key, source);
           return map;
         }, new Map());
+        supplementalSources.forEach((source) => {
+          grouped.set(source.name.toLowerCase(), source);
+        });
         const sources = [...grouped.values()].sort((a, b) => a.name.localeCompare(b.name));
         target.innerHTML = sources.length ? sources.map((source) => `
           <article class="source-card" id="${source.id}">
