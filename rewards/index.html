@@ -182,6 +182,7 @@
         <div class="sidebar-title">Contents</div>
         <a href="#overview">Overview</a>
         <a href="#rakeback-math">Rakeback Math</a>
+        <a href="#claim-friction">Claim Friction</a>
         <a href="#threshold-transparency">Threshold Transparency</a>
         <a href="#thrill">Thrill</a>
         <a href="#duelbits">Duelbits</a>
@@ -220,7 +221,7 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">29</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">2 Aug</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">5 Aug</div></div>
         </section>
 
         <section class="chapter" id="rakeback-math">
@@ -257,6 +258,36 @@
             </table>
             <div class="pill-row"><span class="pill good">Source-backed examples</span><span class="pill good">Internal calculator link</span><span class="pill good">Contest value separated</span><span class="pill warn">No invented formulas</span><span class="pill warn">KYC/cashout not implied</span></div>
             <p class="note">Source status: Shuffle and Cloudbet official help pages were rechecked on 31 Jul 2026 and still exposed the key house-edge wording. Duel is kept as a manual/app-evidence case in the <a href="/casino-reward-sources.html#duel">reward source archive</a>, with detailed caveats in the <a href="#duel">Duel chapter</a>. Use the <a href="/rakeback-comparison.html">rakeback comparison</a> for normalized operator math, and re-check official terms before using any boost, contest, withdrawal or verification claim.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="claim-friction">
+          <div class="chapter-head"><h2>Claim Friction: Instant, Calendar and Expiring Value</h2><p class="chapter-sub">A practical filter for whether a published reward rate becomes usable cash, delayed calendar value, bonus-balance value or missed value.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Cleanest Passive Fit</span><strong>Instant or no-expiry claims</strong></div>
+              <div class="fact"><span>Highest Maintenance Fit</span><strong>Calendar windows + boosts</strong></div>
+              <div class="fact"><span>Modeling Rule</span><strong>Discount value you may miss</strong></div>
+            </div>
+            <p class="copy"><strong>Why this chapter exists:</strong> the same rakeback percentage can be worth different amounts to different players because claim timing changes realised value. A frequent grinder may capture calendar unlocks, temporary boosts and reload claims. A casual player may miss 12-hour windows, 24-hour bonus claims, weekly expiry rules or boost sessions entirely. The Reward Book therefore separates the published earning formula from the practical collection path.</p>
+            <table class="mini-table">
+              <tr><th>Claim shape</th><th>Source-backed examples</th><th>Player-fit read</th><th>Modeling caveat</th></tr>
+              <tr><td>Mostly instant rakeback</td><td>Shuffle publishes casino-only 5% of house-edge rakeback as cash. Yeet says instant rakeback is claimable anytime with no expiry in the archived source pass. Duel positions third-party slots/live casino around 50% instant rakeback.</td><td>Best for players who want low-maintenance value and do not want to plan sessions around unlock windows.</td><td>Still check game eligibility, house-edge basis and whether sports bets are excluded before treating it as all-volume cashback.</td></tr>
+              <tr><td>Split instant/calendar rakeback</td><td>Rollbit's official blog says 5% house-edge rakeback is claimable every 30 minutes, with 50% credited immediately and 50% split over three days. Solcasino docs show the same 5%, 30-minute, half-instant/half-calendar shape.</td><td>Good for active players who log in often; weaker for passive players who want simple realised cash value.</td><td>Conservative comparisons should discount delayed pieces if the player is unlikely to claim consistently.</td></tr>
+              <tr><td>Calendar unlock windows</td><td>Cloudbet documents half of collected rakeback going straight to wallet and the rest going to the Rewards Calendar; the current source archive tracks three daily calendar unlocks and 12-hour claim windows from the verified rewards pass.</td><td>Strong for players who intentionally schedule claims and casino sessions around calendar unlocks and TURBO windows.</td><td>Do not use TURBO ceilings as baseline rakeback. Treat missed calendar claims as lost or uncertain value unless the current terms say otherwise.</td></tr>
+              <tr><td>Short expiry / claim gates</td><td>Dicey's daily bonus must be claimed inside its UTC window, with a 15% rakeboost for 60 minutes after Daily Bonus claim. Yeet daily reloads expire after 24 hours; weekly and monthly rewards have longer but still finite windows in the archived source pass.</td><td>Best for daily users; poor fit for players who disappear between sessions.</td><td>A visible reward bucket is not the same as guaranteed value if the player must claim at a specific time.</td></tr>
+              <tr><td>Bonus-balance or playthrough value</td><td>Whale's current terms classify daily cashback, weekly bonus, monthly bonus and personal bonus as Second Chance Bonuses with playthrough treatment unless a promotion says otherwise.</td><td>Useful for players comfortable recycling bonus value; weaker for players seeking immediately cashable rebates.</td><td>Keep bonus balance, wagering requirements, KYC review rights and large-withdrawal terms separate from cash rakeback claims.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>If the player asks...</th><th>Use this Reward Book answer</th><th>Internal link</th></tr>
+              <tr><td>"Which program is lowest effort?"</td><td>Start with instant/no-expiry programs, then compare the game eligibility and percent-of-edge basis.</td><td><a href="#shuffle">Shuffle</a>, <a href="#yeet">Yeet</a>, <a href="#duel">Duel</a></td></tr>
+              <tr><td>"Which program rewards active claimers?"</td><td>Calendar systems can add value if the player actually claims and times boost windows.</td><td><a href="#cloudbet">Cloudbet</a>, <a href="#rollbit">Rollbit</a>, <a href="#solcasino">Solcasino</a></td></tr>
+              <tr><td>"Can I count the headline rate as cash?"</td><td>Only after checking whether value is instant cash, delayed calendar value, token value, bonus balance, race prize or host discretion.</td><td><a href="/rakeback-comparison.html">Rakeback comparison</a></td></tr>
+              <tr><td>"Does a VIP host make claims safer?"</td><td>No public reward source should be read as a KYC exemption, withdrawal guarantee or faster-cashout proof unless the terms explicitly say that.</td><td><a href="/casino-reward-sources.html">Reward source archive</a></td></tr>
+            </table>
+            <p class="copy"><strong>Practical rule:</strong> after converting the reward rate to dollars per $1,000 wagered, apply a personal friction discount. If you will not claim three times a day, do not compare a calendar-heavy program against an instant program at face value. If a reward has a boost window, count only the boosted play you would realistically make during that window, and keep races/leaderboards outside the baseline.</p>
+            <div class="pill-row"><span class="pill good">Claim timing separated</span><span class="pill good">Calendar value discounted</span><span class="pill good">Internal source links</span><span class="pill warn">No cashout guarantees</span><span class="pill warn">No boost ceilings as baseline</span></div>
+            <p class="note">Source status: Cloudbet rakeback, Solcasino rakeback docs and Rollbit's official rewards-calendar blog were rechecked on 5 Aug 2026. Some Cloudbet calendar-window and Yeet expiry details remain tied to the existing source archive rather than newly extracted page text, so keep those claims framed as source-pass evidence and re-check before updating calculators.</p>
           </div>
         </section>
 
