@@ -1,99 +1,99 @@
 {
-  "generated": "2026-08-05T23:17:33.468Z",
+  "generated": "2026-08-06T00:17:34.137Z",
   "dataRange": {
     "from": "2026-02-15",
-    "to": "2026-08-04"
+    "to": "2026-08-05"
   },
-  "totalDays": 151,
+  "totalDays": 152,
   "overview": {
-    "totalVolume": 218581365,
-    "totalDeposits": 453328,
+    "totalVolume": 219755507,
+    "totalDeposits": 456563,
     "uniqueWallets": 12,
-    "avgDeposit": 482,
-    "vol7d": 9655144,
-    "deposits7d": 22051,
-    "growth7d": -28.1,
-    "vol30d": 49944731,
-    "deposits30d": 91416,
+    "avgDeposit": 481,
+    "vol7d": 9550428,
+    "deposits7d": 21759,
+    "growth7d": -27.6,
+    "vol30d": 48533944,
+    "deposits30d": 91340,
     "largestDeposit": 2239999,
     "casinosTracked": 9
   },
   "casinoBreakdown": [
     {
       "name": "Stake",
-      "totalVolume": 74851919,
-      "totalDeposits": 112137,
-      "vol7d": 3194319,
-      "vol30d": 16040985,
-      "deposits7d": 4534,
+      "totalVolume": 74936795,
+      "totalDeposits": 112938,
+      "vol7d": 2823432,
+      "vol30d": 14812077,
+      "deposits7d": 4296,
       "uniqueWallets": 2,
-      "avgDeposit": 668,
-      "marketShare": "34.2"
+      "avgDeposit": 664,
+      "marketShare": "34.1"
     },
     {
       "name": "Shuffle",
-      "totalVolume": 40383645,
-      "totalDeposits": 71070,
-      "vol7d": 1976346,
-      "vol30d": 11419701,
-      "deposits7d": 4259,
+      "totalVolume": 40742644,
+      "totalDeposits": 71713,
+      "vol7d": 2017616,
+      "vol30d": 11442637,
+      "deposits7d": 4284,
       "uniqueWallets": 1,
       "avgDeposit": 568,
       "marketShare": "18.5"
     },
     {
       "name": "Rollbit",
-      "totalVolume": 39415227,
-      "totalDeposits": 115517,
-      "vol7d": 1816957,
-      "vol30d": 8629751,
-      "deposits7d": 5682,
+      "totalVolume": 39756163,
+      "totalDeposits": 116327,
+      "vol7d": 1918550,
+      "vol30d": 8685946,
+      "deposits7d": 5708,
       "uniqueWallets": 3,
-      "avgDeposit": 341,
-      "marketShare": "18.0"
+      "avgDeposit": 342,
+      "marketShare": "18.1"
     },
     {
       "name": "Rainbet",
-      "totalVolume": 25367258,
-      "totalDeposits": 111391,
-      "vol7d": 884695,
-      "vol30d": 5751475,
-      "deposits7d": 5463,
+      "totalVolume": 25501737,
+      "totalDeposits": 112145,
+      "vol7d": 909447,
+      "vol30d": 5746011,
+      "deposits7d": 5365,
       "uniqueWallets": 1,
-      "avgDeposit": 228,
+      "avgDeposit": 227,
       "marketShare": "11.6"
     },
     {
       "name": "Duelbits",
-      "totalVolume": 24873892,
-      "totalDeposits": 26423,
-      "vol7d": 1572548,
-      "vol30d": 5775531,
-      "deposits7d": 1411,
+      "totalVolume": 25070442,
+      "totalDeposits": 26547,
+      "vol7d": 1622703,
+      "vol30d": 5827370,
+      "deposits7d": 1340,
       "uniqueWallets": 1,
-      "avgDeposit": 941,
+      "avgDeposit": 944,
       "marketShare": "11.4"
     },
     {
       "name": "Bitcasino",
-      "totalVolume": 10587577,
-      "totalDeposits": 8582,
-      "vol7d": 157885,
-      "vol30d": 1471063,
-      "deposits7d": 325,
+      "totalVolume": 10637582,
+      "totalDeposits": 8654,
+      "vol7d": 201522,
+      "vol30d": 1204814,
+      "deposits7d": 382,
       "uniqueWallets": 2,
-      "avgDeposit": 1234,
+      "avgDeposit": 1229,
       "marketShare": "4.8"
     },
     {
       "name": "BetFury",
-      "totalVolume": 3101847,
-      "totalDeposits": 4074,
-      "vol7d": 52393,
-      "vol30d": 856226,
-      "deposits7d": 173,
+      "totalVolume": 3110145,
+      "totalDeposits": 4105,
+      "vol7d": 57158,
+      "vol30d": 815088,
+      "deposits7d": 184,
       "uniqueWallets": 1,
-      "avgDeposit": 761,
+      "avgDeposit": 758,
       "marketShare": "1.4"
     },
     {
@@ -102,7 +102,7 @@
       "totalDeposits": 4133,
       "vol7d": 0,
       "vol30d": 0,
-      "deposits7d": 204,
+      "deposits7d": 200,
       "uniqueWallets": 1,
       "avgDeposit": 0,
       "marketShare": "0.0"
@@ -122,15 +122,15 @@
   "chainBreakdown": [
     {
       "name": "Ethereum",
-      "volume": 194118722,
-      "deposits": 399294,
-      "share": "88.8"
+      "volume": 195292864,
+      "deposits": 402529,
+      "share": "88.9"
     },
     {
       "name": "Unknown",
       "volume": 24462643,
       "deposits": 49901,
-      "share": "11.2"
+      "share": "11.1"
     },
     {
       "name": "Polygon",
@@ -140,11 +140,6 @@
     }
   ],
   "dailyVolume": [
-    {
-      "date": "2026-07-06",
-      "volume": 2584930,
-      "deposits": 3311
-    },
     {
       "date": "2026-07-07",
       "volume": 1420695,
@@ -287,8 +282,13 @@
     },
     {
       "date": "2026-08-04",
-      "volume": 965781,
-      "deposits": 2763
+      "volume": 976355,
+      "deposits": 2810
+    },
+    {
+      "date": "2026-08-05",
+      "volume": 1163568,
+      "deposits": 3188
     }
   ],
   "topDeposits": [
@@ -431,24 +431,24 @@
   "topWallets": [
     {
       "address": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "totalVolume": 42883752,
-      "deposits": 57833,
+      "totalVolume": 42968628,
+      "deposits": 58634,
       "casinos": [
         "Stake"
       ]
     },
     {
       "address": "0xdfaa75323fb721e5f29d43859390f62cc4b600b8",
-      "totalVolume": 40383645,
-      "deposits": 71070,
+      "totalVolume": 40742644,
+      "deposits": 71713,
       "casinos": [
         "Shuffle"
       ]
     },
     {
       "address": "0xcbd6832ebc203e49e2b771897067fce3c58575ac",
-      "totalVolume": 37385227,
-      "deposits": 115462,
+      "totalVolume": 37726163,
+      "deposits": 116272,
       "casinos": [
         "Rollbit"
       ]
@@ -463,32 +463,32 @@
     },
     {
       "address": "0x307576dd4f73f91bb8c4a2edb762938e8e067d31",
-      "totalVolume": 25367258,
-      "deposits": 111391,
+      "totalVolume": 25501737,
+      "deposits": 112145,
       "casinos": [
         "Rainbet"
       ]
     },
     {
       "address": "0x014435b1e39945cf4f5f0c3cbb5833195a95cc9b",
-      "totalVolume": 24873892,
-      "deposits": 26423,
+      "totalVolume": 25070442,
+      "deposits": 26547,
       "casinos": [
         "Duelbits"
       ]
     },
     {
       "address": "0x5bcbdfb6cc624b959c39a2d16110d1f2d9204f72",
-      "totalVolume": 8510963,
-      "deposits": 5501,
+      "totalVolume": 8560968,
+      "deposits": 5573,
       "casinos": [
         "Bitcasino"
       ]
     },
     {
       "address": "0x52a258ed593c793251a89bfd36cae158ee9fc4f8",
-      "totalVolume": 3101847,
-      "deposits": 4074,
+      "totalVolume": 3110145,
+      "deposits": 4105,
       "casinos": [
         "BetFury"
       ]
