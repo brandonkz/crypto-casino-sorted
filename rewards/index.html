@@ -394,11 +394,27 @@
             <div class="fact-grid">
               <div class="fact"><span>Published Rakeback</span><strong>25% combined house-edge rakeback</strong></div>
               <div class="fact"><span>Ceiling Claim</span><strong>Up to 47.5% with milestones</strong></div>
-              <div class="fact"><span>Gold Threshold</span><strong>Still researching</strong></div>
+              <div class="fact"><span>Settlement</span><strong>Cash, no wagering on rakeback</strong></div>
             </div>
-            <p class="copy"><strong>How it works:</strong> Duelbits splits rewards into instant, daily, weekly and monthly Bits. The standard path starts at 5% and rises by level, while VIP Club benefits are handled separately.</p>
-            <table class="mini-table"><tr><th>Bucket</th><th>Rate</th></tr><tr><td>Instant Bits</td><td>10% of house edge</td></tr><tr><td>Daily Bits</td><td>5% of house edge</td></tr><tr><td>Weekly Bits</td><td>5% of house edge</td></tr><tr><td>Monthly Bits</td><td>5% of house edge</td></tr></table>
-            <p class="note">Caution: per-level thresholds and VIP Club Gold entry criteria are still being researched. That keeps it out of exact Gold-time modeling.</p>
+            <p class="copy"><strong>How it works:</strong> Duelbits is one of the cleaner cash-rakeback programs because the official rakeback article describes the basis as house edge, not full wager. The public breakdown is 10% Instant Bits plus 5% each from Daily, Weekly and Monthly Bits, for 25% combined house-edge rakeback before milestone bonuses. The local dataset also tracks a 31-level progression path and a Bronze/Silver/Gold VIP Club overlay, but the public source pass does not expose the per-level wager thresholds or VIP Club entry rules.</p>
+            <table class="mini-table">
+              <tr><th>Reward Layer</th><th>Publicly Supported Detail</th><th>Player Caveat</th></tr>
+              <tr><td>Instant Bits</td><td>10% of house edge, accruing from the first bet.</td><td>Useful for low-friction cashback, but the dollar value still depends on the game edge.</td></tr>
+              <tr><td>Daily Bits</td><td>5% of house edge.</td><td>Recurring value should be counted only if the player actually claims on schedule.</td></tr>
+              <tr><td>Weekly Bits</td><td>5% of house edge.</td><td>Not the same as 5% back on total weekly turnover.</td></tr>
+              <tr><td>Monthly Bits</td><td>5% of house edge.</td><td>Monthly value can feel lumpy for players with uneven session volume.</td></tr>
+              <tr><td>Milestone bonuses</td><td>Official copy supports extra level-up value and an advertised ceiling up to 47.5% with milestones.</td><td>Do not model the ceiling as baseline rakeback; milestone timing and level thresholds are not public here.</td></tr>
+              <tr><td>VIP transfer</td><td>The dataset tracks an official VIP Transfer Programme contact route handled case-by-case.</td><td>Transfer acceptance, matching tier, reload value and host access are not public guarantees.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Example Game Edge</th><th>25% House-Edge Rakeback on $1,000 Wagered</th><th>What It Means</th></tr>
+              <tr><td>1% edge original/table game</td><td>About $2.50 back.</td><td>Clean but modest in dollars; compare against zero-edge allowances such as <a href="#duel">Duel</a>.</td></tr>
+              <tr><td>2% edge game</td><td>About $5 back.</td><td>A strong formula-clean baseline against <a href="#shuffle">Shuffle</a> and <a href="#cloudbet">Cloudbet</a>.</td></tr>
+              <tr><td>4% edge slot/live game</td><td>About $10 back.</td><td>Higher-dollar rakeback, but the game is still more expensive before rewards.</td></tr>
+            </table>
+            <p class="copy"><strong>Player fit:</strong> Duelbits is best for mid- to high-volume players who want cash rakeback with a readable formula and who are comfortable treating milestone bonuses as upside rather than guaranteed EV. It is weaker for calculator-first VIP grinders because the Bronze/Silver/Gold VIP Club names are public, while the actual entry thresholds and exact host gates are not. For clean formula comparison, put it beside <a href="#cloudbet">Cloudbet</a> and <a href="#shuffle">Shuffle</a>; for zero-edge reward economics, compare it with <a href="#duel">Duel</a>.</p>
+            <div class="pill-row"><span class="pill good">House-edge basis</span><span class="pill good">Cash rakeback</span><span class="pill good">Official breakdown indexed</span><span class="pill warn">Direct route Cloudflare-blocked today</span><span class="pill warn">VIP Club thresholds not public</span><span class="pill warn">Milestones are not baseline</span></div>
+            <p class="note">Caution: the strongest public claim is the 25% combined house-edge breakdown. Do not rewrite it as 25% of total wager, do not copy affiliate "up to 50%" claims as official, and do not invent Gold Club entry criteria, per-level thresholds, KYC outcomes, withdrawal certainty, reward caps or VIP-manager qualification rules. Source status is tracked in the <a href="/casino-reward-sources.html#duelbits">reward source archive</a>.</p>
             <div class="chapter-actions"><a class="btn" href="https://duelbits.io/?a=sorted" target="_blank" rel="nofollow sponsored noopener">Play at Duelbits</a></div>
           </div>
         </section>
