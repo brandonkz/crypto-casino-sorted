@@ -453,8 +453,8 @@
       "gamification": 88,
       "watch_out": "The public pages are very clear on the cashback ladder, but not on the exact rakeback formula or the full interaction between cashback, rakeback, weekly/monthly bonuses and VIP extras. The 25% top cashback only appears at BF Legend, which requires $1 billion wagered.",
       "source_url": "https://betfury.io/rank-system",
-      "source_last_checked": "2026-07-15",
-      "source_status": "manual_verified",
+      "source_last_checked": "2026-08-14",
+      "source_status": "manual_verified_metadata_rechecked",
       "source_monitor": "manual"
     },
     {
@@ -491,8 +491,8 @@
       "gamification": 84,
       "watch_out": "The reward stack is source-backed from official snippets, but the live pages returned Cloudflare browser-check pages in this pass. Keep wording as still researching rather than making hard rate claims.",
       "source_url": "https://rainbet.com/rewards",
-      "source_last_checked": "2026-07-15",
-      "source_status": "manual_review",
+      "source_last_checked": "2026-08-14",
+      "source_status": "manual_review_cloudflare_challenge_rechecked",
       "source_monitor": "manual"
     },
     {
