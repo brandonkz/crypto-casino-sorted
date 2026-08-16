@@ -224,7 +224,7 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">15 Aug</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">16 Aug</div></div>
         </section>
 
         <section class="chapter" id="rakeback-math">
@@ -717,18 +717,25 @@
               <div class="fact"><span>Claim Cadence</span><strong>Every 30 minutes</strong></div>
               <div class="fact"><span>Gold-Style Gate</span><strong>Level 15 at 72,310 EXP</strong></div>
             </div>
-            <p class="copy"><strong>How it works:</strong> Solcasino ties rewards to a public EXP ladder where `1 USD wagered = 1 EXP`. Default rakeback applies to all bets, claims every 30 minutes, and splits into an instant half plus a delayed calendar half. The rest of the reward loop sits in a Reward Calendar that adds daily, weekly, monthly and level-up bonuses over multi-day release windows.</p>
+            <p class="copy"><strong>How it works:</strong> Solcasino ties rewards to a public EXP ladder where 1 USD wagered at bet time equals 1 EXP. The public levels doc also excludes PvP Poker from EXP earning. Default rakeback is based on game house edge, claims every 30 minutes, and splits into an instant half plus a delayed calendar half. The rest of the reward loop sits in a Reward Calendar that adds daily, weekly, monthly and level-up bonuses over multi-day release windows.</p>
             <table class="mini-table">
               <tr><th>Public mechanic</th><th>What the docs say</th></tr>
               <tr><td>Rakeback</td><td>Default 5% rakeback on all bets; half paid instantly and half spread across 3 days.</td></tr>
-              <tr><td>Daily bonus</td><td>Claimable every 24 hours; 20% instantly, 80% released over 7 days.</td></tr>
-              <tr><td>Weekly bonus</td><td>Unlocks after reaching Level 15; released every Sunday; 20% instantly, 80% over 7 days.</td></tr>
-              <tr><td>Monthly bonus</td><td>Also from Level 15; released on the 1st of the month; 20% instantly, 80% over 30 days.</td></tr>
+              <tr><td>Daily bonus</td><td>Based on the previous day's wagering, P&amp;L and games played; expires if not claimed within 24 hours; 20% instantly, 80% released over 7 days.</td></tr>
+              <tr><td>Weekly bonus</td><td>Unlocks after reaching Level 15; personalized around recent betting activity, P&amp;L and lossback; released every Sunday; claim within 7 days; 20% instantly, 80% over 7 days.</td></tr>
+              <tr><td>Monthly bonus</td><td>Also from Level 15; based on recent betting activity, P&amp;L and lossback; released on the 1st of the month; claim before month-end; 20% instantly, 80% over 30 days.</td></tr>
               <tr><td>Level-up bonuses</td><td>Triggered at milestone levels; 20% instantly, 80% over 21 days.</td></tr>
             </table>
             <p class="copy"><strong>Why it matters:</strong> Solcasino is unusually usable for honest comparison because the docs expose both the rakeback basis and the level ladder. Public threshold data shows Level 15 at 72,310 total EXP, Level 20 at 277,250 EXP, Level 30 at 1,436,750 EXP, and Level 80 at 132,032,050 EXP. For affiliate planning, the docs also document referral-code application, anti-abuse rules, and a formal partnership path via support for larger affiliates.</p>
+            <table class="mini-table">
+              <tr><th>Planning question</th><th>Solcasino answer</th><th>Player-fit guidance</th></tr>
+              <tr><td>"What is the exact calculator input?"</td><td>Use 5% of game house edge for default rakeback, then discount the calendar half if the player will not keep claiming.</td><td>Good for players who understand house-edge math; weak for anyone reading 5% as 5% of wager.</td></tr>
+              <tr><td>"When do weekly/monthly rewards begin?"</td><td>Level 15, which the public EXP table lists at 72,310 total EXP. Because the doc states 1 USD value at bet time equals 1 EXP, that is roughly $72,310 of eligible wagered value before game exclusions.</td><td>Useful Gold-style planning threshold, but not a promise of a fixed weekly or monthly dollar amount.</td></tr>
+              <tr><td>"How much is realized immediately?"</td><td>Rakeback pays 50% instantly and 50% through a 3-day calendar. Daily, weekly and monthly bonuses pay 20% instantly, with the rest released over 7, 7 and 30 days respectively.</td><td>Best for active claimers; passive players should value the delayed pieces below face value.</td></tr>
+              <tr><td>"What is still hidden?"</td><td>Daily, weekly, monthly and level-up amounts depend on recent wagering, P&amp;L, lossback and games played, but the docs do not publish a fixed rate table.</td><td>Keep Solcasino in formula-clean rakeback comparisons, but keep recurring bonus estimates conservative.</td></tr>
+            </table>
             <div class="pill-row"><span class="pill good">Published formula</span><span class="pill good">Published thresholds</span><span class="pill good">Public partner docs</span><span class="pill warn">Bonus formulas still personalized</span></div>
-            <p class="note">Caution: the recurring bonus values are still based on recent wagering, games and PnL, so only the structure is public. The cleanest exact input here is the 5% house-edge rakeback plus the public EXP ladder and payout timing.</p>
+            <p class="note">Caution: the recurring bonus values are still based on recent wagering, games, P&amp;L and lossback, so only the structure, expiry timing and release split are public. The cleanest exact inputs here are the 5% house-edge rakeback, the public EXP ladder, PvP Poker exclusion and payout timing. Do not infer withdrawal certainty, KYC treatment, host access, fixed weekly/monthly values or a sportsbook-equivalent rate from the reward docs.</p>
           </div>
         </section>
 
