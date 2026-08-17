@@ -224,7 +224,7 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">16 Aug</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">17 Aug</div></div>
         </section>
 
         <section class="chapter" id="rakeback-math">
@@ -618,30 +618,32 @@
         </section>
 
         <section class="chapter" id="rainbet">
-          <div class="chapter-head"><h2>Rainbet Rewards</h2><p class="chapter-sub">Layered challenger program with a visible reward stack, but public rate and threshold math is still blocked in this session.</p></div>
+          <div class="chapter-head"><h2>Rainbet Rewards</h2><p class="chapter-sub">Layered challenger program with frequent reward claims, new-rank snippets and official help-center caveats, but no readable public rate table yet.</p></div>
           <div class="chapter-body">
             <div class="fact-grid">
               <div class="fact"><span>Official Reward Stack</span><strong>Rakeback, daily, weekly, pre-monthly, monthly</strong></div>
               <div class="fact"><span>Claim Cadence Shown</span><strong>Rakeback every 15 minutes</strong></div>
-              <div class="fact"><span>Current Limitation</span><strong>Exact rates/tiers blocked by Cloudflare</strong></div>
+              <div class="fact"><span>Race Weighting</span><strong>Sportsbook snippets say 3x</strong></div>
             </div>
-            <p class="copy"><strong>What we can verify:</strong> official Rainbet snippets point to a real multi-layer rewards stack rather than a simple one-bonus program. The public rewards route and help-center snippet expose rakeback, three Daily Reloads, a Daily Bonus, Weekly Bonus, Pre-Monthly Bonus, Monthly Bonus, ranks, rank-up style bonuses, races, RakeBoosts and keys.</p>
+            <p class="copy"><strong>What we can verify:</strong> official Rainbet snippets point to a real multi-layer rewards stack rather than a simple one-bonus program. The public rewards route and help-center snippets expose rakeback, three Daily Reloads, a Daily Bonus, Weekly Bonus, Pre-Monthly Bonus, Monthly Bonus, ranks, rank-up style bonuses, races, RakeBoosts and keys. The 17 Aug 2026 source pass still hit a browser-check page on direct fetches, so this chapter uses official indexed/help snippets as evidence rather than pretending the full terms table is readable.</p>
             <table class="mini-table">
-              <tr><th>Official clue</th><th>What was visible</th></tr>
-              <tr><td>Rewards route snippet</td><td>Daily, Weekly, Pre-Monthly, Monthly, Rakeback, Ranks, Keys Opened and Other Bonuses were visible in the indexed rewards navigation.</td></tr>
-              <tr><td>Homepage snippet</td><td>Rainbet says rakeback is claimable every 15 minutes and also references three Daily Reloads, Daily Bonus, Weekly Bonus, Pre-Monthly Bonus, Monthly Bonus, Weekly and Monthly Races, rank-up bonuses and RakeBoosts.</td></tr>
-              <tr><td>Help-center snippet</td><td>The Rewards Overview article references three Daily Reloads, a Pre-Monthly Bonus and reward boosts based on recent wagering activity and results.</td></tr>
+              <tr><th>Official clue</th><th>What was visible</th><th>How to use it</th></tr>
+              <tr><td>Rewards route snippet</td><td>Daily, Weekly, Pre-Monthly, Monthly, Rakeback, Ranks, Keys Opened, Other Bonuses, total rewards, rank-up reward claims and a "Requires Silver" gate were visible in indexed rewards navigation.</td><td>Good for reward-surface mapping and tier-gate caveats; not enough for a public threshold ladder because the snippet does not define Silver or any wager requirement.</td></tr>
+              <tr><td>Rewards Overview help snippet</td><td>Rainbet says it added three Daily Reloads, a Pre-Monthly Bonus and new Ranks, with bonuses boosted by recent wagering activity and results.</td><td>Treat recent play and results as part of the reward calculation, but do not infer a fixed rakeback percentage or lossback formula.</td></tr>
+              <tr><td>Weekly and Monthly Races help snippets</td><td>Rainbet describes leaderboard races based on wagering, with sportsbook bets counting 3x more than other wagers.</td><td>Useful for contest-fit guidance; race prizes should be modeled as competitive expected value, not guaranteed cashback.</td></tr>
+              <tr><td>Deposit Bonus Terms snippet</td><td>When a currency is in rollover state, rewards and affiliate commission generated are divided by 3.</td><td>Important caveat for bonus chasers: rollover can reduce reward generation, so do not combine deposit-bonus value and normal rewards at full headline strength.</td></tr>
             </table>
             <table class="mini-table">
-              <tr><th>Claim type</th><th>Handbook status</th><th>Calculator status</th></tr>
-              <tr><td>Reward categories</td><td>Source-backed enough to describe: rakeback, reloads, daily/weekly/monthly bonuses, races, RakeBoosts and keys all appear in official snippets or routes.</td><td>Usable only as qualitative coverage until rates and caps are readable.</td></tr>
-              <tr><td>15-minute rakeback cadence</td><td>Useful player-fit signal from official homepage/indexed text.</td><td>Do not convert to EV without the rakeback basis, eligible games, rank multiplier and cap rules.</td></tr>
-              <tr><td>Older comparison-page claims</td><td>Existing Rainbet blog comparisons use broad "instant rakeback" and "higher ceiling" language.</td><td>Treat those as weaker context than the source archive; do not promote them into hard percentages without current official terms.</td></tr>
-              <tr><td>Ranks and host access</td><td>Rank labels and reward surfaces are visible, but public thresholds and host gates are not extracted.</td><td>Keep out of the <a href="/vip-gold-calculator.html">VIP Gold calculator</a> and exact host-entry tables.</td></tr>
+              <tr><th>Player question</th><th>Best current answer</th><th>Calculator status</th></tr>
+              <tr><td>"Is Rainbet simple cashback?"</td><td>No. The current evidence points to a layered rewards wallet: rakeback plus reloads, daily/weekly/monthly-style bonuses, ranks, keys and contests.</td><td>Qualitative only until basis, caps and rates are public.</td></tr>
+              <tr><td>"Can I claim often?"</td><td>Yes for rakeback cadence: official snippets say rakeback is claimable every 15 minutes. Other rewards sit on daily, weekly, pre-monthly or monthly schedules.</td><td>Claim cadence is usable; reward amount is not.</td></tr>
+              <tr><td>"Do sports bettors get better progress?"</td><td>Only in the race snippets we found: Weekly and Monthly Races say sportsbook bets count 3x more than other wagers.</td><td>Use for contest guidance only. Do not apply the 3x race weighting to VIP rank, rakeback or reload formulas.</td></tr>
+              <tr><td>"What tier unlocks what?"</td><td>The rewards route snippet shows rank and Silver-gated language, but it does not publish a readable threshold ladder.</td><td>Keep out of the <a href="/vip-gold-calculator.html">VIP Gold calculator</a> and host-entry tables.</td></tr>
+              <tr><td>"Can I stack deposit bonuses and full rewards?"</td><td>Maybe not at full strength. The deposit-bonus terms snippet says rewards generated during a rollover state are divided by 3.</td><td>Do not add full normal rewards on top of bonus-clearing EV unless current terms confirm eligibility.</td></tr>
             </table>
-            <p class="copy"><strong>Player fit:</strong> Rainbet is a watchlist fit for players who value frequent claims, races and community-style reward layers, especially if they are comparing alternatives to <a href="#stake">Stake</a>, <a href="#roobet">Roobet</a> or <a href="#gamdom">Gamdom</a>. It is not yet a reward-economics pick for calculator-first users, because the live official terms are not readable enough to confirm exact percentages, caps, game weighting, rank thresholds, reset rules or VIP-host entry. Use the older Rainbet comparison guides for product context, but use this Reward Book and the <a href="/casino-reward-sources.html#rainbet">source archive</a> as the stricter source-status layer.</p>
-            <div class="pill-row"><span class="pill good">Official reward stack confirmed</span><span class="pill warn">Still researching thresholds</span><span class="pill warn">Still researching exact percentages</span><span class="pill off">Cloudflare challenge on rewards/help pages</span></div>
-            <p class="note">Caution: a fresh 14 Aug 2026 check of `rainbet.com/rewards` returned a Cloudflare challenge instead of readable terms. That means we can verify the reward categories from official search snippets, but we cannot honestly model exact rates, tiers, wagering thresholds, expiry windows, KYC outcomes or withdrawal certainty yet.</p>
+            <p class="copy"><strong>Player fit:</strong> Rainbet is a watchlist fit for players who like frequent rakeback claims, race leaderboards and a broader rewards wallet than a single weekly cashback line. It is especially worth comparing against <a href="#shock">Shock</a>, <a href="#wagercom">Wagercom</a> and <a href="#qzino">Qzino</a> if the player wants a modern claim dashboard, and against <a href="#stake">Stake</a>, <a href="#roobet">Roobet</a> and <a href="#gamdom">Gamdom</a> for mainstream social-casino alternatives. It is still not a reward-economics pick for calculator-first users, because the live official terms are not readable enough to confirm exact percentages, caps, game weighting, rank thresholds, reset rules or VIP-host entry.</p>
+            <div class="pill-row"><span class="pill good">Official reward stack confirmed</span><span class="pill good">3x sportsbook race snippets</span><span class="pill warn">Silver gate visible, threshold hidden</span><span class="pill warn">Rollover may reduce rewards</span><span class="pill off">Cloudflare challenge on direct reads</span></div>
+            <p class="note">Caution: a fresh 17 Aug 2026 check of Rainbet rewards and help-center routes returned browser-check content instead of readable terms. Search snippets are useful for source discovery, but weaker than a public help article. Do not claim exact rakeback percentages, tier thresholds, VIP-host entry, KYC outcomes, withdrawal certainty, expiry windows or reward caps until Rainbet publishes readable terms or the page can be captured cleanly. Source links are tracked in the <a href="/casino-reward-sources.html#rainbet">reward source archive</a>.</p>
           </div>
         </section>
 
