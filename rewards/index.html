@@ -183,6 +183,7 @@
         <a href="#overview">Overview</a>
         <a href="#rakeback-math">Rakeback Math</a>
         <a href="#claim-friction">Claim Friction</a>
+        <a href="#sportsbook-rewards">Sportsbook Rewards</a>
         <a href="#threshold-transparency">Threshold Transparency</a>
         <a href="#thrill">Thrill</a>
         <a href="#duelbits">Duelbits</a>
@@ -224,7 +225,7 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">17 Aug</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">18 Aug</div></div>
         </section>
 
         <section class="chapter" id="rakeback-math">
@@ -299,6 +300,36 @@
             <p class="copy"><strong>Practical rule:</strong> after converting the reward rate to dollars per $1,000 wagered, apply a personal friction discount. If you will not claim three times a day, do not compare a calendar-heavy program against an instant program at face value. If a reward has a boost window, count only the boosted play you would realistically make during that window, and keep races/leaderboards outside the baseline.</p>
             <div class="pill-row"><span class="pill good">Claim timing separated</span><span class="pill good">Calendar value discounted</span><span class="pill good">Internal source links</span><span class="pill warn">No cashout guarantees</span><span class="pill warn">No boost ceilings as baseline</span></div>
             <p class="note">Source status: Cloudbet rakeback, Solcasino rakeback docs and Rollbit's official rewards-calendar blog were rechecked on 5 Aug 2026. Some Cloudbet calendar-window and Yeet expiry details remain tied to the existing source archive rather than newly extracted page text, so keep those claims framed as source-pass evidence and re-check before updating calculators.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="sportsbook-rewards">
+          <div class="chapter-head"><h2>Sportsbook Rewards: Status Progress vs Rakeback</h2><p class="chapter-sub">A sportsbook-first filter for separating VIP progress, sports cash drops, race weighting and casino-only rakeback.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Key Split</span><strong>Progress is not rakeback</strong></div>
+              <div class="fact"><span>Best Public Sports XP Signal</span><strong>Thrill 3 XP at 1.10+ odds</strong></div>
+              <div class="fact"><span>Modeling Rule</span><strong>Casino math stays casino-only</strong></div>
+            </div>
+            <p class="copy"><strong>Why this chapter exists:</strong> many crypto casinos run one VIP brand across casino and sportsbook, but the economics often split underneath. A sports bet may count toward rank, qualify for races, or feed weekly cash-drop logic while still being excluded from instant casino rakeback. The safe handbook rule is to classify sportsbook volume by what the source actually says: status progress, sports-specific reward, contest weighting, or no published reward value.</p>
+            <table class="mini-table">
+              <tr><th>Sports reward shape</th><th>Source-backed examples</th><th>How to model it</th><th>Common mistake</th></tr>
+              <tr><td>Sports counts for VIP progress</td><td><a href="#thrill">Thrill</a> publishes 3 XP per $1 wagered on sports bets at odds 1.10+, and 1 XP per $1 below 1.10. <a href="#razed">Razed</a> records sports turnover as 3x for VIP progression in the current source pass.</td><td>Use it for tier-path planning, host-gate timing and perk unlock comparison.</td><td>Treating faster status progress as a published sportsbook cashback rate.</td></tr>
+              <tr><td>Sports excluded from regular casino rakeback</td><td><a href="#shuffle">Shuffle</a> publishes casino-only instant rakeback; <a href="#cloudbet">Cloudbet</a> separates regular casino rakeback from sports bets feeding weekly cash drops.</td><td>Keep sportsbook turnover out of percent-of-house-edge casino rakeback examples.</td><td>Applying a 5% or 10% casino rakeback rate to sportsbook stake.</td></tr>
+              <tr><td>Sports race or contest weighting</td><td><a href="#rainbet">Rainbet</a> source snippets show sportsbook wagers counting 3x in weekly/monthly races, while exact reward math remains blocked by browser-check pages.</td><td>Treat as contest expected value only when the player can estimate field size, prize distribution and required volume.</td><td>Counting leaderboard prizes as guaranteed cashback.</td></tr>
+              <tr><td>Sports reward bucket named but formula hidden</td><td><a href="#coincasino">CoinCasino</a> app strings expose sportsbook cashback labels, current-week progress, current tier, rate and cap labels, but not the actual table.</td><td>Track as a real reward surface with source caveats; do not put it into calculators yet.</td><td>Publishing the visible label as a known cashback percentage or cap.</td></tr>
+              <tr><td>Broad sportsbook VIP language</td><td><a href="#stake">Stake</a>, <a href="#gamba">Gamba</a>, <a href="#winna">Winna</a> and <a href="#shock">Shock</a> all have sportsbook or sports-progress context in the archive, but exact sports reward formulas vary or remain unpublished.</td><td>Use for player-fit guidance and internal links, then demand a sports-specific source before making hard EV claims.</td><td>Assuming a casino VIP program automatically treats casino and sports at the same reward rate.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Player question</th><th>Reward Book answer</th><th>Better internal path</th></tr>
+              <tr><td>"I mostly bet sports. Which rewards matter first?"</td><td>Start with operators that publish sportsbook XP/progress rules or sports-specific cashback labels, then separate progression value from cash value.</td><td><a href="#thrill">Thrill</a>, <a href="#razed">Razed</a>, <a href="#cloudbet">Cloudbet</a></td></tr>
+              <tr><td>"Can I use casino rakeback examples for sports?"</td><td>No unless the source says the sports bet earns that same reward. Casino house-edge examples are for casino games only.</td><td><a href="#rakeback-math">Rakeback Math</a>, <a href="/rakeback-comparison.html">rakeback comparison</a></td></tr>
+              <tr><td>"Is sports progress cheaper than casino progress?"</td><td>Sometimes the public XP multiplier is faster, as with Thrill 1.10+ sports bets, but expected cost depends on sportsbook margin, odds, bet selection and variance.</td><td><a href="#threshold-transparency">Threshold Transparency</a>, <a href="/vip-gold-calculator.html">VIP Gold calculator</a></td></tr>
+              <tr><td>"Do races make sportsbook rewards strong?"</td><td>Only for players intentionally competing. Races are prize pools with field-size and volume risk, not baseline rebates.</td><td><a href="#rainbet">Rainbet</a>, <a href="#metawin">MetaWin</a></td></tr>
+            </table>
+            <p class="copy"><strong>Practical rule:</strong> write sportsbook reward claims in four columns before recommending them: qualification rule, reward basis, claim/settlement path, and missing terms. If only the qualification rule is public, it belongs in a progression section, not in EV math. If a page names "sportsbook cashback" but hides the rate, cap or reset, it is a watchlist signal rather than a calculator input.</p>
+            <div class="pill-row"><span class="pill good">Sports/casino split added</span><span class="pill good">Progress vs cash separated</span><span class="pill good">Race value caveated</span><span class="pill warn">No sports EV invented</span><span class="pill warn">Hidden caps stay hidden</span></div>
+            <p class="note">Source status: live official route metadata for Shuffle, Cloudbet, Thrill and Razed was rechecked on 18 Aug 2026; detailed sports and reward wording remains tied to the existing Reward Book chapters and the <a href="/casino-reward-sources.html">reward source archive</a>. Re-check full rendered terms before adding any sports cashback rate, odds restriction, settlement rule, race prize estimate, withdrawal claim or KYC statement.</p>
           </div>
         </section>
 
