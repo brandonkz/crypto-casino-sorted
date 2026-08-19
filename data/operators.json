@@ -443,7 +443,7 @@
       "reward_page_url": "https://betfury.io/vip-club",
       "reward_page_label": "BetFury VIP Club",
       "affiliate_url": null,
-      "offer_summary": "BetFury publishes a 20-level rank ladder from Newcomer to BF Legend, with cashback rising from 5% to 25% and rank-up bonuses from 0 to 30,000 USDT. Official bonus pages also reference 20-minute rakeback claims, weekly/monthly bonuses, and VIP perks from Rank 10 with Super VIP unlocked at Rank 15.",
+      "offer_summary": "BetFury publishes a 20-level rank ladder from Newcomer to BF Legend, with cashback rising from 5% to 25% and rank-up bonuses from 0 to 30,000 USDT. Official bonus-cabinet metadata separately references cashback up to 25%, Weekly, Monthly, Rakeback, VIP Club, Rank rewards and Promo Codes, so cashback and rakeback should not be double-counted without a readable interaction formula.",
       "reset_behaviour": "Rank progression appears cumulative by total wagered amount; no public reset mechanic was highlighted on the rank page.",
       "vip_host_entry": "VIP Club benefits are advertised from Rank 10; Super VIP perks unlock from Rank 15.",
       "transparency": 72,
@@ -453,8 +453,8 @@
       "gamification": 88,
       "watch_out": "The public pages are very clear on the cashback ladder, but not on the exact rakeback formula or the full interaction between cashback, rakeback, weekly/monthly bonuses and VIP extras. The 25% top cashback only appears at BF Legend, which requires $1 billion wagered.",
       "source_url": "https://betfury.io/rank-system",
-      "source_last_checked": "2026-08-14",
-      "source_status": "manual_verified_metadata_rechecked",
+      "source_last_checked": "2026-08-19",
+      "source_status": "official_metadata_rechecked",
       "source_monitor": "manual"
     },
     {

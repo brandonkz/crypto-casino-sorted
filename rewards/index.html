@@ -183,6 +183,7 @@
         <a href="#overview">Overview</a>
         <a href="#rakeback-math">Rakeback Math</a>
         <a href="#claim-friction">Claim Friction</a>
+        <a href="#bonus-stack-attribution">Bonus Stack Attribution</a>
         <a href="#sportsbook-rewards">Sportsbook Rewards</a>
         <a href="#threshold-transparency">Threshold Transparency</a>
         <a href="#thrill">Thrill</a>
@@ -225,7 +226,7 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">18 Aug</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">19 Aug</div></div>
         </section>
 
         <section class="chapter" id="rakeback-math">
@@ -300,6 +301,37 @@
             <p class="copy"><strong>Practical rule:</strong> after converting the reward rate to dollars per $1,000 wagered, apply a personal friction discount. If you will not claim three times a day, do not compare a calendar-heavy program against an instant program at face value. If a reward has a boost window, count only the boosted play you would realistically make during that window, and keep races/leaderboards outside the baseline.</p>
             <div class="pill-row"><span class="pill good">Claim timing separated</span><span class="pill good">Calendar value discounted</span><span class="pill good">Internal source links</span><span class="pill warn">No cashout guarantees</span><span class="pill warn">No boost ceilings as baseline</span></div>
             <p class="note">Source status: Cloudbet rakeback, Solcasino rakeback docs and Rollbit's official rewards-calendar blog were rechecked on 5 Aug 2026. Some Cloudbet calendar-window and Yeet expiry details remain tied to the existing source archive rather than newly extracted page text, so keep those claims framed as source-pass evidence and re-check before updating calculators.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="bonus-stack-attribution">
+          <div class="chapter-head"><h2>Bonus Stack Attribution: Do Not Double Count Rewards</h2><p class="chapter-sub">A source-aware way to separate base rakeback, rank cashback, calendar value, lossback, reloads, contests and welcome-bonus states before comparing operators.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Core Rule</span><strong>Model one basis at a time</strong></div>
+              <div class="fact"><span>Common Trap</span><strong>Adding every headline at face value</strong></div>
+              <div class="fact"><span>Best Use</span><strong>Source status and player fit</strong></div>
+            </div>
+            <p class="copy"><strong>Why this matters:</strong> many crypto-casino reward pages show a stack of benefits, but the layers often measure different things. Rakeback can be a percentage of house edge, cashback can be rank-based or loss-based, reloads can depend on recent wager and results, and calendar rewards can delay or expire. The handbook should only add layers together when the source makes the basis, timing and eligibility clear enough to avoid double counting.</p>
+            <table class="mini-table">
+              <tr><th>Layer</th><th>What to count conservatively</th><th>Source-backed examples</th><th>What not to do</th></tr>
+              <tr><td>Base rakeback</td><td>Use the published basis and rate, then discount for delayed settlement or claim friction.</td><td><a href="#cloudbet">Cloudbet</a> publishes 5%-10% of casino house edge; <a href="#shuffle">Shuffle</a> publishes 5% of casino house edge; <a href="#solcasino">Solcasino</a> publishes 5% with a calendar split.</td><td>Do not treat percent-of-house-edge as percent-of-wager, and do not apply casino-only rakeback to sports bets.</td></tr>
+              <tr><td>Rank cashback</td><td>Use it as a rank benefit only when the source defines the rank ladder and cashback wording.</td><td><a href="#betfury">BetFury</a> publishes rank cashback from 5% to 25%, while its bonus cabinet also names separate rakeback, weekly and monthly buckets.</td><td>Do not add the top rank cashback to separate rakeback unless the current terms define how the buckets interact.</td></tr>
+              <tr><td>Lossback / daily cashback</td><td>Model it separately from every-wager rakeback because the basis is usually net loss, recent results or account activity.</td><td><a href="#whale">Whale.io</a> separates daily net-loss cashback from weekly/monthly wager x house-margin formulas; <a href="#goated">Goated</a> exposes lossback as a VIP layer without public percentages.</td><td>Do not convert lossback into guaranteed return on turnover without the actual loss formula and caps.</td></tr>
+              <tr><td>Reloads and calendar rewards</td><td>Count only the portion the player can realistically claim before expiry or release-window friction.</td><td><a href="#rollbit">Rollbit</a>, <a href="#cloudbet">Cloudbet</a>, <a href="#solcasino">Solcasino</a> and <a href="#toshibet">Toshi.bet</a> all use calendar or recurring claim surfaces in the source archive.</td><td>Do not value delayed rewards at full cash value for passive players who will miss claim windows.</td></tr>
+              <tr><td>Welcome-bonus state</td><td>Check whether normal rewards are reduced, delayed, paused or recalculated while a bonus is active.</td><td><a href="#cloudbet">Cloudbet</a> says regular rewards rakeback starts after the Welcome Package ends; <a href="#rainbet">Rainbet</a> snippets say rollover-state rewards and affiliate commission are divided by 3.</td><td>Do not stack full welcome-bonus EV and full normal-reward EV unless current terms explicitly allow it.</td></tr>
+              <tr><td>Races and leaderboards</td><td>Treat as competitive expected value, separate from baseline rebate.</td><td><a href="#rainbet">Rainbet</a> snippets show sportsbook wagers counting 3x in races; <a href="#duel">Duel</a>, <a href="#shock">Shock</a> and <a href="#metawin">MetaWin</a> expose race or leaderboard surfaces.</td><td>Do not present prize pools as guaranteed cashback for every player.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>When writing a recommendation</th><th>Use this wording</th><th>Avoid this wording</th></tr>
+              <tr><td>Multiple reward layers exist, formulas hidden</td><td>"The program has several source-backed reward surfaces, but exact combined value is not calculator-ready."</td><td>"Total rewards are worth X%" without a published combined formula.</td></tr>
+              <tr><td>Tier names public, thresholds hidden</td><td>"Tier names are public; thresholds are not public in the reviewed source."</td><td>"Gold starts at..." based on branding, screenshots or forum guesses.</td></tr>
+              <tr><td>Top rate requires extreme volume</td><td>"The top rate is a ceiling at the published high-volume rank."</td><td>"Earn up to 25%" as the baseline for casual players.</td></tr>
+              <tr><td>Official route exposes only metadata/snippets</td><td>"Official metadata/snippets support the reward surface; exact terms still need readable capture."</td><td>"Verified full terms" when the rendered table was not available.</td></tr>
+            </table>
+            <p class="copy"><strong>Player-fit rule:</strong> EV-first players should start with one clean, sourced baseline: zero-edge allowance, percent-of-house-edge rakeback, or a public XP/wager threshold. Only after that should they add softer value such as reloads, race prizes, token exposure, host discretion and seasonal boosts. Bonus hunters should do the opposite: start with expiry, rollover, calendar timing and claim friction, because those can erase headline value faster than a small difference in the published rate.</p>
+            <div class="pill-row"><span class="pill good">Prevents double counting</span><span class="pill good">Separates basis from cadence</span><span class="pill warn">Welcome state can change rewards</span><span class="pill warn">Top rates are ceilings</span></div>
+            <p class="note">Source status: BetFury rank-system, VIP Club and bonus-cabinet official metadata were rechecked on 19 Aug 2026 and still support cashback, VIP Club, bonus-cabinet and rank-system positioning without exposing a full interaction formula. Cloudbet, Shuffle, Solcasino, Rainbet, Rollbit and Duel details remain tied to their operator chapters and the <a href="/casino-reward-sources.html">reward source archive</a>. Re-check current terms before moving any combined-rate claim into a calculator.</p>
           </div>
         </section>
 
