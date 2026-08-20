@@ -183,6 +183,8 @@
         <a href="#overview">Overview</a>
         <a href="#rakeback-math">Rakeback Math</a>
         <a href="#claim-friction">Claim Friction</a>
+        <a href="#bonus-stack-attribution">Bonus Stack Attribution</a>
+        <a href="#sportsbook-rewards">Sportsbook Rewards</a>
         <a href="#threshold-transparency">Threshold Transparency</a>
         <a href="#thrill">Thrill</a>
         <a href="#duelbits">Duelbits</a>
@@ -224,7 +226,7 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">32</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">11 Aug</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">19 Aug</div></div>
         </section>
 
         <section class="chapter" id="rakeback-math">
@@ -299,6 +301,67 @@
             <p class="copy"><strong>Practical rule:</strong> after converting the reward rate to dollars per $1,000 wagered, apply a personal friction discount. If you will not claim three times a day, do not compare a calendar-heavy program against an instant program at face value. If a reward has a boost window, count only the boosted play you would realistically make during that window, and keep races/leaderboards outside the baseline.</p>
             <div class="pill-row"><span class="pill good">Claim timing separated</span><span class="pill good">Calendar value discounted</span><span class="pill good">Internal source links</span><span class="pill warn">No cashout guarantees</span><span class="pill warn">No boost ceilings as baseline</span></div>
             <p class="note">Source status: Cloudbet rakeback, Solcasino rakeback docs and Rollbit's official rewards-calendar blog were rechecked on 5 Aug 2026. Some Cloudbet calendar-window and Yeet expiry details remain tied to the existing source archive rather than newly extracted page text, so keep those claims framed as source-pass evidence and re-check before updating calculators.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="bonus-stack-attribution">
+          <div class="chapter-head"><h2>Bonus Stack Attribution: Do Not Double Count Rewards</h2><p class="chapter-sub">A source-aware way to separate base rakeback, rank cashback, calendar value, lossback, reloads, contests and welcome-bonus states before comparing operators.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Core Rule</span><strong>Model one basis at a time</strong></div>
+              <div class="fact"><span>Common Trap</span><strong>Adding every headline at face value</strong></div>
+              <div class="fact"><span>Best Use</span><strong>Source status and player fit</strong></div>
+            </div>
+            <p class="copy"><strong>Why this matters:</strong> many crypto-casino reward pages show a stack of benefits, but the layers often measure different things. Rakeback can be a percentage of house edge, cashback can be rank-based or loss-based, reloads can depend on recent wager and results, and calendar rewards can delay or expire. The handbook should only add layers together when the source makes the basis, timing and eligibility clear enough to avoid double counting.</p>
+            <table class="mini-table">
+              <tr><th>Layer</th><th>What to count conservatively</th><th>Source-backed examples</th><th>What not to do</th></tr>
+              <tr><td>Base rakeback</td><td>Use the published basis and rate, then discount for delayed settlement or claim friction.</td><td><a href="#cloudbet">Cloudbet</a> publishes 5%-10% of casino house edge; <a href="#shuffle">Shuffle</a> publishes 5% of casino house edge; <a href="#solcasino">Solcasino</a> publishes 5% with a calendar split.</td><td>Do not treat percent-of-house-edge as percent-of-wager, and do not apply casino-only rakeback to sports bets.</td></tr>
+              <tr><td>Rank cashback</td><td>Use it as a rank benefit only when the source defines the rank ladder and cashback wording.</td><td><a href="#betfury">BetFury</a> publishes rank cashback from 5% to 25%, while its bonus cabinet also names separate rakeback, weekly and monthly buckets.</td><td>Do not add the top rank cashback to separate rakeback unless the current terms define how the buckets interact.</td></tr>
+              <tr><td>Lossback / daily cashback</td><td>Model it separately from every-wager rakeback because the basis is usually net loss, recent results or account activity.</td><td><a href="#whale">Whale.io</a> separates daily net-loss cashback from weekly/monthly wager x house-margin formulas; <a href="#goated">Goated</a> exposes lossback as a VIP layer without public percentages.</td><td>Do not convert lossback into guaranteed return on turnover without the actual loss formula and caps.</td></tr>
+              <tr><td>Reloads and calendar rewards</td><td>Count only the portion the player can realistically claim before expiry or release-window friction.</td><td><a href="#rollbit">Rollbit</a>, <a href="#cloudbet">Cloudbet</a>, <a href="#solcasino">Solcasino</a> and <a href="#toshibet">Toshi.bet</a> all use calendar or recurring claim surfaces in the source archive.</td><td>Do not value delayed rewards at full cash value for passive players who will miss claim windows.</td></tr>
+              <tr><td>Welcome-bonus state</td><td>Check whether normal rewards are reduced, delayed, paused or recalculated while a bonus is active.</td><td><a href="#cloudbet">Cloudbet</a> says regular rewards rakeback starts after the Welcome Package ends; <a href="#rainbet">Rainbet</a> snippets say rollover-state rewards and affiliate commission are divided by 3.</td><td>Do not stack full welcome-bonus EV and full normal-reward EV unless current terms explicitly allow it.</td></tr>
+              <tr><td>Races and leaderboards</td><td>Treat as competitive expected value, separate from baseline rebate.</td><td><a href="#rainbet">Rainbet</a> snippets show sportsbook wagers counting 3x in races; <a href="#duel">Duel</a>, <a href="#shock">Shock</a> and <a href="#metawin">MetaWin</a> expose race or leaderboard surfaces.</td><td>Do not present prize pools as guaranteed cashback for every player.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>When writing a recommendation</th><th>Use this wording</th><th>Avoid this wording</th></tr>
+              <tr><td>Multiple reward layers exist, formulas hidden</td><td>"The program has several source-backed reward surfaces, but exact combined value is not calculator-ready."</td><td>"Total rewards are worth X%" without a published combined formula.</td></tr>
+              <tr><td>Tier names public, thresholds hidden</td><td>"Tier names are public; thresholds are not public in the reviewed source."</td><td>"Gold starts at..." based on branding, screenshots or forum guesses.</td></tr>
+              <tr><td>Top rate requires extreme volume</td><td>"The top rate is a ceiling at the published high-volume rank."</td><td>"Earn up to 25%" as the baseline for casual players.</td></tr>
+              <tr><td>Official route exposes only metadata/snippets</td><td>"Official metadata/snippets support the reward surface; exact terms still need readable capture."</td><td>"Verified full terms" when the rendered table was not available.</td></tr>
+            </table>
+            <p class="copy"><strong>Player-fit rule:</strong> EV-first players should start with one clean, sourced baseline: zero-edge allowance, percent-of-house-edge rakeback, or a public XP/wager threshold. Only after that should they add softer value such as reloads, race prizes, token exposure, host discretion and seasonal boosts. Bonus hunters should do the opposite: start with expiry, rollover, calendar timing and claim friction, because those can erase headline value faster than a small difference in the published rate.</p>
+            <div class="pill-row"><span class="pill good">Prevents double counting</span><span class="pill good">Separates basis from cadence</span><span class="pill warn">Welcome state can change rewards</span><span class="pill warn">Top rates are ceilings</span></div>
+            <p class="note">Source status: BetFury Rank System, VIP Club and Bonus Cabinet official HTML were rechecked on 20 Aug 2026 and still support cashback, VIP Club, bonus-cabinet, rank-system and 20-minute rakeback positioning without exposing a full interaction formula. Cloudbet, Shuffle, Solcasino, Rainbet, Rollbit and Duel details remain tied to their operator chapters and the <a href="/casino-reward-sources.html">reward source archive</a>. Re-check current terms before moving any combined-rate claim into a calculator.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="sportsbook-rewards">
+          <div class="chapter-head"><h2>Sportsbook Rewards: Status Progress vs Rakeback</h2><p class="chapter-sub">A sportsbook-first filter for separating VIP progress, sports cash drops, race weighting and casino-only rakeback.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Key Split</span><strong>Progress is not rakeback</strong></div>
+              <div class="fact"><span>Best Public Sports XP Signal</span><strong>Thrill 3 XP at 1.10+ odds</strong></div>
+              <div class="fact"><span>Modeling Rule</span><strong>Casino math stays casino-only</strong></div>
+            </div>
+            <p class="copy"><strong>Why this chapter exists:</strong> many crypto casinos run one VIP brand across casino and sportsbook, but the economics often split underneath. A sports bet may count toward rank, qualify for races, or feed weekly cash-drop logic while still being excluded from instant casino rakeback. The safe handbook rule is to classify sportsbook volume by what the source actually says: status progress, sports-specific reward, contest weighting, or no published reward value.</p>
+            <table class="mini-table">
+              <tr><th>Sports reward shape</th><th>Source-backed examples</th><th>How to model it</th><th>Common mistake</th></tr>
+              <tr><td>Sports counts for VIP progress</td><td><a href="#thrill">Thrill</a> publishes 3 XP per $1 wagered on sports bets at odds 1.10+, and 1 XP per $1 below 1.10. <a href="#razed">Razed</a> records sports turnover as 3x for VIP progression in the current source pass.</td><td>Use it for tier-path planning, host-gate timing and perk unlock comparison.</td><td>Treating faster status progress as a published sportsbook cashback rate.</td></tr>
+              <tr><td>Sports excluded from regular casino rakeback</td><td><a href="#shuffle">Shuffle</a> publishes casino-only instant rakeback; <a href="#cloudbet">Cloudbet</a> separates regular casino rakeback from sports bets feeding weekly cash drops.</td><td>Keep sportsbook turnover out of percent-of-house-edge casino rakeback examples.</td><td>Applying a 5% or 10% casino rakeback rate to sportsbook stake.</td></tr>
+              <tr><td>Sports race or contest weighting</td><td><a href="#rainbet">Rainbet</a> source snippets show sportsbook wagers counting 3x in weekly/monthly races, while exact reward math remains blocked by browser-check pages.</td><td>Treat as contest expected value only when the player can estimate field size, prize distribution and required volume.</td><td>Counting leaderboard prizes as guaranteed cashback.</td></tr>
+              <tr><td>Sports reward bucket named but formula hidden</td><td><a href="#coincasino">CoinCasino</a> app strings expose sportsbook cashback labels, current-week progress, current tier, rate and cap labels, but not the actual table.</td><td>Track as a real reward surface with source caveats; do not put it into calculators yet.</td><td>Publishing the visible label as a known cashback percentage or cap.</td></tr>
+              <tr><td>Broad sportsbook VIP language</td><td><a href="#stake">Stake</a>, <a href="#gamba">Gamba</a>, <a href="#winna">Winna</a> and <a href="#shock">Shock</a> all have sportsbook or sports-progress context in the archive, but exact sports reward formulas vary or remain unpublished.</td><td>Use for player-fit guidance and internal links, then demand a sports-specific source before making hard EV claims.</td><td>Assuming a casino VIP program automatically treats casino and sports at the same reward rate.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Player question</th><th>Reward Book answer</th><th>Better internal path</th></tr>
+              <tr><td>"I mostly bet sports. Which rewards matter first?"</td><td>Start with operators that publish sportsbook XP/progress rules or sports-specific cashback labels, then separate progression value from cash value.</td><td><a href="#thrill">Thrill</a>, <a href="#razed">Razed</a>, <a href="#cloudbet">Cloudbet</a></td></tr>
+              <tr><td>"Can I use casino rakeback examples for sports?"</td><td>No unless the source says the sports bet earns that same reward. Casino house-edge examples are for casino games only.</td><td><a href="#rakeback-math">Rakeback Math</a>, <a href="/rakeback-comparison.html">rakeback comparison</a></td></tr>
+              <tr><td>"Is sports progress cheaper than casino progress?"</td><td>Sometimes the public XP multiplier is faster, as with Thrill 1.10+ sports bets, but expected cost depends on sportsbook margin, odds, bet selection and variance.</td><td><a href="#threshold-transparency">Threshold Transparency</a>, <a href="/vip-gold-calculator.html">VIP Gold calculator</a></td></tr>
+              <tr><td>"Do races make sportsbook rewards strong?"</td><td>Only for players intentionally competing. Races are prize pools with field-size and volume risk, not baseline rebates.</td><td><a href="#rainbet">Rainbet</a>, <a href="#metawin">MetaWin</a></td></tr>
+            </table>
+            <p class="copy"><strong>Practical rule:</strong> write sportsbook reward claims in four columns before recommending them: qualification rule, reward basis, claim/settlement path, and missing terms. If only the qualification rule is public, it belongs in a progression section, not in EV math. If a page names "sportsbook cashback" but hides the rate, cap or reset, it is a watchlist signal rather than a calculator input.</p>
+            <div class="pill-row"><span class="pill good">Sports/casino split added</span><span class="pill good">Progress vs cash separated</span><span class="pill good">Race value caveated</span><span class="pill warn">No sports EV invented</span><span class="pill warn">Hidden caps stay hidden</span></div>
+            <p class="note">Source status: live official route metadata for Shuffle, Cloudbet, Thrill and Razed was rechecked on 18 Aug 2026; detailed sports and reward wording remains tied to the existing Reward Book chapters and the <a href="/casino-reward-sources.html">reward source archive</a>. Re-check full rendered terms before adding any sports cashback rate, odds restriction, settlement rule, race prize estimate, withdrawal claim or KYC statement.</p>
           </div>
         </section>
 
@@ -394,11 +457,27 @@
             <div class="fact-grid">
               <div class="fact"><span>Published Rakeback</span><strong>25% combined house-edge rakeback</strong></div>
               <div class="fact"><span>Ceiling Claim</span><strong>Up to 47.5% with milestones</strong></div>
-              <div class="fact"><span>Gold Threshold</span><strong>Still researching</strong></div>
+              <div class="fact"><span>Settlement</span><strong>Cash, no wagering on rakeback</strong></div>
             </div>
-            <p class="copy"><strong>How it works:</strong> Duelbits splits rewards into instant, daily, weekly and monthly Bits. The standard path starts at 5% and rises by level, while VIP Club benefits are handled separately.</p>
-            <table class="mini-table"><tr><th>Bucket</th><th>Rate</th></tr><tr><td>Instant Bits</td><td>10% of house edge</td></tr><tr><td>Daily Bits</td><td>5% of house edge</td></tr><tr><td>Weekly Bits</td><td>5% of house edge</td></tr><tr><td>Monthly Bits</td><td>5% of house edge</td></tr></table>
-            <p class="note">Caution: per-level thresholds and VIP Club Gold entry criteria are still being researched. That keeps it out of exact Gold-time modeling.</p>
+            <p class="copy"><strong>How it works:</strong> Duelbits is one of the cleaner cash-rakeback programs because the official rakeback article describes the basis as house edge, not full wager. The public breakdown is 10% Instant Bits plus 5% each from Daily, Weekly and Monthly Bits, for 25% combined house-edge rakeback before milestone bonuses. The local dataset also tracks a 31-level progression path and a Bronze/Silver/Gold VIP Club overlay, but the public source pass does not expose the per-level wager thresholds or VIP Club entry rules.</p>
+            <table class="mini-table">
+              <tr><th>Reward Layer</th><th>Publicly Supported Detail</th><th>Player Caveat</th></tr>
+              <tr><td>Instant Bits</td><td>10% of house edge, accruing from the first bet.</td><td>Useful for low-friction cashback, but the dollar value still depends on the game edge.</td></tr>
+              <tr><td>Daily Bits</td><td>5% of house edge.</td><td>Recurring value should be counted only if the player actually claims on schedule.</td></tr>
+              <tr><td>Weekly Bits</td><td>5% of house edge.</td><td>Not the same as 5% back on total weekly turnover.</td></tr>
+              <tr><td>Monthly Bits</td><td>5% of house edge.</td><td>Monthly value can feel lumpy for players with uneven session volume.</td></tr>
+              <tr><td>Milestone bonuses</td><td>Official copy supports extra level-up value and an advertised ceiling up to 47.5% with milestones.</td><td>Do not model the ceiling as baseline rakeback; milestone timing and level thresholds are not public here.</td></tr>
+              <tr><td>VIP transfer</td><td>The dataset tracks an official VIP Transfer Programme contact route handled case-by-case.</td><td>Transfer acceptance, matching tier, reload value and host access are not public guarantees.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Example Game Edge</th><th>25% House-Edge Rakeback on $1,000 Wagered</th><th>What It Means</th></tr>
+              <tr><td>1% edge original/table game</td><td>About $2.50 back.</td><td>Clean but modest in dollars; compare against zero-edge allowances such as <a href="#duel">Duel</a>.</td></tr>
+              <tr><td>2% edge game</td><td>About $5 back.</td><td>A strong formula-clean baseline against <a href="#shuffle">Shuffle</a> and <a href="#cloudbet">Cloudbet</a>.</td></tr>
+              <tr><td>4% edge slot/live game</td><td>About $10 back.</td><td>Higher-dollar rakeback, but the game is still more expensive before rewards.</td></tr>
+            </table>
+            <p class="copy"><strong>Player fit:</strong> Duelbits is best for mid- to high-volume players who want cash rakeback with a readable formula and who are comfortable treating milestone bonuses as upside rather than guaranteed EV. It is weaker for calculator-first VIP grinders because the Bronze/Silver/Gold VIP Club names are public, while the actual entry thresholds and exact host gates are not. For clean formula comparison, put it beside <a href="#cloudbet">Cloudbet</a> and <a href="#shuffle">Shuffle</a>; for zero-edge reward economics, compare it with <a href="#duel">Duel</a>.</p>
+            <div class="pill-row"><span class="pill good">House-edge basis</span><span class="pill good">Cash rakeback</span><span class="pill good">Official breakdown indexed</span><span class="pill warn">Direct route Cloudflare-blocked today</span><span class="pill warn">VIP Club thresholds not public</span><span class="pill warn">Milestones are not baseline</span></div>
+            <p class="note">Caution: the strongest public claim is the 25% combined house-edge breakdown. Do not rewrite it as 25% of total wager, do not copy affiliate "up to 50%" claims as official, and do not invent Gold Club entry criteria, per-level thresholds, KYC outcomes, withdrawal certainty, reward caps or VIP-manager qualification rules. Source status is tracked in the <a href="/casino-reward-sources.html#duelbits">reward source archive</a>.</p>
             <div class="chapter-actions"><a class="btn" href="https://duelbits.io/?a=sorted" target="_blank" rel="nofollow sponsored noopener">Play at Duelbits</a></div>
           </div>
         </section>
@@ -475,7 +554,7 @@
             </table>
             <table class="mini-table"><tr><th>Tier</th><th>Required XP in current dataset</th><th>Modeling use</th></tr><tr><td>Bronze</td><td>1,000</td><td>Entry-level VIP status.</td></tr><tr><td>Silver</td><td>10,000</td><td>Early ladder comparison.</td></tr><tr><td>Gold</td><td>50,000</td><td>Public Gold input for the VIP calculator.</td></tr><tr><td>Platinum</td><td>200,000</td><td>High-volume milestone, not a host guarantee.</td></tr><tr><td>Diamond</td><td>500,000+</td><td>Upper public band; do not infer sub-tier rewards from it.</td></tr></table>
             <p class="copy"><strong>Player fit:</strong> BC.Game makes the most sense for players who already want the broad BC ecosystem, many coins and a rewards loop that pays in site token value. It is less attractive for players comparing exact cash EV, because the useful public thresholds are clearer than the actual reward economics. If the goal is clean formula comparison, start with <a href="#cloudbet">Cloudbet</a>, <a href="#duelbits">Duelbits</a>, <a href="#shuffle">Shuffle</a> or <a href="#duel">Duel</a> first; if the goal is a tokenised ladder with sportsbook participation, BC.Game stays relevant but needs a bigger discount.</p>
-            <div class="chapter-actions"><a class="btn" href="https://bc.game/i-4bau8curc-n/" target="_blank" rel="nofollow sponsored noopener">Play at BC.Game</a><a class="btn secondary" href="/blog/stake-vs-bcgame-comparison-2026.html">Stake vs BC.Game</a></div>
+            <div class="chapter-actions"><a class="btn" href="/go/bcgame/?subid=rewards-chapter" target="_blank" rel="nofollow sponsored noopener">Play at BC.Game</a><a class="btn secondary" href="/blog/stake-vs-bcgame-comparison-2026.html">Stake vs BC.Game</a></div>
             <p class="note">Caution: do not describe BC.Game's advertised cashback range as cash back on every wager. The current public source pass supports an XP ladder, BCD reward framing and broad cashback language, but not exact rakeback math, lossback caps, token redemption rules, KYC outcomes or withdrawal guarantees. Source status is tracked in the <a href="/casino-reward-sources.html#bcgame">reward source archive</a>.</p>
           </div>
         </section>
@@ -602,22 +681,32 @@
         </section>
 
         <section class="chapter" id="rainbet">
-          <div class="chapter-head"><h2>Rainbet Rewards</h2><p class="chapter-sub">Layered challenger program with a visible reward stack, but public rate and threshold math is still blocked in this session.</p></div>
+          <div class="chapter-head"><h2>Rainbet Rewards</h2><p class="chapter-sub">Layered challenger program with frequent reward claims, new-rank snippets and official help-center caveats, but no readable public rate table yet.</p></div>
           <div class="chapter-body">
             <div class="fact-grid">
               <div class="fact"><span>Official Reward Stack</span><strong>Rakeback, daily, weekly, pre-monthly, monthly</strong></div>
               <div class="fact"><span>Claim Cadence Shown</span><strong>Rakeback every 15 minutes</strong></div>
-              <div class="fact"><span>Current Limitation</span><strong>Exact rates/tiers blocked by Cloudflare</strong></div>
+              <div class="fact"><span>Race Weighting</span><strong>Sportsbook snippets say 3x</strong></div>
             </div>
-            <p class="copy"><strong>What we can verify:</strong> official Rainbet snippets point to a real multi-layer rewards stack rather than a simple one-bonus program. The public rewards route and help-center snippet expose rakeback, three Daily Reloads, a Daily Bonus, Weekly Bonus, Pre-Monthly Bonus, Monthly Bonus, ranks, rank-up style bonuses, races, RakeBoosts and keys.</p>
+            <p class="copy"><strong>What we can verify:</strong> official Rainbet snippets point to a real multi-layer rewards stack rather than a simple one-bonus program. The public rewards route and help-center snippets expose rakeback, three Daily Reloads, a Daily Bonus, Weekly Bonus, Pre-Monthly Bonus, Monthly Bonus, ranks, rank-up style bonuses, races, RakeBoosts and keys. The 17 Aug 2026 source pass still hit a browser-check page on direct fetches, so this chapter uses official indexed/help snippets as evidence rather than pretending the full terms table is readable.</p>
             <table class="mini-table">
-              <tr><th>Official clue</th><th>What was visible</th></tr>
-              <tr><td>Rewards route snippet</td><td>Daily, Weekly, Pre-Monthly, Monthly, Rakeback, Ranks, Keys Opened and Other Bonuses were visible in the indexed rewards navigation.</td></tr>
-              <tr><td>Homepage snippet</td><td>Rainbet says rakeback is claimable every 15 minutes and also references three Daily Reloads, Daily Bonus, Weekly Bonus, Pre-Monthly Bonus, Monthly Bonus, Weekly and Monthly Races, rank-up bonuses and RakeBoosts.</td></tr>
-              <tr><td>Help-center snippet</td><td>The Rewards Overview article references three Daily Reloads, a Pre-Monthly Bonus and reward boosts based on recent wagering activity and results.</td></tr>
+              <tr><th>Official clue</th><th>What was visible</th><th>How to use it</th></tr>
+              <tr><td>Rewards route snippet</td><td>Daily, Weekly, Pre-Monthly, Monthly, Rakeback, Ranks, Keys Opened, Other Bonuses, total rewards, rank-up reward claims and a "Requires Silver" gate were visible in indexed rewards navigation.</td><td>Good for reward-surface mapping and tier-gate caveats; not enough for a public threshold ladder because the snippet does not define Silver or any wager requirement.</td></tr>
+              <tr><td>Rewards Overview help snippet</td><td>Rainbet says it added three Daily Reloads, a Pre-Monthly Bonus and new Ranks, with bonuses boosted by recent wagering activity and results.</td><td>Treat recent play and results as part of the reward calculation, but do not infer a fixed rakeback percentage or lossback formula.</td></tr>
+              <tr><td>Weekly and Monthly Races help snippets</td><td>Rainbet describes leaderboard races based on wagering, with sportsbook bets counting 3x more than other wagers.</td><td>Useful for contest-fit guidance; race prizes should be modeled as competitive expected value, not guaranteed cashback.</td></tr>
+              <tr><td>Deposit Bonus Terms snippet</td><td>When a currency is in rollover state, rewards and affiliate commission generated are divided by 3.</td><td>Important caveat for bonus chasers: rollover can reduce reward generation, so do not combine deposit-bonus value and normal rewards at full headline strength.</td></tr>
             </table>
-            <div class="pill-row"><span class="pill good">Official reward stack confirmed</span><span class="pill warn">Still researching thresholds</span><span class="pill warn">Still researching exact percentages</span><span class="pill off">Cloudflare challenge on rewards/help pages</span></div>
-            <p class="note">Caution: in this session both `rainbet.com/rewards` and the official Rainbet help article returned a Cloudflare `Checking your browser...` challenge instead of readable terms. That means we can verify the reward categories from official search snippets, but we cannot honestly model exact rates, tiers, or wagering thresholds yet.</p>
+            <table class="mini-table">
+              <tr><th>Player question</th><th>Best current answer</th><th>Calculator status</th></tr>
+              <tr><td>"Is Rainbet simple cashback?"</td><td>No. The current evidence points to a layered rewards wallet: rakeback plus reloads, daily/weekly/monthly-style bonuses, ranks, keys and contests.</td><td>Qualitative only until basis, caps and rates are public.</td></tr>
+              <tr><td>"Can I claim often?"</td><td>Yes for rakeback cadence: official snippets say rakeback is claimable every 15 minutes. Other rewards sit on daily, weekly, pre-monthly or monthly schedules.</td><td>Claim cadence is usable; reward amount is not.</td></tr>
+              <tr><td>"Do sports bettors get better progress?"</td><td>Only in the race snippets we found: Weekly and Monthly Races say sportsbook bets count 3x more than other wagers.</td><td>Use for contest guidance only. Do not apply the 3x race weighting to VIP rank, rakeback or reload formulas.</td></tr>
+              <tr><td>"What tier unlocks what?"</td><td>The rewards route snippet shows rank and Silver-gated language, but it does not publish a readable threshold ladder.</td><td>Keep out of the <a href="/vip-gold-calculator.html">VIP Gold calculator</a> and host-entry tables.</td></tr>
+              <tr><td>"Can I stack deposit bonuses and full rewards?"</td><td>Maybe not at full strength. The deposit-bonus terms snippet says rewards generated during a rollover state are divided by 3.</td><td>Do not add full normal rewards on top of bonus-clearing EV unless current terms confirm eligibility.</td></tr>
+            </table>
+            <p class="copy"><strong>Player fit:</strong> Rainbet is a watchlist fit for players who like frequent rakeback claims, race leaderboards and a broader rewards wallet than a single weekly cashback line. It is especially worth comparing against <a href="#shock">Shock</a>, <a href="#wagercom">Wagercom</a> and <a href="#qzino">Qzino</a> if the player wants a modern claim dashboard, and against <a href="#stake">Stake</a>, <a href="#roobet">Roobet</a> and <a href="#gamdom">Gamdom</a> for mainstream social-casino alternatives. It is still not a reward-economics pick for calculator-first users, because the live official terms are not readable enough to confirm exact percentages, caps, game weighting, rank thresholds, reset rules or VIP-host entry.</p>
+            <div class="pill-row"><span class="pill good">Official reward stack confirmed</span><span class="pill good">3x sportsbook race snippets</span><span class="pill warn">Silver gate visible, threshold hidden</span><span class="pill warn">Rollover may reduce rewards</span><span class="pill off">Cloudflare challenge on direct reads</span></div>
+            <p class="note">Caution: a fresh 17 Aug 2026 check of Rainbet rewards and help-center routes returned browser-check content instead of readable terms. Search snippets are useful for source discovery, but weaker than a public help article. Do not claim exact rakeback percentages, tier thresholds, VIP-host entry, KYC outcomes, withdrawal certainty, expiry windows or reward caps until Rainbet publishes readable terms or the page can be captured cleanly. Source links are tracked in the <a href="/casino-reward-sources.html#rainbet">reward source archive</a>.</p>
           </div>
         </section>
 
@@ -627,7 +716,7 @@
             <div class="fact-grid">
               <div class="fact"><span>Ranks</span><strong>20 public levels</strong></div>
               <div class="fact"><span>Cashback Range</span><strong>5% to 25%</strong></div>
-              <div class="fact"><span>Super VIP Unlock</span><strong>Rank 15</strong></div>
+              <div class="fact"><span>VIP / Super VIP</span><strong>Rank 10 / Rank 15</strong></div>
             </div>
             <p class="copy"><strong>How it works:</strong> BetFury ties progression directly to total wagered amount. The official Rank System page starts every account at Newcomer, then steps through Gambler, Bet Maker, Game Master, High Roller, Betfurian Pro, BF Hero and BF Legend. Cashback rises with rank, each level carries a rank-up bonus, and the broader bonus cabinet adds rakeback, weekly and monthly rewards on top.</p>
             <table class="mini-table">
@@ -640,17 +729,32 @@
               <tr><td>BF Hero III</td><td>650,000,000 USDT</td><td>24% cashback.</td></tr>
               <tr><td>BF Legend</td><td>1,000,000,000 USDT</td><td>25% cashback and the top public rank bonus.</td></tr>
             </table>
-            <p class="copy"><strong>Bonus stack around the ladder:</strong> the official bonus cabinet says players get rakeback every 20 minutes, weekly bonuses, monthly bonuses, weekly sport bonuses, and a free Fury Wheel from Rank 1. The VIP Club page metadata confirms a premium program built around exclusive rewards, cashback, personalised support and premium benefits. The existing source pass keeps VIP Club benefits from Rank 10 and Super VIP from Rank 15, with sports wagering called out separately on the rank page through an x1 coefficient.</p>
+            <table class="mini-table">
+              <tr><th>Threshold checkpoint</th><th>What the public ladder really means</th><th>Player-fit read</th></tr>
+              <tr><td>100,000 USDT wagered</td><td>The captured rank table puts Bet Maker II at 6% cashback, only one percentage point above Newcomer.</td><td>Low and mid-volume players should not expect the headline 25% experience quickly.</td></tr>
+              <tr><td>1,000,000 USDT wagered</td><td>Game Master III reaches 10% cashback in the public ladder.</td><td>This is the first double-digit cashback checkpoint, but still a serious volume target.</td></tr>
+              <tr><td>Rank 10</td><td>The official VIP Club FAQ text says a personal host sends an invitation once Rank 10 is reached.</td><td>Use Rank 10 as the public VIP Club gate, not as a promise of fixed bonus value.</td></tr>
+              <tr><td>Rank 15</td><td>The official VIP page says Super VIP begins by reaching Rank 15.</td><td>Super VIP is a public status gate; host treatment, limits, reloads and account checks remain personalised.</td></tr>
+              <tr><td>1,000,000,000 USDT wagered</td><td>BF Legend is the top public rank and carries the 25% cashback ceiling.</td><td>The ceiling is whale-scale. Keep it out of normal-player baseline examples.</td></tr>
+            </table>
+            <p class="copy"><strong>Bonus stack around the ladder:</strong> the official bonus cabinet says players get rakeback every 20 minutes, weekly bonuses, monthly bonuses, weekly sport bonuses, rank rewards and promo-code surfaces. The VIP Club page metadata confirms a premium program built around exclusive rewards, cashback, personalised support and premium benefits. A fresh 20 Aug 2026 route check still exposed the useful Rank 10 VIP Club and Rank 15 Super VIP wording in open HTML, but not a complete rendered formula table for rakeback, caps or reward-bucket interaction.</p>
             <table class="mini-table">
               <tr><th>Modeling question</th><th>Safe handbook use</th><th>Do not infer</th></tr>
               <tr><td>Is the ladder public?</td><td>Yes. Use the public wager milestones for threshold transparency, high-volume fit and "how far is BF Legend?" comparisons.</td><td>That the highest cashback rate is reachable by casual or mid-volume players.</td></tr>
               <tr><td>Is cashback a clean rakeback formula?</td><td>No. Treat the 5%-25% ladder as rank cashback language, separate from the 20-minute rakeback bucket.</td><td>That 25% means 25% of every wager, 25% of house edge, or 25% lossback without checking the current terms.</td></tr>
-              <tr><td>Does Rank 15 define host entry?</td><td>Use it as a public Super VIP gate from the archived source pass.</td><td>Fixed host value, faster withdrawals, KYC exemption, personalised bonus size or guaranteed booster access.</td></tr>
+              <tr><td>Does Rank 10 define VIP Club entry?</td><td>Use Rank 10 as the public VIP Club invitation gate and Rank 15 as the public Super VIP gate.</td><td>Fixed host value, faster withdrawals, KYC exemption, personalised bonus size or guaranteed booster access.</td></tr>
               <tr><td>Does BFG token exposure change EV?</td><td>Flag BetFury as token-adjacent because the operator uses BFG in its reward ecosystem.</td><td>Token value stability, dividend-style income, or withdrawal certainty from the reward page alone.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Reward layer</th><th>Source-backed fact</th><th>Practical caveat</th></tr>
+              <tr><td>Rank cashback</td><td>The manual source pass tracks a public 20-rank ladder from 5% at Newcomer to 25% at BF Legend.</td><td>The top rate sits behind $1B wagered, so show it as a ceiling, not a normal-player expectation.</td></tr>
+              <tr><td>20-minute rakeback</td><td>Official bonus-cabinet evidence references rakeback claims every 20 minutes.</td><td>The exact formula, basis, cap and interaction with rank cashback are not published cleanly enough for hard EV sorting.</td></tr>
+              <tr><td>VIP transfer</td><td>BetFury publicly advertises VIP transfer and first-week VIP-bonus language.</td><td>Transfer qualification, manager discretion, boost targets and account checks are not calculator inputs.</td></tr>
+              <tr><td>VIP Club HTML</td><td>A fresh 20 Aug 2026 fetch of the official VIP Club route returned HTTP 200 HTML with title/description metadata for exclusive rewards, cashback, personalised support and premium benefits, plus Rank 10 and Rank 15 FAQ/page text.</td><td>The current HTML still does not expose the full rate table, reward caps, host-value terms, KYC treatment or withdrawal treatment without rendered app context.</td></tr>
             </table>
             <p class="copy"><strong>Player fit:</strong> BetFury is best for players who want a visible long ladder and enjoy bonus-cabinet mechanics around casino play. It is much weaker for anyone shopping for a simple effective-rate number, because cashback, rakeback, weekly/monthly bonuses and VIP extras are separate layers. For a cleaner comparison, put BetFury beside <a href="#goated">Goated</a>, <a href="#winna">Winna</a> and <a href="#razed">Razed</a> for public threshold depth, then compare formula-clean programs such as <a href="#cloudbet">Cloudbet</a>, <a href="#shuffle">Shuffle</a> and <a href="#solcasino">Solcasino</a> separately. For broader product context, see the <a href="/blog/betfury-vs-stake-crypto-casino-comparison-2026.html">BetFury vs Stake comparison</a>.</p>
             <div class="pill-row"><span class="pill good">Public thresholds</span><span class="pill good">Public cashback ladder</span><span class="pill good">VIP overlay visible</span><span class="pill warn">Rakeback formula not fully published</span><span class="pill warn">Token layer needs discount</span></div>
-            <p class="note">Caution: BetFury's public pages are strong on rank thresholds and cashback, but weaker on exact rakeback math and how the different bonus buckets interact. Do not treat the 25% top cashback as a casual-player baseline. It belongs to the BF Legend threshold at $1 billion wagered. The Rank System and VIP Club routes were rechecked on 9 Aug 2026; the open HTML confirmed current official metadata, while the detailed ladder remains tied to the existing manual source pass in the <a href="/casino-reward-sources.html#betfury">reward source archive</a>.</p>
+            <p class="note">Caution: BetFury's public pages are strong on rank thresholds, cashback positioning and VIP gates, but weaker on exact rakeback math and how the different bonus buckets interact. Do not treat the 25% top cashback as a casual-player baseline. It belongs to the BF Legend threshold at $1 billion wagered. The Rank System, VIP Club and Bonus Cabinet routes were rechecked on 20 Aug 2026 and still support the public cashback, Rank 10 VIP Club, Rank 15 Super VIP, 20-minute rakeback and weekly/monthly reward surfaces; source details live in the <a href="/casino-reward-sources.html#betfury">reward source archive</a>.</p>
           </div>
         </section>
 
@@ -686,18 +790,25 @@
               <div class="fact"><span>Claim Cadence</span><strong>Every 30 minutes</strong></div>
               <div class="fact"><span>Gold-Style Gate</span><strong>Level 15 at 72,310 EXP</strong></div>
             </div>
-            <p class="copy"><strong>How it works:</strong> Solcasino ties rewards to a public EXP ladder where `1 USD wagered = 1 EXP`. Default rakeback applies to all bets, claims every 30 minutes, and splits into an instant half plus a delayed calendar half. The rest of the reward loop sits in a Reward Calendar that adds daily, weekly, monthly and level-up bonuses over multi-day release windows.</p>
+            <p class="copy"><strong>How it works:</strong> Solcasino ties rewards to a public EXP ladder where 1 USD wagered at bet time equals 1 EXP. The public levels doc also excludes PvP Poker from EXP earning. Default rakeback is based on game house edge, claims every 30 minutes, and splits into an instant half plus a delayed calendar half. The rest of the reward loop sits in a Reward Calendar that adds daily, weekly, monthly and level-up bonuses over multi-day release windows.</p>
             <table class="mini-table">
               <tr><th>Public mechanic</th><th>What the docs say</th></tr>
               <tr><td>Rakeback</td><td>Default 5% rakeback on all bets; half paid instantly and half spread across 3 days.</td></tr>
-              <tr><td>Daily bonus</td><td>Claimable every 24 hours; 20% instantly, 80% released over 7 days.</td></tr>
-              <tr><td>Weekly bonus</td><td>Unlocks after reaching Level 15; released every Sunday; 20% instantly, 80% over 7 days.</td></tr>
-              <tr><td>Monthly bonus</td><td>Also from Level 15; released on the 1st of the month; 20% instantly, 80% over 30 days.</td></tr>
+              <tr><td>Daily bonus</td><td>Based on the previous day's wagering, P&amp;L and games played; expires if not claimed within 24 hours; 20% instantly, 80% released over 7 days.</td></tr>
+              <tr><td>Weekly bonus</td><td>Unlocks after reaching Level 15; personalized around recent betting activity, P&amp;L and lossback; released every Sunday; claim within 7 days; 20% instantly, 80% over 7 days.</td></tr>
+              <tr><td>Monthly bonus</td><td>Also from Level 15; based on recent betting activity, P&amp;L and lossback; released on the 1st of the month; claim before month-end; 20% instantly, 80% over 30 days.</td></tr>
               <tr><td>Level-up bonuses</td><td>Triggered at milestone levels; 20% instantly, 80% over 21 days.</td></tr>
             </table>
             <p class="copy"><strong>Why it matters:</strong> Solcasino is unusually usable for honest comparison because the docs expose both the rakeback basis and the level ladder. Public threshold data shows Level 15 at 72,310 total EXP, Level 20 at 277,250 EXP, Level 30 at 1,436,750 EXP, and Level 80 at 132,032,050 EXP. For affiliate planning, the docs also document referral-code application, anti-abuse rules, and a formal partnership path via support for larger affiliates.</p>
+            <table class="mini-table">
+              <tr><th>Planning question</th><th>Solcasino answer</th><th>Player-fit guidance</th></tr>
+              <tr><td>"What is the exact calculator input?"</td><td>Use 5% of game house edge for default rakeback, then discount the calendar half if the player will not keep claiming.</td><td>Good for players who understand house-edge math; weak for anyone reading 5% as 5% of wager.</td></tr>
+              <tr><td>"When do weekly/monthly rewards begin?"</td><td>Level 15, which the public EXP table lists at 72,310 total EXP. Because the doc states 1 USD value at bet time equals 1 EXP, that is roughly $72,310 of eligible wagered value before game exclusions.</td><td>Useful Gold-style planning threshold, but not a promise of a fixed weekly or monthly dollar amount.</td></tr>
+              <tr><td>"How much is realized immediately?"</td><td>Rakeback pays 50% instantly and 50% through a 3-day calendar. Daily, weekly and monthly bonuses pay 20% instantly, with the rest released over 7, 7 and 30 days respectively.</td><td>Best for active claimers; passive players should value the delayed pieces below face value.</td></tr>
+              <tr><td>"What is still hidden?"</td><td>Daily, weekly, monthly and level-up amounts depend on recent wagering, P&amp;L, lossback and games played, but the docs do not publish a fixed rate table.</td><td>Keep Solcasino in formula-clean rakeback comparisons, but keep recurring bonus estimates conservative.</td></tr>
+            </table>
             <div class="pill-row"><span class="pill good">Published formula</span><span class="pill good">Published thresholds</span><span class="pill good">Public partner docs</span><span class="pill warn">Bonus formulas still personalized</span></div>
-            <p class="note">Caution: the recurring bonus values are still based on recent wagering, games and PnL, so only the structure is public. The cleanest exact input here is the 5% house-edge rakeback plus the public EXP ladder and payout timing.</p>
+            <p class="note">Caution: the recurring bonus values are still based on recent wagering, games, P&amp;L and lossback, so only the structure, expiry timing and release split are public. The cleanest exact inputs here are the 5% house-edge rakeback, the public EXP ladder, PvP Poker exclusion and payout timing. Do not infer withdrawal certainty, KYC treatment, host access, fixed weekly/monthly values or a sportsbook-equivalent rate from the reward docs.</p>
           </div>
         </section>
 
@@ -872,9 +983,16 @@
               <tr><td>Royalty Up</td><td>24 levels across Bronze, Silver, Gold, Emerald, Sapphire, Ruby, Diamond and Opal, with three levels per tier.</td><td>Tier names are public; exact requirements are not displayed.</td></tr>
               <tr><td>New-account boost</td><td>15% boosted instant rewards for 7 days, if activated within the first 6 hours after registration.</td><td>Strong short window, easy to miss, and it boosts instant rewards only.</td></tr>
             </table>
+            <table class="mini-table">
+              <tr><th>Source signal</th><th>Use it for</th><th>Do not use it for</th></tr>
+              <tr><td>Official help article, modified 28 Jan 2026</td><td>Instant/weekly/monthly claim buckets, Royalty Up tier names, 24-level structure, 15% new-account instant-reward boost and the explicit formula-opacity caveat.</td><td>Exact tier thresholds, exact rakeback rates, cashback caps, weekly/monthly formulas or host-entry requirements.</td></tr>
+              <tr><td>Public rewards route metadata, rechecked 15 Aug 2026</td><td>Current public positioning around rakeback, cashback and personalised rewards, plus confirmation that rewards/Royalty Up are active product surfaces.</td><td>Calculator math. The open route is an app shell and metadata source, not a readable rate table.</td></tr>
+              <tr><td>Gamdom vs comparison blog archive</td><td>Internal context for player-fit comparisons against Stake, Rainbet, BC.Game and Duelbits.</td><td>Fresh official thresholds or withdrawal claims. Older blog language should not override the source archive.</td></tr>
+            </table>
+            <p class="copy"><strong>Economics read:</strong> Gamdom is a rewards ecosystem, not a formula-clean rebate. The public evidence is strong enough to say the program has instant, weekly, monthly, cashback and Royalty Up layers, and weak enough that the only honest EV setting is "undisclosed basis" until Gamdom publishes a table. If a player wants predictable math, point them to <a href="#cloudbet">Cloudbet</a>, <a href="#duelbits">Duelbits</a>, <a href="#shuffle">Shuffle</a> or <a href="#duel">Duel</a>; if they want an established account with frequent manual claims and progression, Gamdom becomes more relevant.</p>
             <p class="copy"><strong>Player fit:</strong> Gamdom makes more sense for players who want steady manual claims, an established casino/sportsbook account and a visible progression bar than for players trying to calculate exact expected-value return before depositing. Compare it against transparent formula programs on the <a href="/rakeback-comparison.html">rakeback calculator</a>, or use the <a href="/vip-gold-calculator.html">VIP Gold calculator</a> to see why Gamdom stays in the "thresholds not public" bucket.</p>
-            <div class="pill-row"><span class="pill good">Official help source</span><span class="pill good">Manual claims never expire</span><span class="pill warn">No public thresholds</span><span class="pill warn">Formula not public</span><span class="pill warn">Boost has 6-hour activation window</span></div>
-            <p class="note">Caution: affiliate claims around very high maximum rakeback are not official enough for modeling. Gamdom's own help center says the formula is not publicly shared and that rewards are personalised, so treat it as a real rewards program with unpublished economics rather than a clean rate-table casino like Cloudbet, Duelbits or 21.com. For matchup context, see our <a href="/blog/gamdom-vs-rainbet-comparison-2026.html">Gamdom vs Rainbet</a> and <a href="/blog/gamdom-vs-stake-comparison-2026.html">Gamdom vs Stake</a> guides.</p>
+            <div class="pill-row"><span class="pill good">Official help source</span><span class="pill good">Manual claims never expire</span><span class="pill good">Rechecked 15 Aug</span><span class="pill warn">No public thresholds</span><span class="pill warn">Formula not public</span><span class="pill warn">Boost has 6-hour activation window</span></div>
+            <p class="note">Caution: affiliate claims around very high maximum rakeback are not official enough for modeling. Gamdom's own help center says the formula is not publicly shared and that rewards are personalised, so treat it as a real rewards program with unpublished economics rather than a clean rate-table casino like Cloudbet, Duelbits, Shuffle or 21.com. Do not infer Gold entry, rakeback caps, VIP-host entry, KYC outcomes or withdrawal speed from the Royalty Up names. For matchup context, see our <a href="/blog/gamdom-vs-rainbet-comparison-2026.html">Gamdom vs Rainbet</a>, <a href="/blog/gamdom-vs-stake-comparison-2026.html">Gamdom vs Stake</a>, <a href="/blog/gamdom-vs-bcgame-comparison-2026.html">Gamdom vs BC.Game</a> and <a href="/blog/gamdom-vs-duelbits-comparison-2026.html">Gamdom vs Duelbits</a> guides.</p>
           </div>
         </section>
 
@@ -1057,24 +1175,25 @@
         </section>
 
         <section class="chapter" id="500casino">
-          <div class="chapter-head"><h2>500 Casino Rewards Watch</h2><p class="chapter-sub">Official help-center snippets now expose reward buckets and one Daily Cases threshold, but the live pages still need readable-term confirmation.</p></div>
+          <div class="chapter-head"><h2>500 Casino Rewards Watch</h2><p class="chapter-sub">Official help-center snippets now expose reward buckets, one Daily Cases threshold, welcome-package rakeback boost math and balance-credit caveats.</p></div>
           <div class="chapter-body">
             <div class="fact-grid">
               <div class="fact"><span>Public Buckets</span><strong>Rakeback, level-up rewards, Daily Cases</strong></div>
               <div class="fact"><span>Daily Cases Signal</span><strong>XP + lossback component</strong></div>
               <div class="fact"><span>Source Status</span><strong>Official snippets, fetch blocked</strong></div>
             </div>
-            <p class="copy"><strong>What changed:</strong> 500 Casino is no longer just a bare rewards-route entry in the queue. Official help-center search snippets now identify a broader reward stack: rakeback, level-up rewards and Daily Cases. The Daily Cases help snippet says the feature has an XP component and a lossback component, and that players who are in profit on their 30-day stats need 11.8M XP, approximately $7,000 wagered, to unlock Daily Cases.</p>
+            <p class="copy"><strong>What changed:</strong> 500 Casino is no longer just a bare rewards-route entry in the queue. Official help-center search snippets now identify a broader reward stack: rakeback, level-up rewards and Daily Cases. The Daily Cases help snippet says the feature has an XP component and a lossback component, and that players who are in profit on their 30-day stats need 11.8M XP, approximately $7,000 wagered, to unlock Daily Cases. A separate official welcome-package snippet adds one concrete boost conversion: all bets count toward unlocking rakeback-boost rewards at $1 for every $400 wagered, with XP penalties applying.</p>
             <table class="mini-table">
               <tr><th>Reward layer</th><th>Official snippet-backed detail</th><th>Handbook read</th></tr>
               <tr><td>Rakeback</td><td>The official "what kind of rewards" help snippet names rakeback as part of the rewards stack.</td><td>Track as a real layer, but do not publish a rate, basis, cap, claim cadence or eligible-game table yet.</td></tr>
               <tr><td>Level-up rewards</td><td>The same official help snippet says level-up rewards sit on top of rakeback and that players level faster in the beginning.</td><td>Progression rewards exist; public rank thresholds and cash values still need full help-page extraction.</td></tr>
               <tr><td>Daily Cases</td><td>The official Daily Cases snippet says the feature combines XP and lossback. For players in profit over the 30-day stats window, the snippet gives 11.8M XP, about $7,000 wagered, as the unlock line.</td><td>This is a conditional public threshold from an indexed official snippet, not a full Daily Cases formula.</td></tr>
-              <tr><td>Welcome package tie-in</td><td>An official help snippet says the welcome package can add a 300% rakeback reward as a rakeback boost that must be unlocked.</td><td>Keep acquisition-bonus boosts separate from recurring loyalty EV.</td></tr>
+              <tr><td>Welcome package tie-in</td><td>An official help snippet says the welcome package can add a 300% rakeback reward as a rakeback boost that must be unlocked, and separately says all bets count toward unlocking rakeback-boost rewards at $1 per $400 wagered, with XP penalties applying.</td><td>Keep acquisition-bonus boosts separate from recurring loyalty EV; this is unlock math for a boost, not the base rakeback formula.</td></tr>
+              <tr><td>Reward balance treatment</td><td>An official balance-types snippet says VIP Rewards, Rakeback, Other Rewards and affiliate revenue are credited in the currently selected balance when claimed.</td><td>Useful for wallet UX caveats, but it does not prove withdrawal treatment, KYC outcomes or whether every reward is immediately withdrawable.</td></tr>
             </table>
-            <p class="copy"><strong>Player fit:</strong> 500 Casino now looks worth deeper monitoring for players who like CS2-flavoured crypto casinos with multiple reward surfaces rather than one simple cashback number. It is still a poor fit for exact reward comparison because the readable public evidence does not expose VIP tier names, VIP thresholds, rakeback percentage tables, lossback formulas, expiry rules or caps.</p>
-            <div class="pill-row"><span class="pill good">Official help snippets found</span><span class="pill good">Daily Cases threshold signal</span><span class="pill warn">Exact rakeback rates not public</span><span class="pill warn">Full help fetch blocked</span><span class="pill warn">No VIP tier table extracted</span></div>
-            <p class="note">Caution: this chapter intentionally labels the evidence as official snippets rather than full rendered terms. Do not use the 11.8M XP Daily Cases line as a universal eligibility rule: the snippet frames it around players who are in profit according to 30-day stats, while the lossback side, account state, excluded games, reset timing and reward value formula still need direct readable confirmation. Source links are tracked in the <a href="/casino-reward-sources.html#500casino">reward source archive</a>.</p>
+            <p class="copy"><strong>Player fit:</strong> 500 Casino now looks worth deeper monitoring for players who like CS2-flavoured crypto casinos with multiple reward surfaces rather than one simple cashback number. It may suit players who are comfortable tracking XP, boost unlock progress and account-state-dependent cases. It is still a poor fit for exact reward comparison because the readable public evidence does not expose VIP tier names, VIP thresholds, base rakeback percentage tables, lossback formulas, expiry rules or caps.</p>
+            <div class="pill-row"><span class="pill good">Official help snippets found</span><span class="pill good">Daily Cases threshold signal</span><span class="pill good">Boost unlock math snippet</span><span class="pill warn">Exact base rakeback rates not public</span><span class="pill warn">Full help fetch blocked</span><span class="pill warn">No VIP tier table extracted</span></div>
+            <p class="note">Caution: this chapter intentionally labels the evidence as official snippets rather than full rendered terms. Do not use the 11.8M XP Daily Cases line as a universal eligibility rule: the snippet frames it around players who are in profit according to 30-day stats, while the lossback side, account state, excluded games, reset timing and reward value formula still need direct readable confirmation. Likewise, the $1 per $400 line belongs to welcome-package rakeback-boost unlocking, not recurring baseline rakeback. Source links are tracked in the <a href="/casino-reward-sources.html#500casino">reward source archive</a>.</p>
           </div>
         </section>
 

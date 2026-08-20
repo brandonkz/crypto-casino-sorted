@@ -260,15 +260,26 @@
     .offer-text { color: var(--muted); font-size: 0.84rem; }
     .comparison-wrap {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-gutter: stable;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: rgba(4, 16, 38, 0.52);
     }
     .comparison-table {
       width: 100%;
-      min-width: 940px;
+      min-width: 1210px;
       border-collapse: collapse;
+      table-layout: fixed;
     }
+    .comparison-table col:nth-child(1) { width: 180px; }
+    .comparison-table col:nth-child(2) { width: 140px; }
+    .comparison-table col:nth-child(3) { width: 160px; }
+    .comparison-table col:nth-child(4) { width: 150px; }
+    .comparison-table col:nth-child(5) { width: 190px; }
+    .comparison-table col:nth-child(6) { width: 150px; }
+    .comparison-table col:nth-child(7) { width: 165px; }
+    .comparison-table col:nth-child(8) { width: 75px; }
     .comparison-table th,
     .comparison-table td {
       padding: 13px 14px;
@@ -579,6 +590,10 @@
       gap: 16px;
       margin-bottom: 16px;
     }
+    #rewards-table {
+      width: min(1500px, calc(100vw - 32px));
+      margin-left: calc((100% - min(1500px, calc(100vw - 32px))) / 2);
+    }
     .section.two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     .panel-header {
       display: flex;
@@ -880,6 +895,16 @@
           </div>
           <div class="comparison-wrap">
             <table class="comparison-table">
+              <colgroup>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+              </colgroup>
               <thead>
                 <tr>
                   <th>Casino</th>
@@ -889,7 +914,7 @@
                   <th>Cashback / Rakeback</th>
                   <th>VIP Strength</th>
                   <th>Wagering / Catches</th>
-                  <th>Live Rank</th>
+                  <th>Rank</th>
                 </tr>
               </thead>
               <tbody>
@@ -957,12 +982,20 @@
                   <td><span class="score-pill">#5</span></td>
                 </tr>
 
-                <tr data-incentive-low-rate="0.00345" data-incentive-high-rate="0.00345" data-incentive-note="Token value discounted versus clean cash.">
-                  <td class="casino-cell"><a class="has-visible-cta" href="https://bc.game/i-4bau8curc-n/" target="_blank" rel="sponsored nofollow noopener"><span class="casino-link-text">BC Game</span><span class="cta-pill">Play now</span></a><span>Best gamified ladder</span></td>
+                <tr class="featured-table-row" data-featured-placement="true" data-incentive-low-rate="0.00345" data-incentive-high-rate="0.00345" data-incentive-note="Token value discounted versus clean cash.">
+                  <td class="casino-cell featured-casino-cell">
+                    <div class="featured-action-row">
+                      <span class="feature-badge">Featured</span>
+                      <a class="has-visible-cta featured-play-link" href="/go/bcgame/?subid=homepage-table" rel="sponsored nofollow"><span class="cta-pill">Play now</span></a>
+                    </div>
+                    <strong>BC Game</strong>
+                    <span>Strong Africa-facing crypto offer</span>
+                    <a class="featured-review-link" href="/reviews/bcgame-review.html">Read review</a>
+                  </td>
                   <td class="incentive-cell"></td>
-                  <td>Huge XP ecosystem with token rewards, levels, bonuses and broad coin support.</td>
-                  <td>Tracked offer: 300% up to $20,000, manual-review status.</td>
-                  <td>Advertised 20-24% rakeback paid in BCD token.</td>
+                  <td>Big crypto-first rewards with broad coin support, VIP gamification and a product that feels built for crypto users.</td>
+                  <td>Featured angle: deposit matches up to 180%.</td>
+                  <td>Up to 25% cashback, plus tokenised VIP and promo layers.</td>
                   <td>Very deep level system with strong gamification.</td>
                   <td>Token value is not the same as clean cash; withdrawal complaints matter.</td>
                   <td><span class="score-pill">#6</span></td>

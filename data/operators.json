@@ -185,7 +185,7 @@
       "settlement": "Ongoing by level, paid in BCD.",
       "reward_page_url": "https://bc.game/vip",
       "reward_page_label": "BC.Game VIP",
-      "affiliate_url": "https://bc.game/i-4bau8curc-n/",
+      "affiliate_url": "https://partnerbcgame.com/vu2nxqkm6",
       "offer_summary": "Advertised 20-24% rakeback paid in BCD token, plus weekly/monthly token bonuses. Discount versus clean cash for comparison.",
       "reset_behaviour": "XP-based levels, no reset.",
       "vip_host_entry": "Upper tiers; personal manager.",
@@ -443,7 +443,7 @@
       "reward_page_url": "https://betfury.io/vip-club",
       "reward_page_label": "BetFury VIP Club",
       "affiliate_url": null,
-      "offer_summary": "BetFury publishes a 20-level rank ladder from Newcomer to BF Legend, with cashback rising from 5% to 25% and rank-up bonuses from 0 to 30,000 USDT. Official bonus pages also reference 20-minute rakeback claims, weekly/monthly bonuses, and VIP perks from Rank 10 with Super VIP unlocked at Rank 15.",
+      "offer_summary": "BetFury publishes a 20-level rank ladder from Newcomer to BF Legend, with cashback rising from 5% to 25% and rank-up bonuses from 0 to 30,000 USDT. Official bonus-cabinet metadata separately references cashback up to 25%, Weekly, Monthly, Rakeback, VIP Club, Rank rewards and Promo Codes, so cashback and rakeback should not be double-counted without a readable interaction formula.",
       "reset_behaviour": "Rank progression appears cumulative by total wagered amount; no public reset mechanic was highlighted on the rank page.",
       "vip_host_entry": "VIP Club benefits are advertised from Rank 10; Super VIP perks unlock from Rank 15.",
       "transparency": 72,
@@ -453,8 +453,8 @@
       "gamification": 88,
       "watch_out": "The public pages are very clear on the cashback ladder, but not on the exact rakeback formula or the full interaction between cashback, rakeback, weekly/monthly bonuses and VIP extras. The 25% top cashback only appears at BF Legend, which requires $1 billion wagered.",
       "source_url": "https://betfury.io/rank-system",
-      "source_last_checked": "2026-07-15",
-      "source_status": "manual_verified",
+      "source_last_checked": "2026-08-20",
+      "source_status": "official_html_rechecked",
       "source_monitor": "manual"
     },
     {
@@ -463,7 +463,7 @@
       "type": "challenger",
       "licence": "Curacao",
       "confidence": "partial_official",
-      "positioning": "Layered rewards program with rakeback, daily reloads, daily/weekly/pre-monthly/monthly bonuses, races and RakeBoosts, but exact rates still need readable source capture.",
+      "positioning": "Layered rewards program with rakeback, daily reloads, daily/weekly/pre-monthly/monthly bonuses, ranks, keys, races and RakeBoosts, but exact rates still need readable source capture.",
       "best_for": [
         "mid",
         "high"
@@ -477,11 +477,11 @@
       "rate_min": null,
       "rate_max": null,
       "effective_rate": null,
-      "settlement": "Official snippets show rakeback claimable every 15 minutes plus daily, weekly, pre-monthly and monthly reward layers. Exact rates and thresholds are still being researched because the live rewards pages returned a browser-check challenge.",
+      "settlement": "Official snippets show rakeback claimable every 15 minutes plus daily, weekly, pre-monthly and monthly reward layers. Race snippets say sportsbook wagers count 3x in weekly/monthly races, while deposit-bonus terms snippets say rollover-state rewards are divided by 3. Exact rates and thresholds are still being researched because the live rewards pages returned a browser-check challenge.",
       "reward_page_url": "https://rainbet.com/rewards",
       "reward_page_label": "Rainbet Rewards",
       "affiliate_url": null,
-      "offer_summary": "Rainbet appears to run a full multi-layer reward stack: rakeback, three daily reloads, daily bonus, weekly bonus, pre-monthly bonus, monthly bonus, ranks, rank-up bonuses, weekly/monthly races, RakeBoosts and keys. Exact reward math remains out of calculators until the official terms are readable.",
+      "offer_summary": "Rainbet appears to run a full multi-layer reward stack: rakeback, three daily reloads, daily bonus, weekly bonus, pre-monthly bonus, monthly bonus, ranks, rank-up bonuses, weekly/monthly races, RakeBoosts and keys. Official snippets also show 3x sportsbook weighting for weekly/monthly races, Silver-gated reward language without public thresholds, and rollover-state rewards divided by 3. Exact reward math remains out of calculators until the official terms are readable.",
       "reset_behaviour": "Still researching from official terms.",
       "vip_host_entry": "Still researching from official terms.",
       "transparency": 46,
@@ -489,10 +489,10 @@
       "trust": 58,
       "depth": 78,
       "gamification": 84,
-      "watch_out": "The reward stack is source-backed from official snippets, but the live pages returned Cloudflare browser-check pages in this pass. Keep wording as still researching rather than making hard rate claims.",
+      "watch_out": "The reward stack is source-backed from official snippets, but the live pages returned Cloudflare browser-check pages in this pass. Keep wording as still researching rather than making hard rate, tier, host, KYC or withdrawal claims.",
       "source_url": "https://rainbet.com/rewards",
-      "source_last_checked": "2026-07-15",
-      "source_status": "manual_review",
+      "source_last_checked": "2026-08-17",
+      "source_status": "manual_review_cloudflare_challenge_rechecked",
       "source_monitor": "manual"
     },
     {
@@ -752,7 +752,7 @@
       "reward_page_url": "https://gamdom.com/rewards",
       "reward_page_label": "Gamdom Rewards",
       "affiliate_url": null,
-      "offer_summary": "Official pages show instant/weekly/monthly rewards, cashback, a 24-level, 8-tier Royalty Up ladder and a public 25% rewards-boost claim at higher tiers. The help center says the formula is personalized and not publicly shared. New accounts get 15% boosted instant rewards for 7 days if activated within 6 hours of registration.",
+      "offer_summary": "Official pages show instant/weekly/monthly rewards, cashback, a 24-level, 8-tier Royalty Up ladder and a public 25% rewards-boost claim at higher tiers. The help center says the formula is personalized and not publicly shared. New accounts get 15% boosted instant rewards for 7 days if activated within 6 hours of registration. Public tier names are usable for handbook context, but thresholds and exact rates remain unpublished.",
       "reset_behaviour": "Royalty Up ranks have no published reset; invite-only VIP Club above it requires ongoing activity to maintain.",
       "vip_host_entry": "Invite-only VIP Club; dedicated team, fee-free withdrawals.",
       "transparency": 30,
@@ -762,9 +762,9 @@
       "gamification": 82,
       "watch_out": "Affiliate 'up to 60%' claims are not official — rates, thresholds, and formula are all explicitly undisclosed and dynamic. The 6-hour activation window on the new-account boost is easy to miss. Strong aggregate trust (Casino Guru 9.8) but documented KYC escalation and multi-week holds after big wins.",
       "source_url": "https://help.gamdom.com/en/articles/10290516-gamdom-rewards",
-      "source_last_checked": "2026-07-30",
+      "source_last_checked": "2026-08-15",
       "source_status": "verified",
-      "source_terms_hash": "5a9241ba09de3e21"
+      "source_terms_hash": "c1c2ebe24a8d9e4a"
     },
     {
       "id": "duelbits",
@@ -801,8 +801,8 @@
       "gamification": 80,
       "watch_out": "Third-party 'up to 50%' is affiliate inflation — official copy tops out at 47.5% and is internally inconsistent. Per-level thresholds and VIP Club entry criteria are unpublished. Welcome free-spin stages expire 24h after crediting. Heavy KYC reported after large wins (one disputed $253k case).",
       "source_url": "https://duelbits.com/blog/guide/how-does-duelbits-rakeback-work/",
-      "source_last_checked": "2026-07-13",
-      "source_status": "manual_verified",
+      "source_last_checked": "2026-08-13",
+      "source_status": "archived_manual_verified_plus_current_route_blocked",
       "source_monitor": "manual"
     },
     {
