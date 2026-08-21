@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="theme-color" content="#0d0d10" />
+  <meta name="viewport" content="height=device-height, 
+		width=device-width, initial-scale=1.0, 
+		minimum-scale=1.0, maximum-scale=1.0, 
+		user-scalable=no" />
+  
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="The ultimate crypto gaming platform with provably fair games including Crash, Dice, Mines, Plinko, and more." />
+    <meta name="keywords" content="crypto gaming, provably fair, crash game, dice, mines, plinko, gambling, cryptocurrency" />
+    <meta name="author" content="Degen" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Degen - Crypto Gaming Platform" />
+    <meta property="og:description" content="The ultimate crypto gaming platform with provably fair games including Crash, Dice, Mines, Plinko, and more." />
+    <meta property="og:url" content="https://degen.com" />
+    <meta property="og:site_name" content="Degen" />
+    <meta property="og:image" content="https://degen.com/og.png" />
+    <meta property="og:image:width" content="3000" />
+    <meta property="og:image:height" content="1575" />
+    <meta property="og:image:alt" content="Degen - Crypto Gaming Platform" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:updated_time" content="2024-01-01T00:00:00Z" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Degen - Crypto Gaming Platform" />
+    <meta name="twitter:description" content="The ultimate crypto gaming platform with provably fair games including Crash, Dice, Mines, Plinko, and more." />
+    <meta name="twitter:image" content="https://degen.com/og.png" />
+    <meta name="twitter:image:alt" content="Degen - Crypto Gaming Platform" />
+    <meta name="twitter:site" content="@degen" />
+    <meta name="twitter:creator" content="@degen" />
+    
+    <!-- Robots Meta Tags -->
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#0d0d10" />
+    <meta name="msapplication-TileColor" content="#0d0d10" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Degen" />
+    
+    <!-- Additional Social Media Meta Tags -->
+    <meta property="article:author" content="Degen" />
+    <meta property="article:publisher" content="https://degen.com" />
+    <meta name="pinterest-rich-pin" content="true" />
+    
+    <!-- Additional Open Graph Meta Tags -->
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:secure_url" content="https://degen.com/og.png" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- Additional Meta Tags for Better Social Media Support -->
+    <meta name="application-name" content="Degen" />
+    <meta name="msapplication-tooltip" content="Degen - Crypto Gaming Platform" />
+    <meta name="msapplication-starturl" content="/" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://degen.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+
+  <link rel="dns-prefetch" href="https://e2249c0e-5cbb-4bec-a001-62ccce77907e.snippet.anjcdn.org" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <title>Degen</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      user_type: 'visitor',
+      user_id: null,
+      email: null,
+      first_name: null,
+      last_name: null,
+    });
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      if (!i || i.indexOf('%VITE_') === 0) {
+        console.error('GTM ID is not set');
+        return;
+      };
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js',
+      });
+      const f = d.getElementsByTagName(s)[0];
+      const j = d.createElement(s);
+      const dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode?.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KSHP9GQ5');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Anjouan Licensing Seal -->
+  <script type="text/javascript"
+    src="https://e2249c0e-5cbb-4bec-a001-62ccce77907e.snippet.anjcdn.org/anj-seal.js"></script>
+
+  <style>
+    html,
+    body {
+      background: #0d0d10;
+      height: 100%;
+      margin: 0;
+      font-family:
+        'Work Sans',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        sans-serif;
+    }
+
+    #app-root,
+    #modal-root,
+    #popup-root {
+      background: transparent;
+    }
+
+    #app-root:empty::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100vh;
+      background: #0d0d10;
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-RYDlDFLy.js"></script>
+  <link rel="modulepreload" crossorigin href="/js/device-detect-DY_NsUM6.js">
+  <link rel="modulepreload" crossorigin href="/js/rive-WgW0R73B.js">
+  <link rel="modulepreload" crossorigin href="/js/react-vendor-AUQjspuM.js">
+  <link rel="modulepreload" crossorigin href="/js/network-CNwKIe5e.js">
+  <link rel="modulepreload" crossorigin href="/js/vendor-BegwRtbt.js">
+  <link rel="modulepreload" crossorigin href="/js/redux-pTqVNbjM.js">
+  <link rel="modulepreload" crossorigin href="/js/i18n-CvbBsg6E.js">
+  <link rel="modulepreload" crossorigin href="/js/router-CAilkUrX.js">
+  <link rel="modulepreload" crossorigin href="/js/lottie-web-Cc8Qqe3X.js">
+  <link rel="modulepreload" crossorigin href="/js/emoji-mart-B97nDQX4.js">
+  <link rel="stylesheet" crossorigin href="/css/vendor-DsTdYRre.css">
+  <link rel="stylesheet" crossorigin href="/css/index-BRuf5efk.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:inline-sw">if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/sw.js', { scope: '/' })})}</script></head>
+
+<body>
+  <!-- GTM_NOSCRIPT_START -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSHP9GQ5" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- GTM_NOSCRIPT_END -->
+
+  <div id="app-root"></div>
+  <div id="modal-root"></div>
+  <div id="popup-root"></div>
+
+</body>
+
+</html>
