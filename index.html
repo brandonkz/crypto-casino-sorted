@@ -660,16 +660,40 @@
     .tierlist-home-slots {
       display: flex;
       align-items: center;
+      align-content: center;
+      flex-wrap: wrap;
       gap: 4px;
       padding: 4px;
       background: rgba(255,255,255,0.06);
     }
-    .tierlist-home-slot {
-      width: 24px;
-      height: 24px;
+    .tierlist-home-tile {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
       border-radius: 4px;
       background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));
       border: 1px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.18);
+    }
+    .tierlist-home-tile img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      display: block;
+    }
+    .tierlist-home-fallback {
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      color: #f7fbff;
+      font-size: 0.46rem;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
     #rewards-table {
       width: min(1500px, calc(100vw - 32px));
@@ -821,6 +845,18 @@
       .hero-main::after { right: -120px; bottom: -128px; width: 270px; height: 180px; opacity: 0.48; }
       .tierlist-home-card { padding: 16px; }
       .tierlist-home-title { font-size: 1.32rem; }
+      .tierlist-home-row {
+        grid-template-columns: 34px minmax(0, 1fr);
+      }
+      .tierlist-home-tile {
+        width: 26px;
+        height: 26px;
+      }
+      .tierlist-home-tile img,
+      .tierlist-home-fallback {
+        width: 18px;
+        height: 18px;
+      }
       .reward-grid,
       .score-row { grid-template-columns: 1fr; }
       .guide-link { grid-template-columns: 1fr; }
@@ -975,27 +1011,64 @@
             <a class="tierlist-home-preview" href="/tier-list/" aria-label="Open the crypto casino tier list">
               <div class="tierlist-home-row">
                 <div class="tierlist-home-label" style="background:#F26D6D;">S</div>
-                <div class="tierlist-home-slots"><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span></div>
+                <div class="tierlist-home-slots">
+                  <span class="tierlist-home-tile"><img src="/logos/stake.png" alt="Stake logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/duel.png" alt="Duel logo"></span>
+                </div>
               </div>
               <div class="tierlist-home-row">
                 <div class="tierlist-home-label" style="background:#F5A25A;">A</div>
-                <div class="tierlist-home-slots"><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span></div>
+                <div class="tierlist-home-slots">
+                  <span class="tierlist-home-tile"><img src="/logos/xtp.png" alt="XTP logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/shuffle.png" alt="Shuffle logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/roobet.png" alt="Roobet logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/gamdom.png" alt="Gamdom logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/rainbet.png" alt="Rainbet logo"></span>
+                  <span class="tierlist-home-tile"><span class="tierlist-home-fallback">TH</span></span>
+                </div>
               </div>
               <div class="tierlist-home-row">
                 <div class="tierlist-home-label" style="background:#F5D66E;">B</div>
-                <div class="tierlist-home-slots"><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span></div>
+                <div class="tierlist-home-slots">
+                  <span class="tierlist-home-tile"><img src="/logos/degen.png" alt="Degen logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/gamba.png" alt="Gamba logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/rollbit.png" alt="Rollbit logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/betbolt.png" alt="BetBolt logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/goated.png" alt="Goated logo"></span>
+                </div>
               </div>
               <div class="tierlist-home-row">
                 <div class="tierlist-home-label" style="background:#D7E58A;">C</div>
-                <div class="tierlist-home-slots"><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span></div>
+                <div class="tierlist-home-slots">
+                  <span class="tierlist-home-tile"><img src="/logos/razed.png" alt="Razed logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/c500.png" alt="500 Casino logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/bcgame.png" alt="BC.Game logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/yeet.png" alt="Yeet logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/metawin.png" alt="MetaWin logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/duelbits.png" alt="Duelbits logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/shock.png" alt="Shock logo"></span>
+                </div>
               </div>
               <div class="tierlist-home-row">
                 <div class="tierlist-home-label" style="background:#7FC66B;">D</div>
-                <div class="tierlist-home-slots"><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span></div>
+                <div class="tierlist-home-slots">
+                  <span class="tierlist-home-tile"><img src="/logos/chips.png" alt="Chips.gg logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/bitfortune.png" alt="BitFortune logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/metaspins.png" alt="Metaspins logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/acebet.png" alt="Acebet logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/spartans.png" alt="Spartans logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/dicey.png" alt="Dicey logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/winna.png" alt="Winna logo"></span>
+                </div>
               </div>
               <div class="tierlist-home-row">
                 <div class="tierlist-home-label is-stacked" style="background:#C463D8;">NOT<br>PLAYED</div>
-                <div class="tierlist-home-slots"><span class="tierlist-home-slot"></span><span class="tierlist-home-slot"></span></div>
+                <div class="tierlist-home-slots">
+                  <span class="tierlist-home-tile"><img src="/logos/onewin.png" alt="1win logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/fortunejack.png" alt="FortuneJack logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/degencity.png" alt="DegenCity logo"></span>
+                  <span class="tierlist-home-tile"><img src="/logos/rolly.png" alt="Rolly logo"></span>
+                </div>
               </div>
             </a>
           </div>
