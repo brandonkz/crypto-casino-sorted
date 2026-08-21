@@ -14,11 +14,11 @@
   </script>
   <meta name="description" content="Crypto casino tier list for 2026. Drag 31 casino brands across S, A, B, C, D and Not Played, export your ranking as a PNG, and share your version.">
   <meta name="author" content="CryptoCasinoSorted">
-  <meta name="theme-color" content="#06152f">
+  <meta name="theme-color" content="#121317">
   <link rel="canonical" href="https://cryptocasinosorted.com/tier-list/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;650;750;850;950&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;650;750;850;950&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
   <meta property="og:title" content="Crypto Casino Tier List 2026 | CryptoCasinoSorted">
   <meta property="og:description" content="Our editorial tier list of 31 crypto casinos. Drag brands between tiers, export your ranking, and share your version.">
   <meta property="og:type" content="website">
@@ -33,44 +33,40 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy: #06152f;
-      --navy-2: #0b2148;
-      --navy-3: #102c5f;
-      --panel: rgba(9, 30, 67, 0.92);
-      --panel-2: rgba(14, 43, 92, 0.96);
-      --ink: #f7fbff;
-      --muted: #9fb1d1;
-      --line: rgba(255,255,255,0.14);
-      --line-strong: rgba(255,255,255,0.22);
-      --orange: #ff6a00;
-      --orange-2: #ff9d00;
-      --cyan: #29d3ff;
-      --lime: #66f06f;
-      --red: #ff6378;
-      --gray: #4a4a52;
-      --shadow: 0 22px 60px rgba(0, 0, 0, 0.24);
-      --radius: 10px;
+      --bg: #111216;
+      --panel: #17191f;
+      --panel-2: #191b22;
+      --board: #0f1014;
+      --zone: #17191f;
+      --zone-hover: #1c2028;
+      --line: rgba(255, 255, 255, 0.07);
+      --line-strong: rgba(255, 255, 255, 0.14);
+      --ink: #f5f1dd;
+      --muted: #9c9b92;
+      --accent: #f0d57a;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
     }
+    html { background: #0d0e12; }
     body {
       min-height: 100vh;
       background:
-        linear-gradient(135deg, rgba(255, 106, 0, 0.16) 0 15%, transparent 15% 100%),
-        linear-gradient(215deg, rgba(41, 211, 255, 0.12) 0 18%, transparent 18% 100%),
-        var(--navy);
+        radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 30%),
+        linear-gradient(180deg, #15161c 0%, #0d0e12 100%);
       color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
+      font-family: Inter, system-ui, sans-serif;
+      line-height: 1.45;
     }
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 34px 34px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 75%);
+      background:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: 0.3;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent 90%);
     }
     a { color: inherit; text-decoration: none; }
     button, input, textarea, select { font: inherit; }
@@ -78,370 +74,324 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      min-height: 54px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 16px;
+      min-height: 56px;
       padding: 0 18px;
-      background: rgba(4, 16, 38, 0.94);
+      background: rgba(11, 12, 16, 0.92);
       border-bottom: 1px solid var(--line);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(10px);
+    }
+    .t-nav-logo,
+    .t-nav-links a {
+      font-family: Orbitron, Inter, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
     .t-nav-logo {
-      color: var(--orange-2);
-      font-size: 0.82rem;
-      font-weight: 950;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      white-space: nowrap;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 900;
     }
     .t-nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
       color: var(--muted);
       font-size: 0.7rem;
-      font-weight: 850;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-weight: 800;
       white-space: nowrap;
     }
-    .t-nav-links a:hover,
     .t-nav-links a.active,
-    .t-nav-links a.t-nav-primary { color: var(--orange-2); }
+    .t-nav-links a:hover,
+    .t-nav-links a.t-nav-primary { color: var(--accent); }
     .shell {
       position: relative;
       z-index: 1;
-      max-width: 1420px;
+      max-width: 1368px;
       margin: 0 auto;
-      padding: 34px 16px 80px;
+      padding: 18px 14px 56px;
     }
-    .hero,
-    .toolbar,
-    .tier-board,
-    .methodology,
-    .compliance {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-    }
-    .hero {
-      padding: 34px;
-      margin-bottom: 16px;
-      overflow: hidden;
-      position: relative;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: -80px;
-      bottom: -104px;
-      width: 320px;
-      height: 220px;
-      background:
-        linear-gradient(135deg, transparent 0 38%, rgba(255,255,255,0.14) 38% 42%, transparent 42% 100%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.2) 0 4px, transparent 4px 12px),
-        linear-gradient(135deg, var(--orange), var(--orange-2));
-      border: 1px solid rgba(255,255,255,0.18);
-      transform: rotate(-11deg);
-      opacity: 0.56;
-    }
-    .kicker {
-      position: relative;
-      z-index: 1;
-      color: var(--orange-2);
-      font-size: 0.78rem;
-      font-weight: 950;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    h1 {
-      position: relative;
-      z-index: 1;
-      max-width: 760px;
-      font-size: clamp(2.4rem, 6vw, 5rem);
-      line-height: 0.95;
-      font-weight: 950;
-      margin-bottom: 16px;
-    }
-    .hero-copy,
-    .criteria-line,
-    .hero-note {
-      position: relative;
-      z-index: 1;
-      max-width: 850px;
-    }
-    .hero-copy {
-      color: var(--muted);
-      font-size: 1.02rem;
-      margin-bottom: 14px;
-    }
-    .criteria-line {
-      color: var(--ink);
-      font-size: 0.87rem;
-      font-weight: 750;
-      margin-bottom: 14px;
-    }
-    .hero-note {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 0.8rem;
-      font-family: "JetBrains Mono", monospace;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      flex-wrap: wrap;
-    }
-    .hero-note span {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .hero-note .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--lime);
-    }
-    .toolbar {
-      padding: 18px;
-      margin-bottom: 16px;
-    }
-    .toolbar-top {
+    .page-head {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 16px;
       margin-bottom: 14px;
+      padding: 10px 2px 0;
     }
-    .byline-wrap h2 {
-      color: var(--ink);
-      font-size: 1.25rem;
-      margin-bottom: 6px;
-    }
-    .byline {
-      color: var(--orange-2);
-      font-size: 0.82rem;
-      font-weight: 900;
+    .page-head-copy h1 {
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.55rem);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      margin-bottom: 8px;
     }
-    .toolbar-stats {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-    .toolbar-stat {
-      min-width: 122px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 10px 12px;
-      background: rgba(4, 16, 38, 0.52);
-    }
-    .toolbar-stat-label {
+    .page-head-copy p,
+    .page-head-meta,
+    .toolbar-tip,
+    .board-note,
+    .board-alert,
+    .compliance p,
+    .compliance li {
       color: var(--muted);
-      font-size: 0.68rem;
-      font-weight: 900;
+      font-size: 0.84rem;
+    }
+    .page-head-copy p { max-width: 720px; }
+    .page-head-meta {
+      min-width: 180px;
+      text-align: right;
+      font-family: Orbitron, Inter, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .toolbar {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 12px 14px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .toolbar-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .byline-wrap h2,
+    .board-head h2,
+    .compliance h2 {
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: 0.94rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 4px;
     }
+    .byline {
+      color: var(--accent);
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .toolbar-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    .toolbar-stat {
+      min-width: 112px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+    .toolbar-stat-label {
+      color: var(--muted);
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
     .toolbar-stat-value {
       color: var(--ink);
-      font-size: 1.08rem;
+      font-size: 1rem;
       font-weight: 900;
     }
     .toolbar-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 0 15px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 157, 0, 0.6);
-      background: linear-gradient(135deg, var(--orange), var(--orange-2));
-      color: #130a00;
-      font-size: 0.78rem;
-      font-weight: 950;
-      letter-spacing: 0.06em;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(240, 213, 122, 0.32);
+      background: linear-gradient(180deg, rgba(240, 213, 122, 0.2), rgba(240, 213, 122, 0.08));
+      color: var(--ink);
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       cursor: pointer;
     }
-    .btn.secondary {
-      background: rgba(255,255,255,0.06);
-      color: var(--ink);
-      border-color: var(--line);
-    }
+    .btn.secondary,
     .btn.ghost {
-      background: transparent;
-      color: var(--muted);
       border-color: var(--line);
+      background: rgba(255,255,255,0.035);
+      color: var(--muted);
     }
     .btn:hover { transform: translateY(-1px); }
-    .toolbar-tip {
-      color: var(--muted);
-      font-size: 0.82rem;
-      margin-top: 12px;
+    .tier-board {
+      border-radius: 28px;
+      border: 2px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 14%),
+        linear-gradient(180deg, #16181e 0%, #101116 100%);
+      box-shadow:
+        inset 0 0 0 2px rgba(0,0,0,0.38),
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 28px 70px rgba(0,0,0,0.42);
+      overflow: hidden;
     }
     .board-head {
-      padding: 18px 18px 12px;
-      border-bottom: 1px solid var(--line);
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
     }
-    .board-head h2 {
-      color: var(--ink);
-      font-size: 1.2rem;
-      margin-bottom: 4px;
-    }
-    .board-head p {
-      color: var(--muted);
-      font-size: 0.84rem;
+    .board-note {
       max-width: 760px;
     }
     .board-alert {
       display: none;
-      margin: 12px 18px 0;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 157, 0, 0.28);
-      background: rgba(255, 157, 0, 0.08);
-      color: #ffd7a8;
-      font-size: 0.84rem;
+      margin: 0 16px 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(240, 213, 122, 0.18);
+      background: rgba(240, 213, 122, 0.05);
     }
-    .tier-board { overflow: hidden; }
     .tier-list {
-      padding: 14px;
+      padding: 12px;
       display: grid;
-      gap: 10px;
+      gap: 4px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.14), rgba(255,255,255,0.01));
     }
     .tier-row {
       display: grid;
-      grid-template-columns: 112px minmax(0, 1fr);
-      gap: 10px;
+      grid-template-columns: 102px minmax(0, 1fr);
+      gap: 4px;
       align-items: stretch;
-      min-height: 134px;
+      min-height: 114px;
     }
     .tier-label,
     .tier-zone {
-      border-radius: 10px;
-      border: 1px solid var(--line);
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.44);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
     }
     .tier-label {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
-      color: #09121d;
-      font-size: 1rem;
-      font-weight: 950;
+      color: #111217;
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       text-align: center;
     }
     .tier-zone {
       position: relative;
-      background: rgba(4, 16, 38, 0.55);
-      padding: 10px;
+      min-height: 114px;
+      padding: 6px;
       display: flex;
       align-items: flex-start;
-      gap: 8px;
-      flex-wrap: wrap;
       align-content: flex-start;
-      min-height: 134px;
+      gap: 2px;
+      flex-wrap: wrap;
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(0,0,0,0.1)), var(--zone);
       outline: none;
-      transition: box-shadow 120ms ease, border-color 120ms ease, background-color 120ms ease;
+      transition: box-shadow 120ms ease, background-color 120ms ease, border-color 120ms ease;
     }
     @media (prefers-reduced-motion: reduce) {
       .tier-zone,
       .operator-card,
       .btn,
-      .drag-ghost {
+      .drag-ghost,
+      .toast {
         transition: none !important;
       }
     }
     .tier-zone.is-hovered {
-      border-color: rgba(255,255,255,0.34);
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08), 0 0 0 2px rgba(255, 157, 0, 0.22);
-      background: rgba(14, 43, 92, 0.88);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), var(--zone-hover);
+      border-color: rgba(240, 213, 122, 0.28);
+      box-shadow: inset 0 0 0 1px rgba(240, 213, 122, 0.16);
     }
     .tier-zone:focus-visible,
     .operator-disc:focus-visible,
     .operator-name:focus-visible,
     .btn:focus-visible {
-      outline: 2px solid var(--cyan);
+      outline: 2px solid rgba(240, 213, 122, 0.75);
       outline-offset: 2px;
     }
     .empty-note {
       align-self: center;
-      color: rgba(255,255,255,0.44);
-      font-size: 0.86rem;
-      letter-spacing: 0.02em;
-      padding: 10px 6px;
+      padding: 0 10px;
+      color: rgba(255,255,255,0.32);
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
     .operator-card {
-      width: 131px;
-      min-height: 122px;
-      border-radius: 9px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.035);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 6px 6px 9px;
+      width: 114px;
+      min-height: 102px;
+      padding: 4px 4px 6px;
       position: relative;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.04);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.08)),
+        radial-gradient(circle at 20% 18%, rgba(255, 184, 108, 0.08), transparent 38%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 16px),
+        linear-gradient(180deg, #32231f 0%, #241915 100%);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.24);
     }
     .operator-card.is-selected {
-      border-color: rgba(41, 211, 255, 0.7);
-      box-shadow: 0 0 0 2px rgba(41, 211, 255, 0.18);
-      background: rgba(41, 211, 255, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(240, 213, 122, 0.4), 0 0 0 1px rgba(240, 213, 122, 0.28);
     }
     .operator-name,
     .operator-name--plain {
       width: 100%;
-      min-height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-height: 14px;
+      display: block;
+      overflow: hidden;
+      color: var(--accent);
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: 0.48rem;
+      font-weight: 800;
+      line-height: 1.1;
       text-align: center;
-      font-size: 0.79rem;
-      font-weight: 900;
-      line-height: 1.15;
-      padding: 0 2px;
-      margin-bottom: 6px;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-    .operator-name {
-      color: var(--ink);
-      text-decoration: underline;
-      text-decoration-color: rgba(255,255,255,0.16);
-      text-underline-offset: 3px;
+      letter-spacing: 0.08em;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.45);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding: 0 4px;
+      margin-bottom: 4px;
     }
     .operator-name:hover {
-      color: var(--orange-2);
-      text-decoration-color: rgba(255, 157, 0, 0.35);
+      color: #fff0b6;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
     }
-    .operator-name--plain { color: var(--muted); }
+    .operator-name--plain { color: #d9cba0; }
     .operator-disc {
-      width: 88px;
-      height: 88px;
+      width: 78px;
+      height: 78px;
+      margin: 0 auto;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.12);
+      background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.08), rgba(0,0,0,0.18) 68%);
       display: grid;
       place-items: center;
       position: relative;
@@ -450,107 +400,88 @@
       touch-action: none;
       user-select: none;
       -webkit-user-select: none;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.24);
     }
     .operator-disc:active { cursor: grabbing; }
     .operator-disc img {
-      width: 76px;
-      height: 76px;
+      width: 68px;
+      height: 68px;
       object-fit: contain;
       display: block;
     }
     .operator-fallback {
-      width: 76px;
-      height: 76px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
       display: grid;
       place-items: center;
-      font-size: 0.95rem;
-      font-weight: 950;
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: 0.84rem;
+      font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
     .operator-watermark {
       position: absolute;
-      right: 10px;
-      bottom: 9px;
-      color: rgba(255,255,255,0.16);
-      font-size: 0.52rem;
+      right: 7px;
+      bottom: 6px;
+      color: rgba(255,255,255,0.18);
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: 0.42rem;
       font-weight: 900;
       letter-spacing: 0.1em;
       pointer-events: none;
     }
-    .operator-rank {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      min-width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      background: rgba(6, 21, 47, 0.85);
-      border: 1px solid rgba(255,255,255,0.18);
-      display: grid;
-      place-items: center;
-      color: var(--ink);
-      font-size: 0.64rem;
-      font-weight: 900;
+    .operator-rank { display: none; }
+    .compliance {
+      margin-top: 14px;
+      padding: 14px 16px 6px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.025);
+      box-shadow: var(--shadow);
+    }
+    .compliance ul {
+      padding-left: 18px;
+      margin-top: 8px;
+    }
+    .compliance p,
+    .compliance li {
+      margin-bottom: 8px;
     }
     .drag-ghost {
       position: fixed;
       z-index: 200;
-      width: 131px;
-      min-height: 122px;
-      padding: 6px 6px 9px;
+      width: 114px;
+      min-height: 102px;
+      padding: 4px 4px 6px;
       display: none;
       flex-direction: column;
       align-items: center;
-      border-radius: 9px;
-      background: rgba(9, 30, 67, 0.96);
-      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.08)),
+        radial-gradient(circle at 20% 18%, rgba(255, 184, 108, 0.08), transparent 38%),
+        linear-gradient(180deg, #32231f 0%, #241915 100%);
       box-shadow: 0 18px 36px rgba(0,0,0,0.32);
       pointer-events: none;
-      transform: scale(1.1);
+      transform: scale(1.08);
       transform-origin: center center;
     }
     .drag-ghost .operator-name--plain {
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-    .methodology,
-    .compliance {
-      margin-top: 16px;
-      padding: 22px;
-    }
-    .methodology h2,
-    .compliance h2 {
-      font-size: 1.2rem;
-      margin-bottom: 12px;
-    }
-    .methodology p,
-    .compliance p,
-    .compliance li {
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin-bottom: 10px;
-    }
-    .methodology ul,
-    .compliance ul {
-      padding-left: 18px;
-      margin-top: 10px;
-    }
-    .footnote {
-      color: var(--muted);
-      font-size: 0.8rem;
-      margin-top: 10px;
+      color: var(--accent);
+      margin-bottom: 4px;
     }
     .toast {
       position: fixed;
-      right: 16px;
-      bottom: 16px;
+      right: 14px;
+      bottom: 14px;
       max-width: 360px;
       padding: 12px 14px;
-      border-radius: 10px;
-      background: rgba(4, 16, 38, 0.96);
-      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(14, 15, 19, 0.96);
       color: var(--ink);
       box-shadow: 0 22px 40px rgba(0,0,0,0.28);
       opacity: 0;
@@ -565,8 +496,11 @@
     }
     .toast strong {
       display: block;
-      font-size: 0.84rem;
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: 0.72rem;
       margin-bottom: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
     .toast span {
       display: block;
@@ -589,44 +523,47 @@
       .t-nav {
         align-items: flex-start;
         flex-direction: column;
-        padding: 12px;
+        padding: 10px 12px;
       }
       .t-nav-links {
         width: 100%;
         overflow-x: auto;
-        gap: 14px;
+        gap: 12px;
         padding-bottom: 2px;
       }
+      .page-head,
       .toolbar-top,
       .board-head {
         flex-direction: column;
       }
+      .page-head-meta,
       .toolbar-stats {
+        text-align: left;
         justify-content: flex-start;
       }
       .tier-row {
         grid-template-columns: 1fr;
       }
       .tier-label {
-        min-height: 58px;
+        min-height: 54px;
+        font-size: 1.15rem;
       }
     }
     @media (max-width: 620px) {
-      .shell { padding-inline: 10px; }
-      .hero,
-      .toolbar,
-      .methodology,
-      .compliance { padding: 18px; }
-      .tier-list { padding: 10px; }
+      .shell { padding-inline: 8px; }
+      .tier-list { padding: 8px; }
       .tier-zone {
         justify-content: center;
       }
       .operator-card {
-        width: calc(50% - 6px);
-        min-width: 146px;
+        width: calc(50% - 2px);
+        min-width: 110px;
       }
       .drag-ghost {
-        width: 146px;
+        width: 110px;
+      }
+      .btn {
+        flex: 1 1 140px;
       }
     }
   </style>
@@ -685,16 +622,12 @@
   </nav>
 
   <main class="shell">
-    <section class="hero">
-      <div class="kicker">Shareable Ranking Tool</div>
-      <h1>Crypto Casino Tier List</h1>
-      <p class="hero-copy">Our editorial ranking loads on first paint. Drag logos across six tiers, tap-to-place on mobile, export a branded PNG, and share your exact version with a link that reopens your ranking intact.</p>
-      <p class="criteria-line">Criteria: reward depth, withdrawal trust, VIP transparency, friction, and whether the casino feels worth defending in public after you actually use it.</p>
-      <div class="hero-note">
-        <span><span class="dot"></span> 31 casinos placed by default</span>
-        <span><span class="dot"></span> Affiliate links stay attached to every shared build</span>
-        <span><span class="dot"></span> PNG export branded for timeline screenshots</span>
+    <section class="page-head" aria-labelledby="page-title">
+      <div class="page-head-copy">
+        <h1 id="page-title">Crypto Casino Tier List</h1>
+        <p>Our editorial ranking loads on first paint. Drag logos across six tiers, tap-to-place on mobile, export a branded PNG, and share the exact version you build.</p>
       </div>
+      <div class="page-head-meta">31 brands loaded by default<br>Drag or tap to rank</div>
     </section>
 
     <section class="toolbar" aria-labelledby="tierlist-toolbar-title">
@@ -725,31 +658,18 @@
         <button type="button" class="btn secondary" id="reset-btn">Reset Editorial Ranking</button>
         <button type="button" class="btn ghost" id="clear-selection-btn">Clear Selection</button>
       </div>
-      <p class="toolbar-tip" id="toolbar-tip">Drag from the logo disc, or tap a disc then tap a row to place it. The casino name is always a commercial link and never starts a drag.</p>
+      <p class="toolbar-tip">Drag from the logo disc only. The name stays a commercial link and never starts the move gesture.</p>
     </section>
 
     <section class="tier-board" aria-labelledby="tier-board-title">
       <div class="board-head">
         <div>
           <h2 id="tier-board-title">Editorial ranking, editable by visitors</h2>
-          <p>Your byline changes the moment you move a single brand. That distinction also carries into the PNG so a visitor's ranking cannot circulate as if it were our editorial position.</p>
+          <p class="board-note">Your byline flips as soon as you move a brand so visitor rankings cannot circulate as the site’s editorial order.</p>
         </div>
       </div>
       <div class="board-alert" id="board-alert"></div>
       <div class="tier-list" id="tier-list" aria-live="polite"></div>
-    </section>
-
-    <section class="methodology">
-      <h2>How we rank the list</h2>
-      <p>This page is intentionally opinionated, not neutral. Our editorial default gives extra weight to reward programs with readable math, cleaner withdrawal behavior, lower account friction, and fewer gimmicks hiding the real value. That means some brands with loud headline bonuses land lower than smaller operators with saner recurring value.</p>
-      <p>The tier list is also separate from a pure EV calculator. A casino can offer interesting bonus math and still land lower because its support, KYC handling, geo-restrictions, token settlement, or general trust profile makes it harder to recommend publicly. Visitors can disagree and publish their own build, but the default list still reflects our view.</p>
-      <ul>
-        <li><strong>S tier</strong> means we would defend the pick even if someone actually used the site after reading us.</li>
-        <li><strong>A and B tiers</strong> are strong but depend more on your style: sportsbook use, reward tolerance, token appetite, or willingness to accept friction.</li>
-        <li><strong>C and D tiers</strong> are not automatically scams. They are brands we would rank lower because the value, clarity, or trust profile is weaker.</li>
-        <li><strong>Not Played</strong> is a real holding opinion. It means we are not willing to pretend certainty where we do not have it.</li>
-      </ul>
-      <p class="footnote">Shared links preserve order inside each tier. If a future operator is added without an editorial placement, the page leaves it in Unranked and flags the mismatch instead of guessing.</p>
     </section>
 
     <section class="compliance">
