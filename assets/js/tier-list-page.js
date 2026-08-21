@@ -92,14 +92,15 @@
 
   function init() {
     elements.tierList = document.getElementById('tier-list');
-    elements.byline = document.getElementById('tierlist-byline');
+    elements.builderTierList = document.getElementById('builder-tier-list');
+    elements.byline = document.getElementById('builder-byline');
     elements.statPlaced = document.getElementById('stat-placed');
     elements.statUnranked = document.getElementById('stat-unranked');
     elements.statS = document.getElementById('stat-s');
     elements.toast = document.getElementById('toast');
     elements.dragGhost = document.getElementById('drag-ghost');
     elements.exportCanvas = document.getElementById('export-canvas');
-    elements.boardAlert = document.getElementById('board-alert');
+    elements.boardAlert = document.getElementById('builder-board-alert');
 
     elements.copyLinkBtn = document.getElementById('copy-link-btn');
     elements.exportBtn = document.getElementById('export-btn');
@@ -113,6 +114,8 @@
     state.bylineState = decoded.hasPlacements ? 'visitor' : 'ours';
     state.extras = findUnexpectedOperators(state.ranking);
 
+    bindToolbar();
+    bindGlobalDragListeners();
     render();
   }
 
@@ -184,10 +187,11 @@
   }
 
   function render() {
+    renderTopTierRows();
     renderByline();
     renderStats();
     renderAlert();
-    renderTierRows();
+    renderBuilderTierRows();
     renderExportPreview();
   }
 
@@ -222,11 +226,54 @@
     elements.boardAlert.textContent = 'Unranked because no editorial default tier was supplied: ' + names + '.';
   }
 
-  function renderTierRows() {
+  function renderTopTierRows() {
+    const fragment = document.createDocumentFragment();
+    const ranking = ensureCompleteRanking(createDefaultRanking());
+
+    for (const tier of TIERS) {
+      if (tier.id === 'UNRANKED' && !ranking.UNRANKED.length) continue;
+      const row = document.createElement('section');
+      row.className = 'tier-row';
+
+      const label = document.createElement('div');
+      label.className = 'tier-label';
+      if (tier.id === 'NP') {
+        label.innerHTML = '<span>NOT</span><span>PLAYED</span>';
+        label.classList.add('is-stacked');
+      } else if (tier.id === 'UNRANKED') {
+        label.innerHTML = '<span>UN</span><span>RANKED</span>';
+        label.classList.add('is-stacked');
+      } else {
+        label.textContent = tier.label;
+      }
+      label.style.background = tier.color;
+      row.appendChild(label);
+
+      const zone = document.createElement('div');
+      zone.className = 'tier-zone';
+
+      const ids = ranking[tier.id];
+      if (!ids.length) {
+        const empty = document.createElement('div');
+        empty.className = 'empty-note';
+        empty.textContent = tier.id === 'UNRANKED' ? 'No unranked casinos in the editorial list.' : '';
+        zone.appendChild(empty);
+      } else {
+        ids.forEach((id, index) => zone.appendChild(renderStaticOperatorCard(id, tier.id, index)));
+      }
+
+      row.appendChild(zone);
+      fragment.appendChild(row);
+    }
+
+    elements.tierList.innerHTML = '';
+    elements.tierList.appendChild(fragment);
+  }
+
+  function renderBuilderTierRows() {
     const fragment = document.createDocumentFragment();
 
     for (const tier of TIERS) {
-      if (tier.id === 'UNRANKED' && !state.ranking.UNRANKED.length) continue;
       const row = document.createElement('section');
       row.className = 'tier-row';
 
@@ -248,27 +295,33 @@
       zone.className = 'tier-zone';
       zone.dataset.zone = tier.id;
       zone.dataset.label = tier.label;
+      zone.tabIndex = 0;
+      zone.setAttribute('role', 'button');
+      zone.setAttribute('aria-label', 'Place selected operator in ' + tier.label);
       if (state.hoveredTierId === tier.id) zone.classList.add('is-hovered');
+
+      zone.addEventListener('click', onZoneClick);
+      zone.addEventListener('keydown', onZoneKeyDown);
 
       const ids = state.ranking[tier.id];
       if (!ids.length) {
         const empty = document.createElement('div');
         empty.className = 'empty-note';
-        empty.textContent = tier.id === 'UNRANKED' ? 'No unranked casinos in the editorial list.' : '';
+        empty.textContent = tier.id === 'UNRANKED' ? 'Empty on first load. Drop here to remove a placement.' : 'Tap or drop here.';
         zone.appendChild(empty);
       } else {
-        ids.forEach((id, index) => zone.appendChild(renderOperatorCard(id, tier.id, index)));
+        ids.forEach((id, index) => zone.appendChild(renderBuilderOperatorCard(id, tier.id, index)));
       }
 
       row.appendChild(zone);
       fragment.appendChild(row);
     }
 
-    elements.tierList.innerHTML = '';
-    elements.tierList.appendChild(fragment);
+    elements.builderTierList.innerHTML = '';
+    elements.builderTierList.appendChild(fragment);
   }
 
-  function renderOperatorCard(operatorId, tierId, index) {
+  function renderStaticOperatorCard(operatorId, tierId, index) {
     const operator = operatorMap.get(operatorId);
     const card = operator.url ? document.createElement('a') : document.createElement('article');
     card.className = 'operator-card';
@@ -279,6 +332,7 @@
       card.target = '_blank';
       card.rel = 'sponsored nofollow noopener noreferrer';
       card.dataset.operatorId = operator.id;
+      card.dataset.tierId = tierId;
       card.setAttribute('aria-label', operator.name + ' affiliate link');
       card.addEventListener('click', onNameClick);
     }
@@ -297,6 +351,53 @@
     disc.className = 'operator-disc';
     disc.dataset.operatorId = operator.id;
     disc.dataset.tierId = tierId;
+    disc.appendChild(renderLogoContent(operator));
+
+    const watermark = document.createElement('div');
+    watermark.className = 'operator-watermark';
+    watermark.textContent = 'CCS';
+    disc.appendChild(watermark);
+
+    card.appendChild(disc);
+    return card;
+  }
+
+  function renderBuilderOperatorCard(operatorId, tierId, index) {
+    const operator = operatorMap.get(operatorId);
+    const card = document.createElement('article');
+    card.className = 'operator-card';
+    if (state.selectedId === operatorId) card.classList.add('is-selected');
+    card.dataset.operatorId = operatorId;
+    card.dataset.tierId = tierId;
+
+    const rank = document.createElement('div');
+    rank.className = 'operator-rank';
+    rank.textContent = String(index + 1);
+    card.appendChild(rank);
+
+    const nameSlot = operator.url ? document.createElement('a') : document.createElement('div');
+    nameSlot.className = operator.url ? 'operator-name' : 'operator-name--plain';
+    nameSlot.textContent = operator.name.toUpperCase();
+    if (operator.url) {
+      nameSlot.href = buildOutboundUrl(operator.url, operator.id);
+      nameSlot.target = '_blank';
+      nameSlot.rel = 'sponsored nofollow noopener noreferrer';
+      nameSlot.dataset.operatorId = operator.id;
+      nameSlot.dataset.tierId = tierId;
+      nameSlot.addEventListener('pointerdown', onNamePointerDown);
+      nameSlot.addEventListener('click', onNameClick);
+    }
+    card.appendChild(nameSlot);
+
+    const disc = document.createElement('div');
+    disc.className = 'operator-disc';
+    disc.dataset.operatorId = operator.id;
+    disc.dataset.tierId = tierId;
+    disc.setAttribute('role', 'button');
+    disc.tabIndex = 0;
+    disc.setAttribute('aria-label', 'Move ' + operator.name);
+    disc.addEventListener('pointerdown', onDiscPointerDown);
+    disc.addEventListener('keydown', onDiscKeyDown);
     disc.appendChild(renderLogoContent(operator));
 
     const watermark = document.createElement('div');
@@ -348,9 +449,14 @@
     return wrapper;
   }
 
+  function onNamePointerDown(event) {
+    event.stopPropagation();
+  }
+
   function onNameClick(event) {
+    event.stopPropagation();
     const operatorId = event.currentTarget.dataset.operatorId;
-    const tierId = findTierForOperator(operatorId);
+    const tierId = event.currentTarget.dataset.tierId || findTierForOperator(operatorId);
     trackEvent('tierlist_clickout', {
       operator_id: operatorId,
       tier_id: tierId || 'UNRANKED'
@@ -485,7 +591,7 @@
 
   function updateHoveredTier(clientX, clientY) {
     state.hoveredTierId = findTierAtPoint(clientX, clientY);
-    renderTierRows();
+    renderBuilderTierRows();
   }
 
   function findTierAtPoint(clientX, clientY) {

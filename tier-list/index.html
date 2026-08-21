@@ -579,7 +579,7 @@
       <div class="board-topline" aria-labelledby="page-title">
         <div>
           <h1 class="board-title" id="page-title">Crypto Casino Tier List</h1>
-          <p class="board-subline">A simple clickable tier list with logo tiles, styled like the reference image.</p>
+          <p class="board-subline">The best casinos according to crypto twitter.</p>
         </div>
         <div>
           <div class="board-kicker">CryptoCasinoSorted.com</div>
@@ -593,6 +593,55 @@
         </div>
         <div class="board-alert" id="board-alert"></div>
         <div class="tier-list" id="tier-list" aria-live="polite"></div>
+      </section>
+
+      <section class="builder-shell" aria-labelledby="builder-title">
+        <div class="builder-topline">
+          <div>
+            <div class="board-kicker">Builder</div>
+            <p class="board-subline" id="builder-title">Make your own tier list below.</p>
+          </div>
+          <div>
+            <div class="byline" id="builder-byline">Ranked by CryptoCasinoSorted</div>
+          </div>
+        </div>
+
+        <section class="tier-board" aria-labelledby="builder-title">
+          <div class="board-head">
+            <div class="board-kicker">Drag or tap to rank</div>
+          </div>
+          <div class="board-alert" id="builder-board-alert"></div>
+          <div class="tier-list" id="builder-tier-list" aria-live="polite"></div>
+        </section>
+
+        <section class="controls" aria-label="Tier list builder controls">
+          <div class="control-cluster">
+            <button type="button" class="btn" id="copy-link-btn">Copy Share Link</button>
+            <button type="button" class="btn" id="export-btn">Export PNG</button>
+            <button type="button" class="btn" id="share-btn">Share to X</button>
+            <button type="button" class="btn secondary" id="reset-btn">Reset Ranking</button>
+            <button type="button" class="btn ghost" id="clear-selection-btn">Clear Selection</button>
+          </div>
+          <div class="board-kicker">Drag from the logo tile only. The name stays clickable.</div>
+        </section>
+
+        <section class="status-strip" aria-label="Tier list builder stats">
+          <div class="status-pill-wrap">
+            <div class="status-pill">
+              <div class="status-pill-label">Placed</div>
+              <div class="status-pill-value" id="stat-placed">31</div>
+            </div>
+            <div class="status-pill">
+              <div class="status-pill-label">Unranked</div>
+              <div class="status-pill-value" id="stat-unranked">0</div>
+            </div>
+            <div class="status-pill">
+              <div class="status-pill-label">S Tier</div>
+              <div class="status-pill-value" id="stat-s">2</div>
+            </div>
+          </div>
+          <div class="board-kicker">Build your version and share it.</div>
+        </section>
       </section>
 
       <section class="compliance">
