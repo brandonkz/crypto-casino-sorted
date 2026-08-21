@@ -2,8 +2,7 @@
   const ROUTE_URL = 'https://cryptocasinosorted.com/tier-list/';
   const TILE_WIDTH = 131;
   const TILE_HEIGHT = 122;
-  const TILE_DISC_RADIUS = 44;
-  const TILE_DISC_SIZE = TILE_DISC_RADIUS * 2;
+  const TILE_LOGO_SIZE = 56;
   const EXPORT_COLUMNS = 8;
   const EXPORT_MARGIN = 10;
   const EXPORT_GAP = 4;
@@ -227,7 +226,15 @@
 
       const label = document.createElement('div');
       label.className = 'tier-label';
-      label.textContent = tier.label;
+      if (tier.id === 'NP') {
+        label.innerHTML = '<span>NOT</span><span>PLAYED</span>';
+        label.classList.add('is-stacked');
+      } else if (tier.id === 'UNRANKED') {
+        label.innerHTML = '<span>UN</span><span>RANKED</span>';
+        label.classList.add('is-stacked');
+      } else {
+        label.textContent = tier.label;
+      }
       label.style.background = tier.color;
       row.appendChild(label);
 
@@ -309,8 +316,8 @@
 
   function renderLogoContent(operator) {
     const wrapper = document.createElement('div');
-    wrapper.style.width = '68px';
-    wrapper.style.height = '68px';
+    wrapper.style.width = TILE_LOGO_SIZE + 'px';
+    wrapper.style.height = TILE_LOGO_SIZE + 'px';
     wrapper.style.position = 'relative';
 
     const img = document.createElement('img');
@@ -520,8 +527,8 @@
   }
 
   function updateDragGhost(clientX, clientY) {
-    elements.dragGhost.style.left = clientX - 57 + 'px';
-    elements.dragGhost.style.top = clientY - 51 + 'px';
+    elements.dragGhost.style.left = clientX - 46 + 'px';
+    elements.dragGhost.style.top = clientY - 44 + 'px';
   }
 
   function hideDragGhost() {
@@ -756,40 +763,42 @@
 
   function drawBackground(context, width, height) {
     const gradient = context.createLinearGradient(0, 0, width, height);
-    gradient.addColorStop(0, '#1a1c23');
-    gradient.addColorStop(0.45, '#111217');
-    gradient.addColorStop(1, '#0d0e12');
+    gradient.addColorStop(0, '#83858d');
+    gradient.addColorStop(0.32, '#6f727a');
+    gradient.addColorStop(1, '#595c64');
     context.fillStyle = gradient;
     context.fillRect(0, 0, width, height);
 
-    context.fillStyle = 'rgba(255,255,255,0.02)';
-    for (let x = 0; x < width; x += 42) {
+    context.fillStyle = 'rgba(255,255,255,0.025)';
+    for (let x = 0; x < width; x += 56) {
       context.fillRect(x, 0, 1, height);
     }
-    for (let y = 0; y < height; y += 42) {
+    for (let y = 0; y < height; y += 56) {
       context.fillRect(0, y, width, 1);
     }
   }
 
   function drawHeader(context, width) {
-    context.fillStyle = 'rgba(15, 16, 20, 0.96)';
-    context.fillRect(0, 0, width, EXPORT_HEADER_HEIGHT);
-    context.fillStyle = '#f5f1dd';
-    context.font = '900 31px Inter, sans-serif';
-    context.fillText('CRYPTO CASINO TIER LIST', EXPORT_MARGIN, 40);
+    roundRect(context, EXPORT_MARGIN, EXPORT_MARGIN, width - (EXPORT_MARGIN * 2), EXPORT_HEADER_HEIGHT - 10, 8, '#121318', 'rgba(255,255,255,0.14)');
+    context.fillStyle = '#ffffff';
+    context.font = '900 31px Orbitron, Inter, sans-serif';
+    context.fillText('CRYPTO CASINO TIER LIST', EXPORT_MARGIN + 18, 44);
 
-    context.fillStyle = '#f0d57a';
-    context.font = '700 14px Inter, sans-serif';
-    context.fillText(getExportBylineText(), EXPORT_MARGIN, 62);
-    context.fillText(new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase(), EXPORT_MARGIN + 290, 62);
+    context.fillStyle = '#d6dae2';
+    context.font = '900 11px Orbitron, Inter, sans-serif';
+    context.fillText('CRYPTOCASINOSORTED.COM', EXPORT_MARGIN + 18, 62);
 
-    context.fillStyle = '#9c9b92';
-    context.font = '12px Inter, sans-serif';
-    context.fillText('Drag logos, tap to place on mobile, and share the exact ranking with affiliate links still attached.', EXPORT_MARGIN, 82);
+    context.fillStyle = '#f4d77f';
+    context.font = '700 14px Orbitron, Inter, sans-serif';
+    context.fillText(getExportBylineText(), EXPORT_MARGIN + 18, 80);
+
+    context.fillStyle = '#c7ccd5';
+    context.font = '11px Inter, sans-serif';
+    context.fillText(new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase(), width - 134, 80);
   }
 
   function drawTierRow(context, tier, y, rowHeight) {
-    roundRect(context, EXPORT_MARGIN, y, EXPORT_LABEL_WIDTH, rowHeight, 8, tier.color, 'rgba(0,0,0,0.45)');
+    roundRect(context, EXPORT_MARGIN, y, EXPORT_LABEL_WIDTH, rowHeight, 4, tier.color, 'rgba(0,0,0,0.45)');
 
     context.fillStyle = '#121317';
     context.font = '900 26px Inter, sans-serif';
@@ -804,7 +813,7 @@
       context.fillText(labelLines[1], EXPORT_MARGIN + (EXPORT_LABEL_WIDTH / 2), y + (rowHeight / 2) + 14);
     }
 
-    roundRect(context, EXPORT_MARGIN + EXPORT_LABEL_WIDTH + EXPORT_GAP, y, (EXPORT_COLUMNS * TILE_WIDTH) + ((EXPORT_COLUMNS - 1) * EXPORT_GAP), rowHeight, 8, '#17191f', 'rgba(255,255,255,0.08)');
+    roundRect(context, EXPORT_MARGIN + EXPORT_LABEL_WIDTH + EXPORT_GAP, y, (EXPORT_COLUMNS * TILE_WIDTH) + ((EXPORT_COLUMNS - 1) * EXPORT_GAP), rowHeight, 4, '#23252c', 'rgba(255,255,255,0.08)');
 
     const ids = state.ranking[tier.id];
     ids.forEach((operatorId, index) => {
@@ -820,37 +829,33 @@
   }
 
   function drawTile(context, operator, x, y) {
-    roundRect(context, x, y, TILE_WIDTH, TILE_HEIGHT, 4, '#2a1d19', 'rgba(255,255,255,0.05)');
+    roundRect(context, x, y, TILE_WIDTH, TILE_HEIGHT, 3, '#262932', 'rgba(255,255,255,0.05)');
     context.fillStyle = 'rgba(255,255,255,0.04)';
     for (let lineX = x + 8; lineX < x + TILE_WIDTH; lineX += 16) {
       context.fillRect(lineX, y, 1, TILE_HEIGHT);
     }
 
-    context.fillStyle = '#f0d57a';
-    context.font = '800 13px Inter, sans-serif';
+    context.fillStyle = '#f5f7fb';
+    context.font = '800 12px Orbitron, Inter, sans-serif';
     context.textAlign = 'center';
     context.textBaseline = 'alphabetic';
     drawWrappedName(context, operator.name.toUpperCase(), x + (TILE_WIDTH / 2), y + 15, 118);
 
     const cx = x + (TILE_WIDTH / 2);
-    const cy = y + 68;
-    context.fillStyle = operator.color;
-    context.beginPath();
-    context.arc(cx, cy, TILE_DISC_RADIUS, 0, Math.PI * 2);
-    context.fill();
-    context.strokeStyle = 'rgba(255,255,255,0.14)';
-    context.lineWidth = 2;
-    context.stroke();
+    const plateX = x + 37;
+    const plateY = y + 25;
+    roundRect(context, plateX, plateY, TILE_LOGO_SIZE + 18, TILE_LOGO_SIZE + 18, 6, '#15171c', 'rgba(255,255,255,0.12)');
+    roundRect(context, plateX + 9, plateY + 9, TILE_LOGO_SIZE, TILE_LOGO_SIZE, 6, operator.color, 'rgba(255,255,255,0.08)');
 
     context.fillStyle = operator.ink;
-    context.font = '900 16px Inter, sans-serif';
+    context.font = '900 16px Orbitron, Inter, sans-serif';
     context.textBaseline = 'middle';
-    context.fillText(operator.mark, cx, cy + 1);
+    context.fillText(operator.mark, cx, plateY + 37);
 
     context.fillStyle = 'rgba(255,255,255,0.16)';
-    context.font = '900 9px Inter, sans-serif';
+    context.font = '900 8px Orbitron, Inter, sans-serif';
     context.textBaseline = 'alphabetic';
-    context.fillText('CCS', x + TILE_WIDTH - 18, y + TILE_HEIGHT - 8);
+    context.fillText('CCS', x + TILE_WIDTH - 17, y + TILE_HEIGHT - 7);
   }
 
   function drawWrappedName(context, text, centerX, y, maxWidth) {
@@ -878,7 +883,7 @@
 
   function drawFooter(context, width, height) {
     const footerTop = height - EXPORT_FOOTER_HEIGHT;
-    context.fillStyle = 'rgba(15, 16, 20, 0.94)';
+    context.fillStyle = 'rgba(18, 19, 24, 0.96)';
     context.fillRect(0, footerTop, width, EXPORT_FOOTER_HEIGHT);
     context.fillStyle = 'rgba(255,255,255,0.45)';
     context.font = '15px Inter, sans-serif';
