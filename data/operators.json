@@ -168,7 +168,7 @@
       "type": "incumbent",
       "licence": "Curacao",
       "confidence": "public",
-      "positioning": "Crypto-native, 100+ coins, deep XP ladder.",
+      "positioning": "Crypto-native, 100+ coins, deep XP ladder with BCD-denominated reward settlement.",
       "best_for": [
         "mid"
       ],
@@ -182,11 +182,11 @@
       "rate_min": 0.2,
       "rate_max": 0.24,
       "effective_rate": 0.115,
-      "settlement": "Ongoing by level, paid in BCD.",
+      "settlement": "Ongoing by level, paid in BCD; official snippets also point to locked BCD rakeback dashboard treatment and VIP level 22+ weekly/recharge-style bonus gates.",
       "reward_page_url": "https://bc.game/vip",
       "reward_page_label": "BC.Game VIP",
       "affiliate_url": "https://partnerbcgame.com/vu2nxqkm6",
-      "offer_summary": "Advertised 20-24% rakeback paid in BCD token, plus weekly/monthly token bonuses. Discount versus clean cash for comparison.",
+      "offer_summary": "Advertised tokenised rakeback/reward program paid in BCD, plus weekly/monthly/recharge-style bonus surfaces. Public source confidence improved around BCD settlement and VIP level 22+ bonus gates, but the current readable pages still do not expose a full live rate table, caps, unlock rules or formulas.",
       "reset_behaviour": "XP-based levels, no reset.",
       "vip_host_entry": "Upper tiers; personal manager.",
       "transparency": 50,
@@ -194,11 +194,11 @@
       "trust": 58,
       "depth": 91,
       "gamification": 94,
-      "watch_out": "Headline rate is high but paid in BCD; discount versus pure cash and account for withdrawal complaints.",
+      "watch_out": "Headline rate is high but paid in BCD; discount versus pure cash and account for token price, liquidity, unlock state, direct-help-page access gaps and withdrawal complaints.",
       "source_url": "https://bc.game/vip",
-      "source_last_checked": "2026-07-30",
+      "source_last_checked": "2026-08-21",
       "source_terms_hash": "7c92257b063d0cfb",
-      "source_status": "manual_review",
+      "source_status": "manual_review_official_snippets_help_blocked",
       "source_monitor": "manual"
     },
     {
