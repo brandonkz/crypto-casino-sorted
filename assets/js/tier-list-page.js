@@ -403,6 +403,7 @@
     disc.tabIndex = 0;
     disc.setAttribute('aria-label', 'Move ' + operator.name);
     disc.addEventListener('pointerdown', onDiscPointerDown);
+    disc.addEventListener('click', onDiscClick);
     disc.addEventListener('keydown', onDiscKeyDown);
     disc.appendChild(renderLogoContent(operator));
 
@@ -487,6 +488,10 @@
     event.preventDefault();
   }
 
+  function onDiscClick(event) {
+    event.stopPropagation();
+  }
+
   function onDiscKeyDown(event) {
     if (event.key !== 'Enter' && event.key !== ' ') return;
     event.preventDefault();
@@ -561,10 +566,11 @@
   function onZoneClick(event) {
     if (!state.selectedId) return;
     const tierId = event.currentTarget.dataset.zone;
-    const fromTier = findTierForOperator(state.selectedId) || 'UNRANKED';
-    placeOperator(state.selectedId, tierId);
+    const operatorId = state.selectedId;
+    const fromTier = findTierForOperator(operatorId) || 'UNRANKED';
+    placeOperator(operatorId, tierId);
     trackEvent('tierlist_place', {
-      operator_id: state.selectedId,
+      operator_id: operatorId,
       from_tier: fromTier,
       to_tier: tierId
     });
@@ -575,10 +581,11 @@
     if (event.key !== 'Enter' && event.key !== ' ') return;
     event.preventDefault();
     const tierId = event.currentTarget.dataset.zone;
-    const fromTier = findTierForOperator(state.selectedId) || 'UNRANKED';
-    placeOperator(state.selectedId, tierId);
+    const operatorId = state.selectedId;
+    const fromTier = findTierForOperator(operatorId) || 'UNRANKED';
+    placeOperator(operatorId, tierId);
     trackEvent('tierlist_place', {
-      operator_id: state.selectedId,
+      operator_id: operatorId,
       from_tier: fromTier,
       to_tier: tierId
     });
