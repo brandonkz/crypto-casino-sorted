@@ -109,9 +109,9 @@
     elements.clearSelectionBtn = document.getElementById('clear-selection-btn');
 
     const decoded = decodeShareCode(new URLSearchParams(window.location.search).get('r'));
-    const initial = decoded.hasPlacements ? decoded.ranking : createDefaultRanking();
+    const initial = decoded.hasPlacements ? decoded.ranking : createEmptyBuilderRanking();
     state.ranking = ensureCompleteRanking(initial);
-    state.bylineState = decoded.hasPlacements ? 'visitor' : 'ours';
+    state.bylineState = decoded.hasPlacements ? 'visitor' : 'you';
     state.extras = findUnexpectedOperators(state.ranking);
 
     bindToolbar();
@@ -121,6 +121,12 @@
 
   function createDefaultRanking() {
     return ensureRankingShape(cloneRanking(DEFAULT_RANKING));
+  }
+
+  function createEmptyBuilderRanking() {
+    const next = ensureRankingShape({});
+    next.UNRANKED = OPERATORS.map((operator) => operator.id);
+    return next;
   }
 
   function ensureRankingShape(ranking) {
@@ -199,7 +205,7 @@
     if (!elements.byline) return;
     const bylineCopy = {
       ours: 'Ranked by CryptoCasinoSorted',
-      you: 'Ranked by a visitor',
+      you: 'Build your own ranking',
       visitor: "A visitor's ranking"
     };
     elements.byline.textContent = bylineCopy[state.bylineState];
@@ -659,16 +665,16 @@
   }
 
   function onResetRanking() {
-    state.ranking = createDefaultRanking();
+    state.ranking = createEmptyBuilderRanking();
     state.selectedId = null;
-    state.bylineState = 'ours';
+    state.bylineState = 'you';
     state.extras = findUnexpectedOperators(state.ranking);
     const url = new URL(window.location.href);
     url.searchParams.delete('r');
     window.history.replaceState({}, '', url.toString());
     syncRobotsMeta(false);
     render();
-    toast('Reset complete', 'The editorial ranking is back in place.');
+    toast('Reset complete', 'The builder is back to a blank custom ranking.');
   }
 
   async function onCopyShareLink() {
