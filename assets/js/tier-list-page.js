@@ -113,8 +113,6 @@
     state.bylineState = decoded.hasPlacements ? 'visitor' : 'ours';
     state.extras = findUnexpectedOperators(state.ranking);
 
-    bindToolbar();
-    bindGlobalDragListeners();
     render();
   }
 
@@ -165,6 +163,9 @@
   }
 
   function bindToolbar() {
+    if (!elements.copyLinkBtn || !elements.exportBtn || !elements.shareBtn || !elements.resetBtn || !elements.clearSelectionBtn) {
+      return;
+    }
     elements.copyLinkBtn.addEventListener('click', onCopyShareLink);
     elements.exportBtn.addEventListener('click', onExportPng);
     elements.shareBtn.addEventListener('click', onShareToX);
@@ -191,6 +192,7 @@
   }
 
   function renderByline() {
+    if (!elements.byline) return;
     const bylineCopy = {
       ours: 'Ranked by CryptoCasinoSorted',
       you: 'Ranked by a visitor',
@@ -200,6 +202,7 @@
   }
 
   function renderStats() {
+    if (!elements.statPlaced || !elements.statUnranked || !elements.statS) return;
     const placed = TIERS.filter((tier) => tier.id !== 'UNRANKED')
       .reduce((sum, tier) => sum + state.ranking[tier.id].length, 0);
     elements.statPlaced.textContent = String(placed);
@@ -208,6 +211,7 @@
   }
 
   function renderAlert() {
+    if (!elements.boardAlert) return;
     if (!state.extras.length) {
       elements.boardAlert.style.display = 'none';
       elements.boardAlert.textContent = '';
@@ -222,6 +226,7 @@
     const fragment = document.createDocumentFragment();
 
     for (const tier of TIERS) {
+      if (tier.id === 'UNRANKED' && !state.ranking.UNRANKED.length) continue;
       const row = document.createElement('section');
       row.className = 'tier-row';
 
@@ -243,19 +248,13 @@
       zone.className = 'tier-zone';
       zone.dataset.zone = tier.id;
       zone.dataset.label = tier.label;
-      zone.tabIndex = 0;
-      zone.setAttribute('role', 'button');
-      zone.setAttribute('aria-label', 'Place selected operator in ' + tier.label);
       if (state.hoveredTierId === tier.id) zone.classList.add('is-hovered');
-
-      zone.addEventListener('click', onZoneClick);
-      zone.addEventListener('keydown', onZoneKeyDown);
 
       const ids = state.ranking[tier.id];
       if (!ids.length) {
         const empty = document.createElement('div');
         empty.className = 'empty-note';
-        empty.textContent = tier.id === 'UNRANKED' ? 'Empty on first load. Drop here to remove a placement.' : 'Tap or drop here.';
+        empty.textContent = tier.id === 'UNRANKED' ? 'No unranked casinos in the editorial list.' : '';
         zone.appendChild(empty);
       } else {
         ids.forEach((id, index) => zone.appendChild(renderOperatorCard(id, tier.id, index)));
@@ -271,39 +270,33 @@
 
   function renderOperatorCard(operatorId, tierId, index) {
     const operator = operatorMap.get(operatorId);
-    const card = document.createElement('article');
+    const card = operator.url ? document.createElement('a') : document.createElement('article');
     card.className = 'operator-card';
-    if (state.selectedId === operatorId) card.classList.add('is-selected');
     card.dataset.operatorId = operatorId;
     card.dataset.tierId = tierId;
+    if (operator.url) {
+      card.href = buildOutboundUrl(operator.url, operator.id);
+      card.target = '_blank';
+      card.rel = 'sponsored nofollow noopener noreferrer';
+      card.dataset.operatorId = operator.id;
+      card.setAttribute('aria-label', operator.name + ' affiliate link');
+      card.addEventListener('click', onNameClick);
+    }
 
     const rank = document.createElement('div');
     rank.className = 'operator-rank';
     rank.textContent = String(index + 1);
     card.appendChild(rank);
 
-    const nameSlot = operator.url ? document.createElement('a') : document.createElement('div');
+    const nameSlot = document.createElement('div');
     nameSlot.className = operator.url ? 'operator-name' : 'operator-name--plain';
     nameSlot.textContent = operator.name.toUpperCase();
-    if (operator.url) {
-      nameSlot.href = buildOutboundUrl(operator.url, operator.id);
-      nameSlot.target = '_blank';
-      nameSlot.rel = 'sponsored nofollow noopener noreferrer';
-      nameSlot.dataset.operatorId = operator.id;
-      nameSlot.addEventListener('pointerdown', onNamePointerDown);
-      nameSlot.addEventListener('click', onNameClick);
-    }
     card.appendChild(nameSlot);
 
     const disc = document.createElement('div');
     disc.className = 'operator-disc';
     disc.dataset.operatorId = operator.id;
     disc.dataset.tierId = tierId;
-    disc.setAttribute('role', 'button');
-    disc.tabIndex = 0;
-    disc.setAttribute('aria-label', 'Move ' + operator.name);
-    disc.addEventListener('pointerdown', onDiscPointerDown);
-    disc.addEventListener('keydown', onDiscKeyDown);
     disc.appendChild(renderLogoContent(operator));
 
     const watermark = document.createElement('div');
@@ -355,12 +348,7 @@
     return wrapper;
   }
 
-  function onNamePointerDown(event) {
-    event.stopPropagation();
-  }
-
   function onNameClick(event) {
-    event.stopPropagation();
     const operatorId = event.currentTarget.dataset.operatorId;
     const tierId = findTierForOperator(operatorId);
     trackEvent('tierlist_clickout', {
