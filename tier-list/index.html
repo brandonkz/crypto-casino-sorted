@@ -523,12 +523,8 @@
       .board-title {
         font-size: clamp(1.3rem, 8vw, 1.9rem);
       }
-      .tier-row {
-        grid-template-columns: 1fr;
-      }
       .tier-label {
-        min-height: 54px;
-        font-size: 1.15rem;
+        font-size: 1.25rem;
       }
     }
     @media (max-width: 620px) {
@@ -559,55 +555,56 @@
         padding: 4px;
       }
       .tier-row {
+        grid-template-columns: 50px minmax(0, 1fr);
+        gap: 3px;
         min-height: 0;
       }
       .tier-label {
-        min-height: 46px;
-        font-size: 1rem;
+        min-height: 0;
+        font-size: 0.92rem;
       }
       .tier-label.is-stacked {
-        font-size: 0.78rem;
+        font-size: 0.56rem;
         gap: 2px;
       }
       .tier-zone {
-        min-height: 0;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        align-items: stretch;
-        justify-content: stretch;
+        min-height: 46px;
+        padding: 3px;
+        gap: 3px;
       }
       .operator-card {
-        width: 100%;
-        min-width: 0;
-        min-height: 74px;
-        padding: 3px 3px 4px;
+        width: 40px;
+        min-width: 40px;
+        min-height: 40px;
+        padding: 2px;
       }
       .operator-name,
       .operator-name--plain {
-        min-height: 10px;
-        font-size: 0.34rem;
-        margin-bottom: 3px;
-        letter-spacing: 0.06em;
+        min-height: 0;
+        font-size: 0;
+        margin-bottom: 0;
+        padding: 0;
       }
       .operator-disc {
-        width: 52px;
-        height: 52px;
+        width: 34px;
+        height: 34px;
+        border-radius: 4px;
       }
       .operator-disc img,
       .operator-fallback {
-        width: 44px;
-        height: 44px;
+        width: 28px;
+        height: 28px;
       }
       .operator-fallback {
-        font-size: 0.56rem;
+        border-radius: 4px;
+        font-size: 0.42rem;
       }
       .operator-watermark {
-        right: 4px;
-        bottom: 3px;
-        font-size: 0.28rem;
+        right: 2px;
+        bottom: 1px;
+        font-size: 0.2rem;
       }
       .empty-note {
-        grid-column: 1 / -1;
         text-align: center;
         padding: 10px 8px;
       }
@@ -638,20 +635,28 @@
       .board-title {
         font-size: 1.18rem;
       }
-      .tier-zone {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .tier-row {
+        grid-template-columns: 44px minmax(0, 1fr);
       }
       .operator-card {
-        min-height: 82px;
+        width: 36px;
+        min-width: 36px;
+        min-height: 36px;
       }
       .operator-disc {
-        width: 58px;
-        height: 58px;
+        width: 30px;
+        height: 30px;
       }
       .operator-disc img,
       .operator-fallback {
-        width: 48px;
-        height: 48px;
+        width: 24px;
+        height: 24px;
+      }
+      .tier-label {
+        font-size: 0.82rem;
+      }
+      .tier-label.is-stacked {
+        font-size: 0.5rem;
       }
     }
   </style>
