@@ -82,6 +82,8 @@
       gap: 10px;
     }
     .board-topline,
+    .preview-meta,
+    .builder-topline,
     .controls,
     .status-strip {
       display: flex;
@@ -153,6 +155,35 @@
       color: #d2d5dd;
     }
     .btn:hover { transform: translateY(-1px); }
+    .preview-shell,
+    .builder-shell {
+      display: grid;
+      gap: 10px;
+    }
+    .preview-frame {
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), transparent 12%),
+        linear-gradient(180deg, #1d2027 0%, #101115 100%);
+      box-shadow:
+        inset 0 0 0 1px rgba(0,0,0,0.46),
+        inset 0 1px 0 rgba(255,255,255,0.05),
+        0 18px 48px rgba(0,0,0,0.3);
+    }
+    .preview-stage {
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(10, 10, 14, 0.38);
+    }
+    .export-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: transparent;
+    }
     .tier-board {
       border-radius: 10px;
       border: 1px solid rgba(255,255,255,0.18);
@@ -496,6 +527,9 @@
       .btn {
         flex: 1 1 140px;
       }
+      .preview-frame {
+        padding: 8px;
+      }
     }
   </style>
   <script type="application/ld+json">
@@ -545,7 +579,7 @@
       <div class="board-topline" aria-labelledby="page-title">
         <div>
           <h1 class="board-title" id="page-title">Crypto Casino Tier List</h1>
-          <p class="board-subline">Drag the logo tiles or tap-to-place on mobile. The board loads with our full editorial order already populated.</p>
+          <p class="board-subline">The export-style version shows first. The interactive builder sits underneath it.</p>
         </div>
         <div>
           <div class="board-kicker">CryptoCasinoSorted.com</div>
@@ -553,60 +587,84 @@
         </div>
       </div>
 
-    <section class="tier-board" aria-labelledby="page-title">
-      <div class="board-head">
-        <div class="board-kicker">Drag or tap to rank</div>
-      </div>
-      <div class="board-alert" id="board-alert"></div>
-      <div class="tier-list" id="tier-list" aria-live="polite"></div>
-    </section>
-
-    <section class="controls" aria-label="Tier list controls">
-      <div class="control-cluster">
-        <button type="button" class="btn" id="copy-link-btn">Copy Share Link</button>
-        <button type="button" class="btn" id="export-btn">Export PNG</button>
-        <button type="button" class="btn" id="share-btn">Share to X</button>
-        <button type="button" class="btn secondary" id="reset-btn">Reset Ranking</button>
-        <button type="button" class="btn ghost" id="clear-selection-btn">Clear Selection</button>
-      </div>
-      <div class="board-kicker">Drag from the logo tile only. The casino name stays a sponsored link.</div>
-    </section>
-
-    <section class="status-strip" aria-label="Tier list stats">
-      <div class="status-pill-wrap">
-        <div class="status-pill">
-          <div class="status-pill-label">Placed</div>
-          <div class="status-pill-value" id="stat-placed">31</div>
+      <section class="preview-shell" aria-labelledby="preview-title">
+        <div class="preview-meta">
+          <div>
+            <div class="board-kicker">Export Preview</div>
+            <p class="board-subline" id="preview-title">This is the share/export version. It updates as soon as you edit the ranking below.</p>
+          </div>
+          <div class="board-kicker">What exports is what shows here</div>
         </div>
-        <div class="status-pill">
-          <div class="status-pill-label">Unranked</div>
-          <div class="status-pill-value" id="stat-unranked">0</div>
+        <div class="preview-frame">
+          <div class="preview-stage">
+            <canvas id="export-canvas" class="export-canvas" aria-label="Live export preview"></canvas>
+          </div>
         </div>
-        <div class="status-pill">
-          <div class="status-pill-label">S Tier</div>
-          <div class="status-pill-value" id="stat-s">2</div>
-        </div>
-      </div>
-      <div class="board-kicker">Visitor edits flip the byline so shared rankings do not masquerade as editorial.</div>
-    </section>
+      </section>
 
-    <section class="compliance">
-      <h2>Commercial and legal notes</h2>
-      <p>Casino names on this page are commercial links and CryptoCasinoSorted may earn commission if you click through and later sign up or deposit.</p>
-      <p>The byline matters. "Ranked by CryptoCasinoSorted" is our editorial position. "Ranked by a visitor" or "A visitor's ranking" is user-created ordering and not our recommendation.</p>
-      <p>XTP disclosure: XTP is operated by a company the site owner works for.</p>
-      <ul>
-        <li>18+ only. Gambling carries risk and should stay entertainment, not income.</li>
-        <li>Logos are the property of their respective owners.</li>
-        <li>This page uses the tier label <strong>D</strong>, not a defamatory label for licensed businesses.</li>
-      </ul>
-    </section>
+      <section class="builder-shell" aria-labelledby="builder-title">
+        <div class="builder-topline">
+          <div>
+            <div class="board-kicker">Builder</div>
+            <p class="board-subline" id="builder-title">Drag or tap the tiles here to change the exported version above.</p>
+          </div>
+          <div class="board-kicker">Drag from the logo tile only. The casino name stays a sponsored link.</div>
+        </div>
+
+        <section class="tier-board" aria-labelledby="builder-title">
+          <div class="board-head">
+            <div class="board-kicker">Drag or tap to rank</div>
+          </div>
+          <div class="board-alert" id="board-alert"></div>
+          <div class="tier-list" id="tier-list" aria-live="polite"></div>
+        </section>
+
+        <section class="controls" aria-label="Tier list controls">
+          <div class="control-cluster">
+            <button type="button" class="btn" id="copy-link-btn">Copy Share Link</button>
+            <button type="button" class="btn" id="export-btn">Export PNG</button>
+            <button type="button" class="btn" id="share-btn">Share to X</button>
+            <button type="button" class="btn secondary" id="reset-btn">Reset Ranking</button>
+            <button type="button" class="btn ghost" id="clear-selection-btn">Clear Selection</button>
+          </div>
+          <div class="board-kicker">Visitor edits flip the byline so shared rankings do not masquerade as editorial.</div>
+        </section>
+
+        <section class="status-strip" aria-label="Tier list stats">
+          <div class="status-pill-wrap">
+            <div class="status-pill">
+              <div class="status-pill-label">Placed</div>
+              <div class="status-pill-value" id="stat-placed">31</div>
+            </div>
+            <div class="status-pill">
+              <div class="status-pill-label">Unranked</div>
+              <div class="status-pill-value" id="stat-unranked">0</div>
+            </div>
+            <div class="status-pill">
+              <div class="status-pill-label">S Tier</div>
+              <div class="status-pill-value" id="stat-s">2</div>
+            </div>
+          </div>
+          <div class="board-kicker">Live stats for the builder below the export view.</div>
+        </section>
+      </section>
+
+      <section class="compliance">
+        <h2>Commercial and legal notes</h2>
+        <p>Casino names on this page are commercial links and CryptoCasinoSorted may earn commission if you click through and later sign up or deposit.</p>
+        <p>The byline matters. "Ranked by CryptoCasinoSorted" is our editorial position. "Ranked by a visitor" or "A visitor's ranking" is user-created ordering and not our recommendation.</p>
+        <p>XTP disclosure: XTP is operated by a company the site owner works for.</p>
+        <ul>
+          <li>18+ only. Gambling carries risk and should stay entertainment, not income.</li>
+          <li>Logos are the property of their respective owners.</li>
+          <li>This page uses the tier label <strong>D</strong>, not a defamatory label for licensed businesses.</li>
+        </ul>
+      </section>
     </section>
   </main>
 
   <div class="drag-ghost" id="drag-ghost" aria-hidden="true"></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <canvas id="export-canvas" class="sr-only" aria-hidden="true"></canvas>
 
   <script src="/assets/js/tier-list-page.js" defer></script>
 </body>

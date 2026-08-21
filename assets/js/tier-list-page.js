@@ -187,6 +187,7 @@
     renderStats();
     renderAlert();
     renderTierRows();
+    renderExportPreview();
   }
 
   function renderByline() {
@@ -720,6 +721,24 @@
   }
 
   async function exportRankingPng() {
+    drawExportCanvas();
+    const canvas = elements.exportCanvas;
+    return new Promise((resolve, reject) => {
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          reject(new Error('toBlob failed'));
+          return;
+        }
+        resolve(blob);
+      }, 'image/png');
+    });
+  }
+
+  function renderExportPreview() {
+    drawExportCanvas();
+  }
+
+  function drawExportCanvas() {
     const canvas = elements.exportCanvas;
     const context = canvas.getContext('2d');
     const rows = TIERS.filter((tier) => tier.id !== 'UNRANKED' || state.ranking.UNRANKED.length);
@@ -736,6 +755,7 @@
 
     canvas.width = width * 2;
     canvas.height = height * 2;
+    canvas.style.aspectRatio = width + ' / ' + height;
     context.setTransform(2, 0, 0, 2, 0, 0);
 
     drawBackground(context, width, height);
@@ -749,16 +769,6 @@
     }
 
     drawFooter(context, width, height);
-
-    return new Promise((resolve, reject) => {
-      canvas.toBlob((blob) => {
-        if (!blob) {
-          reject(new Error('toBlob failed'));
-          return;
-        }
-        resolve(blob);
-      }, 'image/png');
-    });
   }
 
   function drawBackground(context, width, height) {
