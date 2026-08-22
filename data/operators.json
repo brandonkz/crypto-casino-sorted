@@ -392,7 +392,7 @@
       "reward_page_url": "https://21.com/vip",
       "reward_page_label": "21 Elite Club",
       "affiliate_url": "https://prod.trk21.com/click?offer=FFHCFKXMZW2H&uid=fN3MmG6q",
-      "offer_summary": "Elite Club shows Bronze from $25+, Silver from $6,000+, Gold from $120,000+, Platinum from $2.4M+, Diamond from $60M+, and invitation-only Elite. Current welcome package is up to $5,000 plus 100 free spins across the first four deposits.",
+      "offer_summary": "Elite Club shows Bronze from $25+, Silver from $6,000+, Gold from $120,000+, Platinum from $2.4M+, Diamond from $60M+, and invitation-only Elite. A 22 Aug 2026 indexed official welcome-offer snippet now says the current package is up to $7,000 plus 130 free spins across the first four deposits, but direct route fetches returned Cloudflare challenge pages.",
       "reset_behaviour": "VIP points and downgrade rules are not clearly published on the public page.",
       "vip_host_entry": "Gold I-IV and above show dedicated VIP host and VIP host bonuses.",
       "transparency": 76,
@@ -412,9 +412,9 @@
         "Dedicated VIP Host",
         "VIP Host Bonuses"
       ],
-      "source_last_checked": "2026-07-30",
+      "source_last_checked": "2026-08-22",
       "source_terms_hash": "e91a9ec7d13bc8fb",
-      "source_status": "manual_review",
+      "source_status": "indexed_snippet_cloudflare_blocked",
       "source_monitor": "manual"
     },
     {
