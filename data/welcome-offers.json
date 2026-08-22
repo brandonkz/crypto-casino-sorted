@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-15",
+  "updated": "2026-08-22",
   "items": [
     {
       "casino": "XTP",
@@ -186,28 +186,27 @@
     },
     {
       "casino": "21.com",
-      "offer": "Up to $5,000 + 100 free spins across 4 deposits",
+      "offer": "Indexed official headline: up to $7,000 + 130 free spins across 4 deposits",
       "promoCode": "No code shown",
       "wagering": "40x bonus within 7 days; maximum return capped at 10x the bonus",
       "kyc": "Email or mobile verification required for the promotion; further verification may apply",
       "geo": "South Africa, US, UK and several other markets are blocked",
-      "angle": "Verified multi-deposit package with substantial rollover and a maximum-return cap",
-      "includeInCalculator": true,
+      "angle": "Multi-deposit package with a freshly changed indexed headline; deposit-by-deposit math needs a browser recheck before calculator use",
+      "includeInCalculator": false,
       "url": "https://prod.trk21.com/click?offer=FFHCFKXMZW2H&uid=fN3MmG6q",
       "isAffiliate": true,
       "source_url": "https://21.com/promotions/welcome-offer",
       "source_terms": [
         "Your Welcome Package",
-        "Up to $5,000",
-        "100 Free Spins",
+        "Up to $7,000",
+        "130 Free Spins",
         "1st Deposit",
         "4th Deposit"
       ],
       "breakdown": [
-        "1st deposit: 100% up to $600 + 10 free spins; $5 min deposit",
-        "2nd deposit: 75% up to $1,000 + 15 free spins; $5 min deposit",
-        "3rd deposit: 50% up to $1,400 + 35 free spins; $10 min deposit",
-        "4th deposit: 75% up to $2,000 + 40 free spins; $10 min deposit"
+        "Fresh indexed official headline says up to $7,000 + 130 free spins across the first 4 deposits",
+        "Direct 21.com welcome-offer route returned Cloudflare challenge content on 2026-08-22",
+        "Older July source pass captured a $5,000 + 100 free-spins breakdown; treat that as historical until the live deposit split is readable again"
       ],
       "calculator": {
         "deposit": 100,
@@ -219,9 +218,9 @@
         "gameType": "96.0"
       },
       "sourceChecked": "2026-06-25",
-      "source_last_checked": "2026-07-30",
-      "source_terms_hash": "a6724dd8414ce9b4",
-      "source_status": "manual_review",
+      "source_last_checked": "2026-08-22",
+      "source_terms_hash": "b152b3e02140d3a4",
+      "source_status": "indexed_snippet_cloudflare_blocked",
       "source_monitor": "manual"
     }
   ]
