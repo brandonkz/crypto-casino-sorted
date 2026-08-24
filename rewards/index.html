@@ -1085,6 +1085,26 @@
               </table>
             </div>
             <div>
+              <div class="section-title">Allowance Value Model</div>
+              <table class="mini-table">
+                <tr><th>Scenario</th><th>Expected cost before zero-edge credit</th><th>Expected cost inside zero-edge allowance</th><th>Handbook read</th></tr>
+                <tr><td>$1,000 eligible original at 0.1% edge</td><td>About $1 theoretical house edge.</td><td>$0 effective house edge while eligible and inside the allowance.</td><td>This is why Duel belongs in the zero-edge bucket, not the normal 5%-10% rakeback bucket.</td></tr>
+                <tr><td>$10,000 eligible originals volume at 0.1% edge</td><td>About $10 theoretical house edge.</td><td>$0 effective house edge while eligible and inside the allowance.</td><td>The dollar value scales with eligible volume, but variance still decides the session result.</td></tr>
+                <tr><td>Full $50,000 daily allowance at 0.1% edge</td><td>About $50 theoretical house edge.</td><td>$0 effective house edge while the allowance and bet-size rules are respected.</td><td>The daily zero-edge value is meaningful for volume grinders, but it is capped and resets daily.</td></tr>
+                <tr><td>Play after the allowance is used</td><td>Official text says 0.1% edge applies after the zero-edge limit is used.</td><td>No zero-edge credit from the archived source pass.</td><td>Do not average post-cap play into the 0% claim unless current game text shows a separate credit.</td></tr>
+              </table>
+            </div>
+            <div>
+              <div class="section-title">Third-Party Rakeback Read</div>
+              <table class="mini-table">
+                <tr><th>Same $1,000 third-party casino wager</th><th>50% of house edge returns</th><th>Net cost before variance</th><th>Player-fit caveat</th></tr>
+                <tr><td>2% edge game</td><td>About $10 instant rakeback.</td><td>About $10 theoretical cost after rebate.</td><td>Strong compared with many VIP pages, but still not zero-edge.</td></tr>
+                <tr><td>4% edge game</td><td>About $20 instant rakeback.</td><td>About $20 theoretical cost after rebate.</td><td>Higher-edge games create larger rebate dollars and larger expected loss at the same time.</td></tr>
+                <tr><td>Unknown-edge provider game</td><td>Not calculator-ready.</td><td>Unknown until RTP or house edge is known.</td><td>Do not use the 50% headline without the underlying game edge and eligibility rules.</td></tr>
+              </table>
+              <p class="copy"><strong>Modeling rule:</strong> use Duel's zero-edge allowance for eligible originals only, then model slots and live casino as a separate 50%-of-house-edge rebate. Races and leaderboards are a third bucket: useful for competitive players, but too player-field-dependent to add to conservative rakeback value. For side-by-side math, compare this chapter with <a href="#shuffle">Shuffle</a>, <a href="#cloudbet">Cloudbet</a>, <a href="#duelbits">Duelbits</a> and the <a href="/rakeback-comparison.html">rakeback comparison</a>.</p>
+            </div>
+            <div>
               <div class="section-title">Source Transparency</div>
               <table class="mini-table">
                 <tr><th>Source</th><th>Use It For</th><th>Do Not Use It For</th></tr>
