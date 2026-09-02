@@ -186,6 +186,7 @@
         <a href="#bonus-stack-attribution">Bonus Stack Attribution</a>
         <a href="#sportsbook-rewards">Sportsbook Rewards</a>
         <a href="#threshold-transparency">Threshold Transparency</a>
+        <a href="#reset-decay">Reset / Decay</a>
         <a href="#thrill">Thrill</a>
         <a href="#duelbits">Duelbits</a>
         <a href="#cloudbet">Cloudbet</a>
@@ -228,7 +229,7 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">34</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">34</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">1 Sep</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">2 Sep</div></div>
         </section>
 
         <section class="chapter" id="rakeback-math">
@@ -434,6 +435,36 @@
             <p class="copy"><strong>Player fit:</strong> threshold-transparent programs are best for grinders who want to plan a path to Gold, host access or scheduled perks before depositing. Formula-clean programs are better for players who care less about rank names and more about expected rebate per $1,000 wagered. Opaque programs can still be worthwhile, especially when they have strong hosts or personalized rewards, but they should be compared as discretionary ecosystems rather than clean economic ladders.</p>
             <div class="pill-row"><span class="pill good">Public thresholds separated</span><span class="pill good">Internal calculator guardrail</span><span class="pill warn">Host access is not cashout proof</span><span class="pill warn">Names are not thresholds</span></div>
             <p class="note">Source status: Winna, Solcasino and Goated official/help routes were spot-checked again on 6 Aug 2026 for this threshold-readiness pass; Razed's official help routes were rechecked on 28 Aug 2026. Razed and Solcasino exposed the key threshold or rakeback text directly in HTML; Winna and Goated returned official app/help content consistent with the existing archive, but still require caution before adding new numbers. Yeet's current route did not expose matching tier text through a simple fetch during the earlier pass, so its ladder remains tied to the archived source pass and should be monitored before adding new Yeet-only claims.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="reset-decay">
+          <div class="chapter-head"><h2>Reset / Decay: Status, Rewards and Daily Allowances</h2><p class="chapter-sub">A source-backed filter for separating permanent VIP progress from value that refreshes, expires or depends on recent play.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Status Durability</span><strong>Cloudbet permanent tiers</strong></div>
+              <div class="fact"><span>Claim Gate</span><strong>Dicey daily bonus resets 00:00 UTC</strong></div>
+              <div class="fact"><span>Modeling Rule</span><strong>Rank progress is not realised value</strong></div>
+            </div>
+            <p class="copy"><strong>Why this matters:</strong> "lifetime VIP" and "daily rewards" can sit inside the same program but behave very differently. A player may keep a tier forever while still missing calendar unlocks, short claim windows, recent-wager gates or daily zero-edge allowances. The Reward Book should therefore ask three separate questions: does status reset, does the reward balance expire, and does the calculation look back at recent play?</p>
+            <table class="mini-table">
+              <tr><th>Operator / concept</th><th>What the current source pass supports</th><th>What can reset, expire or vary</th><th>Player-fit guidance</th></tr>
+              <tr><td><a href="#cloudbet">Cloudbet tiers</a></td><td>Official loyalty-tier docs rechecked on 2 Sep 2026 say tiers are based on lifetime turnover, casino and sports bets count toward tier progress, the tier is permanent, and turnover never resets.</td><td>Cash-drop amounts vary by betting activity; rakeback collection is split between wallet and Rewards Calendar, and calendar/TURBO value still depends on timely claims.</td><td>Good for players who want durable status, but casual players should discount calendar value they may not claim.</td></tr>
+              <tr><td><a href="#solcasino">Solcasino EXP</a></td><td>Official levels docs rechecked on 2 Sep 2026 publish $1 wagered = 1 EXP, PvP Poker excluded from EXP, Level 15 at 72,310 total EXP, and Level 80 at 132,032,050 total EXP.</td><td>The docs support a cumulative EXP ladder, while daily, weekly, monthly and calendar releases remain claim-window value rather than permanent status value.</td><td>Strong for players planning a transparent grind to recurring reward eligibility; weaker for players who will miss calendar releases.</td></tr>
+              <tr><td><a href="#dicey">Dicey claim gates</a></td><td>The rewards help article rechecked on 2 Sep 2026 confirms XP/rank progression, 15-minute rakeback refreshes, Daily Bonus unlocking from previous-24-hour wager at the 00:00 UTC daily reset, and VIP transfer availability.</td><td>The full XP breakdown is inside the Rewards page, and exact rates, thresholds, reward amounts and expiry rules are not public in the article text.</td><td>Good watchlist fit for active players who claim frequently; not yet calculator-ready for tier time or exact rebate value.</td></tr>
+              <tr><td><a href="#duel">Duel zero-edge allowance</a></td><td>Current Reward Book evidence treats Duel as a daily allowance model rather than a conventional tier ladder: eligible originals have effective zero edge inside the allowance, then the allowance refreshes daily.</td><td>Value disappears outside eligible games, after the daily allowance, above bet-limit wording, or when regional/product rules change.</td><td>Great example of why reset timing can matter more than rank names for low-edge grinders.</td></tr>
+              <tr><td>Snippet-only programs</td><td>Operators such as <a href="#coincasino">CoinCasino</a>, <a href="#qzino">Qzino</a>, <a href="#toshibet">Toshi.bet</a> and <a href="#spartans">Spartans</a> expose reward labels, cashback/rakeback snippets or dashboard terms.</td><td>Reset rules, caps, thresholds, claim windows and exact basis are still unpublished or Cloudflare-blocked in the readable source pass.</td><td>Keep them as source-status chapters until a readable official terms page confirms what persists and what expires.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Reader question</th><th>Handbook answer</th><th>Internal route</th></tr>
+              <tr><td>"Can I take a break and keep progress?"</td><td>Use only operators where the source explicitly says tiers, XP or turnover are permanent or cumulative. Cloudbet is the cleanest current official example; Solcasino has a cumulative EXP table; Dicey's no-decay status remains an archived/source-pass item until the full in-app rank table is readable again.</td><td><a href="#threshold-transparency">Threshold Transparency</a></td></tr>
+              <tr><td>"Can I count a daily bonus as guaranteed?"</td><td>No. Daily bonuses often depend on recent wager, P&amp;L, game mix or claim windows. Treat them as realised value only for players who meet the activity gate and claim on schedule.</td><td><a href="#claim-friction">Claim Friction</a></td></tr>
+              <tr><td>"Does permanent tier mean permanent value?"</td><td>No. Permanent tier status can unlock higher potential rates while actual rewards still vary by recent activity, calendar unlocks, boosts, losses or host discretion.</td><td><a href="#bonus-stack-attribution">Bonus Stack Attribution</a></td></tr>
+              <tr><td>"Should reset rules affect rankings?"</td><td>Yes. Passive players should prefer durable progress and low-expiry claims; active grinders can value timed reloads, Rakeboosts and daily allowances more highly.</td><td><a href="/rewards-recommender.html">Rewards recommender</a></td></tr>
+            </table>
+            <p class="copy"><strong>Player-fit rule:</strong> if the source proves durable status but not durable reward value, rank the program as progression-friendly rather than cash-equivalent. If the source proves a daily or calendar reward but hides expiry, cap or recent-activity inputs, keep the value out of exact calculators and describe the claim behaviour instead.</p>
+            <div class="pill-row"><span class="pill good">Status vs value separated</span><span class="pill good">Current official sources rechecked</span><span class="pill good">Internal routes linked</span><span class="pill warn">No hidden reset rules invented</span><span class="pill warn">Daily rewards not guaranteed</span></div>
+            <p class="note">Source status: Cloudbet loyalty-tier docs, Solcasino levels docs and Dicey rewards help were rechecked on 2 Sep 2026. Cloudbet exposed the strongest permanent-tier wording; Solcasino exposed the clearest current EXP table; Dicey exposed claim-gate and reward-structure wording but not the full in-app XP table. Do not claim withdrawal treatment, KYC outcomes, host priority or fixed bonus values from reset/decay language.</p>
           </div>
         </section>
 
