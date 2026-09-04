@@ -1,7 +1,7 @@
 {
   "_meta": {
     "purpose": "Operator + tier dataset for a neutral crypto-casino comparison engine. Input: user wager band. Output: ranked recommendations.",
-    "as_of": "2026-07-13",
+    "as_of": "2026-09-03",
     "critical_notes": [
       "Rakeback headline rates are not comparable like-for-like. Normalise to effective cash value before scoring.",
       "Where a competitor does not publish tier thresholds, use null/undisclosed and score transparency accordingly.",
@@ -647,6 +647,45 @@
       "source_url": "https://gamba.com/vip-program",
       "source_last_checked": "2026-08-25",
       "source_status": "manual_review",
+      "source_monitor": "manual"
+    },
+    {
+      "id": "razed",
+      "name": "Razed",
+      "type": "challenger",
+      "licence": "Curacao",
+      "confidence": "official",
+      "positioning": "Public wager-ladder casino and sportsbook with 3x sports turnover for VIP progression, cash rank-up rewards and Gold 4 host access.",
+      "best_for": [
+        "mid",
+        "high"
+      ],
+      "native_token": false,
+      "tier_match": true,
+      "tier_match_terms": "VIP Boost / transfer targets can be set by a VIP host or support agent and are account-specific.",
+      "entry_threshold": 0,
+      "published_formula": false,
+      "rakeback_form": "cash",
+      "rakeback_basis": "house_edge",
+      "rate_min": null,
+      "rate_max": null,
+      "effective_rate": null,
+      "settlement": "Rakeback is described as a percentage of house edge from every bet. Monthly bonus begins at Starter, weekly bonus at Bronze 1, daily reload at Gold 1, and personal VIP host at Gold 4; exact rates and recurring formulas are not public.",
+      "reward_page_url": "https://help.razed.com/en/articles/9079076-razed-com-vip-program-overview",
+      "reward_page_label": "Razed VIP Program Overview",
+      "affiliate_url": null,
+      "offer_summary": "Official help-center pages publish a wager ladder from Starter through Onyx, cash rank-up rewards, house-edge rakeback language, Gold 1 daily reload access, Gold 4 personal VIP host access, Platinum birthday bonus access, a VIP Boost formula shape, and sports turnover counted 3x for VIP progression.",
+      "reset_behaviour": "VIP rank is based on total wager. VIP Boost targets are time-limited and account-specific; daily, weekly and monthly bonuses depend on recent gameplay, total wager and/or losses.",
+      "vip_host_entry": "Gold 4 at $500,000 public wager progress.",
+      "transparency": 72,
+      "friction": 58,
+      "trust": 60,
+      "depth": 78,
+      "gamification": 82,
+      "watch_out": "Razed publishes the ladder and unlock gates, but not ongoing rakeback percentages, reload amounts, weekly/monthly formulas, lossback percentages, average-edge inputs, cap values, withdrawal treatment or KYC outcomes. Sports 3x is a status-progress rule, not a sportsbook cashback rate.",
+      "source_url": "https://help.razed.com/en/articles/9079076-razed-com-vip-program-overview",
+      "source_last_checked": "2026-09-03",
+      "source_status": "manual_verified",
       "source_monitor": "manual"
     },
     {
