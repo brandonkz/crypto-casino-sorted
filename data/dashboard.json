@@ -1,20 +1,20 @@
 {
-  "generated": "2026-09-06T11:17:31.475Z",
+  "generated": "2026-09-06T18:18:19.524Z",
   "dataRange": {
     "from": "2026-02-15",
     "to": "2026-09-05"
   },
   "totalDays": 183,
   "overview": {
-    "totalVolume": 265975440,
-    "totalDeposits": 531047,
+    "totalVolume": 265975422,
+    "totalDeposits": 531046,
     "uniqueWallets": 12,
     "avgDeposit": 501,
-    "vol7d": 7243971,
-    "deposits7d": 15818,
+    "vol7d": 7243954,
+    "deposits7d": 15817,
     "growth7d": -30.2,
-    "vol30d": 46206470,
-    "deposits30d": 74404,
+    "vol30d": 46206453,
+    "deposits30d": 74403,
     "largestDeposit": 2239999,
     "casinosTracked": 9
   },
@@ -87,13 +87,13 @@
     },
     {
       "name": "BetFury",
-      "totalVolume": 3667818,
-      "totalDeposits": 5105,
-      "vol7d": 81947,
-      "vol30d": 557673,
-      "deposits7d": 234,
+      "totalVolume": 3667801,
+      "totalDeposits": 5104,
+      "vol7d": 81929,
+      "vol30d": 557656,
+      "deposits7d": 233,
       "uniqueWallets": 1,
-      "avgDeposit": 718,
+      "avgDeposit": 719,
       "marketShare": "1.4"
     },
     {
@@ -122,8 +122,8 @@
   "chainBreakdown": [
     {
       "name": "Ethereum",
-      "volume": 241512797,
-      "deposits": 475822,
+      "volume": 241512779,
+      "deposits": 475821,
       "share": "90.8"
     },
     {
@@ -272,8 +272,8 @@
     },
     {
       "date": "2026-09-02",
-      "volume": 744085,
-      "deposits": 2405
+      "volume": 744068,
+      "deposits": 2404
     },
     {
       "date": "2026-09-03",
@@ -487,8 +487,8 @@
     },
     {
       "address": "0x52a258ed593c793251a89bfd36cae158ee9fc4f8",
-      "totalVolume": 3667818,
-      "deposits": 5105,
+      "totalVolume": 3667801,
+      "deposits": 5104,
       "casinos": [
         "BetFury"
       ]
