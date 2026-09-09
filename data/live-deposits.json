@@ -1,812 +1,812 @@
 {
-  "lastUpdate": 1788836418641,
+  "lastUpdate": 1788922817259,
   "timeRange": "24 hours",
   "blockRange": {
-    "start": 25922616,
-    "end": 25929816
+    "start": 25929785,
+    "end": 25936985
   },
-  "totalDeposits": 596,
-  "totalVolumeETH": "94.8530",
+  "totalDeposits": 763,
+  "totalVolumeETH": "110.3511",
   "deposits": [
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "2.3099",
+      "amount": "0.2129",
       "token": "ETH",
-      "timestamp": 1788835115000,
-      "block": 25929709
+      "timestamp": 1788922499000,
+      "block": 25936960
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.2089",
+      "amount": "0.0040",
       "token": "ETH",
-      "timestamp": 1788834779000,
-      "block": 25929682
+      "timestamp": 1788920471000,
+      "block": 25936791
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0006",
+      "amount": "1.3688",
       "token": "ETH",
-      "timestamp": 1788833291000,
-      "block": 25929559
+      "timestamp": 1788920471000,
+      "block": 25936791
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.8429",
+      "amount": "1.0273",
       "token": "ETH",
-      "timestamp": 1788833291000,
-      "block": 25929559
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0479",
-      "token": "ETH",
-      "timestamp": 1788833171000,
-      "block": 25929549
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0134",
-      "token": "ETH",
-      "timestamp": 1788833171000,
-      "block": 25929549
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0779",
-      "token": "ETH",
-      "timestamp": 1788832811000,
-      "block": 25929519
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.1204",
-      "token": "ETH",
-      "timestamp": 1788832811000,
-      "block": 25929519
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0157",
-      "token": "ETH",
-      "timestamp": 1788832811000,
-      "block": 25929519
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0191",
-      "token": "ETH",
-      "timestamp": 1788832079000,
-      "block": 25929458
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.6938",
-      "token": "ETH",
-      "timestamp": 1788832079000,
-      "block": 25929458
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.1589",
-      "token": "ETH",
-      "timestamp": 1788831923000,
-      "block": 25929445
+      "timestamp": 1788919379000,
+      "block": 25936702
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
+      "timestamp": 1788917675000,
+      "block": 25936561
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0377",
+      "token": "ETH",
+      "timestamp": 1788917675000,
+      "block": 25936561
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.6586",
+      "token": "ETH",
+      "timestamp": 1788917675000,
+      "block": 25936561
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0165",
+      "token": "ETH",
+      "timestamp": 1788917135000,
+      "block": 25936516
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0287",
+      "token": "ETH",
+      "timestamp": 1788917135000,
+      "block": 25936516
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
+      "timestamp": 1788917135000,
+      "block": 25936516
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
+      "timestamp": 1788917135000,
+      "block": 25936516
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "1.7310",
+      "amount": "1.1634",
       "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
+      "timestamp": 1788917135000,
+      "block": 25936516
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
+      "timestamp": 1788917135000,
+      "block": 25936516
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
+      "timestamp": 1788917135000,
+      "block": 25936516
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788827903000,
-      "block": 25929110
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788827579000,
-      "block": 25929083
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0689",
-      "token": "ETH",
-      "timestamp": 1788827579000,
-      "block": 25929083
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0079",
-      "token": "ETH",
-      "timestamp": 1788827579000,
-      "block": 25929083
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788827315000,
-      "block": 25929061
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0017",
-      "token": "ETH",
-      "timestamp": 1788827315000,
-      "block": 25929061
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788827315000,
-      "block": 25929061
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.1309",
-      "token": "ETH",
-      "timestamp": 1788827315000,
-      "block": 25929061
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0604",
-      "token": "ETH",
-      "timestamp": 1788827315000,
-      "block": 25929061
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0476",
-      "token": "ETH",
-      "timestamp": 1788827315000,
-      "block": 25929061
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.7621",
-      "token": "ETH",
-      "timestamp": 1788827051000,
-      "block": 25929039
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0085",
-      "token": "ETH",
-      "timestamp": 1788827051000,
-      "block": 25929039
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.4218",
-      "token": "ETH",
-      "timestamp": 1788826391000,
-      "block": 25928985
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.3014",
-      "token": "ETH",
-      "timestamp": 1788825299000,
-      "block": 25928894
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0098",
-      "token": "ETH",
-      "timestamp": 1788825299000,
-      "block": 25928894
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788825299000,
-      "block": 25928894
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788825191000,
-      "block": 25928885
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788825191000,
-      "block": 25928885
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788825191000,
-      "block": 25928885
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788825191000,
-      "block": 25928885
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0257",
-      "token": "ETH",
-      "timestamp": 1788825191000,
-      "block": 25928885
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788824891000,
-      "block": 25928861
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788824891000,
-      "block": 25928861
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.3244",
-      "token": "ETH",
-      "timestamp": 1788824891000,
-      "block": 25928861
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0650",
-      "token": "ETH",
-      "timestamp": 1788814139000,
-      "block": 25927968
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "13.0460",
-      "token": "ETH",
-      "timestamp": 1788814139000,
-      "block": 25927968
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0960",
-      "token": "ETH",
-      "timestamp": 1788813791000,
-      "block": 25927939
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0557",
-      "token": "ETH",
-      "timestamp": 1788813791000,
-      "block": 25927939
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.1102",
-      "token": "ETH",
-      "timestamp": 1788813755000,
-      "block": 25927936
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0330",
-      "token": "ETH",
-      "timestamp": 1788813755000,
-      "block": 25927936
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0300",
-      "token": "ETH",
-      "timestamp": 1788813755000,
-      "block": 25927936
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0058",
-      "token": "ETH",
-      "timestamp": 1788813755000,
-      "block": 25927936
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0234",
-      "token": "ETH",
-      "timestamp": 1788813515000,
-      "block": 25927916
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0601",
-      "token": "ETH",
-      "timestamp": 1788813515000,
-      "block": 25927916
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0845",
-      "token": "ETH",
-      "timestamp": 1788813515000,
-      "block": 25927916
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.2546",
-      "token": "ETH",
-      "timestamp": 1788813095000,
-      "block": 25927881
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0326",
-      "token": "ETH",
-      "timestamp": 1788813095000,
-      "block": 25927881
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788812891000,
-      "block": 25927864
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0481",
-      "token": "ETH",
-      "timestamp": 1788812891000,
-      "block": 25927864
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0399",
-      "token": "ETH",
-      "timestamp": 1788812891000,
-      "block": 25927864
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0957",
-      "token": "ETH",
-      "timestamp": 1788812891000,
-      "block": 25927864
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788812891000,
-      "block": 25927864
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788812891000,
-      "block": 25927864
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0921",
-      "token": "ETH",
-      "timestamp": 1788812891000,
-      "block": 25927864
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788812891000,
-      "block": 25927864
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0976",
-      "token": "ETH",
-      "timestamp": 1788812699000,
-      "block": 25927848
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0881",
-      "token": "ETH",
-      "timestamp": 1788812699000,
-      "block": 25927848
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0191",
-      "token": "ETH",
-      "timestamp": 1788812651000,
-      "block": 25927844
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.2651",
-      "token": "ETH",
-      "timestamp": 1788812651000,
-      "block": 25927844
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0000",
-      "token": "ETH",
-      "timestamp": 1788812651000,
-      "block": 25927844
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0245",
-      "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
+      "timestamp": 1788917135000,
+      "block": 25936516
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0283",
       "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
+      "timestamp": 1788917135000,
+      "block": 25936516
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0010",
+      "token": "ETH",
+      "timestamp": 1788917135000,
+      "block": 25936516
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0052",
+      "token": "ETH",
+      "timestamp": 1788917135000,
+      "block": 25936516
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0398",
+      "token": "ETH",
+      "timestamp": 1788917135000,
+      "block": 25936516
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
+      "timestamp": 1788917087000,
+      "block": 25936512
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0624",
+      "amount": "0.0113",
       "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
+      "timestamp": 1788917087000,
+      "block": 25936512
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
+      "amount": "0.2468",
       "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0002",
-      "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0002",
-      "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
+      "timestamp": 1788917087000,
+      "block": 25936512
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
+      "timestamp": 1788917087000,
+      "block": 25936512
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.1413",
-      "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
+      "timestamp": 1788916931000,
+      "block": 25936499
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
+      "timestamp": 1788916931000,
+      "block": 25936499
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.2182",
+      "amount": "0.5295",
       "token": "ETH",
-      "timestamp": 1788812471000,
-      "block": 25927829
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
-      "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
+      "timestamp": 1788916931000,
+      "block": 25936499
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
+      "timestamp": 1788916931000,
+      "block": 25936499
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
+      "timestamp": 1788916931000,
+      "block": 25936499
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
-    },
-    {
-      "casino": "Stake",
-      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "1.1780",
-      "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
+      "timestamp": 1788916931000,
+      "block": 25936499
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
+      "timestamp": 1788916931000,
+      "block": 25936499
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
+      "timestamp": 1788916931000,
+      "block": 25936499
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
+      "timestamp": 1788916931000,
+      "block": 25936499
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "3.0004",
+      "token": "ETH",
+      "timestamp": 1788915371000,
+      "block": 25936369
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0400",
+      "token": "ETH",
+      "timestamp": 1788915371000,
+      "block": 25936369
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.6324",
+      "token": "ETH",
+      "timestamp": 1788914843000,
+      "block": 25936325
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "1.4032",
+      "token": "ETH",
+      "timestamp": 1788912251000,
+      "block": 25936110
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0486",
+      "token": "ETH",
+      "timestamp": 1788912167000,
+      "block": 25936103
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0043",
+      "token": "ETH",
+      "timestamp": 1788911963000,
+      "block": 25936086
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0158",
+      "token": "ETH",
+      "timestamp": 1788911963000,
+      "block": 25936086
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0084",
+      "token": "ETH",
+      "timestamp": 1788911963000,
+      "block": 25936086
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0039",
+      "token": "ETH",
+      "timestamp": 1788911963000,
+      "block": 25936086
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0554",
+      "token": "ETH",
+      "timestamp": 1788911315000,
+      "block": 25936032
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.6107",
+      "token": "ETH",
+      "timestamp": 1788911315000,
+      "block": 25936032
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
+      "timestamp": 1788910187000,
+      "block": 25935939
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0104",
+      "token": "ETH",
+      "timestamp": 1788910187000,
+      "block": 25935939
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "1.2063",
+      "token": "ETH",
+      "timestamp": 1788910187000,
+      "block": 25935939
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0841",
+      "token": "ETH",
+      "timestamp": 1788910187000,
+      "block": 25935939
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0625",
+      "token": "ETH",
+      "timestamp": 1788910187000,
+      "block": 25935939
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0058",
+      "token": "ETH",
+      "timestamp": 1788909983000,
+      "block": 25935922
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0644",
+      "token": "ETH",
+      "timestamp": 1788909923000,
+      "block": 25935917
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0106",
+      "token": "ETH",
+      "timestamp": 1788909923000,
+      "block": 25935917
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.1824",
+      "token": "ETH",
+      "timestamp": 1788909923000,
+      "block": 25935917
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
       "amount": "0.0001",
       "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
+      "timestamp": 1788909923000,
+      "block": 25935917
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
+      "amount": "0.0504",
       "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
+      "timestamp": 1788909923000,
+      "block": 25935917
     },
     {
       "casino": "Stake",
       "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
-      "amount": "0.0001",
+      "amount": "0.2264",
       "token": "ETH",
-      "timestamp": 1788811907000,
-      "block": 25927783
+      "timestamp": 1788909923000,
+      "block": 25935917
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.2807",
+      "token": "ETH",
+      "timestamp": 1788909923000,
+      "block": 25935917
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "1.5930",
+      "token": "ETH",
+      "timestamp": 1788908459000,
+      "block": 25935795
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.7760",
+      "token": "ETH",
+      "timestamp": 1788908375000,
+      "block": 25935788
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0254",
+      "token": "ETH",
+      "timestamp": 1788908375000,
+      "block": 25935788
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0036",
+      "token": "ETH",
+      "timestamp": 1788908375000,
+      "block": 25935788
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.4993",
+      "token": "ETH",
+      "timestamp": 1788907991000,
+      "block": 25935756
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0860",
+      "token": "ETH",
+      "timestamp": 1788897131000,
+      "block": 25934853
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "16.7123",
+      "token": "ETH",
+      "timestamp": 1788897131000,
+      "block": 25934853
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0114",
+      "token": "ETH",
+      "timestamp": 1788897131000,
+      "block": 25934853
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0980",
+      "token": "ETH",
+      "timestamp": 1788897131000,
+      "block": 25934853
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0724",
+      "token": "ETH",
+      "timestamp": 1788897131000,
+      "block": 25934853
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.4214",
+      "token": "ETH",
+      "timestamp": 1788897131000,
+      "block": 25934853
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "1.0229",
+      "token": "ETH",
+      "timestamp": 1788897131000,
+      "block": 25934853
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0199",
+      "token": "ETH",
+      "timestamp": 1788896939000,
+      "block": 25934837
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0941",
+      "token": "ETH",
+      "timestamp": 1788896939000,
+      "block": 25934837
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.6612",
+      "token": "ETH",
+      "timestamp": 1788896783000,
+      "block": 25934824
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.1404",
+      "token": "ETH",
+      "timestamp": 1788896783000,
+      "block": 25934824
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.1042",
+      "token": "ETH",
+      "timestamp": 1788896711000,
+      "block": 25934818
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0164",
+      "token": "ETH",
+      "timestamp": 1788896651000,
+      "block": 25934813
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0946",
+      "token": "ETH",
+      "timestamp": 1788896651000,
+      "block": 25934813
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0546",
+      "token": "ETH",
+      "timestamp": 1788896435000,
+      "block": 25934795
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.3816",
+      "token": "ETH",
+      "timestamp": 1788896435000,
+      "block": 25934795
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0347",
+      "token": "ETH",
+      "timestamp": 1788896435000,
+      "block": 25934795
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.2297",
+      "token": "ETH",
+      "timestamp": 1788896351000,
+      "block": 25934788
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0120",
+      "token": "ETH",
+      "timestamp": 1788896351000,
+      "block": 25934788
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.1378",
+      "token": "ETH",
+      "timestamp": 1788896207000,
+      "block": 25934776
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0176",
+      "token": "ETH",
+      "timestamp": 1788896207000,
+      "block": 25934776
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0833",
+      "token": "ETH",
+      "timestamp": 1788896147000,
+      "block": 25934771
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0186",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0170",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.8000",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0247",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0216",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.3315",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0099",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0085",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0247",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.7506",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0237",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0160",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0595",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0610",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0756",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.0727",
+      "token": "ETH",
+      "timestamp": 1788895691000,
+      "block": 25934734
+    },
+    {
+      "casino": "Stake",
+      "walletAddress": "0x974CaA59e49682CdA0AD2bbe82983419A2ECC400",
+      "amount": "0.1227",
+      "token": "ETH",
+      "timestamp": 1788895535000,
+      "block": 25934721
     }
   ],
   "note": "Transaction hashes removed for user privacy"
