@@ -185,6 +185,7 @@
         <a href="#claim-friction">Claim Friction</a>
         <a href="#bonus-stack-attribution">Bonus Stack Attribution</a>
         <a href="#sportsbook-rewards">Sportsbook Rewards</a>
+        <a href="#counting-rules">What Counts</a>
         <a href="#threshold-transparency">Threshold Transparency</a>
         <a href="#reset-decay">Reset / Decay</a>
         <a href="#thrill">Thrill</a>
@@ -388,6 +389,45 @@
             <p class="copy"><strong>Practical rule:</strong> write sportsbook reward claims in four columns before recommending them: qualification rule, reward basis, claim/settlement path, and missing terms. If only the qualification rule is public, it belongs in a progression section, not in EV math. If a page names "sportsbook cashback" but hides the rate, cap or reset, it is a watchlist signal rather than a calculator input.</p>
             <div class="pill-row"><span class="pill good">Sports/casino split added</span><span class="pill good">Progress vs cash separated</span><span class="pill good">Race value caveated</span><span class="pill warn">No sports EV invented</span><span class="pill warn">Hidden caps stay hidden</span></div>
             <p class="note">Source status: live official route metadata for Shuffle, Cloudbet and Thrill was rechecked on 18 Aug 2026; Razed's VIP overview and sports articles were rechecked on 3 Sep 2026; Gamba's VIP Program route and source archive were rechecked on 25-26 Aug 2026 for XP-threshold context. Detailed sports and reward wording remains tied to the existing Reward Book chapters and the <a href="/casino-reward-sources.html">reward source archive</a>. Re-check full rendered terms before adding any sports cashback rate, odds restriction, settlement rule, race prize estimate, withdrawal claim or KYC statement.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="threshold-transparency">
+        <section class="chapter" id="counting-rules">
+          <div class="chapter-head"><h2>What Counts: Eligible Turnover, Exclusions and Reduced Contribution</h2><p class="chapter-sub">A source-backed filter for the most common reward mistake: treating every dollar of activity as if it earns rewards the same way.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Cleanest Public Rule</span><strong>Solcasino: $1 wager = 1 EXP</strong></div>
+              <div class="fact"><span>Hard Exclusion</span><strong>Roobet Prediction Markets = 0 rewards</strong></div>
+              <div class="fact"><span>Reduced Contribution</span><strong>Dicey Originals count 33%</strong></div>
+            </div>
+            <p class="copy"><strong>Why this chapter exists:</strong> reward pages often make players think every product surface contributes equally. In reality, some wagers are fully eligible, some are weighted down, some only help status progression, and some do not count at all. The handbook should therefore separate three things before comparing programs: what activity earns progress, what activity earns cash-style rewards, and what activity is excluded or discounted.</p>
+            <table class="mini-table">
+              <tr><th>Operator / concept</th><th>What the current source supports</th><th>What does not count or counts less</th><th>Handbook read</th></tr>
+              <tr><td><a href="#solcasino">Solcasino EXP</a></td><td>Official levels docs rechecked on 11 Sep 2026 still publish <code>1 USD Value at the time of bet =&gt; 1 EXP</code>.</td><td>PvP Poker does not generate any EXP.</td><td>One of the clearest public contribution rules in the whole handbook: strong for progression modeling, but separate it from daily/weekly/monthly bonus value.</td></tr>
+              <tr><td><a href="#roobet">Roobet Prediction Markets</a></td><td>Official help article rechecked on 11 Sep 2026 says players use the same Roobet balance to buy and sell shares.</td><td>Funds used to purchase positions do not accumulate Rewards.</td><td>Important carve-out: side-product activity can live inside the same wallet and still contribute zero toward VIP or rakeback progress.</td></tr>
+              <tr><td><a href="#dicey">Dicey weighting</a></td><td>Official help/source pass supports rewards progression across Originals, casino and sportsbook activity.</td><td>Dicey Originals count 33% toward rewards and 25% toward wagering requirements; pushed bets count 0%; sportsbook bets need 1.3x+ odds; some games are RTP-weighted.</td><td>Useful for players chasing frequent claims, but dangerous to model from raw wager volume alone.</td></tr>
+              <tr><td><a href="#thrill">Thrill XP bands</a></td><td>Official help articles publish contribution bands directly.</td><td>Casino games above 99% RTP count at 0.5 XP per $1; 97%-99% RTP games count at 1 XP; 97% and below count at 1.5 XP. Sports bets count 3 XP per $1 only at odds 1.10+, otherwise 1 XP.</td><td>A clear example of why low-edge play often levels slower than headline wager totals suggest.</td></tr>
+              <tr><td><a href="#rainbet">Rainbet rollover state</a></td><td>Official deposit-bonus terms snippets say reward generation still exists while clearing rollover.</td><td>When a currency is in rollover state, rewards and affiliate commission generated are divided by 3.</td><td>Bonus-clearing value should be discounted heavily; do not stack full baseline rewards on top of a live rollover.</td></tr>
+              <tr><td><a href="#sportsbook-rewards">Sportsbook progress vs cash</a></td><td>Some operators clearly let sportsbook volume help rank or contests.</td><td>That still does not prove the same wager earns casino-style rakeback.</td><td>Progress eligibility belongs in threshold planning; cash EV belongs in rate-table math only when the source actually publishes it.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Reader question</th><th>Safe answer</th><th>Better internal path</th></tr>
+              <tr><td>"Can I treat all turnover the same?"</td><td>No. First check whether the activity earns full rewards, reduced rewards, status progress only, or nothing.</td><td><a href="#sportsbook-rewards">Sportsbook Rewards</a>, <a href="#threshold-transparency">Threshold Transparency</a></td></tr>
+              <tr><td>"Does using the same wallet mean it counts?"</td><td>No. Roobet's Prediction Markets use the same balance but still do not accumulate Rewards.</td><td><a href="#roobet">Roobet</a></td></tr>
+              <tr><td>"Is a $1,000 wager always comparable across sites?"</td><td>No. Solcasino counts straight EXP, Dicey can down-weight activity, and Thrill changes XP by RTP band and sportsbook odds.</td><td><a href="#rakeback-math">Rakeback Math</a>, <a href="#reset-decay">Reset / Decay</a></td></tr>
+              <tr><td>"Can bonus rollover and normal rewards be added together?"</td><td>Only carefully. Rainbet's terms snippets say rollover-state rewards are divided by 3, which is the opposite of a clean additive EV assumption.</td><td><a href="#bonus-stack-attribution">Bonus Stack Attribution</a>, <a href="#rainbet">Rainbet</a></td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Modeling mistake</th><th>What to write instead</th><th>What not to write</th></tr>
+              <tr><td>Side product uses main balance</td><td>"Same wallet, separate reward eligibility."</td><td>"All spend counts toward VIP" without a source.</td></tr>
+              <tr><td>Sports helps XP or races</td><td>"Sports can help status progress or contest eligibility."</td><td>"Sports earns the same rakeback as casino."</td></tr>
+              <tr><td>Low-edge or high-RTP games progress slower</td><td>"Contribution is weighted by RTP / edge / game type."</td><td>"$1 wagered always equals the same reward value."</td></tr>
+              <tr><td>Bonus clearing still generates something</td><td>"Reward generation exists but is reduced or conditional."</td><td>"You get full base rewards on top of rollover EV."</td></tr>
+            </table>
+            <p class="copy"><strong>Practical rule:</strong> before comparing two programs, turn the public rule into one of four buckets: full contribution, reduced contribution, status-only contribution, or excluded activity. Only the first bucket belongs in straightforward reward-rate math. The others belong in caveats, progression planning or contest analysis.</p>
+            <div class="pill-row"><span class="pill good">Eligibility rules separated</span><span class="pill good">Exclusions made explicit</span><span class="pill good">Wallet/shared-balance trap covered</span><span class="pill warn">Equal turnover is not equal value</span><span class="pill warn">Rollover-state rewards need discounting</span></div>
+            <p class="note">Source status: Roobet Rewards Explained and Prediction Markets were rechecked on 11 Sep 2026; Solcasino Levels docs were rechecked on 11 Sep 2026. Dicey, Thrill and Rainbet contribution rules remain tied to the existing archived/help-source passes already summarized in their chapters and the <a href="/casino-reward-sources.html">reward source archive</a>. Do not infer withdrawal treatment, KYC outcomes, host access, or hidden reward formulas from contribution rules alone.</p>
           </div>
         </section>
 
