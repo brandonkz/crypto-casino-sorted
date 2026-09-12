@@ -685,18 +685,18 @@
         </section>
 
         <section class="chapter" id="rollbit">
-          <div class="chapter-head"><h2>Rollbit Rewards</h2><p class="chapter-sub">House-edge rakeback with claim friction, personalised bonuses, RLB boosts and Rollbot NFT Rollback.</p></div>
+          <div class="chapter-head"><h2>Rollbit Rewards</h2><p class="chapter-sub">House-edge rakeback with calendar friction, timed Rakeboosts, RLB boosts and Rollbot-only Rollback.</p></div>
           <div class="chapter-body">
             <div class="fact-grid">
               <div class="fact"><span>Base Rakeback</span><strong>5% of house edge</strong></div>
               <div class="fact"><span>Claim Cadence</span><strong>Every 30 minutes</strong></div>
-              <div class="fact"><span>RLB Boost</span><strong>+1% to +10%</strong></div>
+              <div class="fact"><span>Rollbot Rule</span><strong>Assigned bot = Rollback only</strong></div>
             </div>
-            <p class="copy"><strong>How it works:</strong> Rollbit's current public rewards route returned a Cloudflare challenge in this pass, but official Rollbit blog pages and the Rollbot whitepaper still expose the useful economics. The clean baseline is 5% rakeback on the house edge, not 5% of wager, claimable every 30 minutes. Rollbit's Rewards Calendar article says claimed rakeback is split: 50% goes straight to balance and 50% goes to the Rewards Calendar over three days.</p>
+            <p class="copy"><strong>How it works:</strong> Rollbit's current public rewards route still returns a Cloudflare challenge, but the official rewards-calendar blog and Rollbot/RLB whitepaper pages remain readable. The clean baseline is 5% rakeback on the house edge, not 5% of wager, claimable every 30 minutes. Rollbit's Rewards Calendar article says claimed rakeback is split: 50% goes straight to balance and 50% goes to the Rewards Calendar over three days, with calendar claims available at midnight, 08:00 and 16:00 UTC.</p>
             <table class="mini-table">
               <tr><th>Reward layer</th><th>Official public evidence</th><th>Handbook read</th></tr>
               <tr><td>Base rakeback</td><td>Rollbit says rakeback is based on the house edge of the games played and offers 5% rakeback on all bets, claimable every 30 minutes.</td><td>Model this as 5% of house edge, not 5% of wager. On a $1,000 wager at 4% edge, 5% rakeback is about $2.</td></tr>
-              <tr><td>Rewards Calendar</td><td>Calendar claims unlock at midnight, 08:00 and 16:00 UTC; calendar claims also trigger a 60-minute Rakeboost in the official blog example.</td><td>There is real timing value, but passive players may miss value if they do not claim around the schedule.</td></tr>
+              <tr><td>Rewards Calendar</td><td>Calendar claims unlock at midnight, 08:00 and 16:00 UTC; each calendar claim triggers +15% Rakeboost for 60 minutes in the official blog.</td><td>There is real timing value, but passive players may miss value if they do not claim around the schedule.</td></tr>
               <tr><td>Daily bonus</td><td>The official blog says Daily Bonus is based on the past 24 hours of wagering, P&amp;L and games played; if unclaimed, it can look back up to 72 hours since the previous claim.</td><td>This is personalised and activity-sensitive, not a fixed cashback percentage suitable for calculators.</td></tr>
               <tr><td>Weekly/monthly bonuses</td><td>Rollbit describes weekly and monthly bonuses as personalised, with recent P&amp;L and lossback included; 20% is credited immediately and the rest is added to the calendar over 7 or 30 days.</td><td>Treat as recurring upside, but keep exact lossback and bonus-rate math out of hard-number comparisons.</td></tr>
               <tr><td>Rank-up bonus</td><td>The official blog says rank-up rewards depend on P&amp;L and the wager difference from the previous rank; 20% is credited immediately and 80% goes to the calendar over 21 days.</td><td>Progression rewards are real, but this source does not publish enough current public tier thresholds or values for time-to-Gold modeling.</td></tr>
@@ -712,9 +712,17 @@
             </table>
             <table class="mini-table">
               <tr><th>Boost mechanic</th><th>Public range</th><th>Risk / caveat</th></tr>
-              <tr><td>RLB holding boost</td><td>The Rollbot whitepaper says base rakeback is 5% and on-site RLB holdings can add +1% at $100 of RLB through +10% at $500,000 of RLB, for 15% combined without NFTs.</td><td>This is a token-exposure decision as much as a casino-reward decision. RLB price moves can swamp the incremental rakeback for most retail volumes.</td></tr>
-              <tr><td>Rollbot Rollback</td><td>The Rollbot whitepaper says assigning a V1 Rollbot to the profile adds Rollback based on body rarity, with 2.5%-10% language and 25 Special Rollbots receiving the highest rewards.</td><td>NFT acquisition cost, rarity, liquidity and secondary-market price risk matter. Do not treat Rollback as free player value.</td></tr>
-              <tr><td>Rakeboost windows</td><td>Rollbit's calendar article lists temporary Rakeboosts after daily, weekly, monthly and calendar claims.</td><td>Boosts are timing upside, not the standing rate. Use the baseline 5% house-edge rakeback for conservative comparison.</td></tr>
+              <tr><td>RLB holding boost</td><td>The RLB whitepaper says base rakeback is 5% and on-site RLB holdings can add +1% at $100 of RLB through +10% at $500,000 of RLB, for 15% combined without NFTs.</td><td>This is a token-exposure decision as much as a casino-reward decision. RLB price moves can swamp the incremental rakeback for most retail volumes.</td></tr>
+              <tr><td>Rollbot Rollback</td><td>The Rollbot whitepaper says assigning a V1 Rollbot to the profile adds Rollback based on body rarity, with 2.5%-10% language and 25 Special Rollbots receiving the highest rewards.</td><td>Assigned Rollbots switch the account to Rollback only. They do not stack with the standard RLB holding path, so NFT acquisition cost, rarity and liquidity risk matter.</td></tr>
+              <tr><td>Rakeboost windows</td><td>Rollbit's calendar article lists +10% for 24 hours for new users, +10% for 60 minutes after Daily or Weekly Bonus claims, +10% for 4 hours after Monthly Bonus claims, and +15% for 60 minutes after each calendar claim.</td><td>Boosts are timing upside, not the standing rate. Use the baseline 5% house-edge rakeback for conservative comparison.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Boost trigger</th><th>Published window</th><th>What it means</th></tr>
+              <tr><td>New account</td><td>+10% for 24 hours</td><td>Short onboarding upside, not the baseline rate.</td></tr>
+              <tr><td>Daily Bonus claim</td><td>+10% for 60 minutes</td><td>Useful only for players who keep wagering right after claiming.</td></tr>
+              <tr><td>Weekly Bonus claim</td><td>+10% for 60 minutes</td><td>Recurring upside, but still timing-dependent rather than guaranteed EV.</td></tr>
+              <tr><td>Monthly Bonus claim</td><td>+10% for 4 hours</td><td>The longest standard window, but still not a permanent rate increase.</td></tr>
+              <tr><td>Rewards Calendar claim</td><td>+15% for 60 minutes</td><td>Highest published timed boost from the public rewards-calendar article.</td></tr>
             </table>
             <table class="mini-table">
               <tr><th>On-site RLB holdings</th><th>Published boost</th><th>Combined with base 5%</th></tr>
@@ -729,9 +737,9 @@
               <tr><td>$250,000</td><td>+9%</td><td>14% of house edge</td></tr>
               <tr><td>$500,000</td><td>+10%</td><td>15% of house edge</td></tr>
             </table>
-            <p class="copy"><strong>Player fit:</strong> Rollbit fits crypto-native players who already understand token/NFT exposure, claim schedules and house-edge math. It is strongest for active users who will claim every 30 minutes or around calendar windows and who value RLB/Rollbot optionality. It is weaker for simple cashback shoppers, sports-first players looking for a public sportsbook reward formula, or anyone trying to compare guaranteed cash EV against cleaner programs such as <a href="#cloudbet">Cloudbet</a>, <a href="#shuffle">Shuffle</a> or <a href="#duelbits">Duelbits</a>.</p>
+            <p class="copy"><strong>Player fit:</strong> Rollbit fits crypto-native players who already understand token/NFT exposure, claim schedules and house-edge math. It is strongest for active users who will claim every 30 minutes or around calendar windows and who want to choose between the RLB holding path and Rollbot Rollback. It is weaker for simple cashback shoppers, sports-first players looking for a public sportsbook reward formula, or anyone trying to compare guaranteed cash EV against cleaner programs such as <a href="#cloudbet">Cloudbet</a>, <a href="#shuffle">Shuffle</a> or <a href="#duelbits">Duelbits</a>.</p>
             <div class="pill-row"><span class="pill good">Official blog verified</span><span class="pill good">Whitepaper boost table</span><span class="pill good">House-edge basis</span><span class="pill warn">Live rewards app blocked</span><span class="pill warn">Personalised bonus formulas</span><span class="pill warn">Token/NFT risk</span></div>
-            <p class="note">Caution: Rollbit's public tier names, rank-up categories and boost mechanics should be kept separate from exact threshold modeling. This pass did not verify current public wager thresholds, VIP host entry rules, withdrawal treatment, KYC outcomes or sportsbook-specific reward math. Source status is tracked in the <a href="/casino-reward-sources.html#rollbit">reward source archive</a>, and players should re-check the logged-in Rewards page before relying on any boost or bonus claim.</p>
+            <p class="note">Caution: Rollbit's public tier names, rank-up categories and boost mechanics should be kept separate from exact threshold modeling. This pass did not verify current public wager thresholds, VIP host entry rules, withdrawal treatment, KYC outcomes or sportsbook-specific reward math. It did verify that assigned Rollbots use Rollback only rather than stacking with the ordinary RLB path. Source status is tracked in the <a href="/casino-reward-sources.html#rollbit">reward source archive</a>, and players should re-check the logged-in Rewards page before relying on any boost or bonus claim.</p>
             <div class="chapter-actions"><a class="btn" href="https://rollbit.com/referral/brandonkz" target="_blank" rel="nofollow sponsored noopener">Play at Rollbit</a><a class="btn secondary" href="/blog/rollbit-rewards-decoded-2026.html">Read Rollbit Rewards Guide</a></div>
           </div>
         </section>
