@@ -183,6 +183,7 @@
         <a href="#overview">Overview</a>
         <a href="#rakeback-math">Rakeback Math</a>
         <a href="#claim-friction">Claim Friction</a>
+        <a href="#balance-treatment">Balance Treatment</a>
         <a href="#bonus-stack-attribution">Bonus Stack Attribution</a>
         <a href="#sportsbook-rewards">Sportsbook Rewards</a>
         <a href="#counting-rules">What Counts</a>
@@ -230,7 +231,7 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">34</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">34</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">5 Sep</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">17 Sep</div></div>
         </section>
 
         <section class="chapter" id="rakeback-math">
@@ -347,6 +348,44 @@
           </div>
         </section>
 
+        <section class="chapter" id="balance-treatment">
+          <div class="chapter-head"><h2>Balance Treatment: Cash, Calendar, Bonus Balance and Forfeiture</h2><p class="chapter-sub">A source-backed filter for the question players actually care about after clicking claim: where does the value land, and how much of it is immediately usable?</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Cleanest Split</span><strong>Solcasino: 50% now, 50% calendar</strong></div>
+              <div class="fact"><span>Best Friction Warning</span><strong>CoinCasino separates bonus and withdrawable</strong></div>
+              <div class="fact"><span>Core Rule</span><strong>Claimed is not always cashable</strong></div>
+            </div>
+            <p class="copy"><strong>Why this chapter exists:</strong> two programs can advertise the same headline reward and still feel completely different once the reward is claimed. Some sites credit value straight to the playable cash balance, some split it into immediate and delayed calendar pieces, some route it into a bonus balance or selected wallet, and some warn that asking for a withdrawal forfeits bonus funds. The handbook should therefore separate the earning formula from the settlement path before comparing real value.</p>
+            <table class="mini-table">
+              <tr><th>Settlement shape</th><th>Current source-backed example</th><th>What the source actually says</th><th>How to read it</th></tr>
+              <tr><td>Split instant + delayed calendar</td><td><a href="#solcasino">Solcasino rakeback</a></td><td>Official docs rechecked on 17 Sep 2026 still say default 5% rakeback is claimable every 30 minutes, with half instantly added to the account balance and half split over three days in the Rewards Calendar.</td><td>Useful for active claimers, but do not compare the full value to an instant-cash program at face value if the player will miss the calendar flow.</td></tr>
+              <tr><td>20% now, 80% over time</td><td><a href="#solcasino">Solcasino daily / weekly / monthly / level-up</a></td><td>Official docs rechecked on 17 Sep 2026 say daily, weekly and monthly bonuses credit 20% immediately and 80% over 7 / 7 / 30 days; level-up bonuses credit 20% immediately and 80% over 21 days.</td><td>Strong transparency on settlement mechanics, weak for passive players who value only instantly usable funds.</td></tr>
+              <tr><td>Selected balance at claim time</td><td><a href="#500casino">500 Casino rewards</a></td><td>The current official snippet-backed source pass says VIP Rewards, Rakeback, Other Rewards and affiliate revenue are credited in the currently selected balance when claimed.</td><td>Good wallet-routing context, but not proof that every claimed reward is instantly withdrawable or free of wagering/KYC gates.</td></tr>
+              <tr><td>Separate bonus and withdrawable balances</td><td><a href="#coincasino">CoinCasino wallet labels</a></td><td>Current public app strings rechecked on 17 Sep 2026 expose separate labels for available balance, bonus balance and withdrawable balance.</td><td>Important warning: visible account value can sit in different buckets with different withdrawal treatment.</td></tr>
+              <tr><td>Withdrawal can void bonus funds</td><td><a href="#coincasino">CoinCasino withdrawal flow</a></td><td>Current public app strings rechecked on 17 Sep 2026 warn that requesting a withdrawal means forfeiting all bonus funds, while a separate message says more wagering may still be required before withdrawal.</td><td>Do not treat claimed bonus value as equivalent to immediately cashable balance unless the source explicitly says so.</td></tr>
+              <tr><td>Bonus-style reward value</td><td><a href="#whale">Whale.io</a></td><td>The existing official terms pass classifies daily cashback, weekly bonus, monthly bonus and personal bonus as Second Chance Bonuses unless a promotion states otherwise.</td><td>Useful for bonus-tolerant players, but weaker than instant-cash programs for anyone seeking conservative realised value.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Player question</th><th>Safe handbook answer</th><th>Better internal path</th></tr>
+              <tr><td>"If I claim it, is it cash?"</td><td>Not always. First check whether the reward lands in account balance, a calendar release, a selected wallet, a bonus balance or a token-specific bucket.</td><td><a href="#claim-friction">Claim Friction</a>, <a href="#bonus-stack-attribution">Bonus Stack Attribution</a></td></tr>
+              <tr><td>"Can I withdraw the full visible balance?"</td><td>No public source lets you assume that. CoinCasino explicitly separates bonus and withdrawable balances, and its withdrawal flow warns that bonus funds can be forfeited.</td><td><a href="#coincasino">CoinCasino</a></td></tr>
+              <tr><td>"Which program is easiest to value conservatively?"</td><td>Programs that publish how much is immediate and how much is delayed, such as Solcasino, are easier to model honestly than sites that only show reward labels.</td><td><a href="#solcasino">Solcasino</a>, <a href="#rakeback-math">Rakeback Math</a></td></tr>
+              <tr><td>"Does a selected balance or token wallet change the value?"</td><td>Yes. A reward credited to the currently selected balance or routed through a bonus balance may behave differently from plain cash balance.</td><td><a href="#500casino">500 Casino</a>, <a href="#coincasino">CoinCasino</a></td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>What to write</th><th>Preferred wording</th><th>What not to write</th></tr>
+              <tr><td>Delayed settlement</td><td>"Part of the reward is credited immediately and the rest releases over time."</td><td>"Pays X%" as if the whole amount is instantly usable cash.</td></tr>
+              <tr><td>Bonus-wallet separation</td><td>"The source separates bonus balance from withdrawable balance."</td><td>"All claimed rewards are withdrawable."</td></tr>
+              <tr><td>Withdrawal warning</td><td>"Requesting a withdrawal can forfeit bonus funds."</td><td>"Rewards are safe once claimed" without a source.</td></tr>
+              <tr><td>Selected-balance credit</td><td>"Reward credits follow the currently selected balance or wallet."</td><td>"Credited to cash balance" unless the route says cash specifically.</td></tr>
+            </table>
+            <p class="copy"><strong>Practical rule:</strong> after identifying the headline rate or threshold, classify the reward into one of four settlement buckets: immediate cash-like value, delayed calendar value, selected-balance value, or bonus-style value. Only the first bucket belongs in conservative baseline comparisons without a discount. The others need claim-timing, wagering, forfeiture or wallet-routing caveats before they mean anything to a real player.</p>
+            <div class="pill-row"><span class="pill good">Settlement path separated</span><span class="pill good">Cash vs bonus made explicit</span><span class="pill good">Forfeiture warnings included</span><span class="pill warn">Claimed does not mean withdrawable</span><span class="pill warn">Calendar value needs discounting</span></div>
+            <p class="note">Source status: Solcasino official docs and CoinCasino public app strings were rechecked on 17 Sep 2026 for this section. 500 Casino and Whale.io balance-treatment references remain tied to the current source archive and prior official snippet / terms passes already summarized in their chapters. Do not infer KYC outcomes, guaranteed withdrawal speed, or full cashability from balance labels or claim buttons alone.</p>
+          </div>
+        </section>
+
         <section class="chapter" id="sportsbook-rewards">
           <div class="chapter-head"><h2>Sportsbook Rewards: Status Progress vs Rakeback</h2><p class="chapter-sub">A sportsbook-first filter for separating VIP progress, sports cash drops, race weighting and casino-only rakeback.</p></div>
           <div class="chapter-body">
@@ -392,7 +431,6 @@
           </div>
         </section>
 
-        <section class="chapter" id="threshold-transparency">
         <section class="chapter" id="counting-rules">
           <div class="chapter-head"><h2>What Counts: Eligible Turnover, Exclusions and Reduced Contribution</h2><p class="chapter-sub">A source-backed filter for the most common reward mistake: treating every dollar of activity as if it earns rewards the same way.</p></div>
           <div class="chapter-body">
