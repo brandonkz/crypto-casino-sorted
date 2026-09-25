@@ -3,7 +3,7 @@
   "items": [
     {
       "casino": "XTP",
-      "offer": "CCS200: 200% deposit match + 100 free spins",
+      "offer": "CCS200: 200% deposit match up to $1,000 + 100 free spins",
       "promoCode": "CCS200",
       "wagering": "Check live CCS200 playthrough, cap, max-bet, expiry and game-weighting terms before claiming.",
       "kyc": "Standard account checks may apply",
@@ -15,13 +15,13 @@
       "breakdown": [
         "20% ongoing cashback",
         "CCS200 signup code",
-        "200% deposit match",
+        "200% deposit match up to $1,000",
         "100 free spins"
       ],
       "calculator": {
         "deposit": 100,
         "bonusPercent": 200,
-        "bonusCap": null,
+        "bonusCap": 1000,
         "wagerMultiple": null,
         "wagerBase": "bonus",
         "maxBet": 5,
