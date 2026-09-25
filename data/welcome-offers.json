@@ -1,37 +1,37 @@
 {
-  "updated": "2026-08-22",
+  "updated": "2026-09-25",
   "items": [
     {
       "casino": "XTP",
-      "offer": "Live welcome choice: 12% rakeback boost, 1,000 free spins, or 100% match up to $1,000",
-      "promoCode": "Check live",
-      "wagering": "For the 100% match option, this calculator models 20x bonus-only playthrough. Confirm the selected option on XTP before claiming.",
+      "offer": "CCS200: 200% deposit match + 100 free spins",
+      "promoCode": "CCS200",
+      "wagering": "Check live CCS200 playthrough, cap, max-bet, expiry and game-weighting terms before claiming.",
       "kyc": "Standard account checks may apply",
       "geo": "Market access and eligibility can vary",
-      "angle": "Flexible welcome choice layered on top of 20% ongoing cashback",
+      "angle": "Tracked CCS200 signup offer layered on top of 20% ongoing cashback",
       "includeInCalculator": true,
-      "url": "https://xtp.com/signup?utm_campaign=Durinsbane_New&utm_source=p2p_affiliate&utm_medium=referral",
+      "url": "https://xtp.com/signup?utm_source=cryptocasinosorted-98659&utm_content=avoiqtyydnxbkxfglxzeifcybjs&utm_medium=none&utm_campaign=N_F-0&signupCode=CCS200",
       "isAffiliate": true,
       "breakdown": [
         "20% ongoing cashback",
-        "12% rakeback boost for 14 days",
-        "1,000 free spins on a $200 deposit",
-        "100% match up to $1,000"
+        "CCS200 signup code",
+        "200% deposit match",
+        "100 free spins"
       ],
       "calculator": {
         "deposit": 100,
-        "bonusPercent": 100,
-        "bonusCap": 1000,
-        "wagerMultiple": 20,
+        "bonusPercent": 200,
+        "bonusCap": null,
+        "wagerMultiple": null,
         "wagerBase": "bonus",
         "maxBet": 5,
         "gameType": "96.0",
-        "assumedWagering": false
+        "assumedWagering": true
       },
-      "sourceChecked": "2026-06-25",
-      "source_last_checked": "2026-07-13",
-      "source_status": "live_researched",
-      "source_url": "https://xtp.com/",
+      "sourceChecked": "2026-09-25",
+      "source_last_checked": "2026-09-25",
+      "source_status": "affiliate_link_supplied",
+      "source_url": "https://xtp.com/signup?utm_source=cryptocasinosorted-98659&utm_content=avoiqtyydnxbkxfglxzeifcybjs&utm_medium=none&utm_campaign=N_F-0&signupCode=CCS200",
       "source_monitor": "manual"
     },
     {
