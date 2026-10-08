@@ -182,6 +182,7 @@
         <div class="sidebar-title">Contents</div>
         <a href="#overview">Overview</a>
         <a href="#rakeback-math">Rakeback Math</a>
+        <a href="#cashback-basis">Cashback Basis</a>
         <a href="#claim-friction">Claim Friction</a>
         <a href="#balance-treatment">Balance Treatment</a>
         <a href="#bonus-stack-attribution">Bonus Stack Attribution</a>
@@ -285,6 +286,44 @@
             </table>
             <div class="pill-row"><span class="pill good">Source-backed examples</span><span class="pill good">Internal calculator link</span><span class="pill good">Contest value separated</span><span class="pill warn">No invented formulas</span><span class="pill warn">KYC/cashout not implied</span></div>
             <p class="note">Source status: Shuffle and Cloudbet official help pages were rechecked on 1 Sep 2026 and still exposed the key house-edge wording, worked examples and casino/sports separation needed for this audit checklist. Duel is kept as a manual/app-evidence case in the <a href="/casino-reward-sources.html#duel">reward source archive</a>, with detailed caveats in the <a href="#duel">Duel chapter</a>. Use the <a href="/rakeback-comparison.html">rakeback comparison</a> for normalized operator math, and re-check official terms before using any boost, contest, withdrawal or verification claim.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="cashback-basis">
+          <div class="chapter-head"><h2>Cashback Basis: Net Loss, House Edge, or Mixed Lossback?</h2><p class="chapter-sub">The handbook layer for separating true lossback, theoretical-edge rebates, and hybrid “activity + losses” programs before comparing any headline cashback claim.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Cleanest Lossback Shape</span><strong>Published net-loss cashback</strong></div>
+              <div class="fact"><span>Most Misread Headline</span><strong>Cashback that is really lossback</strong></div>
+              <div class="fact"><span>Modeling Rule</span><strong>Never treat all cashback as per-wager EV</strong></div>
+            </div>
+            <p class="copy"><strong>Why this chapter exists:</strong> operators use “cashback”, “lossback”, “weekly bonus” and “rakeback” interchangeably even when the basis is completely different. A house-edge rebate can pay on every eligible wager. A net-loss cashback only matters if the player actually loses over the measurement window. A mixed monthly bonus may reference both activity and losses without publishing the formula at all. The Reward Book should therefore separate <em>what triggers value</em> before it compares any headline percentage.</p>
+            <table class="mini-table">
+              <tr><th>Basis shape</th><th>What the source actually measures</th><th>Source-backed examples</th><th>Handbook read</th></tr>
+              <tr><td>House-edge rakeback</td><td>Eligible wager x game house edge x published rebate rate.</td><td><a href="#shuffle">Shuffle</a>, <a href="#cloudbet">Cloudbet</a>, <a href="#solcasino">Solcasino</a> and the conservative <a href="#rollbit">Rollbit</a> baseline all publish edge-based logic rather than simple net-loss cashback.</td><td>Good for calculator work because the basis is theoretical and repeatable. Keep it separate from loss-based programs.</td></tr>
+              <tr><td>Net-loss cashback</td><td>Cashback is generated only if the player finishes the period down, usually on slots/originals and sometimes only on selected products.</td><td><a href="#qzino">Qzino</a> now publishes cashback based on net losses for Qzino Originals + Slots; <a href="#whale">Whale.io</a> publishes daily cashback tied to net loss.</td><td>Useful downside protection, but not the same thing as every-wager rakeback. Winning sessions can produce zero value.</td></tr>
+              <tr><td>Hybrid cashback + rakeback split</td><td>The same product stack separates a loss-style cashback layer from an RTP / edge-linked rakeback layer.</td><td><a href="#spartans">Spartans</a> publishes a CashRake table that splits value into cashback and rakeback bands based on RTP.</td><td>Stronger than a vague headline because the public source explains which product economics create the split.</td></tr>
+              <tr><td>Activity + losses monthly bonus</td><td>The operator names gameplay, wager, P&amp;L or lossback inputs, but the exact weighting stays private.</td><td><a href="#gamdom">Gamdom</a>, <a href="#rollbit">Rollbit</a>, <a href="#chipsgg">Chips.gg</a> and <a href="#goated">Goated</a> all expose recurring buckets where losses matter but the formula is not fully public.</td><td>Track as real recurring value, but keep it out of hard-number EV rankings until the weighting and caps are public.</td></tr>
+              <tr><td>Rank cashback</td><td>Cashback appears as a tier perk rather than a clean public formula.</td><td><a href="#betfury">BetFury</a> and several watch operators expose cashback as part of a rank stack instead of a standalone public equation.</td><td>Good for tier comparison; weak for calculator math unless the tier, basis, and settlement rules are all public.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>If the player wants...</th><th>Prefer this basis</th><th>Why</th><th>What to avoid</th></tr>
+              <tr><td>Predictable rebate on volume</td><td>House-edge rakeback</td><td>The player can normalize it to dollars per $1,000 wagered on a known edge.</td><td>Programs that only pay after a losing week or month.</td></tr>
+              <tr><td>Downside protection during bad runs</td><td>Net-loss cashback / lossback</td><td>The value appears when the player finishes the period down, which softens variance.</td><td>Treating the lossback percentage as if it were baseline yield on every wager.</td></tr>
+              <tr><td>High-variance upside with recurring drops</td><td>Mixed activity + losses programs</td><td>These stacks can be generous for active losing players even when the exact formula is hidden.</td><td>Rolling the whole headline into one fixed rebate rate without public math.</td></tr>
+              <tr><td>Transparent sportsbook-style comparison</td><td>Separate sports-specific rewards or explicit progress rules</td><td>Sports often counts for progression or a dedicated cashback bucket, not casino-style edge rebates.</td><td>Copying casino cashback assumptions onto sportsbook bets.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Operator</th><th>Published basis</th><th>What is public</th><th>What is still hidden</th></tr>
+              <tr><td><a href="#qzino">Qzino</a></td><td>Net-loss cashback + separate sports surfaces</td><td>Cashback covers Originals + Slots, accrues Wednesday/Saturday, and settles 50/50 direct/calendar before VIP.</td><td>Exact VIP-rank spacing, sports cashback formulas, and full rate/cap table.</td></tr>
+              <tr><td><a href="#whale">Whale.io</a></td><td>Daily net-loss cashback + wager x house-margin weekly/monthly formulas</td><td>The Reward Book already separates Whale’s daily cashback from its weekly/monthly house-margin logic.</td><td>Do not merge those buckets into one all-volume rebate rate.</td></tr>
+              <tr><td><a href="#spartans">Spartans</a></td><td>RTP-banded cashback + rakeback split</td><td>Public CashRake table shows how lower-RTP games create more cashback and higher RTP compresses it.</td><td>Calculator-clean sportsbook formula, universal caps, and full long-term EV table.</td></tr>
+              <tr><td><a href="#goated">Goated</a></td><td>Lossback exists, exact percentages private</td><td>Public ladder supports that Platinum introduces lossback and Sapphire adds reloads plus a host.</td><td>Actual lossback percentage, caps, and rank-by-rank settlement logic.</td></tr>
+              <tr><td><a href="#gamdom">Gamdom</a></td><td>Personalised recurring rewards with loss/activity inputs</td><td>Instant, weekly and monthly buckets are real and public enough to map, but the formula is explicitly not public.</td><td>Exact cashback percentage, thresholds, and monthly weighting.</td></tr>
+            </table>
+            <p class="copy"><strong>Practical rule:</strong> ask three questions before ranking any cashback claim. First, does the player need to lose to generate it? Second, is the formula tied to theoretical edge, actual results, or both? Third, does the settlement path pay cash immediately, split it into a calendar, or turn it into bonus-style value? If those answers are not public, the claim belongs in a source-status chapter, not in a clean rebate calculator.</p>
+            <div class="pill-row"><span class="pill good">Lossback vs rakeback separated</span><span class="pill good">Public examples only</span><span class="pill good">Sports caveat preserved</span><span class="pill warn">No invented percentages</span><span class="pill warn">No hidden-formula EV claims</span></div>
+            <p class="note">Source status: this chapter deliberately reuses only Reward Book sections already backed by public operator docs, readable route text, or archived official evidence: Qzino’s docs-backed cashback timing and settlement, Whale’s split daily versus weekly/monthly treatment, Spartans’ readable CashRake page, and the existing public caveats around Goated and Gamdom. Re-check the linked operator chapters and the <a href="/casino-reward-sources.html">reward source archive</a> before turning any mixed cashback or lossback claim into a fixed-number comparison.</p>
           </div>
         </section>
 
