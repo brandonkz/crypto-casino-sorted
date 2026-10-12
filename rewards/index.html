@@ -189,6 +189,7 @@
         <a href="#sportsbook-rewards">Sportsbook Rewards</a>
         <a href="#counting-rules">What Counts</a>
         <a href="#threshold-transparency">Threshold Transparency</a>
+        <a href="#source-confidence">Source Confidence</a>
         <a href="#host-access">Host Access</a>
         <a href="#reset-decay">Reset / Decay</a>
         <a href="#thrill">Thrill</a>
@@ -233,7 +234,7 @@
           <div class="summary-card"><div class="summary-label">Casinos Tracked</div><div class="summary-value">34</div></div>
           <div class="summary-card"><div class="summary-label">Deep Chapters</div><div class="summary-value">34</div></div>
           <div class="summary-card"><div class="summary-label">Lowest Edge Model</div><div class="summary-value">0%</div></div>
-          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">17 Sep</div></div>
+          <div class="summary-card"><div class="summary-label">Last Updated</div><div class="summary-value">12 Oct</div></div>
         </section>
 
         <section class="chapter" id="rakeback-math">
@@ -567,6 +568,32 @@
             <p class="copy"><strong>Player fit:</strong> threshold-transparent programs are best for grinders who want to plan a path to Gold, host access or scheduled perks before depositing. Formula-clean programs are better for players who care less about rank names and more about expected rebate per $1,000 wagered. Opaque programs can still be worthwhile, especially when they have strong hosts or personalized rewards, but they should be compared as discretionary ecosystems rather than clean economic ladders.</p>
             <div class="pill-row"><span class="pill good">Public thresholds separated</span><span class="pill good">Internal calculator guardrail</span><span class="pill warn">Host access is not cashout proof</span><span class="pill warn">Names are not thresholds</span></div>
             <p class="note">Source status: Winna, Solcasino and Goated official/help routes were spot-checked again on 6 Aug 2026 for this threshold-readiness pass; Razed's official help routes were rechecked on 28 Aug 2026. Razed and Solcasino exposed the key threshold or rakeback text directly in HTML; Winna and Goated returned official app/help content consistent with the existing archive, but still require caution before adding new numbers. Yeet's current route did not expose matching tier text through a simple fetch during the earlier pass, so its ladder remains tied to the archived source pass and should be monitored before adding new Yeet-only claims.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="source-confidence">
+          <div class="chapter-head"><h2>Source Confidence: Docs, Help Centers, App Bundles or Snippets?</h2><p class="chapter-sub">A practical source-status layer for deciding when a reward claim is strong enough for threshold, cadence or EV guidance, and when it still belongs in the watch bucket.</p></div>
+          <div class="chapter-body">
+            <div class="fact-grid">
+              <div class="fact"><span>Strongest Evidence</span><strong>Official docs with formulas or thresholds</strong></div>
+              <div class="fact"><span>Middle Layer</span><strong>Readable help-center operating rules</strong></div>
+              <div class="fact"><span>Weakest Usable Tier</span><strong>Indexed official snippets</strong></div>
+            </div>
+            <p class="copy"><strong>Why this chapter exists:</strong> two casinos can look equally “official” while being completely different from a source-quality standpoint. One may publish docs with exact threshold and settlement rules. Another may only expose tier names, route labels, or snippet text in search results. The Reward Book therefore treats source quality as a real part of the comparison. Cleaner docs justify more concrete handbook guidance; weaker sources justify more caution, even when the headline looks bigger.</p>
+            <table class="mini-table">
+              <tr><th>Evidence tier</th><th>Safe handbook use</th><th>Do not use it for</th></tr>
+              <tr><td>Official docs / markdown pages</td><td>Thresholds, cadence, formulas, settlement paths and expiry windows when they are written explicitly. Current strong examples: <a href="#qzino">Qzino</a>, <a href="#solcasino">Solcasino</a>, <a href="#winna">Winna</a> and <a href="#spartans">Spartans</a>.</td><td>Inventing hidden host treatment, sportsbook cashout assumptions, or unpublished tier spacing beyond the doc itself.</td></tr>
+              <tr><td>Readable help-center articles</td><td>Operational rules such as deposit-bonus unlocks, monthly posting dates, claim timing, support flows, or which details remain hidden until unlock. Current useful examples: <a href="#thrill">Thrill</a>, <a href="#toshibet">Toshi.bet</a>, <a href="#roobet">Roobet</a> and <a href="#gamdom">Gamdom</a>.</td><td>Turning partial help articles into a full rate table, full ladder or fixed host-bonus math when the operator still hides that elsewhere.</td></tr>
+              <tr><td>Official app bundle / JS shell / route map</td><td>Confirming that reward surfaces, tier names, deposit-limit workflows, promo-token mechanics, and level-up reward objects actually exist in product code. Current good examples: <a href="#xtp">XTP</a> and <a href="#wagercom">Wagercom</a>.</td><td>Assuming public formulas, public thresholds or universal eligibility rules just because the product model exists in code.</td></tr>
+              <tr><td>Indexed official snippets / mirrored text</td><td>Confirming that a rewards surface, VIP label or threshold phrase exists in operator-owned indexed text, or using mirrored official pages when the primary site is blocked. Current weaker-source examples: <a href="#stake">Stake</a>, <a href="#bcgame">BC.Game</a>, <a href="#rainbet">Rainbet</a>, and older passes for <a href="#qzino">Qzino</a> / <a href="#toshibet">Toshi.bet</a> before docs were found.</td><td>Exact EV math, unpublished expiry rules, KYC outcomes, host-entry assumptions or fully current tier tables.</td></tr>
+            </table>
+            <table class="mini-table">
+              <tr><th>Reader question</th><th>Handbook rule</th><th>Best next check</th></tr>
+              <tr><td>"Can I use this for calculator math?"</td><td>Only if the source publishes the basis clearly enough: house edge, wager, net loss, XP or an explicit unlock formula.</td><td>Start with <a href="#rakeback-math">Rakeback Math</a>, <a href="#cashback-basis">Cashback Basis</a> and the <a href="/casino-reward-sources.html">reward source archive</a>.</td></tr>
+              <tr><td>"Can I trust a public tier name?"</td><td>Tier names are useful navigation; they are not threshold evidence unless the threshold itself is written publicly.</td><td>Cross-check <a href="#threshold-transparency">Threshold Transparency</a> before using any ladder in the <a href="/vip-gold-calculator.html">VIP Gold calculator</a>.</td></tr>
+              <tr><td>"What if only snippets are visible?"</td><td>Keep the operator in the watch bucket: map the reward surfaces, note the caveats, and avoid precise cash-value claims.</td><td>Use the chapter for player-fit guidance, not clean EV ranking.</td></tr>
+            </table>
+            <p class="note">Practical rule: when two operators advertise similarly flashy rewards, trust the cleaner docs over the louder headline. A docs-backed 5% house-edge rebate is more useful than a snippet-only “up to 25% cashback” promise. If the source tier drops, the handbook should become more cautious, not more confident.</p>
           </div>
         </section>
 
