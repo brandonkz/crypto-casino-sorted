@@ -201,7 +201,7 @@ async function fetchSource(url, attempts = 3) {
 // Statuses that are real offer problems and should make the run loud.
 const ACTIONABLE = new Set(['source_terms_missing', 'source_dead', 'missing_source']);
 // Statuses worth listing but that must not fail the run on their own.
-const INFORMATIONAL = new Set(['blocked', 'fetch_failed', 'manual_due', 'content_drift', 'missing_baseline']);
+const INFORMATIONAL = new Set(['blocked', 'fetch_failed', 'manual_due', 'content_drift', 'missing_baseline', 'unverifiable', 'no_current_offer']);
 
 function classify(entry, fetched) {
   if (!entry.url) return 'missing_source';
@@ -222,6 +222,8 @@ function rowStatus(status) {
   return {
     ok: '✅ OK',
     manual_due: '🕒 Manual recheck due',
+    unverifiable: '🔍 Unverifiable (browser check could not confirm offer; manual recheck)',
+    no_current_offer: 'ℹ️ No current offer listed',
     content_drift: 'ℹ️ Page changed (no offer terms tracked)',
     missing_baseline: '⚠️ Missing baseline',
     fetch_failed: '⚠️ Unverifiable (fetch error)',
@@ -288,6 +290,9 @@ async function main() {
       // Manual sources are JS-rendered or bot-walled; a script cannot re-verify them,
       // so age is a reminder, not a failure.
       result.status = ageDays(entry.object.source_last_checked) > maxAgeDays ? 'manual_due' : 'ok';
+      // A browser check that could not confirm the offer must never count as checked.
+      if (entry.object.source_status === 'unverifiable') result.status = 'unverifiable';
+      if (entry.object.source_status === 'no_current_offer') result.status = 'no_current_offer';
       result.manual = true;
       // Still confirm the URL exists: a 404 is a real problem even when content needs a human.
       try {
