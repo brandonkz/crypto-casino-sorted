@@ -1,22 +1,21 @@
 {
-  "updated": "2026-09-25",
+  "updated": "2026-10-28",
   "items": [
     {
       "casino": "XTP",
-      "offer": "CCS200: 200% deposit match up to $1,000 + 100 free spins",
+      "offer": "No welcome offer listed (checked 28 Oct 2026)",
       "promoCode": "CCS200",
-      "wagering": "Check live CCS200 playthrough, cap, max-bet, expiry and game-weighting terms before claiming.",
+      "wagering": "No current welcome offer to check; see the live promotions page before depositing.",
       "kyc": "Standard account checks may apply",
       "geo": "Market access and eligibility can vary",
-      "angle": "Tracked CCS200 signup offer layered on top of 20% ongoing cashback",
-      "includeInCalculator": true,
+      "angle": "Cashback-led; no welcome offer listed on the official promotions page (28 Oct 2026)",
+      "includeInCalculator": false,
       "url": "https://xtp.com/signup?utm_source=cryptocasinosorted-98659&utm_content=avoiqtyydnxbkxfglxzeifcybjs&utm_medium=none&utm_campaign=N_F-0&signupCode=CCS200",
       "isAffiliate": true,
       "breakdown": [
         "20% ongoing cashback",
         "CCS200 signup code",
-        "200% deposit match up to $1,000",
-        "100 free spins"
+        "Official promotions page: no active promotions (28 Oct 2026)"
       ],
       "calculator": {
         "deposit": 100,
@@ -28,11 +27,12 @@
         "gameType": "96.0",
         "assumedWagering": true
       },
-      "sourceChecked": "2026-09-25",
-      "source_last_checked": "2026-09-25",
-      "source_status": "affiliate_link_supplied",
-      "source_url": "https://xtp.com/signup?utm_source=cryptocasinosorted-98659&utm_content=avoiqtyydnxbkxfglxzeifcybjs&utm_medium=none&utm_campaign=N_F-0&signupCode=CCS200",
-      "source_monitor": "manual"
+      "sourceChecked": "2026-10-28",
+      "source_last_checked": "2026-10-28",
+      "source_status": "no_current_offer",
+      "source_url": "https://xtp.com/promotions",
+      "source_monitor": "manual",
+      "source_note": "Browser check 2026-10-28: official /promotions says \"There are no active promotions right now.\" Previously tracked: CCS200 200% deposit match up to $1,000 + 100 free spins (not shown)."
     },
     {
       "casino": "BC.Game",
@@ -46,8 +46,10 @@
       "isAffiliate": true,
       "source_url": "https://bc.game/promotions",
       "source_last_checked": "2026-07-13",
-      "source_status": "manual_review",
-      "source_monitor": "manual"
+      "source_status": "unverifiable",
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_note": "Browser check 2026-10-28: welcome offer not shown on home; /vip-detail and promos (7-day gift up to 120 free spins, Halloween $1M) only. Offer NOT re-verified; shown as last tracked. Needs a manual recheck."
     },
     {
       "casino": "Shuffle",
@@ -61,23 +63,26 @@
       "isAffiliate": true,
       "source_url": "https://shuffle.com/promotions",
       "source_last_checked": "2026-07-13",
-      "source_status": "manual_review",
-      "source_monitor": "manual"
+      "source_status": "unverifiable",
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_note": "Browser check 2026-10-28: welcome amount not shown. Offer NOT re-verified; shown as last tracked. Needs a manual recheck."
     },
     {
       "casino": "Rollbit",
-      "offer": "150% up to $2,500",
+      "offer": "No welcome offer listed (checked 28 Oct 2026)",
       "promoCode": "Check live",
-      "wagering": "Verify live, sometimes reward/rakeback-led instead",
+      "wagering": "No current welcome offer to check",
       "kyc": "KYC more common than before",
       "geo": "Geo-restricted in some markets",
       "angle": "High-volume sportsbook + rewards ecosystem",
       "url": "https://rollbit.com/referral/brandonkz",
       "isAffiliate": true,
-      "source_url": "https://rollbit.com/promotions",
-      "source_last_checked": "2026-07-13",
-      "source_status": "manual_review",
-      "source_monitor": "manual"
+      "source_url": "https://rollbit.com/",
+      "source_last_checked": "2026-10-28",
+      "source_status": "no_current_offer",
+      "source_monitor": "manual",
+      "source_note": "Browser check 2026-10-28: /promotions rendered blank and \"150% up to $2,500\" was not found; /rewards is a login wall. Only event promos seen ($25k Gates of Olympus 2500 promotion, $25K Daily Race). Previously tracked: 150% up to $2,500."
     },
     {
       "casino": "Roobet",
@@ -91,8 +96,10 @@
       "isAffiliate": true,
       "source_url": "https://roobet.com/promotions",
       "source_last_checked": "2026-07-13",
-      "source_status": "manual_review",
-      "source_monitor": "manual"
+      "source_status": "unverifiable",
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_note": "Browser check 2026-10-28: welcome not shown; /rewards is a login modal. Offer NOT re-verified; shown as last tracked. Needs a manual recheck."
     },
     {
       "casino": "Duelbits",
@@ -106,8 +113,10 @@
       "isAffiliate": true,
       "source_url": "https://duelbits.com/en/promotions",
       "source_last_checked": "2026-07-13",
-      "source_status": "manual_review",
-      "source_monitor": "manual"
+      "source_status": "unverifiable",
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_note": "Browser check 2026-10-28: duelbits.com showed \"not available from your region\" and redirects to duelbits.io; welcome not shown. Offer NOT re-verified; shown as last tracked. Needs a manual recheck."
     },
     {
       "casino": "Yeet",
@@ -121,29 +130,36 @@
       "isAffiliate": true,
       "source_url": "https://yeet.com/rewards",
       "source_last_checked": "2026-07-15",
-      "source_status": "verified",
-      "source_monitor": "manual"
+      "source_status": "unverifiable",
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_note": "Browser check 2026-10-28: welcome not shown on /rewards; promo \"WE OFFER VIP TIER MATCHING\" shown. Offer NOT re-verified; shown as last tracked. Needs a manual recheck."
     },
     {
       "casino": "BitStarz",
-      "offer": "100% up to 1 BTC + 180 free spins + 20 no-deposit spins",
+      "offer": "100% bonus + 180 free spins on first deposit, then up to €400 or 4 BTC on the next three deposits",
       "promoCode": "Check live",
-      "wagering": "Check live terms, spins-heavy package",
+      "wagering": "Check live terms",
       "kyc": "Verification can be required",
       "geo": "Restricted in some markets",
       "angle": "Best spins package in the current set",
       "url": "https://bzstarz1.com/bh0uaimdh",
       "isAffiliate": true,
       "source_url": "https://www.bitstarz.com/bonuses",
-      "source_last_checked": "2026-07-13",
-      "source_status": "manual_review",
-      "source_monitor": "manual"
+      "source_last_checked": "2026-10-28",
+      "source_status": "browser_verified",
+      "source_monitor": "manual",
+      "source_terms": [
+        "100% bonus + 180 Free Spins",
+        "€400 or 4 BTC"
+      ],
+      "source_note": "Browser check 2026-10-28 of official page: \"Welcome Package – Receive a 100% bonus + 180 Free Spins on your first deposit. Get up to €400 or 4 BTC on your next three deposits\"; home banner \"Get $500 or 5BTC+ 180 Free Spins\". Terms page not read. Previously tracked: 100% up to 1 BTC + 180 free spins + 20 no-deposit spins."
     },
     {
       "casino": "Cloudbet",
       "offer": "Welcome Package up to $2,500",
       "promoCode": "Check live",
-      "wagering": "Check live terms",
+      "wagering": "Official page footer says \"no rollovers on rewards\". The terms page did not load on 28 Oct 2026, so minimum deposit and eligible countries are unverified. Check live terms.",
       "kyc": "Low-KYC feel, but verification can still happen",
       "geo": "VPN-friendly in many markets",
       "angle": "Big BTC-denominated offer, sportsbook-first brand",
@@ -153,12 +169,15 @@
       "source_last_checked": "2026-10-28",
       "source_status": "verified",
       "source_monitor": "auto",
-      "source_terms": ["Welcome Package", "$2,500"],
-      "source_note": "Official welcome-package page checked 2026-10-28: 30-day Welcome Package, up to $2,500 in cash rewards (casino rakeback 10% of house edge, daily casino cash drops, weekly sports cash drops), Cash Vault on top paid at day 30, activates automatically on first deposit, valid 30 days from first deposit or until the $2,500 cap. Formal wagering/eligibility terms page did not render without a browser."
+      "source_terms": [
+        "Welcome Package",
+        "$2,500"
+      ],
+      "source_note": "Official welcome-package page checked 2026-10-28: 30-day Welcome Package, up to $2,500 in cash rewards (casino rakeback 10% of house edge, daily casino cash drops, weekly sports cash drops), Cash Vault on top paid at day 30, activates automatically on first deposit, valid 30 days from first deposit or until the $2,500 cap. Formal wagering/eligibility terms page did not render without a browser. Browser check 2026-10-28 confirmed on the main page FAQ: valid 30 days from first deposit or until the $2,500 cap; Vault on top of the $2,500; auto-activates on first deposit; one-time; footer \"no rollovers on rewards\". Terms page (/welcome-package/terms) showed \"An error occurred\": minimum deposit and restricted countries unverified."
     },
     {
       "casino": "TrustDice",
-      "offer": "3 BTC + 25 free spins",
+      "offer": "500% welcome bonus up to $90,000 + 100 free spins",
       "promoCode": "Check live",
       "wagering": "Check live terms",
       "kyc": "No KYC",
@@ -166,14 +185,19 @@
       "angle": "Best anonymity / Web3-native pitch",
       "url": "https://trustdice.win/?ref=u_cryptocasinosorted",
       "isAffiliate": true,
-      "source_url": "https://trustdice.win/promotions",
-      "source_last_checked": "2026-07-13",
-      "source_status": "manual_review",
-      "source_monitor": "manual"
+      "source_url": "https://trustdice.win/bonus",
+      "source_last_checked": "2026-10-28",
+      "source_status": "browser_verified",
+      "source_monitor": "manual",
+      "source_terms": [
+        "500% WELCOME BONUS UP TO $90,000",
+        "100 FREE SPINS"
+      ],
+      "source_note": "Browser check 2026-10-28 of official page: \"500% WELCOME BONUS UP TO $90,000 + 100 FREE SPINS\", staged over deposits; /bonus-terms not read. Previously tracked: 3 BTC + 25 free spins."
     },
     {
       "casino": "Thunderpick",
-      "offer": "500% up to $2,000",
+      "offer": "100% deposit bonus up to €600",
       "promoCode": "Check live",
       "wagering": "Check live terms",
       "kyc": "Optional KYC",
@@ -182,13 +206,17 @@
       "url": "https://thunderpick.io/?ref=cryptocasinosorted",
       "isAffiliate": true,
       "source_url": "https://thunderpick.io/promotions",
-      "source_last_checked": "2026-07-13",
-      "source_status": "manual_review",
-      "source_monitor": "manual"
+      "source_last_checked": "2026-10-28",
+      "source_status": "browser_verified",
+      "source_monitor": "manual",
+      "source_terms": [
+        "100% Deposit Bonus up to €600"
+      ],
+      "source_note": "Browser check 2026-10-28 of official page: \"Claim Your 100% Deposit Bonus up to €600\" on the official Thunderpick site (exact page path not recorded); site also showed \"Thunderpick is currently not available in your country\". Previously tracked: 500% up to $2,000."
     },
     {
       "casino": "21.com",
-      "offer": "Indexed official headline: up to $7,000 + 130 free spins across 4 deposits",
+      "offer": "Up to $5,000 + 100 free spins on your first 4 deposits",
       "promoCode": "No code shown",
       "wagering": "40x bonus within 7 days; maximum return capped at 10x the bonus",
       "kyc": "Email or mobile verification required for the promotion; further verification may apply",
@@ -199,11 +227,8 @@
       "isAffiliate": true,
       "source_url": "https://21.com/promotions/welcome-offer",
       "source_terms": [
-        "Your Welcome Package",
-        "Up to $7,000",
-        "130 Free Spins",
-        "1st Deposit",
-        "4th Deposit"
+        "Up to $5.000",
+        "100 Free Spins"
       ],
       "breakdown": [
         "Fresh indexed official headline says up to $7,000 + 130 free spins across the first 4 deposits",
@@ -220,10 +245,11 @@
         "gameType": "96.0"
       },
       "sourceChecked": "2026-06-25",
-      "source_last_checked": "2026-08-22",
+      "source_last_checked": "2026-10-28",
       "source_terms_hash": "b152b3e02140d3a4",
-      "source_status": "indexed_snippet_cloudflare_blocked",
-      "source_monitor": "manual"
+      "source_status": "browser_verified",
+      "source_monitor": "manual",
+      "source_note": "Browser check 2026-10-28 of official page: \"START GREAT Up to $5.000 + 100 Free Spins on your first 4 deposits\"; also \"$15 FREE BONUS UP TO $30.000!\", \"20% CASH BACK Every day. On your first week\", sports \"up to $500 50% Sports Bonus\". Overlay \"21.com not available from South Africa\". Supersedes the 22 Aug 2026 indexed snippet ($7,000 + 130 free spins)."
     }
   ]
 }

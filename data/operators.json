@@ -34,7 +34,7 @@
       "reward_page_url": "https://xtp.com/promotions",
       "reward_page_label": "XTP promotions / rewards route",
       "affiliate_url": "https://xtp.com/signup?utm_source=cryptocasinosorted-98659&utm_content=avoiqtyydnxbkxfglxzeifcybjs&utm_medium=none&utm_campaign=N_F-0&signupCode=CCS200",
-      "offer_summary": "20% ongoing cash cashback, credited via cashback mailer/reminder. Current CryptoCasinoSorted signup code CCS200 gives a 200% deposit match up to $1,000 plus 100 free spins; verify playthrough, caps, max-bet rules and expiry before claiming.",
+      "offer_summary": "20% ongoing cash cashback, credited via cashback mailer/reminder. No welcome offer listed: the official promotions page said \"There are no active promotions right now.\" on 28 Oct 2026 (CCS200 signup code still applies to the tracked link).",
       "reset_behaviour": "Lifetime weighted XP never decreases; top two tiers need trailing activity to hold.",
       "vip_host_entry": "Host chat at Silver; dedicated host at Gold.",
       "transparency": 54,
@@ -46,7 +46,10 @@
       "source_url": "https://xtp.com/",
       "source_last_checked": "2026-10-23",
       "source_status": "official_html_rechecked",
-      "source_monitor": "manual"
+      "source_monitor": "manual",
+      "welcome_source_url": "https://xtp.com/promotions",
+      "welcome_checked": "2026-10-28",
+      "welcome_status": "no_current_offer"
     },
     {
       "id": "stake",
@@ -83,7 +86,9 @@
       "source_url": "https://stake.com/vip-club",
       "source_last_checked": "2026-07-26",
       "source_status": "indexed_snippet_plus_cloudflare_blocked",
-      "source_monitor": "manual"
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_browser_note": "stake.com/vip-club confirms tiers Bronze $10k, Silver $50k, Gold $100k, Platinum I-III $250k-$2.5M, Platinum IV-VI $2.5M-$25M, Diamond $25M wagered and \"instantly withdrawable bonuses without any strings attached\"; no percentages stated, so the 5% model is not re-verified."
     },
     {
       "id": "rollbit",
@@ -121,7 +126,9 @@
       "source_url": "https://rollbit.com/rewards",
       "source_last_checked": "2026-09-12",
       "source_status": "official_blog_markdown_whitepaper_verified_app_blocked",
-      "source_monitor": "manual"
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_browser_note": "/rewards is a login wall; page title only says \"Up to 70% Rewards, Instant Rakeback\". Not re-verified."
     },
     {
       "id": "roobet",
@@ -238,7 +245,9 @@
       "source_last_checked": "2026-09-23",
       "source_terms_hash": "6f6621919ee6810b",
       "source_status": "manual_verified",
-      "source_monitor": "manual"
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_browser_note": "thrill.com/rewards and /promotions return 404; rewards help collection https://intercom.help/thrill/en/collections/13566255-rewards (not read). Not re-verified."
     },
     {
       "id": "yeet",
@@ -279,7 +288,9 @@
       "source_last_checked": "2026-07-15",
       "source_terms_hash": "c5137050c46da83a",
       "source_status": "manual_verified",
-      "source_monitor": "manual"
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_browser_note": "/rewards tier thresholds Copper $100 to Eternal $250M and Chairman invite-only match; Instant Rakeback row shows \"10%\" but per-tier values were not readable, so 5%/10% split not re-verified."
     },
     {
       "id": "duel",
@@ -391,7 +402,7 @@
       "reward_page_url": "https://21.com/vip",
       "reward_page_label": "21 Elite Club",
       "affiliate_url": "https://prod.trk21.com/click?offer=FFHCFKXMZW2H&uid=fN3MmG6q",
-      "offer_summary": "Elite Club shows Bronze from $25+, Silver from $6,000+, Gold from $120,000+, Platinum from $2.4M+, Diamond from $60M+, and invitation-only Elite. A 22 Aug 2026 indexed official welcome-offer snippet now says the current package is up to $7,000 plus 130 free spins across the first four deposits, but direct route fetches returned Cloudflare challenge pages.",
+      "offer_summary": "Elite Club shows Bronze from $25+, Silver from $6,000+, Gold from $120,000+, Platinum from $2.4M+, Diamond from $60M+, and invitation-only Elite. A 28 Oct 2026 browser check of the official site showed \"Up to $5.000 + 100 Free Spins on your first 4 deposits\" and VIP rakeback of Bronze up to 4%, Silver 7%, Gold 10%, Platinum 13%, Diamond 20%, Elite (invite) 25%.",
       "reset_behaviour": "VIP points and downgrade rules are not clearly published on the public page.",
       "vip_host_entry": "Gold I-IV and above show dedicated VIP host and VIP host bonuses.",
       "transparency": 76,
@@ -414,7 +425,8 @@
       "source_last_checked": "2026-08-22",
       "source_terms_hash": "e91a9ec7d13bc8fb",
       "source_status": "indexed_snippet_cloudflare_blocked",
-      "source_monitor": "manual"
+      "source_monitor": "manual",
+      "source_note": "Browser check 2026-10-28 read welcome and VIP rakeback figures; tier thresholds not re-read. Site showed \"21.com not available from South Africa\"."
     },
     {
       "id": "betfury",
@@ -493,7 +505,9 @@
       "source_url": "https://rainbet.com/rewards",
       "source_last_checked": "2026-08-17",
       "source_status": "manual_review_cloudflare_challenge_rechecked",
-      "source_monitor": "manual"
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_browser_note": "/rewards lists Rakeback, Daily, Weekly, Pre-Monthly (Silver+), Monthly with no percentages; games showed \"Not available in your region\"."
     },
     {
       "id": "goated",
@@ -609,7 +623,9 @@
       "source_url": "https://acebet.co/rewards",
       "source_last_checked": "2026-09-08",
       "source_status": "manual_rechecked_indexed_official_snippets_cloudflare_blocked",
-      "source_monitor": "manual"
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_browser_note": "acebet.com redirects to https://acebet.co/; /promotions is 404; banner \"WELCOME \u2013 CLAIM 20 FREE SPINS AND DEPOSIT BONUS\" (no amounts or terms). Not re-verified."
     },
     {
       "id": "gamba",
@@ -851,7 +867,9 @@
       "source_url": "https://duelbits.com/blog/guide/how-does-duelbits-rakeback-work/",
       "source_last_checked": "2026-08-13",
       "source_status": "archived_manual_verified_plus_current_route_blocked",
-      "source_monitor": "manual"
+      "source_monitor": "manual",
+      "source_browser_attempt": "2026-10-28",
+      "source_browser_note": "duelbits.com showed \"not available from your region\" and redirects to duelbits.io; VIP page says rakeback \"with no wagering requirements\" from day one but also that VIP Club is invitation-only."
     },
     {
       "id": "cloudbet",

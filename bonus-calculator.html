@@ -315,18 +315,18 @@
     </div>
 
     <div class="presets" id="offerPresets">
-      <span class="preset-static">XTP: CCS200 gives a 200% deposit match up to $1,000 + 100 free spins</span>
-      <span class="preset-static">Stake: 200% up to $1,000</span>
+      <span class="preset-static">XTP: no active promotions listed on the official promotions page (checked 28 Oct 2026)</span>
+      <span class="preset-static">Stake: no welcome offer listed (checked 28 Oct 2026)</span>
       <span class="preset-static">BC.Game: 300% up to $20,000</span>
       <span class="preset-static">Shuffle: 200% up to $500</span>
-      <span class="preset-static">Rollbit: 150% up to $2,500</span>
+      <span class="preset-static">Rollbit: no welcome offer listed (checked 28 Oct 2026)</span>
       <span class="preset-static">Roobet: 100% up to $200</span>
       <span class="preset-static">Duelbits: 100% up to $500 + 100 free spins</span>
       <span class="preset-static">Yeet: Welcome bonus + VIP tier matching</span>
-      <span class="preset-static">BitStarz: 100% up to 1 BTC + 180 free spins + 20 no-deposit spins</span>
+      <span class="preset-static">BitStarz: 100% bonus + 180 free spins on first deposit, then up to €400 or 4 BTC on the next three deposits</span>
       <span class="preset-static">Cloudbet: Welcome Package up to $2,500 (30-day cash rewards, not a deposit match, so not modelled here)</span>
-      <span class="preset-static">TrustDice: 3 BTC + 25 free spins</span>
-      <span class="preset-static">Thunderpick: 500% up to $2,000</span>
+      <span class="preset-static">TrustDice: 500% welcome bonus up to $90,000 + 100 free spins</span>
+      <span class="preset-static">Thunderpick: 100% deposit bonus up to €600</span>
       <span class="preset-static">21.com: Up to $5,000 + 100 free spins across 4 deposits</span>
     </div>
     <div class="offer-context" id="offerContext"></div>
@@ -591,6 +591,9 @@
         : '';
       const statusLabel = {
         verified: 'Verified offer',
+        browser_verified: 'Browser-checked offer',
+        unverifiable: 'Unverified (needs manual recheck)',
+        no_current_offer: 'No current offer listed',
         live_researched: 'Live researched offer'
       }[item.source_status] || 'Researched offer';
       const source = item.source_url ? `<span class="source-line">Source: <a href="${item.source_url}" target="_blank" rel="nofollow noopener">${item.source_url}</a> | Checked: ${item.source_last_checked || item.sourceChecked || 'manual'}</span>` : '';

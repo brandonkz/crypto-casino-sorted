@@ -6,7 +6,7 @@
     "url": "https://stake.com",
     "ref_url": "https://stake.com/?c=OYTAREab",
     "description": "The world's largest crypto casino with instant withdrawals, provably fair games, and 20+ cryptocurrencies. No KYC required.",
-    "bonus": "200% up to $1,000",
+    "bonus": "No welcome offer listed (checked 28 Oct 2026)",
     "bonus_code": "CRYPTO200",
     "has_token": true,
     "token_symbol": "STAKE",
@@ -66,7 +66,9 @@
       "praise": "Instant withdrawals, reliable platform",
       "complaints": "VPN detection, support delays"
     },
-    "telegram": "https://t.me/StakeCasino"
+    "telegram": "https://t.me/StakeCasino",
+    "bonus_source_url": "https://stake.com/promotions",
+    "bonus_checked": "2026-10-28"
   },
   {
     "id": 2,
@@ -132,7 +134,9 @@
       "praise": "150+ cryptos, low minimum ($1)",
       "complaints": "Cluttered UI, slow support"
     },
-    "telegram": "https://t.me/BCGameOfficial"
+    "telegram": "https://t.me/BCGameOfficial",
+    "bonus_status": "unverifiable",
+    "bonus_browser_attempt": "2026-10-28"
   },
   {
     "id": 3,
@@ -141,7 +145,7 @@
     "url": "https://rollbit.com",
     "ref_url": "https://rollbit.com/referral/brandonkz",
     "description": "High-volume crypto casino and sportsbook. Clean interface, fast payouts, and competitive odds. NFT rewards program.",
-    "bonus": "150% up to $2,500",
+    "bonus": "No welcome offer listed (checked 28 Oct 2026)",
     "bonus_code": "ROLL150",
     "has_token": true,
     "token_symbol": "RLB",
@@ -197,7 +201,9 @@
       "praise": "Clean interface, NFT rewards",
       "complaints": "KYC required, geo-restricted"
     },
-    "telegram": "https://t.me/rollaboratory"
+    "telegram": "https://t.me/rollaboratory",
+    "bonus_source_url": "https://rollbit.com/",
+    "bonus_checked": "2026-10-28"
   },
   {
     "id": 4,
@@ -257,7 +263,9 @@
       "praise": "Excellent UX, strong brand",
       "complaints": "KYC required, geo-blocked"
     },
-    "telegram": "https://t.me/roobetofficial"
+    "telegram": "https://t.me/roobetofficial",
+    "bonus_status": "unverifiable",
+    "bonus_browser_attempt": "2026-10-28"
   },
   {
     "id": 5,
@@ -266,7 +274,7 @@
     "url": "https://bitstarz.com",
     "ref_url": "https://bzstarz1.com/byfqnneyj",
     "description": "Established hybrid casino accepting both crypto and fiat. Award-winning platform with 3,000+ games.",
-    "bonus": "100% up to $500 + 180 free spins",
+    "bonus": "100% bonus + 180 free spins on first deposit, then up to €400 or 4 BTC on the next three deposits",
     "bonus_code": "BITSTARZ",
     "accepted_coins": [
       "BTC",
@@ -311,7 +319,9 @@
     "reddit_quotes": [
       "Trusted by the crypto gambling community"
     ],
-    "telegram": "https://t.me/bitstarz"
+    "telegram": "https://t.me/bitstarz",
+    "bonus_source_url": "https://www.bitstarz.com/bonuses",
+    "bonus_checked": "2026-10-28"
   },
   {
     "id": 6,
@@ -428,7 +438,9 @@
       "praise": "Modern design, instant withdrawals",
       "complaints": "New platform, smaller library"
     },
-    "telegram": "https://t.me/shufflecom"
+    "telegram": "https://t.me/shufflecom",
+    "bonus_status": "unverifiable",
+    "bonus_browser_attempt": "2026-10-28"
   },
   {
     "id": 8,
@@ -493,7 +505,9 @@
       "praise": "Strong eSports, VPN-friendly",
       "complaints": "Confusing UI, support delays"
     },
-    "telegram": "https://t.me/Duelbits"
+    "telegram": "https://t.me/Duelbits",
+    "bonus_status": "unverifiable",
+    "bonus_browser_attempt": "2026-10-28"
   },
   {
     "id": 9,
@@ -1062,7 +1076,9 @@
       "\"No KYC required to deposit or withdraw up to $10,000 USD worth of crypto\"",
       "\"Yeet was founded by well-known crypto influencers Keyboard Monkey, Mando, and professional poker player Ben Lamb\""
     ],
-    "telegram": ""
+    "telegram": "",
+    "bonus_status": "unverifiable",
+    "bonus_browser_attempt": "2026-10-28"
   },
   {
     "id": 19,
@@ -1185,7 +1201,7 @@
     "url": "https://trustdice.win",
     "ref_url": "https://trustdice.win/?ref=u_cryptocasinosorted",
     "description": "No KYC crypto casino with instant withdrawals, provably fair games, and seamless Web3 integration. Built for anonymity and speed.",
-    "bonus": "3 BTC + 25 Free Spins",
+    "bonus": "500% welcome bonus up to $90,000 + 100 free spins",
     "bonus_code": "TRUST3BTC",
     "has_token": true,
     "token_symbol": "TXT",
@@ -1245,7 +1261,9 @@
       "praise": "Instant withdrawals, no KYC, transparent provably fair",
       "complaints": "High bonus wagering (60x), occasional KYC on large amounts"
     },
-    "telegram": "https://t.me/trustdice"
+    "telegram": "https://t.me/trustdice",
+    "bonus_source_url": "https://trustdice.win/bonus",
+    "bonus_checked": "2026-10-28"
   },
   {
     "id": 22,
@@ -1254,7 +1272,7 @@
     "url": "https://thunderpick.io",
     "ref_url": "https://thunderpick.io/?ref=cryptocasinosorted",
     "description": "Esports-focused crypto casino with CS2, Dota 2, LoL, and VALORANT betting. 4000+ casino games plus comprehensive sports betting.",
-    "bonus": "500% up to €/$2,000",
+    "bonus": "100% deposit bonus up to €600",
     "bonus_code": "THUNDER500",
     "has_token": false,
     "accepted_coins": [
@@ -1310,6 +1328,8 @@
       "praise": "Best esports coverage, active tournaments, good community",
       "complaints": "Withdrawal speed slower than competitors, higher minimums"
     },
-    "telegram": ""
+    "telegram": "",
+    "bonus_source_url": "https://thunderpick.io/promotions",
+    "bonus_checked": "2026-10-28"
   }
 ]

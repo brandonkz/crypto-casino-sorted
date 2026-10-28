@@ -31,3 +31,6 @@ Some casino pages block GitHub Actions / plain fetch requests or render importan
 - Fail the run and open/update an `Offer check: N sources need review (date)` issue: **offer terms changed** (a tracked `source_terms` phrase is gone), **dead URL** (404/410), **missing source**.
 - Listed only, never fail on their own: **bot block** (403/429/503 or a challenge page), **fetch error**, **manual recheck due** (manual sources older than 30 days), **page changed** (whole-page hash moved but no offer terms are tracked).
 - Track offers with `source_terms` phrases copied from the official page; whole-page hashes on help centres change constantly and are not a reliable signal.
+- `source_status: "unverifiable"` (manual sources): a browser check could not see the offer (login wall, SPA, "not shown"). Listed as **Unverifiable**, never counted as OK, regardless of `source_last_checked`. `source_browser_attempt` records the attempt date.
+- `source_status: "no_current_offer"`: the official page showed no welcome offer (or the tracked one was gone). Listed as **No current offer listed**, never counted as OK.
+- `source_status: "browser_verified"`: offer wording copied from the official page in a manual browser check; ages into **Manual recheck due** after 30 days.

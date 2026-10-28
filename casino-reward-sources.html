@@ -353,7 +353,7 @@
           <h3 class="source-name">21.com</h3>
           <div class="source-type">Welcome offer source</div>
         </div>
-        <p>Indexed official welcome-offer snippet now says up to $7,000 in bonuses plus 130 free spins across the first 4 deposits. Direct welcome-offer route fetch returned Cloudflare challenge content on 22 Aug 2026, so the older $5,000 / 100 free-spins deposit-by-deposit breakdown should be treated as historical until the current split is readable again · indexed_snippet_cloudflare_blocked · 2026-08-22</p>
+        <p>Browser check of the official site on 28 Oct 2026: "START GREAT Up to $5.000 + 100 Free Spins on your first 4 deposits"; also "$15 FREE BONUS UP TO $30.000!", "20% CASH BACK Every day. On your first week" and a sports "up to $500 50% Sports Bonus". VIP rakeback shown as Bronze up to 4%, Silver 7%, Gold 10%, Platinum 13%, Diamond 20%, Elite (invite) 25%. The site showed "21.com not available from South Africa" on that check. The 22 Aug 2026 indexed snippet ($7,000 + 130 free spins) is superseded · browser_checked · 2026-10-28</p>
         <a href="https://21.com/promotions/welcome-offer" target="_blank" rel="nofollow noopener">Welcome offer source</a>
       </article>
       <article class="source-card" id="rainbet">
@@ -598,11 +598,14 @@
     }
 
     function statusText(status) {
+      if (status === 'unverifiable') return 'Unverifiable (needs manual recheck)';
+      if (status === 'no_current_offer') return 'No current offer listed';
+      if (status === 'browser_verified') return 'Browser checked';
       return status === 'manual_verified' ? 'Manual verified' : status === 'verified' ? 'Verified' : 'Manual review';
     }
 
     function statusClass(status) {
-      return ['verified', 'manual_verified'].includes(status) ? 'verified' : '';
+      return ['verified', 'manual_verified', 'browser_verified'].includes(status) ? 'verified' : '';
     }
 
     async function loadSources() {
