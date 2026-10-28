@@ -25,3 +25,9 @@ The verifier intentionally exits non-zero when a source changed, is stale, canno
 ## Known limits
 
 Some casino pages block GitHub Actions / plain fetch requests or render important terms client-side. Those require manual browser checks, then a baseline refresh once the data is confirmed.
+
+## Statuses (since 2026-10-28)
+
+- Fail the run and open/update an `Offer check: N sources need review (date)` issue: **offer terms changed** (a tracked `source_terms` phrase is gone), **dead URL** (404/410), **missing source**.
+- Listed only, never fail on their own: **bot block** (403/429/503 or a challenge page), **fetch error**, **manual recheck due** (manual sources older than 30 days), **page changed** (whole-page hash moved but no offer terms are tracked).
+- Track offers with `source_terms` phrases copied from the official page; whole-page hashes on help centres change constantly and are not a reliable signal.

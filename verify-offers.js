@@ -22,7 +22,7 @@ function readJson(path) {
 }
 
 function writeJson(path, value) {
-  fs.writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
+  fs.writeFileSync(path, `${JSON.stringify(value, null, 2).replace(/[\u007f-\uffff]/g, (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, "0")}`)}\n`);
 }
 
 function hashText(text) {
@@ -147,60 +147,101 @@ function sourceEntries(operatorsData, offersData) {
   return entries;
 }
 
-async function fetchSource(url) {
+const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
+const BLOCK_STATUSES = new Set([401, 403, 406, 429, 451, 503]);
+const DEAD_STATUSES = new Set([404, 410]);
+
+function looksLikeBotWall(raw) {
+  return /<title>\s*(just a moment|attention required|access denied|403 forbidden)/i.test(raw)
+    || /<form[^>]+challenge-form|cf_chl_opt\s*=/i.test(raw);
+}
+
+function looksLikeSoftNotFound(raw) {
+  return /page not found|cannot get \//i.test(raw.slice(0, 400000));
+}
+
+async function fetchOnce(url) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 20000);
+  const timeout = setTimeout(() => controller.abort(), 25000);
   try {
     const response = await fetch(url, {
       signal: controller.signal,
       redirect: 'follow',
       headers: {
-        'user-agent': 'CryptoCasinoSorted offer verifier (+https://cryptocasinosorted.com/casino-reward-sources.html)',
-        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,text/plain;q=0.8,*/*;q=0.7',
+        'user-agent': BROWSER_UA,
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'accept-language': 'en-US,en;q=0.9',
       },
     });
-    const body = await response.text();
-    return {
-      ok: response.ok,
-      status: response.status,
-      finalUrl: response.url,
-      text: normalizeText(body),
-    };
+    const raw = await response.text();
+    return { ok: response.ok, status: response.status, finalUrl: response.url, raw, text: normalizeText(raw) };
   } finally {
     clearTimeout(timeout);
   }
 }
 
+async function fetchSource(url, attempts = 3) {
+  let last;
+  for (let i = 0; i < attempts; i += 1) {
+    try {
+      last = await fetchOnce(url);
+      // Success, a hard 404/410 or a bot wall will not change on retry.
+      if (last.ok || DEAD_STATUSES.has(last.status) || looksLikeBotWall(last.raw)) break;
+    } catch (error) {
+      last = { error };
+    }
+    await new Promise((r) => setTimeout(r, 1500 * (i + 1)));
+  }
+  if (last.error) throw last.error;
+  last.blocked = BLOCK_STATUSES.has(last.status) || looksLikeBotWall(last.raw);
+  last.dead = DEAD_STATUSES.has(last.status) && !last.blocked;
+  return last;
+}
+
+// Statuses that are real offer problems and should make the run loud.
+const ACTIONABLE = new Set(['source_terms_missing', 'source_dead', 'missing_source']);
+// Statuses worth listing but that must not fail the run on their own.
+const INFORMATIONAL = new Set(['blocked', 'fetch_failed', 'manual_due', 'content_drift', 'missing_baseline']);
+
 function classify(entry, fetched) {
   if (!entry.url) return 'missing_source';
+  if (fetched.blocked) return 'blocked';
+  if (fetched.dead) return 'source_dead';
   if (!fetched.ok) return 'fetch_failed';
-  if (entry.missingTerms && entry.missingTerms.length) return 'source_terms_missing';
+  // Compare the offer terms themselves when we have them: that is the real signal.
+  if (entry.requiredTerms && entry.requiredTerms.length) {
+    return entry.missingTerms.length ? 'source_terms_missing' : 'ok';
+  }
+  // Without terms, a whole-page hash change is usually help-centre/CMS churn, not an offer change.
   if (!entry.object.source_terms_hash) return 'missing_baseline';
-  if (entry.object.source_terms_hash !== fetched.hash) return 'source_changed';
-  if (ageDays(entry.object.source_last_checked) > maxAgeDays) return 'stale';
+  if (entry.object.source_terms_hash !== fetched.hash) return 'content_drift';
   return 'ok';
 }
 
 function rowStatus(status) {
   return {
     ok: '✅ OK',
-    stale: '⚠️ Stale',
-    source_changed: '🚨 Changed',
+    manual_due: '🕒 Manual recheck due',
+    content_drift: 'ℹ️ Page changed (no offer terms tracked)',
     missing_baseline: '⚠️ Missing baseline',
-    fetch_failed: '⚠️ Fetch failed',
-    missing_source: '⚠️ Missing source',
-    source_terms_missing: '🚨 Terms missing',
+    fetch_failed: '⚠️ Unverifiable (fetch error)',
+    blocked: '🛡️ Unverifiable (bot block)',
+    source_dead: '🚨 Dead URL',
+    missing_source: '🚨 Missing source',
+    source_terms_missing: '🚨 Offer terms changed',
   }[status] || status;
 }
 
 function markdownReport(results) {
-  const needsReview = results.filter((item) => item.status !== 'ok');
+  const actionable = results.filter((item) => ACTIONABLE.has(item.status));
+  const info = results.filter((item) => INFORMATIONAL.has(item.status));
   const lines = [];
   lines.push(`# Reward offer source verification`);
   lines.push('');
   lines.push(`Run date: ${today}`);
   lines.push(`Max source age: ${maxAgeDays} days`);
-  lines.push(`Result: ${needsReview.length ? `${needsReview.length} item(s) need review` : 'all monitored sources OK'}`);
+  lines.push(`Result: ${actionable.length} source(s) need review (changed offer terms, dead or missing URL); ${info.length} unverifiable or due a manual recheck; ${results.length - actionable.length - info.length} OK`);
+  lines.push(`ACTIONABLE_COUNT=${actionable.length}`);
   lines.push('');
   lines.push(`| Status | Type | Casino | Source | Notes |`);
   lines.push(`|---|---|---|---|---|`);
@@ -244,8 +285,18 @@ async function main() {
     }
 
     if (entry.monitor === 'manual') {
-      result.status = ageDays(entry.object.source_last_checked) > maxAgeDays ? 'stale' : 'ok';
+      // Manual sources are JS-rendered or bot-walled; a script cannot re-verify them,
+      // so age is a reminder, not a failure.
+      result.status = ageDays(entry.object.source_last_checked) > maxAgeDays ? 'manual_due' : 'ok';
       result.manual = true;
+      // Still confirm the URL exists: a 404 is a real problem even when content needs a human.
+      try {
+        const probe = await fetchSource(entry.url, 2);
+        result.httpStatus = probe.status;
+        if (probe.dead) result.status = 'source_dead';
+      } catch (error) {
+        result.error = error.name === 'AbortError' ? 'request timed out' : error.message;
+      }
       results.push(result);
       continue;
     }
@@ -264,8 +315,9 @@ async function main() {
       result.hashChanged = Boolean(entry.object.source_terms_hash && entry.object.source_terms_hash !== fetched.hash);
       result.missingTerms = entry.missingTerms;
       result.status = classify(entry, fetched);
+      if (result.status === 'ok') result.age = 0;
 
-      if (updateBaseline && fetched.ok) {
+      if (updateBaseline && fetched.ok && !fetched.blocked && result.status !== 'source_terms_missing') {
         entry.object.source_url = entry.url;
         entry.object.source_last_checked = today;
         entry.object.source_terms_hash = fetched.hash;
@@ -297,8 +349,8 @@ async function main() {
     console.log(report);
   }
 
-  const needsReview = results.some((item) => item.status !== 'ok');
-  if (needsReview && !updateBaseline) process.exitCode = 1;
+  const actionableCount = results.filter((item) => ACTIONABLE.has(item.status)).length;
+  if (actionableCount && !updateBaseline) process.exitCode = 1;
 }
 
 main().catch((error) => {

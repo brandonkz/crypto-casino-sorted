@@ -27,43 +27,55 @@ jobs:
           set +e
           node verify-offers.js --report=offer-verification-report.md
           status=$?
-          if [ -f offer-verification-report.md ]; then
-            if [ "$status" -ne 0 ]; then
-              echo "review_needed=true" >> "$GITHUB_OUTPUT"
-            fi
-            exit 0
+          set -e
+          if [ ! -f offer-verification-report.md ]; then
+            echo "Checker crashed before writing a report" >&2
+            exit "${status:-1}"
           fi
-          exit "$status"
+          count=$(grep -oP '^ACTIONABLE_COUNT=\K[0-9]+' offer-verification-report.md || echo 0)
+          echo "actionable=$count" >> "$GITHUB_OUTPUT"
+          {
+            echo "## Offer check: $count source(s) need review"
+            echo
+            echo "Only changed offer terms, dead URLs and missing sources count. Bot-blocked pages and manual rechecks are listed but do not fail the run."
+            echo
+            cat offer-verification-report.md
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Open or update review issue
-        if: steps.verify.outputs.review_needed == 'true'
+        if: always() && steps.verify.outputs.actionable != ''
         uses: actions/github-script@v7
+        env:
+          ACTIONABLE: ${{ steps.verify.outputs.actionable }}
         with:
           script: |
             const fs = require('fs');
+            const count = Number(process.env.ACTIONABLE || 0);
             const report = fs.readFileSync('offer-verification-report.md', 'utf8');
-            const title = '[Offer verification] Reward source review needed';
+            const date = new Date().toISOString().slice(0, 10);
+            const prefix = 'Offer check:';
             const { owner, repo } = context.repo;
-            const { data: issues } = await github.rest.issues.listForRepo({
-              owner,
-              repo,
-              state: 'open',
-              per_page: 100
-            });
-            const existing = issues.find((issue) => issue.title === title && !issue.pull_request);
-            const body = `${report}\n\nWorkflow run: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
-            if (existing) {
-              await github.rest.issues.update({
-                owner,
-                repo,
-                issue_number: existing.number,
-                body
-              });
-            } else {
-              await github.rest.issues.create({
-                owner,
-                repo,
-                title,
-                body
-              });
+            const runUrl = `${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
+            const issues = await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'open', per_page: 100 });
+            const existing = issues.find((i) => !i.pull_request && i.title.startsWith(prefix));
+            if (count === 0) {
+              if (existing) {
+                await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body: `All monitored sources OK or only unverifiable on ${date}. Closing.\n\n${runUrl}` });
+                await github.rest.issues.update({ owner, repo, issue_number: existing.number, state: 'closed' });
+              }
+              return;
             }
+            const title = `${prefix} ${count} source${count === 1 ? '' : 's'} need review (${date})`;
+            const body = `${report}\n\nWorkflow run: ${runUrl}`;
+            if (existing) {
+              await github.rest.issues.update({ owner, repo, issue_number: existing.number, title, body });
+              await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body: `${title}\n\n${runUrl}` });
+            } else {
+              await github.rest.issues.create({ owner, repo, title, body });
+            }
+
+      - name: Fail when real offer problems exist
+        if: steps.verify.outputs.actionable != '' && steps.verify.outputs.actionable != '0'
+        run: |
+          echo "::error::${{ steps.verify.outputs.actionable }} offer source(s) have changed terms, dead URLs or missing sources"
+          exit 1
