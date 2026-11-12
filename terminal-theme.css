@@ -64,7 +64,8 @@ a:hover { color: #69f0ae; }
   background: rgba(4, 16, 38, 0.94);
   border-bottom: 1px solid var(--t-border);
   padding: 0 16px;
-  height: 36px;
+  height: auto;
+  min-height: 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -87,7 +88,10 @@ a:hover { color: #69f0ae; }
 .t-nav-links {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 16px;
+  row-gap: 4px;
 }
 .t-nav-links a {
   color: var(--t-dim);
