@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Casino Giveaways | CryptoCasinoSorted</title>
+  <meta name="description" content="Live crypto casino giveaways on X. Track prizes, hosts, entry steps, and active status across casino and streamer giveaways.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/giveaways.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', -apple-system, sans-serif;
+      background: #F3EFE8;
+      color: #000;
+      line-height: 1.3;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Paper texture */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.3;
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
+      padding-top: 20px;
+    }
+
+    .logo {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      transform: rotate(-2deg);
+    }
+
+    .logo a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 40px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #000;
+      text-decoration: none;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    nav a:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Page Header */
+    .page-header {
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .page-header-bg {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      width: 50%;
+      height: 350px;
+      background: #2D2BFF;
+      z-index: -1;
+      transform: rotate(1deg);
+    }
+
+    .page-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 6rem;
+      line-height: 0.85;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      max-width: 900px;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      max-width: 700px;
+      font-weight: 400;
+      margin-bottom: 32px;
+    }
+
+    /* Stats Row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border: 4px solid #000;
+      padding: 24px;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      opacity: 0.6;
+    }
+
+    .stat-value {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 3rem;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    /* Filters */
+    .filters-card {
+      background: #fff;
+      border: 5px solid #000;
+      padding: 32px 36px;
+      margin-bottom: 40px;
+    }
+
+    .filters-header {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .filter-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.6;
+    }
+
+    .filter-input,
+    .filter-select {
+      padding: 12px 16px;
+      border: 3px solid #000;
+      background: #F3EFE8;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .filter-input:focus,
+    .filter-select:focus {
+      outline: none;
+      border-color: #2D2BFF;
+    }
+
+    /* Giveaways Grid */
+    .giveaways-section {
+      margin-bottom: 80px;
+    }
+
+    .giveaways-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .giveaway-card {
+      background: #fff;
+      border: 4px solid #000;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .giveaway-card:hover {
+      transform: translateY(-4px);
+      border-color: #2D2BFF;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .casino-badge,
+    .status-badge {
+      padding: 6px 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 2px solid #000;
+    }
+
+    .casino-badge {
+      background: #2D2BFF;
+      color: #F3EFE8;
+    }
+
+    .status-badge {
+      white-space: nowrap;
+    }
+
+    .status-open {
+      background: #000;
+      color: #fff;
+    }
+
+    .status-ended {
+      background: #777;
+      color: #fff;
+    }
+
+    .status-live {
+      background: #00C853;
+      color: #000;
+    }
+
+    .prize {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.85rem;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+      word-break: break-word;
+    }
+
+    .host {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .host-name {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .host-type {
+      background: #F3EFE8;
+      border: 2px solid #000;
+      padding: 4px 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .steps {
+      margin: 0 0 24px 18px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .steps li {
+      margin-bottom: 6px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-top: 18px;
+      border-top: 3px solid #000;
+    }
+
+    .time-ago {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.65;
+    }
+
+    .enter-btn {
+      background: #000;
+      color: #F3EFE8;
+      border: 3px solid #000;
+      padding: 10px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .enter-btn:hover {
+      background: #2D2BFF;
+      color: #F3EFE8;
+    }
+
+    .footer-note {
+      background: #000;
+      color: #F3EFE8;
+      border: 5px solid #000;
+      padding: 28px 32px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 40px;
+      opacity: 0.6;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #F3EFE8;
+      padding: 48px 60px;
+      margin-top: 80px;
+      border-top: 6px solid #000;
+    }
+
+    .footer-content {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .footer-logo {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links a {
+      color: #F3EFE8;
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+    }
+
+    .footer-copyright {
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .page-title {
+        font-size: 4.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 24px 24px 60px;
+      }
+
+      .page-header {
+        margin-bottom: 40px;
+      }
+
+      .page-title {
+        font-size: 2.8rem;
+      }
+
+      .page-header-bg {
+        width: 90%;
+        height: 180px;
+        top: -20px;
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr;
+      }
+
+      .filters-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .giveaways-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        font-size: 0.75rem;
+        width: 100%;
+      }
+
+      .card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .enter-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      footer {
+        padding: 32px 28px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
+
+  <meta property="og:title" content="Crypto Casino Giveaways">
+  <meta property="og:description" content="Live crypto casino giveaways on X — updated throughout the day.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cryptocasinosorted.com/giveaways.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crypto Casino Giveaways">
+  <meta name="twitter:description" content="Live crypto casino giveaways on X — updated throughout the day.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1100439985778001"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo"><a href="/">CRYPTOCASINOSORTED</a></div>
+      <nav class="t-nav">
+    <a href="/" class="t-nav-logo">CryptoCasinoSorted</a>
+    <input type="checkbox" id="t-nav-toggle" class="t-nav-toggle" aria-label="Toggle navigation menu">
+    <label for="t-nav-toggle" class="t-nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+    <div class="t-nav-links">
+      <a href="/rewards-recommender.html" class="t-nav-primary">Rewards</a>
+      <a href="/rakeback-comparison.html">Rakeback</a>
+      <a href="/bonus-calculator.html">Bonus Calc</a>
+      <a href="/casino-reward-sources.html">Sources</a>
+      <a href="/reviews/">Reviews</a>
+      <a href="/blog/">Guides</a>
+      <a href="/giveaways.html">Giveaways</a>
+    </div>
+  </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-bg"></div>
+      <h1 class="page-title">GIVEAWAYS</h1>
+      <p class="page-subtitle">Live crypto casino giveaways on X — updated throughout the day</p>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">ACTIVE NOW</div>
+        <div class="stat-value" id="activeCount">...</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">TOTAL PRIZE POOL</div>
+        <div class="stat-value" id="prizePool">...</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">UPDATED</div>
+        <div class="stat-value" id="updatedAt">...</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-card">
+      <div class="filters-header">FILTERS <span style="color: #2D2BFF;" id="resultCount">(0 shown)</span></div>
+      <div class="filters-grid">
+        <div class="filter-group">
+          <label class="filter-label" for="searchInput">Search</label>
+          <input class="filter-input" id="searchInput" type="search" placeholder="Casino, host, prize...">
+        </div>
+        <div class="filter-group">
+          <label class="filter-label" for="casinoFilter">Casino</label>
+          <select class="filter-select" id="casinoFilter"></select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label" for="statusFilter">Status</label>
+          <select class="filter-select" id="statusFilter">
+            <option value="all">All</option>
+            <option value="open">Open</option>
+            <option value="ended">Ended</option>
+            <option value="live">Live</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label" for="typeFilter">Type</label>
+          <select class="filter-select" id="typeFilter">
+            <option value="all">All</option>
+            <option value="repost">Repost</option>
+            <option value="stream">Stream</option>
+            <option value="discord">Discord</option>
+            <option value="follow">Follow</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Giveaways Section -->
+    <div class="giveaways-section">
+      <div class="giveaways-grid" id="giveawayGrid"></div>
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <p>No matching giveaways found.</p>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      Data sourced from public X posts. We are not responsible for giveaway terms. Always verify on X before entering.
+    </div>
+  </div>
+
+  <script>
+    let allGiveaways = [];
+    let visibleGiveaways = [];
+
+    const els = {
+      activeCount: document.getElementById('activeCount'),
+      prizePool: document.getElementById('prizePool'),
+      updatedAt: document.getElementById('updatedAt'),
+      resultCount: document.getElementById('resultCount'),
+      searchInput: document.getElementById('searchInput'),
+      casinoFilter: document.getElementById('casinoFilter'),
+      statusFilter: document.getElementById('statusFilter'),
+      typeFilter: document.getElementById('typeFilter'),
+      giveawayGrid: document.getElementById('giveawayGrid'),
+      emptyState: document.getElementById('emptyState')
+    };
+
+    loadGiveaways();
+
+    async function loadGiveaways() {
+      try {
+        const res = await fetch('./data/giveaways.json');
+        if (!res.ok) throw new Error('Could not load giveaway data');
+        const payload = await res.json();
+        allGiveaways = Array.isArray(payload.giveaways) ? payload.giveaways : [];
+
+        hydrateSummary(payload);
+        hydrateFilters();
+        bindFilters();
+        applyFilters();
+      } catch (error) {
+        console.error(error);
+        els.giveawayGrid.innerHTML = '';
+        els.emptyState.style.display = 'block';
+        els.emptyState.textContent = 'Giveaway data is unavailable.';
+      }
+    }
+
+    function hydrateSummary(payload) {
+      const activeCount = payload.active_count || allGiveaways.filter(g => g.status === 'open' || g.status === 'live').length;
+
+      els.activeCount.textContent = activeCount.toLocaleString();
+      els.prizePool.textContent = '$' + Number(payload.total_prize_usd || 0).toLocaleString();
+      els.updatedAt.textContent = formatUpdated(payload.updated);
+    }
+
+    function hydrateFilters() {
+      const casinos = ['All casinos'].concat([...new Set(allGiveaways.map(g => g.casino).filter(Boolean))].sort());
+      els.casinoFilter.innerHTML = casinos.map(c => `<option value="${escapeAttr(c)}">${escapeHtml(c)}</option>`).join('');
+    }
+
+    function bindFilters() {
+      [els.searchInput, els.casinoFilter, els.statusFilter, els.typeFilter].forEach(el => {
+        el.addEventListener('input', applyFilters);
+        el.addEventListener('change', applyFilters);
+      });
+    }
+
+    function applyFilters() {
+      const query = els.searchInput.value.trim().toLowerCase();
+      const casino = els.casinoFilter.value;
+      const status = els.statusFilter.value;
+      const type = els.typeFilter.value;
+
+      visibleGiveaways = allGiveaways.filter(giveaway => {
+        const giveawayStatus = normalizedStatus(giveaway);
+        const giveawayType = detectType(giveaway);
+        const haystack = [
+          giveaway.casino,
+          giveaway.prize,
+          giveaway.host,
+          giveaway.handle,
+          giveaway.host_type,
+          giveaway.posted_ago,
+          giveaway.expires,
+          (giveaway.steps || []).join(' ')
+        ].join(' ').toLowerCase();
+
+        return (
+          (!query || haystack.includes(query)) &&
+          (casino === 'All casinos' || giveaway.casino === casino) &&
+          (status === 'all' || giveawayStatus === status) &&
+          (type === 'all' || giveawayType === type)
+        );
+      });
+
+      renderGrid();
+    }
+
+    function renderGrid() {
+      els.resultCount.textContent = `(${visibleGiveaways.length.toLocaleString()} shown)`;
+      els.emptyState.style.display = visibleGiveaways.length === 0 ? 'block' : 'none';
+
+      els.giveawayGrid.innerHTML = visibleGiveaways.map(giveaway => {
+        const status = normalizedStatus(giveaway);
+        const type = detectType(giveaway);
+
+        return `
+          <div class="giveaway-card" data-casino="${escapeAttr(giveaway.casino)}" data-status="${escapeAttr(status)}" data-type="${escapeAttr(type)}">
+            <div class="card-header">
+              <span class="casino-badge">${escapeHtml(giveaway.casino || 'Casino')}</span>
+              <span class="status-badge status-${escapeAttr(status)}">${escapeHtml(status.toUpperCase())}</span>
+            </div>
+            <div class="prize">${escapeHtml(formatPrize(giveaway))}</div>
+            <div class="host">
+              <span class="host-name">${escapeHtml(giveaway.handle || giveaway.host || 'Unknown host')}</span>
+              <span class="host-type">${escapeHtml(giveaway.host_type || 'Host')}</span>
+            </div>
+            <ul class="steps">
+              ${(giveaway.steps || []).map(step => `<li>${escapeHtml(step)}</li>`).join('')}
+            </ul>
+            <div class="card-footer">
+              <span class="time-ago">${escapeHtml(giveaway.posted_ago || 'Recently')}</span>
+              <a href="${escapeAttr(giveaway.x_url)}" class="enter-btn" target="_blank" rel="noopener">Enter &rarr;</a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function normalizedStatus(giveaway) {
+      if (giveaway.on_stream) return 'live';
+      return (giveaway.status || 'open').toLowerCase();
+    }
+
+    function detectType(giveaway) {
+      if (giveaway.on_stream) return 'stream';
+
+      const steps = (giveaway.steps || []).join(' ').toLowerCase();
+      if (steps.includes('discord')) return 'discord';
+      if (steps.includes('follow')) return 'follow';
+      if (steps.includes('repost') || steps.includes('quote')) return 'repost';
+      return 'repost';
+    }
+
+    function formatPrize(giveaway) {
+      if (!giveaway.winners) return giveaway.prize || 'Prize';
+      const winnerText = giveaway.winners === 1 ? '1 winner' : `${giveaway.winners} winners`;
+
+      if ((giveaway.prize || '').toLowerCase().includes('winner')) {
+        return giveaway.prize;
+      }
+
+      return `${giveaway.prize} - ${winnerText}`;
+    }
+
+    function formatUpdated(value) {
+      if (!value) return 'Today';
+
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return 'Today';
+
+      return date.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric'
+      });
+    }
+
+    function escapeHtml(value) {
+      return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function escapeAttr(value) {
+      return escapeHtml(value);
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">CRYPTOCASINOSORTED</div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/reviews/">Reviews</a>
+        <a href="/blog/">Guides</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+      <div class="footer-copyright">&copy; 2026 CryptoCasinoSorted</div>
+    </div>
+  </footer>
+</body>
+</html>
