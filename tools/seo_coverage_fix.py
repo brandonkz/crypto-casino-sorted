@@ -26,6 +26,7 @@ UTILITY_URL_NAMES = {
     "dashboard-poster.html",
     "dashboard-simple.html",
     "index-poster-style.html",
+    "terminal.html",
     "llms.txt",
     "nav-standard.html",
     "shared-nav.html",
