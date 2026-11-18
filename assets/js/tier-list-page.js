@@ -23,7 +23,7 @@
 
   const DEFAULT_RANKING = {
     S: ['stake', 'duel'],
-    A: ['xtp', 'shuffle', 'roobet', 'gamdom', 'rainbet', 'thrill'],
+    A: ['shuffle', 'roobet', 'gamdom', 'rainbet', 'thrill'],
     B: ['degen', 'gamba', 'rollbit', 'betbolt', 'goated'],
     C: ['razed', 'c500', 'bcgame', 'yeet', 'metawin', 'duelbits', 'shock'],
     D: ['chips', 'bitfortune', 'metaspins', 'acebet', 'spartans', 'dicey', 'winna'],
@@ -33,7 +33,6 @@
   const OPERATORS = [
     { id: 'stake', name: 'Stake', mark: 'STK', color: '#1ED760', ink: '#05161f', url: 'https://stake.com/?c=OYTAREab' },
     { id: 'duel', name: 'Duel', mark: 'DUEL', color: '#ffffff', ink: '#111111', url: 'https://duel.com/r/durinsbane' },
-    { id: 'xtp', name: 'XTP', mark: 'XTP', color: '#F5F1D5', ink: '#1b2440', url: 'https://xtp.com/signup?utm_source=cryptocasinosorted-98659&utm_content=avoiqtyydnxbkxfglxzeifcybjs&utm_medium=none&utm_campaign=N_F-0&signupCode=CCS200' },
     { id: 'shuffle', name: 'Shuffle', mark: 'SHFL', color: '#ff6eb6', ink: '#1b0f1d', url: 'https://shuffle.com?r=cl46Ld1iQb' },
     { id: 'roobet', name: 'Roobet', mark: 'ROO', color: '#f4a300', ink: '#271301', url: 'https://roobet.com/?ref=brandonkz' },
     { id: 'gamdom', name: 'Gamdom', mark: 'GDM', color: '#2d2d36', ink: '#f7fbff', url: '' },
@@ -1010,7 +1009,7 @@
     context.fillStyle = 'rgba(255,255,255,0.55)';
     context.fillText('Commercial links • Byline distinguishes editorial from visitor rankings • 18+ only', width / 2, footerTop + 40);
     context.fillStyle = 'rgba(255,255,255,0.42)';
-    context.fillText('XTP is operated by a company the site owner works for • Logos belong to their owners', width / 2, footerTop + 56);
+    context.fillText('Logos belong to their owners', width / 2, footerTop + 56);
     context.textAlign = 'start';
   }
 

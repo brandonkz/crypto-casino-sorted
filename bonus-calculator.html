@@ -318,7 +318,6 @@
     </div>
 
     <div class="presets" id="offerPresets">
-      <span class="preset-static">XTP: no active promotions listed on the official promotions page (checked 28 Oct 2026)</span>
       <span class="preset-static">Stake: no welcome offer listed (checked 28 Oct 2026)</span>
       <span class="preset-static">BC.Game: Welcome offer not verified, check live terms</span>
       <span class="preset-static">Shuffle: Welcome offer not verified, check live terms</span>
@@ -614,7 +613,7 @@
         renderOfferPresets();
         const count = trackedOffers.filter((item) => item.includeInCalculator === true && parseHeadlineOffer(item)).length;
         document.getElementById('offerCount').textContent = `${count} researched offers`;
-        const preferred = ['XTP','21.com'];
+        const preferred = ['21.com'];
         let defaultIndex = trackedOffers.findIndex((item) => preferred.includes(item.casino));
         if (defaultIndex < 0) defaultIndex = 0;
         const defaultButton = document.querySelector(`[data-offer-index="${defaultIndex}"]`);
