@@ -312,14 +312,6 @@
             <li class="feed-item">Loading snapshot...</li>
           </ul>
         </section>
-
-        <section class="panel">
-          <h2>XTP activity feed</h2>
-          <div class="sub" style="margin-bottom:14px;">Same feed logic as the dashboard so the site feels unified.</div>
-          <ul class="feed-list" id="xtpFeed">
-            <li class="feed-item">Loading activity...</li>
-          </ul>
-        </section>
       </aside>
     </div>
   </div>
@@ -340,17 +332,15 @@
 
     async function loadPage() {
       try {
-        const [newsRes, promosRes, dashboardRes, xtpRes] = await Promise.all([
+        const [newsRes, promosRes, dashboardRes] = await Promise.all([
           fetch('./data/news.json'),
           fetch('./data/promos.json'),
-          fetch('./data/dashboard.json'),
-          fetch('../xtp/data.json').catch(() => fetch('/xtp/data.json'))
+          fetch('./data/dashboard.json')
         ]);
 
         const newsPayload = newsRes.ok ? await newsRes.json() : [];
         const promosPayload = promosRes.ok ? await promosRes.json() : [];
         const dashboard = dashboardRes.ok ? await dashboardRes.json() : {};
-        const xtp = xtpRes && xtpRes.ok ? await xtpRes.json() : { activityFeed: [] };
 
         const news = Array.isArray(newsPayload) ? newsPayload : (newsPayload.items || []);
         const promos = Array.isArray(promosPayload) ? promosPayload : (promosPayload.promos || []);
@@ -358,7 +348,6 @@
         renderNews(news);
         renderPromos(promos);
         renderSnapshot(dashboard);
-        renderFeed(xtp.activityFeed || []);
       } catch (error) {
         console.error(error);
       }
@@ -391,10 +380,6 @@
       document.getElementById('casinoSnapshot').innerHTML = casinoStats.slice(0, 6).map(item => `<li class="feed-item"><strong>${escapeHtml(item.casino)}</strong><br>$${Math.round(item.volume || 0).toLocaleString()} across ${(item.deposits || 0).toLocaleString()} deposits</li>`).join('') || '<li class="feed-item">No casino snapshot available.</li>';
     }
 
-    function renderFeed(feed) {
-      const html = feed.slice(0, 12).map(item => `<li class="feed-item">${escapeHtml(item)}</li>`).join('');
-      document.getElementById('xtpFeed').innerHTML = html || '<li class="feed-item">No activity available.</li>';
-    }
 
     function escapeHtml(text) {
       return String(text)
