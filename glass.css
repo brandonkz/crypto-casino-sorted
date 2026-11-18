@@ -1,0 +1,131 @@
+/* ============================================
+   CCS GLASS THEME
+   Loaded last on every page (except the homepage,
+   which carries its own copy inline).
+   ============================================ */
+
+:root {
+  --g-tint: rgba(255, 255, 255, 0.07);
+  --g-smoke: rgba(6, 21, 47, 0.5);
+  --g-blur: blur(14px) saturate(180%);
+  --g-edge: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.14) rgba(255, 255, 255, 0.08) rgba(255, 255, 255, 0.3);
+  --g-reflect:
+    linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 16%, rgba(255,255,255,0) 28%),
+    linear-gradient(115deg, rgba(255,255,255,0) 0 55%, rgba(255,255,255,0.07) 55% 60%, rgba(255,255,255,0) 60% 63%, rgba(255,255,255,0.04) 63% 65%, rgba(255,255,255,0) 65%);
+  --g-depth:
+    inset 0 1px 1px rgba(255, 255, 255, 0.65),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.35),
+    inset 14px 14px 40px -28px rgba(255, 255, 255, 0.45),
+    0 24px 60px rgba(0, 0, 0, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.2);
+  --g-depth-sm:
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.3),
+    0 8px 20px rgba(0, 0, 0, 0.22);
+}
+
+/* Coloured shapes behind the glass */
+html body {
+  background:
+    radial-gradient(circle at 14% 12%, #ff7a18 0 110px, rgba(255,122,24,0.5) 160px, transparent 250px),
+    radial-gradient(circle at 88% 24%, #29d3ff 0 100px, rgba(41,211,255,0.45) 150px, transparent 240px),
+    radial-gradient(circle at 72% 72%, #8b5cf6 0 140px, rgba(139,92,246,0.45) 200px, transparent 300px),
+    radial-gradient(circle at 6% 84%, #ff3d77 0 80px, rgba(255,61,119,0.4) 130px, transparent 210px),
+    #06152f;
+  background-attachment: fixed;
+}
+@media (max-width: 760px) {
+  html body {
+    background:
+      radial-gradient(circle at 10% 10%, rgba(255,122,24,0.7) 0 70px, transparent 170px),
+      radial-gradient(circle at 95% 30%, rgba(41,211,255,0.55) 0 60px, transparent 160px),
+      radial-gradient(circle at 80% 75%, rgba(139,92,246,0.55) 0 80px, transparent 200px),
+      radial-gradient(circle at 5% 70%, rgba(255,61,119,0.45) 0 50px, transparent 140px),
+      #06152f;
+    background-attachment: fixed;
+  }
+}
+
+/* Top bars */
+.t-nav, .header, .nav {
+  background: rgba(6, 21, 47, 0.35) !important;
+  -webkit-backdrop-filter: var(--g-blur);
+  backdrop-filter: var(--g-blur);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.3), 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* Big panels: clear glass */
+.t-panel, .t-kpi, .panel, .hero, .card, .casino-card, .review-card, .rank-card,
+.calculator-card, .calc-card, .result-card, .side-card, .platform-card, .stat-card,
+.info-card, .kpi-card, .coverage-card, .source-card, .note-card, .countdown-card,
+.affiliate-card, .game-card, .comparison-card, .report-card, .influencer-card,
+.terminal-panel, .tracker-panel, .results-card, .t-blog-card, .blog-card,
+.casino-address-card, .addresses-hero, .metric, .stat, .mini-stat, .feed-item, .news-item {
+  background: var(--g-reflect), var(--g-tint) !important;
+  -webkit-backdrop-filter: var(--g-blur);
+  backdrop-filter: var(--g-blur);
+  border: 1px solid !important;
+  border-color: var(--g-edge) !important;
+  box-shadow: var(--g-depth) !important;
+  border-radius: 18px !important;
+}
+
+/* Whole-page article wrappers: one big sheet of dark glass */
+.t-article, .review-article, .blog-post {
+  background: linear-gradient(180deg, rgba(255,255,255,0.08) 0, rgba(255,255,255,0) 80px), rgba(6, 21, 47, 0.62) !important;
+  -webkit-backdrop-filter: var(--g-blur);
+  backdrop-filter: var(--g-blur);
+  border: 1px solid !important;
+  border-color: var(--g-edge) !important;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.5), 0 24px 60px rgba(0,0,0,0.35) !important;
+  border-radius: 20px !important;
+}
+/* Reading surfaces: smoked glass so long text stays sharp */
+.post-content, .comparison-section,
+.info-section, .transparency-section, .table-wrap, .t-table, .comparison-table, .compare-table,
+.toc, .tldr, .verdict, .tip-box, .math-box, .warning-box, .info-box, .highlight-box,
+.internal-links, .ccs-related-guides, .faq-item, .t-result, .cta-strip {
+  background: linear-gradient(180deg, rgba(255,255,255,0.1) 0, rgba(255,255,255,0) 90px), var(--g-smoke) !important;
+  -webkit-backdrop-filter: var(--g-blur);
+  backdrop-filter: var(--g-blur);
+  border: 1px solid !important;
+  border-color: var(--g-edge) !important;
+  box-shadow: var(--g-depth-sm) !important;
+  border-radius: 14px !important;
+}
+table.comparison-table, table.compare-table, table.t-table { border-collapse: separate; border-spacing: 0; overflow: hidden; }
+.comparison-table th, .compare-table th, .t-table th { background: rgba(6, 21, 47, 0.45) !important; }
+
+/* Small controls: glass tiles */
+.t-input, .t-select, .input, .select, .form-input, .filter-btn, .preset, .chain-tab,
+.example-btn, .back-link, .cta-secondary, .ghost-cta, .tag, .result-chip {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0) 50%) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid !important;
+  border-color: var(--g-edge) !important;
+  box-shadow: var(--g-depth-sm);
+  border-radius: 10px !important;
+}
+
+/* Glossy primary buttons */
+.t-btn, .cta, .btn-primary, .review-card-cta a {
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.65), inset 0 -2px 4px rgba(0,0,0,0.18), 0 8px 22px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+/* Keep coloured labels readable over the shapes */
+h1, h2, h3, .t-panel-title, .t-label, .t-kpi-label, .t-subtitle, .label, th {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6), 0 0 12px rgba(6,21,47,0.7);
+}
+
+/* Browsers without blur: solid panels */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .t-panel, .t-kpi, .panel, .hero, .card, .casino-card, .review-card, .t-blog-card, .blog-card,
+  .t-article, .review-article, .blog-post, .faq-item, .comparison-table, .compare-table, .t-table {
+    background: rgba(9, 30, 67, 0.92) !important;
+  }
+  .t-nav, .header, .nav { background: rgba(4, 16, 38, 0.95) !important; }
+}
