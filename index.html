@@ -1051,6 +1051,50 @@
       .hero-main, .hero-card, .panel, .quick-calc, .stat, .comparison-wrap { background: rgba(9, 30, 67, 0.9) !important; }
       .nav { background: rgba(4, 16, 38, 0.94); }
     }
+
+    /* Latest news strip — glass tiles, isolated from the rest of the homepage */
+    .home-news-list { list-style: none; display: grid; gap: 10px; }
+    .home-news-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 4px 16px;
+      align-items: baseline;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.08);
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0) 50%);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid;
+      border-color: var(--glass-edge, var(--line));
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.55), inset 0 -1px 1px rgba(0,0,0,0.3), 0 6px 16px rgba(0,0,0,0.2);
+    }
+    .home-news-source {
+      color: var(--orange-2);
+      font-size: 0.68rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .home-news-title { grid-column: 1 / -1; color: var(--ink); font-weight: 750; font-size: 0.98rem; line-height: 1.35; }
+    .home-news-title a:hover { color: var(--orange-2); }
+    .home-news-time { color: var(--muted); font-size: 0.78rem; white-space: nowrap; text-align: right; }
+    .home-news-status { color: var(--muted); font-size: 0.9rem; }
+    .home-news-all {
+      color: var(--orange-2);
+      font-size: 0.78rem;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+    .home-news-all:hover { color: #ffc164; }
+    @media (max-width: 640px) {
+      .home-news-item { grid-template-columns: 1fr; }
+      .home-news-time { text-align: left; }
+      .home-news .panel-header { align-items: flex-start; flex-direction: column; }
+    }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .home-news-item { background: rgba(9, 30, 67, 0.92); }
+    }
   </style>
 
 
@@ -1087,6 +1131,7 @@
     <label for="t-nav-toggle" class="t-nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
     <div class="t-nav-links">
       <a href="/rewards-recommender.html" class="t-nav-primary">Rewards</a>
+      <a href="/news/">News</a>
       <a href="/rewards/">Reward Book</a>
       <a href="/rakeback-comparison.html">Rakeback</a>
       <a href="/vip-gold-calculator.html">VIP Calc</a>
@@ -1112,6 +1157,20 @@
           <a class="btn" href="#rewards-table">Compare Rewards</a>
           <a class="btn secondary" href="/rewards-recommender.html">Use Rewards Quiz</a>
           <a class="btn secondary" href="/bonus-calculator.html">Bonus Calculator</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section home-news" aria-labelledby="latest-news-title">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title" id="latest-news-title">Latest news</div>
+          <a class="home-news-all" href="/news/">See all news →</a>
+        </div>
+        <div class="panel-body">
+          <ul class="home-news-list" id="home-news-list">
+            <li class="home-news-status">Loading the latest headlines…</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -1490,7 +1549,7 @@
                   <td class="casino-cell"><a href="https://prod.trk21.com/click?offer=FFHCFKXMZW2H&amp;uid=fN3MmG6q" target="_blank" rel="sponsored nofollow noopener">21.com</a><span>Best multi-deposit bonus</span></td>
                   <td class="incentive-cell"></td>
                   <td>Staged welcome package plus published Elite Club rewards.</td>
-                  <td>Up to $5,000 + 100 free spins across four deposits.</td>
+                  <td>Up to $5,000 in matched bonuses across the first 4 deposits: 100% up to $600, then 60% up to $1,000, 50% up to $1,400, and 60% up to $2,000.</td>
                   <td>Advertised Elite Club rakeback range from 5-25%.</td>
                   <td>VIP host from Gold I-IV and above on the public ladder.</td>
                   <td>40x bonus wagering, 7-day window, 10x max-return cap and country blocks.</td>
@@ -1813,6 +1872,92 @@
     });
 
     renderIncentives();
+  }());
+</script>
+<script>
+  (function () {
+    var list = document.getElementById('home-news-list');
+    if (!list) return;
+
+    function relativeTime(published) {
+      var then = new Date(published);
+      if (Number.isNaN(then.getTime())) return '';
+      var ms = Date.now() - then.getTime();
+      if (ms < 0) ms = 0;
+      var minutes = Math.floor(ms / 60000);
+      if (minutes < 1) return 'just now';
+      if (minutes < 60) return minutes + 'm ago';
+      var hours = Math.floor(ms / 3600000);
+      if (hours < 24) return hours + 'h ago';
+      if (hours < 48) return 'Yesterday';
+      return Math.floor(hours / 24) + 'd ago';
+    }
+
+    function safeUrl(url) {
+      try {
+        var parsed = new URL(url, window.location.origin);
+        if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '';
+        return parsed.href;
+      } catch (error) {
+        return '';
+      }
+    }
+
+    function showStatus(message) {
+      list.innerHTML = '';
+      var li = document.createElement('li');
+      li.className = 'home-news-status';
+      li.textContent = message;
+      list.appendChild(li);
+    }
+
+    fetch('/data/news.json?v=' + Date.now())
+      .then(function (response) {
+        if (!response.ok) throw new Error('bad status');
+        return response.json();
+      })
+      .then(function (data) {
+        var items = Array.isArray(data && data.items) ? data.items.slice() : [];
+        items.sort(function (a, b) {
+          return new Date(b.published).getTime() - new Date(a.published).getTime();
+        });
+        items = items.slice(0, 5);
+        if (!items.length) {
+          showStatus('No headlines yet.');
+          return;
+        }
+        list.innerHTML = '';
+        items.forEach(function (item) {
+          var li = document.createElement('li');
+          li.className = 'home-news-item';
+          var source = document.createElement('div');
+          source.className = 'home-news-source';
+          source.textContent = item.source || 'News';
+          var time = document.createElement('div');
+          time.className = 'home-news-time';
+          time.textContent = relativeTime(item.published);
+          var title = document.createElement('div');
+          title.className = 'home-news-title';
+          var href = safeUrl(item.url);
+          if (href) {
+            var link = document.createElement('a');
+            link.href = href;
+            link.target = '_blank';
+            link.rel = 'noopener nofollow';
+            link.textContent = item.title || 'Untitled';
+            title.appendChild(link);
+          } else {
+            title.textContent = item.title || 'Untitled';
+          }
+          li.appendChild(source);
+          li.appendChild(time);
+          li.appendChild(title);
+          list.appendChild(li);
+        });
+      })
+      .catch(function () {
+        showStatus('Latest headlines could not be loaded.');
+      });
   }());
 </script>
 <script src="/assets/js/affiliate-tracking.js" defer></script>
