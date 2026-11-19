@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Latest crypto casino and iGaming news: prediction markets, regulation, operators and affiliates, with links to the original reporting.">
+  <link rel="canonical" href="https://cryptocasinosorted.com/news/">
+  <meta name="author" content="CryptoCasinoSorted">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#06152f">
+
+  <meta property="og:title" content="Crypto Casino &amp; iGaming News | CryptoCasinoSorted">
+  <meta property="og:description" content="Latest crypto casino and iGaming news: prediction markets, regulation, operators and affiliates, with links to the original reporting.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cryptocasinosorted.com/news/">
+  <meta property="og:image" content="https://cryptocasinosorted.com/og-image.png">
+  <meta property="og:site_name" content="CryptoCasinoSorted">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crypto Casino &amp; iGaming News | CryptoCasinoSorted">
+  <meta name="twitter:description" content="Latest crypto casino and iGaming news: prediction markets, regulation, operators and affiliates, with links to the original reporting.">
+  <meta name="twitter:image" content="https://cryptocasinosorted.com/og-image.png">
+
+  <title>Crypto Casino &amp; iGaming News | CryptoCasinoSorted</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;650;750;850;950&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --navy: #06152f;
+      --ink: #f7fbff;
+      --muted: #9fb1d1;
+      --orange: #ff6a00;
+      --orange-2: #ff9d00;
+      --line: rgba(255, 255, 255, 0.14);
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--navy);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    .t-nav {
+      min-height: 54px;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 18px;
+      background: rgba(4, 16, 38, 0.94);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .t-nav-logo {
+      color: var(--orange-2);
+      font-size: 0.82rem;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .t-nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 14px;
+      row-gap: 6px;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .t-nav-links a { color: inherit; }
+    .t-nav-links a:hover,
+    .t-nav-links a.active { color: var(--orange-2); }
+    .t-nav-links a.t-nav-primary { color: #ff9d00; font-weight: 950; }
+    .t-nav-toggle { display: none; }
+    .t-nav-burger { display: none; }
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 40px 16px 76px;
+    }
+    .kicker {
+      color: var(--orange-2);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 10px 0 12px;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.02;
+      font-weight: 950;
+    }
+    .lede { color: var(--muted); max-width: 62ch; margin: 0; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 16px; }
+    .filter-btn {
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 750;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    .news-list { display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+    .news-item { padding: 16px 18px; }
+    .news-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .news-source {
+      color: var(--orange-2);
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .news-when { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
+    .news-title { margin: 0; font-size: 1.05rem; font-weight: 750; line-height: 1.35; }
+    .news-title a:hover { color: var(--orange-2); }
+    .news-status { color: var(--muted); }
+    .ccs-trust-footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--line);
+      background: rgba(4, 16, 38, 0.72);
+      color: var(--muted);
+      padding: 18px 16px;
+    }
+    .ccs-trust-footer-inner {
+      width: min(100%, 1180px);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+    }
+    .ccs-trust-footer strong { color: var(--ink); }
+    .ccs-trust-footer nav { display: flex; flex-wrap: wrap; gap: 12px; }
+    .ccs-footer-contact {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border: 1px solid rgba(255, 157, 0, 0.28);
+      background: rgba(255, 157, 0, 0.08);
+      border-radius: 12px;
+    }
+    .ccs-footer-contact span {
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .ccs-footer-contact a { color: var(--orange-2); font-weight: 850; }
+    @media (max-width: 768px) {
+      .t-nav { align-items: flex-start; flex-direction: column; padding: 12px; }
+      .t-nav-links { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+      .t-nav-links a { flex: 0 0 auto; }
+      .news-meta { flex-direction: column; gap: 2px; }
+      .news-when { white-space: normal; }
+      .ccs-trust-footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+  <link rel="stylesheet" href="/glass.css">
+  <style>
+    .filter-btn[aria-pressed="true"] {
+      color: #06152f !important;
+      background-image: linear-gradient(135deg, #ff6a00, #ff9d00) !important;
+    }
+  </style>
+</head>
+<body>
+  <nav class="t-nav">
+    <a href="/" class="t-nav-logo">CryptoCasinoSorted</a>
+    <input type="checkbox" id="t-nav-toggle" class="t-nav-toggle" aria-label="Toggle navigation menu">
+    <label for="t-nav-toggle" class="t-nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+    <div class="t-nav-links">
+      <a href="/rewards-recommender.html" class="t-nav-primary">Rewards</a>
+      <a href="/news/" class="active">News</a>
+      <a href="/rewards/">Reward Book</a>
+      <a href="/rakeback-comparison.html">Rakeback</a>
+      <a href="/vip-gold-calculator.html">VIP Calc</a>
+      <a href="/bonus-calculator.html">Bonus Calc</a>
+      <a href="/casino-reward-sources.html">Sources</a>
+      <a href="/reviews/">Reviews</a>
+      <a href="/tier-list/">Tier List</a>
+      <a href="/blog/best-crypto-casinos-south-africa-2026.html">South Africa</a>
+      <a href="/blog/best-crypto-casinos-canada-2026.html">Canada</a>
+      <a href="/blog/">Guides</a>
+      <a href="/es/">Español</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <p class="kicker">Crypto casino &amp; iGaming</p>
+    <h1>Latest news</h1>
+    <p class="lede">Headlines from the public iGaming press, newest first. Each link goes to the original article.</p>
+    <div class="filters" id="news-filters" role="toolbar" aria-label="Filter headlines"></div>
+    <ul class="news-list" id="news-list">
+      <li class="news-item news-status">Loading headlines…</li>
+    </ul>
+  </main>
+
+  <footer class="ccs-trust-footer" aria-label="Site trust links">
+    <div class="ccs-trust-footer-inner">
+      <strong>CryptoCasinoSorted</strong>
+      <nav>
+        <a href="/about.html">About</a>
+        <a href="/how-we-rank.html">How We Rank</a>
+        <a href="/responsible-gambling.html">Responsible Gambling</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <div class="ccs-footer-contact">
+        <span>Contact us</span>
+        <a href="https://t.me/brandonkz" target="_blank" rel="nofollow noopener">@brandonkz on Telegram</a>
+      </div>
+      <span>18+ only. Gamble responsibly.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var filters = [
+        { id: 'all', label: 'All', test: function () { return true; } },
+        { id: 'prediction', label: 'Prediction markets', test: function (title) { return /prediction markets?/i.test(title); } },
+        { id: 'regulation', label: 'Regulation & tax', test: function (title) { return /regulat|tax|congress|refund|acma|black market|court|licen[cs]/i.test(title); } },
+        { id: 'operators', label: 'Operators', test: function (title) { return /entain|bally|fdj|operator|casino/i.test(title); } },
+        { id: 'affiliates', label: 'Affiliates', test: function (title) { return /affiliate/i.test(title); } }
+      ];
+      var active = 'all';
+      var items = [];
+      var listEl = document.getElementById('news-list');
+      var filterEl = document.getElementById('news-filters');
+
+      function relativeTime(published) {
+        var then = new Date(published);
+        if (Number.isNaN(then.getTime())) return '';
+        var ms = Date.now() - then.getTime();
+        if (ms < 0) ms = 0;
+        var minutes = Math.floor(ms / 60000);
+        if (minutes < 1) return 'just now';
+        if (minutes < 60) return minutes + 'm ago';
+        var hours = Math.floor(ms / 3600000);
+        if (hours < 24) return hours + 'h ago';
+        if (hours < 48) return 'Yesterday';
+        return Math.floor(hours / 24) + 'd ago';
+      }
+
+      function formatDate(published) {
+        var then = new Date(published);
+        if (Number.isNaN(then.getTime())) return '';
+        return then.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+      }
+
+      function safeUrl(url) {
+        try {
+          var parsed = new URL(url, window.location.origin);
+          if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '';
+          return parsed.href;
+        } catch (error) {
+          return '';
+        }
+      }
+
+      function statusCard(message) {
+        listEl.innerHTML = '';
+        var li = document.createElement('li');
+        li.className = 'news-item news-status';
+        li.textContent = message;
+        listEl.appendChild(li);
+      }
+
+      function render() {
+        var filter = filters.filter(function (item) { return item.id === active; })[0] || filters[0];
+        var visible = items.filter(function (item) { return filter.test(item.title || ''); });
+        if (!visible.length) {
+          statusCard(items.length ? 'No headlines in this category.' : 'No headlines yet.');
+          return;
+        }
+        listEl.innerHTML = '';
+        visible.forEach(function (item) {
+          var li = document.createElement('li');
+          li.className = 'news-item';
+          var meta = document.createElement('div');
+          meta.className = 'news-meta';
+          var source = document.createElement('div');
+          source.className = 'news-source';
+          source.textContent = item.source || 'News';
+          var when = document.createElement('div');
+          when.className = 'news-when';
+          var rel = relativeTime(item.published);
+          var date = formatDate(item.published);
+          when.textContent = rel && date ? rel + ' · ' + date : (rel || date);
+          meta.appendChild(source);
+          meta.appendChild(when);
+          var title = document.createElement('h2');
+          title.className = 'news-title';
+          var href = safeUrl(item.url);
+          if (href) {
+            var link = document.createElement('a');
+            link.href = href;
+            link.target = '_blank';
+            link.rel = 'noopener nofollow';
+            link.textContent = item.title || 'Untitled';
+            title.appendChild(link);
+          } else {
+            title.textContent = item.title || 'Untitled';
+          }
+          li.appendChild(meta);
+          li.appendChild(title);
+          listEl.appendChild(li);
+        });
+      }
+
+      filters.forEach(function (filter) {
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'filter-btn';
+        button.textContent = filter.label;
+        button.setAttribute('aria-pressed', filter.id === active ? 'true' : 'false');
+        button.addEventListener('click', function () {
+          active = filter.id;
+          Array.prototype.forEach.call(filterEl.children, function (child) {
+            child.setAttribute('aria-pressed', child === button ? 'true' : 'false');
+          });
+          render();
+        });
+        filterEl.appendChild(button);
+      });
+
+      fetch('/data/news.json?v=' + Date.now())
+        .then(function (response) {
+          if (!response.ok) throw new Error('bad status');
+          return response.json();
+        })
+        .then(function (data) {
+          items = Array.isArray(data && data.items) ? data.items.slice() : [];
+          items.sort(function (a, b) {
+            return new Date(b.published).getTime() - new Date(a.published).getTime();
+          });
+          render();
+        })
+        .catch(function () {
+          statusCard('News could not be loaded. Try again in a moment.');
+        });
+    }());
+  </script>
+</body>
+</html>
