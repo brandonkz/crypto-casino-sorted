@@ -618,6 +618,8 @@ h1 {
           fallback: Boolean(item.calculator.assumedWagering) || !Number(item.calculator.wagerMultiple)
         };
       }
+      // Offers that are not a simple deposit match (rakeback boosts, multi-deposit packs) opt out of the headline-percent guess.
+      if (item.includeInCalculator === false) return null;
       const bonusPercent = parsePercent(item.offer);
       if (!bonusPercent) return null;
       const parsedMultiple = parseWagerMultiple(item.wagering);
