@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12",
+  "updated": "2026-11-25",
   "items": [
     {
       "casino": "BC.Game",
@@ -172,14 +172,14 @@
       "angle": "Best esports-led offer for CS2 / Dota / Valorant audiences",
       "url": "https://thunderpick.io/?ref=cryptocasinosorted",
       "isAffiliate": true,
-      "source_url": "https://thunderpick.io/promotions",
-      "source_last_checked": "2026-10-28",
+      "source_url": "https://thunderpick.io/",
+      "source_last_checked": "2026-11-25",
       "source_status": "browser_verified",
       "source_monitor": "manual",
       "source_terms": [
         "100% Deposit Bonus up to €600"
       ],
-      "source_note": "Browser check 2026-10-28 of official page: \"Claim Your 100% Deposit Bonus up to €600\" on the official Thunderpick site (exact page path not recorded); site also showed \"Thunderpick is currently not available in your country\". Previously tracked: 500% up to $2,000."
+      "source_note": "Browser check 2026-10-28 of official page: \"Claim Your 100% Deposit Bonus up to €600\" on the official Thunderpick site (exact page path not recorded); site also showed \"Thunderpick is currently not available in your country\". Previously tracked: 500% up to $2,000. 2026-11-25: thunderpick.io/promotions returns 404, so the tracked source is now the homepage, which still shows \"Claim Your 100% Deposit Bonus up to €600\". Offer text unchanged."
     },
     {
       "casino": "21.com",
@@ -218,6 +218,52 @@
       "source_status": "browser_verified",
       "source_monitor": "manual",
       "source_note": "Browser check 2026-11-18 of https://21.com/promotions/welcome-offer: Up to $5,000 in matched bonuses across the first 4 deposits, split 100% up to $600, then 60% up to $1,000, 50% up to $1,400 and 60% up to $2,000. No free spins shown. Supersedes the 28 Oct 2026 welcome headline and the 22 Aug 2026 indexed snippet, both of which included a free-spin bundle. Wagering line left unchanged."
+    },
+    {
+      "casino": "BetFury",
+      "offer": "Welcome bonuses up to 590% + 225 Free Spins",
+      "promoCode": "No code shown",
+      "wagering": "Check live terms",
+      "kyc": "Check live terms",
+      "geo": "Check live terms",
+      "angle": "Three-deposit casino welcome pack, checked 25 Nov 2026",
+      "url": "https://betfury.com/promo/welcome-pack-bonus",
+      "isAffiliate": false,
+      "source_url": "https://betfury.com/promo/welcome-pack-bonus",
+      "source_terms": [
+        "up to 590%",
+        "225 Free Spins"
+      ],
+      "breakdown": [
+        "First deposit: up to 150% bonus + 50 Free Spins",
+        "Second deposit: up to 180% bonus + 75 Free Spins",
+        "Third deposit: up to 200% bonus + 100 Free Spins"
+      ],
+      "source_last_checked": "2026-11-25",
+      "source_status": "browser_verified",
+      "source_monitor": "manual",
+      "source_note": "Browser check 2026-11-25 of https://betfury.com/promo/welcome-pack-bonus: \"Welcome bonuses up to 590% + 225 Free Spins\", split first deposit up to 150% + 50 Free Spins, second up to 180% + 75 Free Spins, third up to 200% + 100 Free Spins. The FAQ answers on wagering, time limits and eligible deposits did not render, so they are unverified."
+    },
+    {
+      "casino": "Gamdom",
+      "offer": "15% boosted rakeback for the first week (activate within 6 hours of registering)",
+      "promoCode": "No code shown",
+      "wagering": "Not a deposit bonus. Activate it on the Rewards page within 6 hours of registering; the boosted rakeback then runs for 7 days. Check live terms.",
+      "kyc": "Check live terms",
+      "geo": "Check live terms",
+      "angle": "Boosted instant rakeback for new players, checked 25 Nov 2026",
+      "url": "https://gamdom.com/promotions/welcome-offer",
+      "isAffiliate": false,
+      "source_url": "https://gamdom.com/promotions/welcome-offer",
+      "source_terms": [
+        "boosted to 15%",
+        "6 hours",
+        "7 days"
+      ],
+      "source_last_checked": "2026-11-25",
+      "source_status": "browser_verified",
+      "source_monitor": "manual",
+      "source_note": "Browser check 2026-11-25 of https://gamdom.com/promotions/welcome-offer: \"Enjoy an instant rakeback, boosted to 15% during your first week\"; activate on the Rewards page, 6 hours to claim once it appears, 7 days of boosted returns; available to new players for the first 6 hours after registration. Matches the Gamdom Rewards help article."
     }
   ]
 }
