@@ -985,6 +985,8 @@
           verified: Boolean(item.source_url || item.source_status === 'verified')
         };
       }
+      // Offers that are not a simple deposit match (rakeback boosts, multi-deposit packs) opt out of the headline-percent guess.
+      if (item.includeInCalculator === false) return null;
       const bonusPercent = parsePercent(item.offer);
       if (!bonusPercent) return null;
       const parsedMultiple = parseWagerMultiple(item.wagering);
