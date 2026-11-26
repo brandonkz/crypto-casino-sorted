@@ -386,10 +386,10 @@ h1 {
         </tr>
         <tr>
           <td>BC.Game</td>
-          <td>20%</td>
-          <td>24%</td>
+          <td>Undisclosed</td>
+          <td>Undisclosed</td>
           <td>Token + House Edge</td>
-          <td>Upper tiers; personal manager.</td>
+          <td>Dedicated host is listed. No rakeback or level table is published.</td>
           <td><a class="reward-page-link" href="https://bc.game/vip" target="_blank" rel="nofollow noopener">BC.Game VIP</a></td>
         </tr>
         <tr>
@@ -397,8 +397,8 @@ h1 {
           <td>Undisclosed</td>
           <td>70%</td>
           <td>Cash + Undisclosed</td>
-          <td>From Ignite tier.</td>
-          <td><a class="reward-page-link" href="https://thrill.com/vip" target="_blank" rel="nofollow noopener">Thrill VIP</a></td>
+          <td>Emerald I (2,500,000 XP) unlocks a dedicated VIP host. Checked 25 Nov 2026.</td>
+          <td><a class="reward-page-link" href="https://intercom.help/thrill/en/collections/13566255-rewards" target="_blank" rel="nofollow noopener">Thrill Rewards</a></td>
         </tr>
         <tr>
           <td>Yeet</td>
@@ -426,10 +426,10 @@ h1 {
         </tr>
         <tr>
           <td><a class="reward-page-link" href="https://prod.trk21.com/click?offer=FFHCFKXMZW2H&amp;uid=fN3MmG6q" target="_blank" rel="sponsored nofollow noopener">21.com</a></td>
-          <td>5%</td>
-          <td>25%</td>
+          <td>4%</td>
+          <td>20%</td>
           <td>Cash + Undisclosed</td>
-          <td>VIP Host advertised for Elite Club members; entry level not disclosed.</td>
+          <td>Dedicated VIP host from Platinum ($240,000+). Checked 25 Nov 2026.</td>
           <td><a class="reward-page-link" href="https://21.com/vip" target="_blank" rel="nofollow noopener">21 Elite Club</a></td>
         </tr>
         <tr>
@@ -498,7 +498,7 @@ h1 {
     let welcomeOffers = [];
 
     function pct(rate) {
-      if (rate === null || rate === undefined) return 'Still researching';
+      if (rate === null || rate === undefined || Number.isNaN(Number(rate))) return 'Undisclosed';
       return `${(rate * 100).toFixed(rate * 100 < 1 ? 2 : 1).replace(/\.0$/, '')}%`;
     }
 
@@ -523,8 +523,9 @@ h1 {
     }
 
     function rowFor(c) {
-        const max = c.rate_max === null ? 'Still researching' : pct(c.rate_max);
-        const structure = `${c.rakeback_form} · ${c.rakeback_basis.replace('_', ' ')}`;
+        const max = (c.rate_max === null || c.rate_max === undefined) ? 'Undisclosed' : pct(c.rate_max);
+        const basis = c.rakeback_basis ? String(c.rakeback_basis).replace(/_/g, ' ') : 'basis not published';
+        const structure = `${c.rakeback_form || 'undisclosed'} · ${basis}`;
         const access = c.tier_match ? 'Tier match available' : (c.entry_threshold ? `From $${c.entry_threshold} wagered` : 'Terms vary');
         const url = casinoLink(c);
         const rel = c.affiliate_url ? 'sponsored nofollow noopener' : 'nofollow noopener';
@@ -555,7 +556,7 @@ h1 {
     }
 
     function renderNotes() {
-      const ranked = casinos.filter(c => c.rakeback_form !== 'zero_edge')
+      const ranked = casinos.filter(c => c.rakeback_form !== 'zero_edge' && c.effective_rate !== null && c.effective_rate !== undefined)
         .sort((a, b) => b.effective_rate - a.effective_rate).slice(0, 4);
       document.getElementById('notesGrid').innerHTML = ranked.map((c, index) => `
         <div class="note-card">
@@ -646,9 +647,11 @@ h1 {
     }
 
     function effectiveRateForWager(casino, wager) {
-      const baseRate = Number(casino.effective_rate) || 0;
-      const maxRate = Number(casino.rate_max) || 0;
-      if (!maxRate || maxRate <= baseRate || casino.rakeback_form === 'zero_edge') return baseRate;
+      if (casino.effective_rate === null || casino.effective_rate === undefined) return null;
+      const baseRate = Number(casino.effective_rate);
+      if (!Number.isFinite(baseRate)) return null;
+      const maxRate = (casino.rate_max === null || casino.rate_max === undefined) ? null : Number(casino.rate_max);
+      if (maxRate === null || !Number.isFinite(maxRate) || !maxRate || maxRate <= baseRate || casino.rakeback_form === 'zero_edge') return baseRate;
       const start = 5000;
       const maxed = 100000;
       if (wager <= start) return baseRate;
@@ -677,7 +680,7 @@ h1 {
         const bonusEstimate = includeBonusWagering ? bonusAssistedWagerFor(c, wager, deposit) : null;
         const modeledWager = bonusEstimate ? bonusEstimate.modeledWager : wager;
         const activeEffectiveRate = effectiveRateForWager(c, modeledWager);
-        const earn = c.effective_rate !== null ? modeledWager * edge * activeEffectiveRate : null;
+        const earn = activeEffectiveRate === null ? null : modeledWager * edge * activeEffectiveRate;
         return { ...c, earn, modeledWager, bonusEstimate, activeEffectiveRate };
       }).sort((a, b) => (b.earn ?? -Infinity) - (a.earn ?? -Infinity));
 
@@ -690,8 +693,10 @@ h1 {
         const isBest = best && c.name === best.name;
         const earnStr = c.earn !== null ? fmt(c.earn) : '—';
         const isZeroEdge = c.rakeback_form === 'zero_edge';
-        const activeRate = c.activeEffectiveRate ?? c.effective_rate;
-        const baseValueLabel = isZeroEdge ? 'Estimated avoided house-edge loss on eligible 100% RTP games' : `${pct(activeRate)} of estimated house-edge loss`;
+        const activeRate = c.activeEffectiveRate;
+        const baseValueLabel = isZeroEdge
+          ? 'Estimated avoided house-edge loss on eligible 100% RTP games'
+          : (activeRate === null || activeRate === undefined ? 'Rate not published' : `${pct(activeRate)} of estimated house-edge loss`);
         const bonusLabel = c.bonusEstimate
           ? `Bonus-assisted wager: ${fmt(c.modeledWager)} (${c.bonusEstimate.terms.fallback ? `${c.bonusEstimate.terms.wagerMultiple}x fallback` : `${c.bonusEstimate.terms.wagerMultiple}x verified`})`
           : '';

@@ -77,7 +77,6 @@
     "ref_url": "/go/bcgame/",
     "description": "Massive crypto casino with 50+ cryptocurrencies and provably fair games. Welcome offer not verified, check live terms.",
     "bonus": "Welcome offer not verified, check live terms",
-    "bonus_code": "BCGAME",
     "has_token": true,
     "token_symbol": "BC",
     "token_name": "BC Token",
@@ -145,7 +144,6 @@
     "ref_url": "https://rollbit.com/referral/brandonkz",
     "description": "High-volume crypto casino and sportsbook. Clean interface, fast payouts, and competitive odds. NFT rewards program.",
     "bonus": "No welcome offer listed (checked 28 Oct 2026)",
-    "bonus_code": "ROLL150",
     "has_token": true,
     "token_symbol": "RLB",
     "token_name": "Rollbit Coin",
@@ -212,7 +210,6 @@
     "ref_url": "https://roobet.com/?ref=brandonkz",
     "description": "Popular crypto casino known for its clean UX and generous promotions. Strong community and frequent tournaments.",
     "bonus": "Welcome offer not verified, check live terms",
-    "bonus_code": "WELCOME",
     "has_token": false,
     "accepted_coins": [
       "BTC",
@@ -274,7 +271,6 @@
     "ref_url": "https://bzstarz1.com/byfqnneyj",
     "description": "Established hybrid casino accepting both crypto and fiat. Award-winning platform with 3,000+ games.",
     "bonus": "100% bonus + 180 free spins on first deposit, then up to €400 or 4 BTC on the next three deposits",
-    "bonus_code": "BITSTARZ",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -330,7 +326,6 @@
     "ref_url": "https://cldbt.cloud/go/en/auth/sign-up?af_token=810fa4bbfb1f586ef13289043992558c&aftm_campaign=cryptocasino",
     "description": "Pioneer crypto casino and sportsbook operating since 2013. Trusted, licensed, and reliable with competitive odds.",
     "bonus": "Welcome Package up to $2,500",
-    "bonus_code": "CLOUD100",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -383,7 +378,6 @@
     "ref_url": "https://shuffle.com?r=cl46Ld1iQb",
     "description": "New crypto casino backed by influencers. Clean design, instant withdrawals, and strong focus on user experience.",
     "bonus": "Welcome offer not verified, check live terms",
-    "bonus_code": "SHUFFLE200",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -449,7 +443,6 @@
     "ref_url": "https://duelbits.io/?a=sorted",
     "description": "Crypto casino and sportsbook with competitive bonuses. Strong eSports betting and original casino games.",
     "bonus": "Welcome offer not verified, check live terms",
-    "bonus_code": "DUEL100",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -516,7 +509,6 @@
     "ref_url": "https://fortunejack.com",
     "description": "Old-school crypto casino (since 2014). Trusted, provably fair, and supports 10+ cryptocurrencies.",
     "bonus": "110% up to 1.5 BTC",
-    "bonus_code": "FORTUNE",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -571,7 +563,6 @@
     "ref_url": "https://wolf.bet",
     "description": "Provably fair crypto casino with focus on transparency. Simple interface, fast payouts, and low house edge games.",
     "bonus": "150% up to $1,000",
-    "bonus_code": "WOLF150",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -623,9 +614,8 @@
     "slug": "jackbit",
     "url": "https://jackbit.com",
     "ref_url": "https://jackbit.com",
-    "description": "Rising star casino with 8,400+ games and wager-free spins (SPIN100). Fast 10-15 min withdrawals, Reddit community favorite for 2026.",
+    "description": "Rising star casino with 8,400+ games and wager-free spins. Fast 10-15 min withdrawals, Reddit community favorite for 2026.",
     "bonus": "100% up to $500 + wager-free spins",
-    "bonus_code": "SPIN100",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -668,7 +658,7 @@
     "reddit_quotes": [
       "\"The reddit community has spoken. Jackbit takes the top spot as best crypto casino 2026\"",
       "\"Fast crypto payouts in 10-15 minutes, every time\"",
-      "\"The SPIN100 code gives wager-free spins - you win, you keep it. Fair terms.\""
+      "\"Wager-free spins: you win, you keep it. Fair terms.\""
     ],
     "reddit_sentiment": {
       "sentiment": "80% Positive",
@@ -686,7 +676,6 @@
     "ref_url": "https://7bitcasino.com",
     "description": "Veteran crypto casino (since 2014) with 7,100+ games. Trusted, stable, and consistent. The old reliable of crypto gambling.",
     "bonus": "100% up to 1.5 BTC + 100 free spins",
-    "bonus_code": "7BIT",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -741,8 +730,7 @@
     "url": "https://betfury.com",
     "ref_url": "https://betfury.com",
     "description": "Crypto casino with cashback focus and fun faucet system. Best for Hacksaw Gaming slots. Growing community and fair rewards.",
-    "bonus": "First deposit bonus + cashback",
-    "bonus_code": "FURY",
+    "bonus": "Welcome bonuses up to 590% + 225 Free Spins",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -800,8 +788,7 @@
     "url": "https://gamdom.com",
     "ref_url": "https://gamdom.com",
     "description": "VPN-friendly crypto casino with low fees (LTC, BCH recommended). Clean interface, fast withdrawals, esports betting.",
-    "bonus": "100% up to $500 + rakeback",
-    "bonus_code": "GAMDOM",
+    "bonus": "15% boosted rakeback for the first week (activate within 6 hours of registering)",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -858,7 +845,6 @@
     "ref_url": "https://coindepo.com",
     "description": "Stake alternative for users tired of VPN restrictions. Predictable, fast withdrawals, no drama. Community says it just works.",
     "bonus": "100% up to $300",
-    "bonus_code": "DEPO",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -913,7 +899,6 @@
     "ref_url": "https://bitsler.com/?ref=cryptosorted",
     "description": "Veteran crypto casino (10+ years) with active chat community. Fast withdrawals, diverse games, and consistent reliability. Known for never having issues.",
     "bonus": "100% up to 1 BTC",
-    "bonus_code": "BITS100",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -970,7 +955,6 @@
     "ref_url": "https://ignitioncasino.eu",
     "description": "Premier US-focused crypto casino and poker room. Massive 300% welcome bonus ($3,000). Best for poker players who want casino games too.",
     "bonus": "300% up to $3,000 (150% poker + 150% casino)",
-    "bonus_code": "IGNITION",
     "accepted_coins": [
       "BTC",
       "BCH",
@@ -1026,7 +1010,6 @@
     "ref_url": "https://yeet.com/register?aff=betsorted",
     "description": "Rising crypto casino founded by crypto influencers (Keyboard Monkey, Mando, Ben Lamb). $7.75M funding from Dragonfly. No KYC up to $10k withdrawals. Future $YEET token airdrop.",
     "bonus": "Welcome offer not verified, check live terms",
-    "bonus_code": "YeetCasino",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -1087,7 +1070,6 @@
     "ref_url": "https://wild.io",
     "description": "Clean interface crypto casino with sports betting. Fast crypto withdrawals, diverse game selection. Mixed reviews - some withdrawal delays reported, but many positive experiences.",
     "bonus": "Welcome bonus up to $1,000",
-    "bonus_code": "WILD",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -1144,7 +1126,6 @@
     "ref_url": "https://mbitcasino.com",
     "description": "Veteran Bitcoin casino operating since 2014. Over 2,500 games, accepts both crypto and fiat. Reliable, consistent, and trusted by the community for 10+ years.",
     "bonus": "110% up to 1 BTC + 300 free spins",
-    "bonus_code": "MBIT",
     "accepted_coins": [
       "BTC",
       "ETH",
@@ -1200,8 +1181,7 @@
     "url": "https://trustdice.win",
     "ref_url": "https://trustdice.win/?ref=u_cryptocasinosorted",
     "description": "No KYC crypto casino with instant withdrawals, provably fair games, and seamless Web3 integration. Built for anonymity and speed.",
-    "bonus": "500% welcome bonus up to $90,000 + 100 free spins",
-    "bonus_code": "TRUST3BTC",
+    "bonus": "500% welcome bonus + 100 free spins",
     "has_token": true,
     "token_symbol": "TXT",
     "token_name": "TrustDice Token",
@@ -1262,7 +1242,7 @@
     },
     "telegram": "https://t.me/trustdice",
     "bonus_source_url": "https://trustdice.win/bonus",
-    "bonus_checked": "2026-10-28"
+    "bonus_checked": "2026-11-26"
   },
   {
     "id": 22,
@@ -1272,7 +1252,6 @@
     "ref_url": "https://thunderpick.io/?ref=cryptocasinosorted",
     "description": "Esports-focused crypto casino with CS2, Dota 2, LoL, and VALORANT betting. 4000+ casino games plus comprehensive sports betting.",
     "bonus": "100% deposit bonus up to €600",
-    "bonus_code": "THUNDER500",
     "has_token": false,
     "accepted_coins": [
       "BTC",
@@ -1328,7 +1307,7 @@
       "complaints": "Withdrawal speed slower than competitors, higher minimums"
     },
     "telegram": "",
-    "bonus_source_url": "https://thunderpick.io/promotions",
+    "bonus_source_url": "https://thunderpick.io/",
     "bonus_checked": "2026-10-28"
   }
 ]

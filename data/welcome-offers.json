@@ -12,11 +12,11 @@
       "url": "/go/bcgame/",
       "isAffiliate": true,
       "source_url": "https://bc.game/promotion/list",
-      "source_last_checked": "2026-11-18",
+      "source_last_checked": "2026-11-26",
       "source_status": "unverifiable",
       "source_monitor": "manual",
       "source_browser_attempt": "2026-10-28",
-      "source_note": "18 Nov 2026: the previous source URL https://bc.game/promotions returns 404, so the tracked source is now https://bc.game/promotion/list. The welcome offer is still not verified; check live terms. The 12 Nov 2026 review had already left the July figures unconfirmed."
+      "source_note": "18 Nov 2026: the previous source URL https://bc.game/promotions returns 404, so the tracked source is now https://bc.game/promotion/list. The welcome offer is still not verified; check live terms. The 12 Nov 2026 review had already left the July figures unconfirmed. 26 Nov 2026: https://bc.game/promotion/list now redirects to the BC.Game homepage, so it is no longer a usable source. A new official welcome-offer source URL is needed; until one is found the offer stays unverified."
     },
     {
       "casino": "Shuffle",
@@ -144,7 +144,7 @@
     },
     {
       "casino": "TrustDice",
-      "offer": "500% welcome bonus up to $90,000 + 100 free spins",
+      "offer": "500% welcome bonus + 100 free spins",
       "promoCode": "Check live",
       "wagering": "Check live terms",
       "kyc": "No KYC",
@@ -153,14 +153,20 @@
       "url": "https://trustdice.win/?ref=u_cryptocasinosorted",
       "isAffiliate": true,
       "source_url": "https://trustdice.win/bonus",
-      "source_last_checked": "2026-10-28",
+      "source_last_checked": "2026-11-26",
       "source_status": "browser_verified",
       "source_monitor": "manual",
       "source_terms": [
-        "500% WELCOME BONUS UP TO $90,000",
-        "100 FREE SPINS"
+        "500%",
+        "100 free spins"
       ],
-      "source_note": "Browser check 2026-10-28 of official page: \"500% WELCOME BONUS UP TO $90,000 + 100 FREE SPINS\", staged over deposits; /bonus-terms not read. Previously tracked: 3 BTC + 25 free spins."
+      "source_note": "Browser check of https://trustdice.win/bonus (scan of 26 Nov 2026): 500% welcome bonus + 100 free spins, staged 200% + 20 free spins, 100% + 30 free spins, 200% + 50 free spins. The earlier 28 Oct reading of \"up to $90,000\" could not be confirmed on the current page, so no cap is stated here. /bonus-terms not read.",
+      "breakdown": [
+        "First deposit: 200% bonus + 20 free spins",
+        "Second deposit: 100% bonus + 30 free spins",
+        "Third deposit: 200% bonus + 50 free spins"
+      ],
+      "includeInCalculator": false
     },
     {
       "casino": "Thunderpick",
@@ -223,7 +229,7 @@
       "casino": "BetFury",
       "offer": "Welcome bonuses up to 590% + 225 Free Spins",
       "promoCode": "No code shown",
-      "wagering": "Check live terms",
+      "wagering": "x40 for Slots and Live games; BetFury Originals count at a 0.2 coefficient; 14 days to wager each Welcome Deposit Bonus and Welcome Free Spins",
       "kyc": "Check live terms",
       "geo": "Check live terms",
       "angle": "Three-deposit casino welcome pack, checked 25 Nov 2026",
@@ -233,17 +239,20 @@
       "source_url": "https://betfury.com/promo/welcome-pack-bonus",
       "source_terms": [
         "up to 590%",
-        "225 Free Spins"
+        "225 Free Spins",
+        "x40",
+        "0.2 coefficient",
+        "14 days"
       ],
       "breakdown": [
         "First deposit: up to 150% bonus + 50 Free Spins",
         "Second deposit: up to 180% bonus + 75 Free Spins",
         "Third deposit: up to 200% bonus + 100 Free Spins"
       ],
-      "source_last_checked": "2026-11-25",
+      "source_last_checked": "2026-11-26",
       "source_status": "browser_verified",
       "source_monitor": "manual",
-      "source_note": "Browser check 2026-11-25 of https://betfury.com/promo/welcome-pack-bonus: \"Welcome bonuses up to 590% + 225 Free Spins\", split first deposit up to 150% + 50 Free Spins, second up to 180% + 75 Free Spins, third up to 200% + 100 Free Spins. The FAQ answers on wagering, time limits and eligible deposits did not render, so they are unverified."
+      "source_note": "Browser check 2026-11-25 of https://betfury.com/promo/welcome-pack-bonus: \"Welcome bonuses up to 590% + 225 Free Spins\", split first deposit up to 150% + 50 Free Spins, second up to 180% + 75 Free Spins, third up to 200% + 100 Free Spins. FAQ rechecked 2026-11-26: the wagering multiplier for Welcome Bonuses is x40 for Slots and Live games, BetFury Originals count with a 0.2 coefficient, and each Welcome Deposit Bonus and Welcome Free Spins has 14 days to wager from credit."
     },
     {
       "casino": "Gamdom",
