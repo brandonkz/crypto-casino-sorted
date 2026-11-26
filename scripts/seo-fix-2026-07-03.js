@@ -1,3 +1,4 @@
+const { execFileSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
@@ -48,16 +49,21 @@ const categoryDefs = [
 
 const canonicalMap = {
   "stake-vs-bcgame-comparison.html": "stake-vs-bcgame-comparison-2026.html",
-  "stake-vs-rollbit-2026.html": "rollbit-vs-stake-comparison-2026.html",
-  "stake-vs-rollbit-reddit-trust-check-2026.html": "stake-vs-rollbit-reddit-withdrawal-proof-2026.html",
-  "stake-vs-rollbit-no-kyc-withdrawal-comparison-2026.html": "stake-vs-rollbit-reddit-withdrawal-proof-2026.html",
+  "bcgame-vs-stake-comparison-2026.html": "stake-vs-bcgame-comparison-2026.html",
+  "rollbit-vs-stake-comparison-2026.html": "stake-vs-rollbit-2026.html",
+  "stake-vs-rollbit-reddit-trust-check-2026.html": "stake-vs-rollbit-2026.html",
+  "stake-vs-rollbit-reddit-withdrawal-proof-2026.html": "stake-vs-rollbit-2026.html",
+  "stake-vs-rollbit-no-kyc-withdrawal-comparison-2026.html": "stake-vs-rollbit-2026.html",
+  "rollbit-vs-roobet-2026.html": "roobet-vs-rollbit-comparison-2026.html",
   "stake-vs-shuffle-vs-rollbit-withdrawals-2026.html": "stake-vs-shuffle-vs-rollbit-instant-withdrawals-2026.html",
   "crypto-casino-instant-withdrawal-2026.html": "crypto-casino-instant-withdrawals-ranked-2026.html",
   "crypto-casino-instant-withdrawals-reality-check-2026.html": "crypto-casino-instant-withdrawals-ranked-2026.html",
   "best-crypto-casino-instant-withdrawal-reddit-2026.html": "crypto-casino-instant-withdrawals-ranked-2026.html",
   "instant-withdrawal-crypto-casino-reddit-test-2026.html": "crypto-casino-instant-withdrawals-ranked-2026.html",
-  "instant-withdrawals-vs-bonus-traps-crypto-casinos-2026.html": "instant-withdrawal-crypto-casinos-bonus-traps-2026.html",
-  "best-crypto-casino-reddit-withdrawal-checklist-2026.html": "best-crypto-casino-withdrawal-proof-checklist-2026.html",
+  "instant-withdrawal-crypto-casinos-bonus-traps-2026.html": "crypto-casino-instant-withdrawals-ranked-2026.html",
+  "instant-withdrawals-vs-bonus-traps-crypto-casinos-2026.html": "crypto-casino-instant-withdrawals-ranked-2026.html",
+  "best-crypto-casino-reddit-withdrawal-checklist-2026.html": "crypto-casino-instant-withdrawals-ranked-2026.html",
+  "best-crypto-casino-withdrawal-proof-checklist-2026.html": "crypto-casino-instant-withdrawals-ranked-2026.html",
   "no-kyc-crypto-casinos-instant-withdrawal-2026.html": "no-kyc-crypto-casino-withdrawals-trust-check-2026.html",
   "no-kyc-crypto-casino-withdrawal-test-before-deposit-2026.html": "no-kyc-crypto-casino-withdrawals-trust-check-2026.html",
   "bitcoin-casino-no-kyc-kyc-may-be-required-2026.html": "bitcoin-casino-no-kyc-2026-guide.html",
@@ -283,8 +289,13 @@ function ensureHeadMeta(html, rel, post) {
     }
   }
 
-  if (post && post.canonicalTarget && !html.includes("http-equiv=\"refresh\"")) {
-    html = html.replace(/<\/head>/i, `  <meta http-equiv="refresh" content="0; url=/blog/${post.canonicalTarget}">\n</head>`);
+  if (post && post.canonicalTarget) {
+    const refresh = `<meta http-equiv="refresh" content="0; url=${site}/blog/${post.canonicalTarget}">`;
+    if (/<meta\s+http-equiv=["']refresh["'][^>]*>/i.test(html)) {
+      html = html.replace(/<meta\s+http-equiv=["']refresh["'][^>]*>/i, refresh);
+    } else {
+      html = html.replace(/<\/head>/i, `  ${refresh}\n</head>`);
+    }
   }
 
   html = normalizeSocialImages(html);
@@ -386,7 +397,7 @@ const casinoTargets = [
   ["/reviews/yeet-review.html", /\bYeet\b/],
   ["/reviews/xtp-review.html", /\bXTP\b/],
   ["/blog/roobet-vs-rollbit-comparison-2026.html", /\bRoobet\b/],
-  ["/blog/rollbit-vs-stake-comparison-2026.html", /\bRollbit\b/],
+  ["/blog/stake-vs-rollbit-2026.html", /\bRollbit\b/],
   ["/blog/stake-vs-shuffle-comparison-2026.html", /\bShuffle\b/],
   ["/blog/stake-vs-duelbits-comparison-2026.html", /\bDuelbits\b/],
   ["/blog/gamdom-vs-stake-comparison-2026.html", /\bGamdom\b/],
@@ -711,6 +722,20 @@ function processAllPages(posts) {
   }
 }
 
+function gitLastmod(rel) {
+  try {
+    const date = execFileSync("git", ["log", "-1", "--format=%cs", "--", rel], {
+      cwd: root,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(date)) return date;
+  } catch (err) {
+    // Keep the fallback date when a path has no commit yet.
+  }
+  return today;
+}
+
 function buildSitemap(posts) {
   const urls = [];
   const allPages = walk(root)
@@ -720,11 +745,11 @@ function buildSitemap(posts) {
   for (const rel of allPages) {
     if (excludedPosts.has(rel)) continue;
     if (rel === "blog/index.html") {
-      urls.push({ loc: `${site}/blog/`, lastmod: today, priority: "0.9" });
+      urls.push({ loc: `${site}/blog/`, lastmod: gitLastmod(rel), priority: "0.9" });
       continue;
     }
     const loc = rel === "index.html" ? `${site}/` : `${site}/${rel}`;
-    urls.push({ loc, lastmod: today, priority: rel === "index.html" ? "1.0" : rel.startsWith("blog/") ? "0.8" : "0.7" });
+    urls.push({ loc, lastmod: gitLastmod(rel), priority: rel === "index.html" ? "1.0" : rel.startsWith("blog/") ? "0.8" : "0.7" });
   }
   const seen = new Set();
   const body = urls
