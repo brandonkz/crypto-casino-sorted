@@ -1,14 +1,23 @@
 #!/usr/bin/env python3
-"""Repair sitemap/index signals for Google Search Console coverage.
+"""Repair sitemap/index signals and JSON-LD dateModified values.
 
 The script keeps the sitemap limited to canonical indexable HTML pages and adds
 an internal guide index for blog URLs that otherwise only have sitemap discovery.
+Sitemap locs that still say index.html are rewritten to the page's canonical
+directory URL when that canonical is the same file.
+
+It also sets schema.org dateModified on each page's JSON-LD from that file's
+last git commit date (`git log -1 --format=%cs`). datePublished is left as-is.
+Re-run with `python3 tools/seo_coverage_fix.py --dates-only`.
 """
 
 from __future__ import annotations
 
+import argparse
 import html
+import json
 import re
+import subprocess
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlparse
@@ -94,7 +103,17 @@ def is_indexable(url: str) -> bool:
         return False
 
     canonical = canonical_url(markup)
-    return bool(canonical and canonical.rstrip("/") == url.rstrip("/"))
+    if not canonical:
+        return False
+    # Directory hubs are canonical at /path/ while the sitemap may still list
+    # /path/index.html. Keep the page when both URLs are the same file.
+    # A redirect stub canonicalizes to a different file and is dropped.
+    return file_for_url(canonical).resolve() == page.resolve()
+
+
+def canonical_loc_for(url: str) -> str:
+    canonical = canonical_url(file_for_url(url).read_text(encoding="utf-8", errors="ignore"))
+    return canonical or url
 
 
 def current_sitemap_entries() -> list[dict[str, str]]:
@@ -173,13 +192,178 @@ def update_blog_index(urls: list[str]) -> None:
     BLOG_INDEX.write_text(markup, encoding="utf-8")
 
 
-def main() -> None:
+SKIP_DATE_TYPES = {"BreadcrumbList"}
+LD_JSON_RE = re.compile(
+    r"(<script\b[^>]*type=[\"']application/ld\+json[\"'][^>]*>)([\s\S]*?)(</script>)",
+    re.I,
+)
+DATE_MODIFIED_RE = re.compile(r'("dateModified"\s*:\s*")([^"]*)(")')
+DATE_PUBLISHED_RE = re.compile(
+    r'^([ \t]*)"datePublished"\s*:\s*"[0-9]{4}-[0-9]{2}-[0-9]{2}"',
+    re.M,
+)
+TYPE_LINE_RE = re.compile(r'^([ \t]*)"@type"\s*:\s*"[^"]+"', re.M)
+
+
+def git_commit_date(path: Path) -> str | None:
+    rel = path.relative_to(ROOT).as_posix()
+    result = subprocess.run(
+        ["git", "log", "-1", "--format=%cs", "--", rel],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    date = result.stdout.strip()
+    if result.returncode != 0 or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+        return None
+    return date
+
+
+def jsonld_needs_date(data: object) -> bool:
+    if not isinstance(data, dict):
+        return False
+    types = data.get("@type")
+    if isinstance(types, str):
+        types = [types]
+    elif not isinstance(types, list):
+        return False
+    return any(isinstance(item, str) and item not in SKIP_DATE_TYPES for item in types)
+
+
+def apply_date_modified(block: str, date: str) -> str:
+    """Set dateModified on one JSON-LD object. Leaves datePublished unchanged."""
+    payload = block.strip()
+    try:
+        data = json.loads(payload)
+    except json.JSONDecodeError:
+        return block
+    if not jsonld_needs_date(data):
+        return block
+
+    existing = DATE_MODIFIED_RE.search(block)
+    if existing:
+        if existing.group(2) == date:
+            return block
+        return DATE_MODIFIED_RE.sub(rf"\g<1>{date}\3", block, count=1)
+
+    published = DATE_PUBLISHED_RE.search(block)
+    if published:
+        indent = published.group(1)
+        return (
+            block[: published.end()]
+            + f',\n{indent}"dateModified": "{date}"'
+            + block[published.end() :]
+        )
+
+    type_line = TYPE_LINE_RE.search(block)
+    if not type_line:
+        return block
+    indent = type_line.group(1)
+    line_end = block.find("\n", type_line.end())
+    if line_end == -1:
+        return block[: type_line.end()] + f', "dateModified": "{date}"' + block[type_line.end() :]
+    line = block[type_line.start() : line_end]
+    if line.rstrip().endswith(","):
+        insertion = f'\n{indent}"dateModified": "{date}",'
+        return block[:line_end] + insertion + block[line_end:]
+    return (
+        block[: type_line.end()]
+        + f',\n{indent}"dateModified": "{date}"'
+        + block[type_line.end() :]
+    )
+
+
+def update_date_modified() -> None:
+    updated_files = 0
+    updated_blocks = 0
+    skipped = 0
+    for path in sorted(ROOT.rglob("*.html")):
+        if any(part in {".git", "node_modules"} or part.startswith("backup-") for part in path.parts):
+            continue
+        markup = path.read_text(encoding="utf-8", errors="ignore")
+        if "application/ld+json" not in markup:
+            continue
+        date = git_commit_date(path)
+        if not date:
+            skipped += 1
+            print(f"No git date for {path.relative_to(ROOT)}")
+            continue
+
+        changed = False
+
+        def replacer(match: re.Match[str]) -> str:
+            nonlocal changed, updated_blocks
+            opening, body, closing = match.group(1), match.group(2), match.group(3)
+            new_body = apply_date_modified(body, date)
+            if new_body == body:
+                return match.group(0)
+            try:
+                json.loads(new_body)
+            except json.JSONDecodeError as exc:
+                print(f"Skipped invalid JSON-LD edit in {path.relative_to(ROOT)}: {exc}")
+                return match.group(0)
+            changed = True
+            updated_blocks += 1
+            return opening + new_body + closing
+
+        new_markup = LD_JSON_RE.sub(replacer, markup)
+        if changed and new_markup != markup:
+            path.write_text(new_markup, encoding="utf-8")
+            updated_files += 1
+
+    print(
+        f"Set dateModified in {updated_blocks} JSON-LD blocks across {updated_files} files; "
+        f"skipped {skipped} files with no git date."
+    )
+
+
+def refresh_sitemap() -> None:
     entries = current_sitemap_entries()
-    kept = [entry for entry in entries if is_indexable(entry["loc"])]
+    kept: list[dict[str, str]] = []
+    seen: set[str] = set()
+    rewritten = 0
+    for entry in entries:
+        if not is_indexable(entry["loc"]):
+            continue
+        loc = canonical_loc_for(entry["loc"])
+        if loc != entry["loc"]:
+            rewritten += 1
+        if loc in seen:
+            continue
+        seen.add(loc)
+        updated = dict(entry)
+        updated["loc"] = loc
+        kept.append(updated)
     write_sitemap(kept)
     update_blog_index(blog_urls(kept))
-    print(f"Kept {len(kept)} canonical indexable URLs; removed {len(entries) - len(kept)} sitemap URLs.")
+    print(
+        f"Kept {len(kept)} canonical indexable URLs; "
+        f"removed {len(entries) - len(kept)} sitemap URLs; "
+        f"rewrote {rewritten} locs to their canonical URL."
+    )
     print(f"Linked {len(blog_urls(kept))} canonical blog guides from the blog index.")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--dates-only",
+        action="store_true",
+        help="Only set JSON-LD dateModified from each file's last git commit date.",
+    )
+    parser.add_argument(
+        "--sitemap-only",
+        action="store_true",
+        help="Only rebuild sitemap.xml and the blog guide index.",
+    )
+    args = parser.parse_args()
+    if args.dates_only and args.sitemap_only:
+        raise SystemExit("Use only one of --dates-only or --sitemap-only.")
+    if not args.dates_only:
+        refresh_sitemap()
+    if not args.sitemap_only:
+        update_date_modified()
 
 
 if __name__ == "__main__":

@@ -11,6 +11,10 @@ const trustLinks = [
   ["/responsible-gambling.html", "Responsible Gambling"],
   ["/privacy.html", "Privacy"],
   ["/contact.html", "Contact"],
+  ["/transparency.html", "Transparency"],
+  ["/reddit-reviews.html", "Reddit Reviews"],
+  ["/streamers.html", "Streamers"],
+  ["/tier-list/", "Tier List"],
 ];
 
 const categoryDefs = [
