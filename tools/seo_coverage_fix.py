@@ -3,12 +3,17 @@
 
 The script keeps the sitemap limited to canonical indexable HTML pages and adds
 an internal guide index for blog URLs that otherwise only have sitemap discovery.
+
+lastmod is the last git commit date (YYYY-MM-DD, committer date) of the page
+file. Pass --lastmod-only to refresh those dates without adding or removing URLs.
 """
 
 from __future__ import annotations
 
 import html
 import re
+import subprocess
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlparse
@@ -97,6 +102,36 @@ def is_indexable(url: str) -> bool:
     return bool(canonical and canonical.rstrip("/") == url.rstrip("/"))
 
 
+def git_lastmod(page: Path) -> str | None:
+    """Return the page file's last commit date, or None when git has no record."""
+    if not page.exists():
+        return None
+    try:
+        rel = page.relative_to(ROOT).as_posix()
+    except ValueError:
+        rel = page.as_posix()
+    result = subprocess.run(
+        ["git", "log", "-1", "--format=%cs", "--", rel],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    date = result.stdout.strip()
+    return date if re.fullmatch(r"\d{4}-\d{2}-\d{2}", date) else None
+
+
+def refresh_lastmod(entries: list[dict[str, str]]) -> int:
+    updated = 0
+    for entry in entries:
+        lastmod = git_lastmod(file_for_url(entry["loc"]))
+        if not lastmod or entry.get("lastmod") == lastmod:
+            continue
+        entry["lastmod"] = lastmod
+        updated += 1
+    return updated
+
+
 def current_sitemap_entries() -> list[dict[str, str]]:
     ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     tree = ET.parse(SITEMAP)
@@ -174,8 +209,16 @@ def update_blog_index(urls: list[str]) -> None:
 
 
 def main() -> None:
+    lastmod_only = "--lastmod-only" in sys.argv
     entries = current_sitemap_entries()
+    if lastmod_only:
+        updated = refresh_lastmod(entries)
+        write_sitemap(entries)
+        print(f"Refreshed lastmod on {updated} of {len(entries)} sitemap URLs from git commit dates.")
+        return
+
     kept = [entry for entry in entries if is_indexable(entry["loc"])]
+    refresh_lastmod(kept)
     write_sitemap(kept)
     update_blog_index(blog_urls(kept))
     print(f"Kept {len(kept)} canonical indexable URLs; removed {len(entries) - len(kept)} sitemap URLs.")
